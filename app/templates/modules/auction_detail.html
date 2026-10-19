@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %}{{ item.lot.title }} · {{ _("Auction") }}{% endblock %}
+
+{% block content %}
+<h1>{{ item.lot.title }}</h1>
+<p>{{ item.lot.description }}</p>
+
+<section class="card">
+  <p>
+    {% if item.is_descending %}{{ _("Price falls over time") }}{% else %}{{ _("Highest bid wins") }}{% endif %}
+  </p>
+  <p><strong>{{ _("Current price") }}: {{ item.price }}</strong></p>
+  {% if item.is_descending %}
+    <p class="small">{{ _("Lowest price: %(price)s", price=item.floor) }} · {{ _("Drop: %(step)s", step=item.step) }}</p>
+  {% else %}
+    <p class="small">{{ _("Next minimum bid: %(price)s", price=item.min_bid) }}</p>
+  {% endif %}
+
+  {% if item.lot.status == "closed" %}
+    <p>{% if item.lot.winner_id %}{{ _("This lot is sold.") }}{% else %}{{ _("This lot closed without a buyer.") }}{% endif %}</p>
+  {% elif item.is_open %}
+    <form method="post" action="{{ url_for('auction.bid', lot_id=item.lot.id) }}" class="form">
+      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+      {% if item.is_descending %}
+        <input type="hidden" name="amount" value="{{ item.price_plain }}">
+        <button type="submit" class="button">{{ _("Buy at %(price)s", price=item.price) }}</button>
+      {% else %}
+        <div class="field">
+          <label for="amount">{{ _("Your bid (EUR)") }}</label>
+          <input id="amount" name="amount" type="text" inputmode="decimal" required>
+        </div>
+        <button type="submit" class="button">{{ _("Place bid") }}</button>
+      {% endif %}
+    </form>
+  {% else %}
+    <p class="muted">{{ _("The lot is not open right now.") }}</p>
+  {% endif %}
+</section>
+
+<p><a href="{{ url_for('auction.index') }}">{{ _("Back to all lots") }}</a></p>
+{% endblock %}

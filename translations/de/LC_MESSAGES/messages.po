@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Club 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-19 22:31+0000\n"
+"POT-Creation-Date: 2026-10-19 22:44+0000\n"
 "PO-Revision-Date: 2026-10-19 21:00+0000\n"
 "Last-Translator: \n"
 "Language: de\n"
@@ -16,6 +16,27 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.17.0\n"
+
+#: app/blueprints/admin/__init__.py:116
+msgid "Changes are saved."
+msgstr "Änderungen sind gespeichert."
+
+#: app/blueprints/admin/__init__.py:118
+msgid "Nothing has changed."
+msgstr "Nichts hat sich geändert."
+
+#: app/blueprints/admin/__init__.py:137
+#, python-format
+msgid "Please check the lot fields: %(fields)s"
+msgstr "Bitte prüfe die Felder des Loses: %(fields)s"
+
+#: app/blueprints/admin/__init__.py:141
+msgid "The lot is created."
+msgstr "Das Los ist angelegt."
+
+#: app/blueprints/admin/__init__.py:154
+msgid "The lot is closed."
+msgstr "Das Los ist geschlossen."
 
 #: app/blueprints/auth/__init__.py:26
 msgid "Please confirm your e-mail address"
@@ -136,9 +157,43 @@ msgstr "Reisen"
 msgid "Startups for investors"
 msgstr "Startups für Investoren"
 
-#: app/modules/__init__.py:26 app/modules/auction/__init__.py:12
+#: app/modules/__init__.py:26 app/templates/modules/auction_detail.html:3
+#: app/templates/modules/auction_list.html:3
+#: app/templates/modules/auction_list.html:6
 msgid "Auction"
 msgstr "Auktion"
+
+#: app/modules/auction/__init__.py:18
+msgid "This lot is closed."
+msgstr "Dieses Los ist geschlossen."
+
+#: app/modules/auction/__init__.py:19
+msgid "This lot has not started yet."
+msgstr "Dieses Los hat noch nicht begonnen."
+
+#: app/modules/auction/__init__.py:20
+msgid "Your bid is below the minimum. Please raise it."
+msgstr "Dein Gebot liegt unter dem Mindestbetrag. Bitte erhöhe es."
+
+#: app/modules/auction/__init__.py:21
+msgid "The price has dropped below your offer. Please reload the page."
+msgstr "Der Preis ist unter dein Angebot gefallen. Bitte lade die Seite neu."
+
+#: app/modules/auction/__init__.py:22
+msgid "This lot does not exist."
+msgstr "Dieses Los existiert nicht."
+
+#: app/modules/auction/__init__.py:24
+msgid "The bid could not be placed."
+msgstr "Das Gebot konnte nicht abgegeben werden."
+
+#: app/modules/auction/__init__.py:65
+msgid "Please enter a valid amount."
+msgstr "Bitte gib einen gültigen Betrag ein."
+
+#: app/modules/auction/__init__.py:76
+msgid "Your bid is placed."
+msgstr "Dein Gebot ist abgegeben."
 
 #: app/modules/profile/__init__.py:29
 msgid "Please keep the headline under 160 characters."
@@ -186,11 +241,12 @@ msgstr "Die Prüfung wurde abgebrochen. Du kannst sie erneut starten."
 msgid "Too many attempts. Please contact support."
 msgstr "Zu viele Versuche. Bitte wende dich an den Support."
 
-#: app/templates/auth/login.html:3 app/templates/auth/register.html:3
-#: app/templates/base.html:6 app/templates/base.html:11
-#: app/templates/base.html:39 app/templates/member/dashboard.html:3
-#: app/templates/modules/profile.html:3 app/templates/modules/stub.html:3
-#: app/templates/public/index.html:3
+#: app/templates/admin/dashboard.html:3 app/templates/auth/login.html:3
+#: app/templates/auth/register.html:3 app/templates/base.html:6
+#: app/templates/base.html:11 app/templates/base.html:42
+#: app/templates/member/dashboard.html:3
+#: app/templates/modules/auction_list.html:3 app/templates/modules/profile.html:3
+#: app/templates/modules/stub.html:3 app/templates/public/index.html:3
 msgid "Club"
 msgstr "Club"
 
@@ -198,24 +254,253 @@ msgstr "Club"
 msgid "My account"
 msgstr "Mein Konto"
 
-#: app/templates/base.html:20
+#: app/templates/admin/audit.html:3 app/templates/admin/dashboard.html:3
+#: app/templates/admin/dashboard.html:6 app/templates/admin/lots.html:3
+#: app/templates/admin/user_detail.html:3 app/templates/admin/users.html:3
+#: app/templates/base.html:16
+msgid "Admin"
+msgstr "Admin"
+
+#: app/templates/base.html:23
 msgid "Log out"
 msgstr "Abmelden"
 
 #: app/templates/auth/login.html:3 app/templates/auth/login.html:6
 #: app/templates/auth/login.html:28 app/templates/auth/register.html:74
-#: app/templates/base.html:23
+#: app/templates/base.html:26
 msgid "Log in"
 msgstr "Anmelden"
 
 #: app/templates/auth/login.html:31 app/templates/auth/register.html:3
-#: app/templates/base.html:24
+#: app/templates/base.html:27
 msgid "Register"
 msgstr "Registrieren"
 
-#: app/templates/auth/login.html:14 app/templates/auth/register.html:24
+#: app/templates/admin/audit.html:3 app/templates/admin/audit.html:6
+#: app/templates/admin/dashboard.html:10
+msgid "Audit log"
+msgstr "Protokoll"
+
+#: app/templates/admin/audit.html:7 app/templates/admin/lots.html:7
+#: app/templates/admin/users.html:7
+msgid "Back to admin"
+msgstr "Zurück zur Verwaltung"
+
+#: app/templates/admin/audit.html:11
+msgid "Time"
+msgstr "Zeit"
+
+#: app/templates/admin/audit.html:11
+msgid "Actor"
+msgstr "Akteur"
+
+#: app/templates/admin/audit.html:11
+msgid "Action"
+msgstr "Aktion"
+
+#: app/templates/admin/audit.html:11
+msgid "Target"
+msgstr "Ziel"
+
+#: app/templates/admin/audit.html:11
+msgid "Details"
+msgstr "Details"
+
+#: app/templates/admin/audit.html:23
+msgid "The log is empty."
+msgstr "Das Protokoll ist leer."
+
+#: app/templates/admin/dashboard.html:8 app/templates/admin/dashboard.html:14
+#: app/templates/admin/users.html:3 app/templates/admin/users.html:6
+msgid "Members"
+msgstr "Mitglieder"
+
+#: app/templates/admin/dashboard.html:9 app/templates/admin/lots.html:3
+#: app/templates/admin/lots.html:6
+msgid "Auction lots"
+msgstr "Auktionslose"
+
+#: app/templates/admin/dashboard.html:23
+msgid "Identity checks"
+msgstr "Identitätsprüfungen"
+
+#: app/templates/admin/dashboard.html:32
+msgid "Open auction lots"
+msgstr "Offene Auktionslose"
+
+#: app/templates/admin/lots.html:10
+msgid "New lot"
+msgstr "Neues Los"
+
+#: app/templates/admin/lots.html:15 app/templates/admin/lots.html:70
+msgid "Title"
+msgstr "Titel"
+
+#: app/templates/admin/lots.html:20
+msgid "Description"
+msgstr "Beschreibung"
+
+#: app/templates/admin/lots.html:25 app/templates/admin/lots.html:70
+msgid "Mode"
+msgstr "Modus"
+
+#: app/templates/admin/lots.html:27
+msgid "Highest bid wins (price rises)"
+msgstr "Höchstes Gebot gewinnt (Preis steigt)"
+
+#: app/templates/admin/lots.html:28 app/templates/modules/auction_detail.html:11
+#: app/templates/modules/auction_list.html:17
+msgid "Price falls over time"
+msgstr "Preis fällt mit der Zeit"
+
+#: app/templates/admin/lots.html:33
+msgid "Start price (EUR)"
+msgstr "Startpreis (EUR)"
+
+#: app/templates/admin/lots.html:38
+msgid "Step (EUR): bid increment or price drop"
+msgstr "Schritt (EUR): Gebotserhöhung oder Preisabzug"
+
+#: app/templates/admin/lots.html:43
+msgid "Lowest price (EUR), only for falling price"
+msgstr "Mindestpreis (EUR), nur bei fallendem Preis"
+
+#: app/templates/admin/lots.html:48
+msgid "Minutes between drops, only for falling price"
+msgstr "Minuten zwischen den Preisstufen, nur bei fallendem Preis"
+
+#: app/templates/admin/lots.html:53
+msgid "Opens (Berlin time)"
+msgstr "Beginn (Berliner Zeit)"
+
+#: app/templates/admin/lots.html:58
+msgid "Ends (Berlin time)"
+msgstr "Ende (Berliner Zeit)"
+
+#: app/templates/admin/lots.html:62
+msgid "Create lot"
+msgstr "Los anlegen"
+
+#: app/templates/admin/lots.html:67
+msgid "All lots"
+msgstr "Alle Lose"
+
+#: app/templates/admin/lots.html:70 app/templates/admin/users.html:23
+msgid "Status"
+msgstr "Status"
+
+#: app/templates/admin/lots.html:70
+msgid "Result"
+msgstr "Ergebnis"
+
+#: app/templates/admin/lots.html:78
+msgid "no buyer"
+msgstr "kein Käufer"
+
+#: app/templates/admin/lots.html:83
+msgid "Close"
+msgstr "Schließen"
+
+#: app/templates/admin/lots.html:89
+msgid "No lots yet."
+msgstr "Noch keine Lose."
+
+#: app/templates/admin/user_detail.html:7
+msgid "Back to members"
+msgstr "Zurück zu den Mitgliedern"
+
+#: app/templates/admin/user_detail.html:10
+msgid "Created"
+msgstr "Angelegt"
+
+#: app/templates/admin/user_detail.html:10
+msgid "Last login"
+msgstr "Letzte Anmeldung"
+
+#: app/templates/admin/user_detail.html:11
+msgid "Name"
+msgstr "Name"
+
+#: app/templates/admin/user_detail.html:11
+msgid "Residence"
+msgstr "Wohnsitz"
+
+#: app/templates/admin/user_detail.html:18 app/templates/admin/users.html:21
+msgid "Plan"
+msgstr "Tarif"
+
+#: app/templates/admin/user_detail.html:27
+msgid "Role"
+msgstr "Rolle"
+
+#: app/templates/admin/user_detail.html:36
+msgid "Account status"
+msgstr "Kontostatus"
+
+#: app/templates/admin/user_detail.html:46
+msgid "Administrator (all rights)"
+msgstr "Administrator (alle Rechte)"
+
+#: app/templates/admin/user_detail.html:50
+msgid "Identity check"
+msgstr "Identitätsprüfung"
+
+#: app/templates/admin/user_detail.html:59
+msgid "Reason"
+msgstr "Grund"
+
+#: app/templates/admin/user_detail.html:67
+msgid "Save changes"
+msgstr "Änderungen speichern"
+
+#: app/templates/admin/user_detail.html:71
+msgid "Consents"
+msgstr "Einwilligungen"
+
+#: app/templates/admin/user_detail.html:74
+msgid "granted"
+msgstr "erteilt"
+
+#: app/templates/admin/user_detail.html:74
+msgid "withdrawn"
+msgstr "widerrufen"
+
+#: app/templates/admin/user_detail.html:76
+msgid "No consents recorded."
+msgstr "Keine Einwilligungen erfasst."
+
+#: app/templates/admin/user_detail.html:82
+msgid "History"
+msgstr "Verlauf"
+
+#: app/templates/admin/user_detail.html:87
+msgid "No entries yet."
+msgstr "Noch keine Einträge."
+
+#: app/templates/admin/users.html:11
+msgid "Search by e-mail"
+msgstr "Nach E-Mail suchen"
+
+#: app/templates/admin/users.html:14
+msgid "Search"
+msgstr "Suchen"
+
+#: app/templates/admin/users.html:20 app/templates/auth/login.html:14
+#: app/templates/auth/register.html:24
 msgid "E-mail"
 msgstr "E-Mail"
+
+#: app/templates/admin/users.html:22
+msgid "Identity"
+msgstr "Identität"
+
+#: app/templates/admin/users.html:32
+msgid "admin"
+msgstr "Admin"
+
+#: app/templates/admin/users.html:35
+msgid "No members found."
+msgstr "Keine Mitglieder gefunden."
 
 #: app/templates/auth/login.html:19 app/templates/auth/register.html:30
 msgid "Password"
@@ -385,6 +670,77 @@ msgstr "Mit deinem Passwort bestätigen"
 #: app/templates/member/dashboard.html:77
 msgid "Delete account permanently"
 msgstr "Konto endgültig löschen"
+
+#: app/templates/modules/auction_detail.html:11
+#: app/templates/modules/auction_list.html:17
+msgid "Highest bid wins"
+msgstr "Höchstes Gebot gewinnt"
+
+#: app/templates/modules/auction_detail.html:13
+msgid "Current price"
+msgstr "Aktueller Preis"
+
+#: app/templates/modules/auction_detail.html:15
+#, python-format
+msgid "Lowest price: %(price)s"
+msgstr "Mindestpreis: %(price)s"
+
+#: app/templates/modules/auction_detail.html:15
+#, python-format
+msgid "Drop: %(step)s"
+msgstr "Abzug: %(step)s"
+
+#: app/templates/modules/auction_detail.html:17
+#, python-format
+msgid "Next minimum bid: %(price)s"
+msgstr "Nächstes Mindestgebot: %(price)s"
+
+#: app/templates/modules/auction_detail.html:21
+msgid "This lot is sold."
+msgstr "Dieses Los ist verkauft."
+
+#: app/templates/modules/auction_detail.html:21
+msgid "This lot closed without a buyer."
+msgstr "Dieses Los wurde ohne Käufer geschlossen."
+
+#: app/templates/modules/auction_detail.html:27
+#, python-format
+msgid "Buy at %(price)s"
+msgstr "Zu %(price)s kaufen"
+
+#: app/templates/modules/auction_detail.html:30
+msgid "Your bid (EUR)"
+msgstr "Dein Gebot (EUR)"
+
+#: app/templates/modules/auction_detail.html:33
+msgid "Place bid"
+msgstr "Gebot abgeben"
+
+#: app/templates/modules/auction_detail.html:37
+msgid "The lot is not open right now."
+msgstr "Das Los ist gerade nicht geöffnet."
+
+#: app/templates/modules/auction_detail.html:41
+msgid "Back to all lots"
+msgstr "Zurück zu allen Losen"
+
+#: app/templates/modules/auction_list.html:7
+msgid "Bids are placed in the lot. Payments are not yet processed in this version."
+msgstr ""
+"Gebote werden im Los abgegeben. Zahlungen werden in dieser Version noch "
+"nicht abgewickelt."
+
+#: app/templates/modules/auction_list.html:10
+msgid "There are no lots yet."
+msgstr "Noch keine Lose."
+
+#: app/templates/modules/auction_list.html:18
+msgid "Price"
+msgstr "Preis"
+
+#: app/templates/modules/auction_list.html:19
+msgid "closed"
+msgstr "geschlossen"
 
 #: app/templates/modules/profile.html:7
 msgid ""

@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}{{ _("Audit log") }} · {{ _("Admin") }}{% endblock %}
+
+{% block content %}
+<h1>{{ _("Audit log") }}</h1>
+<p><a href="{{ url_for('admin.dashboard') }}">{{ _("Back to admin") }}</a></p>
+
+<table class="table">
+  <thead>
+    <tr><th>{{ _("Time") }}</th><th>{{ _("Actor") }}</th><th>{{ _("Action") }}</th><th>{{ _("Target") }}</th><th>{{ _("Details") }}</th></tr>
+  </thead>
+  <tbody>
+    {% for entry, actor_email in rows %}
+    <tr>
+      <td>{{ entry.created_at.strftime('%d.%m.%Y %H:%M') }}</td>
+      <td>{{ actor_email or '—' }}</td>
+      <td>{{ entry.action }}</td>
+      <td>{{ entry.target }}</td>
+      <td>{{ entry.details }}</td>
+    </tr>
+    {% else %}
+    <tr><td colspan="5">{{ _("The log is empty.") }}</td></tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

@@ -61,6 +61,7 @@ def create_app(env=None):
         app.config["STRIPE_SECRET_KEY"], app.config["STRIPE_WEBHOOK_SECRET"]
     )
 
+    from .blueprints.admin import bp as admin_bp
     from .blueprints.auth import bp as auth_bp
     from .blueprints.member import bp as member_bp
     from .blueprints.public import bp as public_bp
@@ -70,6 +71,7 @@ def create_app(env=None):
     app.register_blueprint(auth_bp)
     app.register_blueprint(member_bp)
     app.register_blueprint(webhooks_bp)
+    app.register_blueprint(admin_bp)
 
     # Модули регистрируются только если включены в ENABLED_MODULES: выключенный адрес отвечает 404
     from .modules import enabled_modules

@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}{{ _("Members") }} · {{ _("Admin") }}{% endblock %}
+
+{% block content %}
+<h1>{{ _("Members") }}</h1>
+<p><a href="{{ url_for('admin.dashboard') }}">{{ _("Back to admin") }}</a></p>
+
+<form method="get" action="{{ url_for('admin.users') }}" class="form">
+  <div class="field">
+    <label for="q">{{ _("Search by e-mail") }}</label>
+    <input id="q" name="q" type="search" value="{{ q }}">
+  </div>
+  <button type="submit" class="button button-secondary">{{ _("Search") }}</button>
+</form>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>{{ _("E-mail") }}</th>
+      <th>{{ _("Plan") }}</th>
+      <th>{{ _("Identity") }}</th>
+      <th>{{ _("Status") }}</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for user in users %}
+    <tr>
+      <td><a href="{{ url_for('admin.user_detail', user_id=user.id) }}">{{ user.email }}</a></td>
+      <td>{{ plans[user.plan].name if user.plan in plans else user.plan }}</td>
+      <td>{{ user.verification_status }}</td>
+      <td>{{ user.status }}{% if user.is_admin %} · {{ _("admin") }}{% endif %}</td>
+    </tr>
+    {% else %}
+    <tr><td colspan="4">{{ _("No members found.") }}</td></tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

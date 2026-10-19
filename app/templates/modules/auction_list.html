@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}{{ _("Auction") }} · {{ _("Club") }}{% endblock %}
+
+{% block content %}
+<h1>{{ _("Auction") }}</h1>
+<p class="muted">{{ _("Bids are placed in the lot. Payments are not yet processed in this version.") }}</p>
+
+{% if not items %}
+  <p>{{ _("There are no lots yet.") }}</p>
+{% endif %}
+
+{% for item in items %}
+<section class="card">
+  <h2><a href="{{ url_for('auction.detail', lot_id=item.lot.id) }}">{{ item.lot.title }}</a></h2>
+  <p class="small">
+    {% if item.is_descending %}{{ _("Price falls over time") }}{% else %}{{ _("Highest bid wins") }}{% endif %}
+    · {{ _("Price") }}: {{ item.price }}
+    {% if item.lot.status == "closed" %} · {{ _("closed") }}{% endif %}
+  </p>
+</section>
+{% endfor %}
+{% endblock %}

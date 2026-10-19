@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+
+{% block title %}{{ _("Auction lots") }} · {{ _("Admin") }}{% endblock %}
+
+{% block content %}
+<h1>{{ _("Auction lots") }}</h1>
+<p><a href="{{ url_for('admin.dashboard') }}">{{ _("Back to admin") }}</a></p>
+
+<section class="card">
+  <h2>{{ _("New lot") }}</h2>
+  <form method="post" action="{{ url_for('admin.lots') }}" class="form">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+    <div class="field">
+      <label for="title">{{ _("Title") }}</label>
+      <input id="title" name="title" type="text" maxlength="160" required>
+    </div>
+
+    <div class="field">
+      <label for="description">{{ _("Description") }}</label>
+      <textarea id="description" name="description" rows="4"></textarea>
+    </div>
+
+    <div class="field">
+      <label for="mode">{{ _("Mode") }}</label>
+      <select id="mode" name="mode">
+        <option value="ascending">{{ _("Highest bid wins (price rises)") }}</option>
+        <option value="descending">{{ _("Price falls over time") }}</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label for="start_price">{{ _("Start price (EUR)") }}</label>
+      <input id="start_price" name="start_price" type="text" inputmode="decimal" required>
+    </div>
+
+    <div class="field">
+      <label for="step">{{ _("Step (EUR): bid increment or price drop") }}</label>
+      <input id="step" name="step" type="text" inputmode="decimal" required>
+    </div>
+
+    <div class="field">
+      <label for="floor_price">{{ _("Lowest price (EUR), only for falling price") }}</label>
+      <input id="floor_price" name="floor_price" type="text" inputmode="decimal">
+    </div>
+
+    <div class="field">
+      <label for="drop_interval_minutes">{{ _("Minutes between drops, only for falling price") }}</label>
+      <input id="drop_interval_minutes" name="drop_interval_minutes" type="number" min="1" value="5">
+    </div>
+
+    <div class="field">
+      <label for="opens_at">{{ _("Opens (Berlin time)") }}</label>
+      <input id="opens_at" name="opens_at" type="datetime-local" required>
+    </div>
+
+    <div class="field">
+      <label for="ends_at">{{ _("Ends (Berlin time)") }}</label>
+      <input id="ends_at" name="ends_at" type="datetime-local" required>
+    </div>
+
+    <button type="submit" class="button">{{ _("Create lot") }}</button>
+  </form>
+</section>
+
+<section>
+  <h2>{{ _("All lots") }}</h2>
+  <table class="table">
+    <thead>
+      <tr><th>{{ _("Title") }}</th><th>{{ _("Mode") }}</th><th>{{ _("Status") }}</th><th>{{ _("Result") }}</th><th></th></tr>
+    </thead>
+    <tbody>
+      {% for lot in lots %}
+      <tr>
+        <td><a href="{{ url_for('auction.detail', lot_id=lot.id) }}">{{ lot.title }}</a></td>
+        <td>{{ lot.mode }}</td>
+        <td>{{ lot.status }}</td>
+        <td>{% if lot.winning_price_cents %}{{ format_eur(lot.winning_price_cents) }}{% elif lot.status == "closed" %}{{ _("no buyer") }}{% endif %}</td>
+        <td>
+          {% if lot.status == "open" %}
+          <form method="post" action="{{ url_for('admin.cancel', lot_id=lot.id) }}" class="inline-form">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+            <button type="submit" class="link-button">{{ _("Close") }}</button>
+          </form>
+          {% endif %}
+        </td>
+      </tr>
+      {% else %}
+      <tr><td colspan="5">{{ _("No lots yet.") }}</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</section>
+{% endblock %}

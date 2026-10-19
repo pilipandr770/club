@@ -12,6 +12,9 @@
     <nav class="nav">
       {% if current_user.is_authenticated %}
         <a href="{{ url_for('member.dashboard') }}">{{ _("My account") }}</a>
+        {% if current_user.is_admin %}
+          <a href="{{ url_for('admin.dashboard') }}">{{ _("Admin") }}</a>
+        {% endif %}
         {% for module in nav_modules %}
           <a href="{{ url_for(module.endpoint) }}">{{ module.title }}</a>
         {% endfor %}

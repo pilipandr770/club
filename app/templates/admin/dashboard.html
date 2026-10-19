@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}{{ _("Admin") }} · {{ _("Club") }}{% endblock %}
+
+{% block content %}
+<h1>{{ _("Admin") }}</h1>
+<nav class="admin-nav">
+  <a href="{{ url_for('admin.users') }}">{{ _("Members") }}</a> ·
+  <a href="{{ url_for('admin.lots') }}">{{ _("Auction lots") }}</a> ·
+  <a href="{{ url_for('admin.audit_log') }}">{{ _("Audit log") }}</a>
+</nav>
+
+<section class="card">
+  <h2>{{ _("Members") }}: {{ users_total }}</h2>
+  <ul class="module-list">
+    {% for plan_key, plan in plans.items() %}
+      <li>{{ plan.name }}: {{ by_plan[plan_key] }}</li>
+    {% endfor %}
+  </ul>
+</section>
+
+<section class="card">
+  <h2>{{ _("Identity checks") }}</h2>
+  <ul class="module-list">
+    {% for status, count in by_verification.items() %}
+      <li>{{ status }}: {{ count }}</li>
+    {% endfor %}
+  </ul>
+</section>
+
+<section class="card">
+  <h2>{{ _("Open auction lots") }}: {{ lots_open }}</h2>
+</section>
+{% endblock %}

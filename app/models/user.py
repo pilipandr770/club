@@ -1,7 +1,7 @@
 from datetime import datetime
 
 from flask_login import UserMixin
-from sqlalchemy import CheckConstraint, DateTime, ForeignKey, Integer, String, Text
+from sqlalchemy import Boolean, CheckConstraint, DateTime, ForeignKey, Integer, String, Text
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from werkzeug.security import check_password_hash, generate_password_hash
 
@@ -38,6 +38,8 @@ class User(UserMixin, db.Model):
     plan: Mapped[str] = mapped_column(String(20), default="guest")
     # Роль в путешествиях и других модулях: member | travel_operator | travel_agent
     role: Mapped[str] = mapped_column(String(20), default="member", server_default="member")
+    # Администратор клуба: доступ к админ-панели со всеми правами
+    is_admin: Mapped[bool] = mapped_column(Boolean, default=False, server_default="false")
 
     email_confirmed_at: Mapped[datetime | None] = mapped_column(DateTime)
 

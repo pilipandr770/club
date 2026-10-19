@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+
+{% block title %}{{ user.email }} · {{ _("Admin") }}{% endblock %}
+
+{% block content %}
+<h1>{{ user.email }}</h1>
+<p><a href="{{ url_for('admin.users') }}">{{ _("Back to members") }}</a></p>
+
+<section class="card">
+  <p class="small">{{ _("Created") }}: {{ user.created_at.strftime('%d.%m.%Y %H:%M') }} · {{ _("Last login") }}: {{ user.last_login_at.strftime('%d.%m.%Y %H:%M') if user.last_login_at else '—' }}</p>
+  <p class="small">{{ _("Name") }}: {{ user.full_name }} · {{ _("Residence") }}: {{ user.profile.residence_country if user.profile else '—' }}</p>
+</section>
+
+<form method="post" action="{{ url_for('admin.user_detail', user_id=user.id) }}" class="form card">
+  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+  <div class="field">
+    <label for="plan">{{ _("Plan") }}</label>
+    <select id="plan" name="plan">
+      {% for key, plan in plans.items() %}
+        <option value="{{ key }}" {% if user.plan == key %}selected{% endif %}>{{ plan.name }}</option>
+      {% endfor %}
+    </select>
+  </div>
+
+  <div class="field">
+    <label for="role">{{ _("Role") }}</label>
+    <select id="role" name="role">
+      {% for role in roles %}
+        <option value="{{ role }}" {% if user.role == role %}selected{% endif %}>{{ role }}</option>
+      {% endfor %}
+    </select>
+  </div>
+
+  <div class="field">
+    <label for="status">{{ _("Account status") }}</label>
+    <select id="status" name="status">
+      {% for status in statuses %}
+        <option value="{{ status }}" {% if user.status == status %}selected{% endif %}>{{ status }}</option>
+      {% endfor %}
+    </select>
+  </div>
+
+  <label class="check">
+    <input type="checkbox" name="is_admin" value="1" {% if user.is_admin %}checked{% endif %}>
+    {{ _("Administrator (all rights)") }}
+  </label>
+
+  <div class="field">
+    <label for="verification_status">{{ _("Identity check") }}</label>
+    <select id="verification_status" name="verification_status">
+      {% for status in verification_statuses %}
+        <option value="{{ status }}" {% if user.verification_status == status %}selected{% endif %}>{{ status }}</option>
+      {% endfor %}
+    </select>
+  </div>
+
+  <div class="field">
+    <label for="verification_reason">{{ _("Reason") }}</label>
+    <select id="verification_reason" name="verification_reason">
+      {% for reason in reasons %}
+        <option value="{{ reason }}" {% if (user.verification_reason or '') == reason %}selected{% endif %}>{{ reason or '—' }}</option>
+      {% endfor %}
+    </select>
+  </div>
+
+  <button type="submit" class="button">{{ _("Save changes") }}</button>
+</form>
+
+<section class="card">
+  <h2>{{ _("Consents") }}</h2>
+  <ul class="module-list">
+    {% for consent in consents %}
+      <li>{{ consent.kind }}: {{ _("granted") if consent.granted else _("withdrawn") }} · {{ consent.version }} · {{ consent.created_at.strftime('%d.%m.%Y %H:%M') }}</li>
+    {% else %}
+      <li class="muted">{{ _("No consents recorded.") }}</li>
+    {% endfor %}
+  </ul>
+</section>
+
+<section class="card">
+  <h2>{{ _("History") }}</h2>
+  <ul class="module-list">
+    {% for entry in history %}
+      <li>{{ entry.created_at.strftime('%d.%m.%Y %H:%M') }} · {{ entry.action }} · {{ entry.details }}</li>
+    {% else %}
+      <li class="muted">{{ _("No entries yet.") }}</li>
+    {% endfor %}
+  </ul>
+</section>
+{% endblock %}
