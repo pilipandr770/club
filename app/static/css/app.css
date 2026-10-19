@@ -1,0 +1,70 @@
+/* Цвета — токены на :root; тёмная тема переопределяет их ниже. Без внешних шрифтов (DSGVO). */
+:root {
+  --color-bg: #ffffff;
+  --color-text: #1b1f24;
+  --color-muted: #5c6670;
+  --color-accent: #1f5fbf;
+  --space: 1rem;
+  --max-width: 52rem;
+  --font: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --color-bg: #15181c;
+    --color-text: #e7ebef;
+    --color-muted: #9aa5b1;
+    --color-accent: #7aa7ff;
+  }
+}
+
+:root[data-theme="dark"] {
+  --color-bg: #15181c;
+  --color-text: #e7ebef;
+  --color-muted: #9aa5b1;
+  --color-accent: #7aa7ff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font);
+  line-height: 1.5;
+}
+
+.site-header,
+.site-footer {
+  padding: var(--space);
+  border-block: 1px solid color-mix(in srgb, var(--color-text) 12%, transparent);
+}
+
+.brand {
+  color: var(--color-text);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.container {
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding: calc(var(--space) * 2) var(--space);
+}
+
+.hero h1 {
+  margin-block-start: 0;
+}
+
+.small {
+  color: var(--color-muted);
+  font-size: 0.875rem;
+  margin: 0;
+}
+
+a {
+  color: var(--color-accent);
+}

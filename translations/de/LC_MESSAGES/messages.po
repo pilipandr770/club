@@ -1,0 +1,39 @@
+# German translations for Club.
+# Copyright (C) 2026 Club
+# This file is distributed under the same license as the Club project.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Club 0.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-10-19 20:50+0000\n"
+"PO-Revision-Date: 2026-10-19 21:00+0000\n"
+"Last-Translator: \n"
+"Language: de\n"
+"Language-Team: de\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: app/jurisdictions/de/pack.py:6
+msgid "Germany"
+msgstr "Deutschland"
+
+#: app/jurisdictions/de/pack.py:10
+msgid "General information, not legal advice. Applies to German law only."
+msgstr "Allgemeine Informationen, keine Rechtsberatung. Gilt nur für das deutsche Recht."
+
+#: app/templates/base.html:6 app/templates/base.html:11
+#: app/templates/base.html:17 app/templates/public/index.html:3
+msgid "Club"
+msgstr "Club"
+
+#: app/templates/public/index.html:3 app/templates/public/index.html:7
+msgid "Welcome"
+msgstr "Willkommen"
+
+#: app/templates/public/index.html:8
+msgid "Membership requires identity verification through Stripe."
+msgstr "Die Mitgliedschaft erfordert eine Identitätsprüfung über Stripe."

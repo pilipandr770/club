@@ -1,0 +1,40 @@
+# Translations template for PROJECT.
+# Copyright (C) 2026 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2026-10-19 20:50+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: app/jurisdictions/de/pack.py:6
+msgid "Germany"
+msgstr ""
+
+#: app/jurisdictions/de/pack.py:10
+msgid "General information, not legal advice. Applies to German law only."
+msgstr ""
+
+#: app/templates/base.html:6 app/templates/base.html:11
+#: app/templates/base.html:17 app/templates/public/index.html:3
+msgid "Club"
+msgstr ""
+
+#: app/templates/public/index.html:3 app/templates/public/index.html:7
+msgid "Welcome"
+msgstr ""
+
+#: app/templates/public/index.html:8
+msgid "Membership requires identity verification through Stripe."
+msgstr ""
+

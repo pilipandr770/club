@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block title %}{{ _("Welcome") }} · {{ _("Club") }}{% endblock %}
+
+{% block content %}
+<section class="hero">
+  <h1>{{ _("Welcome") }}</h1>
+  <p>{{ _("Membership requires identity verification through Stripe.") }}</p>
+</section>
+{% endblock %}

@@ -1,0 +1,76 @@
+name: club
+
+# Наружу публикует только caddy (80/443). db и app — во внутренней сети.
+services:
+  db:
+    image: pgvector/pgvector:pg16
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: club
+      POSTGRES_USER: club
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Задайте POSTGRES_PASSWORD в .env}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      # Создаёт club_test для тестов; срабатывает только при пустом томе
+      - ./deploy/postgres/init-test-db.sql:/docker-entrypoint-initdb.d/10-test-db.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U club -d club"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+  migrate:
+    build: .
+    image: club-app:local
+    command: ["flask", "db", "upgrade"]
+    env_file: .env
+    environment:
+      DATABASE_URL: postgresql+psycopg://club:${POSTGRES_PASSWORD}@db:5432/club
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: "no"
+
+  app:
+    build:
+      context: .
+      args:
+        INSTALL_DEV: ${INSTALL_DEV:-0}
+    image: club-app:local
+    env_file: .env
+    environment:
+      DATABASE_URL: postgresql+psycopg://club:${POSTGRES_PASSWORD}@db:5432/club
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+    read_only: true
+    tmpfs:
+      - /tmp
+    volumes:
+      - uploads:/app/uploads
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request,sys; sys.exit(0 if urllib.request.urlopen('http://127.0.0.1:8000/healthz', timeout=3).status == 200 else 1)"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+  caddy:
+    image: caddy:2.8.4-alpine
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    environment:
+      SITE_ADDRESS: ${SITE_ADDRESS:-localhost}
+    volumes:
+      - ./deploy/Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+    depends_on:
+      app:
+        condition: service_healthy
+
+volumes:
+  pgdata:
+  uploads:
+  caddy_data:
