@@ -9,6 +9,8 @@ from ...extensions import db
 from ...models import AuditLog, Consent, Lot, User
 from ...models.user import ROLES, VERIFICATION_STATUSES
 from ...services.audit import audit
+from ...models import Startup
+from ...services import startups as startup_service
 from ...services.auction_engine import cancel_lot, create_lot, validate_lot_input
 from ...utils import eur_to_cents, format_eur, local_to_utc, utcnow
 
@@ -195,3 +197,33 @@ def audit_log():
             .outerjoin(User, User.id == AuditLog.actor_id)
             .order_by(AuditLog.created_at.desc()).limit(200).all())
     return render_template("admin/audit.html", rows=rows)
+
+
+@bp.route("/startups")
+@admin_required
+def startups():
+    status = request.args.get("status", "pending")
+    query = Startup.query
+    if status in ("pending", "approved", "rejected"):
+        query = query.filter_by(status=status)
+    items = query.order_by(Startup.created_at.desc()).limit(200).all()
+    return render_template("admin/startups.html", items=items, status=status,
+                           format_eur=format_eur)
+
+
+@bp.route("/startups/<int:startup_id>/review", methods=["POST"])
+@admin_required
+def review_startup(startup_id):
+    startup = db.session.get(Startup, startup_id) or abort(404)
+    if request.form.get("decision") == "approve":
+        startup_service.approve(current_user, startup)
+        flash(_("The startup is published."), "success")
+    elif request.form.get("decision") == "reject":
+        startup_service.reject(current_user, startup, request.form.get("reason", ""))
+        flash(_("The startup is rejected."), "success")
+    else:
+        flash(_("Nothing has changed."), "info")
+        return redirect(url_for("admin.startups"))
+    db.session.commit()
+    return redirect(url_for("admin.startups", status="pending"))
+

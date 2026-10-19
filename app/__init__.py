@@ -95,6 +95,9 @@ def create_app(env=None):
 
     # Текущий язык для <html lang="..."> и current_user в шаблонах
     app.jinja_env.globals["get_locale"] = get_locale
+    from .modules.startups.labels import category_label, stage_label
+
+    app.jinja_env.globals.update(category_label=category_label, stage_label=stage_label)
 
     @app.after_request
     def security_headers(response):

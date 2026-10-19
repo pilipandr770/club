@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Club 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-19 22:44+0000\n"
+"POT-Creation-Date: 2026-10-19 23:02+0000\n"
 "PO-Revision-Date: 2026-10-19 21:00+0000\n"
 "Last-Translator: \n"
 "Language: de\n"
@@ -17,26 +17,34 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.17.0\n"
 
-#: app/blueprints/admin/__init__.py:116
+#: app/blueprints/admin/__init__.py:118
 msgid "Changes are saved."
 msgstr "Änderungen sind gespeichert."
 
-#: app/blueprints/admin/__init__.py:118
+#: app/blueprints/admin/__init__.py:120 app/blueprints/admin/__init__.py:225
 msgid "Nothing has changed."
 msgstr "Nichts hat sich geändert."
 
-#: app/blueprints/admin/__init__.py:137
+#: app/blueprints/admin/__init__.py:139
 #, python-format
 msgid "Please check the lot fields: %(fields)s"
 msgstr "Bitte prüfe die Felder des Loses: %(fields)s"
 
-#: app/blueprints/admin/__init__.py:141
+#: app/blueprints/admin/__init__.py:143
 msgid "The lot is created."
 msgstr "Das Los ist angelegt."
 
-#: app/blueprints/admin/__init__.py:154
+#: app/blueprints/admin/__init__.py:156
 msgid "The lot is closed."
 msgstr "Das Los ist geschlossen."
+
+#: app/blueprints/admin/__init__.py:220
+msgid "The startup is published."
+msgstr "Der Startup ist veröffentlicht."
+
+#: app/blueprints/admin/__init__.py:223
+msgid "The startup is rejected."
+msgstr "Der Startup ist abgelehnt."
 
 #: app/blueprints/auth/__init__.py:26
 msgid "Please confirm your e-mail address"
@@ -153,7 +161,9 @@ msgstr "Dienstleistungen"
 msgid "Travel"
 msgstr "Reisen"
 
-#: app/modules/__init__.py:25 app/modules/startups/__init__.py:12
+#: app/modules/__init__.py:25 app/templates/modules/startups_detail.html:3
+#: app/templates/modules/startups_list.html:3
+#: app/templates/modules/startups_list.html:6
 msgid "Startups for investors"
 msgstr "Startups für Investoren"
 
@@ -207,6 +217,99 @@ msgstr "Bitte halte den Text unter 2000 Zeichen."
 msgid "Your profile is saved."
 msgstr "Dein Profil ist gespeichert."
 
+#: app/modules/startups/__init__.py:25
+msgid "This startup is not open for interest right now."
+msgstr "Dieser Startup nimmt gerade kein Interesse entgegen."
+
+#: app/modules/startups/__init__.py:26
+msgid "You cannot express interest in your own startup."
+msgstr "Du kannst kein Interesse an deinem eigenen Startup zeigen."
+
+#: app/modules/startups/__init__.py:27
+msgid "You have already sent your interest in this startup."
+msgstr "Du hast dein Interesse an diesem Startup schon gesendet."
+
+#: app/modules/startups/__init__.py:28
+msgid "You have already answered this interest."
+msgstr "Auf dieses Interesse hast du bereits geantwortet."
+
+#: app/modules/startups/__init__.py:29
+msgid "This is not available to you."
+msgstr "Das ist für dich nicht verfügbar."
+
+#: app/modules/startups/__init__.py:31
+msgid "Something went wrong. Please try again."
+msgstr "Etwas ist schiefgelaufen. Bitte versuche es erneut."
+
+#: app/modules/startups/__init__.py:35
+#, python-format
+msgid "Please check these fields: %(fields)s"
+msgstr "Bitte prüfe diese Felder: %(fields)s"
+
+#: app/modules/startups/__init__.py:79
+msgid "Your interest is sent. The founder decides whether to share contact details."
+msgstr ""
+"Dein Interesse ist gesendet. Die Gründerin oder der Gründer entscheidet, ob"
+" Kontaktdaten geteilt werden."
+
+#: app/modules/startups/__init__.py:102
+msgid "Your startup is sent for review. We will let you know when it is published."
+msgstr ""
+"Dein Startup ist zur Prüfung eingereicht. Wir melden uns, sobald es "
+"veröffentlicht ist."
+
+#: app/modules/startups/__init__.py:121
+msgid "Your changes are sent for review."
+msgstr "Deine Änderungen sind zur Prüfung eingereicht."
+
+#: app/modules/startups/__init__.py:140
+msgid "Your answer is saved."
+msgstr "Deine Antwort ist gespeichert."
+
+#: app/modules/startups/labels.py:6
+msgid "Fintech"
+msgstr "Fintech"
+
+#: app/modules/startups/labels.py:7
+msgid "Health"
+msgstr "Gesundheit"
+
+#: app/modules/startups/labels.py:8
+msgid "Climate"
+msgstr "Klima"
+
+#: app/modules/startups/labels.py:9
+msgid "AI"
+msgstr "KI"
+
+#: app/modules/startups/labels.py:10
+msgid "Education"
+msgstr "Bildung"
+
+#: app/modules/startups/labels.py:11
+msgid "Consumer"
+msgstr "Konsum"
+
+#: app/modules/startups/labels.py:12
+msgid "Other"
+msgstr "Sonstiges"
+
+#: app/modules/startups/labels.py:16
+msgid "Idea"
+msgstr "Idee"
+
+#: app/modules/startups/labels.py:17
+msgid "Prototype"
+msgstr "Prototyp"
+
+#: app/modules/startups/labels.py:18
+msgid "First revenue"
+msgstr "Erste Umsätze"
+
+#: app/modules/startups/labels.py:19
+msgid "Growth"
+msgstr "Wachstum"
+
 #: app/services/entitlements.py:31 app/services/entitlements.py:47
 msgid "This area opens after your identity check."
 msgstr "Dieser Bereich öffnet sich nach deiner Identitätsprüfung."
@@ -246,7 +349,10 @@ msgstr "Zu viele Versuche. Bitte wende dich an den Support."
 #: app/templates/base.html:11 app/templates/base.html:42
 #: app/templates/member/dashboard.html:3
 #: app/templates/modules/auction_list.html:3 app/templates/modules/profile.html:3
-#: app/templates/modules/stub.html:3 app/templates/public/index.html:3
+#: app/templates/modules/startups_form.html:3
+#: app/templates/modules/startups_list.html:3
+#: app/templates/modules/startups_mine.html:3 app/templates/modules/stub.html:3
+#: app/templates/public/index.html:3
 msgid "Club"
 msgstr "Club"
 
@@ -256,8 +362,8 @@ msgstr "Mein Konto"
 
 #: app/templates/admin/audit.html:3 app/templates/admin/dashboard.html:3
 #: app/templates/admin/dashboard.html:6 app/templates/admin/lots.html:3
-#: app/templates/admin/user_detail.html:3 app/templates/admin/users.html:3
-#: app/templates/base.html:16
+#: app/templates/admin/startups.html:3 app/templates/admin/user_detail.html:3
+#: app/templates/admin/users.html:3 app/templates/base.html:16
 msgid "Admin"
 msgstr "Admin"
 
@@ -277,12 +383,12 @@ msgid "Register"
 msgstr "Registrieren"
 
 #: app/templates/admin/audit.html:3 app/templates/admin/audit.html:6
-#: app/templates/admin/dashboard.html:10
+#: app/templates/admin/dashboard.html:11
 msgid "Audit log"
 msgstr "Protokoll"
 
 #: app/templates/admin/audit.html:7 app/templates/admin/lots.html:7
-#: app/templates/admin/users.html:7
+#: app/templates/admin/startups.html:7 app/templates/admin/users.html:7
 msgid "Back to admin"
 msgstr "Zurück zur Verwaltung"
 
@@ -310,7 +416,7 @@ msgstr "Details"
 msgid "The log is empty."
 msgstr "Das Protokoll ist leer."
 
-#: app/templates/admin/dashboard.html:8 app/templates/admin/dashboard.html:14
+#: app/templates/admin/dashboard.html:8 app/templates/admin/dashboard.html:15
 #: app/templates/admin/users.html:3 app/templates/admin/users.html:6
 msgid "Members"
 msgstr "Mitglieder"
@@ -320,11 +426,16 @@ msgstr "Mitglieder"
 msgid "Auction lots"
 msgstr "Auktionslose"
 
-#: app/templates/admin/dashboard.html:23
+#: app/templates/admin/dashboard.html:10 app/templates/admin/startups.html:3
+#: app/templates/admin/startups.html:6
+msgid "Startups"
+msgstr "Startups"
+
+#: app/templates/admin/dashboard.html:24
 msgid "Identity checks"
 msgstr "Identitätsprüfungen"
 
-#: app/templates/admin/dashboard.html:32
+#: app/templates/admin/dashboard.html:33
 msgid "Open auction lots"
 msgstr "Offene Auktionslose"
 
@@ -336,7 +447,7 @@ msgstr "Neues Los"
 msgid "Title"
 msgstr "Titel"
 
-#: app/templates/admin/lots.html:20
+#: app/templates/admin/lots.html:20 app/templates/modules/startups_form.html:23
 msgid "Description"
 msgstr "Beschreibung"
 
@@ -405,6 +516,35 @@ msgstr "Schließen"
 msgid "No lots yet."
 msgstr "Noch keine Lose."
 
+#: app/templates/admin/startups.html:10
+msgid "To review"
+msgstr "Zu prüfen"
+
+#: app/templates/admin/startups.html:11
+#: app/templates/modules/startups_mine.html:13
+msgid "Published"
+msgstr "Veröffentlicht"
+
+#: app/templates/admin/startups.html:12
+msgid "Rejected"
+msgstr "Abgelehnt"
+
+#: app/templates/admin/startups.html:25
+msgid "Publish"
+msgstr "Veröffentlichen"
+
+#: app/templates/admin/startups.html:27
+msgid "Reason for rejection (optional)"
+msgstr "Grund für die Ablehnung (optional)"
+
+#: app/templates/admin/startups.html:30
+msgid "Reject"
+msgstr "Ablehnen"
+
+#: app/templates/admin/startups.html:35
+msgid "Nothing here."
+msgstr "Hier ist nichts."
+
 #: app/templates/admin/user_detail.html:7
 msgid "Back to members"
 msgstr "Zurück zu den Mitgliedern"
@@ -418,6 +558,7 @@ msgid "Last login"
 msgstr "Letzte Anmeldung"
 
 #: app/templates/admin/user_detail.html:11
+#: app/templates/modules/startups_form.html:13
 msgid "Name"
 msgstr "Name"
 
@@ -765,6 +906,187 @@ msgstr "Über dich"
 #: app/templates/modules/profile.html:25
 msgid "Save"
 msgstr "Speichern"
+
+#: app/templates/modules/startups_detail.html:8
+#, python-format
+msgid "Funding goal: %(amount)s"
+msgstr "Finanzierungsziel: %(amount)s"
+
+#: app/templates/modules/startups_detail.html:12
+msgid "Published."
+msgstr "Veröffentlicht."
+
+#: app/templates/modules/startups_detail.html:13
+msgid "Waiting for review."
+msgstr "Wartet auf Prüfung."
+
+#: app/templates/modules/startups_detail.html:14
+msgid "Not published."
+msgstr "Nicht veröffentlicht."
+
+#: app/templates/modules/startups_detail.html:16
+msgid "Edit"
+msgstr "Bearbeiten"
+
+#: app/templates/modules/startups_detail.html:22
+msgid "Website"
+msgstr "Website"
+
+#: app/templates/modules/startups_detail.html:28
+msgid "Contact"
+msgstr "Kontakt"
+
+#: app/templates/modules/startups_detail.html:29
+msgid "The founder has accepted your interest. You can reach them at:"
+msgstr ""
+"Die Gründerin oder der Gründer hat dein Interesse angenommen. Du erreichst "
+"sie oder ihn unter:"
+
+#: app/templates/modules/startups_detail.html:37
+msgid "Your interest is with the founder."
+msgstr "Dein Interesse liegt bei der Gründerin oder dem Gründer."
+
+#: app/templates/modules/startups_detail.html:38
+msgid "Your interest was accepted."
+msgstr "Dein Interesse wurde angenommen."
+
+#: app/templates/modules/startups_detail.html:39
+msgid "Your interest was not accepted this time."
+msgstr "Dein Interesse wurde diesmal nicht angenommen."
+
+#: app/templates/modules/startups_detail.html:45
+msgid "Your message to the founder"
+msgstr "Deine Nachricht an die Gründerin oder den Gründer"
+
+#: app/templates/modules/startups_detail.html:47
+msgid "Your contact details are not shared unless the founder accepts."
+msgstr ""
+"Deine Kontaktdaten werden nur geteilt, wenn die Gründerin oder der Gründer "
+"zustimmt."
+
+#: app/templates/modules/startups_detail.html:49
+msgid "Show interest"
+msgstr "Interesse zeigen"
+
+#: app/templates/modules/startups_detail.html:55
+msgid "Back to all startups"
+msgstr "Zurück zu allen Startups"
+
+#: app/templates/modules/startups_form.html:3
+msgid "Your startup"
+msgstr "Dein Startup"
+
+#: app/templates/modules/startups_form.html:6
+msgid "Edit startup"
+msgstr "Startup bearbeiten"
+
+#: app/templates/modules/startups_form.html:6
+#: app/templates/modules/startups_mine.html:7
+msgid "Publish a startup"
+msgstr "Startup veröffentlichen"
+
+#: app/templates/modules/startups_form.html:7
+msgid ""
+"Every change is checked by our team before the startup is shown to "
+"investors."
+msgstr ""
+"Jede Änderung wird von unserem Team geprüft, bevor das Startup "
+"Investorinnen und Investoren gezeigt wird."
+
+#: app/templates/modules/startups_form.html:18
+msgid "One-line summary"
+msgstr "Kurzbeschreibung in einem Satz"
+
+#: app/templates/modules/startups_form.html:28
+#: app/templates/modules/startups_list.html:11
+msgid "Category"
+msgstr "Kategorie"
+
+#: app/templates/modules/startups_form.html:37
+#: app/templates/modules/startups_list.html:20
+msgid "Stage"
+msgstr "Phase"
+
+#: app/templates/modules/startups_form.html:46
+msgid "Funding goal (EUR, optional)"
+msgstr "Finanzierungsziel (EUR, optional)"
+
+#: app/templates/modules/startups_form.html:51
+msgid "Website (optional)"
+msgstr "Website (optional)"
+
+#: app/templates/modules/startups_form.html:55
+msgid "Send changes for review"
+msgstr "Änderungen zur Prüfung senden"
+
+#: app/templates/modules/startups_form.html:55
+msgid "Send for review"
+msgstr "Zur Prüfung senden"
+
+#: app/templates/modules/startups_list.html:7
+msgid ""
+"Startups from our members. Each one is checked by our team before it "
+"appears here."
+msgstr ""
+"Startups unserer Mitglieder. Jedes wird von unserem Team geprüft, bevor es "
+"hier erscheint."
+
+#: app/templates/modules/startups_list.html:13
+msgid "All categories"
+msgstr "Alle Kategorien"
+
+#: app/templates/modules/startups_list.html:22
+msgid "All stages"
+msgstr "Alle Phasen"
+
+#: app/templates/modules/startups_list.html:28
+msgid "Filter"
+msgstr "Filtern"
+
+#: app/templates/modules/startups_list.html:38
+msgid "No startups match this filter yet."
+msgstr "Zu diesem Filter gibt es noch keine Startups."
+
+#: app/templates/modules/startups_mine.html:3
+#: app/templates/modules/startups_mine.html:6
+msgid "My startups"
+msgstr "Meine Startups"
+
+#: app/templates/modules/startups_mine.html:14
+msgid "Waiting for review"
+msgstr "Wartet auf Prüfung"
+
+#: app/templates/modules/startups_mine.html:15
+msgid "Not published"
+msgstr "Nicht veröffentlicht"
+
+#: app/templates/modules/startups_mine.html:19
+msgid "You have no startups yet."
+msgstr "Du hast noch keine Startups."
+
+#: app/templates/modules/startups_mine.html:23
+msgid "Interest from investors"
+msgstr "Interesse von Investorinnen und Investoren"
+
+#: app/templates/modules/startups_mine.html:31
+msgid "Accept and share my contact"
+msgstr "Annehmen und meine Kontaktdaten teilen"
+
+#: app/templates/modules/startups_mine.html:32
+msgid "Decline"
+msgstr "Ablehnen"
+
+#: app/templates/modules/startups_mine.html:35
+msgid "You accepted. Your contact is shared."
+msgstr "Du hast angenommen. Deine Kontaktdaten werden geteilt."
+
+#: app/templates/modules/startups_mine.html:35
+msgid "You declined."
+msgstr "Du hast abgelehnt."
+
+#: app/templates/modules/startups_mine.html:39
+msgid "No interest yet."
+msgstr "Noch kein Interesse."
 
 #: app/templates/modules/stub.html:7
 msgid "This section is being prepared. You will find it here once it opens."

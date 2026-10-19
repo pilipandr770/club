@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %}{{ _("Startups") }} · {{ _("Admin") }}{% endblock %}
+
+{% block content %}
+<h1>{{ _("Startups") }}</h1>
+<p><a href="{{ url_for('admin.dashboard') }}">{{ _("Back to admin") }}</a></p>
+
+<nav class="admin-nav">
+  <a href="{{ url_for('admin.startups', status='pending') }}">{{ _("To review") }}</a> ·
+  <a href="{{ url_for('admin.startups', status='approved') }}">{{ _("Published") }}</a> ·
+  <a href="{{ url_for('admin.startups', status='rejected') }}">{{ _("Rejected") }}</a>
+</nav>
+
+{% for startup in items %}
+<section class="card">
+  <h2><a href="{{ url_for('startups.detail', startup_id=startup.id) }}">{{ startup.name }}</a></h2>
+  <p>{{ startup.tagline }}</p>
+  <p class="small">{{ startup.owner.email }} · {{ category_label(startup.category) }} · {{ stage_label(startup.stage) }}{% if startup.funding_goal_cents %} · {{ format_eur(startup.funding_goal_cents) }}{% endif %}</p>
+  <p class="small">{{ startup.status }}{% if startup.rejection_reason %} · {{ startup.rejection_reason }}{% endif %}</p>
+
+  {% if startup.status != "approved" %}
+  <form method="post" action="{{ url_for('admin.review_startup', startup_id=startup.id) }}" class="form">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+    <button type="submit" name="decision" value="approve" class="button">{{ _("Publish") }}</button>
+    <div class="field">
+      <label for="reason-{{ startup.id }}">{{ _("Reason for rejection (optional)") }}</label>
+      <input id="reason-{{ startup.id }}" name="reason" type="text" maxlength="300">
+    </div>
+    <button type="submit" name="decision" value="reject" class="button button-danger">{{ _("Reject") }}</button>
+  </form>
+  {% endif %}
+</section>
+{% else %}
+  <p>{{ _("Nothing here.") }}</p>
+{% endfor %}
+{% endblock %}

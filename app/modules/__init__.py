@@ -22,7 +22,7 @@ MODULES = (
     ModuleSpec("profile", _l("About me"), "profile.edit", "app.modules.profile"),
     ModuleSpec("services", _l("Services"), "services.use", "app.modules.services"),
     ModuleSpec("travel", _l("Travel"), "travel.book", "app.modules.travel"),
-    ModuleSpec("startups", _l("Startups for investors"), "startups.publish", "app.modules.startups"),
+    ModuleSpec("startups", _l("Startups for investors"), "startups.browse", "app.modules.startups"),
     ModuleSpec("auction", _l("Auction"), "auction.access", "app.modules.auction"),
 )
 

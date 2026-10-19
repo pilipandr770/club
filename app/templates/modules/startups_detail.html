@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block title %}{{ startup.name }} · {{ _("Startups for investors") }}{% endblock %}
+
+{% block content %}
+<h1>{{ startup.name }}</h1>
+<p class="muted">{{ startup.tagline }}</p>
+<p class="small">{{ category_label(startup.category) }} · {{ stage_label(startup.stage) }}{% if funding %} · {{ _("Funding goal: %(amount)s", amount=funding) }}{% endif %}</p>
+
+{% if is_owner %}
+  <p class="small">
+    {% if startup.status == "approved" %}{{ _("Published.") }}
+    {% elif startup.status == "pending" %}{{ _("Waiting for review.") }}
+    {% else %}{{ _("Not published.") }} {{ startup.rejection_reason or '' }}{% endif %}
+  </p>
+  <p><a href="{{ url_for('startups.edit', startup_id=startup.id) }}">{{ _("Edit") }}</a></p>
+{% endif %}
+
+<section class="card">
+  <p>{{ startup.description }}</p>
+  {% if startup.website_url %}
+    <p><a href="{{ startup.website_url }}" rel="noopener nofollow" target="_blank">{{ _("Website") }}</a></p>
+  {% endif %}
+</section>
+
+{% if contact %}
+<section class="card">
+  <h2>{{ _("Contact") }}</h2>
+  <p>{{ _("The founder has accepted your interest. You can reach them at:") }} <a href="mailto:{{ contact }}">{{ contact }}</a></p>
+</section>
+{% endif %}
+
+{% if not is_owner and startup.status == "approved" %}
+<section class="card">
+  {% if my_interest %}
+    <p>
+      {% if my_interest.status == "pending" %}{{ _("Your interest is with the founder.") }}
+      {% elif my_interest.status == "accepted" %}{{ _("Your interest was accepted.") }}
+      {% else %}{{ _("Your interest was not accepted this time.") }}{% endif %}
+    </p>
+  {% else %}
+    <form method="post" action="{{ url_for('startups.interest', startup_id=startup.id) }}" class="form">
+      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+      <div class="field">
+        <label for="message">{{ _("Your message to the founder") }}</label>
+        <textarea id="message" name="message" rows="4" maxlength="1000"></textarea>
+        <p class="small">{{ _("Your contact details are not shared unless the founder accepts.") }}</p>
+      </div>
+      <button type="submit" class="button">{{ _("Show interest") }}</button>
+    </form>
+  {% endif %}
+</section>
+{% endif %}
+
+<p><a href="{{ url_for('startups.index') }}">{{ _("Back to all startups") }}</a></p>
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %}{{ _("My startups") }} · {{ _("Club") }}{% endblock %}
+
+{% block content %}
+<h1>{{ _("My startups") }}</h1>
+<p><a href="{{ url_for('startups.new') }}" class="button">{{ _("Publish a startup") }}</a></p>
+
+{% for startup in items %}
+<section class="card">
+  <h2><a href="{{ url_for('startups.detail', startup_id=startup.id) }}">{{ startup.name }}</a></h2>
+  <p class="small">
+    {% if startup.status == "approved" %}{{ _("Published") }}
+    {% elif startup.status == "pending" %}{{ _("Waiting for review") }}
+    {% else %}{{ _("Not published") }}{% endif %}
+  </p>
+</section>
+{% else %}
+  <p>{{ _("You have no startups yet.") }}</p>
+{% endfor %}
+
+<section>
+  <h2>{{ _("Interest from investors") }}</h2>
+  {% for interest in incoming %}
+  <section class="card">
+    <p><strong>{{ interest.startup.name }}</strong> · {{ interest.created_at.strftime('%d.%m.%Y') }}</p>
+    <p>{{ interest.message }}</p>
+    {% if interest.status == "pending" %}
+      <form method="post" action="{{ url_for('startups.respond', interest_id=interest.id) }}" class="inline-form">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+        <button type="submit" name="answer" value="accept" class="button">{{ _("Accept and share my contact") }}</button>
+        <button type="submit" name="answer" value="decline" class="button button-secondary">{{ _("Decline") }}</button>
+      </form>
+    {% else %}
+      <p class="small">{% if interest.status == "accepted" %}{{ _("You accepted. Your contact is shared.") }}{% else %}{{ _("You declined.") }}{% endif %}</p>
+    {% endif %}
+  </section>
+  {% else %}
+    <p>{{ _("No interest yet.") }}</p>
+  {% endfor %}
+</section>
+{% endblock %}

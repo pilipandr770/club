@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block title %}{{ _("Your startup") }} · {{ _("Club") }}{% endblock %}
+
+{% block content %}
+<h1>{% if startup %}{{ _("Edit startup") }}{% else %}{{ _("Publish a startup") }}{% endif %}</h1>
+<p class="muted">{{ _("Every change is checked by our team before the startup is shown to investors.") }}</p>
+
+<form method="post" class="form" action="{{ url_for('startups.edit', startup_id=startup.id) if startup else url_for('startups.new') }}">
+  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+  <div class="field {% if 'name' in errors %}field-error{% endif %}">
+    <label for="name">{{ _("Name") }}</label>
+    <input id="name" name="name" type="text" maxlength="120" required value="{{ form.get('name', startup.name if startup else '') }}">
+  </div>
+
+  <div class="field {% if 'tagline' in errors %}field-error{% endif %}">
+    <label for="tagline">{{ _("One-line summary") }}</label>
+    <input id="tagline" name="tagline" type="text" maxlength="160" value="{{ form.get('tagline', startup.tagline if startup else '') }}">
+  </div>
+
+  <div class="field {% if 'description' in errors %}field-error{% endif %}">
+    <label for="description">{{ _("Description") }}</label>
+    <textarea id="description" name="description" rows="8" maxlength="3000" required>{{ form.get('description', startup.description if startup else '') }}</textarea>
+  </div>
+
+  <div class="field {% if 'category' in errors %}field-error{% endif %}">
+    <label for="category">{{ _("Category") }}</label>
+    <select id="category" name="category" required>
+      {% for value in categories %}
+        <option value="{{ value }}" {% if (form.get('category') or (startup.category if startup else '')) == value %}selected{% endif %}>{{ category_label(value) }}</option>
+      {% endfor %}
+    </select>
+  </div>
+
+  <div class="field {% if 'stage' in errors %}field-error{% endif %}">
+    <label for="stage">{{ _("Stage") }}</label>
+    <select id="stage" name="stage" required>
+      {% for value in stages %}
+        <option value="{{ value }}" {% if (form.get('stage') or (startup.stage if startup else '')) == value %}selected{% endif %}>{{ stage_label(value) }}</option>
+      {% endfor %}
+    </select>
+  </div>
+
+  <div class="field {% if 'funding_goal' in errors %}field-error{% endif %}">
+    <label for="funding_goal">{{ _("Funding goal (EUR, optional)") }}</label>
+    <input id="funding_goal" name="funding_goal" type="text" inputmode="decimal" value="{{ form.get('funding_goal', '') }}">
+  </div>
+
+  <div class="field {% if 'website_url' in errors %}field-error{% endif %}">
+    <label for="website_url">{{ _("Website (optional)") }}</label>
+    <input id="website_url" name="website_url" type="url" maxlength="300" value="{{ form.get('website_url', startup.website_url or '' if startup else '') }}">
+  </div>
+
+  <button type="submit" class="button">{% if startup %}{{ _("Send changes for review") }}{% else %}{{ _("Send for review") }}{% endif %}</button>
+</form>
+{% endblock %}

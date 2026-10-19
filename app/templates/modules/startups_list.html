@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}{{ _("Startups for investors") }} · {{ _("Club") }}{% endblock %}
+
+{% block content %}
+<h1>{{ _("Startups for investors") }}</h1>
+<p class="muted">{{ _("Startups from our members. Each one is checked by our team before it appears here.") }}</p>
+
+<form method="get" action="{{ url_for('startups.index') }}" class="form">
+  <div class="field">
+    <label for="category">{{ _("Category") }}</label>
+    <select id="category" name="category">
+      <option value="">{{ _("All categories") }}</option>
+      {% for value in categories %}
+        <option value="{{ value }}" {% if category == value %}selected{% endif %}>{{ category_label(value) }}</option>
+      {% endfor %}
+    </select>
+  </div>
+  <div class="field">
+    <label for="stage">{{ _("Stage") }}</label>
+    <select id="stage" name="stage">
+      <option value="">{{ _("All stages") }}</option>
+      {% for value in stages %}
+        <option value="{{ value }}" {% if stage == value %}selected{% endif %}>{{ stage_label(value) }}</option>
+      {% endfor %}
+    </select>
+  </div>
+  <button type="submit" class="button button-secondary">{{ _("Filter") }}</button>
+</form>
+
+{% for startup in items %}
+<section class="card">
+  <h2><a href="{{ url_for('startups.detail', startup_id=startup.id) }}">{{ startup.name }}</a></h2>
+  <p>{{ startup.tagline }}</p>
+  <p class="small">{{ category_label(startup.category) }} · {{ stage_label(startup.stage) }}</p>
+</section>
+{% else %}
+  <p>{{ _("No startups match this filter yet.") }}</p>
+{% endfor %}
+{% endblock %}
