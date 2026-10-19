@@ -4,8 +4,12 @@
   --color-text: #1b1f24;
   --color-muted: #5c6670;
   --color-accent: #1f5fbf;
+  --color-danger: #b42318;
+  --color-ok: #067647;
+  --color-card: #f5f7fa;
+  --color-border: rgb(27 31 36 / 14%);
   --space: 1rem;
-  --max-width: 52rem;
+  --max-width: 40rem;
   --font: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
@@ -15,6 +19,10 @@
     --color-text: #e7ebef;
     --color-muted: #9aa5b1;
     --color-accent: #7aa7ff;
+    --color-danger: #ff8a80;
+    --color-ok: #6ce9a6;
+    --color-card: #1d2227;
+    --color-border: rgb(231 235 239 / 16%);
   }
 }
 
@@ -23,6 +31,10 @@
   --color-text: #e7ebef;
   --color-muted: #9aa5b1;
   --color-accent: #7aa7ff;
+  --color-danger: #ff8a80;
+  --color-ok: #6ce9a6;
+  --color-card: #1d2227;
+  --color-border: rgb(231 235 239 / 16%);
 }
 
 * {
@@ -39,8 +51,13 @@ body {
 
 .site-header,
 .site-footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space);
   padding: var(--space);
-  border-block: 1px solid color-mix(in srgb, var(--color-text) 12%, transparent);
+  border-block: 1px solid var(--color-border);
 }
 
 .brand {
@@ -49,20 +66,144 @@ body {
   text-decoration: none;
 }
 
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space);
+}
+
 .container {
   max-width: var(--max-width);
   margin-inline: auto;
   padding: calc(var(--space) * 2) var(--space);
 }
 
-.hero h1 {
+.form {
+  display: grid;
+  gap: var(--space);
+}
+
+.field {
+  display: grid;
+  gap: 0.25rem;
+}
+
+.field label {
+  font-weight: 600;
+}
+
+input,
+select {
+  font: inherit;
+  padding: 0.5rem 0.6rem;
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  background: var(--color-bg);
+  color: var(--color-text);
+  width: 100%;
+}
+
+.check {
+  display: flex;
+  gap: 0.5rem;
+  align-items: flex-start;
+}
+
+.consents {
+  display: grid;
+  gap: 0.5rem;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: var(--space);
+}
+
+.button,
+.button-secondary,
+.button-danger {
+  font: inherit;
+  padding: 0.6rem 1rem;
+  border-radius: 6px;
+  border: 1px solid var(--color-accent);
+  background: var(--color-accent);
+  color: var(--color-bg);
+  cursor: pointer;
+  justify-self: start;
+}
+
+.button-secondary {
+  background: transparent;
+  color: var(--color-accent);
+}
+
+.button-danger {
+  background: var(--color-danger);
+  border-color: var(--color-danger);
+}
+
+.link-button {
+  font: inherit;
+  background: none;
+  border: 0;
+  padding: 0;
+  color: var(--color-accent);
+  cursor: pointer;
+}
+
+.inline-form {
+  display: inline;
+  margin: 0;
+}
+
+.card {
+  background: var(--color-card);
+  border-radius: 10px;
+  padding: var(--space);
+  margin-block: calc(var(--space) * 1.5);
+}
+
+.card h2 {
   margin-block-start: 0;
+  font-size: 1.15rem;
+}
+
+.flash {
+  padding: 0.6rem 0.8rem;
+  border-radius: 6px;
+  border: 1px solid var(--color-border);
+}
+
+.flash-error,
+.error {
+  color: var(--color-danger);
+}
+
+.flash-success {
+  color: var(--color-ok);
+}
+
+.field-error input,
+.field-error select {
+  border-color: var(--color-danger);
+}
+
+.muted,
+.small {
+  color: var(--color-muted);
 }
 
 .small {
-  color: var(--color-muted);
   font-size: 0.875rem;
+}
+
+.error {
   margin: 0;
+  font-size: 0.9rem;
+}
+
+.hero h1,
+h1 {
+  margin-block-start: 0;
 }
 
 a {

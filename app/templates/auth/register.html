@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block title %}{{ _("Register") }} · {{ _("Club") }}{% endblock %}
+
+{% block content %}
+<h1>{{ _("Create an account") }}</h1>
+<p class="muted">{{ _("Every account needs an identity check before you can use the club. The check is done by Stripe, we do not store your documents.") }}</p>
+
+<form method="post" action="{{ url_for('auth.register') }}" class="form">
+  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+  <div class="field {% if errors.first_name %}field-error{% endif %}">
+    <label for="first_name">{{ _("First name") }}</label>
+    <input id="first_name" name="first_name" type="text" autocomplete="given-name" required value="{{ form.get('first_name', '') }}">
+    {% if errors.first_name %}<p class="error">{{ errors.first_name }}</p>{% endif %}
+  </div>
+
+  <div class="field">
+    <label for="last_name">{{ _("Last name") }}</label>
+    <input id="last_name" name="last_name" type="text" autocomplete="family-name" value="{{ form.get('last_name', '') }}">
+  </div>
+
+  <div class="field {% if errors.email %}field-error{% endif %}">
+    <label for="email">{{ _("E-mail") }}</label>
+    <input id="email" name="email" type="email" autocomplete="email" required value="{{ form.get('email', '') }}">
+    {% if errors.email %}<p class="error">{{ errors.email }}</p>{% endif %}
+  </div>
+
+  <div class="field {% if errors.password %}field-error{% endif %}">
+    <label for="password">{{ _("Password") }}</label>
+    <input id="password" name="password" type="password" autocomplete="new-password" minlength="10" required>
+    <p class="small">{{ _("At least 10 characters.") }}</p>
+    {% if errors.password %}<p class="error">{{ errors.password }}</p>{% endif %}
+  </div>
+
+  <div class="field {% if errors.residence_country %}field-error{% endif %}">
+    <label for="residence_country">{{ _("Country of residence") }}</label>
+    <select id="residence_country" name="residence_country" required>
+      <option value="">{{ _("Please choose") }}</option>
+      {% for code, name in countries %}
+        <option value="{{ code }}" {% if form.get('residence_country') == code %}selected{% endif %}>{{ name }}</option>
+      {% endfor %}
+    </select>
+    {% if errors.residence_country %}<p class="error">{{ errors.residence_country }}</p>{% endif %}
+  </div>
+
+  <fieldset class="consents">
+    <legend>{{ _("Confirmations") }}</legend>
+
+    <label class="check {% if errors.consent_privacy %}field-error{% endif %}">
+      <input type="checkbox" name="consent_privacy" value="1" {% if form.get('consent_privacy') %}checked{% endif %}>
+      {{ _("I have read the privacy notice and agree that my data is processed to run my account.") }}
+    </label>
+    {% if errors.consent_privacy %}<p class="error">{{ errors.consent_privacy }}</p>{% endif %}
+
+    <label class="check {% if errors.consent_terms %}field-error{% endif %}">
+      <input type="checkbox" name="consent_terms" value="1" {% if form.get('consent_terms') %}checked{% endif %}>
+      {{ _("I accept the terms of use.") }}
+    </label>
+    {% if errors.consent_terms %}<p class="error">{{ errors.consent_terms }}</p>{% endif %}
+
+    <label class="check {% if errors.consent_identity %}field-error{% endif %}">
+      <input type="checkbox" name="consent_identity" value="1" {% if form.get('consent_identity') %}checked{% endif %}>
+      {{ _("I agree that Stripe checks my identity document and a selfie. Stripe processes this data, the club only receives the result.") }}
+    </label>
+    {% if errors.consent_identity %}<p class="error">{{ errors.consent_identity }}</p>{% endif %}
+  </fieldset>
+
+  <p class="small">{{ _("Membership is for people aged 18 and over.") }}</p>
+
+  <button type="submit" class="button">{{ _("Create account") }}</button>
+</form>
+
+<p class="small">{{ _("Already registered?") }} <a href="{{ url_for('auth.login') }}">{{ _("Log in") }}</a></p>
+{% endblock %}

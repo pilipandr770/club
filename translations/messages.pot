@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-10-19 20:50+0000\n"
+"POT-Creation-Date: 2026-10-19 21:17+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,6 +16,92 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.17.0\n"
+
+#: app/blueprints/auth/__init__.py:26
+msgid "Please confirm your e-mail address"
+msgstr ""
+
+#: app/blueprints/auth/__init__.py:27
+msgid "Please open this link to confirm your e-mail address:"
+msgstr ""
+
+#: app/blueprints/auth/__init__.py:51
+msgid "Please enter your first name."
+msgstr ""
+
+#: app/blueprints/auth/__init__.py:53
+msgid "Please enter a valid e-mail address."
+msgstr ""
+
+#: app/blueprints/auth/__init__.py:55
+msgid "An account with this e-mail address already exists."
+msgstr ""
+
+#: app/blueprints/auth/__init__.py:57
+msgid "The password must be at least 10 characters long."
+msgstr ""
+
+#: app/blueprints/auth/__init__.py:59
+msgid "Please choose your country of residence."
+msgstr ""
+
+#: app/blueprints/auth/__init__.py:61
+msgid "We cannot open an account for residents of this country."
+msgstr ""
+
+#: app/blueprints/auth/__init__.py:64
+msgid "This confirmation is required to create an account."
+msgstr ""
+
+#: app/blueprints/auth/__init__.py:78
+msgid "Welcome. Please confirm your e-mail address to continue."
+msgstr ""
+
+#: app/blueprints/auth/__init__.py:96
+msgid "E-mail or password is not correct."
+msgstr ""
+
+#: app/blueprints/auth/__init__.py:98
+msgid "This account is blocked. Please contact support."
+msgstr ""
+
+#: app/blueprints/auth/__init__.py:111
+msgid "You have been logged out."
+msgstr ""
+
+#: app/blueprints/auth/__init__.py:119 app/blueprints/auth/__init__.py:124
+msgid "The link is invalid or has expired. Please request a new one."
+msgstr ""
+
+#: app/blueprints/auth/__init__.py:131
+msgid "Your e-mail address is confirmed."
+msgstr ""
+
+#: app/blueprints/member/__init__.py:31
+msgid "Verification cannot be started right now."
+msgstr ""
+
+#: app/blueprints/member/__init__.py:42
+msgid ""
+"We are checking your details. This can take a few minutes. The result "
+"appears here and we will not send it by e-mail."
+msgstr ""
+
+#: app/blueprints/member/__init__.py:55
+msgid "If your address is not yet confirmed, we have sent a new link."
+msgstr ""
+
+#: app/blueprints/member/__init__.py:77
+msgid "The password is not correct. Your account was not deleted."
+msgstr ""
+
+#: app/blueprints/member/__init__.py:85
+msgid "Your account could not be deleted right now. Please try again later."
+msgstr ""
+
+#: app/blueprints/member/__init__.py:89
+msgid "Your account and your data have been deleted."
+msgstr ""
 
 #: app/jurisdictions/de/pack.py:6
 msgid "Germany"
@@ -25,9 +111,209 @@ msgstr ""
 msgid "General information, not legal advice. Applies to German law only."
 msgstr ""
 
+#: app/services/entitlements.py:31
+msgid "This area opens after your identity check."
+msgstr ""
+
+#: app/services/verification.py:147
+msgid "We do not accept identity documents from this country."
+msgstr ""
+
+#: app/services/verification.py:148
+msgid "Membership requires that you are at least 18 years old."
+msgstr ""
+
+#: app/services/verification.py:149
+msgid "We need to check your verification by hand. We will contact you."
+msgstr ""
+
+#: app/services/verification.py:150
+msgid "Please try again and make sure your document is fully visible."
+msgstr ""
+
+#: app/services/verification.py:151
+msgid "The verification was cancelled. You can start it again."
+msgstr ""
+
+#: app/services/verification.py:152
+msgid "Too many attempts. Please contact support."
+msgstr ""
+
+#: app/templates/auth/login.html:3 app/templates/auth/register.html:3
 #: app/templates/base.html:6 app/templates/base.html:11
-#: app/templates/base.html:17 app/templates/public/index.html:3
+#: app/templates/base.html:36 app/templates/member/dashboard.html:3
+#: app/templates/public/index.html:3
 msgid "Club"
+msgstr ""
+
+#: app/templates/base.html:14 app/templates/member/dashboard.html:3
+msgid "My account"
+msgstr ""
+
+#: app/templates/base.html:17
+msgid "Log out"
+msgstr ""
+
+#: app/templates/auth/login.html:3 app/templates/auth/login.html:6
+#: app/templates/auth/login.html:28 app/templates/auth/register.html:74
+#: app/templates/base.html:20
+msgid "Log in"
+msgstr ""
+
+#: app/templates/auth/login.html:31 app/templates/auth/register.html:3
+#: app/templates/base.html:21
+msgid "Register"
+msgstr ""
+
+#: app/templates/auth/login.html:14 app/templates/auth/register.html:24
+msgid "E-mail"
+msgstr ""
+
+#: app/templates/auth/login.html:19 app/templates/auth/register.html:30
+msgid "Password"
+msgstr ""
+
+#: app/templates/auth/login.html:25
+msgid "Stay logged in on this device"
+msgstr ""
+
+#: app/templates/auth/login.html:31
+msgid "No account yet?"
+msgstr ""
+
+#: app/templates/auth/register.html:6
+msgid "Create an account"
+msgstr ""
+
+#: app/templates/auth/register.html:7
+msgid ""
+"Every account needs an identity check before you can use the club. The "
+"check is done by Stripe, we do not store your documents."
+msgstr ""
+
+#: app/templates/auth/register.html:13
+msgid "First name"
+msgstr ""
+
+#: app/templates/auth/register.html:19
+msgid "Last name"
+msgstr ""
+
+#: app/templates/auth/register.html:32
+msgid "At least 10 characters."
+msgstr ""
+
+#: app/templates/auth/register.html:37
+msgid "Country of residence"
+msgstr ""
+
+#: app/templates/auth/register.html:39
+msgid "Please choose"
+msgstr ""
+
+#: app/templates/auth/register.html:48
+msgid "Confirmations"
+msgstr ""
+
+#: app/templates/auth/register.html:52
+msgid ""
+"I have read the privacy notice and agree that my data is processed to run"
+" my account."
+msgstr ""
+
+#: app/templates/auth/register.html:58
+msgid "I accept the terms of use."
+msgstr ""
+
+#: app/templates/auth/register.html:64
+msgid ""
+"I agree that Stripe checks my identity document and a selfie. Stripe "
+"processes this data, the club only receives the result."
+msgstr ""
+
+#: app/templates/auth/register.html:69
+msgid "Membership is for people aged 18 and over."
+msgstr ""
+
+#: app/templates/auth/register.html:71
+msgid "Create account"
+msgstr ""
+
+#: app/templates/auth/register.html:74
+msgid "Already registered?"
+msgstr ""
+
+#: app/templates/member/dashboard.html:6
+#, python-format
+msgid "Hello, %(name)s"
+msgstr ""
+
+#: app/templates/member/dashboard.html:9
+msgid "Your access"
+msgstr ""
+
+#: app/templates/member/dashboard.html:12
+msgid "Please confirm your e-mail address first. We have sent you a link."
+msgstr ""
+
+#: app/templates/member/dashboard.html:15
+msgid "Send the link again"
+msgstr ""
+
+#: app/templates/member/dashboard.html:19
+msgid "Your identity is verified. You have guest access to the club."
+msgstr ""
+
+#: app/templates/member/dashboard.html:22
+msgid "Your identity check is in progress."
+msgstr ""
+
+#: app/templates/member/dashboard.html:26
+msgid "Your identity check needs a manual review. Our team will contact you."
+msgstr ""
+
+#: app/templates/member/dashboard.html:30
+msgid "We could not confirm your identity."
+msgstr ""
+
+#: app/templates/member/dashboard.html:35
+msgid "Try again"
+msgstr ""
+
+#: app/templates/member/dashboard.html:40
+msgid ""
+"To use the club, we first check your identity with Stripe. It takes a few"
+" minutes."
+msgstr ""
+
+#: app/templates/member/dashboard.html:44
+msgid "Start identity check"
+msgstr ""
+
+#: app/templates/member/dashboard.html:50
+msgid "Your data"
+msgstr ""
+
+#: app/templates/member/dashboard.html:51
+msgid "Download my data (JSON)"
+msgstr ""
+
+#: app/templates/member/dashboard.html:54
+msgid "Delete my account"
+msgstr ""
+
+#: app/templates/member/dashboard.html:55
+msgid ""
+"This deletes your account, your consent history and your identity check "
+"data at Stripe. This cannot be undone."
+msgstr ""
+
+#: app/templates/member/dashboard.html:59
+msgid "Confirm with your password"
+msgstr ""
+
+#: app/templates/member/dashboard.html:62
+msgid "Delete account permanently"
 msgstr ""
 
 #: app/templates/public/index.html:3 app/templates/public/index.html:7

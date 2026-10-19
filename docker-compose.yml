@@ -20,7 +20,11 @@ services:
       retries: 20
 
   migrate:
-    build: .
+    # Тот же образ, что и app: одинаковые аргументы сборки, иначе они перезаписывают друг друга
+    build:
+      context: .
+      args:
+        INSTALL_DEV: ${INSTALL_DEV:-0}
     image: club-app:local
     command: ["flask", "db", "upgrade"]
     env_file: .env

@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}{{ _("Log in") }} · {{ _("Club") }}{% endblock %}
+
+{% block content %}
+<h1>{{ _("Log in") }}</h1>
+
+{% if error %}<p class="flash flash-error" role="alert">{{ error }}</p>{% endif %}
+
+<form method="post" action="{{ url_for('auth.login', next=request.args.get('next')) }}" class="form">
+  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+  <div class="field">
+    <label for="email">{{ _("E-mail") }}</label>
+    <input id="email" name="email" type="email" autocomplete="email" required>
+  </div>
+
+  <div class="field">
+    <label for="password">{{ _("Password") }}</label>
+    <input id="password" name="password" type="password" autocomplete="current-password" required>
+  </div>
+
+  <label class="check">
+    <input type="checkbox" name="remember" value="1">
+    {{ _("Stay logged in on this device") }}
+  </label>
+
+  <button type="submit" class="button">{{ _("Log in") }}</button>
+</form>
+
+<p class="small">{{ _("No account yet?") }} <a href="{{ url_for('auth.register') }}">{{ _("Register") }}</a></p>
+{% endblock %}

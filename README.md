@@ -38,4 +38,20 @@ docker compose exec app flask i18n compile       # → .mo (без этого п
 
 ## Что ещё не сделано (фазы 1+)
 
-Регистрация и вход, Stripe Identity, тарифы (`config/plans.py`), Redis, scheduler, backup, mailpit, `en`/`ru`.
+Фаза 1b: профили, матчинг, ассистент Aiko, сброс пароля, тарифы (`config/plans.py`, пока только гостевой). Redis, scheduler, backup, mailpit, `en`/`ru`.
+
+## Регистрация и проверка личности
+
+Порядок: регистрация (почта, пароль, согласия, страна проживания) → подтверждение почты → проверка личности через Stripe Identity → доступ (гостевой тариф).
+
+- Клуб не хранит документы, селфи и даты рождения. Результат приходит вебхуком `POST /webhooks/stripe`: подпись проверяется, повторные события игнорируются.
+- Страны из `BLOCKED_DOCUMENT_COUNTRIES` и `BLOCKED_RESIDENCE_COUNTRIES` не допускаются. Список задан в ARCHITECTURE.md §11.
+- Удаление аккаунта сначала удаляет данные проверки у Stripe (redact), и только потом — у нас.
+
+Для локальной проверки вебхуков нужны тестовые ключи Stripe в `.env` и Stripe CLI:
+
+```bash
+stripe listen --forward-to https://localhost/webhooks/stripe
+```
+
+Ключи, которые в `.env` пустые, отключают проверку: участник увидит сообщение «проверка сейчас недоступна».

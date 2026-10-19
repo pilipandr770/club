@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block title %}{{ _("My account") }} · {{ _("Club") }}{% endblock %}
+
+{% block content %}
+<h1>{{ _("Hello, %(name)s", name=current_user.first_name) }}</h1>
+
+<section class="card">
+  <h2>{{ _("Your access") }}</h2>
+
+  {% if not current_user.email_confirmed_at %}
+    <p>{{ _("Please confirm your e-mail address first. We have sent you a link.") }}</p>
+    <form method="post" action="{{ url_for('member.resend_confirmation') }}">
+      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+      <button type="submit" class="button button-secondary">{{ _("Send the link again") }}</button>
+    </form>
+
+  {% elif current_user.verification_status == "verified" %}
+    <p>{{ _("Your identity is verified. You have guest access to the club.") }}</p>
+
+  {% elif current_user.verification_status == "pending" %}
+    <p>{{ _("Your identity check is in progress.") }}</p>
+    {% if reason %}<p class="muted">{{ reason }}</p>{% endif %}
+
+  {% elif current_user.verification_status == "manual" %}
+    <p>{{ _("Your identity check needs a manual review. Our team will contact you.") }}</p>
+    {% if reason %}<p class="muted">{{ reason }}</p>{% endif %}
+
+  {% elif current_user.verification_status == "failed" %}
+    <p>{{ _("We could not confirm your identity.") }}</p>
+    {% if reason %}<p class="muted">{{ reason }}</p>{% endif %}
+    {% if current_user.verification_reason not in ["sanctioned_country", "underage"] %}
+      <form method="post" action="{{ url_for('member.verify') }}">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+        <button type="submit" class="button">{{ _("Try again") }}</button>
+      </form>
+    {% endif %}
+
+  {% else %}
+    <p>{{ _("To use the club, we first check your identity with Stripe. It takes a few minutes.") }}</p>
+    {% if reason %}<p class="muted">{{ reason }}</p>{% endif %}
+    <form method="post" action="{{ url_for('member.verify') }}">
+      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+      <button type="submit" class="button">{{ _("Start identity check") }}</button>
+    </form>
+  {% endif %}
+</section>
+
+<section class="card">
+  <h2>{{ _("Your data") }}</h2>
+  <p><a href="{{ url_for('member.export') }}">{{ _("Download my data (JSON)") }}</a></p>
+
+  <details>
+    <summary>{{ _("Delete my account") }}</summary>
+    <p class="small">{{ _("This deletes your account, your consent history and your identity check data at Stripe. This cannot be undone.") }}</p>
+    <form method="post" action="{{ url_for('member.delete_account') }}" class="form">
+      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+      <div class="field">
+        <label for="delete-password">{{ _("Confirm with your password") }}</label>
+        <input id="delete-password" name="password" type="password" autocomplete="current-password" required>
+      </div>
+      <button type="submit" class="button button-danger">{{ _("Delete account permanently") }}</button>
+    </form>
+  </details>
+</section>
+{% endblock %}

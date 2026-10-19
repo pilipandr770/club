@@ -1,5 +1,6 @@
 """Все модели импортируются здесь, чтобы Flask-Migrate их видел."""
 
-from .user import Consent, Profile, User
+from .system import AuditLog, WebhookEvent
+from .user import CONSENT_KINDS, Consent, Profile, User
 
-__all__ = ["User", "Profile", "Consent"]
+__all__ = ["User", "Profile", "Consent", "CONSENT_KINDS", "AuditLog", "WebhookEvent"]
