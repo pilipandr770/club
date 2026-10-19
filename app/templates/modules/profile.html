@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}{{ _("About me") }} · {{ _("Club") }}{% endblock %}
+
+{% block content %}
+<h1>{{ _("About me") }}</h1>
+<p class="muted">{{ _("Tell the community in a few sentences who you are. Other members can see this text.") }}</p>
+
+<form method="post" action="{{ url_for('profile.edit') }}" class="form">
+  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+  <div class="field {% if errors.headline %}field-error{% endif %}">
+    <label for="headline">{{ _("Headline") }}</label>
+    <input id="headline" name="headline" type="text" maxlength="{{ headline_max }}" value="{{ profile.headline or '' }}">
+    <p class="small">{{ _("For example: your profession or what you do.") }}</p>
+    {% if errors.headline %}<p class="error">{{ errors.headline }}</p>{% endif %}
+  </div>
+
+  <div class="field {% if errors.bio %}field-error{% endif %}">
+    <label for="bio">{{ _("About you") }}</label>
+    <textarea id="bio" name="bio" rows="6" maxlength="{{ bio_max }}">{{ profile.bio or '' }}</textarea>
+    {% if errors.bio %}<p class="error">{{ errors.bio }}</p>{% endif %}
+  </div>
+
+  <button type="submit" class="button">{{ _("Save") }}</button>
+</form>
+{% endblock %}

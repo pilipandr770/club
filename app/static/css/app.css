@@ -209,3 +209,10 @@ h1 {
 a {
   color: var(--color-accent);
 }
+
+.module-list {
+  margin: 0;
+  padding-inline-start: 1.25rem;
+  display: grid;
+  gap: 0.35rem;
+}

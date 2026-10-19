@@ -33,3 +33,25 @@ def requires_verified(view):
         return view(*args, **kwargs)
 
     return wrapper
+
+
+def requires_feature(feature: str):
+    """Пускает только участников, у которых тариф включает функцию (и пройдена проверка личности)."""
+
+    def decorator(view):
+        @wraps(view)
+        def wrapper(*args, **kwargs):
+            if not current_user.is_authenticated:
+                return redirect(url_for("auth.login", next=request.path))
+            if not current_user.is_verified:
+                flash(_("This area opens after your identity check."), "info")
+                return redirect(url_for("member.dashboard"))
+            if not has_feature(current_user, feature):
+                flash(_("This section is not included in your plan."), "info")
+                return redirect(url_for("member.dashboard"))
+            return view(*args, **kwargs)
+
+        return wrapper
+
+    return decorator
+

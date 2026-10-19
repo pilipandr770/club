@@ -49,6 +49,9 @@ class Config:
         os.path.join(os.path.dirname(__file__), os.pardir, "translations")
     )
 
+    # Модули клуба, которые работают (см. app/modules/__init__.py). Список через запятую в .env.
+    ENABLED_MODULES = _csv("ENABLED_MODULES", ("profile", "services", "travel", "startups", "auction"))
+
     # Версия текстов согласий (записывается в каждое согласие)
     CONSENT_VERSION = "2026-10-19"
 

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Club 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-19 21:17+0000\n"
+"POT-Creation-Date: 2026-10-19 22:31+0000\n"
 "PO-Revision-Date: 2026-10-19 21:00+0000\n"
 "Last-Translator: \n"
 "Language: de\n"
@@ -77,11 +77,11 @@ msgstr "Der Link ist ungültig oder abgelaufen. Bitte fordere einen neuen an."
 msgid "Your e-mail address is confirmed."
 msgstr "Deine E-Mail-Adresse ist bestätigt."
 
-#: app/blueprints/member/__init__.py:31
+#: app/blueprints/member/__init__.py:44 app/blueprints/member/__init__.py:50
 msgid "Verification cannot be started right now."
 msgstr "Die Prüfung kann gerade nicht gestartet werden."
 
-#: app/blueprints/member/__init__.py:42
+#: app/blueprints/member/__init__.py:61
 msgid ""
 "We are checking your details. This can take a few minutes. The result "
 "appears here and we will not send it by e-mail."
@@ -89,23 +89,23 @@ msgstr ""
 "Wir prüfen deine Angaben. Das kann einige Minuten dauern. Das Ergebnis "
 "erscheint hier; wir schicken es nicht per E-Mail."
 
-#: app/blueprints/member/__init__.py:55
+#: app/blueprints/member/__init__.py:74
 msgid "If your address is not yet confirmed, we have sent a new link."
 msgstr ""
 "Falls deine Adresse noch nicht bestätigt ist, haben wir dir einen neuen "
 "Link geschickt."
 
-#: app/blueprints/member/__init__.py:77
+#: app/blueprints/member/__init__.py:96
 msgid "The password is not correct. Your account was not deleted."
 msgstr "Das Passwort ist nicht korrekt. Dein Konto wurde nicht gelöscht."
 
-#: app/blueprints/member/__init__.py:85
+#: app/blueprints/member/__init__.py:104
 msgid "Your account could not be deleted right now. Please try again later."
 msgstr ""
 "Dein Konto konnte gerade nicht gelöscht werden. Bitte versuche es später "
 "noch einmal."
 
-#: app/blueprints/member/__init__.py:89
+#: app/blueprints/member/__init__.py:108
 msgid "Your account and your data have been deleted."
 msgstr "Dein Konto und deine Daten wurden gelöscht."
 
@@ -119,9 +119,46 @@ msgstr ""
 "Allgemeine Informationen, keine Rechtsberatung. Gilt nur für das deutsche "
 "Recht."
 
-#: app/services/entitlements.py:31
+#: app/modules/__init__.py:22 app/templates/modules/profile.html:3
+#: app/templates/modules/profile.html:6
+msgid "About me"
+msgstr "Über mich"
+
+#: app/modules/__init__.py:23 app/modules/services/__init__.py:12
+msgid "Services"
+msgstr "Dienstleistungen"
+
+#: app/modules/__init__.py:24 app/modules/travel/__init__.py:12
+msgid "Travel"
+msgstr "Reisen"
+
+#: app/modules/__init__.py:25 app/modules/startups/__init__.py:12
+msgid "Startups for investors"
+msgstr "Startups für Investoren"
+
+#: app/modules/__init__.py:26 app/modules/auction/__init__.py:12
+msgid "Auction"
+msgstr "Auktion"
+
+#: app/modules/profile/__init__.py:29
+msgid "Please keep the headline under 160 characters."
+msgstr "Bitte halte die Überschrift unter 160 Zeichen."
+
+#: app/modules/profile/__init__.py:31
+msgid "Please keep the text under 2000 characters."
+msgstr "Bitte halte den Text unter 2000 Zeichen."
+
+#: app/modules/profile/__init__.py:37
+msgid "Your profile is saved."
+msgstr "Dein Profil ist gespeichert."
+
+#: app/services/entitlements.py:31 app/services/entitlements.py:47
 msgid "This area opens after your identity check."
 msgstr "Dieser Bereich öffnet sich nach deiner Identitätsprüfung."
+
+#: app/services/entitlements.py:50
+msgid "This section is not included in your plan."
+msgstr "Dieser Bereich ist in deinem Tarif nicht enthalten."
 
 #: app/services/verification.py:147
 msgid "We do not accept identity documents from this country."
@@ -151,7 +188,8 @@ msgstr "Zu viele Versuche. Bitte wende dich an den Support."
 
 #: app/templates/auth/login.html:3 app/templates/auth/register.html:3
 #: app/templates/base.html:6 app/templates/base.html:11
-#: app/templates/base.html:36 app/templates/member/dashboard.html:3
+#: app/templates/base.html:39 app/templates/member/dashboard.html:3
+#: app/templates/modules/profile.html:3 app/templates/modules/stub.html:3
 #: app/templates/public/index.html:3
 msgid "Club"
 msgstr "Club"
@@ -160,18 +198,18 @@ msgstr "Club"
 msgid "My account"
 msgstr "Mein Konto"
 
-#: app/templates/base.html:17
+#: app/templates/base.html:20
 msgid "Log out"
 msgstr "Abmelden"
 
 #: app/templates/auth/login.html:3 app/templates/auth/login.html:6
 #: app/templates/auth/login.html:28 app/templates/auth/register.html:74
-#: app/templates/base.html:20
+#: app/templates/base.html:23
 msgid "Log in"
 msgstr "Anmelden"
 
 #: app/templates/auth/login.html:31 app/templates/auth/register.html:3
-#: app/templates/base.html:21
+#: app/templates/base.html:24
 msgid "Register"
 msgstr "Registrieren"
 
@@ -313,18 +351,26 @@ msgid "Start identity check"
 msgstr "Identitätsprüfung starten"
 
 #: app/templates/member/dashboard.html:50
+msgid "Your plan"
+msgstr "Dein Tarif"
+
+#: app/templates/member/dashboard.html:57
+msgid "not included in your plan"
+msgstr "nicht im Tarif enthalten"
+
+#: app/templates/member/dashboard.html:65
 msgid "Your data"
 msgstr "Deine Daten"
 
-#: app/templates/member/dashboard.html:51
+#: app/templates/member/dashboard.html:66
 msgid "Download my data (JSON)"
 msgstr "Meine Daten herunterladen (JSON)"
 
-#: app/templates/member/dashboard.html:54
+#: app/templates/member/dashboard.html:69
 msgid "Delete my account"
 msgstr "Mein Konto löschen"
 
-#: app/templates/member/dashboard.html:55
+#: app/templates/member/dashboard.html:70
 msgid ""
 "This deletes your account, your consent history and your identity check "
 "data at Stripe. This cannot be undone."
@@ -332,13 +378,43 @@ msgstr ""
 "Das löscht dein Konto, deinen Einwilligungsverlauf und deine Prüfdaten bei "
 "Stripe. Das lässt sich nicht rückgängig machen."
 
-#: app/templates/member/dashboard.html:59
+#: app/templates/member/dashboard.html:74
 msgid "Confirm with your password"
 msgstr "Mit deinem Passwort bestätigen"
 
-#: app/templates/member/dashboard.html:62
+#: app/templates/member/dashboard.html:77
 msgid "Delete account permanently"
 msgstr "Konto endgültig löschen"
+
+#: app/templates/modules/profile.html:7
+msgid ""
+"Tell the community in a few sentences who you are. Other members can see "
+"this text."
+msgstr ""
+"Stell dich der Community in ein paar Sätzen vor. Andere Mitglieder sehen "
+"diesen Text."
+
+#: app/templates/modules/profile.html:13
+msgid "Headline"
+msgstr "Überschrift"
+
+#: app/templates/modules/profile.html:15
+msgid "For example: your profession or what you do."
+msgstr "Zum Beispiel: dein Beruf oder was du tust."
+
+#: app/templates/modules/profile.html:20
+msgid "About you"
+msgstr "Über dich"
+
+#: app/templates/modules/profile.html:25
+msgid "Save"
+msgstr "Speichern"
+
+#: app/templates/modules/stub.html:7
+msgid "This section is being prepared. You will find it here once it opens."
+msgstr ""
+"Dieser Bereich wird gerade vorbereitet. Sobald er öffnet, findest du ihn "
+"hier."
 
 #: app/templates/public/index.html:3 app/templates/public/index.html:7
 msgid "Welcome"

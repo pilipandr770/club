@@ -1,7 +1,10 @@
 import os
 
 from flask import Flask
+import importlib
+
 from flask_babel import get_locale
+from flask_login import current_user
 from werkzeug.middleware.proxy_fix import ProxyFix
 
 from . import cli
@@ -67,6 +70,22 @@ def create_app(env=None):
     app.register_blueprint(auth_bp)
     app.register_blueprint(member_bp)
     app.register_blueprint(webhooks_bp)
+
+    # Модули регистрируются только если включены в ENABLED_MODULES: выключенный адрес отвечает 404
+    from .modules import enabled_modules
+
+    for spec in enabled_modules(app.config["ENABLED_MODULES"]):
+        app.register_blueprint(importlib.import_module(spec.package).bp)
+
+    @app.context_processor
+    def inject_nav():
+        from .services.entitlements import has_feature
+
+        if not current_user.is_authenticated:
+            return {"nav_modules": []}
+        specs = [spec for spec in enabled_modules(app.config["ENABLED_MODULES"])
+                 if has_feature(current_user, spec.feature)]
+        return {"nav_modules": specs}
 
     from . import models  # noqa: F401  (регистрирует модели для миграций)
 

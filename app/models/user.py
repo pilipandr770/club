@@ -1,7 +1,7 @@
 from datetime import datetime
 
 from flask_login import UserMixin
-from sqlalchemy import CheckConstraint, DateTime, ForeignKey, Integer, String
+from sqlalchemy import CheckConstraint, DateTime, ForeignKey, Integer, String, Text
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from werkzeug.security import check_password_hash, generate_password_hash
 
@@ -9,6 +9,7 @@ from ..extensions import db
 from ..utils import utcnow
 
 VERIFICATION_STATUSES = ("none", "pending", "verified", "failed", "manual")
+ROLES = ("member", "travel_operator", "travel_agent")
 
 # Append-only протокол согласий (Art. 7 Abs. 1 DSGVO: Nachweisbarkeit)
 CONSENT_KINDS = {
@@ -35,6 +36,8 @@ class User(UserMixin, db.Model):
 
     status: Mapped[str] = mapped_column(String(20), default="active")  # active | blocked
     plan: Mapped[str] = mapped_column(String(20), default="guest")
+    # Роль в путешествиях и других модулях: member | travel_operator | travel_agent
+    role: Mapped[str] = mapped_column(String(20), default="member", server_default="member")
 
     email_confirmed_at: Mapped[datetime | None] = mapped_column(DateTime)
 
@@ -96,6 +99,10 @@ class Profile(db.Model):
     # Страна проживания обязательна при регистрации (ARCHITECTURE.md §5).
     country: Mapped[str | None] = mapped_column(String(2))
     residence_country: Mapped[str | None] = mapped_column(String(2))
+
+    # Раздел «О себе» (модуль profile)
+    headline: Mapped[str] = mapped_column(String(160), default="", server_default="")
+    bio: Mapped[str] = mapped_column(Text, default="", server_default="")
 
 
 class Consent(db.Model):

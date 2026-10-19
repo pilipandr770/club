@@ -78,13 +78,13 @@ def clean_tables(app):
 
 
 def make_user(app, email="member@example.com", verified=False, confirmed=True,
-              residence="DE", status="active"):
+              residence="DE", status="active", plan="guest"):
     """Создаёт участника напрямую в БД и возвращает его id."""
     from app.models import Profile
     from app.utils import utcnow
 
     with app.app_context():
-        user = User(email=email, first_name="Test", last_name="Member", status=status)
+        user = User(email=email, first_name="Test", last_name="Member", status=status, plan=plan)
         user.set_password(PASSWORD)
         user.profile = Profile(residence_country=residence)
         if confirmed:

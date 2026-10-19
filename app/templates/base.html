@@ -12,6 +12,9 @@
     <nav class="nav">
       {% if current_user.is_authenticated %}
         <a href="{{ url_for('member.dashboard') }}">{{ _("My account") }}</a>
+        {% for module in nav_modules %}
+          <a href="{{ url_for(module.endpoint) }}">{{ module.title }}</a>
+        {% endfor %}
         <form method="post" action="{{ url_for('auth.logout') }}" class="inline-form">
           <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
           <button type="submit" class="link-button">{{ _("Log out") }}</button>

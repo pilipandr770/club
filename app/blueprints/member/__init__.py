@@ -6,6 +6,7 @@ from flask_babel import gettext as _
 from flask_login import current_user, login_required, logout_user
 
 from ...extensions import db, limiter
+from ...modules import enabled_modules
 from ...services.audit import audit
 from ...services.gdpr import delete_user, export_user
 from ...services.verification import VerificationNotAllowed, reason_message, start_verification
@@ -18,9 +19,19 @@ log = logging.getLogger(__name__)
 @bp.route("/")
 @login_required
 def dashboard():
+    from ...services.entitlements import has_feature
+    from config.plans import PLANS, DEFAULT_PLAN
+
+    modules = [
+        {"spec": spec, "available": has_feature(current_user, spec.feature)}
+        for spec in enabled_modules(current_app.config["ENABLED_MODULES"])
+    ]
+    plan = PLANS.get(current_user.plan, PLANS[DEFAULT_PLAN])
     return render_template(
         "member/dashboard.html",
         reason=reason_message(current_user.verification_reason),
+        modules=modules,
+        plan_name=plan["name"],
     )
 
 
