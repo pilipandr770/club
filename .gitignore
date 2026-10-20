@@ -7,3 +7,4 @@ uploads/*
 !uploads/.gitkeep
 .DS_Store
 stripe_listen.log
+.local/
