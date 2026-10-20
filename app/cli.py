@@ -108,7 +108,27 @@ def reembed_command():
     click.echo(f"Пересчитано профилей: {changed}")
 
 
+@click.command("ai-check")
+def ai_check_command():
+    """Показывает, какие модели настроены, и проверяет ответ и эмбеддинги. Ключи не выводятся."""
+    from .services.ai import AIUnavailable, ask, get_embedder, status
+
+    for key, value in status().items():
+        click.echo(f"{key:<20} {value}")
+    try:
+        answer = ask("Reply with one word.", "Say ok.", max_tokens=16)
+        click.echo(f"LLM-Antwort: {answer.strip()[:40] or '(leer)'}")
+    except AIUnavailable as exc:
+        click.echo(f"LLM: nicht verfügbar ({exc})")
+    try:
+        vectors = get_embedder().embed(["test"])
+        click.echo(f"Embeddings: ok, Dimension {len(vectors[0])}")
+    except AIUnavailable as exc:
+        click.echo(f"Embeddings: nicht verfügbar ({exc})")
+
+
 def register(app):
+    app.cli.add_command(ai_check_command)
     app.cli.add_command(reembed_command)
     app.cli.add_command(i18n_cli)
     app.cli.add_command(create_admin)

@@ -62,9 +62,22 @@ class Config:
     BLOCKED_DOCUMENT_COUNTRIES = _csv("BLOCKED_DOCUMENT_COUNTRIES", DEFAULT_BLOCKED_COUNTRIES)
     BLOCKED_RESIDENCE_COUNTRIES = _csv("BLOCKED_RESIDENCE_COUNTRIES", DEFAULT_BLOCKED_COUNTRIES)
 
-    # ИИ-ассистент (Anthropic API): ключ только из .env
+    # ИИ: модели выбираются здесь, в .env. Код менять не нужно.
+    # LLM_PROVIDER: anthropic | openai | google | mistral | openai_compatible | none
+    LLM_PROVIDER = os.environ.get("LLM_PROVIDER", "anthropic")
+    LLM_MODEL = os.environ.get("LLM_MODEL", "claude-haiku-5-5")
+    LLM_BASE_URL = os.environ.get("LLM_BASE_URL", "")  # только для openai_compatible (локальный сервер)
+    LLM_API_KEY = os.environ.get("LLM_API_KEY", "")  # для openai_compatible, если нужен
+    # EMBEDDING_PROVIDER: lexical | openai | google | mistral | openai_compatible | none
+    EMBEDDING_PROVIDER = os.environ.get("EMBEDDING_PROVIDER", "lexical")
+    EMBEDDING_MODEL = os.environ.get("EMBEDDING_MODEL", "")
+    EMBEDDING_BASE_URL = os.environ.get("EMBEDDING_BASE_URL", "")
+    EMBEDDING_API_KEY = os.environ.get("EMBEDDING_API_KEY", "")
+    # Ключи провайдеров: только из .env
     ANTHROPIC_API_KEY = os.environ.get("ANTHROPIC_API_KEY", "")
-    ANTHROPIC_MODEL = os.environ.get("ANTHROPIC_MODEL", "claude-haiku-5-5")
+    OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY", "")
+    GOOGLE_API_KEY = os.environ.get("GOOGLE_API_KEY", "")
+    MISTRAL_API_KEY = os.environ.get("MISTRAL_API_KEY", "")
 
     # Почта: при деплое. Без SMTP_HOST письма только пишутся в лог.
     SMTP_HOST = os.environ.get("SMTP_HOST", "")

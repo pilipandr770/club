@@ -9,15 +9,18 @@ score(A→B) = 0.6·cos(need_A, offer_B) + 0.4·cos(need_B, offer_A)   (CLAUDE.m
 
 import hashlib
 import json
+import logging
 import math
-import re
 
 from flask import current_app
+
+log = logging.getLogger(__name__)
 from ..extensions import db
 from ..models import Match, Profile, User
 from ..profile_guide import matchable
 from ..utils import utcnow
-from .llm import LLMUnavailable, ask
+from .ai import AIUnavailable, ask, get_embedder, llm_enabled
+from .ai.embeddings import LexicalEmbedder
 
 WEIGHT_NEED_TO_OFFER = 0.6
 WEIGHT_REVERSE = 0.4
@@ -43,40 +46,20 @@ def profile_version(profile) -> str:
     return hashlib.sha256(raw.encode("utf-8")).hexdigest()
 
 
-# --- провайдеры эмбеддингов ---------------------------------------------------
+# --- провайдер эмбеддингов ----------------------------------------------------
 
-class LexicalEmbedder:
-    """Слова с хешированием (знаковый «hashing trick»). Детерминированный, без внешних сервисов.
-
-    Видит совпадения слов, но не смысл. Годится для разработки и тестов; для боевого матчинга
-    нужен семантический провайдер (решение владельцев: ARCHITECTURE.md §7, пункт 6).
-    """
-
-    name = "lexical-v1"
-
-    def embed(self, texts):
-        return [self._vector(text) for text in texts]
-
-    def _vector(self, text):
-        vector = [0.0] * DIM
-        for token in re.findall(r"\w+", text.lower()):
-            if len(token) < 3:
-                continue
-            digest = hashlib.md5(token.encode("utf-8")).digest()
-            index = int.from_bytes(digest[:4], "big") % DIM
-            sign = 1.0 if digest[4] & 1 else -1.0
-            vector[index] += sign
-        norm = math.sqrt(sum(value * value for value in vector))
-        return [value / norm for value in vector] if norm else vector
-
-
-def get_embedder():
-    return LexicalEmbedder()
+def _embedder():
+    """Провайдер из настроек. Если он не настроен, честно падаем на лексический и пишем это в лог."""
+    try:
+        return get_embedder()
+    except AIUnavailable as exc:
+        log.warning("Эмбеддинги не настроены (%s), используется лексический режим", exc)
+        return LexicalEmbedder()
 
 
 def refresh_embeddings(profile, embedder=None) -> bool:
     """Пересчитывает эмбеддинги, если текст или провайдер изменились. Возвращает True, если пересчитали."""
-    embedder = embedder or get_embedder()
+    embedder = embedder or _embedder()
     version = profile_version(profile)
     if profile.embed_hash == version and profile.embed_provider == embedder.name and profile.embed_need:
         return False
@@ -117,14 +100,19 @@ def fit_label(value: float) -> str:
 # --- подбор ----------------------------------------------------------------------
 
 def candidates(user):
-    """Участники, которые дали согласие на матчинг и проверены. Сам пользователь и заблокированные исключены."""
+    """Участники с согласием на матчинг, проверенные, с эмбеддингами той же модели, что и у меня.
+
+    Профили, посчитанные другой моделью, в сравнение не попадают: векторы из разных моделей несравнимы.
+    """
+    name = _embedder().name
     return (db.session.query(User, Profile)
             .join(Profile, Profile.user_id == User.id)
             .filter(User.id != user.id,
                     User.status == "active",
                     User.verification_status == "verified",
                     Profile.allow_matching.is_(True),
-                    Profile.embed_need.isnot(None))
+                    Profile.embed_need.isnot(None),
+                    Profile.embed_provider == name)
             .all())
 
 
@@ -184,7 +172,7 @@ def get_matches(user, k: int = TOP_K):
         cached = Match.query.filter_by(user_id=user.id, other_id=other.id).first()
         other_version = profile_version(other.profile)
         fresh = (cached is not None and cached.version_a == my_version and cached.version_b == other_version
-                 and (cached.explanation_source == "llm" or not current_app.config.get("ANTHROPIC_API_KEY")))
+                 and (cached.explanation_source == "llm" or not llm_enabled()))
         if not fresh:
             stale.append((other, value, cached, other_version))
         else:
@@ -195,7 +183,7 @@ def get_matches(user, k: int = TOP_K):
         try:
             texts = _llm_explanations(my_profile, [other.profile for other, _, _, _ in stale])
             source = "llm"
-        except (LLMUnavailable, ValueError, KeyError, TypeError):
+        except (AIUnavailable, ValueError, KeyError, TypeError):
             source = "template"
         for index, (other, value, cached, other_version) in enumerate(stale, start=1):
             if source == "llm" and index in texts:

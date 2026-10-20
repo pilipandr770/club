@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Club 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-20 12:02+0000\n"
+"POT-Creation-Date: 2026-10-20 12:23+0000\n"
 "PO-Revision-Date: 2026-10-19 21:00+0000\n"
 "Last-Translator: \n"
 "Language: de\n"
@@ -263,41 +263,41 @@ msgstr "Kopf und Schultern, natürliches Licht, schlichter Hintergrund."
 msgid "No group photos, no sunglasses, no heavy filters."
 msgstr "Keine Gruppenfotos, keine Sonnenbrille, keine starken Filter."
 
-#: app/blueprints/admin/__init__.py:119
+#: app/blueprints/admin/__init__.py:121
 msgid "Changes are saved."
 msgstr "Änderungen sind gespeichert."
 
-#: app/blueprints/admin/__init__.py:121 app/blueprints/admin/__init__.py:226
-#: app/blueprints/admin/__init__.py:256
+#: app/blueprints/admin/__init__.py:123 app/blueprints/admin/__init__.py:228
+#: app/blueprints/admin/__init__.py:258
 msgid "Nothing has changed."
 msgstr "Nichts hat sich geändert."
 
-#: app/blueprints/admin/__init__.py:140
+#: app/blueprints/admin/__init__.py:142
 #, python-format
 msgid "Please check the lot fields: %(fields)s"
 msgstr "Bitte prüfe die Felder des Loses: %(fields)s"
 
-#: app/blueprints/admin/__init__.py:144
+#: app/blueprints/admin/__init__.py:146
 msgid "The lot is created."
 msgstr "Das Los ist angelegt."
 
-#: app/blueprints/admin/__init__.py:157
+#: app/blueprints/admin/__init__.py:159
 msgid "The lot is closed."
 msgstr "Das Los ist geschlossen."
 
-#: app/blueprints/admin/__init__.py:221
+#: app/blueprints/admin/__init__.py:223
 msgid "The startup is published."
 msgstr "Der Startup ist veröffentlicht."
 
-#: app/blueprints/admin/__init__.py:224
+#: app/blueprints/admin/__init__.py:226
 msgid "The startup is rejected."
 msgstr "Der Startup ist abgelehnt."
 
-#: app/blueprints/admin/__init__.py:251
+#: app/blueprints/admin/__init__.py:253
 msgid "The offer is published."
 msgstr "Das Angebot ist veröffentlicht."
 
-#: app/blueprints/admin/__init__.py:254
+#: app/blueprints/admin/__init__.py:256
 msgid "The offer is rejected."
 msgstr "Das Angebot ist abgelehnt."
 
@@ -459,45 +459,45 @@ msgstr "Bitte gib einen gültigen Betrag ein."
 msgid "Your bid is placed."
 msgstr "Dein Gebot ist abgegeben."
 
-#: app/modules/profile/__init__.py:31
+#: app/modules/profile/__init__.py:32
 msgid "The photo is too large. Please use a file up to 5 MB."
 msgstr "Das Foto ist zu groß. Bitte nutze eine Datei bis 5 MB."
 
-#: app/modules/profile/__init__.py:32
+#: app/modules/profile/__init__.py:33
 msgid "The photo resolution is too high. Please use a smaller photo."
 msgstr "Die Auflösung des Fotos ist zu hoch. Bitte nutze ein kleineres Foto."
 
-#: app/modules/profile/__init__.py:33
+#: app/modules/profile/__init__.py:34
 msgid "Please upload a JPEG, PNG or WebP photo."
 msgstr "Bitte lade ein Foto im Format JPEG, PNG oder WebP hoch."
 
-#: app/modules/profile/__init__.py:34
+#: app/modules/profile/__init__.py:35
 msgid "This file is not a valid photo."
 msgstr "Diese Datei ist kein gültiges Foto."
 
-#: app/modules/profile/__init__.py:35
+#: app/modules/profile/__init__.py:36
 msgid "The file is empty."
 msgstr "Die Datei ist leer."
 
-#: app/modules/profile/__init__.py:37
+#: app/modules/profile/__init__.py:38
 msgid "The photo could not be saved."
 msgstr "Das Foto konnte nicht gespeichert werden."
 
-#: app/modules/profile/__init__.py:67
+#: app/modules/profile/__init__.py:68
 msgid "Your profile is saved."
 msgstr "Dein Profil ist gespeichert."
 
-#: app/modules/profile/__init__.py:69 app/modules/startups/__init__.py:35
+#: app/modules/profile/__init__.py:70 app/modules/startups/__init__.py:35
 #: app/modules/travel/__init__.py:130 app/modules/travel/__init__.py:150
 #, python-format
 msgid "Please check these fields: %(fields)s"
 msgstr "Bitte prüfe diese Felder: %(fields)s"
 
-#: app/modules/profile/__init__.py:120
+#: app/modules/profile/__init__.py:121
 msgid "Your choices are saved."
 msgstr "Deine Entscheidungen sind gespeichert."
 
-#: app/modules/profile/__init__.py:141
+#: app/modules/profile/__init__.py:142
 msgid ""
 "Your request is sent. The other member decides whether to share contact "
 "details."
@@ -505,47 +505,47 @@ msgstr ""
 "Deine Anfrage ist gesendet. Das andere Mitglied entscheidet, ob es seine "
 "Kontaktdaten teilt."
 
-#: app/modules/profile/__init__.py:180
+#: app/modules/profile/__init__.py:181
 msgid "You cannot send a request to yourself."
 msgstr "Du kannst dir selbst keine Anfrage senden."
 
-#: app/modules/profile/__init__.py:181
+#: app/modules/profile/__init__.py:182
 msgid "This member cannot be contacted right now."
 msgstr "Dieses Mitglied kann gerade nicht kontaktiert werden."
 
-#: app/modules/profile/__init__.py:182
+#: app/modules/profile/__init__.py:183
 msgid "There is already a request between you two."
 msgstr "Zwischen euch beiden gibt es bereits eine Anfrage."
 
-#: app/modules/profile/__init__.py:183
+#: app/modules/profile/__init__.py:184
 msgid "You have reached today's limit of requests. Please try again tomorrow."
 msgstr ""
 "Du hast das heutige Limit an Anfragen erreicht. Bitte versuche es morgen "
 "erneut."
 
-#: app/modules/profile/__init__.py:184 app/modules/startups/__init__.py:29
+#: app/modules/profile/__init__.py:185 app/modules/startups/__init__.py:29
 #: app/modules/travel/__init__.py:35
 msgid "This is not available to you."
 msgstr "Das ist für dich nicht verfügbar."
 
-#: app/modules/profile/__init__.py:185
+#: app/modules/profile/__init__.py:186
 msgid "This request has already been answered."
 msgstr "Auf diese Anfrage wurde bereits geantwortet."
 
-#: app/modules/profile/__init__.py:187 app/modules/startups/__init__.py:31
+#: app/modules/profile/__init__.py:188 app/modules/startups/__init__.py:31
 #: app/modules/travel/__init__.py:38
 msgid "Something went wrong. Please try again."
 msgstr "Etwas ist schiefgelaufen. Bitte versuche es erneut."
 
-#: app/modules/profile/__init__.py:196
+#: app/modules/profile/__init__.py:197
 msgid "Please choose a photo first."
 msgstr "Bitte wähle zuerst ein Foto aus."
 
-#: app/modules/profile/__init__.py:214
+#: app/modules/profile/__init__.py:215
 msgid "Your photo is saved."
 msgstr "Dein Foto ist gespeichert."
 
-#: app/modules/profile/__init__.py:228
+#: app/modules/profile/__init__.py:229
 msgid "Your photo is removed."
 msgstr "Dein Foto ist entfernt."
 
@@ -848,6 +848,34 @@ msgstr "Identitätsprüfungen"
 #: app/templates/admin/dashboard.html:34
 msgid "Open auction lots"
 msgstr "Offene Auktionslose"
+
+#: app/templates/admin/dashboard.html:38
+msgid "AI models"
+msgstr "KI-Modelle"
+
+#: app/templates/admin/dashboard.html:40
+msgid "Language model"
+msgstr "Sprachmodell"
+
+#: app/templates/admin/dashboard.html:40
+msgid "on"
+msgstr "an"
+
+#: app/templates/admin/dashboard.html:40
+msgid "off"
+msgstr "aus"
+
+#: app/templates/admin/dashboard.html:41
+msgid "Embeddings"
+msgstr "Embeddings"
+
+#: app/templates/admin/dashboard.html:43
+msgid ""
+"Models are set in the server settings. Changing them does not need a code "
+"change."
+msgstr ""
+"Die Modelle werden in den Servereinstellungen festgelegt. Ein Wechsel "
+"erfordert keine Codeänderung."
 
 #: app/templates/admin/lots.html:10
 msgid "New lot"

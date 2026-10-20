@@ -3,9 +3,9 @@ import json
 from app.extensions import db
 from app.models import Match, Profile, User
 from app.services import matching
-from app.services.llm import LLMUnavailable
+from app.services.ai import AIUnavailable
+from app.services.ai.embeddings import LexicalEmbedder
 from app.services.matching import (
-    LexicalEmbedder,
     cosine,
     fit_label,
     get_matches,
@@ -161,7 +161,7 @@ def test_llm_failure_falls_back_to_template(app, monkeypatch):
     app.config["ANTHROPIC_API_KEY"] = "test-key"
 
     def broken(*args, **kwargs):
-        raise LLMUnavailable("timeout")
+        raise AIUnavailable("timeout")
 
     monkeypatch.setattr(matching, "ask", broken)
     with app.app_context():

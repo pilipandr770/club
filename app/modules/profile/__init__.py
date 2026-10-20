@@ -10,6 +10,7 @@ from ...services.consents import latest_consent, record_consent
 from ...services import intros
 from ...services.intros import IntroError
 from ...services.entitlements import requires_feature
+from ...services.ai import llm_enabled
 from ...services.matching import get_matches, refresh_embeddings
 from ...services.media import MediaError, process_image, profile_photo_key
 from ...utils import utcnow
@@ -89,14 +90,14 @@ def matches():
     if not current_user.profile or not matchable(current_user.profile):
         return render_template("modules/profile_matches.html", cards=[], ready=False,
                                missing=missing_for_matching(current_user.profile) if current_user.profile else [],
-                               fields=FIELDS, llm_on=bool(current_app.config.get("ANTHROPIC_API_KEY")))
+                               fields=FIELDS, llm_on=llm_enabled())
     cards = []
     for other, label, text in get_matches(current_user):
         cards.append({"member": other, "label": label, "explanation": text,
                       "state": intros.link_state(current_user, other),
                       "contact": intros.visible_contact(current_user, other)})
     return render_template("modules/profile_matches.html", cards=cards, ready=True, missing=[], fields=FIELDS,
-                           llm_on=bool(current_app.config.get("ANTHROPIC_API_KEY")))
+                           llm_on=llm_enabled())
 
 
 PUBLICATION_KINDS = (("directory", "visible_in_directory"), ("matching", "allow_matching"))

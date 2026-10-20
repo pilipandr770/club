@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-10-20 12:02+0000\n"
+"POT-Creation-Date: 2026-10-20 12:23+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -242,41 +242,41 @@ msgstr ""
 msgid "No group photos, no sunglasses, no heavy filters."
 msgstr ""
 
-#: app/blueprints/admin/__init__.py:119
+#: app/blueprints/admin/__init__.py:121
 msgid "Changes are saved."
 msgstr ""
 
-#: app/blueprints/admin/__init__.py:121 app/blueprints/admin/__init__.py:226
-#: app/blueprints/admin/__init__.py:256
+#: app/blueprints/admin/__init__.py:123 app/blueprints/admin/__init__.py:228
+#: app/blueprints/admin/__init__.py:258
 msgid "Nothing has changed."
 msgstr ""
 
-#: app/blueprints/admin/__init__.py:140
+#: app/blueprints/admin/__init__.py:142
 #, python-format
 msgid "Please check the lot fields: %(fields)s"
 msgstr ""
 
-#: app/blueprints/admin/__init__.py:144
+#: app/blueprints/admin/__init__.py:146
 msgid "The lot is created."
 msgstr ""
 
-#: app/blueprints/admin/__init__.py:157
+#: app/blueprints/admin/__init__.py:159
 msgid "The lot is closed."
 msgstr ""
 
-#: app/blueprints/admin/__init__.py:221
+#: app/blueprints/admin/__init__.py:223
 msgid "The startup is published."
 msgstr ""
 
-#: app/blueprints/admin/__init__.py:224
+#: app/blueprints/admin/__init__.py:226
 msgid "The startup is rejected."
 msgstr ""
 
-#: app/blueprints/admin/__init__.py:251
+#: app/blueprints/admin/__init__.py:253
 msgid "The offer is published."
 msgstr ""
 
-#: app/blueprints/admin/__init__.py:254
+#: app/blueprints/admin/__init__.py:256
 msgid "The offer is rejected."
 msgstr ""
 
@@ -430,89 +430,89 @@ msgstr ""
 msgid "Your bid is placed."
 msgstr ""
 
-#: app/modules/profile/__init__.py:31
+#: app/modules/profile/__init__.py:32
 msgid "The photo is too large. Please use a file up to 5 MB."
 msgstr ""
 
-#: app/modules/profile/__init__.py:32
+#: app/modules/profile/__init__.py:33
 msgid "The photo resolution is too high. Please use a smaller photo."
 msgstr ""
 
-#: app/modules/profile/__init__.py:33
+#: app/modules/profile/__init__.py:34
 msgid "Please upload a JPEG, PNG or WebP photo."
 msgstr ""
 
-#: app/modules/profile/__init__.py:34
+#: app/modules/profile/__init__.py:35
 msgid "This file is not a valid photo."
 msgstr ""
 
-#: app/modules/profile/__init__.py:35
+#: app/modules/profile/__init__.py:36
 msgid "The file is empty."
 msgstr ""
 
-#: app/modules/profile/__init__.py:37
+#: app/modules/profile/__init__.py:38
 msgid "The photo could not be saved."
 msgstr ""
 
-#: app/modules/profile/__init__.py:67
+#: app/modules/profile/__init__.py:68
 msgid "Your profile is saved."
 msgstr ""
 
-#: app/modules/profile/__init__.py:69 app/modules/startups/__init__.py:35
+#: app/modules/profile/__init__.py:70 app/modules/startups/__init__.py:35
 #: app/modules/travel/__init__.py:130 app/modules/travel/__init__.py:150
 #, python-format
 msgid "Please check these fields: %(fields)s"
 msgstr ""
 
-#: app/modules/profile/__init__.py:120
+#: app/modules/profile/__init__.py:121
 msgid "Your choices are saved."
 msgstr ""
 
-#: app/modules/profile/__init__.py:141
+#: app/modules/profile/__init__.py:142
 msgid ""
 "Your request is sent. The other member decides whether to share contact "
 "details."
 msgstr ""
 
-#: app/modules/profile/__init__.py:180
+#: app/modules/profile/__init__.py:181
 msgid "You cannot send a request to yourself."
 msgstr ""
 
-#: app/modules/profile/__init__.py:181
+#: app/modules/profile/__init__.py:182
 msgid "This member cannot be contacted right now."
 msgstr ""
 
-#: app/modules/profile/__init__.py:182
+#: app/modules/profile/__init__.py:183
 msgid "There is already a request between you two."
 msgstr ""
 
-#: app/modules/profile/__init__.py:183
+#: app/modules/profile/__init__.py:184
 msgid "You have reached today's limit of requests. Please try again tomorrow."
 msgstr ""
 
-#: app/modules/profile/__init__.py:184 app/modules/startups/__init__.py:29
+#: app/modules/profile/__init__.py:185 app/modules/startups/__init__.py:29
 #: app/modules/travel/__init__.py:35
 msgid "This is not available to you."
 msgstr ""
 
-#: app/modules/profile/__init__.py:185
+#: app/modules/profile/__init__.py:186
 msgid "This request has already been answered."
 msgstr ""
 
-#: app/modules/profile/__init__.py:187 app/modules/startups/__init__.py:31
+#: app/modules/profile/__init__.py:188 app/modules/startups/__init__.py:31
 #: app/modules/travel/__init__.py:38
 msgid "Something went wrong. Please try again."
 msgstr ""
 
-#: app/modules/profile/__init__.py:196
+#: app/modules/profile/__init__.py:197
 msgid "Please choose a photo first."
 msgstr ""
 
-#: app/modules/profile/__init__.py:214
+#: app/modules/profile/__init__.py:215
 msgid "Your photo is saved."
 msgstr ""
 
-#: app/modules/profile/__init__.py:228
+#: app/modules/profile/__init__.py:229
 msgid "Your photo is removed."
 msgstr ""
 
@@ -809,6 +809,32 @@ msgstr ""
 
 #: app/templates/admin/dashboard.html:34
 msgid "Open auction lots"
+msgstr ""
+
+#: app/templates/admin/dashboard.html:38
+msgid "AI models"
+msgstr ""
+
+#: app/templates/admin/dashboard.html:40
+msgid "Language model"
+msgstr ""
+
+#: app/templates/admin/dashboard.html:40
+msgid "on"
+msgstr ""
+
+#: app/templates/admin/dashboard.html:40
+msgid "off"
+msgstr ""
+
+#: app/templates/admin/dashboard.html:41
+msgid "Embeddings"
+msgstr ""
+
+#: app/templates/admin/dashboard.html:43
+msgid ""
+"Models are set in the server settings. Changing them does not need a code"
+" change."
 msgstr ""
 
 #: app/templates/admin/lots.html:10

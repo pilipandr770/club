@@ -11,6 +11,7 @@ from ...models.user import ROLES, VERIFICATION_STATUSES
 from ...services.audit import audit
 from ...models import Startup, Trip
 from ...services import travel as travel_service
+from ...services.ai import status as ai_status
 from ...services import startups as startup_service
 from ...services.auction_engine import cancel_lot, create_lot, validate_lot_input
 from ...utils import eur_to_cents, format_eur, local_to_utc, utcnow
@@ -52,6 +53,7 @@ def dashboard():
         by_plan=by_plan,
         lots_open=Lot.query.filter_by(status="open").count(),
         plans=PLANS,
+        ai=ai_status(),
     )
 
 
