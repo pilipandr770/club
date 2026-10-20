@@ -127,8 +127,21 @@ def ai_check_command():
         click.echo(f"Embeddings: nicht verfügbar ({exc})")
 
 
+@click.command("seed-demo-profiles")
+def seed_demo_profiles_command():
+    """Создаёт вымышленных демо-участников с заполненными анкетами (пароль из TEST_SEED_PASSWORD)."""
+    from .services.seed import SeedError, seed_demo_profiles
+
+    try:
+        created = seed_demo_profiles(os.environ.get("TEST_SEED_PASSWORD", ""))
+    except SeedError as exc:
+        raise click.ClickException(str(exc)) from None
+    click.echo(f"Демо-участников создано: {created}, всего обновлено: 5")
+
+
 def register(app):
     app.cli.add_command(ai_check_command)
+    app.cli.add_command(seed_demo_profiles_command)
     app.cli.add_command(reembed_command)
     app.cli.add_command(i18n_cli)
     app.cli.add_command(create_admin)
