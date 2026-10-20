@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}{{ spec.title }} · {{ _("Report") }}{% endblock %}
+
+{% block content %}
+<h1>{{ spec.title }}</h1>
+<p class="muted">{{ run.created_at.strftime('%d.%m.%Y %H:%M') }}</p>
+<p><a href="{{ url_for('services.tools_index') }}">{{ _("All tools") }}</a> ·
+   <a href="{{ url_for('services.tool_page', key='laws') }}">{{ _("New search") }}</a></p>
+
+<section class="card">
+  <h2>{{ _("Your question") }}</h2>
+  <p>{{ run.subject }}</p>
+  <p class="notice">{{ _("This is not legal advice. The explanations were written by an AI and only describe what the quoted text says. They do not assess your case.") }}</p>
+  {% if report.hinweis %}<p>{{ report.hinweis }}</p>{% endif %}
+</section>
+
+{% set explained = {} %}
+{% for e in report.erlaeuterungen %}{% set known = explained.update({e.id: e.text}) %}{% endfor %}
+
+{% for hit in result.hits %}
+  {% if not report.ai or hit.id not in report.nicht_passend %}
+  <section class="card">
+    <h2>{{ hit.law_abbreviation or hit.slug }} {{ hit.enbez }}{% if hit.titel %} · {{ hit.titel }}{% endif %}</h2>
+    <p class="small muted">{{ hit.law_title }}{% if hit.category %} · {{ hit.category }}{% endif %}</p>
+    <blockquote class="quote">{{ hit.text }}</blockquote>
+    {% if hit.source_url %}<p class="small"><a href="{{ hit.source_url }}" rel="noopener noreferrer" target="_blank">{{ _("Official source") }}</a></p>{% endif %}
+    {% if explained.get(hit.id) %}
+      <p><strong>{{ _("What the text says") }}:</strong> {{ explained[hit.id] }}</p>
+    {% endif %}
+  </section>
+  {% endif %}
+{% endfor %}
+
+{% if report.ai and report.nicht_passend %}
+<p class="small muted">{{ _("Further results were found but do not match your question closely and are hidden.") }}</p>
+{% endif %}
+{% endblock %}

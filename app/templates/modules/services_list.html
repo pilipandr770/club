@@ -5,7 +5,7 @@
 {% block content %}
 <h1>{{ _("Services from the club network") }}</h1>
 <p class="muted">{{ _("Checked partners of the community, with conditions for members.") }}</p>
-<p><a href="{{ url_for('services.mine') }}">{{ _("My requests") }}</a></p>
+<p><a href="{{ url_for('services.tools_index') }}">{{ _("Built-in tools") }}</a> · <a href="{{ url_for('services.mine') }}">{{ _("My requests") }}</a></p>
 
 <div class="grid-cards">
 {% for service in items %}

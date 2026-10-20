@@ -1,0 +1,122 @@
+{% extends "base.html" %}
+
+{% block title %}{{ spec.title }} · {{ _("Report") }}{% endblock %}
+
+{% block content %}
+{% set spec_data = result.get('spec', {}) %}
+<h1>{{ spec.title }}</h1>
+<p class="muted">{{ run.subject }} · {{ run.created_at.strftime('%d.%m.%Y %H:%M') }}</p>
+<p><a href="{{ url_for('services.tools_index') }}">{{ _("All tools") }}</a></p>
+
+<p class="notice">{{ _("Synthetic result: the personas are fictional people invented by an AI. Read the numbers as hints and hypotheses to check with real customers. They do not predict sales.") }}</p>
+
+{% if run.status == 'running' %}
+  <meta http-equiv="refresh" content="6">
+  <section class="card">
+    <h2>{{ _("The panel is running") }}</h2>
+    <p>{{ _("%(done)s of %(total)s personas have answered. This page refreshes itself.", done=run.n_done, total=run.n_total) }}</p>
+    <progress max="{{ run.n_total or 1 }}" value="{{ run.n_done }}"></progress>
+  </section>
+{% elif run.status == 'failed' %}
+  <section class="card">
+    <h2>{{ _("The run failed") }}</h2>
+    <p>{{ run.error }}</p>
+    <p><a class="button" href="{{ url_for('services.tool_page', key='panel') }}">{{ _("Try again") }}</a></p>
+  </section>
+{% else %}
+  {% set ov = result.overall %}
+  <section class="card">
+    <h2>{{ _("Summary") }}</h2>
+    <p>{{ report.zusammenfassung }}</p>
+    <ul class="module-list">
+      <li>{{ _("Answers used: %(n)s of %(total)s", n=result.n_valid, total=result.n_requested) }}</li>
+      <li>{{ _("Purchase intent (now or after a trial): %(p)s %%", p=ov.intent) }}</li>
+      <li>{{ _("Average purchase probability within 3 months: %(p)s %%", p=ov.prob) }}</li>
+      <li>{{ _("Average relevance (1 to 10): %(p)s", p=ov.relevanz) }}</li>
+      {% if ov.wtp %}<li>{{ _("Median price limit: %(p)s €", p=ov.wtp) }}</li>{% endif %}
+    </ul>
+    {% if result.core %}<p class="small muted">{{ _("Core group (relevance 6 or more, %(n)s personas): intent %(i)s %%, probability %(p)s %%", n=result.core.n, i=result.core.intent, p=result.core.prob) }}</p>{% endif %}
+  </section>
+
+  <section class="card">
+    <h2>{{ _("Answers by intent") }}</h2>
+    <table class="table">
+      {% for label, count in result.intents.items() %}<tr><th scope="row">{{ label }}</th><td>{{ count }}</td></tr>{% endfor %}
+    </table>
+  </section>
+
+  {% if result.curve and result.curve.points %}
+  <section class="card">
+    <h2>{{ _("Price curve") }}</h2>
+    <table class="table">
+      <tr><th>{{ _("Price") }}</th><th>{{ _("Expected share of buyers") }}</th><th>{{ _("Revenue index") }}</th></tr>
+      {% for pt in result.curve.points %}
+      <tr><td>{{ pt.price }} €</td><td>{{ pt.share }} %</td><td>{{ pt.index }}</td></tr>
+      {% endfor %}
+    </table>
+    {% if result.curve.best %}<p class="small muted">{{ _("Highest revenue index at %(p)s €.", p=result.curve.best.price) }}</p>{% endif %}
+    {% if report.preis_fazit %}<p>{{ report.preis_fazit }}</p>{% endif %}
+  </section>
+  {% endif %}
+
+  {% if result.ab %}
+  <section class="card">
+    <h2>{{ _("A/B price comparison") }}</h2>
+    <table class="table">
+      <tr><th></th><th>{{ _("Price") }}</th><th>{{ _("Personas") }}</th><th>{{ _("Intent") }}</th><th>{{ _("Probability") }}</th></tr>
+      <tr><th scope="row">A</th><td>{{ result.ab.price_a }} €</td><td>{{ result.ab.a.n }}</td><td>{{ result.ab.a.intent }} %</td><td>{{ result.ab.a.prob }} %</td></tr>
+      <tr><th scope="row">B</th><td>{{ result.ab.price_b }} €</td><td>{{ result.ab.b.n }}</td><td>{{ result.ab.b.intent }} %</td><td>{{ result.ab.b.prob }} %</td></tr>
+    </table>
+    {% if result.ab.p_value is not none %}<p class="small muted">{{ _("p-value of the difference in intent: %(p)s. With small groups a small difference is usually chance.", p=result.ab.p_value) }}</p>{% endif %}
+  </section>
+  {% endif %}
+
+  {% if result.segments %}
+  <section class="card">
+    <h2>{{ _("Target groups") }}</h2>
+    {% for seg in result.segments %}
+    <h3>{{ seg.dimension }}</h3>
+    <table class="table">
+      <tr><th></th><th>{{ _("Personas") }}</th><th>{{ _("Intent") }}</th><th>{{ _("Probability") }}</th></tr>
+      {% for row in seg.rows %}<tr><th scope="row">{{ row.label }}</th><td>{{ row.n }}</td><td>{{ row.intent }} %</td><td>{{ row.prob }} %</td></tr>{% endfor %}
+    </table>
+    {% endfor %}
+    {% if report.zielgruppen_fazit %}<p>{{ report.zielgruppen_fazit }}</p>{% endif %}
+  </section>
+  {% endif %}
+
+  {% for title, key in [(_("Main concerns"), 'bedenken'), (_("Main benefits"), 'nutzen'), (_("What would have to change"), 'aenderungen')] %}
+    {% if report[key] %}
+    <section class="card">
+      <h2>{{ title }}</h2>
+      <ul class="module-list">
+        {% for item in report[key] %}<li><strong>{{ item.thema }}</strong> ({{ item.anzahl }}×)<br><span class="small muted">„{{ item.beispiel }}“</span></li>{% endfor %}
+      </ul>
+    </section>
+    {% endif %}
+  {% endfor %}
+
+  {% if report.empfehlungen %}
+  <section class="card">
+    <h2>{{ _("Recommendations") }}</h2>
+    <ol class="actions">
+      {% for item in report.empfehlungen %}<li><strong>{{ item.titel }}</strong><p>{{ item.warum }}</p><p class="small"><em>{{ _("How:") }}</em> {{ item.so_gehts }}</p></li>{% endfor %}
+    </ol>
+  </section>
+  {% endif %}
+
+  {% if result.examples_yes %}
+  <section class="card">
+    <h2>{{ _("Example voices") }}</h2>
+    {% for group, items in [(_("Most likely buyers"), result.examples_yes), (_("Least likely buyers"), result.examples_no)] %}
+      <h3>{{ group }}</h3>
+      <ul class="module-list">
+        {% for ex in items %}<li>{{ ex.name }}, {{ ex.age }} ({{ ex.label }}) · {{ ex.prob }} %<br><span class="small muted">„{{ ex.text }}“</span></li>{% endfor %}
+      </ul>
+    {% endfor %}
+  </section>
+  {% endif %}
+
+  {% if report.verzerrung_hinweis %}<p class="small muted">{{ report.verzerrung_hinweis }}</p>{% endif %}
+{% endif %}
+{% endblock %}

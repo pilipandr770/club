@@ -23,3 +23,11 @@ PLANS = {
 }
 
 DEFAULT_PLAN = "guest"
+
+# Запусков встроенных инструментов в календарный месяц. Ключи — как в app/services/tools/__init__.py.
+# Лимиты растут вместе с тарифом; цифры предварительные, владельцы утвердят вместе с ценами.
+TOOL_LIMITS = {
+    "starter": {"seo": 5, "compliance": 5, "security": 5, "laws": 20, "panel": 1},
+    "growth": {"seo": 10, "compliance": 10, "security": 10, "laws": 40, "panel": 3},
+    "premium": {"seo": 30, "compliance": 30, "security": 30, "laws": 100, "panel": 10},
+}

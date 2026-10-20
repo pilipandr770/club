@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Club 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-20 18:39+0000\n"
+"POT-Creation-Date: 2026-10-20 21:34+0000\n"
 "PO-Revision-Date: 2026-10-19 21:00+0000\n"
 "Last-Translator: \n"
 "Language: de\n"
@@ -104,8 +104,8 @@ msgstr "Was ich mache"
 #: app/profile_guide.py:76
 msgid "Describe your work in two or three sentences. Concrete details help most."
 msgstr ""
-"Beschreibe deine Arbeit in zwei oder drei Sätzen. Konkrete Details helfen"
-" am meisten."
+"Beschreibe deine Arbeit in zwei oder drei Sätzen. Konkrete Details helfen "
+"am meisten."
 
 #: app/profile_guide.py:78
 msgid ""
@@ -118,8 +118,8 @@ msgstr ""
 
 #: app/profile_guide.py:79
 msgid ""
-"I build and maintain customer portals with Python and React. I also run a"
-" small team of two developers."
+"I build and maintain customer portals with Python and React. I also run a "
+"small team of two developers."
 msgstr ""
 "Ich entwickle und betreue Kundenportale mit Python und React. Außerdem "
 "leite ich ein kleines Team aus zwei Entwicklern."
@@ -172,9 +172,7 @@ msgstr "Ich erkläre Freiberuflern Steuerfristen in einfachem Deutsch."
 
 #: app/profile_guide.py:107
 msgid "I can review a landing page or a pitch deck for clarity."
-msgstr ""
-"Ich schaue mir eine Landingpage oder ein Pitch-Deck auf Verständlichkeit "
-"an."
+msgstr "Ich schaue mir eine Landingpage oder ein Pitch-Deck auf Verständlichkeit an."
 
 #: app/profile_guide.py:108
 msgid "I can introduce people to small-business owners in the Rhine-Main area."
@@ -231,8 +229,8 @@ msgstr "Über mich"
 
 #: app/profile_guide.py:145
 msgid ""
-"A few sentences about yourself. Optional, but it helps people get to know"
-" you."
+"A few sentences about yourself. Optional, but it helps people get to know "
+"you."
 msgstr ""
 "Ein paar Sätze über dich. Optional, aber so lernen dich andere besser "
 "kennen."
@@ -247,14 +245,12 @@ msgstr ""
 
 #: app/profile_guide.py:148
 msgid "Father of two, coffee lover, always reading something about economics."
-msgstr ""
-"Vater von zwei Kindern, Kaffeeliebhaber, liest immer etwas über "
-"Wirtschaft."
+msgstr "Vater von zwei Kindern, Kaffeeliebhaber, liest immer etwas über Wirtschaft."
 
 #: app/profile_guide.py:157
 msgid ""
-"A clear photo of your face helps people remember you. JPEG, PNG or WebP, "
-"up to 5 MB."
+"A clear photo of your face helps people remember you. JPEG, PNG or WebP, up"
+" to 5 MB."
 msgstr ""
 "Ein klares Foto deines Gesichts hilft, dass man sich an dich erinnert. "
 "JPEG, PNG oder WebP, bis 5 MB."
@@ -438,14 +434,15 @@ msgstr "Deutschland"
 #: app/jurisdictions/de/pack.py:10
 msgid "General information, not legal advice. Applies to German law only."
 msgstr ""
-"Allgemeine Informationen, keine Rechtsberatung. Gilt nur für das deutsche"
-" Recht."
+"Allgemeine Informationen, keine Rechtsberatung. Gilt nur für das deutsche "
+"Recht."
 
 #: app/modules/__init__.py:23 app/templates/admin/dashboard.html:12
 #: app/templates/admin/services.html:3 app/templates/admin/services.html:6
 #: app/templates/modules/service_detail.html:3
 #: app/templates/modules/services_list.html:3
 #: app/templates/modules/services_mine.html:3
+#: app/templates/modules/tools_index.html:3
 msgid "Services"
 msgstr "Dienstleistungen"
 
@@ -597,6 +594,30 @@ msgstr "Bitte schreibe dem Anbieter eine kurze Nachricht."
 msgid "Your request is sent to the provider."
 msgstr "Deine Anfrage ist an den Anbieter gesendet."
 
+#: app/modules/services/tools.py:27
+msgid "Please name your product."
+msgstr "Bitte gib deinem Produkt einen Namen."
+
+#: app/modules/services/tools.py:29
+msgid "Please describe the product in at least 40 characters."
+msgstr "Bitte beschreibe das Produkt mit mindestens 40 Zeichen."
+
+#: app/modules/services/tools.py:35
+msgid "Please enter a price in euros, for example 29,90."
+msgstr "Bitte gib einen Preis in Euro ein, zum Beispiel 29,90."
+
+#: app/modules/services/tools.py:38
+msgid "Price B needs price A."
+msgstr "Für Preis B brauchst du auch Preis A."
+
+#: app/modules/services/tools.py:52
+msgid ""
+"You have used all runs of this tool for this month. They renew at the start"
+" of next month."
+msgstr ""
+"Du hast alle Durchläufe dieses Werkzeugs für diesen Monat genutzt. Sie "
+"erneuern sich zu Beginn des nächsten Monats."
+
 #: app/modules/startups/__init__.py:25
 msgid "This startup is not open for interest right now."
 msgstr "Dieser Startup nimmt gerade kein Interesse entgegen."
@@ -614,17 +635,13 @@ msgid "You have already answered this interest."
 msgstr "Auf dieses Interesse hast du bereits geantwortet."
 
 #: app/modules/startups/__init__.py:80
-msgid ""
-"Your interest is sent. The founder decides whether to share contact "
-"details."
+msgid "Your interest is sent. The founder decides whether to share contact details."
 msgstr ""
-"Dein Interesse ist gesendet. Die Gründerin oder der Gründer entscheidet, "
-"ob Kontaktdaten geteilt werden."
+"Dein Interesse ist gesendet. Die Gründerin oder der Gründer entscheidet, ob"
+" Kontaktdaten geteilt werden."
 
 #: app/modules/startups/__init__.py:103
-msgid ""
-"Your startup is sent for review. We will let you know when it is "
-"published."
+msgid "Your startup is sent for review. We will let you know when it is published."
 msgstr ""
 "Dein Startup ist zur Prüfung eingereicht. Wir melden uns, sobald es "
 "veröffentlicht ist."
@@ -721,9 +738,7 @@ msgstr ""
 
 #: app/modules/travel/__init__.py:97
 msgid "You are booked. The organiser will contact you."
-msgstr ""
-"Du bist gebucht. Die Organisatorin oder der Organisator meldet sich bei "
-"dir."
+msgstr "Du bist gebucht. Die Organisatorin oder der Organisator meldet sich bei dir."
 
 #: app/modules/travel/__init__.py:111
 msgid "Your booking is cancelled."
@@ -736,8 +751,8 @@ msgstr "Deine Reise ist offen, damit andere mitfahren können."
 #: app/modules/travel/__init__.py:144
 msgid "Your offer is sent for review. We will publish it after the check."
 msgstr ""
-"Dein Angebot ist zur Prüfung eingereicht. Wir veröffentlichen es nach der"
-" Prüfung."
+"Dein Angebot ist zur Prüfung eingereicht. Wir veröffentlichen es nach der "
+"Prüfung."
 
 #: app/modules/travel/__init__.py:178
 msgid "The trip is cancelled."
@@ -778,11 +793,11 @@ msgstr "Erledigt"
 msgid "Closed"
 msgstr "Abgeschlossen"
 
-#: app/services/entitlements.py:31 app/services/entitlements.py:47
+#: app/services/entitlements.py:36 app/services/entitlements.py:52
 msgid "This area opens after your identity check."
 msgstr "Dieser Bereich öffnet sich nach deiner Identitätsprüfung."
 
-#: app/services/entitlements.py:50
+#: app/services/entitlements.py:55
 msgid "This section is not included in your plan."
 msgstr "Dieser Bereich ist in deinem Tarif nicht enthalten."
 
@@ -817,8 +832,8 @@ msgstr "Wir prüfen deine Verifizierung von Hand. Wir melden uns bei dir."
 #: app/services/verification.py:150
 msgid "Please try again and make sure your document is fully visible."
 msgstr ""
-"Bitte versuche es erneut und achte darauf, dass dein Dokument vollständig"
-" sichtbar ist."
+"Bitte versuche es erneut und achte darauf, dass dein Dokument vollständig "
+"sichtbar ist."
 
 #: app/services/verification.py:151
 msgid "The verification was cancelled. You can start it again."
@@ -828,12 +843,65 @@ msgstr "Die Prüfung wurde abgebrochen. Du kannst sie erneut starten."
 msgid "Too many attempts. Please contact support."
 msgstr "Zu viele Versuche. Bitte wende dich an den Support."
 
+#: app/services/tools/__init__.py:31
+msgid "SEO check"
+msgstr "SEO-Check"
+
+#: app/services/tools/__init__.py:31
+msgid "Checks a public page technically and by content and lists what to fix first."
+msgstr ""
+"Prüft eine öffentliche Seite technisch und inhaltlich und zeigt, was du "
+"zuerst verbessern solltest."
+
+#: app/services/tools/__init__.py:32
+msgid "Compliance check"
+msgstr "Compliance-Check"
+
+#: app/services/tools/__init__.py:33
+msgid ""
+"Looks for legal notice, privacy policy, cookie consent and trackers on your"
+" website."
+msgstr ""
+"Sucht auf deiner Website nach Impressum, Datenschutzerklärung, Cookie-"
+"Einwilligung und Trackern."
+
+#: app/services/tools/__init__.py:34
+msgid "Security check"
+msgstr "Sicherheits-Check"
+
+#: app/services/tools/__init__.py:35
+msgid ""
+"Passive check of encryption, security headers, cookies and e-mail "
+"protection of your domain."
+msgstr ""
+"Passive Prüfung von Verschlüsselung, Sicherheits-Headern, Cookies und E"
+"-Mail-Schutz deiner Domain."
+
+#: app/services/tools/__init__.py:36
+msgid "Law search"
+msgstr "Gesetzes-Suche"
+
+#: app/services/tools/__init__.py:37
+msgid ""
+"Finds German federal law provisions, quotes them verbatim and explains what"
+" they say."
+msgstr ""
+"Findet Vorschriften im deutschen Bundesrecht, zitiert sie wörtlich und "
+"erklärt, was sie bedeuten."
+
+#: app/services/tools/__init__.py:38
+msgid "Market panel"
+msgstr "Markt-Panel"
+
+#: app/services/tools/__init__.py:39
+msgid "Up to 100 fictional personas rate your product idea before you launch."
+msgstr "Bis zu 100 fiktive Personas bewerten deine Produktidee vor dem Start."
+
 #: app/templates/admin/dashboard.html:3 app/templates/auth/login.html:3
 #: app/templates/auth/register.html:3 app/templates/base.html:6
 #: app/templates/base.html:11 app/templates/base.html:42
 #: app/templates/member/dashboard.html:3
-#: app/templates/modules/auction_list.html:3
-#: app/templates/modules/profile.html:3
+#: app/templates/modules/auction_list.html:3 app/templates/modules/profile.html:3
 #: app/templates/modules/profile_directory.html:3
 #: app/templates/modules/profile_edit.html:3
 #: app/templates/modules/profile_intros.html:3
@@ -965,8 +1033,8 @@ msgstr "Embeddings"
 
 #: app/templates/admin/dashboard.html:44
 msgid ""
-"Models are set in the server settings. Changing them does not need a code"
-" change."
+"Models are set in the server settings. Changing them does not need a code "
+"change."
 msgstr ""
 "Die Modelle werden in den Servereinstellungen festgelegt. Ein Wechsel "
 "erfordert keine Codeänderung."
@@ -983,6 +1051,7 @@ msgstr "Titel"
 
 #: app/templates/admin/lots.html:20 app/templates/admin/service_form.html:16
 #: app/templates/modules/startups_form.html:23
+#: app/templates/modules/tool_form.html:60
 #: app/templates/modules/travel_form.html:47
 msgid "Description"
 msgstr "Beschreibung"
@@ -995,8 +1064,7 @@ msgstr "Modus"
 msgid "Highest bid wins (price rises)"
 msgstr "Höchstes Gebot gewinnt (Preis steigt)"
 
-#: app/templates/admin/lots.html:28
-#: app/templates/modules/auction_detail.html:11
+#: app/templates/admin/lots.html:28 app/templates/modules/auction_detail.html:11
 #: app/templates/modules/auction_list.html:17
 msgid "Price falls over time"
 msgstr "Preis fällt mit der Zeit"
@@ -1069,6 +1137,7 @@ msgstr "Neue Leistung"
 #: app/templates/admin/service_inquiries.html:7
 #: app/templates/modules/service_detail.html:38
 #: app/templates/modules/services_mine.html:7
+#: app/templates/modules/tools_index.html:8
 msgid "Back to services"
 msgstr "Zurück zu den Leistungen"
 
@@ -1104,8 +1173,7 @@ msgstr "Reihenfolge"
 msgid "Visible to members"
 msgstr "Für Mitglieder sichtbar"
 
-#: app/templates/admin/service_form.html:36
-#: app/templates/modules/profile.html:25
+#: app/templates/admin/service_form.html:36 app/templates/modules/profile.html:25
 #: app/templates/modules/profile_edit.html:44
 msgid "Save"
 msgstr "Speichern"
@@ -1268,8 +1336,8 @@ msgid ""
 "Creates an account without registration and without Stripe. Use it for "
 "demonstrations and invitations."
 msgstr ""
-"Legt ein Konto ohne Registrierung und ohne Stripe an. Für Demonstrationen"
-" und Einladungen."
+"Legt ein Konto ohne Registrierung und ohne Stripe an. Für Demonstrationen "
+"und Einladungen."
 
 #: app/templates/admin/user_new.html:14 app/templates/admin/users.html:20
 #: app/templates/auth/login.html:14 app/templates/auth/register.html:24
@@ -1362,8 +1430,8 @@ msgstr "Bestätigungen"
 
 #: app/templates/auth/register.html:52
 msgid ""
-"I have read the privacy notice and agree that my data is processed to run"
-" my account."
+"I have read the privacy notice and agree that my data is processed to run "
+"my account."
 msgstr ""
 "Ich habe die Datenschutzhinweise gelesen und stimme zu, dass meine Daten "
 "für mein Konto verarbeitet werden."
@@ -1430,16 +1498,17 @@ msgid "We could not confirm your identity."
 msgstr "Wir konnten deine Identität nicht bestätigen."
 
 #: app/templates/member/dashboard.html:35
+#: app/templates/modules/tool_report_panel.html:24
 msgid "Try again"
 msgstr "Erneut versuchen"
 
 #: app/templates/member/dashboard.html:40
 msgid ""
-"To use the club, we first check your identity with Stripe. It takes a few"
-" minutes."
+"To use the club, we first check your identity with Stripe. It takes a few "
+"minutes."
 msgstr ""
-"Um den Club zu nutzen, prüfen wir zuerst deine Identität über Stripe. Das"
-" dauert ein paar Minuten."
+"Um den Club zu nutzen, prüfen wir zuerst deine Identität über Stripe. Das "
+"dauert ein paar Minuten."
 
 #: app/templates/member/dashboard.html:44
 msgid "Start identity check"
@@ -1490,8 +1559,8 @@ msgid ""
 "This deletes your account, your consent history and your identity check "
 "data at Stripe. This cannot be undone."
 msgstr ""
-"Das löscht dein Konto, deinen Einwilligungsverlauf und deine Prüfdaten "
-"bei Stripe. Das lässt sich nicht rückgängig machen."
+"Das löscht dein Konto, deinen Einwilligungsverlauf und deine Prüfdaten bei "
+"Stripe. Das lässt sich nicht rückgängig machen."
 
 #: app/templates/member/dashboard.html:82
 msgid "Confirm with your password"
@@ -1555,9 +1624,7 @@ msgid "Back to all lots"
 msgstr "Zurück zu allen Losen"
 
 #: app/templates/modules/auction_list.html:7
-msgid ""
-"Bids are placed in the lot. Payments are not yet processed in this "
-"version."
+msgid "Bids are placed in the lot. Payments are not yet processed in this version."
 msgstr ""
 "Gebote werden im Los abgegeben. Zahlungen werden in dieser Version noch "
 "nicht abgewickelt."
@@ -1567,6 +1634,8 @@ msgid "There are no lots yet."
 msgstr "Noch keine Lose."
 
 #: app/templates/modules/auction_list.html:18
+#: app/templates/modules/tool_report_panel.html:52
+#: app/templates/modules/tool_report_panel.html:66
 msgid "Price"
 msgstr "Preis"
 
@@ -1592,8 +1661,8 @@ msgstr "Über dich"
 
 #: app/templates/modules/profile_directory.html:7
 msgid ""
-"Members who chose to appear in the directory. Only verified members can "
-"see this page."
+"Members who chose to appear in the directory. Only verified members can see"
+" this page."
 msgstr ""
 "Mitglieder, die im Verzeichnis erscheinen. Diese Seite sehen nur "
 "verifizierte Mitglieder."
@@ -1608,8 +1677,8 @@ msgstr "Noch keine Mitglieder im Verzeichnis."
 
 #: app/templates/modules/profile_edit.html:7
 msgid ""
-"The fuller your profile, the better our matching can suggest people who "
-"fit you. Each field has a short hint and examples."
+"The fuller your profile, the better our matching can suggest people who fit"
+" you. Each field has a short hint and examples."
 msgstr ""
 "Je vollständiger dein Profil, desto besser kann das Matching Menschen "
 "vorschlagen, die zu dir passen. Jedes Feld hat einen kurzen Hinweis und "
@@ -1723,11 +1792,11 @@ msgstr "Matches"
 
 #: app/templates/modules/profile_matches.html:10
 msgid ""
-"Matching works once your profile says what you can offer and what you are"
-" looking for."
+"Matching works once your profile says what you can offer and what you are "
+"looking for."
 msgstr ""
-"Matching funktioniert, sobald dein Profil sagt, was du anbietest und was "
-"du suchst."
+"Matching funktioniert, sobald dein Profil sagt, was du anbietest und was du"
+" suchst."
 
 #: app/templates/modules/profile_matches.html:12
 msgid "Please fill in:"
@@ -1736,8 +1805,8 @@ msgstr "Bitte fülle außerdem aus:"
 #: app/templates/modules/profile_matches.html:16
 msgid "You also need to allow matching in your profile. It is off by default."
 msgstr ""
-"Außerdem musst du das Matching in deinem Profil erlauben. Standardmäßig "
-"ist es aus."
+"Außerdem musst du das Matching in deinem Profil erlauben. Standardmäßig ist"
+" es aus."
 
 #: app/templates/modules/profile_matches.html:17
 #: app/templates/modules/profile_privacy.html:43
@@ -1781,14 +1850,12 @@ msgstr "Kontakt anfragen"
 
 #: app/templates/modules/profile_matches.html:54
 msgid "No matches yet. New members appear here as they join."
-msgstr ""
-"Noch keine Matches. Neue Mitglieder erscheinen hier, sobald sie "
-"dazukommen."
+msgstr "Noch keine Matches. Neue Mitglieder erscheinen hier, sobald sie dazukommen."
 
 #: app/templates/modules/profile_privacy.html:7
 msgid ""
-"You decide what other members can see. Both choices are off by default "
-"and you can change them at any time."
+"You decide what other members can see. Both choices are off by default and "
+"you can change them at any time."
 msgstr ""
 "Du entscheidest, was andere Mitglieder sehen. Beide Auswahlen sind "
 "standardmäßig aus, und du kannst sie jederzeit ändern."
@@ -1799,15 +1866,15 @@ msgstr "Was veröffentlicht wird"
 
 #: app/templates/modules/profile_privacy.html:11
 msgid ""
-"If you agree to the member directory, other verified members can see: "
-"your first name, your headline, company, industry, city, the texts of "
-"your profile and your photo. Your e-mail address is never shown in the "
+"If you agree to the member directory, other verified members can see: your "
+"first name, your headline, company, industry, city, the texts of your "
+"profile and your photo. Your e-mail address is never shown in the "
 "directory."
 msgstr ""
 "Wenn du dem Mitgliederverzeichnis zustimmst, sehen andere verifizierte "
 "Mitglieder: deinen Vornamen, deine Überschrift, Unternehmen, Branche, "
-"Stadt, die Texte deines Profils und dein Foto. Deine E-Mail-Adresse wird "
-"im Verzeichnis nie angezeigt."
+"Stadt, die Texte deines Profils und dein Foto. Deine E-Mail-Adresse wird im"
+" Verzeichnis nie angezeigt."
 
 #: app/templates/modules/profile_privacy.html:19
 msgid ""
@@ -1825,11 +1892,11 @@ msgstr ""
 
 #: app/templates/modules/profile_privacy.html:27
 msgid ""
-"Contact details are never published. Other members can reach you only "
-"after you accept their request."
+"Contact details are never published. Other members can reach you only after"
+" you accept their request."
 msgstr ""
-"Kontaktdaten werden nie veröffentlicht. Andere Mitglieder können dich "
-"erst erreichen, nachdem du ihre Anfrage angenommen hast."
+"Kontaktdaten werden nie veröffentlicht. Andere Mitglieder können dich erst "
+"erreichen, nachdem du ihre Anfrage angenommen hast."
 
 #: app/templates/modules/profile_privacy.html:29
 msgid "Save my choices"
@@ -1874,8 +1941,8 @@ msgstr "Anfrage senden"
 
 #: app/templates/modules/service_detail.html:23
 msgid ""
-"The provider receives your message. Your contact details are sent only if"
-" you tick the box below."
+"The provider receives your message. Your contact details are sent only if "
+"you tick the box below."
 msgstr ""
 "Der Anbieter erhält deine Nachricht. Deine Kontaktdaten werden nur "
 "gesendet, wenn du das Kästchen unten ankreuzt."
@@ -1901,6 +1968,11 @@ msgstr "Leistungen aus dem Club-Netzwerk"
 #: app/templates/modules/services_list.html:7
 msgid "Checked partners of the community, with conditions for members."
 msgstr "Geprüfte Partner der Gemeinschaft, mit Konditionen für Mitglieder."
+
+#: app/templates/modules/services_list.html:8
+#: app/templates/modules/tools_index.html:6
+msgid "Built-in tools"
+msgstr "Eingebaute Werkzeuge"
 
 #: app/templates/modules/services_list.html:8
 #: app/templates/modules/services_mine.html:3
@@ -1944,8 +2016,8 @@ msgstr "Kontakt"
 #: app/templates/modules/startups_detail.html:29
 msgid "The founder has accepted your interest. You can reach them at:"
 msgstr ""
-"Die Gründerin oder der Gründer hat dein Interesse angenommen. Du "
-"erreichst sie oder ihn unter:"
+"Die Gründerin oder der Gründer hat dein Interesse angenommen. Du erreichst "
+"sie oder ihn unter:"
 
 #: app/templates/modules/startups_detail.html:36
 msgid "Showing interest is included in a higher plan."
@@ -1970,8 +2042,8 @@ msgstr "Deine Nachricht an die Gründerin oder den Gründer"
 #: app/templates/modules/startups_detail.html:49
 msgid "Your contact details are not shared unless the founder accepts."
 msgstr ""
-"Deine Kontaktdaten werden nur geteilt, wenn die Gründerin oder der "
-"Gründer zustimmt."
+"Deine Kontaktdaten werden nur geteilt, wenn die Gründerin oder der Gründer "
+"zustimmt."
 
 #: app/templates/modules/startups_detail.html:51
 msgid "Show interest"
@@ -2038,8 +2110,8 @@ msgid ""
 "Startups from our members. Each one is checked by our team before it "
 "appears here."
 msgstr ""
-"Startups unserer Mitglieder. Jedes wird von unserem Team geprüft, bevor "
-"es hier erscheint."
+"Startups unserer Mitglieder. Jedes wird von unserem Team geprüft, bevor es "
+"hier erscheint."
 
 #: app/templates/modules/startups_list.html:13
 msgid "All categories"
@@ -2102,6 +2174,426 @@ msgstr ""
 "Dieser Bereich wird gerade vorbereitet. Sobald er öffnet, findest du ihn "
 "hier."
 
+#: app/templates/modules/tool_form.html:3
+#: app/templates/modules/tools_index.html:3
+msgid "Tools"
+msgstr "Werkzeuge"
+
+#: app/templates/modules/tool_form.html:10
+#: app/templates/modules/tool_report_findings.html:8
+#: app/templates/modules/tool_report_laws.html:8
+#: app/templates/modules/tool_report_panel.html:9
+msgid "All tools"
+msgstr "Alle Werkzeuge"
+
+#: app/templates/modules/tool_form.html:11
+#: app/templates/modules/tools_index.html:18
+#, python-format
+msgid "%(left)s of %(limit)s runs left this month"
+msgstr "Noch %(left)s von %(limit)s Durchläufen in diesem Monat"
+
+#: app/templates/modules/tool_form.html:15
+msgid ""
+"The market panel is synthetic. The personas are fictional people invented "
+"by an AI. The answers give hints and hypotheses for price, message and "
+"target group. They do not replace asking real customers and do not predict "
+"sales."
+msgstr ""
+"Das Markt-Panel ist synthetisch. Die Personas sind von einer KI erfundene, "
+"fiktive Menschen. Die Antworten liefern Hinweise und Hypothesen zu Preis, "
+"Botschaft und Zielgruppe. Sie ersetzen keine Befragung echter Kundinnen und"
+" Kunden und sagen keine Verkäufe voraus."
+
+#: app/templates/modules/tool_form.html:17
+msgid ""
+"This is not legal advice. The tool quotes the text of federal laws and "
+"explains what the text says. It never assesses your individual case. "
+"Replies are written by an AI. For a binding opinion ask a lawyer."
+msgstr ""
+"Das ist keine Rechtsberatung. Das Werkzeug zitiert den Text von "
+"Bundesgesetzen und erklärt, was im Text steht. Es bewertet nie deinen "
+"Einzelfall. Die Erläuterungen schreibt eine KI. Für eine verbindliche "
+"Einschätzung frag eine Rechtsanwältin oder einen Rechtsanwalt."
+
+#: app/templates/modules/tool_form.html:19
+msgid ""
+"Passive check only: the tool looks at what any visitor or mail server can "
+"see. No port scan and no attacks. This is not a penetration test."
+msgstr ""
+"Nur eine passive Prüfung: Das Werkzeug sieht sich an, was jeder Besucher "
+"und jeder Mailserver sehen kann. Kein Portscan und keine Angriffe. Das ist "
+"kein Penetrationstest."
+
+#: app/templates/modules/tool_form.html:21
+msgid ""
+"Only the public page you enter and a few standard files are fetched. It is "
+"an automatic snapshot, not a guarantee and not legal advice."
+msgstr ""
+"Abgerufen werden nur die öffentliche Seite, die du eingibst, und einige "
+"Standarddateien. Es ist eine automatische Momentaufnahme, keine Garantie "
+"und keine Rechtsberatung."
+
+#: app/templates/modules/tool_form.html:29
+msgid "Your domain"
+msgstr "Deine Domain"
+
+#: app/templates/modules/tool_form.html:29
+msgid "Address of your website"
+msgstr "Adresse deiner Website"
+
+#: app/templates/modules/tool_form.html:35
+msgid "Search terms (optional, up to five, separated by commas)"
+msgstr "Suchbegriffe (optional, bis zu fünf, durch Kommas getrennt)"
+
+#: app/templates/modules/tool_form.html:42
+msgid "Your question or keyword"
+msgstr "Deine Frage oder dein Stichwort"
+
+#: app/templates/modules/tool_form.html:46
+msgid "Area of law (optional)"
+msgstr "Rechtsgebiet (optional)"
+
+#: app/templates/modules/tool_form.html:48
+msgid "All areas"
+msgstr "Alle Gebiete"
+
+#: app/templates/modules/tool_form.html:55
+msgid "Product name"
+msgstr "Name des Produkts"
+
+#: app/templates/modules/tool_form.html:62
+msgid ""
+"What is it, for whom, what can it do, what is special? The more concrete, "
+"the better (at least 40 characters)."
+msgstr ""
+"Was ist es, für wen, was kann es, was ist besonders? Je konkreter, desto "
+"besser (mindestens 40 Zeichen)."
+
+#: app/templates/modules/tool_form.html:66
+msgid "Price A in euros (optional)"
+msgstr "Preis A in Euro (optional)"
+
+#: app/templates/modules/tool_form.html:71
+msgid "Price B in euros (optional, for an A/B comparison)"
+msgstr "Preis B in Euro (optional, für einen A/B-Vergleich)"
+
+#: app/templates/modules/tool_form.html:76
+msgid "Billing"
+msgstr "Abrechnung"
+
+#: app/templates/modules/tool_form.html:78
+msgid "one-off"
+msgstr "einmalig"
+
+#: app/templates/modules/tool_form.html:79
+msgid "per month"
+msgstr "pro Monat"
+
+#: app/templates/modules/tool_form.html:80
+msgid "per year"
+msgstr "pro Jahr"
+
+#: app/templates/modules/tool_form.html:84
+msgid "Target group"
+msgstr "Zielgruppe"
+
+#: app/templates/modules/tool_form.html:86
+msgid "Private persons and business decision makers"
+msgstr "Privatpersonen und Geschäftsentscheider"
+
+#: app/templates/modules/tool_form.html:87
+msgid "Private persons only"
+msgstr "Nur Privatpersonen"
+
+#: app/templates/modules/tool_form.html:88
+msgid "Business decision makers only"
+msgstr "Nur Geschäftsentscheider"
+
+#: app/templates/modules/tool_form.html:92
+msgid "Region"
+msgstr "Region"
+
+#: app/templates/modules/tool_form.html:94
+msgid "All of Germany"
+msgstr "Deutschlandweit"
+
+#: app/templates/modules/tool_form.html:95
+msgid "Rhine-Main area"
+msgstr "Rhein-Main-Gebiet"
+
+#: app/templates/modules/tool_form.html:99
+msgid "Number of personas"
+msgstr "Anzahl der Personas"
+
+#: app/templates/modules/tool_form.html:106
+msgid "Run"
+msgstr "Starten"
+
+#: app/templates/modules/tool_report_findings.html:3
+#: app/templates/modules/tool_report_laws.html:3
+#: app/templates/modules/tool_report_panel.html:3
+msgid "Report"
+msgstr "Bericht"
+
+#: app/templates/modules/tool_report_findings.html:9
+msgid "Run again"
+msgstr "Erneut ausführen"
+
+#: app/templates/modules/tool_report_findings.html:14
+msgid "This report was created by fixed rules without an AI summary."
+msgstr "Dieser Bericht entstand nach festen Regeln, ohne KI-Zusammenfassung."
+
+#: app/templates/modules/tool_report_findings.html:19
+msgid "What to do first"
+msgstr "Was du zuerst tun solltest"
+
+#: app/templates/modules/tool_report_findings.html:25
+#: app/templates/modules/tool_report_panel.html:103
+msgid "How:"
+msgstr "So geht's:"
+
+#: app/templates/modules/tool_report_findings.html:26
+msgid "Effort"
+msgstr "Aufwand"
+
+#: app/templates/modules/tool_report_findings.html:26
+msgid "Impact"
+msgstr "Wirkung"
+
+#: app/templates/modules/tool_report_findings.html:36
+msgid "All findings"
+msgstr "Alle Ergebnisse"
+
+#: app/templates/modules/tool_report_findings.html:41
+msgid "OK"
+msgstr "In Ordnung"
+
+#: app/templates/modules/tool_report_findings.html:41
+msgid "Check"
+msgstr "Prüfen"
+
+#: app/templates/modules/tool_report_findings.html:41
+msgid "Problem"
+msgstr "Problem"
+
+#: app/templates/modules/tool_report_findings.html:41
+msgid "Note"
+msgstr "Hinweis"
+
+#: app/templates/modules/tool_report_findings.html:47
+msgid ""
+"A snapshot of the checked page, created automatically. Not legal advice and"
+" no guarantee for rankings."
+msgstr ""
+"Eine automatisch erstellte Momentaufnahme der geprüften Seite. Keine "
+"Rechtsberatung und keine Garantie für Platzierungen."
+
+#: app/templates/modules/tool_report_laws.html:9
+msgid "New search"
+msgstr "Neue Suche"
+
+#: app/templates/modules/tool_report_laws.html:12
+msgid "Your question"
+msgstr "Deine Frage"
+
+#: app/templates/modules/tool_report_laws.html:14
+msgid ""
+"This is not legal advice. The explanations were written by an AI and only "
+"describe what the quoted text says. They do not assess your case."
+msgstr ""
+"Das ist keine Rechtsberatung. Die Erläuterungen schreibt eine KI; sie "
+"beschreiben nur, was der zitierte Text sagt, und bewerten deinen Fall "
+"nicht."
+
+#: app/templates/modules/tool_report_laws.html:27
+msgid "Official source"
+msgstr "Amtliche Quelle"
+
+#: app/templates/modules/tool_report_laws.html:29
+msgid "What the text says"
+msgstr "Was der Text sagt"
+
+#: app/templates/modules/tool_report_laws.html:36
+msgid ""
+"Further results were found but do not match your question closely and are "
+"hidden."
+msgstr ""
+"Weitere Treffer wurden gefunden, passen aber nicht genau zu deiner Frage "
+"und sind ausgeblendet."
+
+#: app/templates/modules/tool_report_panel.html:11
+msgid ""
+"Synthetic result: the personas are fictional people invented by an AI. Read"
+" the numbers as hints and hypotheses to check with real customers. They do "
+"not predict sales."
+msgstr ""
+"Synthetisches Ergebnis: Die Personas sind von einer KI erfundene, fiktive "
+"Menschen. Lies die Zahlen als Hinweise und Hypothesen, die du mit echten "
+"Kundinnen und Kunden prüfen solltest. Sie sagen keine Verkäufe voraus."
+
+#: app/templates/modules/tool_report_panel.html:16
+msgid "The panel is running"
+msgstr "Das Panel läuft"
+
+#: app/templates/modules/tool_report_panel.html:17
+#, python-format
+msgid "%(done)s of %(total)s personas have answered. This page refreshes itself."
+msgstr ""
+"%(done)s von %(total)s Personas haben geantwortet. Diese Seite aktualisiert"
+" sich selbst."
+
+#: app/templates/modules/tool_report_panel.html:22
+msgid "The run failed"
+msgstr "Der Lauf ist fehlgeschlagen"
+
+#: app/templates/modules/tool_report_panel.html:29
+msgid "Summary"
+msgstr "Zusammenfassung"
+
+#: app/templates/modules/tool_report_panel.html:32
+#, python-format
+msgid "Answers used: %(n)s of %(total)s"
+msgstr "Verwertbare Antworten: %(n)s von %(total)s"
+
+#: app/templates/modules/tool_report_panel.html:33
+#, python-format
+msgid "Purchase intent (now or after a trial): %(p)s %%"
+msgstr "Kaufabsicht (sofort oder nach einem Test): %(p)s %%"
+
+#: app/templates/modules/tool_report_panel.html:34
+#, python-format
+msgid "Average purchase probability within 3 months: %(p)s %%"
+msgstr "Durchschnittliche Kaufwahrscheinlichkeit innerhalb von 3 Monaten: %(p)s %%"
+
+#: app/templates/modules/tool_report_panel.html:35
+#, python-format
+msgid "Average relevance (1 to 10): %(p)s"
+msgstr "Durchschnittliche Relevanz (1 bis 10): %(p)s"
+
+#: app/templates/modules/tool_report_panel.html:36
+#, python-format
+msgid "Median price limit: %(p)s €"
+msgstr "Mittlere Preisgrenze: %(p)s €"
+
+#: app/templates/modules/tool_report_panel.html:38
+#, python-format
+msgid ""
+"Core group (relevance 6 or more, %(n)s personas): intent %(i)s %%, "
+"probability %(p)s %%"
+msgstr ""
+"Kerngruppe (Relevanz 6 oder höher, %(n)s Personas): Kaufabsicht %(i)s %%, "
+"Wahrscheinlichkeit %(p)s %%"
+
+#: app/templates/modules/tool_report_panel.html:42
+msgid "Answers by intent"
+msgstr "Antworten nach Kaufabsicht"
+
+#: app/templates/modules/tool_report_panel.html:50
+msgid "Price curve"
+msgstr "Preiskurve"
+
+#: app/templates/modules/tool_report_panel.html:52
+msgid "Expected share of buyers"
+msgstr "Erwarteter Käuferanteil"
+
+#: app/templates/modules/tool_report_panel.html:52
+msgid "Revenue index"
+msgstr "Umsatzindex"
+
+#: app/templates/modules/tool_report_panel.html:57
+#, python-format
+msgid "Highest revenue index at %(p)s €."
+msgstr "Höchster Umsatzindex bei %(p)s €."
+
+#: app/templates/modules/tool_report_panel.html:64
+msgid "A/B price comparison"
+msgstr "A/B-Preisvergleich"
+
+#: app/templates/modules/tool_report_panel.html:66
+#: app/templates/modules/tool_report_panel.html:80
+msgid "Personas"
+msgstr "Personas"
+
+#: app/templates/modules/tool_report_panel.html:66
+#: app/templates/modules/tool_report_panel.html:80
+msgid "Intent"
+msgstr "Kaufabsicht"
+
+#: app/templates/modules/tool_report_panel.html:66
+#: app/templates/modules/tool_report_panel.html:80
+msgid "Probability"
+msgstr "Wahrscheinlichkeit"
+
+#: app/templates/modules/tool_report_panel.html:70
+#, python-format
+msgid ""
+"p-value of the difference in intent: %(p)s. With small groups a small "
+"difference is usually chance."
+msgstr ""
+"p-Wert des Unterschieds in der Kaufabsicht: %(p)s. Bei kleinen Gruppen ist "
+"ein kleiner Unterschied meist Zufall."
+
+#: app/templates/modules/tool_report_panel.html:76
+msgid "Target groups"
+msgstr "Zielgruppen"
+
+#: app/templates/modules/tool_report_panel.html:88
+msgid "Main concerns"
+msgstr "Hauptbedenken"
+
+#: app/templates/modules/tool_report_panel.html:88
+msgid "Main benefits"
+msgstr "Hauptnutzen"
+
+#: app/templates/modules/tool_report_panel.html:88
+msgid "What would have to change"
+msgstr "Was sich ändern müsste"
+
+#: app/templates/modules/tool_report_panel.html:101
+msgid "Recommendations"
+msgstr "Empfehlungen"
+
+#: app/templates/modules/tool_report_panel.html:110
+msgid "Example voices"
+msgstr "Beispielstimmen"
+
+#: app/templates/modules/tool_report_panel.html:111
+msgid "Most likely buyers"
+msgstr "Wahrscheinlichste Käufer"
+
+#: app/templates/modules/tool_report_panel.html:111
+msgid "Least likely buyers"
+msgstr "Unwahrscheinlichste Käufer"
+
+#: app/templates/modules/tools_index.html:7
+msgid ""
+"Quick checks and research tools that run on the platform. The results are "
+"hints, not legal or professional advice."
+msgstr ""
+"Schnelle Prüfungen und Recherche-Werkzeuge direkt auf der Plattform. Die "
+"Ergebnisse sind Hinweise, keine Rechts- oder Fachberatung."
+
+#: app/templates/modules/tools_index.html:19
+#: app/templates/modules/travel_mine.html:20
+msgid "Open"
+msgstr "Öffnen"
+
+#: app/templates/modules/tools_index.html:21
+msgid "Not included in your plan."
+msgstr "In deinem Tarif nicht enthalten."
+
+#: app/templates/modules/tools_index.html:30
+msgid "My recent runs"
+msgstr "Meine letzten Durchläufe"
+
+#: app/templates/modules/tools_index.html:34
+msgid "running"
+msgstr "läuft"
+
+#: app/templates/modules/tools_index.html:34
+msgid "failed"
+msgstr "fehlgeschlagen"
+
 #: app/templates/modules/travel_detail.html:9
 #: app/templates/modules/travel_list.html:21
 #: app/templates/modules/travel_mine.html:18
@@ -2156,8 +2648,8 @@ msgstr "Plätze"
 
 #: app/templates/modules/travel_detail.html:48
 msgid ""
-"Payment is arranged directly with the organiser. The club does not handle"
-" money yet."
+"Payment is arranged directly with the organiser. The club does not handle "
+"money yet."
 msgstr ""
 "Die Zahlung wird direkt mit der Organisatorin oder dem Organisator "
 "vereinbart. Der Club wickelt Geld noch nicht ab."
@@ -2224,8 +2716,8 @@ msgstr "Reise öffnen"
 
 #: app/templates/modules/travel_list.html:7
 msgid ""
-"Shared trips of members and offers from operators and agents. Everyone "
-"can read them; booking depends on your plan."
+"Shared trips of members and offers from operators and agents. Everyone can "
+"read them; booking depends on your plan."
 msgstr ""
 "Gemeinsame Reisen der Mitglieder und Angebote von Veranstalterinnen, "
 "Veranstaltern und Agenturen. Alle können sie lesen; gebucht wird je nach "
@@ -2256,10 +2748,6 @@ msgstr "Es sind noch keine Reisen geplant."
 #: app/templates/modules/travel_mine.html:13
 msgid "Trips I organise"
 msgstr "Reisen, die ich organisiere"
-
-#: app/templates/modules/travel_mine.html:20
-msgid "Open"
-msgstr "Offen"
 
 #: app/templates/modules/travel_mine.html:22
 msgid "Cancelled"
@@ -2333,8 +2821,8 @@ msgstr "Identität bestätigen"
 
 #: app/templates/public/index.html:43
 msgid ""
-"You confirm your identity with Stripe. Your ID and selfie stay with "
-"Stripe. The club only receives the result."
+"You confirm your identity with Stripe. Your ID and selfie stay with Stripe."
+" The club only receives the result."
 msgstr ""
 "Du bestätigst deine Identität bei Stripe. Ausweis und Selfie bleiben bei "
 "Stripe. Der Club erhält nur das Ergebnis."
@@ -2348,8 +2836,8 @@ msgid ""
 "Write what you do, what you need and how you can help others. Each field "
 "has examples."
 msgstr ""
-"Schreibe, was du tust, was du brauchst und wobei du helfen kannst. Zu "
-"jedem Feld gibt es Beispiele."
+"Schreibe, was du tust, was du brauchst und wobei du helfen kannst. Zu jedem"
+" Feld gibt es Beispiele."
 
 #: app/templates/public/index.html:52
 msgid "Find matches"
@@ -2357,20 +2845,18 @@ msgstr "Passende Menschen finden"
 
 #: app/templates/public/index.html:53
 msgid ""
-"Matching compares what you need with what others offer. It works only for"
-" members who agreed to it."
+"Matching compares what you need with what others offer. It works only for "
+"members who agreed to it."
 msgstr ""
-"Das Matching vergleicht, was du brauchst, mit dem, was andere anbieten. "
-"Es läuft nur für Mitglieder, die zugestimmt haben."
+"Das Matching vergleicht, was du brauchst, mit dem, was andere anbieten. Es "
+"läuft nur für Mitglieder, die zugestimmt haben."
 
 #: app/templates/public/index.html:57
 msgid "Get in touch"
 msgstr "In Kontakt kommen"
 
 #: app/templates/public/index.html:58
-msgid ""
-"You send a request. Contact details are shared only after both sides "
-"agree."
+msgid "You send a request. Contact details are shared only after both sides agree."
 msgstr ""
 "Du schickst eine Anfrage. Kontaktdaten werden erst geteilt, wenn beide "
 "zustimmen."
@@ -2384,27 +2870,25 @@ msgid ""
 "Nothing is published without your choice. The directory and matching are "
 "separate decisions, and both are off until you make them."
 msgstr ""
-"Nichts wird ohne deine Wahl veröffentlicht. Verzeichnis und Matching sind"
-" getrennte Entscheidungen, und beide sind aus, bis du dich entscheidest."
+"Nichts wird ohne deine Wahl veröffentlicht. Verzeichnis und Matching sind "
+"getrennte Entscheidungen, und beide sind aus, bis du dich entscheidest."
 
 #: app/templates/public/index.html:67
 msgid ""
-"We do not store identity documents or dates of birth. The check runs with"
-" Stripe."
+"We do not store identity documents or dates of birth. The check runs with "
+"Stripe."
 msgstr ""
 "Wir speichern keine Ausweisdokumente und keine Geburtsdaten. Die Prüfung "
 "läuft bei Stripe."
 
 #: app/templates/public/index.html:68
 msgid "Your e-mail address is shown only to members whose request you accepted."
-msgstr ""
-"Deine E-Mail-Adresse sehen nur Mitglieder, deren Anfrage du angenommen "
-"hast."
+msgstr "Deine E-Mail-Adresse sehen nur Mitglieder, deren Anfrage du angenommen hast."
 
 #: app/templates/public/index.html:69
 msgid ""
-"You can change your decisions at any time and delete your account with "
-"all your data."
+"You can change your decisions at any time and delete your account with all "
+"your data."
 msgstr ""
 "Du kannst deine Entscheidungen jederzeit ändern und dein Konto mit allen "
 "Daten löschen."
@@ -2423,8 +2907,8 @@ msgstr "Gast"
 
 #: app/templates/public/index.html:80
 msgid ""
-"Free. Write your profile, read the member directory, see suggested "
-"matches and ask for contact."
+"Free. Write your profile, read the member directory, see suggested matches "
+"and ask for contact."
 msgstr ""
 "Kostenlos. Profil schreiben, Verzeichnis lesen, Vorschläge sehen und "
 "Kontakt anfragen."
@@ -2467,8 +2951,8 @@ msgstr "Warum brauche ich eine Identitätsprüfung?"
 
 #: app/templates/public/index.html:101
 msgid ""
-"So that only real people aged 18 and over are in the club. Stripe runs "
-"the check. We only receive the result."
+"So that only real people aged 18 and over are in the club. Stripe runs the "
+"check. We only receive the result."
 msgstr ""
 "Damit im Club nur echte Menschen ab 18 Jahren sind. Die Prüfung macht "
 "Stripe. Wir erhalten nur das Ergebnis."
@@ -2479,8 +2963,8 @@ msgstr "Wer sieht mein Profil?"
 
 #: app/templates/public/index.html:105
 msgid ""
-"Only verified members, and only if you agreed that your profile appears "
-"in the directory."
+"Only verified members, and only if you agreed that your profile appears in "
+"the directory."
 msgstr ""
 "Nur verifizierte Mitglieder, und nur wenn du zugestimmt hast, dass dein "
 "Profil im Verzeichnis erscheint."
@@ -2492,8 +2976,8 @@ msgstr "Wie funktioniert das KI-Matching?"
 #: app/templates/public/index.html:109
 msgid ""
 "It compares what you need with what others offer. The suggestions are "
-"hints, not guarantees. Your texts go to AI services only if you agreed to"
-" matching."
+"hints, not guarantees. Your texts go to AI services only if you agreed to "
+"matching."
 msgstr ""
 "Es vergleicht, was du brauchst, mit dem, was andere anbieten. Die "
 "Vorschläge sind Hinweise, keine Garantien. Deine Texte gehen nur an KI-"
@@ -2508,8 +2992,8 @@ msgid ""
 "At the moment the club does not take money. Payments between members are "
 "arranged directly."
 msgstr ""
-"Derzeit nimmt der Club kein Geld entgegen. Zahlungen zwischen Mitgliedern"
-" werden direkt vereinbart."
+"Derzeit nimmt der Club kein Geld entgegen. Zahlungen zwischen Mitgliedern "
+"werden direkt vereinbart."
 
 #: app/templates/public/index.html:118
 msgid "Ready to start?"

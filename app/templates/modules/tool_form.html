@@ -1,0 +1,109 @@
+{% extends "base.html" %}
+
+{% block title %}{{ spec.title }} · {{ _("Tools") }}{% endblock %}
+
+{% macro err(name) %}{% if errors.get(name) %}<p class="field-error">{{ errors[name] }}</p>{% endif %}{% endmacro %}
+
+{% block content %}
+<h1>{{ spec.title }}</h1>
+<p class="lead">{{ spec.summary }}</p>
+<p><a href="{{ url_for('services.tools_index') }}">{{ _("All tools") }}</a>
+  · <span class="small muted">{{ _("%(left)s of %(limit)s runs left this month", left=state.left, limit=state.limit) }}</span></p>
+
+<section class="card">
+{% if spec.kind == 'panel' %}
+  <p class="notice">{{ _("The market panel is synthetic. The personas are fictional people invented by an AI. The answers give hints and hypotheses for price, message and target group. They do not replace asking real customers and do not predict sales.") }}</p>
+{% elif spec.kind == 'laws' %}
+  <p class="notice">{{ _("This is not legal advice. The tool quotes the text of federal laws and explains what the text says. It never assesses your individual case. Replies are written by an AI. For a binding opinion ask a lawyer.") }}</p>
+{% elif spec.kind == 'domain' %}
+  <p class="notice">{{ _("Passive check only: the tool looks at what any visitor or mail server can see. No port scan and no attacks. This is not a penetration test.") }}</p>
+{% else %}
+  <p class="notice">{{ _("Only the public page you enter and a few standard files are fetched. It is an automatic snapshot, not a guarantee and not legal advice.") }}</p>
+{% endif %}
+
+<form method="post" class="form">
+  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+  {% if spec.kind in ('site', 'domain') %}
+    <div class="field">
+      <label for="target">{% if spec.kind == 'domain' %}{{ _("Your domain") }}{% else %}{{ _("Address of your website") }}{% endif %}</label>
+      <input id="target" name="target" type="text" maxlength="500" required value="{{ form.get('target', '') }}"
+             placeholder="{% if spec.kind == 'domain' %}beispiel.de{% else %}https://www.beispiel.de{% endif %}">
+    </div>
+    {% if spec.key == 'seo' %}
+    <div class="field">
+      <label for="keywords">{{ _("Search terms (optional, up to five, separated by commas)") }}</label>
+      <input id="keywords" name="keywords" type="text" maxlength="300" value="{{ form.get('keywords', '') }}">
+    </div>
+    {% endif %}
+
+  {% elif spec.kind == 'laws' %}
+    <div class="field">
+      <label for="query">{{ _("Your question or keyword") }}</label>
+      <textarea id="query" name="query" rows="3" maxlength="800" required>{{ form.get('query', '') }}</textarea>
+    </div>
+    <div class="field">
+      <label for="category">{{ _("Area of law (optional)") }}</label>
+      <select id="category" name="category">
+        <option value="">{{ _("All areas") }}</option>
+        {% for c in categories %}<option value="{{ c }}"{% if form.get('category') == c %} selected{% endif %}>{{ c }}</option>{% endfor %}
+      </select>
+    </div>
+
+  {% else %}
+    <div class="field">
+      <label for="product_name">{{ _("Product name") }}</label>
+      <input id="product_name" name="product_name" type="text" maxlength="120" required value="{{ form.get('product_name', '') }}">
+      {{ err('product_name') }}
+    </div>
+    <div class="field">
+      <label for="description">{{ _("Description") }}</label>
+      <textarea id="description" name="description" rows="6" maxlength="2000" required>{{ form.get('description', '') }}</textarea>
+      <p class="small muted">{{ _("What is it, for whom, what can it do, what is special? The more concrete, the better (at least 40 characters).") }}</p>
+      {{ err('description') }}
+    </div>
+    <div class="field">
+      <label for="price_a">{{ _("Price A in euros (optional)") }}</label>
+      <input id="price_a" name="price_a" type="text" inputmode="decimal" maxlength="12" value="{{ form.get('price_a', '') }}">
+      {{ err('price_a') }}
+    </div>
+    <div class="field">
+      <label for="price_b">{{ _("Price B in euros (optional, for an A/B comparison)") }}</label>
+      <input id="price_b" name="price_b" type="text" inputmode="decimal" maxlength="12" value="{{ form.get('price_b', '') }}">
+      {{ err('price_b') }}
+    </div>
+    <div class="field">
+      <label for="unit">{{ _("Billing") }}</label>
+      <select id="unit" name="unit">
+        <option value="einmalig">{{ _("one-off") }}</option>
+        <option value="monat"{% if form.get('unit') == 'monat' %} selected{% endif %}>{{ _("per month") }}</option>
+        <option value="jahr"{% if form.get('unit') == 'jahr' %} selected{% endif %}>{{ _("per year") }}</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="audience">{{ _("Target group") }}</label>
+      <select id="audience" name="audience">
+        <option value="beide">{{ _("Private persons and business decision makers") }}</option>
+        <option value="privat"{% if form.get('audience') == 'privat' %} selected{% endif %}>{{ _("Private persons only") }}</option>
+        <option value="business"{% if form.get('audience') == 'business' %} selected{% endif %}>{{ _("Business decision makers only") }}</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="regional">{{ _("Region") }}</label>
+      <select id="regional" name="regional">
+        <option value="de">{{ _("All of Germany") }}</option>
+        <option value="rhein-main"{% if form.get('regional') == 'rhein-main' %} selected{% endif %}>{{ _("Rhine-Main area") }}</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="n">{{ _("Number of personas") }}</label>
+      <select id="n" name="n">
+        {% for size in sizes %}<option value="{{ size }}"{% if (form.get('n') or '100')|string == size|string %} selected{% endif %}>{{ size }}</option>{% endfor %}
+      </select>
+    </div>
+  {% endif %}
+
+  <button type="submit" class="button">{{ _("Run") }}</button>
+</form>
+</section>
+{% endblock %}

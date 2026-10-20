@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}{{ _("Tools") }} · {{ _("Services") }}{% endblock %}
+
+{% block content %}
+<h1>{{ _("Built-in tools") }}</h1>
+<p class="lead">{{ _("Quick checks and research tools that run on the platform. The results are hints, not legal or professional advice.") }}</p>
+<p><a href="{{ url_for('services.index') }}">{{ _("Back to services") }}</a></p>
+
+<div class="grid-cards">
+{% for tool in tools %}
+  {% if tool.key != 'laws' or laws_enabled %}
+  <article class="card">
+    <h2>{{ tool.title }}</h2>
+    <p>{{ tool.summary }}</p>
+    {% set state = states[tool.key] %}
+    {% if state.limit %}
+      <p class="small muted">{{ _("%(left)s of %(limit)s runs left this month", left=state.left, limit=state.limit) }}</p>
+      <a class="button" href="{{ url_for('services.tool_page', key=tool.key) }}">{{ _("Open") }}</a>
+    {% else %}
+      <p class="small muted">{{ _("Not included in your plan.") }}</p>
+    {% endif %}
+  </article>
+  {% endif %}
+{% endfor %}
+</div>
+
+{% if runs %}
+<section class="card">
+  <h2>{{ _("My recent runs") }}</h2>
+  <ul class="module-list">
+  {% for run in runs %}
+    <li><a href="{{ url_for('services.tool_run', run_id=run.id) }}">{{ run.subject }}</a>
+      <span class="small muted">· {{ run.created_at.strftime('%d.%m.%Y %H:%M') }}{% if run.status == 'running' %} · {{ _("running") }}{% elif run.status == 'failed' %} · {{ _("failed") }}{% endif %}</span></li>
+  {% endfor %}
+  </ul>
+</section>
+{% endif %}
+{% endblock %}

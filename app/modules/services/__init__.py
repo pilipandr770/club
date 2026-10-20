@@ -51,3 +51,6 @@ def detail(slug):
         flash(_("Your request is sent to the provider."), "success")
         return redirect(url_for("services.mine"))
     return render_template("modules/service_detail.html", service=service)
+
+
+from . import tools  # noqa: E402,F401  (маршруты инструментов)

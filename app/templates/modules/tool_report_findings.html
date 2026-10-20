@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block title %}{{ spec.title }} · {{ _("Report") }}{% endblock %}
+
+{% block content %}
+<h1>{{ spec.title }}</h1>
+<p class="muted">{{ run.subject }} · {{ run.created_at.strftime('%d.%m.%Y %H:%M') }}</p>
+<p><a href="{{ url_for('services.tools_index') }}">{{ _("All tools") }}</a> ·
+   <a href="{{ url_for('services.tool_page', key=run.tool) }}">{{ _("Run again") }}</a></p>
+
+<section class="card">
+  <p class="score score-{% if result.score >= 85 %}ok{% elif result.score >= 65 %}warn{% else %}fail{% endif %}">{{ result.score }}<span class="small muted"> / 100</span></p>
+  <p>{{ report.zusammenfassung }}</p>
+  {% if not report.ai %}<p class="small muted">{{ _("This report was created by fixed rules without an AI summary.") }}</p>{% endif %}
+</section>
+
+{% if report.massnahmen %}
+<section class="card">
+  <h2>{{ _("What to do first") }}</h2>
+  <ol class="actions">
+  {% for a in report.massnahmen %}
+    <li>
+      <strong>{{ a.titel }}</strong>
+      <p>{{ a.warum }}</p>
+      {% if a.so_gehts %}<p class="small"><em>{{ _("How:") }}</em> {{ a.so_gehts }}</p>{% endif %}
+      <p class="small muted">{{ _("Effort") }}: {{ a.aufwand }} · {{ _("Impact") }}: {{ a.wirkung }}</p>
+    </li>
+  {% endfor %}
+  </ol>
+  {% if report.keyword_hinweise %}<p>{{ report.keyword_hinweise }}</p>{% endif %}
+  {% if report.naechste_schritte %}<p>{{ report.naechste_schritte }}</p>{% endif %}
+</section>
+{% endif %}
+
+<section class="card">
+  <h2>{{ _("All findings") }}</h2>
+  {% set ns = namespace(cat='') %}
+  {% for f in result.findings %}
+    {% if f.cat != ns.cat %}{% set ns.cat = f.cat %}<h3>{{ f.cat }}</h3>{% endif %}
+    <div class="finding">
+      <span class="tag tag-{{ f.status }}">{% if f.status == 'ok' %}{{ _("OK") }}{% elif f.status == 'warn' %}{{ _("Check") }}{% elif f.status == 'fail' %}{{ _("Problem") }}{% else %}{{ _("Note") }}{% endif %}</span>
+      <strong>{{ f.title }}</strong>
+      <p class="small muted">{{ f.detail }}</p>
+    </div>
+  {% endfor %}
+</section>
+<p class="small muted">{{ _("A snapshot of the checked page, created automatically. Not legal advice and no guarantee for rankings.") }}</p>
+{% endblock %}

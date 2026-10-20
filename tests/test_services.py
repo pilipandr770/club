@@ -125,3 +125,16 @@ def test_non_admin_cannot_manage_services(app, client):
 
     assert client.get("/admin/services").status_code == 404
     assert client.get("/admin/services/new").status_code == 404
+
+
+def test_default_services_seed_is_idempotent_and_keeps_edits(app):
+    from app.services.catalog_defaults import DEFAULT_SERVICES, seed_default_services
+
+    with app.app_context():
+        assert seed_default_services() == len(DEFAULT_SERVICES)
+        service = Service.query.filter_by(slug="ki-chatbots").one()
+        service.title = "Edited by admin"
+        db.session.commit()
+
+        assert seed_default_services() == 0
+        assert Service.query.filter_by(slug="ki-chatbots").one().title == "Edited by admin"

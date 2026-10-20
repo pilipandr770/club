@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-10-20 18:39+0000\n"
+"POT-Creation-Date: 2026-10-20 21:34+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -411,6 +411,7 @@ msgstr ""
 #: app/templates/modules/service_detail.html:3
 #: app/templates/modules/services_list.html:3
 #: app/templates/modules/services_mine.html:3
+#: app/templates/modules/tools_index.html:3
 msgid "Services"
 msgstr ""
 
@@ -556,6 +557,28 @@ msgstr ""
 
 #: app/modules/services/__init__.py:51
 msgid "Your request is sent to the provider."
+msgstr ""
+
+#: app/modules/services/tools.py:27
+msgid "Please name your product."
+msgstr ""
+
+#: app/modules/services/tools.py:29
+msgid "Please describe the product in at least 40 characters."
+msgstr ""
+
+#: app/modules/services/tools.py:35
+msgid "Please enter a price in euros, for example 29,90."
+msgstr ""
+
+#: app/modules/services/tools.py:38
+msgid "Price B needs price A."
+msgstr ""
+
+#: app/modules/services/tools.py:52
+msgid ""
+"You have used all runs of this tool for this month. They renew at the "
+"start of next month."
 msgstr ""
 
 #: app/modules/startups/__init__.py:25
@@ -729,11 +752,11 @@ msgstr ""
 msgid "Closed"
 msgstr ""
 
-#: app/services/entitlements.py:31 app/services/entitlements.py:47
+#: app/services/entitlements.py:36 app/services/entitlements.py:52
 msgid "This area opens after your identity check."
 msgstr ""
 
-#: app/services/entitlements.py:50
+#: app/services/entitlements.py:55
 msgid "This section is not included in your plan."
 msgstr ""
 
@@ -775,6 +798,54 @@ msgstr ""
 
 #: app/services/verification.py:152
 msgid "Too many attempts. Please contact support."
+msgstr ""
+
+#: app/services/tools/__init__.py:31
+msgid "SEO check"
+msgstr ""
+
+#: app/services/tools/__init__.py:31
+msgid ""
+"Checks a public page technically and by content and lists what to fix "
+"first."
+msgstr ""
+
+#: app/services/tools/__init__.py:32
+msgid "Compliance check"
+msgstr ""
+
+#: app/services/tools/__init__.py:33
+msgid ""
+"Looks for legal notice, privacy policy, cookie consent and trackers on "
+"your website."
+msgstr ""
+
+#: app/services/tools/__init__.py:34
+msgid "Security check"
+msgstr ""
+
+#: app/services/tools/__init__.py:35
+msgid ""
+"Passive check of encryption, security headers, cookies and e-mail "
+"protection of your domain."
+msgstr ""
+
+#: app/services/tools/__init__.py:36
+msgid "Law search"
+msgstr ""
+
+#: app/services/tools/__init__.py:37
+msgid ""
+"Finds German federal law provisions, quotes them verbatim and explains "
+"what they say."
+msgstr ""
+
+#: app/services/tools/__init__.py:38
+msgid "Market panel"
+msgstr ""
+
+#: app/services/tools/__init__.py:39
+msgid "Up to 100 fictional personas rate your product idea before you launch."
 msgstr ""
 
 #: app/templates/admin/dashboard.html:3 app/templates/auth/login.html:3
@@ -930,6 +1001,7 @@ msgstr ""
 
 #: app/templates/admin/lots.html:20 app/templates/admin/service_form.html:16
 #: app/templates/modules/startups_form.html:23
+#: app/templates/modules/tool_form.html:60
 #: app/templates/modules/travel_form.html:47
 msgid "Description"
 msgstr ""
@@ -1016,6 +1088,7 @@ msgstr ""
 #: app/templates/admin/service_inquiries.html:7
 #: app/templates/modules/service_detail.html:38
 #: app/templates/modules/services_mine.html:7
+#: app/templates/modules/tools_index.html:8
 msgid "Back to services"
 msgstr ""
 
@@ -1363,6 +1436,7 @@ msgid "We could not confirm your identity."
 msgstr ""
 
 #: app/templates/member/dashboard.html:35
+#: app/templates/modules/tool_report_panel.html:24
 msgid "Try again"
 msgstr ""
 
@@ -1492,6 +1566,8 @@ msgid "There are no lots yet."
 msgstr ""
 
 #: app/templates/modules/auction_list.html:18
+#: app/templates/modules/tool_report_panel.html:52
+#: app/templates/modules/tool_report_panel.html:66
 msgid "Price"
 msgstr ""
 
@@ -1793,6 +1869,11 @@ msgid "Checked partners of the community, with conditions for members."
 msgstr ""
 
 #: app/templates/modules/services_list.html:8
+#: app/templates/modules/tools_index.html:6
+msgid "Built-in tools"
+msgstr ""
+
+#: app/templates/modules/services_list.html:8
 #: app/templates/modules/services_mine.html:3
 #: app/templates/modules/services_mine.html:6
 msgid "My requests"
@@ -1982,6 +2063,392 @@ msgstr ""
 msgid "This section is being prepared. You will find it here once it opens."
 msgstr ""
 
+#: app/templates/modules/tool_form.html:3
+#: app/templates/modules/tools_index.html:3
+msgid "Tools"
+msgstr ""
+
+#: app/templates/modules/tool_form.html:10
+#: app/templates/modules/tool_report_findings.html:8
+#: app/templates/modules/tool_report_laws.html:8
+#: app/templates/modules/tool_report_panel.html:9
+msgid "All tools"
+msgstr ""
+
+#: app/templates/modules/tool_form.html:11
+#: app/templates/modules/tools_index.html:18
+#, python-format
+msgid "%(left)s of %(limit)s runs left this month"
+msgstr ""
+
+#: app/templates/modules/tool_form.html:15
+msgid ""
+"The market panel is synthetic. The personas are fictional people invented"
+" by an AI. The answers give hints and hypotheses for price, message and "
+"target group. They do not replace asking real customers and do not "
+"predict sales."
+msgstr ""
+
+#: app/templates/modules/tool_form.html:17
+msgid ""
+"This is not legal advice. The tool quotes the text of federal laws and "
+"explains what the text says. It never assesses your individual case. "
+"Replies are written by an AI. For a binding opinion ask a lawyer."
+msgstr ""
+
+#: app/templates/modules/tool_form.html:19
+msgid ""
+"Passive check only: the tool looks at what any visitor or mail server can"
+" see. No port scan and no attacks. This is not a penetration test."
+msgstr ""
+
+#: app/templates/modules/tool_form.html:21
+msgid ""
+"Only the public page you enter and a few standard files are fetched. It "
+"is an automatic snapshot, not a guarantee and not legal advice."
+msgstr ""
+
+#: app/templates/modules/tool_form.html:29
+msgid "Your domain"
+msgstr ""
+
+#: app/templates/modules/tool_form.html:29
+msgid "Address of your website"
+msgstr ""
+
+#: app/templates/modules/tool_form.html:35
+msgid "Search terms (optional, up to five, separated by commas)"
+msgstr ""
+
+#: app/templates/modules/tool_form.html:42
+msgid "Your question or keyword"
+msgstr ""
+
+#: app/templates/modules/tool_form.html:46
+msgid "Area of law (optional)"
+msgstr ""
+
+#: app/templates/modules/tool_form.html:48
+msgid "All areas"
+msgstr ""
+
+#: app/templates/modules/tool_form.html:55
+msgid "Product name"
+msgstr ""
+
+#: app/templates/modules/tool_form.html:62
+msgid ""
+"What is it, for whom, what can it do, what is special? The more concrete,"
+" the better (at least 40 characters)."
+msgstr ""
+
+#: app/templates/modules/tool_form.html:66
+msgid "Price A in euros (optional)"
+msgstr ""
+
+#: app/templates/modules/tool_form.html:71
+msgid "Price B in euros (optional, for an A/B comparison)"
+msgstr ""
+
+#: app/templates/modules/tool_form.html:76
+msgid "Billing"
+msgstr ""
+
+#: app/templates/modules/tool_form.html:78
+msgid "one-off"
+msgstr ""
+
+#: app/templates/modules/tool_form.html:79
+msgid "per month"
+msgstr ""
+
+#: app/templates/modules/tool_form.html:80
+msgid "per year"
+msgstr ""
+
+#: app/templates/modules/tool_form.html:84
+msgid "Target group"
+msgstr ""
+
+#: app/templates/modules/tool_form.html:86
+msgid "Private persons and business decision makers"
+msgstr ""
+
+#: app/templates/modules/tool_form.html:87
+msgid "Private persons only"
+msgstr ""
+
+#: app/templates/modules/tool_form.html:88
+msgid "Business decision makers only"
+msgstr ""
+
+#: app/templates/modules/tool_form.html:92
+msgid "Region"
+msgstr ""
+
+#: app/templates/modules/tool_form.html:94
+msgid "All of Germany"
+msgstr ""
+
+#: app/templates/modules/tool_form.html:95
+msgid "Rhine-Main area"
+msgstr ""
+
+#: app/templates/modules/tool_form.html:99
+msgid "Number of personas"
+msgstr ""
+
+#: app/templates/modules/tool_form.html:106
+msgid "Run"
+msgstr ""
+
+#: app/templates/modules/tool_report_findings.html:3
+#: app/templates/modules/tool_report_laws.html:3
+#: app/templates/modules/tool_report_panel.html:3
+msgid "Report"
+msgstr ""
+
+#: app/templates/modules/tool_report_findings.html:9
+msgid "Run again"
+msgstr ""
+
+#: app/templates/modules/tool_report_findings.html:14
+msgid "This report was created by fixed rules without an AI summary."
+msgstr ""
+
+#: app/templates/modules/tool_report_findings.html:19
+msgid "What to do first"
+msgstr ""
+
+#: app/templates/modules/tool_report_findings.html:25
+#: app/templates/modules/tool_report_panel.html:103
+msgid "How:"
+msgstr ""
+
+#: app/templates/modules/tool_report_findings.html:26
+msgid "Effort"
+msgstr ""
+
+#: app/templates/modules/tool_report_findings.html:26
+msgid "Impact"
+msgstr ""
+
+#: app/templates/modules/tool_report_findings.html:36
+msgid "All findings"
+msgstr ""
+
+#: app/templates/modules/tool_report_findings.html:41
+msgid "OK"
+msgstr ""
+
+#: app/templates/modules/tool_report_findings.html:41
+msgid "Check"
+msgstr ""
+
+#: app/templates/modules/tool_report_findings.html:41
+msgid "Problem"
+msgstr ""
+
+#: app/templates/modules/tool_report_findings.html:41
+msgid "Note"
+msgstr ""
+
+#: app/templates/modules/tool_report_findings.html:47
+msgid ""
+"A snapshot of the checked page, created automatically. Not legal advice "
+"and no guarantee for rankings."
+msgstr ""
+
+#: app/templates/modules/tool_report_laws.html:9
+msgid "New search"
+msgstr ""
+
+#: app/templates/modules/tool_report_laws.html:12
+msgid "Your question"
+msgstr ""
+
+#: app/templates/modules/tool_report_laws.html:14
+msgid ""
+"This is not legal advice. The explanations were written by an AI and only"
+" describe what the quoted text says. They do not assess your case."
+msgstr ""
+
+#: app/templates/modules/tool_report_laws.html:27
+msgid "Official source"
+msgstr ""
+
+#: app/templates/modules/tool_report_laws.html:29
+msgid "What the text says"
+msgstr ""
+
+#: app/templates/modules/tool_report_laws.html:36
+msgid ""
+"Further results were found but do not match your question closely and are"
+" hidden."
+msgstr ""
+
+#: app/templates/modules/tool_report_panel.html:11
+msgid ""
+"Synthetic result: the personas are fictional people invented by an AI. "
+"Read the numbers as hints and hypotheses to check with real customers. "
+"They do not predict sales."
+msgstr ""
+
+#: app/templates/modules/tool_report_panel.html:16
+msgid "The panel is running"
+msgstr ""
+
+#: app/templates/modules/tool_report_panel.html:17
+#, python-format
+msgid "%(done)s of %(total)s personas have answered. This page refreshes itself."
+msgstr ""
+
+#: app/templates/modules/tool_report_panel.html:22
+msgid "The run failed"
+msgstr ""
+
+#: app/templates/modules/tool_report_panel.html:29
+msgid "Summary"
+msgstr ""
+
+#: app/templates/modules/tool_report_panel.html:32
+#, python-format
+msgid "Answers used: %(n)s of %(total)s"
+msgstr ""
+
+#: app/templates/modules/tool_report_panel.html:33
+#, python-format
+msgid "Purchase intent (now or after a trial): %(p)s %%"
+msgstr ""
+
+#: app/templates/modules/tool_report_panel.html:34
+#, python-format
+msgid "Average purchase probability within 3 months: %(p)s %%"
+msgstr ""
+
+#: app/templates/modules/tool_report_panel.html:35
+#, python-format
+msgid "Average relevance (1 to 10): %(p)s"
+msgstr ""
+
+#: app/templates/modules/tool_report_panel.html:36
+#, python-format
+msgid "Median price limit: %(p)s €"
+msgstr ""
+
+#: app/templates/modules/tool_report_panel.html:38
+#, python-format
+msgid ""
+"Core group (relevance 6 or more, %(n)s personas): intent %(i)s %%, "
+"probability %(p)s %%"
+msgstr ""
+
+#: app/templates/modules/tool_report_panel.html:42
+msgid "Answers by intent"
+msgstr ""
+
+#: app/templates/modules/tool_report_panel.html:50
+msgid "Price curve"
+msgstr ""
+
+#: app/templates/modules/tool_report_panel.html:52
+msgid "Expected share of buyers"
+msgstr ""
+
+#: app/templates/modules/tool_report_panel.html:52
+msgid "Revenue index"
+msgstr ""
+
+#: app/templates/modules/tool_report_panel.html:57
+#, python-format
+msgid "Highest revenue index at %(p)s €."
+msgstr ""
+
+#: app/templates/modules/tool_report_panel.html:64
+msgid "A/B price comparison"
+msgstr ""
+
+#: app/templates/modules/tool_report_panel.html:66
+#: app/templates/modules/tool_report_panel.html:80
+msgid "Personas"
+msgstr ""
+
+#: app/templates/modules/tool_report_panel.html:66
+#: app/templates/modules/tool_report_panel.html:80
+msgid "Intent"
+msgstr ""
+
+#: app/templates/modules/tool_report_panel.html:66
+#: app/templates/modules/tool_report_panel.html:80
+msgid "Probability"
+msgstr ""
+
+#: app/templates/modules/tool_report_panel.html:70
+#, python-format
+msgid ""
+"p-value of the difference in intent: %(p)s. With small groups a small "
+"difference is usually chance."
+msgstr ""
+
+#: app/templates/modules/tool_report_panel.html:76
+msgid "Target groups"
+msgstr ""
+
+#: app/templates/modules/tool_report_panel.html:88
+msgid "Main concerns"
+msgstr ""
+
+#: app/templates/modules/tool_report_panel.html:88
+msgid "Main benefits"
+msgstr ""
+
+#: app/templates/modules/tool_report_panel.html:88
+msgid "What would have to change"
+msgstr ""
+
+#: app/templates/modules/tool_report_panel.html:101
+msgid "Recommendations"
+msgstr ""
+
+#: app/templates/modules/tool_report_panel.html:110
+msgid "Example voices"
+msgstr ""
+
+#: app/templates/modules/tool_report_panel.html:111
+msgid "Most likely buyers"
+msgstr ""
+
+#: app/templates/modules/tool_report_panel.html:111
+msgid "Least likely buyers"
+msgstr ""
+
+#: app/templates/modules/tools_index.html:7
+msgid ""
+"Quick checks and research tools that run on the platform. The results are"
+" hints, not legal or professional advice."
+msgstr ""
+
+#: app/templates/modules/tools_index.html:19
+#: app/templates/modules/travel_mine.html:20
+msgid "Open"
+msgstr ""
+
+#: app/templates/modules/tools_index.html:21
+msgid "Not included in your plan."
+msgstr ""
+
+#: app/templates/modules/tools_index.html:30
+msgid "My recent runs"
+msgstr ""
+
+#: app/templates/modules/tools_index.html:34
+msgid "running"
+msgstr ""
+
+#: app/templates/modules/tools_index.html:34
+msgid "failed"
+msgstr ""
+
 #: app/templates/modules/travel_detail.html:9
 #: app/templates/modules/travel_list.html:21
 #: app/templates/modules/travel_mine.html:18
@@ -2130,10 +2597,6 @@ msgstr ""
 
 #: app/templates/modules/travel_mine.html:13
 msgid "Trips I organise"
-msgstr ""
-
-#: app/templates/modules/travel_mine.html:20
-msgid "Open"
 msgstr ""
 
 #: app/templates/modules/travel_mine.html:22

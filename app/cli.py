@@ -140,7 +140,16 @@ def seed_demo_profiles_command(production):
     click.echo(f"Демо-участников создано: {created}")
 
 
+@click.command("seed-services")
+def seed_services_command():
+    """Добавляет стандартные услуги партнёра (повторный запуск безопасен)."""
+    from .services.catalog_defaults import seed_default_services
+
+    click.echo(f"Услуг добавлено: {seed_default_services()}")
+
+
 def register(app):
+    app.cli.add_command(seed_services_command)
     app.cli.add_command(ai_check_command)
     app.cli.add_command(seed_demo_profiles_command)
     app.cli.add_command(reembed_command)

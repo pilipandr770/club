@@ -6,7 +6,7 @@ from flask import flash, redirect, request, url_for
 from flask_babel import gettext as _
 from flask_login import current_user
 
-from config.plans import DEFAULT_PLAN, PLANS
+from config.plans import DEFAULT_PLAN, PLANS, TOOL_LIMITS
 
 
 def plan_features(user) -> frozenset:
@@ -18,6 +18,11 @@ def has_feature(user, feature: str) -> bool:
     if user is None or not user.is_authenticated or not user.is_verified:
         return False
     return feature in plan_features(user)
+
+
+def tool_limit(user, tool: str) -> int:
+    """Запусков инструмента в месяц по тарифу; 0 — тариф инструмент не включает."""
+    return TOOL_LIMITS.get(user.plan or DEFAULT_PLAN, {}).get(tool, 0)
 
 
 def requires_verified(view):
