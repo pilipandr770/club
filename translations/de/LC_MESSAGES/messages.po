@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Club 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-20 16:57+0000\n"
+"POT-Creation-Date: 2026-10-20 17:44+0000\n"
 "PO-Revision-Date: 2026-10-19 21:00+0000\n"
 "Last-Translator: \n"
 "Language: de\n"
@@ -323,6 +323,18 @@ msgstr "Bitte prüfe diese Felder: %(fields)s"
 msgid "The identity check is marked as verified."
 msgstr "Die Identitätsprüfung ist als bestätigt markiert."
 
+#: app/blueprints/admin/__init__.py:371
+msgid "Please enter a title."
+msgstr "Bitte gib einen Titel ein."
+
+#: app/blueprints/admin/__init__.py:375
+msgid "The service is saved."
+msgstr "Die Leistung ist gespeichert."
+
+#: app/blueprints/admin/__init__.py:402
+msgid "Unknown status."
+msgstr "Unbekannter Status."
+
 #: app/blueprints/auth/__init__.py:26
 msgid "Please confirm your e-mail address"
 msgstr "Bitte bestätige deine E-Mail-Adresse"
@@ -425,7 +437,11 @@ msgstr ""
 "Allgemeine Informationen, keine Rechtsberatung. Gilt nur für das deutsche "
 "Recht."
 
-#: app/modules/__init__.py:23 app/modules/services/__init__.py:12
+#: app/modules/__init__.py:23 app/templates/admin/dashboard.html:12
+#: app/templates/admin/services.html:3 app/templates/admin/services.html:6
+#: app/templates/modules/service_detail.html:3
+#: app/templates/modules/services_list.html:3
+#: app/templates/modules/services_mine.html:3
 msgid "Services"
 msgstr "Dienstleistungen"
 
@@ -548,8 +564,8 @@ msgstr "Das ist für dich nicht verfügbar."
 msgid "This request has already been answered."
 msgstr "Auf diese Anfrage wurde bereits geantwortet."
 
-#: app/modules/profile/__init__.py:188 app/modules/startups/__init__.py:31
-#: app/modules/travel/__init__.py:38
+#: app/modules/profile/__init__.py:188 app/modules/services/__init__.py:18
+#: app/modules/startups/__init__.py:31 app/modules/travel/__init__.py:38
 msgid "Something went wrong. Please try again."
 msgstr "Etwas ist schiefgelaufen. Bitte versuche es erneut."
 
@@ -564,6 +580,18 @@ msgstr "Dein Foto ist gespeichert."
 #: app/modules/profile/__init__.py:229
 msgid "Your photo is removed."
 msgstr "Dein Foto ist entfernt."
+
+#: app/modules/services/__init__.py:15
+msgid "This service is not available right now."
+msgstr "Diese Leistung ist gerade nicht verfügbar."
+
+#: app/modules/services/__init__.py:16
+msgid "Please write a short message to the provider."
+msgstr "Bitte schreibe dem Anbieter eine kurze Nachricht."
+
+#: app/modules/services/__init__.py:51
+msgid "Your request is sent to the provider."
+msgstr "Deine Anfrage ist an den Anbieter gesendet."
 
 #: app/modules/startups/__init__.py:25
 msgid "This startup is not open for interest right now."
@@ -705,6 +733,41 @@ msgstr ""
 msgid "The trip is cancelled."
 msgstr "Die Reise ist storniert."
 
+#: app/services/catalog.py:71
+#, python-format
+msgid "New request through the club for: %(title)s"
+msgstr "Neue Anfrage über den Club zu: %(title)s"
+
+#: app/services/catalog.py:73
+#, python-format
+msgid "Member's contact: %(email)s"
+msgstr "Kontakt des Mitglieds: %(email)s"
+
+#: app/services/catalog.py:75
+msgid "The member did not share contact details."
+msgstr "Das Mitglied hat seine Kontaktdaten nicht weitergegeben."
+
+#: app/services/catalog.py:76
+#, python-format
+msgid "Request: %(title)s"
+msgstr "Anfrage: %(title)s"
+
+#: app/services/catalog.py:93
+msgid "New"
+msgstr "Neu"
+
+#: app/services/catalog.py:94
+msgid "Contacted"
+msgstr "Kontaktiert"
+
+#: app/services/catalog.py:95
+msgid "Done"
+msgstr "Erledigt"
+
+#: app/services/catalog.py:96
+msgid "Closed"
+msgstr "Abgeschlossen"
+
 #: app/services/entitlements.py:31 app/services/entitlements.py:47
 msgid "This area opens after your identity check."
 msgstr "Dieser Bereich öffnet sich nach deiner Identitätsprüfung."
@@ -765,6 +828,7 @@ msgstr "Zu viele Versuche. Bitte wende dich an den Support."
 #: app/templates/modules/profile_intros.html:3
 #: app/templates/modules/profile_matches.html:3
 #: app/templates/modules/profile_privacy.html:3
+#: app/templates/modules/services_list.html:3
 #: app/templates/modules/startups_form.html:3
 #: app/templates/modules/startups_list.html:3
 #: app/templates/modules/startups_mine.html:3 app/templates/modules/stub.html:3
@@ -778,9 +842,12 @@ msgstr "Mein Konto"
 
 #: app/templates/admin/audit.html:3 app/templates/admin/dashboard.html:3
 #: app/templates/admin/dashboard.html:6 app/templates/admin/lots.html:3
-#: app/templates/admin/startups.html:3 app/templates/admin/travel.html:3
-#: app/templates/admin/user_detail.html:3 app/templates/admin/user_new.html:3
-#: app/templates/admin/users.html:3 app/templates/base.html:16
+#: app/templates/admin/service_form.html:3
+#: app/templates/admin/service_inquiries.html:3
+#: app/templates/admin/services.html:3 app/templates/admin/startups.html:3
+#: app/templates/admin/travel.html:3 app/templates/admin/user_detail.html:3
+#: app/templates/admin/user_new.html:3 app/templates/admin/users.html:3
+#: app/templates/base.html:16
 msgid "Admin"
 msgstr "Admin"
 
@@ -800,13 +867,13 @@ msgid "Register"
 msgstr "Registrieren"
 
 #: app/templates/admin/audit.html:3 app/templates/admin/audit.html:6
-#: app/templates/admin/dashboard.html:12
+#: app/templates/admin/dashboard.html:13
 msgid "Audit log"
 msgstr "Protokoll"
 
 #: app/templates/admin/audit.html:7 app/templates/admin/lots.html:7
-#: app/templates/admin/startups.html:7 app/templates/admin/travel.html:7
-#: app/templates/admin/users.html:7
+#: app/templates/admin/services.html:7 app/templates/admin/startups.html:7
+#: app/templates/admin/travel.html:7 app/templates/admin/users.html:7
 msgid "Back to admin"
 msgstr "Zurück zur Verwaltung"
 
@@ -834,7 +901,7 @@ msgstr "Details"
 msgid "The log is empty."
 msgstr "Das Protokoll ist leer."
 
-#: app/templates/admin/dashboard.html:8 app/templates/admin/dashboard.html:16
+#: app/templates/admin/dashboard.html:8 app/templates/admin/dashboard.html:17
 #: app/templates/admin/users.html:3 app/templates/admin/users.html:6
 #: app/templates/modules/profile_directory.html:3
 #: app/templates/modules/profile_directory.html:6
@@ -857,35 +924,35 @@ msgstr "Startups"
 msgid "Travel offers"
 msgstr "Reiseangebote"
 
-#: app/templates/admin/dashboard.html:25
+#: app/templates/admin/dashboard.html:26
 msgid "Identity checks"
 msgstr "Identitätsprüfungen"
 
-#: app/templates/admin/dashboard.html:34
+#: app/templates/admin/dashboard.html:35
 msgid "Open auction lots"
 msgstr "Offene Auktionslose"
 
-#: app/templates/admin/dashboard.html:38
+#: app/templates/admin/dashboard.html:39
 msgid "AI models"
 msgstr "KI-Modelle"
 
-#: app/templates/admin/dashboard.html:40
+#: app/templates/admin/dashboard.html:41
 msgid "Language model"
 msgstr "Sprachmodell"
 
-#: app/templates/admin/dashboard.html:40
+#: app/templates/admin/dashboard.html:41
 msgid "on"
 msgstr "an"
 
-#: app/templates/admin/dashboard.html:40
+#: app/templates/admin/dashboard.html:41
 msgid "off"
 msgstr "aus"
 
-#: app/templates/admin/dashboard.html:41
+#: app/templates/admin/dashboard.html:42
 msgid "Embeddings"
 msgstr "Embeddings"
 
-#: app/templates/admin/dashboard.html:43
+#: app/templates/admin/dashboard.html:44
 msgid ""
 "Models are set in the server settings. Changing them does not need a code "
 "change."
@@ -898,11 +965,13 @@ msgid "New lot"
 msgstr "Neues Los"
 
 #: app/templates/admin/lots.html:15 app/templates/admin/lots.html:70
+#: app/templates/admin/service_form.html:12
 #: app/templates/modules/travel_form.html:17
 msgid "Title"
 msgstr "Titel"
 
-#: app/templates/admin/lots.html:20 app/templates/modules/startups_form.html:23
+#: app/templates/admin/lots.html:20 app/templates/admin/service_form.html:16
+#: app/templates/modules/startups_form.html:23
 #: app/templates/modules/travel_form.html:47
 msgid "Description"
 msgstr "Beschreibung"
@@ -971,6 +1040,97 @@ msgstr "Schließen"
 #: app/templates/admin/lots.html:89
 msgid "No lots yet."
 msgstr "Noch keine Lose."
+
+#: app/templates/admin/service_form.html:3
+msgid "Service"
+msgstr "Leistung"
+
+#: app/templates/admin/service_form.html:6
+msgid "Edit service"
+msgstr "Leistung bearbeiten"
+
+#: app/templates/admin/service_form.html:6 app/templates/admin/services.html:8
+msgid "New service"
+msgstr "Neue Leistung"
+
+#: app/templates/admin/service_form.html:7
+#: app/templates/admin/service_inquiries.html:7
+#: app/templates/modules/service_detail.html:38
+#: app/templates/modules/services_mine.html:7
+msgid "Back to services"
+msgstr "Zurück zu den Leistungen"
+
+#: app/templates/admin/service_form.html:14
+msgid "Short summary"
+msgstr "Kurzbeschreibung"
+
+#: app/templates/admin/service_form.html:18
+msgid "Benefits (one per line)"
+msgstr "Vorteile (eine Zeile pro Vorteil)"
+
+#: app/templates/admin/service_form.html:20
+msgid "Member benefit"
+msgstr "Vorteil für Mitglieder"
+
+#: app/templates/admin/service_form.html:22
+msgid "Price hint"
+msgstr "Preishinweis"
+
+#: app/templates/admin/service_form.html:24
+msgid "Provider name"
+msgstr "Name des Anbieters"
+
+#: app/templates/admin/service_form.html:26
+msgid "Provider e-mail (receives requests, never shown to members)"
+msgstr "E-Mail des Anbieters (erhält Anfragen, wird Mitgliedern nie gezeigt)"
+
+#: app/templates/admin/service_form.html:28
+msgid "Order"
+msgstr "Reihenfolge"
+
+#: app/templates/admin/service_form.html:33
+msgid "Visible to members"
+msgstr "Für Mitglieder sichtbar"
+
+#: app/templates/admin/service_form.html:36 app/templates/modules/profile.html:25
+#: app/templates/modules/profile_edit.html:44
+msgid "Save"
+msgstr "Speichern"
+
+#: app/templates/admin/service_inquiries.html:3
+#: app/templates/admin/service_inquiries.html:6
+#: app/templates/admin/services.html:7
+msgid "Requests"
+msgstr "Anfragen"
+
+#: app/templates/admin/service_inquiries.html:12
+msgid "contact shared"
+msgstr "Kontakt geteilt"
+
+#: app/templates/admin/service_inquiries.html:12
+msgid "no contact shared"
+msgstr "kein Kontakt geteilt"
+
+#: app/templates/admin/service_inquiries.html:22
+msgid "No requests yet."
+msgstr "Noch keine Anfragen."
+
+#: app/templates/admin/services.html:13
+msgid "Visible"
+msgstr "Sichtbar"
+
+#: app/templates/admin/services.html:13
+msgid "Hidden"
+msgstr "Verborgen"
+
+#: app/templates/admin/services.html:14
+#: app/templates/modules/startups_detail.html:16
+msgid "Edit"
+msgstr "Bearbeiten"
+
+#: app/templates/admin/services.html:17
+msgid "No services yet."
+msgstr "Noch keine Leistungen."
 
 #: app/templates/admin/startups.html:10 app/templates/admin/travel.html:10
 msgid "To review"
@@ -1415,11 +1575,6 @@ msgstr "Zum Beispiel: dein Beruf oder was du tust."
 msgid "About you"
 msgstr "Über dich"
 
-#: app/templates/modules/profile.html:25
-#: app/templates/modules/profile_edit.html:44
-msgid "Save"
-msgstr "Speichern"
-
 #: app/templates/modules/profile_directory.html:7
 msgid ""
 "Members who chose to appear in the directory. Only verified members can see"
@@ -1542,6 +1697,7 @@ msgid "Accepted. Contact is shared:"
 msgstr "Angenommen. Kontakt wird geteilt:"
 
 #: app/templates/modules/profile_intros.html:50
+#: app/templates/modules/services_mine.html:16
 msgid "You have not sent any requests yet."
 msgstr "Du hast noch keine Anfragen gesendet."
 
@@ -1691,6 +1847,58 @@ msgstr "Du hast noch keine Auswahl getroffen."
 msgid "Back to the directory"
 msgstr "Zurück zum Verzeichnis"
 
+#: app/templates/modules/service_detail.html:18
+msgid "Provider"
+msgstr "Anbieter"
+
+#: app/templates/modules/service_detail.html:22
+msgid "Send a request"
+msgstr "Anfrage senden"
+
+#: app/templates/modules/service_detail.html:23
+msgid ""
+"The provider receives your message. Your contact details are sent only if "
+"you tick the box below."
+msgstr ""
+"Der Anbieter erhält deine Nachricht. Deine Kontaktdaten werden nur "
+"gesendet, wenn du das Kästchen unten ankreuzt."
+
+#: app/templates/modules/service_detail.html:27
+msgid "Your message"
+msgstr "Deine Nachricht"
+
+#: app/templates/modules/service_detail.html:32
+msgid "Pass my e-mail address to the provider so they can reply to me."
+msgstr ""
+"Meine E-Mail-Adresse an den Anbieter weitergeben, damit er mir antworten "
+"kann."
+
+#: app/templates/modules/service_detail.html:34
+msgid "Send request"
+msgstr "Anfrage senden"
+
+#: app/templates/modules/services_list.html:6
+msgid "Services from the club network"
+msgstr "Leistungen aus dem Club-Netzwerk"
+
+#: app/templates/modules/services_list.html:7
+msgid "Checked partners of the community, with conditions for members."
+msgstr "Geprüfte Partner der Gemeinschaft, mit Konditionen für Mitglieder."
+
+#: app/templates/modules/services_list.html:8
+#: app/templates/modules/services_mine.html:3
+#: app/templates/modules/services_mine.html:6
+msgid "My requests"
+msgstr "Meine Anfragen"
+
+#: app/templates/modules/services_list.html:17
+msgid "Details and request"
+msgstr "Details und Anfrage"
+
+#: app/templates/modules/services_list.html:20
+msgid "No services are published yet."
+msgstr "Noch keine Leistungen veröffentlicht."
+
 #: app/templates/modules/startups_detail.html:8
 #, python-format
 msgid "Funding goal: %(amount)s"
@@ -1707,10 +1915,6 @@ msgstr "Wartet auf Prüfung."
 #: app/templates/modules/startups_detail.html:14
 msgid "Not published."
 msgstr "Nicht veröffentlicht."
-
-#: app/templates/modules/startups_detail.html:16
-msgid "Edit"
-msgstr "Bearbeiten"
 
 #: app/templates/modules/startups_detail.html:22
 msgid "Website"

@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}{{ _("Services") }} · {{ _("Admin") }}{% endblock %}
+
+{% block content %}
+<h1>{{ _("Services") }}</h1>
+<p><a href="{{ url_for('admin.dashboard') }}">{{ _("Back to admin") }}</a> · <a href="{{ url_for('admin.service_inquiries') }}">{{ _("Requests") }}</a></p>
+<p><a class="button" href="{{ url_for('admin.service_edit') }}">{{ _("New service") }}</a></p>
+
+{% for service in items %}
+<section class="card">
+  <h2>{{ service.title }}</h2>
+  <p class="small muted">{{ service.provider_name }} · {% if service.active %}{{ _("Visible") }}{% else %}{{ _("Hidden") }}{% endif %}</p>
+  <a class="button button-secondary" href="{{ url_for('admin.service_edit', service_id=service.id) }}">{{ _("Edit") }}</a>
+</section>
+{% else %}
+  <p>{{ _("No services yet.") }}</p>
+{% endfor %}
+{% endblock %}

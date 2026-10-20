@@ -108,8 +108,11 @@ def create_app(env=None):
                                 for root, _dirs, names in os.walk(static_dir) for name in names)))
     app.jinja_env.globals["asset_version"] = asset_version
 
+    from .services.catalog import status_label as inquiry_status_label
+
     app.jinja_env.globals.update(category_label=category_label, stage_label=stage_label,
-                                 intro_status_label=intro_status_label)
+                                 intro_status_label=intro_status_label,
+                                 inquiry_status_label=inquiry_status_label)
 
     @app.after_request
     def security_headers(response):

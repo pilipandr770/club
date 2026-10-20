@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}{{ _("Requests") }} · {{ _("Admin") }}{% endblock %}
+
+{% block content %}
+<h1>{{ _("Requests") }}</h1>
+<p><a href="{{ url_for('admin.services_admin') }}">{{ _("Back to services") }}</a></p>
+
+{% for inquiry in items %}
+<section class="card">
+  <h2>{{ inquiry.service.title }}</h2>
+  <p class="small muted">{{ inquiry.created_at.strftime('%d.%m.%Y %H:%M') }} · {{ inquiry.user.email }} · {% if inquiry.share_contact %}{{ _("contact shared") }}{% else %}{{ _("no contact shared") }}{% endif %}</p>
+  <p>{{ inquiry.message }}</p>
+  <form method="post" action="{{ url_for('admin.service_inquiry_status', inquiry_id=inquiry.id) }}" class="button-row">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+    {% for value in ["new", "contacted", "won", "lost"] %}
+      <button type="submit" name="status" value="{{ value }}" class="{% if inquiry.status == value %}button{% else %}button-secondary{% endif %}">{{ inquiry_status_label(value) }}</button>
+    {% endfor %}
+  </form>
+</section>
+{% else %}
+  <p>{{ _("No requests yet.") }}</p>
+{% endfor %}
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}{{ _("My requests") }} · {{ _("Services") }}{% endblock %}
+
+{% block content %}
+<h1>{{ _("My requests") }}</h1>
+<p><a href="{{ url_for('services.index') }}">{{ _("Back to services") }}</a></p>
+
+{% for inquiry in inquiries %}
+<section class="card">
+  <h2><a href="{{ url_for('services.detail', slug=inquiry.service.slug) }}">{{ inquiry.service.title }}</a></h2>
+  <p class="small muted">{{ inquiry.created_at.strftime('%d.%m.%Y') }} · {{ inquiry_status_label(inquiry.status) }}</p>
+  <p>{{ inquiry.message }}</p>
+</section>
+{% else %}
+  <p>{{ _("You have not sent any requests yet.") }}</p>
+{% endfor %}
+{% endblock %}

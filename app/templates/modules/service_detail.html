@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}{{ service.title }} · {{ _("Services") }}{% endblock %}
+
+{% block content %}
+<h1>{{ service.title }}</h1>
+<p class="lead">{{ service.summary }}</p>
+{% if service.member_benefit %}<p><strong>{{ service.member_benefit }}</strong></p>{% endif %}
+{% if service.price_hint %}<p class="small muted">{{ service.price_hint }}</p>{% endif %}
+
+<section class="card">
+  <p>{{ service.description }}</p>
+  {% if service.benefits_list %}
+  <ul class="module-list">
+    {% for benefit in service.benefits_list %}<li>{{ benefit }}</li>{% endfor %}
+  </ul>
+  {% endif %}
+  {% if service.provider_name %}<p class="small muted">{{ _("Provider") }}: {{ service.provider_name }}</p>{% endif %}
+</section>
+
+<section class="card">
+  <h2>{{ _("Send a request") }}</h2>
+  <p class="small muted">{{ _("The provider receives your message. Your contact details are sent only if you tick the box below.") }}</p>
+  <form method="post" action="{{ url_for('services.detail', slug=service.slug) }}" class="form">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+    <div class="field">
+      <label for="message">{{ _("Your message") }}</label>
+      <textarea id="message" name="message" rows="5" maxlength="2000" required></textarea>
+    </div>
+    <label class="check">
+      <input type="checkbox" name="share_contact" value="1">
+      {{ _("Pass my e-mail address to the provider so they can reply to me.") }}
+    </label>
+    <button type="submit" class="button">{{ _("Send request") }}</button>
+  </form>
+</section>
+
+<p><a href="{{ url_for('services.index') }}">{{ _("Back to services") }}</a></p>
+{% endblock %}

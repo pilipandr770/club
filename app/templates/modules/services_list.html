@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}{{ _("Services") }} · {{ _("Club") }}{% endblock %}
+
+{% block content %}
+<h1>{{ _("Services from the club network") }}</h1>
+<p class="muted">{{ _("Checked partners of the community, with conditions for members.") }}</p>
+<p><a href="{{ url_for('services.mine') }}">{{ _("My requests") }}</a></p>
+
+<div class="grid-cards">
+{% for service in items %}
+  <article class="card">
+    <h2><a href="{{ url_for('services.detail', slug=service.slug) }}">{{ service.title }}</a></h2>
+    <p>{{ service.summary }}</p>
+    {% if service.member_benefit %}<p class="small"><strong>{{ service.member_benefit }}</strong></p>{% endif %}
+    {% if service.price_hint %}<p class="small muted">{{ service.price_hint }}</p>{% endif %}
+    <a class="button button-secondary" href="{{ url_for('services.detail', slug=service.slug) }}">{{ _("Details and request") }}</a>
+  </article>
+{% else %}
+  <p>{{ _("No services are published yet.") }}</p>
+{% endfor %}
+</div>
+{% endblock %}

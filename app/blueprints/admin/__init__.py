@@ -330,3 +330,74 @@ def verify_manually(user_id):
         flash(_("The identity check is marked as verified."), "success")
     return redirect(url_for("admin.user_detail", user_id=user.id))
 
+
+
+SERVICE_FIELDS = ("title", "summary", "description", "benefits", "member_benefit", "price_hint",
+                  "provider_name", "provider_email")
+
+
+def _service_data(form):
+    data = {key: form.get(key, "").strip() for key in SERVICE_FIELDS}
+    data["active"] = bool(form.get("active"))
+    try:
+        data["sort"] = int(form.get("sort", "0") or 0)
+    except ValueError:
+        data["sort"] = 0
+    return data
+
+
+@bp.route("/services")
+@admin_required
+def services_admin():
+    from ...models import Service
+
+    items = Service.query.order_by(Service.sort, Service.title).all()
+    return render_template("admin/services.html", items=items)
+
+
+@bp.route("/services/new", methods=["GET", "POST"])
+@bp.route("/services/<int:service_id>/edit", methods=["GET", "POST"])
+@admin_required
+def service_edit(service_id=None):
+    from ...models import Service
+    from ...services.catalog import save_service
+
+    service = db.session.get(Service, service_id) if service_id else None
+    if service_id and service is None:
+        abort(404)
+    if request.method == "POST":
+        data = _service_data(request.form)
+        if not data["title"]:
+            flash(_("Please enter a title."), "error")
+        else:
+            save_service(current_user, service, data)
+            db.session.commit()
+            flash(_("The service is saved."), "success")
+            return redirect(url_for("admin.services_admin"))
+    return render_template("admin/service_form.html", service=service,
+                           form=request.form if request.method == "POST" else None)
+
+
+@bp.route("/services/inquiries")
+@admin_required
+def service_inquiries():
+    from ...models import ServiceInquiry
+
+    items = ServiceInquiry.query.order_by(ServiceInquiry.created_at.desc()).limit(300).all()
+    return render_template("admin/service_inquiries.html", items=items)
+
+
+@bp.route("/services/inquiries/<int:inquiry_id>/status", methods=["POST"])
+@admin_required
+def service_inquiry_status(inquiry_id):
+    from ...models import ServiceInquiry
+    from ...services.catalog import CatalogError, set_inquiry_status
+
+    inquiry = db.session.get(ServiceInquiry, inquiry_id) or abort(404)
+    try:
+        set_inquiry_status(current_user, inquiry, request.form.get("status", ""))
+        db.session.commit()
+    except CatalogError:
+        db.session.rollback()
+        flash(_("Unknown status."), "error")
+    return redirect(url_for("admin.service_inquiries"))

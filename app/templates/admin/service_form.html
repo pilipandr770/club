@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}{{ _("Service") }} · {{ _("Admin") }}{% endblock %}
+
+{% block content %}
+<h1>{% if service %}{{ _("Edit service") }}{% else %}{{ _("New service") }}{% endif %}</h1>
+<p><a href="{{ url_for('admin.services_admin') }}">{{ _("Back to services") }}</a></p>
+
+<form method="post" class="form" action="{% if service %}{{ url_for('admin.service_edit', service_id=service.id) }}{% else %}{{ url_for('admin.service_edit') }}{% endif %}">
+  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+  <div class="field"><label for="title">{{ _("Title") }}</label>
+    <input id="title" name="title" type="text" maxlength="160" required value="{{ (form.get('title') if form else service.title if service else '') or '' }}"></div>
+  <div class="field"><label for="summary">{{ _("Short summary") }}</label>
+    <input id="summary" name="summary" type="text" maxlength="300" value="{{ (form.get('summary') if form else service.summary if service else '') or '' }}"></div>
+  <div class="field"><label for="description">{{ _("Description") }}</label>
+    <textarea id="description" name="description" rows="6">{{ (form.get('description') if form else service.description if service else '') or '' }}</textarea></div>
+  <div class="field"><label for="benefits">{{ _("Benefits (one per line)") }}</label>
+    <textarea id="benefits" name="benefits" rows="4">{{ (form.get('benefits') if form else service.benefits if service else '') or '' }}</textarea></div>
+  <div class="field"><label for="member_benefit">{{ _("Member benefit") }}</label>
+    <input id="member_benefit" name="member_benefit" type="text" maxlength="300" value="{{ (form.get('member_benefit') if form else service.member_benefit if service else '') or '' }}"></div>
+  <div class="field"><label for="price_hint">{{ _("Price hint") }}</label>
+    <input id="price_hint" name="price_hint" type="text" maxlength="120" value="{{ (form.get('price_hint') if form else service.price_hint if service else '') or '' }}"></div>
+  <div class="field"><label for="provider_name">{{ _("Provider name") }}</label>
+    <input id="provider_name" name="provider_name" type="text" maxlength="160" value="{{ (form.get('provider_name') if form else service.provider_name if service else '') or '' }}"></div>
+  <div class="field"><label for="provider_email">{{ _("Provider e-mail (receives requests, never shown to members)") }}</label>
+    <input id="provider_email" name="provider_email" type="email" maxlength="255" value="{{ (form.get('provider_email') if form else service.provider_email if service else '') or '' }}"></div>
+  <div class="field"><label for="sort">{{ _("Order") }}</label>
+    <input id="sort" name="sort" type="number" value="{{ (form.get('sort') if form else service.sort if service else 0) }}"></div>
+
+  <label class="check">
+    <input type="checkbox" name="active" value="1" {% if (form and form.get('active')) or (not form and (not service or service.active)) %}checked{% endif %}>
+    {{ _("Visible to members") }}
+  </label>
+
+  <button type="submit" class="button">{{ _("Save") }}</button>
+</form>
+{% endblock %}
