@@ -11,7 +11,7 @@ cp .env.example .env        # заполнить пароли и SECRET_KEY
 docker compose up -d --build
 ```
 
-Сайт: https://localhost (сертификат локальный, браузер предупредит). Проверка: `/healthz`.
+Сайт: http://localhost:8081 (локально без TLS). Проверка: `/healthz`.
 
 ## Команды
 

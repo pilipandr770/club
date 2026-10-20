@@ -62,11 +62,9 @@ services:
   caddy:
     image: caddy:2.8.4-alpine
     restart: unless-stopped
+    # Только локально: TLS и публичный вход делает Traefik на сервере
     ports:
-      - "80:80"
-      - "443:443"
-    environment:
-      SITE_ADDRESS: ${SITE_ADDRESS:-localhost}
+      - "127.0.0.1:8081:80"
     volumes:
       - ./deploy/Caddyfile:/etc/caddy/Caddyfile:ro
       - caddy_data:/data
