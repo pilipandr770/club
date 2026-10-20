@@ -3,10 +3,12 @@ from flask_babel import gettext as _
 from flask_login import current_user
 
 from ...extensions import db
-from ...models import Profile, User
+from ...models import Consent, IntroRequest, Profile, User
 from ...profile_guide import FIELDS, PHOTO_EXAMPLES, PHOTO_HINT, completeness, matchable, missing_for_matching
 from ...services.audit import audit
-from ...services.consents import record_consent
+from ...services.consents import latest_consent, record_consent
+from ...services import intros
+from ...services.intros import IntroError
 from ...services.entitlements import requires_feature
 from ...services.matching import get_matches, refresh_embeddings
 from ...services.media import MediaError, process_image, profile_photo_key
@@ -46,16 +48,6 @@ def _read_text_fields(form):
     return values, errors
 
 
-def _apply_consent(user, kind, flag_name, new_value):
-    profile = user.profile
-    old_value = getattr(profile, flag_name)
-    if old_value == new_value:
-        return None
-    setattr(profile, flag_name, new_value)
-    record_consent(user, kind, new_value)
-    return f"{kind} {'on' if new_value else 'off'}"
-
-
 @bp.route("/", methods=["GET", "POST"])
 @requires_feature("profile.edit")
 def edit():
@@ -68,16 +60,9 @@ def edit():
         if not errors:
             for key, value in values.items():
                 setattr(profile, key, value)
-            changes = [
-                _apply_consent(current_user, "directory", "visible_in_directory",
-                               bool(request.form.get("visible_in_directory"))),
-                _apply_consent(current_user, "matching", "allow_matching",
-                               bool(request.form.get("allow_matching"))),
-            ]
             profile.updated_at = utcnow()
             refresh_embeddings(profile)
-            audit("profile.updated", target=f"user:{current_user.id}", actor_id=current_user.id,
-                  details="; ".join(c for c in changes if c))
+            audit("profile.updated", target=f"user:{current_user.id}", actor_id=current_user.id)
             db.session.commit()
             flash(_("Your profile is saved."), "success")
             return redirect(url_for("profile.edit"))
@@ -105,10 +90,101 @@ def matches():
         return render_template("modules/profile_matches.html", cards=[], ready=False,
                                missing=missing_for_matching(current_user.profile) if current_user.profile else [],
                                fields=FIELDS, llm_on=bool(current_app.config.get("ANTHROPIC_API_KEY")))
-    cards = [{"member": other, "label": label, "explanation": text}
-             for other, label, text in get_matches(current_user)]
+    cards = []
+    for other, label, text in get_matches(current_user):
+        cards.append({"member": other, "label": label, "explanation": text,
+                      "state": intros.link_state(current_user, other),
+                      "contact": intros.visible_contact(current_user, other)})
     return render_template("modules/profile_matches.html", cards=cards, ready=True, missing=[], fields=FIELDS,
                            llm_on=bool(current_app.config.get("ANTHROPIC_API_KEY")))
+
+
+PUBLICATION_KINDS = (("directory", "visible_in_directory"), ("matching", "allow_matching"))
+
+
+@bp.route("/privacy", methods=["GET", "POST"])
+@requires_feature("profile.edit")
+def privacy():
+    """Единое место для решений о публикации и матчинге. Каждое решение пишется в consents."""
+    profile = _profile_for(current_user)
+    if request.method == "POST":
+        for kind, flag in PUBLICATION_KINDS:
+            value = bool(request.form.get(flag))
+            record_consent(current_user, kind, value)
+            setattr(profile, flag, value)
+        profile.updated_at = utcnow()
+        refresh_embeddings(profile)
+        audit("privacy.decided", target=f"user:{current_user.id}", actor_id=current_user.id,
+              details=f"directory={profile.visible_in_directory} matching={profile.allow_matching}")
+        db.session.commit()
+        flash(_("Your choices are saved."), "success")
+        return redirect(url_for("profile.privacy"))
+
+    history = (Consent.query.filter(Consent.user_id == current_user.id,
+                                    Consent.kind.in_([kind for kind, _flag in PUBLICATION_KINDS]))
+               .order_by(Consent.created_at.desc(), Consent.id.desc()).limit(20).all())
+    return render_template("modules/profile_privacy.html", profile=profile, history=history,
+                           decided=latest_consent(current_user, "directory") is not None)
+
+
+@bp.route("/intro/<int:user_id>", methods=["POST"])
+@requires_feature("community.read")
+def request_intro(user_id):
+    other = db.session.get(User, user_id) or abort(404)
+    try:
+        intros.request_intro(current_user, other, request.form.get("message", ""))
+        db.session.commit()
+    except IntroError as exc:
+        db.session.rollback()
+        flash(_intro_error(exc.code), "error")
+        return redirect(url_for("profile.matches"))
+    flash(_("Your request is sent. The other member decides whether to share contact details."), "success")
+    return redirect(url_for("profile.matches"))
+
+
+@bp.route("/intros")
+@requires_feature("community.read")
+def intros_inbox():
+    incoming, outgoing = intros.inbox(current_user)
+    return render_template("modules/profile_intros.html", incoming=incoming, outgoing=outgoing)
+
+
+@bp.route("/intros/<int:intro_id>/respond", methods=["POST"])
+@requires_feature("community.read")
+def respond_intro(intro_id):
+    intro = db.session.get(IntroRequest, intro_id) or abort(404)
+    try:
+        intros.respond(current_user, intro, request.form.get("answer") == "accept")
+        db.session.commit()
+    except IntroError as exc:
+        db.session.rollback()
+        flash(_intro_error(exc.code), "error")
+    return redirect(url_for("profile.intros_inbox"))
+
+
+@bp.route("/intros/<int:intro_id>/withdraw", methods=["POST"])
+@requires_feature("community.read")
+def withdraw_intro(intro_id):
+    intro = db.session.get(IntroRequest, intro_id) or abort(404)
+    try:
+        intros.withdraw(current_user, intro)
+        db.session.commit()
+    except IntroError as exc:
+        db.session.rollback()
+        flash(_intro_error(exc.code), "error")
+    return redirect(url_for("profile.intros_inbox"))
+
+
+def _intro_error(code):
+    messages = {
+        "own_profile": _("You cannot send a request to yourself."),
+        "not_available": _("This member cannot be contacted right now."),
+        "already_open": _("There is already a request between you two."),
+        "daily_limit": _("You have reached today's limit of requests. Please try again tomorrow."),
+        "forbidden": _("This is not available to you."),
+        "already_answered": _("This request has already been answered."),
+    }
+    return messages.get(code, _("Something went wrong. Please try again."))
 
 
 @bp.route("/photo", methods=["POST"])

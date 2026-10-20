@@ -8,6 +8,7 @@ from flask_login import current_user, login_required, logout_user
 from ...extensions import db, limiter
 from ...modules import enabled_modules
 from ...services.audit import audit
+from ...services.consents import latest_consent
 from ...services.gdpr import delete_user, export_user
 from ...services.verification import VerificationNotAllowed, reason_message, start_verification
 from ..auth import send_confirmation
@@ -32,6 +33,7 @@ def dashboard():
         reason=reason_message(current_user.verification_reason),
         modules=modules,
         plan_name=plan["name"],
+        publication_decided=latest_consent(current_user, "directory") is not None,
     )
 
 

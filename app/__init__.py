@@ -100,7 +100,10 @@ def create_app(env=None):
     app.jinja_env.globals["get_locale"] = get_locale
     from .modules.startups.labels import category_label, stage_label
 
-    app.jinja_env.globals.update(category_label=category_label, stage_label=stage_label)
+    from .services.intros import status_label as intro_status_label
+
+    app.jinja_env.globals.update(category_label=category_label, stage_label=stage_label,
+                                 intro_status_label=intro_status_label)
 
     @app.after_request
     def security_headers(response):

@@ -46,6 +46,14 @@
   {% endif %}
 </section>
 
+{% if current_user.is_verified and not publication_decided %}
+<section class="card">
+  <h2>{{ _("Publication and matching") }}</h2>
+  <p>{{ _("Decide whether other members can see your profile and whether it is used for matching. Both are off until you choose.") }}</p>
+  <p><a href="{{ url_for('profile.privacy') }}" class="button">{{ _("Make my choices") }}</a></p>
+</section>
+{% endif %}
+
 <section class="card">
   <h2>{{ _("Your plan") }}: {{ plan_name }}</h2>
   <ul class="module-list">

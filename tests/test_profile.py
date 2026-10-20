@@ -91,21 +91,20 @@ def test_too_long_field_is_refused(app, client):
     assert "Bitte prüfe diese Felder: q_focus" in response.get_data(as_text=True)
 
 
-def test_directory_and_matching_are_off_by_default_and_recorded_on_change(app, client):
+def test_directory_and_matching_are_off_by_default_and_every_decision_is_recorded(app, client):
     user_id = make_user(app, email="c@example.com", verified=True)
     login(client, "c@example.com")
     with app.app_context():
         assert Profile.query.one().visible_in_directory is False
         assert Profile.query.one().allow_matching is False
 
-    client.post("/profile/", data={"visible_in_directory": "1"})
-    client.post("/profile/", data={"visible_in_directory": "1"})  # без изменения — новой записи нет
-    client.post("/profile/", data={})  # снял галочку
+    client.post("/profile/privacy", data={"visible_in_directory": "1"})
+    client.post("/profile/privacy", data={"visible_in_directory": "1"})  # подтверждённое решение тоже пишется
+    client.post("/profile/privacy", data={})  # снял галочку
 
     with app.app_context():
-        rows = [(c.kind, c.granted) for c in Consent.query.filter_by(user_id=user_id, kind="directory")
-                .order_by(Consent.id)]
-        assert rows == [("directory", True), ("directory", False)]
+        rows = [c.granted for c in Consent.query.filter_by(user_id=user_id, kind="directory").order_by(Consent.id)]
+        assert rows == [True, True, False]
 
 
 # --- каталог и видимость -----------------------------------------------------

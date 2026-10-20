@@ -14,7 +14,7 @@
       </p>
     {% endif %}
     <p class="small">{{ _("You also need to allow matching in your profile. It is off by default.") }}</p>
-    <p><a href="{{ url_for('profile.edit') }}">{{ _("Edit my profile") }}</a></p>
+    <p><a href="{{ url_for('profile.privacy') }}">{{ _("Publication and matching") }}</a> · <a href="{{ url_for('profile.edit') }}">{{ _("Edit my profile") }}</a></p>
   </section>
 {% else %}
   <p class="muted">{{ _("Suggestions are based on what you need and what others offer. Contact details are shared only after both sides agree.") }}</p>
@@ -29,6 +29,25 @@
       <p>{{ card.member.profile.headline or "" }}</p>
       <p class="small"><strong>{{ card.label }}</strong></p>
       <p>{{ card.explanation }}</p>
+
+      {% if card.contact %}
+        <p>{{ _("Contact:") }} <a href="mailto:{{ card.contact }}">{{ card.contact }}</a></p>
+      {% elif card.state == "accepted" %}
+        <p class="small">{{ _("Accepted.") }}</p>
+      {% elif card.state == "sent" %}
+        <p class="small">{{ _("Your request is waiting for an answer.") }}</p>
+      {% elif card.state == "received" %}
+        <p class="small">{{ _("This member has asked to contact you. Answer in your requests.") }} <a href="{{ url_for('profile.intros_inbox') }}">{{ _("Contact requests") }}</a></p>
+      {% else %}
+        <form method="post" action="{{ url_for('profile.request_intro', user_id=card.member.id) }}" class="form">
+          <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+          <div class="field">
+            <label for="msg-{{ card.member.id }}">{{ _("Short message (optional)") }}</label>
+            <textarea id="msg-{{ card.member.id }}" name="message" rows="2" maxlength="500"></textarea>
+          </div>
+          <button type="submit" class="button button-secondary">{{ _("Request contact") }}</button>
+        </form>
+      {% endif %}
     </div>
   </section>
   {% else %}
@@ -36,5 +55,5 @@
   {% endfor %}
 {% endif %}
 
-<p><a href="{{ url_for('profile.directory') }}">{{ _("Open the member directory") }}</a></p>
+<p><a href="{{ url_for('profile.intros_inbox') }}">{{ _("Contact requests") }}</a> · <a href="{{ url_for('profile.directory') }}">{{ _("Open the member directory") }}</a></p>
 {% endblock %}

@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block title %}{{ _("Contact requests") }} · {{ _("Club") }}{% endblock %}
+
+{% block content %}
+<h1>{{ _("Contact requests") }}</h1>
+<p class="muted">{{ _("Contact details are shared only when a request is accepted.") }}</p>
+
+<section>
+  <h2>{{ _("Received") }}</h2>
+  {% for intro in incoming %}
+  <section class="card">
+    <p><strong>{{ intro.from_user.first_name }}</strong> · {{ intro.created_at.strftime('%d.%m.%Y') }}</p>
+    {% if intro.message %}<p>{{ intro.message }}</p>{% endif %}
+    {% if intro.status == "pending" %}
+      <form method="post" action="{{ url_for('profile.respond_intro', intro_id=intro.id) }}" class="inline-form">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+        <button type="submit" name="answer" value="accept" class="button">{{ _("Accept and share my e-mail") }}</button>
+        <button type="submit" name="answer" value="decline" class="button button-secondary">{{ _("Decline") }}</button>
+      </form>
+    {% elif intro.status == "accepted" %}
+      <p class="small">{{ _("You accepted. Contact is shared:") }} <a href="mailto:{{ intro.from_user.email }}">{{ intro.from_user.email }}</a></p>
+    {% else %}
+      <p class="small">{{ intro_status_label(intro.status) }}</p>
+    {% endif %}
+  </section>
+  {% else %}
+    <p>{{ _("No requests received yet.") }}</p>
+  {% endfor %}
+</section>
+
+<section>
+  <h2>{{ _("Sent") }}</h2>
+  {% for intro in outgoing %}
+  <section class="card">
+    <p><strong>{{ intro.to_user.first_name }}</strong> · {{ intro.created_at.strftime('%d.%m.%Y') }}</p>
+    {% if intro.status == "pending" %}
+      <p class="small">{{ _("Waiting for an answer.") }}</p>
+      <form method="post" action="{{ url_for('profile.withdraw_intro', intro_id=intro.id) }}" class="inline-form">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+        <button type="submit" class="link-button">{{ _("Withdraw request") }}</button>
+      </form>
+    {% elif intro.status == "accepted" %}
+      <p class="small">{{ _("Accepted. Contact is shared:") }} <a href="mailto:{{ intro.to_user.email }}">{{ intro.to_user.email }}</a></p>
+    {% else %}
+      <p class="small">{{ intro_status_label(intro.status) }}</p>
+    {% endif %}
+  </section>
+  {% else %}
+    <p>{{ _("You have not sent any requests yet.") }}</p>
+  {% endfor %}
+</section>
+{% endblock %}

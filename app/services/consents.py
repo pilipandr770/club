@@ -18,3 +18,13 @@ def record_consent(user, kind: str, granted: bool, source: str = "web") -> None:
             source=source,
         )
     )
+
+
+def latest_consent(user, kind: str):
+    """Последнее решение участника по виду согласия: True, False или None (решения ещё не было)."""
+    from ..models import Consent
+
+    row = (Consent.query.filter_by(user_id=user.id, kind=kind)
+           .order_by(Consent.created_at.desc(), Consent.id.desc()).first())
+    return None if row is None else row.granted
+

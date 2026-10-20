@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}{{ _("Publication and matching") }} · {{ _("Club") }}{% endblock %}
+
+{% block content %}
+<h1>{{ _("Publication and matching") }}</h1>
+<p class="muted">{{ _("You decide what other members can see. Both choices are off by default and you can change them at any time.") }}</p>
+
+<section class="card">
+  <h2>{{ _("What is published") }}</h2>
+  <p class="small">{{ _("If you agree to the member directory, other verified members can see: your first name, your headline, company, industry, city, the texts of your profile and your photo. Your e-mail address is never shown in the directory.") }}</p>
+</section>
+
+<form method="post" action="{{ url_for('profile.privacy') }}" class="form">
+  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+  <label class="check">
+    <input type="checkbox" name="visible_in_directory" value="1" {% if profile.visible_in_directory %}checked{% endif %}>
+    {{ _("Show my profile in the member directory. Other verified members can see your name, headline, city and photo.") }}
+  </label>
+
+  <label class="check">
+    <input type="checkbox" name="allow_matching" value="1" {% if profile.allow_matching %}checked{% endif %}>
+    {{ _("Use my profile for AI matching and personal suggestions. Off by default.") }}
+  </label>
+
+  <p class="small">{{ _("Contact details are never published. Other members can reach you only after you accept their request.") }}</p>
+
+  <button type="submit" class="button">{{ _("Save my choices") }}</button>
+</form>
+
+<section class="card">
+  <h2>{{ _("History of your choices") }}</h2>
+  <ul class="module-list">
+    {% for row in history %}
+      <li>{{ row.created_at.strftime('%d.%m.%Y %H:%M') }} · {% if row.kind == "directory" %}{{ _("Directory") }}{% else %}{{ _("Matching") }}{% endif %}: {{ _("agreed") if row.granted else _("not agreed") }} · {{ row.version }}</li>
+    {% else %}
+      <li class="muted">{{ _("You have not made a choice yet.") }}</li>
+    {% endfor %}
+  </ul>
+</section>
+
+<p><a href="{{ url_for('profile.edit') }}">{{ _("Edit my profile") }}</a></p>
+{% endblock %}
