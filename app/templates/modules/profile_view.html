@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %}{{ member.first_name }} · {{ _("Members") }}{% endblock %}
+
+{% block content %}
+<section class="profile-head">
+  {% if profile and profile.photo_key %}
+    <img class="avatar" src="{{ url_for('profile.photo', user_id=member.id) }}" alt="" width="120" height="120">
+  {% endif %}
+  <div>
+    <h1>{{ member.first_name }}</h1>
+    {% if profile and profile.headline %}<p>{{ profile.headline }}</p>{% endif %}
+    <p class="small">
+      {% if profile and profile.company %}{{ profile.company }} · {% endif %}
+      {% if profile and profile.city %}{{ profile.city }}{% endif %}
+      {% if profile and profile.industry %} · {{ profile.industry }}{% endif %}
+    </p>
+  </div>
+</section>
+
+{% if profile %}
+  {% for field in fields if field.key in ["q_focus", "q_challenge", "q_can_help", "q_looking_for", "bio"] %}
+    {% if profile[field.key] %}
+    <section class="card">
+      <h2>{{ field.label }}</h2>
+      <p>{{ profile[field.key] }}</p>
+    </section>
+    {% endif %}
+  {% endfor %}
+  {% if profile.expertise %}
+  <section class="card">
+    <h2>{{ _("Skills and topics") }}</h2>
+    <p>{{ profile.expertise }}</p>
+  </section>
+  {% endif %}
+{% endif %}
+
+{% if is_self %}
+  <p><a href="{{ url_for('profile.edit') }}">{{ _("Edit my profile") }}</a></p>
+{% endif %}
+<p><a href="{{ url_for('profile.directory') }}">{{ _("Back to the directory") }}</a></p>
+{% endblock %}

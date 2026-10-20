@@ -57,6 +57,9 @@ def create_app(env=None):
 
         return db.session.get(User, int(user_id))
 
+    from .services.media import LocalStorage
+
+    app.extensions["media"] = LocalStorage(app.config["MEDIA_ROOT"])
     app.extensions["identity_provider"] = StripeIdentityProvider(
         app.config["STRIPE_SECRET_KEY"], app.config["STRIPE_WEBHOOK_SECRET"]
     )

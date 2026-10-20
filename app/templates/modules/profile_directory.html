@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}{{ _("Members") }} · {{ _("Club") }}{% endblock %}
+
+{% block content %}
+<h1>{{ _("Members") }}</h1>
+<p class="muted">{{ _("Members who chose to appear in the directory. Only verified members can see this page.") }}</p>
+
+{% for user in users %}
+<section class="card member-card">
+  {% if user.profile.photo_key %}
+    <img class="avatar" src="{{ url_for('profile.photo', user_id=user.id) }}" alt="" width="64" height="64">
+  {% endif %}
+  <div>
+    <h2><a href="{{ url_for('profile.view', user_id=user.id) }}">{{ user.first_name }}</a></h2>
+    <p>{{ user.profile.headline or _("No headline yet") }}</p>
+    <p class="small">{% if user.profile.city %}{{ user.profile.city }}{% endif %}{% if user.profile.industry %} · {{ user.profile.industry }}{% endif %}</p>
+  </div>
+</section>
+{% else %}
+  <p>{{ _("No members in the directory yet.") }}</p>
+{% endfor %}
+{% endblock %}

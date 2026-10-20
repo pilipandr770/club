@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+
+{% block title %}{{ _("About me") }} · {{ _("Club") }}{% endblock %}
+
+{% block content %}
+<h1>{{ _("About me") }}</h1>
+<p class="muted">{{ _("The fuller your profile, the better our matching can suggest people who fit you. Each field has a short hint and examples.") }}</p>
+
+<section class="card">
+  <p><strong>{{ _("Profile completeness") }}: {{ percent }} %</strong></p>
+  <progress max="100" value="{{ percent }}" class="progress">{{ percent }} %</progress>
+  {% if matchable %}
+    <p class="small">{{ _("Your profile can be used for matching.") }}</p>
+  {% elif missing %}
+    <p class="small">{{ _("For matching, please also fill in:") }}
+      {% for field in fields if field.key in missing %}{{ field.label }}{% if not loop.last %}, {% endif %}{% endfor %}
+    </p>
+  {% endif %}
+</section>
+
+<form method="post" action="{{ url_for('profile.edit') }}" class="form">
+  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+  {% for field in fields %}
+  <div class="field {% if field.key in errors %}field-error{% endif %}">
+    <label for="{{ field.key }}">{{ field.label }}</label>
+    <p class="small">{{ field.hint }}</p>
+    {% if field.multiline %}
+      <textarea id="{{ field.key }}" name="{{ field.key }}" rows="4" maxlength="{{ field.max_length }}">{{ form.get(field.key, '') if form is not none else profile[field.key] or '' }}</textarea>
+    {% else %}
+      <input id="{{ field.key }}" name="{{ field.key }}" type="text" maxlength="{{ field.max_length }}" value="{{ form.get(field.key, '') if form is not none else profile[field.key] or '' }}">
+    {% endif %}
+    <details class="examples">
+      <summary>{{ _("Show examples") }}</summary>
+      <ul class="module-list">
+        {% for example in field.examples %}<li>{{ example }}</li>{% endfor %}
+      </ul>
+      <p class="small">{{ _("Examples are for orientation only. Write about yourself in your own words.") }}</p>
+    </details>
+  </div>
+  {% endfor %}
+
+  <fieldset class="consents">
+    <legend>{{ _("Visibility and matching") }}</legend>
+    <label class="check">
+      <input type="checkbox" name="visible_in_directory" value="1" {% if profile.visible_in_directory %}checked{% endif %}>
+      {{ _("Show my profile in the member directory. Other verified members can see your name, headline, city and photo.") }}
+    </label>
+    <label class="check">
+      <input type="checkbox" name="allow_matching" value="1" {% if profile.allow_matching %}checked{% endif %}>
+      {{ _("Use my profile for AI matching and personal suggestions. Off by default.") }}
+    </label>
+  </fieldset>
+
+  <button type="submit" class="button">{{ _("Save") }}</button>
+</form>
+
+<section class="card">
+  <h2>{{ _("Photo") }}</h2>
+  <p class="small">{{ photo_hint }}</p>
+  <details class="examples">
+    <summary>{{ _("Show examples") }}</summary>
+    <ul class="module-list">
+      {% for example in photo_examples %}<li>{{ example }}</li>{% endfor %}
+    </ul>
+  </details>
+  {% if profile.photo_key %}
+    <p><img class="avatar" src="{{ url_for('profile.photo', user_id=current_user.id) }}" alt="{{ _('Your photo') }}" width="120" height="120"></p>
+    <form method="post" action="{{ url_for('profile.remove_photo') }}" class="inline-form">
+      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+      <button type="submit" class="link-button">{{ _("Remove photo") }}</button>
+    </form>
+  {% endif %}
+  <form method="post" action="{{ url_for('profile.upload_photo') }}" enctype="multipart/form-data" class="form">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+    <div class="field">
+      <label for="photo">{{ _("Choose a photo") }}</label>
+      <input id="photo" name="photo" type="file" accept="image/jpeg,image/png,image/webp">
+    </div>
+    <button type="submit" class="button button-secondary">{{ _("Upload photo") }}</button>
+  </form>
+</section>
+
+<p><a href="{{ url_for('profile.directory') }}">{{ _("Open the member directory") }}</a></p>
+{% endblock %}

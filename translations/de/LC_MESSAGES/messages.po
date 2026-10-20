@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Club 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-20 08:56+0000\n"
+"POT-Creation-Date: 2026-10-20 09:16+0000\n"
 "PO-Revision-Date: 2026-10-19 21:00+0000\n"
 "Last-Translator: \n"
 "Language: de\n"
@@ -16,6 +16,252 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.17.0\n"
+
+#: app/profile_guide.py:27 app/templates/modules/profile.html:13
+msgid "Headline"
+msgstr "Überschrift"
+
+#: app/profile_guide.py:28
+msgid "One line: who you are and what you do."
+msgstr "Eine Zeile: wer du bist und was du machst."
+
+#: app/profile_guide.py:30
+msgid "Tax adviser for founders in the Rhine-Main area"
+msgstr "Steuerberaterin für Gründerinnen im Rhein-Main-Gebiet"
+
+#: app/profile_guide.py:31
+msgid "Full-stack developer building web products for small businesses"
+msgstr "Full-Stack-Entwickler, baut Web-Produkte für kleine Unternehmen"
+
+#: app/profile_guide.py:32
+msgid "Investment manager focused on energy startups"
+msgstr "Investmentmanager mit Fokus auf Energie-Startups"
+
+#: app/profile_guide.py:39
+msgid "Company"
+msgstr "Unternehmen"
+
+#: app/profile_guide.py:40
+msgid "Your company or project name, if you have one."
+msgstr "Name deines Unternehmens oder Projekts, falls vorhanden."
+
+#: app/profile_guide.py:42
+msgid "Kanzlei Weber & Partner"
+msgstr "Kanzlei Weber & Partner"
+
+#: app/profile_guide.py:43
+msgid "Freelance"
+msgstr "Freiberuflich"
+
+#: app/profile_guide.py:44
+msgid "Solar Shelf GmbH (in founding)"
+msgstr "Solar Shelf GmbH (in Gründung)"
+
+#: app/profile_guide.py:51
+msgid "Industry"
+msgstr "Branche"
+
+#: app/profile_guide.py:52
+msgid "The field you work in."
+msgstr "Der Bereich, in dem du arbeitest."
+
+#: app/profile_guide.py:54
+msgid "Finance and tax"
+msgstr "Finanzen und Steuern"
+
+#: app/profile_guide.py:55
+msgid "Software"
+msgstr "Software"
+
+#: app/profile_guide.py:56
+msgid "Energy"
+msgstr "Energie"
+
+#: app/profile_guide.py:63
+msgid "City"
+msgstr "Stadt"
+
+#: app/profile_guide.py:64
+msgid "Where you are based. Only the city, not the full address."
+msgstr "Wo du ansässig bist. Nur die Stadt, nicht die volle Adresse."
+
+#: app/profile_guide.py:66
+msgid "Frankfurt am Main"
+msgstr "Frankfurt am Main"
+
+#: app/profile_guide.py:67
+msgid "Offenbach"
+msgstr "Offenbach"
+
+#: app/profile_guide.py:68
+msgid "Wiesbaden"
+msgstr "Wiesbaden"
+
+#: app/profile_guide.py:75
+msgid "What I do"
+msgstr "Was ich mache"
+
+#: app/profile_guide.py:76
+msgid "Describe your work in two or three sentences. Concrete details help most."
+msgstr ""
+"Beschreibe deine Arbeit in zwei oder drei Sätzen. Konkrete Details helfen "
+"am meisten."
+
+#: app/profile_guide.py:78
+msgid ""
+"I advise freelancers and small companies on tax returns and bookkeeping. "
+"Most of my clients are in construction and retail."
+msgstr ""
+"Ich berate Freiberufler und kleine Unternehmen bei Steuererklärungen und "
+"Buchhaltung. Die meisten meiner Kunden kommen aus dem Bau- und "
+"Einzelhandel."
+
+#: app/profile_guide.py:79
+msgid ""
+"I build and maintain customer portals with Python and React. I also run a "
+"small team of two developers."
+msgstr ""
+"Ich entwickle und betreue Kundenportale mit Python und React. Außerdem "
+"leite ich ein kleines Team aus zwei Entwicklern."
+
+#: app/profile_guide.py:80
+msgid ""
+"I look at early-stage energy companies and prepare them for their first "
+"investment round."
+msgstr ""
+"Ich begleite junge Energieunternehmen und bereite sie auf ihre erste "
+"Finanzierungsrunde vor."
+
+#: app/profile_guide.py:89
+msgid "My main challenge right now"
+msgstr "Meine größte Herausforderung gerade"
+
+#: app/profile_guide.py:90
+msgid "What is the hardest part of your work at the moment?"
+msgstr "Was ist im Moment der schwierigste Teil deiner Arbeit?"
+
+#: app/profile_guide.py:92
+msgid "Finding reliable clients outside my current network."
+msgstr "Verlässliche Kundschaft außerhalb meines aktuellen Netzwerks finden."
+
+#: app/profile_guide.py:93
+msgid "I need a second developer but cannot afford a full-time salary yet."
+msgstr ""
+"Ich brauche eine zweite Entwicklerin, kann mir aber noch kein Gehalt in "
+"Vollzeit leisten."
+
+#: app/profile_guide.py:94
+msgid "Investors ask for numbers I do not have yet."
+msgstr "Investoren fragen nach Zahlen, die ich noch nicht habe."
+
+#: app/profile_guide.py:103
+msgid "How I can help others"
+msgstr "Wie ich anderen helfen kann"
+
+#: app/profile_guide.py:104
+msgid ""
+"What do you know well that others could use? This is what other members "
+"will look for."
+msgstr ""
+"Was kannst du gut, das andere brauchen könnten? Danach suchen andere "
+"Mitglieder."
+
+#: app/profile_guide.py:106
+msgid "I can explain tax deadlines for freelancers in plain German."
+msgstr "Ich erkläre Freiberuflern Steuerfristen in einfachem Deutsch."
+
+#: app/profile_guide.py:107
+msgid "I can review a landing page or a pitch deck for clarity."
+msgstr "Ich schaue mir eine Landingpage oder ein Pitch-Deck auf Verständlichkeit an."
+
+#: app/profile_guide.py:108
+msgid "I can introduce people to small-business owners in the Rhine-Main area."
+msgstr ""
+"Ich stelle Menschen Inhaberinnen und Inhabern kleiner Betriebe im Rhein-"
+"Main-Gebiet vor."
+
+#: app/profile_guide.py:117
+msgid "What I am looking for"
+msgstr "Was ich suche"
+
+#: app/profile_guide.py:118
+msgid "Who or what would help you right now? Be specific."
+msgstr "Wer oder was würde dir gerade helfen? Sei konkret."
+
+#: app/profile_guide.py:120
+msgid "A web designer for a two-week project."
+msgstr "Eine Webdesignerin für ein zweiwöchiges Projekt."
+
+#: app/profile_guide.py:121
+msgid "Co-founder with sales experience in the energy sector."
+msgstr "Mitgründer mit Vertriebserfahrung in der Energiebranche."
+
+#: app/profile_guide.py:122
+msgid "Advice on getting my first angel investment."
+msgstr "Rat, wie ich mein erstes Business-Angel-Investment bekomme."
+
+#: app/profile_guide.py:131 app/templates/modules/profile_view.html:32
+msgid "Skills and topics"
+msgstr "Fähigkeiten und Themen"
+
+#: app/profile_guide.py:132
+msgid "Separate with commas. Five to ten short words work best."
+msgstr "Mit Kommas trennen. Am besten fünf bis zehn kurze Begriffe."
+
+#: app/profile_guide.py:134
+msgid "tax law, bookkeeping, DATEV"
+msgstr "Steuerrecht, Buchhaltung, DATEV"
+
+#: app/profile_guide.py:135
+msgid "Python, React, product design"
+msgstr "Python, React, Produktdesign"
+
+#: app/profile_guide.py:136
+msgid "energy storage, fundraising, financial models"
+msgstr "Energiespeicher, Fundraising, Finanzmodelle"
+
+#: app/modules/__init__.py:22 app/profile_guide.py:144
+#: app/templates/modules/profile.html:3 app/templates/modules/profile.html:6
+#: app/templates/modules/profile_edit.html:3
+#: app/templates/modules/profile_edit.html:6
+msgid "About me"
+msgstr "Über mich"
+
+#: app/profile_guide.py:145
+msgid ""
+"A few sentences about yourself. Optional, but it helps people get to know "
+"you."
+msgstr ""
+"Ein paar Sätze über dich. Optional, aber so lernen dich andere besser "
+"kennen."
+
+#: app/profile_guide.py:147
+msgid ""
+"I grew up in Hesse, started my first company at 25, and enjoy long walks "
+"along the Main."
+msgstr ""
+"Ich bin in Hessen aufgewachsen, habe mit 25 mein erstes Unternehmen "
+"gegründet und gehe gern lange am Main spazieren."
+
+#: app/profile_guide.py:148
+msgid "Father of two, coffee lover, always reading something about economics."
+msgstr "Vater von zwei Kindern, Kaffeeliebhaber, liest immer etwas über Wirtschaft."
+
+#: app/profile_guide.py:157
+msgid ""
+"A clear photo of your face helps people remember you. JPEG, PNG or WebP, up"
+" to 5 MB."
+msgstr ""
+"Ein klares Foto deines Gesichts hilft, dass man sich an dich erinnert. "
+"JPEG, PNG oder WebP, bis 5 MB."
+
+#: app/profile_guide.py:159
+msgid "Head and shoulders, natural light, plain background."
+msgstr "Kopf und Schultern, natürliches Licht, schlichter Hintergrund."
+
+#: app/profile_guide.py:160
+msgid "No group photos, no sunglasses, no heavy filters."
+msgstr "Keine Gruppenfotos, keine Sonnenbrille, keine starken Filter."
 
 #: app/blueprints/admin/__init__.py:119
 msgid "Changes are saved."
@@ -157,11 +403,6 @@ msgstr ""
 "Allgemeine Informationen, keine Rechtsberatung. Gilt nur für das deutsche "
 "Recht."
 
-#: app/modules/__init__.py:22 app/templates/modules/profile.html:3
-#: app/templates/modules/profile.html:6
-msgid "About me"
-msgstr "Über mich"
-
 #: app/modules/__init__.py:23 app/modules/services/__init__.py:12
 msgid "Services"
 msgstr "Dienstleistungen"
@@ -218,17 +459,51 @@ msgstr "Bitte gib einen gültigen Betrag ein."
 msgid "Your bid is placed."
 msgstr "Dein Gebot ist abgegeben."
 
+#: app/modules/profile/__init__.py:28
+msgid "The photo is too large. Please use a file up to 5 MB."
+msgstr "Das Foto ist zu groß. Bitte nutze eine Datei bis 5 MB."
+
 #: app/modules/profile/__init__.py:29
-msgid "Please keep the headline under 160 characters."
-msgstr "Bitte halte die Überschrift unter 160 Zeichen."
+msgid "The photo resolution is too high. Please use a smaller photo."
+msgstr "Die Auflösung des Fotos ist zu hoch. Bitte nutze ein kleineres Foto."
+
+#: app/modules/profile/__init__.py:30
+msgid "Please upload a JPEG, PNG or WebP photo."
+msgstr "Bitte lade ein Foto im Format JPEG, PNG oder WebP hoch."
 
 #: app/modules/profile/__init__.py:31
-msgid "Please keep the text under 2000 characters."
-msgstr "Bitte halte den Text unter 2000 Zeichen."
+msgid "This file is not a valid photo."
+msgstr "Diese Datei ist kein gültiges Foto."
 
-#: app/modules/profile/__init__.py:37
+#: app/modules/profile/__init__.py:32
+msgid "The file is empty."
+msgstr "Die Datei ist leer."
+
+#: app/modules/profile/__init__.py:34
+msgid "The photo could not be saved."
+msgstr "Das Foto konnte nicht gespeichert werden."
+
+#: app/modules/profile/__init__.py:80
 msgid "Your profile is saved."
 msgstr "Dein Profil ist gespeichert."
+
+#: app/modules/profile/__init__.py:82 app/modules/startups/__init__.py:35
+#: app/modules/travel/__init__.py:130 app/modules/travel/__init__.py:150
+#, python-format
+msgid "Please check these fields: %(fields)s"
+msgstr "Bitte prüfe diese Felder: %(fields)s"
+
+#: app/modules/profile/__init__.py:104
+msgid "Please choose a photo first."
+msgstr "Bitte wähle zuerst ein Foto aus."
+
+#: app/modules/profile/__init__.py:122
+msgid "Your photo is saved."
+msgstr "Dein Foto ist gespeichert."
+
+#: app/modules/profile/__init__.py:136
+msgid "Your photo is removed."
+msgstr "Dein Foto ist entfernt."
 
 #: app/modules/startups/__init__.py:25
 msgid "This startup is not open for interest right now."
@@ -253,12 +528,6 @@ msgstr "Das ist für dich nicht verfügbar."
 #: app/modules/startups/__init__.py:31 app/modules/travel/__init__.py:38
 msgid "Something went wrong. Please try again."
 msgstr "Etwas ist schiefgelaufen. Bitte versuche es erneut."
-
-#: app/modules/startups/__init__.py:35 app/modules/travel/__init__.py:130
-#: app/modules/travel/__init__.py:150
-#, python-format
-msgid "Please check these fields: %(fields)s"
-msgstr "Bitte prüfe diese Felder: %(fields)s"
 
 #: app/modules/startups/__init__.py:80
 msgid "Your interest is sent. The founder decides whether to share contact details."
@@ -423,6 +692,8 @@ msgstr "Zu viele Versuche. Bitte wende dich an den Support."
 #: app/templates/base.html:11 app/templates/base.html:42
 #: app/templates/member/dashboard.html:3
 #: app/templates/modules/auction_list.html:3 app/templates/modules/profile.html:3
+#: app/templates/modules/profile_directory.html:3
+#: app/templates/modules/profile_edit.html:3
 #: app/templates/modules/startups_form.html:3
 #: app/templates/modules/startups_list.html:3
 #: app/templates/modules/startups_mine.html:3 app/templates/modules/stub.html:3
@@ -494,6 +765,9 @@ msgstr "Das Protokoll ist leer."
 
 #: app/templates/admin/dashboard.html:8 app/templates/admin/dashboard.html:16
 #: app/templates/admin/users.html:3 app/templates/admin/users.html:6
+#: app/templates/modules/profile_directory.html:3
+#: app/templates/modules/profile_directory.html:6
+#: app/templates/modules/profile_view.html:3
 msgid "Members"
 msgstr "Mitglieder"
 
@@ -974,10 +1248,6 @@ msgstr ""
 "Stell dich der Community in ein paar Sätzen vor. Andere Mitglieder sehen "
 "diesen Text."
 
-#: app/templates/modules/profile.html:13
-msgid "Headline"
-msgstr "Überschrift"
-
 #: app/templates/modules/profile.html:15
 msgid "For example: your profession or what you do."
 msgstr "Zum Beispiel: dein Beruf oder was du tust."
@@ -987,8 +1257,107 @@ msgid "About you"
 msgstr "Über dich"
 
 #: app/templates/modules/profile.html:25
+#: app/templates/modules/profile_edit.html:55
 msgid "Save"
 msgstr "Speichern"
+
+#: app/templates/modules/profile_directory.html:7
+msgid ""
+"Members who chose to appear in the directory. Only verified members can see"
+" this page."
+msgstr ""
+"Mitglieder, die im Verzeichnis erscheinen. Diese Seite sehen nur "
+"verifizierte Mitglieder."
+
+#: app/templates/modules/profile_directory.html:16
+msgid "No headline yet"
+msgstr "Noch keine Überschrift"
+
+#: app/templates/modules/profile_directory.html:21
+msgid "No members in the directory yet."
+msgstr "Noch keine Mitglieder im Verzeichnis."
+
+#: app/templates/modules/profile_edit.html:7
+msgid ""
+"The fuller your profile, the better our matching can suggest people who fit"
+" you. Each field has a short hint and examples."
+msgstr ""
+"Je vollständiger dein Profil, desto besser kann das Matching Menschen "
+"vorschlagen, die zu dir passen. Jedes Feld hat einen kurzen Hinweis und "
+"Beispiele."
+
+#: app/templates/modules/profile_edit.html:10
+msgid "Profile completeness"
+msgstr "Vollständigkeit des Profils"
+
+#: app/templates/modules/profile_edit.html:13
+msgid "Your profile can be used for matching."
+msgstr "Dein Profil kann für das Matching verwendet werden."
+
+#: app/templates/modules/profile_edit.html:15
+msgid "For matching, please also fill in:"
+msgstr "Für das Matching fülle bitte außerdem aus:"
+
+#: app/templates/modules/profile_edit.html:34
+#: app/templates/modules/profile_edit.html:62
+msgid "Show examples"
+msgstr "Beispiele anzeigen"
+
+#: app/templates/modules/profile_edit.html:38
+msgid "Examples are for orientation only. Write about yourself in your own words."
+msgstr ""
+"Die Beispiele dienen nur zur Orientierung. Schreibe in deinen eigenen "
+"Worten über dich."
+
+#: app/templates/modules/profile_edit.html:44
+msgid "Visibility and matching"
+msgstr "Sichtbarkeit und Matching"
+
+#: app/templates/modules/profile_edit.html:47
+msgid ""
+"Show my profile in the member directory. Other verified members can see "
+"your name, headline, city and photo."
+msgstr ""
+"Mein Profil im Mitgliederverzeichnis anzeigen. Andere verifizierte "
+"Mitglieder sehen dann Name, Überschrift, Stadt und Foto."
+
+#: app/templates/modules/profile_edit.html:51
+msgid "Use my profile for AI matching and personal suggestions. Off by default."
+msgstr ""
+"Mein Profil für das KI-Matching und persönliche Vorschläge verwenden. "
+"Standardmäßig aus."
+
+#: app/templates/modules/profile_edit.html:59
+msgid "Photo"
+msgstr "Foto"
+
+#: app/templates/modules/profile_edit.html:68
+msgid "Your photo"
+msgstr "Dein Foto"
+
+#: app/templates/modules/profile_edit.html:71
+msgid "Remove photo"
+msgstr "Foto entfernen"
+
+#: app/templates/modules/profile_edit.html:77
+msgid "Choose a photo"
+msgstr "Foto auswählen"
+
+#: app/templates/modules/profile_edit.html:80
+msgid "Upload photo"
+msgstr "Foto hochladen"
+
+#: app/templates/modules/profile_edit.html:84
+msgid "Open the member directory"
+msgstr "Zum Mitgliederverzeichnis"
+
+#: app/templates/modules/profile_view.html:39
+msgid "Edit my profile"
+msgstr "Mein Profil bearbeiten"
+
+#: app/templates/modules/profile_view.html:41
+msgid "Back to the directory"
+msgstr "Zurück zum Verzeichnis"
 
 #: app/templates/modules/startups_detail.html:8
 #, python-format
@@ -1375,4 +1744,10 @@ msgstr "Willkommen"
 #: app/templates/public/index.html:8
 msgid "Membership requires identity verification through Stripe."
 msgstr "Die Mitgliedschaft erfordert eine Identitätsprüfung über Stripe."
+
+#~ msgid "Please keep the headline under 160 characters."
+#~ msgstr "Bitte halte die Überschrift unter 160 Zeichen."
+
+#~ msgid "Please keep the text under 2000 characters."
+#~ msgstr "Bitte halte den Text unter 2000 Zeichen."
 

@@ -76,6 +76,11 @@ class Config:
 
     RATELIMIT_STORAGE_URI = "memory://"
 
+    # Загрузки (фото профилей). Сейчас — локальный диск, позже — S3 (Cloudflare R2) при деплое.
+    MEDIA_ROOT = os.environ.get("MEDIA_ROOT", os.path.join(os.path.dirname(os.path.dirname(__file__)), "uploads"))
+    MEDIA_MAX_BYTES = 5 * 1024 * 1024
+    MAX_CONTENT_LENGTH = MEDIA_MAX_BYTES + 512 * 1024  # общий предел запроса, включая форму
+
 
 class DevelopmentConfig(Config):
     DEBUG = True
@@ -96,6 +101,7 @@ class TestConfig(Config):
     SECRET_KEY = "test-secret"
     BASE_URL = "http://localhost"
     RATELIMIT_ENABLED = False
+    MEDIA_ROOT = os.environ.get("TEST_MEDIA_ROOT", "/tmp/club-test-media")
     SQLALCHEMY_DATABASE_URI = os.environ.get(
         "TEST_DATABASE_URL",
         "postgresql+psycopg://club:club@localhost:5432/club_test",

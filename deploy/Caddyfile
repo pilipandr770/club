@@ -3,8 +3,8 @@
 
 	reverse_proxy app:8000
 
+	# HSTS добавим при деплое на домен: на localhost с самоподписанным сертификатом он блокирует обход предупреждения
 	header {
-		Strict-Transport-Security "max-age=31536000"
 		-Server
 	}
 }

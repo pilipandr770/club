@@ -102,9 +102,22 @@ class Profile(db.Model):
     country: Mapped[str | None] = mapped_column(String(2))
     residence_country: Mapped[str | None] = mapped_column(String(2))
 
-    # Раздел «О себе» (модуль profile)
+    # Раздел «О себе» (модуль profile). Тексты — свободные, подсказки и примеры — в app/profile_guide.py
     headline: Mapped[str] = mapped_column(String(160), default="", server_default="")
     bio: Mapped[str] = mapped_column(Text, default="", server_default="")
+    company: Mapped[str] = mapped_column(String(160), default="", server_default="")
+    industry: Mapped[str] = mapped_column(String(120), default="", server_default="")
+    city: Mapped[str] = mapped_column(String(120), default="", server_default="")
+    q_focus: Mapped[str] = mapped_column(Text, default="", server_default="")  # чем занимаюсь
+    q_challenge: Mapped[str] = mapped_column(Text, default="", server_default="")  # главная задача сейчас
+    q_can_help: Mapped[str] = mapped_column(Text, default="", server_default="")  # чем могу помочь
+    q_looking_for: Mapped[str] = mapped_column(Text, default="", server_default="")  # кого или что ищу
+    expertise: Mapped[str] = mapped_column(String(500), default="", server_default="")  # теги через запятую
+    photo_key: Mapped[str | None] = mapped_column(String(160))  # ключ в хранилище, сервер задаёт сам
+    # Согласия (append-only в consents). По умолчанию выключены
+    visible_in_directory: Mapped[bool] = mapped_column(Boolean, default=False, server_default="false")
+    allow_matching: Mapped[bool] = mapped_column(Boolean, default=False, server_default="false")
+    updated_at: Mapped[datetime | None] = mapped_column(DateTime)
 
 
 class Consent(db.Model):

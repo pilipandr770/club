@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-10-20 08:56+0000\n"
+"POT-Creation-Date: 2026-10-20 09:16+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,6 +16,231 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.17.0\n"
+
+#: app/profile_guide.py:27 app/templates/modules/profile.html:13
+msgid "Headline"
+msgstr ""
+
+#: app/profile_guide.py:28
+msgid "One line: who you are and what you do."
+msgstr ""
+
+#: app/profile_guide.py:30
+msgid "Tax adviser for founders in the Rhine-Main area"
+msgstr ""
+
+#: app/profile_guide.py:31
+msgid "Full-stack developer building web products for small businesses"
+msgstr ""
+
+#: app/profile_guide.py:32
+msgid "Investment manager focused on energy startups"
+msgstr ""
+
+#: app/profile_guide.py:39
+msgid "Company"
+msgstr ""
+
+#: app/profile_guide.py:40
+msgid "Your company or project name, if you have one."
+msgstr ""
+
+#: app/profile_guide.py:42
+msgid "Kanzlei Weber & Partner"
+msgstr ""
+
+#: app/profile_guide.py:43
+msgid "Freelance"
+msgstr ""
+
+#: app/profile_guide.py:44
+msgid "Solar Shelf GmbH (in founding)"
+msgstr ""
+
+#: app/profile_guide.py:51
+msgid "Industry"
+msgstr ""
+
+#: app/profile_guide.py:52
+msgid "The field you work in."
+msgstr ""
+
+#: app/profile_guide.py:54
+msgid "Finance and tax"
+msgstr ""
+
+#: app/profile_guide.py:55
+msgid "Software"
+msgstr ""
+
+#: app/profile_guide.py:56
+msgid "Energy"
+msgstr ""
+
+#: app/profile_guide.py:63
+msgid "City"
+msgstr ""
+
+#: app/profile_guide.py:64
+msgid "Where you are based. Only the city, not the full address."
+msgstr ""
+
+#: app/profile_guide.py:66
+msgid "Frankfurt am Main"
+msgstr ""
+
+#: app/profile_guide.py:67
+msgid "Offenbach"
+msgstr ""
+
+#: app/profile_guide.py:68
+msgid "Wiesbaden"
+msgstr ""
+
+#: app/profile_guide.py:75
+msgid "What I do"
+msgstr ""
+
+#: app/profile_guide.py:76
+msgid "Describe your work in two or three sentences. Concrete details help most."
+msgstr ""
+
+#: app/profile_guide.py:78
+msgid ""
+"I advise freelancers and small companies on tax returns and bookkeeping. "
+"Most of my clients are in construction and retail."
+msgstr ""
+
+#: app/profile_guide.py:79
+msgid ""
+"I build and maintain customer portals with Python and React. I also run a"
+" small team of two developers."
+msgstr ""
+
+#: app/profile_guide.py:80
+msgid ""
+"I look at early-stage energy companies and prepare them for their first "
+"investment round."
+msgstr ""
+
+#: app/profile_guide.py:89
+msgid "My main challenge right now"
+msgstr ""
+
+#: app/profile_guide.py:90
+msgid "What is the hardest part of your work at the moment?"
+msgstr ""
+
+#: app/profile_guide.py:92
+msgid "Finding reliable clients outside my current network."
+msgstr ""
+
+#: app/profile_guide.py:93
+msgid "I need a second developer but cannot afford a full-time salary yet."
+msgstr ""
+
+#: app/profile_guide.py:94
+msgid "Investors ask for numbers I do not have yet."
+msgstr ""
+
+#: app/profile_guide.py:103
+msgid "How I can help others"
+msgstr ""
+
+#: app/profile_guide.py:104
+msgid ""
+"What do you know well that others could use? This is what other members "
+"will look for."
+msgstr ""
+
+#: app/profile_guide.py:106
+msgid "I can explain tax deadlines for freelancers in plain German."
+msgstr ""
+
+#: app/profile_guide.py:107
+msgid "I can review a landing page or a pitch deck for clarity."
+msgstr ""
+
+#: app/profile_guide.py:108
+msgid "I can introduce people to small-business owners in the Rhine-Main area."
+msgstr ""
+
+#: app/profile_guide.py:117
+msgid "What I am looking for"
+msgstr ""
+
+#: app/profile_guide.py:118
+msgid "Who or what would help you right now? Be specific."
+msgstr ""
+
+#: app/profile_guide.py:120
+msgid "A web designer for a two-week project."
+msgstr ""
+
+#: app/profile_guide.py:121
+msgid "Co-founder with sales experience in the energy sector."
+msgstr ""
+
+#: app/profile_guide.py:122
+msgid "Advice on getting my first angel investment."
+msgstr ""
+
+#: app/profile_guide.py:131 app/templates/modules/profile_view.html:32
+msgid "Skills and topics"
+msgstr ""
+
+#: app/profile_guide.py:132
+msgid "Separate with commas. Five to ten short words work best."
+msgstr ""
+
+#: app/profile_guide.py:134
+msgid "tax law, bookkeeping, DATEV"
+msgstr ""
+
+#: app/profile_guide.py:135
+msgid "Python, React, product design"
+msgstr ""
+
+#: app/profile_guide.py:136
+msgid "energy storage, fundraising, financial models"
+msgstr ""
+
+#: app/modules/__init__.py:22 app/profile_guide.py:144
+#: app/templates/modules/profile.html:3 app/templates/modules/profile.html:6
+#: app/templates/modules/profile_edit.html:3
+#: app/templates/modules/profile_edit.html:6
+msgid "About me"
+msgstr ""
+
+#: app/profile_guide.py:145
+msgid ""
+"A few sentences about yourself. Optional, but it helps people get to know"
+" you."
+msgstr ""
+
+#: app/profile_guide.py:147
+msgid ""
+"I grew up in Hesse, started my first company at 25, and enjoy long walks "
+"along the Main."
+msgstr ""
+
+#: app/profile_guide.py:148
+msgid "Father of two, coffee lover, always reading something about economics."
+msgstr ""
+
+#: app/profile_guide.py:157
+msgid ""
+"A clear photo of your face helps people remember you. JPEG, PNG or WebP, "
+"up to 5 MB."
+msgstr ""
+
+#: app/profile_guide.py:159
+msgid "Head and shoulders, natural light, plain background."
+msgstr ""
+
+#: app/profile_guide.py:160
+msgid "No group photos, no sunglasses, no heavy filters."
+msgstr ""
 
 #: app/blueprints/admin/__init__.py:119
 msgid "Changes are saved."
@@ -149,11 +374,6 @@ msgstr ""
 msgid "General information, not legal advice. Applies to German law only."
 msgstr ""
 
-#: app/modules/__init__.py:22 app/templates/modules/profile.html:3
-#: app/templates/modules/profile.html:6
-msgid "About me"
-msgstr ""
-
 #: app/modules/__init__.py:23 app/modules/services/__init__.py:12
 msgid "Services"
 msgstr ""
@@ -210,16 +430,50 @@ msgstr ""
 msgid "Your bid is placed."
 msgstr ""
 
+#: app/modules/profile/__init__.py:28
+msgid "The photo is too large. Please use a file up to 5 MB."
+msgstr ""
+
 #: app/modules/profile/__init__.py:29
-msgid "Please keep the headline under 160 characters."
+msgid "The photo resolution is too high. Please use a smaller photo."
+msgstr ""
+
+#: app/modules/profile/__init__.py:30
+msgid "Please upload a JPEG, PNG or WebP photo."
 msgstr ""
 
 #: app/modules/profile/__init__.py:31
-msgid "Please keep the text under 2000 characters."
+msgid "This file is not a valid photo."
 msgstr ""
 
-#: app/modules/profile/__init__.py:37
+#: app/modules/profile/__init__.py:32
+msgid "The file is empty."
+msgstr ""
+
+#: app/modules/profile/__init__.py:34
+msgid "The photo could not be saved."
+msgstr ""
+
+#: app/modules/profile/__init__.py:80
 msgid "Your profile is saved."
+msgstr ""
+
+#: app/modules/profile/__init__.py:82 app/modules/startups/__init__.py:35
+#: app/modules/travel/__init__.py:130 app/modules/travel/__init__.py:150
+#, python-format
+msgid "Please check these fields: %(fields)s"
+msgstr ""
+
+#: app/modules/profile/__init__.py:104
+msgid "Please choose a photo first."
+msgstr ""
+
+#: app/modules/profile/__init__.py:122
+msgid "Your photo is saved."
+msgstr ""
+
+#: app/modules/profile/__init__.py:136
+msgid "Your photo is removed."
 msgstr ""
 
 #: app/modules/startups/__init__.py:25
@@ -244,12 +498,6 @@ msgstr ""
 
 #: app/modules/startups/__init__.py:31 app/modules/travel/__init__.py:38
 msgid "Something went wrong. Please try again."
-msgstr ""
-
-#: app/modules/startups/__init__.py:35 app/modules/travel/__init__.py:130
-#: app/modules/travel/__init__.py:150
-#, python-format
-msgid "Please check these fields: %(fields)s"
 msgstr ""
 
 #: app/modules/startups/__init__.py:80
@@ -410,6 +658,8 @@ msgstr ""
 #: app/templates/member/dashboard.html:3
 #: app/templates/modules/auction_list.html:3
 #: app/templates/modules/profile.html:3
+#: app/templates/modules/profile_directory.html:3
+#: app/templates/modules/profile_edit.html:3
 #: app/templates/modules/startups_form.html:3
 #: app/templates/modules/startups_list.html:3
 #: app/templates/modules/startups_mine.html:3 app/templates/modules/stub.html:3
@@ -481,6 +731,9 @@ msgstr ""
 
 #: app/templates/admin/dashboard.html:8 app/templates/admin/dashboard.html:16
 #: app/templates/admin/users.html:3 app/templates/admin/users.html:6
+#: app/templates/modules/profile_directory.html:3
+#: app/templates/modules/profile_directory.html:6
+#: app/templates/modules/profile_view.html:3
 msgid "Members"
 msgstr ""
 
@@ -946,10 +1199,6 @@ msgid ""
 "this text."
 msgstr ""
 
-#: app/templates/modules/profile.html:13
-msgid "Headline"
-msgstr ""
-
 #: app/templates/modules/profile.html:15
 msgid "For example: your profession or what you do."
 msgstr ""
@@ -959,7 +1208,95 @@ msgid "About you"
 msgstr ""
 
 #: app/templates/modules/profile.html:25
+#: app/templates/modules/profile_edit.html:55
 msgid "Save"
+msgstr ""
+
+#: app/templates/modules/profile_directory.html:7
+msgid ""
+"Members who chose to appear in the directory. Only verified members can "
+"see this page."
+msgstr ""
+
+#: app/templates/modules/profile_directory.html:16
+msgid "No headline yet"
+msgstr ""
+
+#: app/templates/modules/profile_directory.html:21
+msgid "No members in the directory yet."
+msgstr ""
+
+#: app/templates/modules/profile_edit.html:7
+msgid ""
+"The fuller your profile, the better our matching can suggest people who "
+"fit you. Each field has a short hint and examples."
+msgstr ""
+
+#: app/templates/modules/profile_edit.html:10
+msgid "Profile completeness"
+msgstr ""
+
+#: app/templates/modules/profile_edit.html:13
+msgid "Your profile can be used for matching."
+msgstr ""
+
+#: app/templates/modules/profile_edit.html:15
+msgid "For matching, please also fill in:"
+msgstr ""
+
+#: app/templates/modules/profile_edit.html:34
+#: app/templates/modules/profile_edit.html:62
+msgid "Show examples"
+msgstr ""
+
+#: app/templates/modules/profile_edit.html:38
+msgid "Examples are for orientation only. Write about yourself in your own words."
+msgstr ""
+
+#: app/templates/modules/profile_edit.html:44
+msgid "Visibility and matching"
+msgstr ""
+
+#: app/templates/modules/profile_edit.html:47
+msgid ""
+"Show my profile in the member directory. Other verified members can see "
+"your name, headline, city and photo."
+msgstr ""
+
+#: app/templates/modules/profile_edit.html:51
+msgid "Use my profile for AI matching and personal suggestions. Off by default."
+msgstr ""
+
+#: app/templates/modules/profile_edit.html:59
+msgid "Photo"
+msgstr ""
+
+#: app/templates/modules/profile_edit.html:68
+msgid "Your photo"
+msgstr ""
+
+#: app/templates/modules/profile_edit.html:71
+msgid "Remove photo"
+msgstr ""
+
+#: app/templates/modules/profile_edit.html:77
+msgid "Choose a photo"
+msgstr ""
+
+#: app/templates/modules/profile_edit.html:80
+msgid "Upload photo"
+msgstr ""
+
+#: app/templates/modules/profile_edit.html:84
+msgid "Open the member directory"
+msgstr ""
+
+#: app/templates/modules/profile_view.html:39
+msgid "Edit my profile"
+msgstr ""
+
+#: app/templates/modules/profile_view.html:41
+msgid "Back to the directory"
 msgstr ""
 
 #: app/templates/modules/startups_detail.html:8

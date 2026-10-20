@@ -46,7 +46,7 @@ def test_profile_rejects_too_long_headline(app, client):
     response = client.post("/profile/", data={"headline": "x" * 161, "bio": ""})
 
     assert response.status_code == 200
-    assert "Bitte halte die Überschrift unter 160 Zeichen." in response.get_data(as_text=True)
+    assert "Bitte prüfe diese Felder: headline" in response.get_data(as_text=True)
 
 
 def test_guest_is_redirected_from_paid_modules(app, client):
