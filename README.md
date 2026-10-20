@@ -8,6 +8,7 @@ Flask-приложение клуба. Архитектура — в [ARCHITECTU
 
 ```bash
 cp .env.example .env        # заполнить пароли и SECRET_KEY
+docker network create laws_net   # один раз: сеть сервиса поиска по закону (на сервере она уже есть)
 docker compose up -d --build
 ```
 
