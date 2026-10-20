@@ -8,6 +8,7 @@ from ...profile_guide import FIELDS, PHOTO_EXAMPLES, PHOTO_HINT, completeness, m
 from ...services.audit import audit
 from ...services.consents import record_consent
 from ...services.entitlements import requires_feature
+from ...services.matching import get_matches, refresh_embeddings
 from ...services.media import MediaError, process_image, profile_photo_key
 from ...utils import utcnow
 
@@ -74,6 +75,7 @@ def edit():
                                bool(request.form.get("allow_matching"))),
             ]
             profile.updated_at = utcnow()
+            refresh_embeddings(profile)
             audit("profile.updated", target=f"user:{current_user.id}", actor_id=current_user.id,
                   details="; ".join(c for c in changes if c))
             db.session.commit()
@@ -93,6 +95,20 @@ def edit():
         matchable=matchable(profile),
         missing=missing_for_matching(profile),
     )
+
+
+@bp.route("/matches")
+@requires_feature("community.read")
+def matches():
+    """Подборка участников. Видны имя, заголовок, город и метка, без сырых оценок и контактов."""
+    if not current_user.profile or not matchable(current_user.profile):
+        return render_template("modules/profile_matches.html", cards=[], ready=False,
+                               missing=missing_for_matching(current_user.profile) if current_user.profile else [],
+                               fields=FIELDS, llm_on=bool(current_app.config.get("ANTHROPIC_API_KEY")))
+    cards = [{"member": other, "label": label, "explanation": text}
+             for other, label, text in get_matches(current_user)]
+    return render_template("modules/profile_matches.html", cards=cards, ready=True, missing=[], fields=FIELDS,
+                           llm_on=bool(current_app.config.get("ANTHROPIC_API_KEY")))
 
 
 @bp.route("/photo", methods=["POST"])

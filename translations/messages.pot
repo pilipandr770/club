@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-10-20 09:16+0000\n"
+"POT-Creation-Date: 2026-10-20 09:39+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -430,49 +430,49 @@ msgstr ""
 msgid "Your bid is placed."
 msgstr ""
 
-#: app/modules/profile/__init__.py:28
+#: app/modules/profile/__init__.py:29
 msgid "The photo is too large. Please use a file up to 5 MB."
 msgstr ""
 
-#: app/modules/profile/__init__.py:29
+#: app/modules/profile/__init__.py:30
 msgid "The photo resolution is too high. Please use a smaller photo."
 msgstr ""
 
-#: app/modules/profile/__init__.py:30
+#: app/modules/profile/__init__.py:31
 msgid "Please upload a JPEG, PNG or WebP photo."
 msgstr ""
 
-#: app/modules/profile/__init__.py:31
+#: app/modules/profile/__init__.py:32
 msgid "This file is not a valid photo."
 msgstr ""
 
-#: app/modules/profile/__init__.py:32
+#: app/modules/profile/__init__.py:33
 msgid "The file is empty."
 msgstr ""
 
-#: app/modules/profile/__init__.py:34
+#: app/modules/profile/__init__.py:35
 msgid "The photo could not be saved."
 msgstr ""
 
-#: app/modules/profile/__init__.py:80
+#: app/modules/profile/__init__.py:82
 msgid "Your profile is saved."
 msgstr ""
 
-#: app/modules/profile/__init__.py:82 app/modules/startups/__init__.py:35
+#: app/modules/profile/__init__.py:84 app/modules/startups/__init__.py:35
 #: app/modules/travel/__init__.py:130 app/modules/travel/__init__.py:150
 #, python-format
 msgid "Please check these fields: %(fields)s"
 msgstr ""
 
-#: app/modules/profile/__init__.py:104
+#: app/modules/profile/__init__.py:120
 msgid "Please choose a photo first."
 msgstr ""
 
-#: app/modules/profile/__init__.py:122
+#: app/modules/profile/__init__.py:138
 msgid "Your photo is saved."
 msgstr ""
 
-#: app/modules/profile/__init__.py:136
+#: app/modules/profile/__init__.py:152
 msgid "Your photo is removed."
 msgstr ""
 
@@ -660,6 +660,7 @@ msgstr ""
 #: app/templates/modules/profile.html:3
 #: app/templates/modules/profile_directory.html:3
 #: app/templates/modules/profile_edit.html:3
+#: app/templates/modules/profile_matches.html:3
 #: app/templates/modules/startups_form.html:3
 #: app/templates/modules/startups_list.html:3
 #: app/templates/modules/startups_mine.html:3 app/templates/modules/stub.html:3
@@ -1288,11 +1289,50 @@ msgid "Upload photo"
 msgstr ""
 
 #: app/templates/modules/profile_edit.html:84
+#: app/templates/modules/profile_matches.html:39
 msgid "Open the member directory"
 msgstr ""
 
+#: app/templates/modules/profile_edit.html:84
+msgid "My matches"
+msgstr ""
+
+#: app/templates/modules/profile_matches.html:3
+#: app/templates/modules/profile_matches.html:6
+msgid "Matches"
+msgstr ""
+
+#: app/templates/modules/profile_matches.html:10
+msgid ""
+"Matching works once your profile says what you can offer and what you are"
+" looking for."
+msgstr ""
+
+#: app/templates/modules/profile_matches.html:12
+msgid "Please fill in:"
+msgstr ""
+
+#: app/templates/modules/profile_matches.html:16
+msgid "You also need to allow matching in your profile. It is off by default."
+msgstr ""
+
+#: app/templates/modules/profile_matches.html:17
 #: app/templates/modules/profile_view.html:39
 msgid "Edit my profile"
+msgstr ""
+
+#: app/templates/modules/profile_matches.html:20
+msgid ""
+"Suggestions are based on what you need and what others offer. Contact "
+"details are shared only after both sides agree."
+msgstr ""
+
+#: app/templates/modules/profile_matches.html:22
+msgid "Explanations are short templates until the AI service is connected."
+msgstr ""
+
+#: app/templates/modules/profile_matches.html:35
+msgid "No matches yet. New members appear here as they join."
 msgstr ""
 
 #: app/templates/modules/profile_view.html:41

@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}{{ _("Matches") }} · {{ _("Club") }}{% endblock %}
+
+{% block content %}
+<h1>{{ _("Matches") }}</h1>
+
+{% if not ready %}
+  <section class="card">
+    <p>{{ _("Matching works once your profile says what you can offer and what you are looking for.") }}</p>
+    {% if missing %}
+      <p class="small">{{ _("Please fill in:") }}
+        {% for field in fields if field.key in missing %}{{ field.label }}{% if not loop.last %}, {% endif %}{% endfor %}
+      </p>
+    {% endif %}
+    <p class="small">{{ _("You also need to allow matching in your profile. It is off by default.") }}</p>
+    <p><a href="{{ url_for('profile.edit') }}">{{ _("Edit my profile") }}</a></p>
+  </section>
+{% else %}
+  <p class="muted">{{ _("Suggestions are based on what you need and what others offer. Contact details are shared only after both sides agree.") }}</p>
+  {% if not llm_on %}
+    <p class="small">{{ _("Explanations are short templates until the AI service is connected.") }}</p>
+  {% endif %}
+
+  {% for card in cards %}
+  <section class="card member-card">
+    <div>
+      <h2><a href="{{ url_for('profile.view', user_id=card.member.id) }}">{{ card.member.first_name }}</a></h2>
+      <p>{{ card.member.profile.headline or "" }}</p>
+      <p class="small"><strong>{{ card.label }}</strong></p>
+      <p>{{ card.explanation }}</p>
+    </div>
+  </section>
+  {% else %}
+    <p>{{ _("No matches yet. New members appear here as they join.") }}</p>
+  {% endfor %}
+{% endif %}
+
+<p><a href="{{ url_for('profile.directory') }}">{{ _("Open the member directory") }}</a></p>
+{% endblock %}

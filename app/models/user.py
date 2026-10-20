@@ -1,7 +1,7 @@
 from datetime import datetime
 
 from flask_login import UserMixin
-from sqlalchemy import Boolean, CheckConstraint, DateTime, ForeignKey, Integer, String, Text
+from sqlalchemy import JSON, Boolean, CheckConstraint, DateTime, ForeignKey, Integer, String, Text
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from werkzeug.security import check_password_hash, generate_password_hash
 
@@ -118,6 +118,13 @@ class Profile(db.Model):
     visible_in_directory: Mapped[bool] = mapped_column(Boolean, default=False, server_default="false")
     allow_matching: Mapped[bool] = mapped_column(Boolean, default=False, server_default="false")
     updated_at: Mapped[datetime | None] = mapped_column(DateTime)
+
+    # Эмбеддинги для матчинга: два вектора (нужда и предложение), пересчитываются при смене текста
+    embed_need: Mapped[list | None] = mapped_column(JSON)
+    embed_offer: Mapped[list | None] = mapped_column(JSON)
+    embed_hash: Mapped[str | None] = mapped_column(String(64))
+    embed_provider: Mapped[str | None] = mapped_column(String(40))
+    embed_updated_at: Mapped[datetime | None] = mapped_column(DateTime)
 
 
 class Consent(db.Model):

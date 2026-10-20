@@ -93,7 +93,23 @@ def close_auctions_command():
     click.echo(f"Закрыто лотов: {closed}")
 
 
+@click.command("reembed")
+def reembed_command():
+    """Пересчитывает эмбеддинги всех профилей, у которых изменился текст или провайдер."""
+    from .extensions import db
+    from .models import Profile
+    from .services.matching import refresh_embeddings
+
+    changed = 0
+    for profile in Profile.query.all():
+        if refresh_embeddings(profile):
+            changed += 1
+    db.session.commit()
+    click.echo(f"Пересчитано профилей: {changed}")
+
+
 def register(app):
+    app.cli.add_command(reembed_command)
     app.cli.add_command(i18n_cli)
     app.cli.add_command(create_admin)
     app.cli.add_command(seed_test_users_command)
