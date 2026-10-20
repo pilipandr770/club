@@ -78,7 +78,7 @@ def score_of(findings):
     return round(100 * got / weight) if weight else 0
 
 
-def json_from_llm(system, payload, max_tokens=3200, purpose=""):
+def json_from_llm(system, payload, max_tokens=4500, purpose=""):
     """Ответ модели как JSON, две попытки. None — если ИИ недоступен или ответ не разобрать."""
     started = time.monotonic()
     for attempt in (1, 2):
@@ -89,7 +89,10 @@ def json_from_llm(system, payload, max_tokens=3200, purpose=""):
                 system + (" Deine letzte Antwort war kein gültiges JSON (vermutlich zu lang). Antworte kompakter "
                           "und achte streng auf die Syntax." if attempt == 2 else ""),
                 json.dumps(payload, ensure_ascii=False), max_tokens=max_tokens, timeout=60)
-            return json.loads(raw[raw.find("{"):raw.rfind("}") + 1], strict=False)
+            start, end = raw.find("{"), raw.rfind("}")
+            if start < 0 or end <= start:
+                raise ValueError(f"kein JSON, Anfang: {raw[:80]!r}")
+            return json.loads(raw[start:end + 1], strict=False)
         except AIUnavailable as exc:
             log.info("%s: ИИ недоступен (%s)", purpose, exc)
             return None
