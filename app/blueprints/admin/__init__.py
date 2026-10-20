@@ -260,3 +260,73 @@ def review_travel(trip_id):
     db.session.commit()
     return redirect(url_for("admin.travel", status="pending"))
 
+
+@bp.route("/users/new", methods=["GET", "POST"])
+@admin_required
+def user_new():
+    """Создание участника вручную: без регистрации и без Stripe. Для демонстраций и приглашений."""
+    import secrets as _secrets
+
+    from ...countries import country_choices, is_known_country
+    from ...models import Profile
+    from ...services.consents import record_consent  # noqa: F401  (согласия админ не записывает за участника)
+
+    errors = []
+    if request.method == "POST":
+        email = request.form.get("email", "").strip().lower()
+        first_name = request.form.get("first_name", "").strip()
+        residence = request.form.get("residence_country", "").strip().upper()
+        plan = request.form.get("plan", "guest")
+        password = request.form.get("password", "")
+        if "@" not in email or User.query.filter_by(email=email).first() is not None:
+            errors.append("email")
+        if not first_name:
+            errors.append("first_name")
+        if not is_known_country(residence):
+            errors.append("residence_country")
+        if plan not in PLANS:
+            errors.append("plan")
+        generated = not password
+        if generated:
+            password = _secrets.token_urlsafe(10)
+        elif len(password) < 10:
+            errors.append("password")
+        if not errors:
+            user = User(email=email, first_name=first_name[:80], last_name=request.form.get("last_name", "").strip()[:80],
+                        plan=plan, is_admin=bool(request.form.get("is_admin")), email_confirmed_at=utcnow())
+            user.set_password(password)
+            user.profile = Profile(residence_country=residence)
+            if request.form.get("verified"):
+                user.verification_status = "verified"
+                user.verified_at = utcnow()
+                user.verification_reason = "manual_override"
+            db.session.add(user)
+            db.session.flush()
+            audit("admin.user_created", target=f"user:{user.id}",
+                  details=f"plan={plan} verified={bool(request.form.get('verified'))} admin={user.is_admin}")
+            db.session.commit()
+            if generated:
+                flash(_("Participant created. Temporary password (shown once): %(password)s", password=password), "success")
+            else:
+                flash(_("Participant created."), "success")
+            return redirect(url_for("admin.user_detail", user_id=user.id))
+        flash(_("Please check these fields: %(fields)s", fields=", ".join(errors)), "error")
+
+    return render_template("admin/user_new.html", plans=PLANS, countries=country_choices(), errors=errors,
+                           form=request.form)
+
+
+@bp.route("/users/<int:user_id>/verify-manually", methods=["POST"])
+@admin_required
+def verify_manually(user_id):
+    """Подтверждение личности вручную, в обход Stripe. Пишется в журнал."""
+    user = db.session.get(User, user_id) or abort(404)
+    if not user.is_verified:
+        user.verification_status = "verified"
+        user.verified_at = utcnow()
+        user.verification_reason = "manual_override"
+        audit("admin.verified_manually", target=f"user:{user.id}")
+        db.session.commit()
+        flash(_("The identity check is marked as verified."), "success")
+    return redirect(url_for("admin.user_detail", user_id=user.id))
+

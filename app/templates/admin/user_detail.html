@@ -11,6 +11,14 @@
   <p class="small">{{ _("Name") }}: {{ user.full_name }} · {{ _("Residence") }}: {{ user.profile.residence_country if user.profile else '—' }}</p>
 </section>
 
+{% if not user.is_verified %}
+<form method="post" action="{{ url_for('admin.verify_manually', user_id=user.id) }}" class="card">
+  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+  <p>{{ _("Identity check: not verified. You can confirm it manually without Stripe.") }}</p>
+  <button type="submit" class="button">{{ _("Confirm identity manually") }}</button>
+</form>
+{% endif %}
+
 <form method="post" action="{{ url_for('admin.user_detail', user_id=user.id) }}" class="form card">
   <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
 

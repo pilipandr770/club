@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Club 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-20 14:35+0000\n"
+"POT-Creation-Date: 2026-10-20 16:57+0000\n"
 "PO-Revision-Date: 2026-10-19 21:00+0000\n"
 "Last-Translator: \n"
 "Language: de\n"
@@ -301,6 +301,28 @@ msgstr "Das Angebot ist veröffentlicht."
 msgid "The offer is rejected."
 msgstr "Das Angebot ist abgelehnt."
 
+#: app/blueprints/admin/__init__.py:309
+#, python-format
+msgid "Participant created. Temporary password (shown once): %(password)s"
+msgstr ""
+"Teilnehmende Person angelegt. Temporäres Passwort (wird nur einmal "
+"gezeigt): %(password)s"
+
+#: app/blueprints/admin/__init__.py:311
+msgid "Participant created."
+msgstr "Teilnehmende Person angelegt."
+
+#: app/blueprints/admin/__init__.py:313 app/modules/profile/__init__.py:70
+#: app/modules/startups/__init__.py:35 app/modules/travel/__init__.py:130
+#: app/modules/travel/__init__.py:150
+#, python-format
+msgid "Please check these fields: %(fields)s"
+msgstr "Bitte prüfe diese Felder: %(fields)s"
+
+#: app/blueprints/admin/__init__.py:330
+msgid "The identity check is marked as verified."
+msgstr "Die Identitätsprüfung ist als bestätigt markiert."
+
 #: app/blueprints/auth/__init__.py:26
 msgid "Please confirm your e-mail address"
 msgstr "Bitte bestätige deine E-Mail-Adresse"
@@ -486,12 +508,6 @@ msgstr "Das Foto konnte nicht gespeichert werden."
 #: app/modules/profile/__init__.py:68
 msgid "Your profile is saved."
 msgstr "Dein Profil ist gespeichert."
-
-#: app/modules/profile/__init__.py:70 app/modules/startups/__init__.py:35
-#: app/modules/travel/__init__.py:130 app/modules/travel/__init__.py:150
-#, python-format
-msgid "Please check these fields: %(fields)s"
-msgstr "Bitte prüfe diese Felder: %(fields)s"
 
 #: app/modules/profile/__init__.py:121
 msgid "Your choices are saved."
@@ -763,8 +779,8 @@ msgstr "Mein Konto"
 #: app/templates/admin/audit.html:3 app/templates/admin/dashboard.html:3
 #: app/templates/admin/dashboard.html:6 app/templates/admin/lots.html:3
 #: app/templates/admin/startups.html:3 app/templates/admin/travel.html:3
-#: app/templates/admin/user_detail.html:3 app/templates/admin/users.html:3
-#: app/templates/base.html:16
+#: app/templates/admin/user_detail.html:3 app/templates/admin/user_new.html:3
+#: app/templates/admin/users.html:3 app/templates/base.html:16
 msgid "Admin"
 msgstr "Admin"
 
@@ -985,7 +1001,7 @@ msgstr "Ablehnen"
 msgid "Nothing here."
 msgstr "Hier ist nichts."
 
-#: app/templates/admin/user_detail.html:7
+#: app/templates/admin/user_detail.html:7 app/templates/admin/user_new.html:8
 msgid "Back to members"
 msgstr "Zurück zu den Mitgliedern"
 
@@ -1006,57 +1022,114 @@ msgstr "Name"
 msgid "Residence"
 msgstr "Wohnsitz"
 
-#: app/templates/admin/user_detail.html:18 app/templates/admin/users.html:21
+#: app/templates/admin/user_detail.html:17
+msgid "Identity check: not verified. You can confirm it manually without Stripe."
+msgstr ""
+"Identitätsprüfung: nicht bestätigt. Du kannst sie ohne Stripe manuell "
+"bestätigen."
+
+#: app/templates/admin/user_detail.html:18
+msgid "Confirm identity manually"
+msgstr "Identität manuell bestätigen"
+
+#: app/templates/admin/user_detail.html:26 app/templates/admin/user_new.html:34
+#: app/templates/admin/users.html:21
 msgid "Plan"
 msgstr "Tarif"
 
-#: app/templates/admin/user_detail.html:27
+#: app/templates/admin/user_detail.html:35
 msgid "Role"
 msgstr "Rolle"
 
-#: app/templates/admin/user_detail.html:36
+#: app/templates/admin/user_detail.html:44
 msgid "Account status"
 msgstr "Kontostatus"
 
-#: app/templates/admin/user_detail.html:46
+#: app/templates/admin/user_detail.html:54 app/templates/admin/user_new.html:53
 msgid "Administrator (all rights)"
 msgstr "Administrator (alle Rechte)"
 
-#: app/templates/admin/user_detail.html:50
+#: app/templates/admin/user_detail.html:58
 msgid "Identity check"
 msgstr "Identitätsprüfung"
 
-#: app/templates/admin/user_detail.html:59
+#: app/templates/admin/user_detail.html:67
 msgid "Reason"
 msgstr "Grund"
 
-#: app/templates/admin/user_detail.html:67
+#: app/templates/admin/user_detail.html:75
 msgid "Save changes"
 msgstr "Änderungen speichern"
 
-#: app/templates/admin/user_detail.html:71
+#: app/templates/admin/user_detail.html:79
 msgid "Consents"
 msgstr "Einwilligungen"
 
-#: app/templates/admin/user_detail.html:74
+#: app/templates/admin/user_detail.html:82
 msgid "granted"
 msgstr "erteilt"
 
-#: app/templates/admin/user_detail.html:74
+#: app/templates/admin/user_detail.html:82
 msgid "withdrawn"
 msgstr "widerrufen"
 
-#: app/templates/admin/user_detail.html:76
+#: app/templates/admin/user_detail.html:84
 msgid "No consents recorded."
 msgstr "Keine Einwilligungen erfasst."
 
-#: app/templates/admin/user_detail.html:82
+#: app/templates/admin/user_detail.html:90
 msgid "History"
 msgstr "Verlauf"
 
-#: app/templates/admin/user_detail.html:87
+#: app/templates/admin/user_detail.html:95
 msgid "No entries yet."
 msgstr "Noch keine Einträge."
+
+#: app/templates/admin/user_new.html:3 app/templates/admin/user_new.html:6
+#: app/templates/admin/users.html:7
+msgid "Create a participant"
+msgstr "Teilnehmende Person anlegen"
+
+#: app/templates/admin/user_new.html:7
+msgid ""
+"Creates an account without registration and without Stripe. Use it for "
+"demonstrations and invitations."
+msgstr ""
+"Legt ein Konto ohne Registrierung und ohne Stripe an. Für Demonstrationen "
+"und Einladungen."
+
+#: app/templates/admin/user_new.html:14 app/templates/admin/users.html:20
+#: app/templates/auth/login.html:14 app/templates/auth/register.html:24
+msgid "E-mail"
+msgstr "E-Mail"
+
+#: app/templates/admin/user_new.html:18 app/templates/auth/register.html:13
+msgid "First name"
+msgstr "Vorname"
+
+#: app/templates/admin/user_new.html:22 app/templates/auth/register.html:19
+msgid "Last name"
+msgstr "Nachname"
+
+#: app/templates/admin/user_new.html:26 app/templates/auth/register.html:37
+msgid "Country of residence"
+msgstr "Wohnsitzland"
+
+#: app/templates/admin/user_new.html:42
+msgid "Password (optional, at least 10 characters)"
+msgstr "Passwort (optional, mindestens 10 Zeichen)"
+
+#: app/templates/admin/user_new.html:44
+msgid "If empty, a temporary password is generated and shown once."
+msgstr "Bleibt es leer, wird ein temporäres Passwort erzeugt und einmal angezeigt."
+
+#: app/templates/admin/user_new.html:49
+msgid "Identity is confirmed (no Stripe check)"
+msgstr "Identität ist bestätigt (ohne Stripe-Prüfung)"
+
+#: app/templates/admin/user_new.html:56
+msgid "Create participant"
+msgstr "Teilnehmende Person anlegen"
 
 #: app/templates/admin/users.html:11
 msgid "Search by e-mail"
@@ -1065,11 +1138,6 @@ msgstr "Nach E-Mail suchen"
 #: app/templates/admin/users.html:14
 msgid "Search"
 msgstr "Suchen"
-
-#: app/templates/admin/users.html:20 app/templates/auth/login.html:14
-#: app/templates/auth/register.html:24
-msgid "E-mail"
-msgstr "E-Mail"
 
 #: app/templates/admin/users.html:22
 msgid "Identity"
@@ -1107,21 +1175,9 @@ msgstr ""
 "Jedes Konto braucht eine Identitätsprüfung, bevor du den Club nutzen "
 "kannst. Die Prüfung macht Stripe, Dokumente speichern wir nicht."
 
-#: app/templates/auth/register.html:13
-msgid "First name"
-msgstr "Vorname"
-
-#: app/templates/auth/register.html:19
-msgid "Last name"
-msgstr "Nachname"
-
 #: app/templates/auth/register.html:32
 msgid "At least 10 characters."
 msgstr "Mindestens 10 Zeichen."
-
-#: app/templates/auth/register.html:37
-msgid "Country of residence"
-msgstr "Wohnsitzland"
 
 #: app/templates/auth/register.html:39
 msgid "Please choose"

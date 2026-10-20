@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block title %}{{ _("Create a participant") }} · {{ _("Admin") }}{% endblock %}
+
+{% block content %}
+<h1>{{ _("Create a participant") }}</h1>
+<p class="muted">{{ _("Creates an account without registration and without Stripe. Use it for demonstrations and invitations.") }}</p>
+<p><a href="{{ url_for('admin.users') }}">{{ _("Back to members") }}</a></p>
+
+<form method="post" action="{{ url_for('admin.user_new') }}" class="form">
+  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+  <div class="field">
+    <label for="email">{{ _("E-mail") }}</label>
+    <input id="email" name="email" type="email" required value="{{ form.get('email', '') }}">
+  </div>
+  <div class="field">
+    <label for="first_name">{{ _("First name") }}</label>
+    <input id="first_name" name="first_name" type="text" required value="{{ form.get('first_name', '') }}">
+  </div>
+  <div class="field">
+    <label for="last_name">{{ _("Last name") }}</label>
+    <input id="last_name" name="last_name" type="text" value="{{ form.get('last_name', '') }}">
+  </div>
+  <div class="field">
+    <label for="residence_country">{{ _("Country of residence") }}</label>
+    <select id="residence_country" name="residence_country" required>
+      {% for code, name in countries %}
+        <option value="{{ code }}" {% if form.get('residence_country') == code %}selected{% endif %}>{{ name }}</option>
+      {% endfor %}
+    </select>
+  </div>
+  <div class="field">
+    <label for="plan">{{ _("Plan") }}</label>
+    <select id="plan" name="plan">
+      {% for key, plan in plans.items() %}
+        <option value="{{ key }}" {% if form.get('plan') == key %}selected{% endif %}>{{ plan.name }}</option>
+      {% endfor %}
+    </select>
+  </div>
+  <div class="field">
+    <label for="password">{{ _("Password (optional, at least 10 characters)") }}</label>
+    <input id="password" name="password" type="text" minlength="10" autocomplete="off">
+    <p class="small">{{ _("If empty, a temporary password is generated and shown once.") }}</p>
+  </div>
+
+  <label class="check">
+    <input type="checkbox" name="verified" value="1">
+    {{ _("Identity is confirmed (no Stripe check)") }}
+  </label>
+  <label class="check">
+    <input type="checkbox" name="is_admin" value="1">
+    {{ _("Administrator (all rights)") }}
+  </label>
+
+  <button type="submit" class="button">{{ _("Create participant") }}</button>
+</form>
+{% endblock %}
