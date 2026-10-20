@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}{{ _("Travel") }} · {{ _("Club") }}{% endblock %}
+
+{% block content %}
+<h1>{{ _("Travel") }}</h1>
+<p class="muted">{{ _("Shared trips of members and offers from operators and agents. Everyone can read them; booking depends on your plan.") }}</p>
+
+<p>
+  <a href="{{ url_for('travel.index', kind='shared') }}">{{ _("Shared trips") }}</a> ·
+  <a href="{{ url_for('travel.index', kind='offer') }}">{{ _("Offers") }}</a> ·
+  <a href="{{ url_for('travel.index') }}">{{ _("All") }}</a> ·
+  <a href="{{ url_for('travel.mine') }}">{{ _("My trips") }}</a>
+</p>
+
+{% for item in items %}
+<section class="card">
+  <h2><a href="{{ url_for('travel.detail', trip_id=item.trip.id) }}">{{ item.trip.title }}</a></h2>
+  <p>{{ item.trip.destination }} · {{ item.trip.starts_on.strftime('%d.%m.%Y') }} – {{ item.trip.ends_on.strftime('%d.%m.%Y') }}</p>
+  <p class="small">
+    {% if item.is_offer %}{{ _("Offer") }}{% else %}{{ _("Shared trip") }}{% endif %}
+    · {{ _("seats left: %(count)s", count=item.seats_left) }}
+    {% if item.price %} · {{ item.price }} {{ _("per person") }}{% endif %}
+  </p>
+</section>
+{% else %}
+  <p>{{ _("No trips are planned yet.") }}</p>
+{% endfor %}
+{% endblock %}

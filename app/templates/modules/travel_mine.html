@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block title %}{{ _("My trips") }} · {{ _("Travel") }}{% endblock %}
+
+{% block content %}
+<h1>{{ _("My trips") }}</h1>
+<p>
+  {% if can_book %}<a href="{{ url_for('travel.new_shared') }}" class="button">{{ _("New shared trip") }}</a>{% endif %}
+  {% if can_offer %}<a href="{{ url_for('travel.new_offer') }}" class="button button-secondary">{{ _("New offer") }}</a>{% endif %}
+</p>
+
+<section>
+  <h2>{{ _("Trips I organise") }}</h2>
+  {% for item in authored %}
+  <section class="card">
+    <h3><a href="{{ url_for('travel.detail', trip_id=item.trip.id) }}">{{ item.trip.title }}</a></h3>
+    <p class="small">
+      {% if item.is_offer %}{{ _("Offer") }}{% else %}{{ _("Shared trip") }}{% endif %} ·
+      {% if item.trip.status == "pending" %}{{ _("Waiting for review") }}
+      {% elif item.trip.status == "open" %}{{ _("Open") }}
+      {% elif item.trip.status == "rejected" %}{{ _("Not published") }}{% if item.trip.rejection_reason %}: {{ item.trip.rejection_reason }}{% endif %}
+      {% else %}{{ _("Cancelled") }}{% endif %}
+    </p>
+    {% if item.trip.status in ["open", "pending"] %}
+    <form method="post" action="{{ url_for('travel.cancel', trip_id=item.trip.id) }}" class="inline-form">
+      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+      <button type="submit" class="link-button">{{ _("Cancel this trip") }}</button>
+    </form>
+    {% endif %}
+  </section>
+  {% else %}
+    <p>{{ _("You have not organised any trips yet.") }}</p>
+  {% endfor %}
+</section>
+
+<section>
+  <h2>{{ _("My bookings") }}</h2>
+  {% for booking in bookings %}
+  <section class="card">
+    <h3><a href="{{ url_for('travel.detail', trip_id=booking.trip.id) }}">{{ booking.trip.title }}</a></h3>
+    <p class="small">{{ booking.trip.starts_on.strftime('%d.%m.%Y') }} · {{ _("%(count)s seat(s)", count=booking.seats) }}</p>
+  </section>
+  {% else %}
+    <p>{{ _("You have no bookings.") }}</p>
+  {% endfor %}
+</section>
+{% endblock %}

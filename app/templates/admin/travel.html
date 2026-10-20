@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}{{ _("Travel offers") }} · {{ _("Admin") }}{% endblock %}
+
+{% block content %}
+<h1>{{ _("Travel offers") }}</h1>
+<p><a href="{{ url_for('admin.dashboard') }}">{{ _("Back to admin") }}</a></p>
+
+<nav class="admin-nav">
+  <a href="{{ url_for('admin.travel', status='pending') }}">{{ _("To review") }}</a> ·
+  <a href="{{ url_for('admin.travel', status='open') }}">{{ _("Published") }}</a> ·
+  <a href="{{ url_for('admin.travel', status='rejected') }}">{{ _("Rejected") }}</a>
+</nav>
+
+{% for trip in items %}
+<section class="card">
+  <h2>{{ trip.title }}</h2>
+  <p>{{ trip.destination }} · {{ trip.starts_on.strftime('%d.%m.%Y') }} – {{ trip.ends_on.strftime('%d.%m.%Y') }} · {{ trip.seats_total }}</p>
+  <p class="small">{{ trip.author.email }} · {{ trip.author.role }} · {{ trip.status }}{% if trip.rejection_reason %} · {{ trip.rejection_reason }}{% endif %}</p>
+  {% if trip.status != "open" %}
+  <form method="post" action="{{ url_for('admin.review_travel', trip_id=trip.id) }}" class="form">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+    <button type="submit" name="decision" value="approve" class="button">{{ _("Publish") }}</button>
+    <div class="field">
+      <label for="reason-{{ trip.id }}">{{ _("Reason for rejection (optional)") }}</label>
+      <input id="reason-{{ trip.id }}" name="reason" type="text" maxlength="300">
+    </div>
+    <button type="submit" name="decision" value="reject" class="button button-danger">{{ _("Reject") }}</button>
+  </form>
+  {% endif %}
+</section>
+{% else %}
+  <p>{{ _("Nothing here.") }}</p>
+{% endfor %}
+{% endblock %}

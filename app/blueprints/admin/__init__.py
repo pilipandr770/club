@@ -9,7 +9,8 @@ from ...extensions import db
 from ...models import AuditLog, Consent, Lot, User
 from ...models.user import ROLES, VERIFICATION_STATUSES
 from ...services.audit import audit
-from ...models import Startup
+from ...models import Startup, Trip
+from ...services import travel as travel_service
 from ...services import startups as startup_service
 from ...services.auction_engine import cancel_lot, create_lot, validate_lot_input
 from ...utils import eur_to_cents, format_eur, local_to_utc, utcnow
@@ -226,4 +227,34 @@ def review_startup(startup_id):
         return redirect(url_for("admin.startups"))
     db.session.commit()
     return redirect(url_for("admin.startups", status="pending"))
+
+
+@bp.route("/travel")
+@admin_required
+def travel():
+    status = request.args.get("status", "pending")
+    query = Trip.query.filter_by(kind="offer")
+    if status in ("pending", "open", "rejected"):
+        query = query.filter_by(status=status)
+    items = query.order_by(Trip.created_at.desc()).limit(200).all()
+    return render_template("admin/travel.html", items=items, status=status)
+
+
+@bp.route("/travel/<int:trip_id>/review", methods=["POST"])
+@admin_required
+def review_travel(trip_id):
+    trip = db.session.get(Trip, trip_id) or abort(404)
+    if trip.kind != "offer":
+        abort(404)
+    if request.form.get("decision") == "approve":
+        travel_service.approve_offer(current_user, trip)
+        flash(_("The offer is published."), "success")
+    elif request.form.get("decision") == "reject":
+        travel_service.reject_offer(current_user, trip, request.form.get("reason", ""))
+        flash(_("The offer is rejected."), "success")
+    else:
+        flash(_("Nothing has changed."), "info")
+        return redirect(url_for("admin.travel"))
+    db.session.commit()
+    return redirect(url_for("admin.travel", status="pending"))
 

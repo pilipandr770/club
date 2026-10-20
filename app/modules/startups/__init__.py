@@ -5,7 +5,7 @@ from flask_login import current_user
 from ...extensions import db
 from ...models import InvestorInterest, Startup
 from ...models.startups import CATEGORIES, STAGES
-from ...services.entitlements import requires_feature
+from ...services.entitlements import has_feature, requires_feature
 from ...services.startups import (
     StartupError,
     create_startup,
@@ -36,7 +36,7 @@ def _field_errors(fields):
 
 
 @bp.route("/")
-@requires_feature("startups.browse")
+@requires_feature("community.read")
 def index():
     query = Startup.query.filter_by(status="approved")
     category = request.args.get("category", "")
@@ -51,7 +51,7 @@ def index():
 
 
 @bp.route("/<int:startup_id>")
-@requires_feature("startups.browse")
+@requires_feature("community.read")
 def detail(startup_id):
     startup = db.session.get(Startup, startup_id) or abort(404)
     is_owner = startup.owner_id == current_user.id
@@ -62,11 +62,12 @@ def detail(startup_id):
         my_interest = InvestorInterest.query.filter_by(startup_id=startup.id, investor_id=current_user.id).first()
     return render_template("modules/startups_detail.html", startup=startup, is_owner=is_owner,
                            my_interest=my_interest, contact=visible_contact(current_user, startup),
+                           can_interest=has_feature(current_user, "startups.interest"),
                            funding=format_eur(startup.funding_goal_cents))
 
 
 @bp.route("/<int:startup_id>/interest", methods=["POST"])
-@requires_feature("startups.browse")
+@requires_feature("startups.interest")
 def interest(startup_id):
     startup = db.session.get(Startup, startup_id) or abort(404)
     try:

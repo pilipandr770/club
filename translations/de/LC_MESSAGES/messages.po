@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Club 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-19 23:02+0000\n"
+"POT-Creation-Date: 2026-10-20 08:56+0000\n"
 "PO-Revision-Date: 2026-10-19 21:00+0000\n"
 "Last-Translator: \n"
 "Language: de\n"
@@ -17,34 +17,43 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.17.0\n"
 
-#: app/blueprints/admin/__init__.py:118
+#: app/blueprints/admin/__init__.py:119
 msgid "Changes are saved."
 msgstr "Änderungen sind gespeichert."
 
-#: app/blueprints/admin/__init__.py:120 app/blueprints/admin/__init__.py:225
+#: app/blueprints/admin/__init__.py:121 app/blueprints/admin/__init__.py:226
+#: app/blueprints/admin/__init__.py:256
 msgid "Nothing has changed."
 msgstr "Nichts hat sich geändert."
 
-#: app/blueprints/admin/__init__.py:139
+#: app/blueprints/admin/__init__.py:140
 #, python-format
 msgid "Please check the lot fields: %(fields)s"
 msgstr "Bitte prüfe die Felder des Loses: %(fields)s"
 
-#: app/blueprints/admin/__init__.py:143
+#: app/blueprints/admin/__init__.py:144
 msgid "The lot is created."
 msgstr "Das Los ist angelegt."
 
-#: app/blueprints/admin/__init__.py:156
+#: app/blueprints/admin/__init__.py:157
 msgid "The lot is closed."
 msgstr "Das Los ist geschlossen."
 
-#: app/blueprints/admin/__init__.py:220
+#: app/blueprints/admin/__init__.py:221
 msgid "The startup is published."
 msgstr "Der Startup ist veröffentlicht."
 
-#: app/blueprints/admin/__init__.py:223
+#: app/blueprints/admin/__init__.py:224
 msgid "The startup is rejected."
 msgstr "Der Startup ist abgelehnt."
+
+#: app/blueprints/admin/__init__.py:251
+msgid "The offer is published."
+msgstr "Das Angebot ist veröffentlicht."
+
+#: app/blueprints/admin/__init__.py:254
+msgid "The offer is rejected."
+msgstr "Das Angebot ist abgelehnt."
 
 #: app/blueprints/auth/__init__.py:26
 msgid "Please confirm your e-mail address"
@@ -157,7 +166,11 @@ msgstr "Über mich"
 msgid "Services"
 msgstr "Dienstleistungen"
 
-#: app/modules/__init__.py:24 app/modules/travel/__init__.py:12
+#: app/modules/__init__.py:24 app/templates/modules/travel_detail.html:3
+#: app/templates/modules/travel_form.html:3
+#: app/templates/modules/travel_list.html:3
+#: app/templates/modules/travel_list.html:6
+#: app/templates/modules/travel_mine.html:3
 msgid "Travel"
 msgstr "Reisen"
 
@@ -233,36 +246,37 @@ msgstr "Du hast dein Interesse an diesem Startup schon gesendet."
 msgid "You have already answered this interest."
 msgstr "Auf dieses Interesse hast du bereits geantwortet."
 
-#: app/modules/startups/__init__.py:29
+#: app/modules/startups/__init__.py:29 app/modules/travel/__init__.py:35
 msgid "This is not available to you."
 msgstr "Das ist für dich nicht verfügbar."
 
-#: app/modules/startups/__init__.py:31
+#: app/modules/startups/__init__.py:31 app/modules/travel/__init__.py:38
 msgid "Something went wrong. Please try again."
 msgstr "Etwas ist schiefgelaufen. Bitte versuche es erneut."
 
-#: app/modules/startups/__init__.py:35
+#: app/modules/startups/__init__.py:35 app/modules/travel/__init__.py:130
+#: app/modules/travel/__init__.py:150
 #, python-format
 msgid "Please check these fields: %(fields)s"
 msgstr "Bitte prüfe diese Felder: %(fields)s"
 
-#: app/modules/startups/__init__.py:79
+#: app/modules/startups/__init__.py:80
 msgid "Your interest is sent. The founder decides whether to share contact details."
 msgstr ""
 "Dein Interesse ist gesendet. Die Gründerin oder der Gründer entscheidet, ob"
 " Kontaktdaten geteilt werden."
 
-#: app/modules/startups/__init__.py:102
+#: app/modules/startups/__init__.py:103
 msgid "Your startup is sent for review. We will let you know when it is published."
 msgstr ""
 "Dein Startup ist zur Prüfung eingereicht. Wir melden uns, sobald es "
 "veröffentlicht ist."
 
-#: app/modules/startups/__init__.py:121
+#: app/modules/startups/__init__.py:122
 msgid "Your changes are sent for review."
 msgstr "Deine Änderungen sind zur Prüfung eingereicht."
 
-#: app/modules/startups/__init__.py:140
+#: app/modules/startups/__init__.py:141
 msgid "Your answer is saved."
 msgstr "Deine Antwort ist gespeichert."
 
@@ -310,6 +324,66 @@ msgstr "Erste Umsätze"
 msgid "Growth"
 msgstr "Wachstum"
 
+#: app/modules/travel/__init__.py:27
+msgid "This trip does not exist."
+msgstr "Diese Reise existiert nicht."
+
+#: app/modules/travel/__init__.py:28
+msgid "This trip is not open for bookings."
+msgstr "Diese Reise nimmt gerade keine Buchungen an."
+
+#: app/modules/travel/__init__.py:29
+msgid "This trip has already ended."
+msgstr "Diese Reise ist bereits beendet."
+
+#: app/modules/travel/__init__.py:30
+msgid "You cannot book your own trip."
+msgstr "Du kannst deine eigene Reise nicht buchen."
+
+#: app/modules/travel/__init__.py:31
+msgid "You are already booked on this trip."
+msgstr "Du bist für diese Reise bereits gebucht."
+
+#: app/modules/travel/__init__.py:32
+msgid "There are not enough seats left."
+msgstr "Es sind nicht genug Plätze frei."
+
+#: app/modules/travel/__init__.py:33
+msgid "Please choose between 1 and 6 seats."
+msgstr "Bitte wähle zwischen 1 und 6 Plätzen."
+
+#: app/modules/travel/__init__.py:34
+msgid "You are not booked on this trip."
+msgstr "Du bist für diese Reise nicht gebucht."
+
+#: app/modules/travel/__init__.py:36
+msgid "Only travel operators and agents can publish offers."
+msgstr ""
+"Nur Reiseveranstalterinnen, Veranstalter und Agenturen können Angebote "
+"veröffentlichen."
+
+#: app/modules/travel/__init__.py:97
+msgid "You are booked. The organiser will contact you."
+msgstr "Du bist gebucht. Die Organisatorin oder der Organisator meldet sich bei dir."
+
+#: app/modules/travel/__init__.py:111
+msgid "Your booking is cancelled."
+msgstr "Deine Buchung ist storniert."
+
+#: app/modules/travel/__init__.py:128
+msgid "Your trip is open for others to join."
+msgstr "Deine Reise ist offen, damit andere mitfahren können."
+
+#: app/modules/travel/__init__.py:144
+msgid "Your offer is sent for review. We will publish it after the check."
+msgstr ""
+"Dein Angebot ist zur Prüfung eingereicht. Wir veröffentlichen es nach der "
+"Prüfung."
+
+#: app/modules/travel/__init__.py:178
+msgid "The trip is cancelled."
+msgstr "Die Reise ist storniert."
+
 #: app/services/entitlements.py:31 app/services/entitlements.py:47
 msgid "This area opens after your identity check."
 msgstr "Dieser Bereich öffnet sich nach deiner Identitätsprüfung."
@@ -352,7 +426,7 @@ msgstr "Zu viele Versuche. Bitte wende dich an den Support."
 #: app/templates/modules/startups_form.html:3
 #: app/templates/modules/startups_list.html:3
 #: app/templates/modules/startups_mine.html:3 app/templates/modules/stub.html:3
-#: app/templates/public/index.html:3
+#: app/templates/modules/travel_list.html:3 app/templates/public/index.html:3
 msgid "Club"
 msgstr "Club"
 
@@ -362,8 +436,9 @@ msgstr "Mein Konto"
 
 #: app/templates/admin/audit.html:3 app/templates/admin/dashboard.html:3
 #: app/templates/admin/dashboard.html:6 app/templates/admin/lots.html:3
-#: app/templates/admin/startups.html:3 app/templates/admin/user_detail.html:3
-#: app/templates/admin/users.html:3 app/templates/base.html:16
+#: app/templates/admin/startups.html:3 app/templates/admin/travel.html:3
+#: app/templates/admin/user_detail.html:3 app/templates/admin/users.html:3
+#: app/templates/base.html:16
 msgid "Admin"
 msgstr "Admin"
 
@@ -383,12 +458,13 @@ msgid "Register"
 msgstr "Registrieren"
 
 #: app/templates/admin/audit.html:3 app/templates/admin/audit.html:6
-#: app/templates/admin/dashboard.html:11
+#: app/templates/admin/dashboard.html:12
 msgid "Audit log"
 msgstr "Protokoll"
 
 #: app/templates/admin/audit.html:7 app/templates/admin/lots.html:7
-#: app/templates/admin/startups.html:7 app/templates/admin/users.html:7
+#: app/templates/admin/startups.html:7 app/templates/admin/travel.html:7
+#: app/templates/admin/users.html:7
 msgid "Back to admin"
 msgstr "Zurück zur Verwaltung"
 
@@ -416,7 +492,7 @@ msgstr "Details"
 msgid "The log is empty."
 msgstr "Das Protokoll ist leer."
 
-#: app/templates/admin/dashboard.html:8 app/templates/admin/dashboard.html:15
+#: app/templates/admin/dashboard.html:8 app/templates/admin/dashboard.html:16
 #: app/templates/admin/users.html:3 app/templates/admin/users.html:6
 msgid "Members"
 msgstr "Mitglieder"
@@ -431,11 +507,16 @@ msgstr "Auktionslose"
 msgid "Startups"
 msgstr "Startups"
 
-#: app/templates/admin/dashboard.html:24
+#: app/templates/admin/dashboard.html:11 app/templates/admin/travel.html:3
+#: app/templates/admin/travel.html:6
+msgid "Travel offers"
+msgstr "Reiseangebote"
+
+#: app/templates/admin/dashboard.html:25
 msgid "Identity checks"
 msgstr "Identitätsprüfungen"
 
-#: app/templates/admin/dashboard.html:33
+#: app/templates/admin/dashboard.html:34
 msgid "Open auction lots"
 msgstr "Offene Auktionslose"
 
@@ -444,10 +525,12 @@ msgid "New lot"
 msgstr "Neues Los"
 
 #: app/templates/admin/lots.html:15 app/templates/admin/lots.html:70
+#: app/templates/modules/travel_form.html:17
 msgid "Title"
 msgstr "Titel"
 
 #: app/templates/admin/lots.html:20 app/templates/modules/startups_form.html:23
+#: app/templates/modules/travel_form.html:47
 msgid "Description"
 msgstr "Beschreibung"
 
@@ -516,32 +599,32 @@ msgstr "Schließen"
 msgid "No lots yet."
 msgstr "Noch keine Lose."
 
-#: app/templates/admin/startups.html:10
+#: app/templates/admin/startups.html:10 app/templates/admin/travel.html:10
 msgid "To review"
 msgstr "Zu prüfen"
 
-#: app/templates/admin/startups.html:11
+#: app/templates/admin/startups.html:11 app/templates/admin/travel.html:11
 #: app/templates/modules/startups_mine.html:13
 msgid "Published"
 msgstr "Veröffentlicht"
 
-#: app/templates/admin/startups.html:12
+#: app/templates/admin/startups.html:12 app/templates/admin/travel.html:12
 msgid "Rejected"
 msgstr "Abgelehnt"
 
-#: app/templates/admin/startups.html:25
+#: app/templates/admin/startups.html:25 app/templates/admin/travel.html:23
 msgid "Publish"
 msgstr "Veröffentlichen"
 
-#: app/templates/admin/startups.html:27
+#: app/templates/admin/startups.html:27 app/templates/admin/travel.html:25
 msgid "Reason for rejection (optional)"
 msgstr "Grund für die Ablehnung (optional)"
 
-#: app/templates/admin/startups.html:30
+#: app/templates/admin/startups.html:30 app/templates/admin/travel.html:28
 msgid "Reject"
 msgstr "Ablehnen"
 
-#: app/templates/admin/startups.html:35
+#: app/templates/admin/startups.html:35 app/templates/admin/travel.html:33
 msgid "Nothing here."
 msgstr "Hier ist nichts."
 
@@ -942,33 +1025,37 @@ msgstr ""
 "Die Gründerin oder der Gründer hat dein Interesse angenommen. Du erreichst "
 "sie oder ihn unter:"
 
-#: app/templates/modules/startups_detail.html:37
+#: app/templates/modules/startups_detail.html:36
+msgid "Showing interest is included in a higher plan."
+msgstr "Interesse zeigen ist im höheren Tarif enthalten."
+
+#: app/templates/modules/startups_detail.html:39
 msgid "Your interest is with the founder."
 msgstr "Dein Interesse liegt bei der Gründerin oder dem Gründer."
 
-#: app/templates/modules/startups_detail.html:38
+#: app/templates/modules/startups_detail.html:40
 msgid "Your interest was accepted."
 msgstr "Dein Interesse wurde angenommen."
 
-#: app/templates/modules/startups_detail.html:39
+#: app/templates/modules/startups_detail.html:41
 msgid "Your interest was not accepted this time."
 msgstr "Dein Interesse wurde diesmal nicht angenommen."
 
-#: app/templates/modules/startups_detail.html:45
+#: app/templates/modules/startups_detail.html:47
 msgid "Your message to the founder"
 msgstr "Deine Nachricht an die Gründerin oder den Gründer"
 
-#: app/templates/modules/startups_detail.html:47
+#: app/templates/modules/startups_detail.html:49
 msgid "Your contact details are not shared unless the founder accepts."
 msgstr ""
 "Deine Kontaktdaten werden nur geteilt, wenn die Gründerin oder der Gründer "
 "zustimmt."
 
-#: app/templates/modules/startups_detail.html:49
+#: app/templates/modules/startups_detail.html:51
 msgid "Show interest"
 msgstr "Interesse zeigen"
 
-#: app/templates/modules/startups_detail.html:55
+#: app/templates/modules/startups_detail.html:57
 msgid "Back to all startups"
 msgstr "Zurück zu allen Startups"
 
@@ -1020,6 +1107,7 @@ msgid "Send changes for review"
 msgstr "Änderungen zur Prüfung senden"
 
 #: app/templates/modules/startups_form.html:55
+#: app/templates/modules/travel_form.html:51
 msgid "Send for review"
 msgstr "Zur Prüfung senden"
 
@@ -1053,10 +1141,12 @@ msgid "My startups"
 msgstr "Meine Startups"
 
 #: app/templates/modules/startups_mine.html:14
+#: app/templates/modules/travel_mine.html:19
 msgid "Waiting for review"
 msgstr "Wartet auf Prüfung"
 
 #: app/templates/modules/startups_mine.html:15
+#: app/templates/modules/travel_mine.html:21
 msgid "Not published"
 msgstr "Nicht veröffentlicht"
 
@@ -1093,6 +1183,190 @@ msgid "This section is being prepared. You will find it here once it opens."
 msgstr ""
 "Dieser Bereich wird gerade vorbereitet. Sobald er öffnet, findest du ihn "
 "hier."
+
+#: app/templates/modules/travel_detail.html:9
+#: app/templates/modules/travel_list.html:21
+#: app/templates/modules/travel_mine.html:18
+msgid "Offer"
+msgstr "Angebot"
+
+#: app/templates/modules/travel_detail.html:9
+#: app/templates/modules/travel_list.html:21
+#: app/templates/modules/travel_mine.html:18
+msgid "Shared trip"
+msgstr "Gemeinsame Reise"
+
+#: app/templates/modules/travel_detail.html:10
+#: app/templates/modules/travel_list.html:22
+#, python-format
+msgid "seats left: %(count)s"
+msgstr "freie Plätze: %(count)s"
+
+#: app/templates/modules/travel_detail.html:11
+#: app/templates/modules/travel_list.html:23
+msgid "per person"
+msgstr "pro Person"
+
+#: app/templates/modules/travel_detail.html:15
+msgid "This trip is cancelled."
+msgstr "Diese Reise ist storniert."
+
+#: app/templates/modules/travel_detail.html:20
+msgid "Organised by"
+msgstr "Organisiert von"
+
+#: app/templates/modules/travel_detail.html:24
+msgid "Participants"
+msgstr "Teilnehmende"
+
+#: app/templates/modules/travel_detail.html:28
+msgid "No one has booked yet."
+msgstr "Noch niemand hat gebucht."
+
+#: app/templates/modules/travel_detail.html:34
+#, python-format
+msgid "You are booked with %(count)s seat(s)."
+msgstr "Du bist mit %(count)s Platz/Plätzen gebucht."
+
+#: app/templates/modules/travel_detail.html:37
+msgid "Cancel my booking"
+msgstr "Meine Buchung stornieren"
+
+#: app/templates/modules/travel_detail.html:45
+msgid "Seats"
+msgstr "Plätze"
+
+#: app/templates/modules/travel_detail.html:48
+msgid ""
+"Payment is arranged directly with the organiser. The club does not handle "
+"money yet."
+msgstr ""
+"Die Zahlung wird direkt mit der Organisatorin oder dem Organisator "
+"vereinbart. Der Club wickelt Geld noch nicht ab."
+
+#: app/templates/modules/travel_detail.html:49
+msgid "Book"
+msgstr "Buchen"
+
+#: app/templates/modules/travel_detail.html:53
+msgid "Booking is included in a higher plan."
+msgstr "Buchen ist im höheren Tarif enthalten."
+
+#: app/templates/modules/travel_detail.html:57
+msgid "Back to my trips"
+msgstr "Zurück zu meinen Reisen"
+
+#: app/templates/modules/travel_detail.html:59
+msgid "Back to all trips"
+msgstr "Zurück zu allen Reisen"
+
+#: app/templates/modules/travel_form.html:3
+#: app/templates/modules/travel_form.html:6
+#: app/templates/modules/travel_mine.html:9
+msgid "New offer"
+msgstr "Neues Angebot"
+
+#: app/templates/modules/travel_form.html:3
+#: app/templates/modules/travel_form.html:6
+#: app/templates/modules/travel_mine.html:8
+msgid "New shared trip"
+msgstr "Neue gemeinsame Reise"
+
+#: app/templates/modules/travel_form.html:8
+msgid "Offers are checked by our team before they are published."
+msgstr "Angebote prüft unser Team, bevor sie veröffentlicht werden."
+
+#: app/templates/modules/travel_form.html:10
+msgid "Shared trips are open for other members to join."
+msgstr "Gemeinsame Reisen sind offen, damit andere Mitglieder mitfahren können."
+
+#: app/templates/modules/travel_form.html:22
+msgid "Destination"
+msgstr "Reiseziel"
+
+#: app/templates/modules/travel_form.html:27
+msgid "Starts on"
+msgstr "Beginn"
+
+#: app/templates/modules/travel_form.html:32
+msgid "Ends on"
+msgstr "Ende"
+
+#: app/templates/modules/travel_form.html:37
+msgid "Places available"
+msgstr "Verfügbare Plätze"
+
+#: app/templates/modules/travel_form.html:42
+msgid "Price per person (EUR, optional)"
+msgstr "Preis pro Person (EUR, optional)"
+
+#: app/templates/modules/travel_form.html:51
+msgid "Open the trip"
+msgstr "Reise öffnen"
+
+#: app/templates/modules/travel_list.html:7
+msgid ""
+"Shared trips of members and offers from operators and agents. Everyone can "
+"read them; booking depends on your plan."
+msgstr ""
+"Gemeinsame Reisen der Mitglieder und Angebote von Veranstalterinnen, "
+"Veranstaltern und Agenturen. Alle können sie lesen; gebucht wird je nach "
+"Tarif."
+
+#: app/templates/modules/travel_list.html:10
+msgid "Shared trips"
+msgstr "Gemeinsame Reisen"
+
+#: app/templates/modules/travel_list.html:11
+msgid "Offers"
+msgstr "Angebote"
+
+#: app/templates/modules/travel_list.html:12
+msgid "All"
+msgstr "Alle"
+
+#: app/templates/modules/travel_list.html:13
+#: app/templates/modules/travel_mine.html:3
+#: app/templates/modules/travel_mine.html:6
+msgid "My trips"
+msgstr "Meine Reisen"
+
+#: app/templates/modules/travel_list.html:27
+msgid "No trips are planned yet."
+msgstr "Es sind noch keine Reisen geplant."
+
+#: app/templates/modules/travel_mine.html:13
+msgid "Trips I organise"
+msgstr "Reisen, die ich organisiere"
+
+#: app/templates/modules/travel_mine.html:20
+msgid "Open"
+msgstr "Offen"
+
+#: app/templates/modules/travel_mine.html:22
+msgid "Cancelled"
+msgstr "Storniert"
+
+#: app/templates/modules/travel_mine.html:27
+msgid "Cancel this trip"
+msgstr "Diese Reise stornieren"
+
+#: app/templates/modules/travel_mine.html:32
+msgid "You have not organised any trips yet."
+msgstr "Du organisierst noch keine Reisen."
+
+#: app/templates/modules/travel_mine.html:37
+msgid "My bookings"
+msgstr "Meine Buchungen"
+
+#: app/templates/modules/travel_mine.html:41
+#, python-format
+msgid "%(count)s seat(s)"
+msgstr "%(count)s Platz/Plätze"
+
+#: app/templates/modules/travel_mine.html:44
+msgid "You have no bookings."
+msgstr "Du hast keine Buchungen."
 
 #: app/templates/public/index.html:3 app/templates/public/index.html:7
 msgid "Welcome"

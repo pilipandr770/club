@@ -87,12 +87,17 @@ def test_approved_startup_appears_in_catalog(app, client):
     assert "Solar Shelf" in client.get("/startups/").get_data(as_text=True)
 
 
-def test_starter_cannot_browse_or_publish(app, client):
+def test_starter_can_read_but_not_publish_or_show_interest(app, client):
+    owner, _ = _owner_and_investor(app)
+    startup_id = _startup(app, owner, status="approved")
     make_user(app, email="small@example.com", verified=True, plan="starter")
     login(client, "small@example.com")
 
-    assert client.get("/startups/").status_code == 302
+    assert client.get("/startups/").status_code == 200
     assert client.get("/startups/new").status_code == 302
+    client.post(f"/startups/{startup_id}/interest", data={"message": "hi"})
+    with app.app_context():
+        assert InvestorInterest.query.count() == 0
 
 
 def test_admin_approves_and_owner_sees_reason_when_rejected(app, client):

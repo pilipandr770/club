@@ -32,7 +32,7 @@ def test_seeded_member_can_log_in_and_sees_own_tier(app, client):
     assert response.status_code == 302
     body = client.get("/app/").get_data(as_text=True)
     assert 'href="/services/"' in body
-    assert 'href="/startups/"' not in body
+    assert 'href="/auction/"' not in body
 
 
 def test_seed_is_idempotent(app):

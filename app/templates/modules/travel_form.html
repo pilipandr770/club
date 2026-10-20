@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block title %}{% if offer %}{{ _("New offer") }}{% else %}{{ _("New shared trip") }}{% endif %} · {{ _("Travel") }}{% endblock %}
+
+{% block content %}
+<h1>{% if offer %}{{ _("New offer") }}{% else %}{{ _("New shared trip") }}{% endif %}</h1>
+{% if offer %}
+  <p class="muted">{{ _("Offers are checked by our team before they are published.") }}</p>
+{% else %}
+  <p class="muted">{{ _("Shared trips are open for other members to join.") }}</p>
+{% endif %}
+
+<form method="post" class="form" action="{{ url_for('travel.new_offer') if offer else url_for('travel.new_shared') }}">
+  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+  <div class="field">
+    <label for="title">{{ _("Title") }}</label>
+    <input id="title" name="title" type="text" maxlength="160" required value="{{ form.get('title', '') }}">
+  </div>
+
+  <div class="field">
+    <label for="destination">{{ _("Destination") }}</label>
+    <input id="destination" name="destination" type="text" maxlength="120" required value="{{ form.get('destination', '') }}">
+  </div>
+
+  <div class="field">
+    <label for="starts_on">{{ _("Starts on") }}</label>
+    <input id="starts_on" name="starts_on" type="date" required value="{{ form.get('starts_on', '') }}">
+  </div>
+
+  <div class="field">
+    <label for="ends_on">{{ _("Ends on") }}</label>
+    <input id="ends_on" name="ends_on" type="date" required value="{{ form.get('ends_on', '') }}">
+  </div>
+
+  <div class="field">
+    <label for="seats_total">{{ _("Places available") }}</label>
+    <input id="seats_total" name="seats_total" type="number" min="1" max="500" required value="{{ form.get('seats_total', '') }}">
+  </div>
+
+  <div class="field">
+    <label for="price">{{ _("Price per person (EUR, optional)") }}</label>
+    <input id="price" name="price" type="text" inputmode="decimal" value="{{ form.get('price', '') }}">
+  </div>
+
+  <div class="field">
+    <label for="description">{{ _("Description") }}</label>
+    <textarea id="description" name="description" rows="6" maxlength="2000">{{ form.get('description', '') }}</textarea>
+  </div>
+
+  <button type="submit" class="button">{% if offer %}{{ _("Send for review") }}{% else %}{{ _("Open the trip") }}{% endif %}</button>
+</form>
+{% endblock %}

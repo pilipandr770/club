@@ -32,7 +32,9 @@
 
 {% if not is_owner and startup.status == "approved" %}
 <section class="card">
-  {% if my_interest %}
+  {% if not can_interest and not my_interest %}
+    <p class="muted">{{ _("Showing interest is included in a higher plan.") }}</p>
+  {% elif my_interest %}
     <p>
       {% if my_interest.status == "pending" %}{{ _("Your interest is with the founder.") }}
       {% elif my_interest.status == "accepted" %}{{ _("Your interest was accepted.") }}

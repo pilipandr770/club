@@ -53,26 +53,29 @@ def test_guest_is_redirected_from_paid_modules(app, client):
     make_user(app, verified=True)
     login(client)
 
-    for path in ("/services/", "/travel/", "/startups/", "/auction/"):
+    # Просмотр открыт всем верифицированным, платное — только сервисы и аукцион
+    assert client.get("/startups/").status_code == 200
+    assert client.get("/travel/").status_code == 200
+    for path in ("/services/", "/auction/"):
         response = client.get(path)
         assert response.status_code == 302, path
         assert response.headers["Location"].endswith("/app/"), path
 
 
-def test_starter_reaches_services_but_not_startups(app, client):
+def test_starter_reaches_services_and_can_read_startups(app, client):
     make_user(app, verified=True, plan="starter")
     login(client)
 
     assert client.get("/services/").status_code == 200
     assert client.get("/travel/").status_code == 200
-    assert client.get("/startups/").status_code == 302
+    assert client.get("/startups/").status_code == 200  # читать может каждый, участвовать — по тарифу
 
 
 def test_growth_reaches_startups_but_not_auction(app, client):
     make_user(app, verified=True, plan="growth")
     login(client)
 
-    assert client.get("/startups/").status_code == 200
+    assert client.get("/startups/new").status_code == 200
     assert client.get("/auction/").status_code == 302
 
 
