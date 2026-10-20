@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Club 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-20 17:44+0000\n"
+"POT-Creation-Date: 2026-10-20 18:39+0000\n"
 "PO-Revision-Date: 2026-10-19 21:00+0000\n"
 "Last-Translator: \n"
 "Language: de\n"
@@ -104,8 +104,8 @@ msgstr "Was ich mache"
 #: app/profile_guide.py:76
 msgid "Describe your work in two or three sentences. Concrete details help most."
 msgstr ""
-"Beschreibe deine Arbeit in zwei oder drei Sätzen. Konkrete Details helfen "
-"am meisten."
+"Beschreibe deine Arbeit in zwei oder drei Sätzen. Konkrete Details helfen"
+" am meisten."
 
 #: app/profile_guide.py:78
 msgid ""
@@ -118,8 +118,8 @@ msgstr ""
 
 #: app/profile_guide.py:79
 msgid ""
-"I build and maintain customer portals with Python and React. I also run a "
-"small team of two developers."
+"I build and maintain customer portals with Python and React. I also run a"
+" small team of two developers."
 msgstr ""
 "Ich entwickle und betreue Kundenportale mit Python und React. Außerdem "
 "leite ich ein kleines Team aus zwei Entwicklern."
@@ -172,7 +172,9 @@ msgstr "Ich erkläre Freiberuflern Steuerfristen in einfachem Deutsch."
 
 #: app/profile_guide.py:107
 msgid "I can review a landing page or a pitch deck for clarity."
-msgstr "Ich schaue mir eine Landingpage oder ein Pitch-Deck auf Verständlichkeit an."
+msgstr ""
+"Ich schaue mir eine Landingpage oder ein Pitch-Deck auf Verständlichkeit "
+"an."
 
 #: app/profile_guide.py:108
 msgid "I can introduce people to small-business owners in the Rhine-Main area."
@@ -229,8 +231,8 @@ msgstr "Über mich"
 
 #: app/profile_guide.py:145
 msgid ""
-"A few sentences about yourself. Optional, but it helps people get to know "
-"you."
+"A few sentences about yourself. Optional, but it helps people get to know"
+" you."
 msgstr ""
 "Ein paar Sätze über dich. Optional, aber so lernen dich andere besser "
 "kennen."
@@ -245,12 +247,14 @@ msgstr ""
 
 #: app/profile_guide.py:148
 msgid "Father of two, coffee lover, always reading something about economics."
-msgstr "Vater von zwei Kindern, Kaffeeliebhaber, liest immer etwas über Wirtschaft."
+msgstr ""
+"Vater von zwei Kindern, Kaffeeliebhaber, liest immer etwas über "
+"Wirtschaft."
 
 #: app/profile_guide.py:157
 msgid ""
-"A clear photo of your face helps people remember you. JPEG, PNG or WebP, up"
-" to 5 MB."
+"A clear photo of your face helps people remember you. JPEG, PNG or WebP, "
+"up to 5 MB."
 msgstr ""
 "Ein klares Foto deines Gesichts hilft, dass man sich an dich erinnert. "
 "JPEG, PNG oder WebP, bis 5 MB."
@@ -434,8 +438,8 @@ msgstr "Deutschland"
 #: app/jurisdictions/de/pack.py:10
 msgid "General information, not legal advice. Applies to German law only."
 msgstr ""
-"Allgemeine Informationen, keine Rechtsberatung. Gilt nur für das deutsche "
-"Recht."
+"Allgemeine Informationen, keine Rechtsberatung. Gilt nur für das deutsche"
+" Recht."
 
 #: app/modules/__init__.py:23 app/templates/admin/dashboard.html:12
 #: app/templates/admin/services.html:3 app/templates/admin/services.html:6
@@ -610,13 +614,17 @@ msgid "You have already answered this interest."
 msgstr "Auf dieses Interesse hast du bereits geantwortet."
 
 #: app/modules/startups/__init__.py:80
-msgid "Your interest is sent. The founder decides whether to share contact details."
+msgid ""
+"Your interest is sent. The founder decides whether to share contact "
+"details."
 msgstr ""
-"Dein Interesse ist gesendet. Die Gründerin oder der Gründer entscheidet, ob"
-" Kontaktdaten geteilt werden."
+"Dein Interesse ist gesendet. Die Gründerin oder der Gründer entscheidet, "
+"ob Kontaktdaten geteilt werden."
 
 #: app/modules/startups/__init__.py:103
-msgid "Your startup is sent for review. We will let you know when it is published."
+msgid ""
+"Your startup is sent for review. We will let you know when it is "
+"published."
 msgstr ""
 "Dein Startup ist zur Prüfung eingereicht. Wir melden uns, sobald es "
 "veröffentlicht ist."
@@ -713,7 +721,9 @@ msgstr ""
 
 #: app/modules/travel/__init__.py:97
 msgid "You are booked. The organiser will contact you."
-msgstr "Du bist gebucht. Die Organisatorin oder der Organisator meldet sich bei dir."
+msgstr ""
+"Du bist gebucht. Die Organisatorin oder der Organisator meldet sich bei "
+"dir."
 
 #: app/modules/travel/__init__.py:111
 msgid "Your booking is cancelled."
@@ -726,8 +736,8 @@ msgstr "Deine Reise ist offen, damit andere mitfahren können."
 #: app/modules/travel/__init__.py:144
 msgid "Your offer is sent for review. We will publish it after the check."
 msgstr ""
-"Dein Angebot ist zur Prüfung eingereicht. Wir veröffentlichen es nach der "
-"Prüfung."
+"Dein Angebot ist zur Prüfung eingereicht. Wir veröffentlichen es nach der"
+" Prüfung."
 
 #: app/modules/travel/__init__.py:178
 msgid "The trip is cancelled."
@@ -807,8 +817,8 @@ msgstr "Wir prüfen deine Verifizierung von Hand. Wir melden uns bei dir."
 #: app/services/verification.py:150
 msgid "Please try again and make sure your document is fully visible."
 msgstr ""
-"Bitte versuche es erneut und achte darauf, dass dein Dokument vollständig "
-"sichtbar ist."
+"Bitte versuche es erneut und achte darauf, dass dein Dokument vollständig"
+" sichtbar ist."
 
 #: app/services/verification.py:151
 msgid "The verification was cancelled. You can start it again."
@@ -822,7 +832,8 @@ msgstr "Zu viele Versuche. Bitte wende dich an den Support."
 #: app/templates/auth/register.html:3 app/templates/base.html:6
 #: app/templates/base.html:11 app/templates/base.html:42
 #: app/templates/member/dashboard.html:3
-#: app/templates/modules/auction_list.html:3 app/templates/modules/profile.html:3
+#: app/templates/modules/auction_list.html:3
+#: app/templates/modules/profile.html:3
 #: app/templates/modules/profile_directory.html:3
 #: app/templates/modules/profile_edit.html:3
 #: app/templates/modules/profile_intros.html:3
@@ -954,8 +965,8 @@ msgstr "Embeddings"
 
 #: app/templates/admin/dashboard.html:44
 msgid ""
-"Models are set in the server settings. Changing them does not need a code "
-"change."
+"Models are set in the server settings. Changing them does not need a code"
+" change."
 msgstr ""
 "Die Modelle werden in den Servereinstellungen festgelegt. Ein Wechsel "
 "erfordert keine Codeänderung."
@@ -984,7 +995,8 @@ msgstr "Modus"
 msgid "Highest bid wins (price rises)"
 msgstr "Höchstes Gebot gewinnt (Preis steigt)"
 
-#: app/templates/admin/lots.html:28 app/templates/modules/auction_detail.html:11
+#: app/templates/admin/lots.html:28
+#: app/templates/modules/auction_detail.html:11
 #: app/templates/modules/auction_list.html:17
 msgid "Price falls over time"
 msgstr "Preis fällt mit der Zeit"
@@ -1092,7 +1104,8 @@ msgstr "Reihenfolge"
 msgid "Visible to members"
 msgstr "Für Mitglieder sichtbar"
 
-#: app/templates/admin/service_form.html:36 app/templates/modules/profile.html:25
+#: app/templates/admin/service_form.html:36
+#: app/templates/modules/profile.html:25
 #: app/templates/modules/profile_edit.html:44
 msgid "Save"
 msgstr "Speichern"
@@ -1255,8 +1268,8 @@ msgid ""
 "Creates an account without registration and without Stripe. Use it for "
 "demonstrations and invitations."
 msgstr ""
-"Legt ein Konto ohne Registrierung und ohne Stripe an. Für Demonstrationen "
-"und Einladungen."
+"Legt ein Konto ohne Registrierung und ohne Stripe an. Für Demonstrationen"
+" und Einladungen."
 
 #: app/templates/admin/user_new.html:14 app/templates/admin/users.html:20
 #: app/templates/auth/login.html:14 app/templates/auth/register.html:24
@@ -1349,8 +1362,8 @@ msgstr "Bestätigungen"
 
 #: app/templates/auth/register.html:52
 msgid ""
-"I have read the privacy notice and agree that my data is processed to run "
-"my account."
+"I have read the privacy notice and agree that my data is processed to run"
+" my account."
 msgstr ""
 "Ich habe die Datenschutzhinweise gelesen und stimme zu, dass meine Daten "
 "für mein Konto verarbeitet werden."
@@ -1422,11 +1435,11 @@ msgstr "Erneut versuchen"
 
 #: app/templates/member/dashboard.html:40
 msgid ""
-"To use the club, we first check your identity with Stripe. It takes a few "
-"minutes."
+"To use the club, we first check your identity with Stripe. It takes a few"
+" minutes."
 msgstr ""
-"Um den Club zu nutzen, prüfen wir zuerst deine Identität über Stripe. Das "
-"dauert ein paar Minuten."
+"Um den Club zu nutzen, prüfen wir zuerst deine Identität über Stripe. Das"
+" dauert ein paar Minuten."
 
 #: app/templates/member/dashboard.html:44
 msgid "Start identity check"
@@ -1477,8 +1490,8 @@ msgid ""
 "This deletes your account, your consent history and your identity check "
 "data at Stripe. This cannot be undone."
 msgstr ""
-"Das löscht dein Konto, deinen Einwilligungsverlauf und deine Prüfdaten bei "
-"Stripe. Das lässt sich nicht rückgängig machen."
+"Das löscht dein Konto, deinen Einwilligungsverlauf und deine Prüfdaten "
+"bei Stripe. Das lässt sich nicht rückgängig machen."
 
 #: app/templates/member/dashboard.html:82
 msgid "Confirm with your password"
@@ -1542,7 +1555,9 @@ msgid "Back to all lots"
 msgstr "Zurück zu allen Losen"
 
 #: app/templates/modules/auction_list.html:7
-msgid "Bids are placed in the lot. Payments are not yet processed in this version."
+msgid ""
+"Bids are placed in the lot. Payments are not yet processed in this "
+"version."
 msgstr ""
 "Gebote werden im Los abgegeben. Zahlungen werden in dieser Version noch "
 "nicht abgewickelt."
@@ -1577,8 +1592,8 @@ msgstr "Über dich"
 
 #: app/templates/modules/profile_directory.html:7
 msgid ""
-"Members who chose to appear in the directory. Only verified members can see"
-" this page."
+"Members who chose to appear in the directory. Only verified members can "
+"see this page."
 msgstr ""
 "Mitglieder, die im Verzeichnis erscheinen. Diese Seite sehen nur "
 "verifizierte Mitglieder."
@@ -1593,8 +1608,8 @@ msgstr "Noch keine Mitglieder im Verzeichnis."
 
 #: app/templates/modules/profile_edit.html:7
 msgid ""
-"The fuller your profile, the better our matching can suggest people who fit"
-" you. Each field has a short hint and examples."
+"The fuller your profile, the better our matching can suggest people who "
+"fit you. Each field has a short hint and examples."
 msgstr ""
 "Je vollständiger dein Profil, desto besser kann das Matching Menschen "
 "vorschlagen, die zu dir passen. Jedes Feld hat einen kurzen Hinweis und "
@@ -1708,11 +1723,11 @@ msgstr "Matches"
 
 #: app/templates/modules/profile_matches.html:10
 msgid ""
-"Matching works once your profile says what you can offer and what you are "
-"looking for."
+"Matching works once your profile says what you can offer and what you are"
+" looking for."
 msgstr ""
-"Matching funktioniert, sobald dein Profil sagt, was du anbietest und was du"
-" suchst."
+"Matching funktioniert, sobald dein Profil sagt, was du anbietest und was "
+"du suchst."
 
 #: app/templates/modules/profile_matches.html:12
 msgid "Please fill in:"
@@ -1721,8 +1736,8 @@ msgstr "Bitte fülle außerdem aus:"
 #: app/templates/modules/profile_matches.html:16
 msgid "You also need to allow matching in your profile. It is off by default."
 msgstr ""
-"Außerdem musst du das Matching in deinem Profil erlauben. Standardmäßig ist"
-" es aus."
+"Außerdem musst du das Matching in deinem Profil erlauben. Standardmäßig "
+"ist es aus."
 
 #: app/templates/modules/profile_matches.html:17
 #: app/templates/modules/profile_privacy.html:43
@@ -1766,12 +1781,14 @@ msgstr "Kontakt anfragen"
 
 #: app/templates/modules/profile_matches.html:54
 msgid "No matches yet. New members appear here as they join."
-msgstr "Noch keine Matches. Neue Mitglieder erscheinen hier, sobald sie dazukommen."
+msgstr ""
+"Noch keine Matches. Neue Mitglieder erscheinen hier, sobald sie "
+"dazukommen."
 
 #: app/templates/modules/profile_privacy.html:7
 msgid ""
-"You decide what other members can see. Both choices are off by default and "
-"you can change them at any time."
+"You decide what other members can see. Both choices are off by default "
+"and you can change them at any time."
 msgstr ""
 "Du entscheidest, was andere Mitglieder sehen. Beide Auswahlen sind "
 "standardmäßig aus, und du kannst sie jederzeit ändern."
@@ -1782,15 +1799,15 @@ msgstr "Was veröffentlicht wird"
 
 #: app/templates/modules/profile_privacy.html:11
 msgid ""
-"If you agree to the member directory, other verified members can see: your "
-"first name, your headline, company, industry, city, the texts of your "
-"profile and your photo. Your e-mail address is never shown in the "
+"If you agree to the member directory, other verified members can see: "
+"your first name, your headline, company, industry, city, the texts of "
+"your profile and your photo. Your e-mail address is never shown in the "
 "directory."
 msgstr ""
 "Wenn du dem Mitgliederverzeichnis zustimmst, sehen andere verifizierte "
 "Mitglieder: deinen Vornamen, deine Überschrift, Unternehmen, Branche, "
-"Stadt, die Texte deines Profils und dein Foto. Deine E-Mail-Adresse wird im"
-" Verzeichnis nie angezeigt."
+"Stadt, die Texte deines Profils und dein Foto. Deine E-Mail-Adresse wird "
+"im Verzeichnis nie angezeigt."
 
 #: app/templates/modules/profile_privacy.html:19
 msgid ""
@@ -1808,11 +1825,11 @@ msgstr ""
 
 #: app/templates/modules/profile_privacy.html:27
 msgid ""
-"Contact details are never published. Other members can reach you only after"
-" you accept their request."
+"Contact details are never published. Other members can reach you only "
+"after you accept their request."
 msgstr ""
-"Kontaktdaten werden nie veröffentlicht. Andere Mitglieder können dich erst "
-"erreichen, nachdem du ihre Anfrage angenommen hast."
+"Kontaktdaten werden nie veröffentlicht. Andere Mitglieder können dich "
+"erst erreichen, nachdem du ihre Anfrage angenommen hast."
 
 #: app/templates/modules/profile_privacy.html:29
 msgid "Save my choices"
@@ -1857,8 +1874,8 @@ msgstr "Anfrage senden"
 
 #: app/templates/modules/service_detail.html:23
 msgid ""
-"The provider receives your message. Your contact details are sent only if "
-"you tick the box below."
+"The provider receives your message. Your contact details are sent only if"
+" you tick the box below."
 msgstr ""
 "Der Anbieter erhält deine Nachricht. Deine Kontaktdaten werden nur "
 "gesendet, wenn du das Kästchen unten ankreuzt."
@@ -1927,8 +1944,8 @@ msgstr "Kontakt"
 #: app/templates/modules/startups_detail.html:29
 msgid "The founder has accepted your interest. You can reach them at:"
 msgstr ""
-"Die Gründerin oder der Gründer hat dein Interesse angenommen. Du erreichst "
-"sie oder ihn unter:"
+"Die Gründerin oder der Gründer hat dein Interesse angenommen. Du "
+"erreichst sie oder ihn unter:"
 
 #: app/templates/modules/startups_detail.html:36
 msgid "Showing interest is included in a higher plan."
@@ -1953,8 +1970,8 @@ msgstr "Deine Nachricht an die Gründerin oder den Gründer"
 #: app/templates/modules/startups_detail.html:49
 msgid "Your contact details are not shared unless the founder accepts."
 msgstr ""
-"Deine Kontaktdaten werden nur geteilt, wenn die Gründerin oder der Gründer "
-"zustimmt."
+"Deine Kontaktdaten werden nur geteilt, wenn die Gründerin oder der "
+"Gründer zustimmt."
 
 #: app/templates/modules/startups_detail.html:51
 msgid "Show interest"
@@ -2021,8 +2038,8 @@ msgid ""
 "Startups from our members. Each one is checked by our team before it "
 "appears here."
 msgstr ""
-"Startups unserer Mitglieder. Jedes wird von unserem Team geprüft, bevor es "
-"hier erscheint."
+"Startups unserer Mitglieder. Jedes wird von unserem Team geprüft, bevor "
+"es hier erscheint."
 
 #: app/templates/modules/startups_list.html:13
 msgid "All categories"
@@ -2139,8 +2156,8 @@ msgstr "Plätze"
 
 #: app/templates/modules/travel_detail.html:48
 msgid ""
-"Payment is arranged directly with the organiser. The club does not handle "
-"money yet."
+"Payment is arranged directly with the organiser. The club does not handle"
+" money yet."
 msgstr ""
 "Die Zahlung wird direkt mit der Organisatorin oder dem Organisator "
 "vereinbart. Der Club wickelt Geld noch nicht ab."
@@ -2207,8 +2224,8 @@ msgstr "Reise öffnen"
 
 #: app/templates/modules/travel_list.html:7
 msgid ""
-"Shared trips of members and offers from operators and agents. Everyone can "
-"read them; booking depends on your plan."
+"Shared trips of members and offers from operators and agents. Everyone "
+"can read them; booking depends on your plan."
 msgstr ""
 "Gemeinsame Reisen der Mitglieder und Angebote von Veranstalterinnen, "
 "Veranstaltern und Agenturen. Alle können sie lesen; gebucht wird je nach "
@@ -2316,8 +2333,8 @@ msgstr "Identität bestätigen"
 
 #: app/templates/public/index.html:43
 msgid ""
-"You confirm your identity with Stripe. Your ID and selfie stay with Stripe."
-" The club only receives the result."
+"You confirm your identity with Stripe. Your ID and selfie stay with "
+"Stripe. The club only receives the result."
 msgstr ""
 "Du bestätigst deine Identität bei Stripe. Ausweis und Selfie bleiben bei "
 "Stripe. Der Club erhält nur das Ergebnis."
@@ -2331,8 +2348,8 @@ msgid ""
 "Write what you do, what you need and how you can help others. Each field "
 "has examples."
 msgstr ""
-"Schreibe, was du tust, was du brauchst und wobei du helfen kannst. Zu jedem"
-" Feld gibt es Beispiele."
+"Schreibe, was du tust, was du brauchst und wobei du helfen kannst. Zu "
+"jedem Feld gibt es Beispiele."
 
 #: app/templates/public/index.html:52
 msgid "Find matches"
@@ -2340,18 +2357,20 @@ msgstr "Passende Menschen finden"
 
 #: app/templates/public/index.html:53
 msgid ""
-"Matching compares what you need with what others offer. It works only for "
-"members who agreed to it."
+"Matching compares what you need with what others offer. It works only for"
+" members who agreed to it."
 msgstr ""
-"Das Matching vergleicht, was du brauchst, mit dem, was andere anbieten. Es "
-"läuft nur für Mitglieder, die zugestimmt haben."
+"Das Matching vergleicht, was du brauchst, mit dem, was andere anbieten. "
+"Es läuft nur für Mitglieder, die zugestimmt haben."
 
 #: app/templates/public/index.html:57
 msgid "Get in touch"
 msgstr "In Kontakt kommen"
 
 #: app/templates/public/index.html:58
-msgid "You send a request. Contact details are shared only after both sides agree."
+msgid ""
+"You send a request. Contact details are shared only after both sides "
+"agree."
 msgstr ""
 "Du schickst eine Anfrage. Kontaktdaten werden erst geteilt, wenn beide "
 "zustimmen."
@@ -2365,25 +2384,27 @@ msgid ""
 "Nothing is published without your choice. The directory and matching are "
 "separate decisions, and both are off until you make them."
 msgstr ""
-"Nichts wird ohne deine Wahl veröffentlicht. Verzeichnis und Matching sind "
-"getrennte Entscheidungen, und beide sind aus, bis du dich entscheidest."
+"Nichts wird ohne deine Wahl veröffentlicht. Verzeichnis und Matching sind"
+" getrennte Entscheidungen, und beide sind aus, bis du dich entscheidest."
 
 #: app/templates/public/index.html:67
 msgid ""
-"We do not store identity documents or dates of birth. The check runs with "
-"Stripe."
+"We do not store identity documents or dates of birth. The check runs with"
+" Stripe."
 msgstr ""
 "Wir speichern keine Ausweisdokumente und keine Geburtsdaten. Die Prüfung "
 "läuft bei Stripe."
 
 #: app/templates/public/index.html:68
 msgid "Your e-mail address is shown only to members whose request you accepted."
-msgstr "Deine E-Mail-Adresse sehen nur Mitglieder, deren Anfrage du angenommen hast."
+msgstr ""
+"Deine E-Mail-Adresse sehen nur Mitglieder, deren Anfrage du angenommen "
+"hast."
 
 #: app/templates/public/index.html:69
 msgid ""
-"You can change your decisions at any time and delete your account with all "
-"your data."
+"You can change your decisions at any time and delete your account with "
+"all your data."
 msgstr ""
 "Du kannst deine Entscheidungen jederzeit ändern und dein Konto mit allen "
 "Daten löschen."
@@ -2402,8 +2423,8 @@ msgstr "Gast"
 
 #: app/templates/public/index.html:80
 msgid ""
-"Free. Write your profile, read the member directory, see suggested matches "
-"and ask for contact."
+"Free. Write your profile, read the member directory, see suggested "
+"matches and ask for contact."
 msgstr ""
 "Kostenlos. Profil schreiben, Verzeichnis lesen, Vorschläge sehen und "
 "Kontakt anfragen."
@@ -2446,8 +2467,8 @@ msgstr "Warum brauche ich eine Identitätsprüfung?"
 
 #: app/templates/public/index.html:101
 msgid ""
-"So that only real people aged 18 and over are in the club. Stripe runs the "
-"check. We only receive the result."
+"So that only real people aged 18 and over are in the club. Stripe runs "
+"the check. We only receive the result."
 msgstr ""
 "Damit im Club nur echte Menschen ab 18 Jahren sind. Die Prüfung macht "
 "Stripe. Wir erhalten nur das Ergebnis."
@@ -2458,8 +2479,8 @@ msgstr "Wer sieht mein Profil?"
 
 #: app/templates/public/index.html:105
 msgid ""
-"Only verified members, and only if you agreed that your profile appears in "
-"the directory."
+"Only verified members, and only if you agreed that your profile appears "
+"in the directory."
 msgstr ""
 "Nur verifizierte Mitglieder, und nur wenn du zugestimmt hast, dass dein "
 "Profil im Verzeichnis erscheint."
@@ -2471,8 +2492,8 @@ msgstr "Wie funktioniert das KI-Matching?"
 #: app/templates/public/index.html:109
 msgid ""
 "It compares what you need with what others offer. The suggestions are "
-"hints, not guarantees. Your texts go to AI services only if you agreed to "
-"matching."
+"hints, not guarantees. Your texts go to AI services only if you agreed to"
+" matching."
 msgstr ""
 "Es vergleicht, was du brauchst, mit dem, was andere anbieten. Die "
 "Vorschläge sind Hinweise, keine Garantien. Deine Texte gehen nur an KI-"
@@ -2487,8 +2508,8 @@ msgid ""
 "At the moment the club does not take money. Payments between members are "
 "arranged directly."
 msgstr ""
-"Derzeit nimmt der Club kein Geld entgegen. Zahlungen zwischen Mitgliedern "
-"werden direkt vereinbart."
+"Derzeit nimmt der Club kein Geld entgegen. Zahlungen zwischen Mitgliedern"
+" werden direkt vereinbart."
 
 #: app/templates/public/index.html:118
 msgid "Ready to start?"

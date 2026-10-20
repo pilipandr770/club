@@ -128,15 +128,16 @@ def ai_check_command():
 
 
 @click.command("seed-demo-profiles")
-def seed_demo_profiles_command():
-    """Создаёт вымышленных демо-участников с заполненными анкетами (пароль из TEST_SEED_PASSWORD)."""
+@click.option("--production", is_flag=True, help="Разрешить запуск в production (демо-участники помечаются «(Demo)»).")
+def seed_demo_profiles_command(production):
+    """Создаёт вымышленных демо-участников с заполненными анкетами."""
     from .services.seed import SeedError, seed_demo_profiles
 
     try:
-        created = seed_demo_profiles(os.environ.get("TEST_SEED_PASSWORD", ""))
+        created = seed_demo_profiles(allow_production=production)
     except SeedError as exc:
         raise click.ClickException(str(exc)) from None
-    click.echo(f"Демо-участников создано: {created}, всего обновлено: 5")
+    click.echo(f"Демо-участников создано: {created}")
 
 
 def register(app):

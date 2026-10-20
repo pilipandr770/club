@@ -105,20 +105,27 @@ DEMO_PROFILES = (
 )
 
 
-def seed_demo_profiles(seed_password):
+def seed_demo_profiles(seed_password="", allow_production=False):
     """Создаёт демо-участников с заполненными анкетами. Для показа клуба, не для реальных людей."""
+    import secrets
+
     from ..services.matching import refresh_embeddings
 
-    check_allowed(seed_password)
+    if current_app.config.get("APP_ENV") == "production" and not allow_production:
+        raise SeedError("В production демо-участников создают только с явным флагом --production.")
+    # Демо-участники не входят в систему: пароль случайный и нигде не сохраняется
+    seed_password = seed_password if seed_password and not allow_production else secrets.token_urlsafe(24)
     created = 0
     for item in DEMO_PROFILES:
         email = f"demo-{item['login']}@{DEMO_DOMAIN}"
         user = User.query.filter_by(email=email).first()
         if user is None:
-            user = User(email=email, first_name=item["first"], last_name="Demo", plan=item["plan"])
+            user = User(email=email, first_name=f"{item['first']} (Demo)", last_name="", plan=item["plan"])
             db.session.add(user)
             user.profile = Profile(residence_country="DE")
             created += 1
+        if user.first_name == item["first"]:
+            user.first_name = f"{item['first']} (Demo)"
         user.set_password(seed_password)
         user.status = "active"
         user.email_confirmed_at = user.email_confirmed_at or utcnow()

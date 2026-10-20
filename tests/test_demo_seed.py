@@ -34,3 +34,23 @@ def test_demo_member_appears_in_directory_for_members(app, client):
     body = client.get("/profile/directory").get_data(as_text=True)
 
     assert "Lena" in body and "Mira" in body
+
+
+def test_demo_members_are_labelled_as_demo(app):
+    with app.app_context():
+        seed_demo_profiles()
+        names = [u.first_name for u in User.query.filter(User.email.like("demo-%")).all()]
+        assert names and all("(Demo)" in name for name in names)
+
+
+def test_demo_seed_refuses_production_without_flag(app):
+    import pytest
+    from app.services.seed import SeedError
+
+    app.config["APP_ENV"] = "production"
+    try:
+        with app.app_context():
+            with pytest.raises(SeedError):
+                seed_demo_profiles()
+    finally:
+        app.config["APP_ENV"] = "test"
