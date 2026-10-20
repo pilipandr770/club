@@ -12,7 +12,7 @@ def test_landing_uses_only_self_hosted_scripts(client):
     body = client.get("/").get_data(as_text=True)
 
     assert "<script>" not in body
-    assert 'src="/static/js/landing.js"' in body
+    assert 'src="/static/js/landing.js?v=' in body
     assert "cdn." not in body
     assert "unpkg" not in body
 

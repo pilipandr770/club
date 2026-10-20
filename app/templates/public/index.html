@@ -121,5 +121,5 @@
 {% endblock %}
 
 {% block scripts %}
-<script src="{{ url_for('static', filename='js/landing.js') }}" defer></script>
+<script src="{{ url_for('static', filename='js/landing.js', v=asset_version) }}" defer></script>
 {% endblock %}

@@ -102,6 +102,12 @@ def create_app(env=None):
 
     from .services.intros import status_label as intro_status_label
 
+    # Версия статики в адресе файла: после деплоя браузер не возьмёт старый CSS из кеша
+    static_dir = os.path.join(app.root_path, "static")
+    asset_version = str(int(max(os.path.getmtime(os.path.join(root, name))
+                                for root, _dirs, names in os.walk(static_dir) for name in names)))
+    app.jinja_env.globals["asset_version"] = asset_version
+
     app.jinja_env.globals.update(category_label=category_label, stage_label=stage_label,
                                  intro_status_label=intro_status_label)
 
