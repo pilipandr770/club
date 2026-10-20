@@ -2,9 +2,124 @@
 
 {% block title %}{{ _("Welcome") }} · {{ _("Club") }}{% endblock %}
 
+{% block main_class %}landing{% endblock %}
+
 {% block content %}
 <section class="hero">
-  <h1>{{ _("Welcome") }}</h1>
-  <p>{{ _("Membership requires identity verification through Stripe.") }}</p>
+  <canvas class="hero-sphere" data-sphere aria-hidden="true"></canvas>
+
+  <div class="hero-text">
+    <p class="eyebrow">{{ _("A club for people who want to build something") }}</p>
+    <h1>{{ _("Find the people who can move your project forward") }}</h1>
+    <p class="lead">{{ _("Verified members share what they offer and what they need. AI matching suggests who fits. You decide who may contact you.") }}</p>
+    <div class="cta">
+      <a class="button" href="{{ url_for('auth.register') }}">{{ _("Become a member") }}</a>
+      <a class="button button-secondary" href="{{ url_for('auth.login') }}">{{ _("Log in") }}</a>
+    </div>
+  </div>
+
+  <div class="stack" aria-hidden="true">
+    <div class="tilt-card layer-1" data-tilt>
+      <span class="chip">{{ _("Matching") }}</span>
+      <p>{{ _("Offers and needs are brought together.") }}</p>
+    </div>
+    <div class="tilt-card layer-2" data-tilt>
+      <span class="chip">{{ _("Startups") }}</span>
+      <p>{{ _("Founders meet investors who are interested.") }}</p>
+    </div>
+    <div class="tilt-card layer-3" data-tilt>
+      <span class="chip">{{ _("Travel") }}</span>
+      <p>{{ _("Shared trips and offers from operators and agents.") }}</p>
+    </div>
+  </div>
 </section>
+
+<section class="block">
+  <h2>{{ _("How the club works") }}</h2>
+  <div class="steps">
+    <article class="tilt-card" data-tilt>
+      <span class="step-number">1</span>
+      <h3>{{ _("Confirm your identity") }}</h3>
+      <p>{{ _("You confirm your identity with Stripe. Your ID and selfie stay with Stripe. The club only receives the result.") }}</p>
+    </article>
+    <article class="tilt-card" data-tilt>
+      <span class="step-number">2</span>
+      <h3>{{ _("Describe yourself") }}</h3>
+      <p>{{ _("Write what you do, what you need and how you can help others. Each field has examples.") }}</p>
+    </article>
+    <article class="tilt-card" data-tilt>
+      <span class="step-number">3</span>
+      <h3>{{ _("Find matches") }}</h3>
+      <p>{{ _("Matching compares what you need with what others offer. It works only for members who agreed to it.") }}</p>
+    </article>
+    <article class="tilt-card" data-tilt>
+      <span class="step-number">4</span>
+      <h3>{{ _("Get in touch") }}</h3>
+      <p>{{ _("You send a request. Contact details are shared only after both sides agree.") }}</p>
+    </article>
+  </div>
+</section>
+
+<section class="block">
+  <h2>{{ _("What we promise") }}</h2>
+  <ul class="promises">
+    <li>{{ _("Nothing is published without your choice. The directory and matching are separate decisions, and both are off until you make them.") }}</li>
+    <li>{{ _("We do not store identity documents or dates of birth. The check runs with Stripe.") }}</li>
+    <li>{{ _("Your e-mail address is shown only to members whose request you accepted.") }}</li>
+    <li>{{ _("You can change your decisions at any time and delete your account with all your data.") }}</li>
+    <li>{{ _("Membership is for people aged 18 and over.") }}</li>
+  </ul>
+</section>
+
+<section class="block">
+  <h2>{{ _("Plans") }}</h2>
+  <p class="muted">{{ _("Prices will be published soon. Access depends on the plan.") }}</p>
+  <div class="plans">
+    <article class="plan tilt-card" data-tilt>
+      <h3>{{ _("Guest") }}</h3>
+      <p>{{ _("Free. Write your profile, read the member directory, see suggested matches and ask for contact.") }}</p>
+    </article>
+    <article class="plan tilt-card" data-tilt>
+      <h3>{{ _("Starter") }}</h3>
+      <p>{{ _("Everything in Guest, plus the club services, booking on shared trips and creating your own trips.") }}</p>
+    </article>
+    <article class="plan tilt-card" data-tilt>
+      <h3>{{ _("Growth") }}</h3>
+      <p>{{ _("Everything in Starter, plus publishing your startup for investors and offers for operators and agents.") }}</p>
+    </article>
+    <article class="plan tilt-card" data-tilt>
+      <h3>{{ _("Premium") }}</h3>
+      <p>{{ _("Everything in Growth, plus the auction.") }}</p>
+    </article>
+  </div>
+</section>
+
+<section class="block">
+  <h2>{{ _("Questions") }}</h2>
+  <details class="faq">
+    <summary>{{ _("Why do I need an identity check?") }}</summary>
+    <p>{{ _("So that only real people aged 18 and over are in the club. Stripe runs the check. We only receive the result.") }}</p>
+  </details>
+  <details class="faq">
+    <summary>{{ _("Who can see my profile?") }}</summary>
+    <p>{{ _("Only verified members, and only if you agreed that your profile appears in the directory.") }}</p>
+  </details>
+  <details class="faq">
+    <summary>{{ _("How does the AI matching work?") }}</summary>
+    <p>{{ _("It compares what you need with what others offer. The suggestions are hints, not guarantees. Your texts go to AI services only if you agreed to matching.") }}</p>
+  </details>
+  <details class="faq">
+    <summary>{{ _("Does the club handle payments?") }}</summary>
+    <p>{{ _("At the moment the club does not take money. Payments between members are arranged directly.") }}</p>
+  </details>
+</section>
+
+<section class="block final">
+  <h2>{{ _("Ready to start?") }}</h2>
+  <a class="button" href="{{ url_for('auth.register') }}">{{ _("Become a member") }}</a>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/landing.js') }}" defer></script>
 {% endblock %}

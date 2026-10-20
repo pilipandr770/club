@@ -29,7 +29,7 @@
     </nav>
   </header>
 
-  <main class="container">
+  <main class="{% block main_class %}container{% endblock %}">
     {% with messages = get_flashed_messages(with_categories=true) %}
       {% for category, message in messages %}
         <p class="flash flash-{{ category }}" role="status">{{ message }}</p>
@@ -42,5 +42,6 @@
     <p class="small">{{ _("Club") }}</p>
   </footer>
   <script src="{{ url_for('static', filename='js/app.js') }}" defer></script>
+  {% block scripts %}{% endblock %}
 </body>
 </html>

@@ -67,4 +67,4 @@ def test_compiled_catalog_exists_and_works():
 def test_index_is_translated_when_locale_is_de(client):
     body = client.get("/", headers={"Accept-Language": "de"}).get_data(as_text=True)
 
-    assert "Mitgliedschaft erfordert" in body
+    assert "Finde die Menschen" in body
