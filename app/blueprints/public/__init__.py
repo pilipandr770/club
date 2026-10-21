@@ -26,11 +26,8 @@ def security_txt():
     """Контакт для сообщений об уязвимостях (RFC 9116). Срок действия всегда на полгода вперёд."""
     cfg = current_app.config
     expires = (utcnow() + timedelta(days=180)).strftime("%Y-%m-%dT%H:%M:%SZ")
-    body = (f"Contact: mailto:{cfg.get('SECURITY_CONTACT', 'info@andrii-it.de')}
-"
-            f"Expires: {expires}
-Preferred-Languages: de, en
-"
-            f"Canonical: {cfg['BASE_URL'].rstrip('/')}/.well-known/security.txt
-")
-    return Response(body, mimetype="text/plain")
+    lines = [f"Contact: mailto:{cfg.get('SECURITY_CONTACT', 'info@andrii-it.de')}",
+             f"Expires: {expires}",
+             "Preferred-Languages: de, en",
+             f"Canonical: {cfg['BASE_URL'].rstrip('/')}/.well-known/security.txt"]
+    return Response("\n".join(lines) + "\n", mimetype="text/plain")
