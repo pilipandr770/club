@@ -56,7 +56,7 @@ def _limit_message():
 @requires_feature("services.use")
 def tools_index():
     states = {tool.key: tool_state(current_user, tool.key) for tool in TOOLS}
-    runs = (ToolRun.query.filter_by(user_id=current_user.id).order_by(ToolRun.created_at.desc()).limit(10).all())
+    runs = (ToolRun.query.filter(ToolRun.user_id == current_user.id, ToolRun.tool != "assistant").order_by(ToolRun.created_at.desc()).limit(10).all())
     return render_template("modules/tools_index.html", tools=TOOLS, states=states, runs=runs,
                            laws_enabled=laws_tool.enabled())
 

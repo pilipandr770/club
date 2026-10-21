@@ -65,6 +65,7 @@ def create_app(env=None):
     )
 
     from .blueprints.admin import bp as admin_bp
+    from .blueprints.assistant import bp as assistant_bp
     from .blueprints.auth import bp as auth_bp
     from .blueprints.member import bp as member_bp
     from .blueprints.public import bp as public_bp
@@ -75,6 +76,7 @@ def create_app(env=None):
     app.register_blueprint(member_bp)
     app.register_blueprint(webhooks_bp)
     app.register_blueprint(admin_bp)
+    app.register_blueprint(assistant_bp)
 
     # Модули регистрируются только если включены в ENABLED_MODULES: выключенный адрес отвечает 404
     from .modules import enabled_modules
@@ -87,10 +89,10 @@ def create_app(env=None):
         from .services.entitlements import has_feature
 
         if not current_user.is_authenticated:
-            return {"nav_modules": []}
+            return {"nav_modules": [], "assistant_on": False}
         specs = [spec for spec in enabled_modules(app.config["ENABLED_MODULES"])
                  if has_feature(current_user, spec.feature)]
-        return {"nav_modules": specs}
+        return {"nav_modules": specs, "assistant_on": has_feature(current_user, "assistant.use")}
 
     from . import models  # noqa: F401  (регистрирует модели для миграций)
 

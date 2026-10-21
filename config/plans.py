@@ -10,7 +10,7 @@ def _inherit(base, *extra):
     return frozenset(base) | frozenset(extra)
 
 
-GUEST_FEATURES = frozenset({"dashboard", "profile.edit", "community.read"})
+GUEST_FEATURES = frozenset({"dashboard", "profile.edit", "community.read", "assistant.use"})
 STARTER_FEATURES = _inherit(GUEST_FEATURES, "services.use", "travel.book")
 GROWTH_FEATURES = _inherit(STARTER_FEATURES, "startups.publish", "startups.interest", "travel.offer")
 PREMIUM_FEATURES = _inherit(GROWTH_FEATURES, "auction.access")
@@ -31,3 +31,6 @@ TOOL_LIMITS = {
     "growth": {"seo": 10, "compliance": 10, "security": 10, "laws": 40, "panel": 3},
     "premium": {"seo": 30, "compliance": 30, "security": 30, "laws": 100, "panel": 10},
 }
+
+# Вопросов личному помощнику Aiko в сутки. Цифры предварительные, как и цены.
+ASSISTANT_DAILY = {"guest": 15, "starter": 40, "growth": 80, "premium": 200}

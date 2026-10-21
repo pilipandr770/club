@@ -41,7 +41,9 @@
   <footer class="site-footer">
     <p class="small">{{ _("Club") }}</p>
   </footer>
+  {% if assistant_on %}{% include "partials/assistant.html" %}{% endif %}
   <script src="{{ url_for('static', filename='js/app.js', v=asset_version) }}" defer></script>
+  {% if assistant_on %}<script src="{{ url_for('static', filename='js/assistant.js', v=asset_version) }}" defer></script>{% endif %}
   {% block scripts %}{% endblock %}
 </body>
 </html>

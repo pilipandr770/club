@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-10-20 21:34+0000\n"
+"POT-Creation-Date: 2026-10-21 08:10+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -312,6 +312,24 @@ msgstr ""
 msgid "Unknown status."
 msgstr ""
 
+#: app/blueprints/assistant/__init__.py:16
+msgid "Please write a question."
+msgstr ""
+
+#: app/blueprints/assistant/__init__.py:17
+msgid "The assistant is not available right now. Please try again later."
+msgstr ""
+
+#: app/blueprints/assistant/__init__.py:18
+msgid "You have reached today's limit of questions. It renews tomorrow."
+msgstr ""
+
+#: app/blueprints/assistant/__init__.py:19 app/modules/profile/__init__.py:188
+#: app/modules/services/__init__.py:18 app/modules/startups/__init__.py:31
+#: app/modules/travel/__init__.py:38 app/templates/partials/assistant.html:4
+msgid "Something went wrong. Please try again."
+msgstr ""
+
 #: app/blueprints/auth/__init__.py:26
 msgid "Please confirm your e-mail address"
 msgstr ""
@@ -530,11 +548,6 @@ msgstr ""
 msgid "This request has already been answered."
 msgstr ""
 
-#: app/modules/profile/__init__.py:188 app/modules/services/__init__.py:18
-#: app/modules/startups/__init__.py:31 app/modules/travel/__init__.py:38
-msgid "Something went wrong. Please try again."
-msgstr ""
-
 #: app/modules/profile/__init__.py:197
 msgid "Please choose a photo first."
 msgstr ""
@@ -717,6 +730,38 @@ msgstr ""
 msgid "The trip is cancelled."
 msgstr ""
 
+#: app/services/assistant.py:94
+msgid "Your own public profile"
+msgstr ""
+
+#: app/services/assistant.py:95
+msgid "Profile of another member"
+msgstr ""
+
+#: app/services/assistant.py:105 app/templates/admin/service_form.html:3
+msgid "Service"
+msgstr ""
+
+#: app/services/assistant.py:117
+msgid "Trip"
+msgstr ""
+
+#: app/services/assistant.py:127
+msgid "Startup"
+msgstr ""
+
+#: app/services/assistant.py:139
+msgid "Auction lot"
+msgstr ""
+
+#: app/services/assistant.py:152
+msgid "Your matches"
+msgstr ""
+
+#: app/services/assistant.py:164
+msgid "Your report"
+msgstr ""
+
 #: app/services/catalog.py:71
 #, python-format
 msgid "New request through the club for: %(title)s"
@@ -752,11 +797,11 @@ msgstr ""
 msgid "Closed"
 msgstr ""
 
-#: app/services/entitlements.py:36 app/services/entitlements.py:52
+#: app/services/entitlements.py:40 app/services/entitlements.py:56
 msgid "This area opens after your identity check."
 msgstr ""
 
-#: app/services/entitlements.py:55
+#: app/services/entitlements.py:59
 msgid "This section is not included in your plan."
 msgstr ""
 
@@ -1064,16 +1109,12 @@ msgstr ""
 msgid "no buyer"
 msgstr ""
 
-#: app/templates/admin/lots.html:83
+#: app/templates/admin/lots.html:83 app/templates/partials/assistant.html:11
 msgid "Close"
 msgstr ""
 
 #: app/templates/admin/lots.html:89
 msgid "No lots yet."
-msgstr ""
-
-#: app/templates/admin/service_form.html:3
-msgid "Service"
 msgstr ""
 
 #: app/templates/admin/service_form.html:6
@@ -2264,6 +2305,8 @@ msgid "New search"
 msgstr ""
 
 #: app/templates/modules/tool_report_laws.html:12
+#: app/templates/partials/assistant.html:17
+#: app/templates/partials/assistant.html:18
 msgid "Your question"
 msgstr ""
 
@@ -2622,6 +2665,47 @@ msgstr ""
 
 #: app/templates/modules/travel_mine.html:44
 msgid "You have no bookings."
+msgstr ""
+
+#: app/templates/partials/assistant.html:3
+msgid ""
+"Hello! I am Aiko, your personal assistant in the club. I can see your "
+"profile and the page you are on. Ask me anything about it."
+msgstr ""
+
+#: app/templates/partials/assistant.html:4
+msgid "Aiko is thinking …"
+msgstr ""
+
+#: app/templates/partials/assistant.html:5
+#, python-format
+msgid "Aiko sees: %(page)s"
+msgstr ""
+
+#: app/templates/partials/assistant.html:6
+msgid "Ask Aiko"
+msgstr ""
+
+#: app/templates/partials/assistant.html:7
+msgid "Personal assistant Aiko"
+msgstr ""
+
+#: app/templates/partials/assistant.html:9
+msgid "Aiko"
+msgstr ""
+
+#: app/templates/partials/assistant.html:10
+msgid "New conversation"
+msgstr ""
+
+#: app/templates/partials/assistant.html:13
+msgid ""
+"Aiko is an AI. It does not give legal or financial advice and never shows"
+" contact details. Conversations are not stored on the server."
+msgstr ""
+
+#: app/templates/partials/assistant.html:19
+msgid "Send"
 msgstr ""
 
 #: app/templates/public/index.html:3
