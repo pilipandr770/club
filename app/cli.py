@@ -88,9 +88,13 @@ def close_auctions_command():
     from .extensions import db
     from .services.auction_engine import close_due_lots
 
+    from .services.auction_notify import notify_closed
+
     closed = close_due_lots()
     db.session.commit()
-    click.echo(f"Закрыто лотов: {closed}")
+    for lot in closed:  # письма с итогами после commit: сбой почты не откатывает закрытие
+        notify_closed(lot)
+    click.echo(f"Закрыто лотов: {len(closed)}")
 
 
 @click.command("reembed")

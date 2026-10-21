@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-10-21 12:24+0000\n"
+"POT-Creation-Date: 2026-10-21 12:50+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,6 +16,85 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.17.0\n"
+
+#: app/auction_guide.py:5
+msgid ""
+"What is it, what condition is it in, what is included? Honest details "
+"earn trust and better bids."
+msgstr ""
+
+#: app/auction_guide.py:7
+msgid ""
+"Mid-century armchair, teak and wool cover, 1962. Small scratches on the "
+"left armrest, otherwise very good. Height 82 cm."
+msgstr ""
+
+#: app/auction_guide.py:8
+msgid ""
+"Mountain bike, size M, bought in 2023, about 800 km. New tyres, serviced "
+"in September. Includes lock and lights."
+msgstr ""
+
+#: app/auction_guide.py:9
+msgid ""
+"Signed print, edition 12 of 50, 40 x 60 cm, framed behind glass. "
+"Certificate of authenticity included."
+msgstr ""
+
+#: app/auction_guide.py:11
+msgid ""
+"Where is the item and how can it be handed over: pick-up place, shipping,"
+" who pays for it. Do not write your private address."
+msgstr ""
+
+#: app/auction_guide.py:13
+msgid ""
+"Pick-up in Frankfurt (Nordend) on weekday evenings. Shipping within "
+"Germany possible, buyer pays about 35 euros."
+msgstr ""
+
+#: app/auction_guide.py:14
+msgid "Hand-over at the club meeting in March or by courier at the buyer's cost."
+msgstr ""
+
+#: app/auction_guide.py:16
+msgid "A clear photo of the item in good light (JPG, PNG or WebP, up to 5 MB)."
+msgstr ""
+
+#: app/auction_guide.py:18
+msgid ""
+"Rising price: members bid, the highest bid wins when time runs out. "
+"Falling price: the price drops at fixed intervals, the first member who "
+"accepts the current price wins."
+msgstr ""
+
+#: app/auction_guide.py:19
+msgid ""
+"Optional minimum price. If the highest bid stays below it, the lot is not"
+" sold. Members only see whether the reserve is reached, not the amount."
+msgstr ""
+
+#: app/auction_guide.py:20
+msgid ""
+"A bid in the last two minutes extends the auction by two minutes, so "
+"nobody loses at the last second."
+msgstr ""
+
+#: app/auction_guide.py:24 app/services/catalog.py:93
+msgid "New"
+msgstr ""
+
+#: app/auction_guide.py:25
+msgid "Like new"
+msgstr ""
+
+#: app/auction_guide.py:26
+msgid "Good condition"
+msgstr ""
+
+#: app/auction_guide.py:27
+msgid "Used"
+msgstr ""
 
 #: app/profile_guide.py:27 app/templates/modules/profile.html:13
 msgid "Headline"
@@ -571,73 +650,86 @@ msgid ""
 "questions about the trip."
 msgstr ""
 
-#: app/blueprints/admin/__init__.py:121
+#: app/blueprints/admin/__init__.py:128
 msgid "Changes are saved."
 msgstr ""
 
-#: app/blueprints/admin/__init__.py:123 app/blueprints/admin/__init__.py:228
-#: app/blueprints/admin/__init__.py:258
+#: app/blueprints/admin/__init__.py:130 app/blueprints/admin/__init__.py:253
+#: app/blueprints/admin/__init__.py:283
 msgid "Nothing has changed."
 msgstr ""
 
-#: app/blueprints/admin/__init__.py:142
+#: app/blueprints/admin/__init__.py:149
 #, python-format
 msgid "Please check the lot fields: %(fields)s"
 msgstr ""
 
-#: app/blueprints/admin/__init__.py:146
+#: app/blueprints/admin/__init__.py:153
 msgid "The lot is created."
 msgstr ""
 
-#: app/blueprints/admin/__init__.py:159
+#: app/blueprints/admin/__init__.py:167
+msgid "The lot is published."
+msgstr ""
+
+#: app/blueprints/admin/__init__.py:170
+msgid "The lot is rejected."
+msgstr ""
+
+#: app/blueprints/admin/__init__.py:174 app/modules/auction/__init__.py:63
+msgid "This lot is not waiting for review."
+msgstr ""
+
+#: app/blueprints/admin/__init__.py:184
 msgid "The lot is closed."
 msgstr ""
 
-#: app/blueprints/admin/__init__.py:223
+#: app/blueprints/admin/__init__.py:248
 msgid "The startup is published."
 msgstr ""
 
-#: app/blueprints/admin/__init__.py:226
+#: app/blueprints/admin/__init__.py:251
 msgid "The startup is rejected."
 msgstr ""
 
-#: app/blueprints/admin/__init__.py:253
+#: app/blueprints/admin/__init__.py:278
 msgid "The offer is published."
 msgstr ""
 
-#: app/blueprints/admin/__init__.py:256
+#: app/blueprints/admin/__init__.py:281
 msgid "The offer is rejected."
 msgstr ""
 
-#: app/blueprints/admin/__init__.py:309
+#: app/blueprints/admin/__init__.py:334
 #, python-format
 msgid "Participant created. Temporary password (shown once): %(password)s"
 msgstr ""
 
-#: app/blueprints/admin/__init__.py:311
+#: app/blueprints/admin/__init__.py:336
 msgid "Participant created."
 msgstr ""
 
-#: app/blueprints/admin/__init__.py:313 app/modules/profile/__init__.py:70
+#: app/blueprints/admin/__init__.py:338 app/modules/auction/__init__.py:226
+#: app/modules/auction/__init__.py:252 app/modules/profile/__init__.py:70
 #: app/modules/startups/__init__.py:72 app/modules/travel/__init__.py:201
 #: app/modules/travel/__init__.py:247
 #, python-format
 msgid "Please check these fields: %(fields)s"
 msgstr ""
 
-#: app/blueprints/admin/__init__.py:330
+#: app/blueprints/admin/__init__.py:355
 msgid "The identity check is marked as verified."
 msgstr ""
 
-#: app/blueprints/admin/__init__.py:371
+#: app/blueprints/admin/__init__.py:396
 msgid "Please enter a title."
 msgstr ""
 
-#: app/blueprints/admin/__init__.py:375
+#: app/blueprints/admin/__init__.py:400
 msgid "The service is saved."
 msgstr ""
 
-#: app/blueprints/admin/__init__.py:402
+#: app/blueprints/admin/__init__.py:427
 msgid "Unknown status."
 msgstr ""
 
@@ -797,8 +889,10 @@ msgid "Present your startup to investors or discover young companies."
 msgstr ""
 
 #: app/modules/__init__.py:31 app/templates/modules/auction_detail.html:3
+#: app/templates/modules/auction_form.html:3
 #: app/templates/modules/auction_list.html:3
 #: app/templates/modules/auction_list.html:6
+#: app/templates/modules/auction_mine.html:3
 msgid "Auction"
 msgstr ""
 
@@ -806,36 +900,116 @@ msgstr ""
 msgid "Exclusive lots with rising or falling prices."
 msgstr ""
 
-#: app/modules/auction/__init__.py:18
+#: app/modules/auction/__init__.py:52
 msgid "This lot is closed."
 msgstr ""
 
-#: app/modules/auction/__init__.py:19
+#: app/modules/auction/__init__.py:53
 msgid "This lot has not started yet."
 msgstr ""
 
-#: app/modules/auction/__init__.py:20
+#: app/modules/auction/__init__.py:54
 msgid "Your bid is below the minimum. Please raise it."
 msgstr ""
 
-#: app/modules/auction/__init__.py:21
+#: app/modules/auction/__init__.py:55
 msgid "The price has dropped below your offer. Please reload the page."
 msgstr ""
 
-#: app/modules/auction/__init__.py:22
+#: app/modules/auction/__init__.py:56
 msgid "This lot does not exist."
 msgstr ""
 
-#: app/modules/auction/__init__.py:24
-msgid "The bid could not be placed."
+#: app/modules/auction/__init__.py:57
+msgid "You cannot bid on your own lot."
+msgstr ""
+
+#: app/modules/auction/__init__.py:58
+msgid "Please allow the seller to see your contact details if you win."
+msgstr ""
+
+#: app/modules/auction/__init__.py:59 app/modules/profile/__init__.py:185
+#: app/modules/startups/__init__.py:33 app/modules/travel/__init__.py:39
+msgid "This is not available to you."
+msgstr ""
+
+#: app/modules/auction/__init__.py:60
+msgid "This lot has no buyer."
+msgstr ""
+
+#: app/modules/auction/__init__.py:61
+msgid "This lot can no longer be edited."
+msgstr ""
+
+#: app/modules/auction/__init__.py:62
+msgid "A lot with bids cannot be withdrawn."
 msgstr ""
 
 #: app/modules/auction/__init__.py:65
+msgid "The bid could not be placed."
+msgstr ""
+
+#: app/modules/auction/__init__.py:70 app/modules/profile/__init__.py:36
+#: app/modules/startups/__init__.py:40 app/modules/travel/__init__.py:49
+msgid "The file is empty."
+msgstr ""
+
+#: app/modules/auction/__init__.py:71 app/modules/startups/__init__.py:41
+#: app/modules/travel/__init__.py:50
+msgid "The file is too large."
+msgstr ""
+
+#: app/modules/auction/__init__.py:72 app/modules/startups/__init__.py:42
+#: app/modules/travel/__init__.py:51
+msgid "The picture has too many pixels."
+msgstr ""
+
+#: app/modules/auction/__init__.py:73 app/modules/startups/__init__.py:43
+#: app/modules/travel/__init__.py:52
+msgid "This file is not a picture."
+msgstr ""
+
+#: app/modules/auction/__init__.py:74 app/modules/startups/__init__.py:44
+#: app/modules/travel/__init__.py:53
+msgid "Please use a JPG, PNG or WebP picture."
+msgstr ""
+
+#: app/modules/auction/__init__.py:76 app/modules/startups/__init__.py:49
+#: app/modules/travel/__init__.py:58
+msgid "The file could not be saved."
+msgstr ""
+
+#: app/modules/auction/__init__.py:238
+msgid "Your lot is sent for review. We will publish it after the check."
+msgstr ""
+
+#: app/modules/auction/__init__.py:268 app/modules/startups/__init__.py:174
+#: app/modules/travel/__init__.py:262
+msgid "Your changes are sent for review."
+msgstr ""
+
+#: app/modules/auction/__init__.py:339
 msgid "Please enter a valid amount."
 msgstr ""
 
-#: app/modules/auction/__init__.py:76
+#: app/modules/auction/__init__.py:356
+msgid "You bought the lot. The seller and you can now arrange the handover."
+msgstr ""
+
+#: app/modules/auction/__init__.py:359
 msgid "Your bid is placed."
+msgstr ""
+
+#: app/modules/auction/__init__.py:376
+msgid "The lot is withdrawn."
+msgstr ""
+
+#: app/modules/auction/__init__.py:396
+msgid "Marked as handed over."
+msgstr ""
+
+#: app/modules/auction/__init__.py:398
+msgid "Thank you. The deal is complete."
 msgstr ""
 
 #: app/modules/profile/__init__.py:32
@@ -852,11 +1026,6 @@ msgstr ""
 
 #: app/modules/profile/__init__.py:35
 msgid "This file is not a valid photo."
-msgstr ""
-
-#: app/modules/profile/__init__.py:36 app/modules/startups/__init__.py:40
-#: app/modules/travel/__init__.py:49
-msgid "The file is empty."
 msgstr ""
 
 #: app/modules/profile/__init__.py:38
@@ -891,11 +1060,6 @@ msgstr ""
 
 #: app/modules/profile/__init__.py:184
 msgid "You have reached today's limit of requests. Please try again tomorrow."
-msgstr ""
-
-#: app/modules/profile/__init__.py:185 app/modules/startups/__init__.py:33
-#: app/modules/travel/__init__.py:39
-msgid "This is not available to you."
 msgstr ""
 
 #: app/modules/profile/__init__.py:186
@@ -964,22 +1128,6 @@ msgstr ""
 msgid "You have already answered this interest."
 msgstr ""
 
-#: app/modules/startups/__init__.py:41 app/modules/travel/__init__.py:50
-msgid "The file is too large."
-msgstr ""
-
-#: app/modules/startups/__init__.py:42 app/modules/travel/__init__.py:51
-msgid "The picture has too many pixels."
-msgstr ""
-
-#: app/modules/startups/__init__.py:43 app/modules/travel/__init__.py:52
-msgid "This file is not a picture."
-msgstr ""
-
-#: app/modules/startups/__init__.py:44 app/modules/travel/__init__.py:53
-msgid "Please use a JPG, PNG or WebP picture."
-msgstr ""
-
 #: app/modules/startups/__init__.py:45 app/modules/travel/__init__.py:54
 msgid "This file is not a readable PDF."
 msgstr ""
@@ -992,10 +1140,6 @@ msgstr ""
 msgid "The PDF has too many pages (up to 60)."
 msgstr ""
 
-#: app/modules/startups/__init__.py:49 app/modules/travel/__init__.py:58
-msgid "The file could not be saved."
-msgstr ""
-
 #: app/modules/startups/__init__.py:119
 msgid ""
 "Your interest is sent. The founder decides whether to share contact "
@@ -1006,10 +1150,6 @@ msgstr ""
 msgid ""
 "Your startup is sent for review. We will let you know when it is "
 "published."
-msgstr ""
-
-#: app/modules/startups/__init__.py:174 app/modules/travel/__init__.py:262
-msgid "Your changes are sent for review."
 msgstr ""
 
 #: app/modules/startups/__init__.py:225
@@ -1150,16 +1290,68 @@ msgstr ""
 msgid "Startup"
 msgstr ""
 
-#: app/services/assistant.py:158
+#: app/services/assistant.py:172
 msgid "Auction lot"
 msgstr ""
 
-#: app/services/assistant.py:171
+#: app/services/assistant.py:185
 msgid "Your matches"
 msgstr ""
 
-#: app/services/assistant.py:183
+#: app/services/assistant.py:197
 msgid "Your report"
+msgstr ""
+
+#: app/services/auction_notify.py:16
+#, python-format
+msgid "You have been outbid: %(title)s"
+msgstr ""
+
+#: app/services/auction_notify.py:17
+#, python-format
+msgid ""
+"Someone placed a higher bid on \"%(title)s\". The current price is "
+"%(price)s.\n"
+"You can bid again here: %(url)s"
+msgstr ""
+
+#: app/services/auction_notify.py:19
+#, python-format
+msgid "You won: %(title)s"
+msgstr ""
+
+#: app/services/auction_notify.py:20
+#, python-format
+msgid ""
+"Congratulations! You won \"%(title)s\" for %(price)s.\n"
+"The club does not handle payment. Please arrange the handover with the "
+"seller. Contact details are shown on the lot page: %(url)s"
+msgstr ""
+
+#: app/services/auction_notify.py:23
+#, python-format
+msgid "Your lot is sold: %(title)s"
+msgstr ""
+
+#: app/services/auction_notify.py:24
+#, python-format
+msgid ""
+"Your lot \"%(title)s\" is sold for %(price)s.\n"
+"The club does not handle payment. Please arrange the handover with the "
+"buyer. Contact details are shown on the lot page: %(url)s"
+msgstr ""
+
+#: app/services/auction_notify.py:27
+#, python-format
+msgid "Your lot ended without a sale: %(title)s"
+msgstr ""
+
+#: app/services/auction_notify.py:28
+#, python-format
+msgid ""
+"Your lot \"%(title)s\" ended without a buyer (no bids, or the reserve "
+"price was not reached).\n"
+"%(url)s"
 msgstr ""
 
 #: app/services/catalog.py:71
@@ -1179,10 +1371,6 @@ msgstr ""
 #: app/services/catalog.py:76
 #, python-format
 msgid "Request: %(title)s"
-msgstr ""
-
-#: app/services/catalog.py:93
-msgid "New"
 msgstr ""
 
 #: app/services/catalog.py:94
@@ -1434,84 +1622,108 @@ msgid ""
 " change."
 msgstr ""
 
-#: app/templates/admin/lots.html:10
+#: app/templates/admin/lots.html:12
+msgid "Lots from members to review"
+msgstr ""
+
+#: app/templates/admin/lots.html:20 app/templates/admin/startups.html:25
+#: app/templates/admin/travel.html:23
+msgid "Publish"
+msgstr ""
+
+#: app/templates/admin/lots.html:22 app/templates/admin/startups.html:27
+#: app/templates/admin/travel.html:25
+msgid "Reason for rejection (optional)"
+msgstr ""
+
+#: app/templates/admin/lots.html:25 app/templates/admin/startups.html:30
+#: app/templates/admin/travel.html:28
+msgid "Reject"
+msgstr ""
+
+#: app/templates/admin/lots.html:33
 msgid "New lot"
 msgstr ""
 
-#: app/templates/admin/lots.html:15 app/templates/admin/lots.html:70
+#: app/templates/admin/lots.html:38 app/templates/admin/lots.html:93
 #: app/templates/admin/service_form.html:12
+#: app/templates/modules/auction_form.html:17
 #: app/templates/modules/travel_form.html:21
 msgid "Title"
 msgstr ""
 
-#: app/templates/admin/lots.html:20 app/templates/admin/service_form.html:16
+#: app/templates/admin/lots.html:43 app/templates/admin/service_form.html:16
+#: app/templates/modules/auction_detail.html:59
+#: app/templates/modules/auction_form.html:21
 #: app/templates/modules/tool_form.html:60
 msgid "Description"
 msgstr ""
 
-#: app/templates/admin/lots.html:25 app/templates/admin/lots.html:70
+#: app/templates/admin/lots.html:48 app/templates/admin/lots.html:93
+#: app/templates/modules/auction_form.html:63
 msgid "Mode"
 msgstr ""
 
-#: app/templates/admin/lots.html:27
+#: app/templates/admin/lots.html:50 app/templates/modules/auction_form.html:65
 msgid "Highest bid wins (price rises)"
 msgstr ""
 
-#: app/templates/admin/lots.html:28
-#: app/templates/modules/auction_detail.html:11
-#: app/templates/modules/auction_list.html:17
+#: app/templates/admin/lots.html:51
+#: app/templates/modules/auction_detail.html:23
+#: app/templates/modules/auction_form.html:66
+#: app/templates/modules/auction_list.html:34
 msgid "Price falls over time"
 msgstr ""
 
-#: app/templates/admin/lots.html:33
+#: app/templates/admin/lots.html:56 app/templates/modules/auction_form.html:70
 msgid "Start price (EUR)"
 msgstr ""
 
-#: app/templates/admin/lots.html:38
+#: app/templates/admin/lots.html:61 app/templates/modules/auction_form.html:74
 msgid "Step (EUR): bid increment or price drop"
 msgstr ""
 
-#: app/templates/admin/lots.html:43
+#: app/templates/admin/lots.html:66 app/templates/modules/auction_form.html:83
 msgid "Lowest price (EUR), only for falling price"
 msgstr ""
 
-#: app/templates/admin/lots.html:48
+#: app/templates/admin/lots.html:71 app/templates/modules/auction_form.html:87
 msgid "Minutes between drops, only for falling price"
 msgstr ""
 
-#: app/templates/admin/lots.html:53
+#: app/templates/admin/lots.html:76
 msgid "Opens (Berlin time)"
 msgstr ""
 
-#: app/templates/admin/lots.html:58
+#: app/templates/admin/lots.html:81
 msgid "Ends (Berlin time)"
 msgstr ""
 
-#: app/templates/admin/lots.html:62
+#: app/templates/admin/lots.html:85
 msgid "Create lot"
 msgstr ""
 
-#: app/templates/admin/lots.html:67
+#: app/templates/admin/lots.html:90 app/templates/modules/auction_mine.html:9
 msgid "All lots"
 msgstr ""
 
-#: app/templates/admin/lots.html:70 app/templates/admin/users.html:23
+#: app/templates/admin/lots.html:93 app/templates/admin/users.html:23
 msgid "Status"
 msgstr ""
 
-#: app/templates/admin/lots.html:70
+#: app/templates/admin/lots.html:93
 msgid "Result"
 msgstr ""
 
-#: app/templates/admin/lots.html:78
+#: app/templates/admin/lots.html:101
 msgid "no buyer"
 msgstr ""
 
-#: app/templates/admin/lots.html:83 app/templates/partials/assistant.html:11
+#: app/templates/admin/lots.html:106 app/templates/partials/assistant.html:11
 msgid "Close"
 msgstr ""
 
-#: app/templates/admin/lots.html:89
+#: app/templates/admin/lots.html:112
 msgid "No lots yet."
 msgstr ""
 
@@ -1596,6 +1808,7 @@ msgid "Hidden"
 msgstr ""
 
 #: app/templates/admin/services.html:14
+#: app/templates/modules/auction_detail.html:48
 #: app/templates/modules/startups_detail.html:32
 #: app/templates/modules/startups_mine.html:26
 #: app/templates/modules/travel_detail.html:38
@@ -1618,18 +1831,6 @@ msgstr ""
 
 #: app/templates/admin/startups.html:12 app/templates/admin/travel.html:12
 msgid "Rejected"
-msgstr ""
-
-#: app/templates/admin/startups.html:25 app/templates/admin/travel.html:23
-msgid "Publish"
-msgstr ""
-
-#: app/templates/admin/startups.html:27 app/templates/admin/travel.html:25
-msgid "Reason for rejection (optional)"
-msgstr ""
-
-#: app/templates/admin/startups.html:30 app/templates/admin/travel.html:28
-msgid "Reject"
 msgstr ""
 
 #: app/templates/admin/startups.html:35 app/templates/admin/travel.html:33
@@ -1953,77 +2154,428 @@ msgstr ""
 msgid "Delete account permanently"
 msgstr ""
 
+#: app/templates/modules/auction_detail.html:6
+msgid "Back to all lots"
+msgstr ""
+
+#: app/templates/modules/auction_detail.html:10
+msgid "Time left"
+msgstr ""
+
+#: app/templates/modules/auction_detail.html:10
+msgid "Starts in"
+msgstr ""
+
+#: app/templates/modules/auction_detail.html:10
+msgid "Next drop in"
+msgstr ""
+
 #: app/templates/modules/auction_detail.html:11
-#: app/templates/modules/auction_list.html:17
-msgid "Highest bid wins"
+msgid "This lot has ended. Reload the page."
+msgstr ""
+
+#: app/templates/modules/auction_detail.html:12
+#: app/templates/modules/auction_detail.html:75
+#: app/templates/modules/auction_mine.html:43
+msgid "You are the highest bidder."
+msgstr ""
+
+#: app/templates/modules/auction_detail.html:12
+#: app/templates/modules/auction_detail.html:150
+msgid "Bids"
 msgstr ""
 
 #: app/templates/modules/auction_detail.html:13
+#: app/templates/modules/auction_detail.html:34
+msgid "Reserve price reached."
+msgstr ""
+
+#: app/templates/modules/auction_detail.html:13
+#: app/templates/modules/auction_detail.html:34
+msgid "Reserve price not reached yet."
+msgstr ""
+
+#: app/templates/modules/auction_detail.html:23
+#: app/templates/modules/auction_list.html:34
+msgid "Highest bid wins"
+msgstr ""
+
+#: app/templates/modules/auction_detail.html:25
+#: app/templates/modules/auction_detail.html:114
+msgid "Seller"
+msgstr ""
+
+#: app/templates/modules/auction_detail.html:27
 msgid "Current price"
 msgstr ""
 
-#: app/templates/modules/auction_detail.html:15
+#: app/templates/modules/auction_detail.html:30
+#, python-format
+msgid "Ends %(when)s"
+msgstr ""
+
+#: app/templates/modules/auction_detail.html:33
+#: app/templates/modules/auction_list.html:43
+#, python-format
+msgid "%(num)d bid"
+msgid_plural "%(num)d bids"
+msgstr[0] ""
+msgstr[1] ""
+
+#: app/templates/modules/auction_detail.html:41
+msgid "Waiting for review. Members do not see this lot yet."
+msgstr ""
+
+#: app/templates/modules/auction_detail.html:43
+#: app/templates/modules/startups_detail.html:31
+#: app/templates/modules/travel_detail.html:32
+msgid "Not published."
+msgstr ""
+
+#: app/templates/modules/auction_detail.html:52
+msgid "Withdraw this lot"
+msgstr ""
+
+#: app/templates/modules/auction_detail.html:62
+#: app/templates/modules/auction_form.html:40
+msgid "Handover and shipping"
+msgstr ""
+
+#: app/templates/modules/auction_detail.html:70
 #, python-format
 msgid "Lowest price: %(price)s"
 msgstr ""
 
-#: app/templates/modules/auction_detail.html:15
+#: app/templates/modules/auction_detail.html:70
 #, python-format
 msgid "Drop: %(step)s"
 msgstr ""
 
-#: app/templates/modules/auction_detail.html:17
+#: app/templates/modules/auction_detail.html:72
 #, python-format
 msgid "Next minimum bid: %(price)s"
 msgstr ""
 
-#: app/templates/modules/auction_detail.html:21
-msgid "This lot is sold."
+#: app/templates/modules/auction_detail.html:78
+msgid "This is your lot. You cannot bid on it."
 msgstr ""
 
-#: app/templates/modules/auction_detail.html:21
-msgid "This lot closed without a buyer."
+#: app/templates/modules/auction_detail.html:86
+msgid "Your bid (EUR)"
 msgstr ""
 
-#: app/templates/modules/auction_detail.html:27
+#: app/templates/modules/auction_detail.html:92
+msgid ""
+"If I win, the seller may see my name and e-mail address to arrange the "
+"handover."
+msgstr ""
+
+#: app/templates/modules/auction_detail.html:94
+msgid ""
+"A bid is binding. The club does not handle payment; you arrange it with "
+"the seller."
+msgstr ""
+
+#: app/templates/modules/auction_detail.html:95
 #, python-format
 msgid "Buy at %(price)s"
 msgstr ""
 
-#: app/templates/modules/auction_detail.html:30
-msgid "Your bid (EUR)"
-msgstr ""
-
-#: app/templates/modules/auction_detail.html:33
+#: app/templates/modules/auction_detail.html:95
 msgid "Place bid"
 msgstr ""
 
-#: app/templates/modules/auction_detail.html:37
+#: app/templates/modules/auction_detail.html:98
 msgid "The lot is not open right now."
 msgstr ""
 
-#: app/templates/modules/auction_detail.html:41
-msgid "Back to all lots"
+#: app/templates/modules/auction_detail.html:104
+#, python-format
+msgid "Sold for %(price)s"
+msgstr ""
+
+#: app/templates/modules/auction_detail.html:106
+#: app/templates/modules/auction_mine.html:44
+msgid "You won this lot."
+msgstr ""
+
+#: app/templates/modules/auction_detail.html:108
+msgid "Your lot is sold."
+msgstr ""
+
+#: app/templates/modules/auction_detail.html:112
+msgid "Handover"
+msgstr ""
+
+#: app/templates/modules/auction_detail.html:114
+msgid "Buyer"
+msgstr ""
+
+#: app/templates/modules/auction_detail.html:116
+msgid "Contact details are not available for this lot. The club team can help."
+msgstr ""
+
+#: app/templates/modules/auction_detail.html:118
+msgid ""
+"The club does not handle payment. Please agree on payment and handover "
+"directly."
+msgstr ""
+
+#: app/templates/modules/auction_detail.html:122
+msgid "Received: deal complete"
+msgstr ""
+
+#: app/templates/modules/auction_detail.html:123
+msgid "Handed over or shipped"
+msgstr ""
+
+#: app/templates/modules/auction_detail.html:124
+#: app/templates/modules/auction_mine.html:24
+msgid "Waiting for handover"
+msgstr ""
+
+#: app/templates/modules/auction_detail.html:130
+msgid "I have handed over or shipped the item"
+msgstr ""
+
+#: app/templates/modules/auction_detail.html:136
+msgid "I have received the item"
+msgstr ""
+
+#: app/templates/modules/auction_detail.html:140
+msgid "This lot is sold."
+msgstr ""
+
+#: app/templates/modules/auction_detail.html:143
+msgid "This lot closed without a buyer."
+msgstr ""
+
+#: app/templates/modules/auction_detail.html:154
+msgid "You"
+msgstr ""
+
+#: app/templates/modules/auction_detail.html:154
+#, python-format
+msgid "Bidder %(n)s"
+msgstr ""
+
+#: app/templates/modules/auction_detail.html:162
+msgid ""
+"Questions about this lot? Ask Clubi: it knows the description and the "
+"rules."
+msgstr ""
+
+#: app/templates/modules/auction_form.html:3
+#: app/templates/modules/auction_form.html:8
+msgid "Edit lot"
+msgstr ""
+
+#: app/templates/modules/auction_form.html:3
+#: app/templates/modules/auction_form.html:8
+#: app/templates/modules/auction_list.html:15
+#: app/templates/modules/auction_mine.html:8
+msgid "Create a lot"
+msgstr ""
+
+#: app/templates/modules/auction_form.html:9
+msgid ""
+"Describe the item honestly and set the rules. Our team checks every lot "
+"before it opens. Bids can only start after that."
+msgstr ""
+
+#: app/templates/modules/auction_form.html:15
+msgid "The item"
+msgstr ""
+
+#: app/templates/modules/auction_form.html:25
+#: app/templates/modules/auction_form.html:44
+#: app/templates/modules/profile_edit.html:34
+#: app/templates/modules/profile_edit.html:51
+#: app/templates/modules/startups_form.html:59
+#: app/templates/modules/travel_form.html:57
+msgid "Show examples"
+msgstr ""
+
+#: app/templates/modules/auction_form.html:27
+msgid ""
+"Examples are for orientation only. Describe your own item in your own "
+"words."
+msgstr ""
+
+#: app/templates/modules/auction_form.html:31
+msgid "Condition"
+msgstr ""
+
+#: app/templates/modules/auction_form.html:33
+msgid "Not specified"
+msgstr ""
+
+#: app/templates/modules/auction_form.html:40
+#: app/templates/modules/auction_form.html:78
+#: app/templates/modules/startups_form.html:55
+#: app/templates/modules/travel_form.html:53
+msgid "optional"
+msgstr ""
+
+#: app/templates/modules/auction_form.html:49
+#: app/templates/modules/profile_edit.html:48
+#: app/templates/modules/travel_form.html:70
+msgid "Photo"
+msgstr ""
+
+#: app/templates/modules/auction_form.html:53
+#: app/templates/modules/travel_form.html:74
+msgid "Remove the current photo"
+msgstr ""
+
+#: app/templates/modules/auction_form.html:60
+msgid "Rules and prices"
+msgstr ""
+
+#: app/templates/modules/auction_form.html:78
+msgid "Reserve price (EUR), only for rising price"
+msgstr ""
+
+#: app/templates/modules/auction_form.html:91
+msgid "Duration"
+msgstr ""
+
+#: app/templates/modules/auction_form.html:92
+msgid "The countdown starts when our team publishes the lot."
+msgstr ""
+
+#: app/templates/modules/auction_form.html:95
+#, python-format
+msgid "%(num)d day"
+msgid_plural "%(num)d days"
+msgstr[0] ""
+msgstr[1] ""
+
+#: app/templates/modules/auction_form.html:104
+msgid ""
+"If the lot is sold, the buyer may see my name and e-mail address to "
+"arrange the handover."
+msgstr ""
+
+#: app/templates/modules/auction_form.html:106
+msgid ""
+"The club does not handle payment. You agree on payment and handover "
+"directly with the buyer."
+msgstr ""
+
+#: app/templates/modules/auction_form.html:109
+#: app/templates/modules/startups_form.html:92
+msgid "Send changes for review"
+msgstr ""
+
+#: app/templates/modules/auction_form.html:109
+#: app/templates/modules/startups_form.html:92
+#: app/templates/modules/travel_form.html:91
+msgid "Send for review"
 msgstr ""
 
 #: app/templates/modules/auction_list.html:7
 msgid ""
-"Bids are placed in the lot. Payments are not yet processed in this "
-"version."
+"Members offer items and bid on them. The club does not handle payment: "
+"buyer and seller arrange the handover and the payment directly."
 msgstr ""
 
-#: app/templates/modules/auction_list.html:10
-msgid "There are no lots yet."
+#: app/templates/modules/auction_list.html:11
+msgid "Have something to sell?"
 msgstr ""
 
-#: app/templates/modules/auction_list.html:18
-#: app/templates/modules/tool_report_panel.html:52
-#: app/templates/modules/tool_report_panel.html:66
-msgid "Price"
+#: app/templates/modules/auction_list.html:12
+msgid ""
+"Create a lot with a photo and a description. After our review it opens "
+"for bids, and the highest bidder or the first buyer at the falling price "
+"wins."
 msgstr ""
 
-#: app/templates/modules/auction_list.html:19
-msgid "closed"
+#: app/templates/modules/auction_list.html:16
+#: app/templates/modules/auction_mine.html:3
+#: app/templates/modules/auction_mine.html:6
+msgid "My lots and bids"
+msgstr ""
+
+#: app/templates/modules/auction_list.html:21
+msgid "Open now"
+msgstr ""
+
+#: app/templates/modules/auction_list.html:22
+msgid "Upcoming"
+msgstr ""
+
+#: app/templates/modules/auction_list.html:23
+#: app/templates/modules/auction_mine.html:45
+msgid "Finished"
+msgstr ""
+
+#: app/templates/modules/auction_list.html:36
+#: app/templates/modules/auction_mine.html:22
+msgid "sold"
+msgstr ""
+
+#: app/templates/modules/auction_list.html:36
+#: app/templates/modules/auction_mine.html:23
+msgid "not sold"
+msgstr ""
+
+#: app/templates/modules/auction_list.html:38
+#, python-format
+msgid "starts %(when)s"
+msgstr ""
+
+#: app/templates/modules/auction_list.html:40
+#, python-format
+msgid "ends %(when)s"
+msgstr ""
+
+#: app/templates/modules/auction_list.html:44
+#: app/templates/modules/auction_mine.html:28
+#: app/templates/modules/auction_mine.html:48
+msgid "Open lot"
+msgstr ""
+
+#: app/templates/modules/auction_list.html:47
+msgid "There are no lots here yet."
+msgstr ""
+
+#: app/templates/modules/auction_mine.html:12
+msgid "Lots I sell"
+msgstr ""
+
+#: app/templates/modules/auction_mine.html:19
+#: app/templates/modules/startups_mine.html:21
+#: app/templates/modules/travel_mine.html:23
+msgid "Waiting for review"
+msgstr ""
+
+#: app/templates/modules/auction_mine.html:20
+#: app/templates/modules/startups_mine.html:22
+#: app/templates/modules/travel_mine.html:25
+msgid "Not published"
+msgstr ""
+
+#: app/templates/modules/auction_mine.html:21
+#: app/templates/modules/tools_index.html:19
+#: app/templates/modules/travel_mine.html:24
+msgid "Open"
+msgstr ""
+
+#: app/templates/modules/auction_mine.html:31
+msgid "You have not created any lots yet."
+msgstr ""
+
+#: app/templates/modules/auction_mine.html:35
+msgid "Lots I bid on"
+msgstr ""
+
+#: app/templates/modules/auction_mine.html:43
+msgid "Outbid"
+msgstr ""
+
+#: app/templates/modules/auction_mine.html:51
+msgid "You have not placed any bids yet."
 msgstr ""
 
 #: app/templates/modules/profile.html:7
@@ -2072,20 +2624,8 @@ msgstr ""
 msgid "For matching, please also fill in:"
 msgstr ""
 
-#: app/templates/modules/profile_edit.html:34
-#: app/templates/modules/profile_edit.html:51
-#: app/templates/modules/startups_form.html:59
-#: app/templates/modules/travel_form.html:57
-msgid "Show examples"
-msgstr ""
-
 #: app/templates/modules/profile_edit.html:38
 msgid "Examples are for orientation only. Write about yourself in your own words."
-msgstr ""
-
-#: app/templates/modules/profile_edit.html:48
-#: app/templates/modules/travel_form.html:70
-msgid "Photo"
 msgstr ""
 
 #: app/templates/modules/profile_edit.html:57
@@ -2366,11 +2906,6 @@ msgstr ""
 msgid "Waiting for review. Members do not see this card yet."
 msgstr ""
 
-#: app/templates/modules/startups_detail.html:31
-#: app/templates/modules/travel_detail.html:32
-msgid "Not published."
-msgstr ""
-
 #: app/templates/modules/startups_detail.html:52
 msgid "Contact"
 msgstr ""
@@ -2474,11 +3009,6 @@ msgstr ""
 msgid "Your pitch"
 msgstr ""
 
-#: app/templates/modules/startups_form.html:55
-#: app/templates/modules/travel_form.html:53
-msgid "optional"
-msgstr ""
-
 #: app/templates/modules/startups_form.html:63
 msgid ""
 "Examples are for orientation only. Write about your own project in your "
@@ -2513,15 +3043,6 @@ msgstr ""
 msgid ""
 "Do not upload secrets or personal data of third parties. Everything in "
 "the card and the PDF is visible to all verified members."
-msgstr ""
-
-#: app/templates/modules/startups_form.html:92
-msgid "Send changes for review"
-msgstr ""
-
-#: app/templates/modules/startups_form.html:92
-#: app/templates/modules/travel_form.html:91
-msgid "Send for review"
 msgstr ""
 
 #: app/templates/modules/startups_list.html:7
@@ -2573,16 +3094,6 @@ msgstr ""
 
 #: app/templates/modules/startups_mine.html:9
 msgid "All startups"
-msgstr ""
-
-#: app/templates/modules/startups_mine.html:21
-#: app/templates/modules/travel_mine.html:23
-msgid "Waiting for review"
-msgstr ""
-
-#: app/templates/modules/startups_mine.html:22
-#: app/templates/modules/travel_mine.html:25
-msgid "Not published"
 msgstr ""
 
 #: app/templates/modules/startups_mine.html:29
@@ -2900,6 +3411,11 @@ msgid "Price curve"
 msgstr ""
 
 #: app/templates/modules/tool_report_panel.html:52
+#: app/templates/modules/tool_report_panel.html:66
+msgid "Price"
+msgstr ""
+
+#: app/templates/modules/tool_report_panel.html:52
 msgid "Expected share of buyers"
 msgstr ""
 
@@ -2974,11 +3490,6 @@ msgstr ""
 msgid ""
 "Quick checks and research tools that run on the platform. The results are"
 " hints, not legal or professional advice."
-msgstr ""
-
-#: app/templates/modules/tools_index.html:19
-#: app/templates/modules/travel_mine.html:24
-msgid "Open"
 msgstr ""
 
 #: app/templates/modules/tools_index.html:21
@@ -3181,10 +3692,6 @@ msgstr ""
 
 #: app/templates/modules/travel_form.html:68
 msgid "Photo and programme"
-msgstr ""
-
-#: app/templates/modules/travel_form.html:74
-msgid "Remove the current photo"
 msgstr ""
 
 #: app/templates/modules/travel_form.html:79

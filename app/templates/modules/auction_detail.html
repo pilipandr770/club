@@ -3,40 +3,165 @@
 {% block title %}{{ item.lot.title }} · {{ _("Auction") }}{% endblock %}
 
 {% block content %}
-<h1>{{ item.lot.title }}</h1>
-<p>{{ item.lot.description }}</p>
+<p class="crumbs"><a href="{{ url_for('auction.index') }}">← {{ _("Back to all lots") }}</a></p>
+
+<div class="auction-live" id="auction-live" data-state-url="{{ url_for('auction.state', lot_id=item.lot.id) }}"
+     data-status="{{ item.lot.status }}"
+     data-label-left="{{ _('Time left') }}" data-label-start="{{ _('Starts in') }}" data-label-drop="{{ _('Next drop in') }}"
+     data-label-ended="{{ _('This lot has ended. Reload the page.') }}"
+     data-label-leading="{{ _('You are the highest bidder.') }}" data-label-bids="{{ _('Bids') }}"
+     data-label-reserve-ok="{{ _('Reserve price reached.') }}" data-label-reserve-no="{{ _('Reserve price not reached yet.') }}">
+</div>
+
+<section class="project-head">
+  {% if item.lot.image_key %}
+    <img class="project-cover" src="{{ url_for('auction.image', lot_id=item.lot.id) }}" alt="" width="220" height="160">
+  {% endif %}
+  <div>
+    <h1>{{ item.lot.title }}</h1>
+    <p class="status-line">
+      <span class="pill">{% if item.is_descending %}{{ _("Price falls over time") }}{% else %}{{ _("Highest bid wins") }}{% endif %}</span>
+      {% if item.lot.condition %}<span class="pill">{{ condition_label(item.lot.condition) }}</span>{% endif %}
+      {% if item.seller_name %}<span class="pill">{{ _("Seller") }}: {{ item.seller_name }}</span>{% endif %}
+    </p>
+    <p class="price-line"><span class="small muted">{{ _("Current price") }}</span><br><strong class="price" id="live-price">{{ item.price }}</strong></p>
+    {% if item.lot.status == "open" %}
+      <p class="small" id="live-time" aria-live="off"></p>
+      <p class="small muted">{{ _("Ends %(when)s", when=item.lot.ends_at|datetimeformat('dd.MM.yyyy HH:mm')) }}</p>
+    {% endif %}
+    {% if not item.is_descending %}
+      <p class="small"><span id="live-bids">{{ ngettext("%(num)d bid", "%(num)d bids", item.bid_count) }}</span>
+        {% if item.has_reserve and item.lot.status == "open" %} · <span id="live-reserve">{% if item.reserve_met %}{{ _("Reserve price reached.") }}{% else %}{{ _("Reserve price not reached yet.") }}{% endif %}</span>{% endif %}
+      </p>
+    {% endif %}
+  </div>
+</section>
+
+{% if item.lot.status == "pending" %}
+  <p class="notice">{{ _("Waiting for review. Members do not see this lot yet.") }}</p>
+{% elif item.lot.status == "rejected" %}
+  <p class="notice">{{ _("Not published.") }} {{ item.lot.rejection_reason or '' }}</p>
+{% endif %}
+
+{% if can_edit or can_withdraw %}
+  <div class="button-row">
+    {% if can_edit %}<a class="button button-secondary" href="{{ url_for('auction.edit', lot_id=item.lot.id) }}">{{ _("Edit") }}</a>{% endif %}
+    {% if can_withdraw %}
+    <form method="post" action="{{ url_for('auction.cancel', lot_id=item.lot.id) }}" class="inline-form">
+      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+      <button type="submit" class="link-button">{{ _("Withdraw this lot") }}</button>
+    </form>
+    {% endif %}
+  </div>
+{% endif %}
 
 <section class="card">
-  <p>
-    {% if item.is_descending %}{{ _("Price falls over time") }}{% else %}{{ _("Highest bid wins") }}{% endif %}
-  </p>
-  <p><strong>{{ _("Current price") }}: {{ item.price }}</strong></p>
+  <h2>{{ _("Description") }}</h2>
+  <p class="prose">{{ item.lot.description }}</p>
+  {% if item.lot.pickup_info %}
+    <h3>{{ _("Handover and shipping") }}</h3>
+    <p class="prose">{{ item.lot.pickup_info }}</p>
+  {% endif %}
+</section>
+
+{% if item.lot.status == "open" %}
+<section class="card">
   {% if item.is_descending %}
     <p class="small">{{ _("Lowest price: %(price)s", price=item.floor) }} · {{ _("Drop: %(step)s", step=item.step) }}</p>
   {% else %}
     <p class="small">{{ _("Next minimum bid: %(price)s", price=item.min_bid) }}</p>
+    <p class="small muted">{{ snipe_help }}</p>
   {% endif %}
+  <p class="notice" id="live-leader" {% if not leader %}hidden{% endif %}>{{ _("You are the highest bidder.") }}</p>
 
-  {% if item.lot.status == "closed" %}
-    <p>{% if item.lot.winner_id %}{{ _("This lot is sold.") }}{% else %}{{ _("This lot closed without a buyer.") }}{% endif %}</p>
-  {% elif item.is_open %}
+  {% if is_seller %}
+    <p class="muted">{{ _("This is your lot. You cannot bid on it.") }}</p>
+  {% elif can_bid %}
     <form method="post" action="{{ url_for('auction.bid', lot_id=item.lot.id) }}" class="form">
       <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
       {% if item.is_descending %}
-        <input type="hidden" name="amount" value="{{ item.price_plain }}">
-        <button type="submit" class="button">{{ _("Buy at %(price)s", price=item.price) }}</button>
+        <input type="hidden" name="amount" value="{{ item.price_plain }}" id="descending-amount">
       {% else %}
         <div class="field">
           <label for="amount">{{ _("Your bid (EUR)") }}</label>
           <input id="amount" name="amount" type="text" inputmode="decimal" required>
         </div>
-        <button type="submit" class="button">{{ _("Place bid") }}</button>
       {% endif %}
+      <label class="check">
+        <input type="checkbox" name="share_contact" value="1" required>
+        {{ _("If I win, the seller may see my name and e-mail address to arrange the handover.") }}
+      </label>
+      <p class="small muted">{{ _("A bid is binding. The club does not handle payment; you arrange it with the seller.") }}</p>
+      <button type="submit" class="button">{% if item.is_descending %}<span id="buy-label">{{ _("Buy at %(price)s", price=item.price) }}</span>{% else %}{{ _("Place bid") }}{% endif %}</button>
     </form>
-  {% else %}
+  {% elif item.is_upcoming %}
     <p class="muted">{{ _("The lot is not open right now.") }}</p>
   {% endif %}
 </section>
+{% elif item.lot.status == "closed" %}
+<section class="card">
+  {% if item.sold %}
+    <h2>{{ _("Sold for %(price)s", price=item.lot.winning_price_cents|eur) }}</h2>
+    {% if is_winner %}
+      <p><strong>{{ _("You won this lot.") }}</strong></p>
+    {% elif is_seller %}
+      <p>{{ _("Your lot is sold.") }}</p>
+    {% endif %}
 
-<p><a href="{{ url_for('auction.index') }}">{{ _("Back to all lots") }}</a></p>
+    {% if is_winner or is_seller %}
+      <h3>{{ _("Handover") }}</h3>
+      {% if contact %}
+        <p>{% if is_winner %}{{ _("Seller") }}{% else %}{{ _("Buyer") }}{% endif %}: <strong>{{ contact[0] }}</strong> · <a href="mailto:{{ contact[1] }}">{{ contact[1] }}</a></p>
+      {% else %}
+        <p class="muted">{{ _("Contact details are not available for this lot. The club team can help.") }}</p>
+      {% endif %}
+      <p class="small muted">{{ _("The club does not handle payment. Please agree on payment and handover directly.") }}</p>
+
+      <p class="status-line">
+        <span class="pill {% if item.lot.fulfillment %}pill-ok{% else %}pill-warn{% endif %}">
+          {% if item.lot.fulfillment == "received" %}{{ _("Received: deal complete") }}
+          {% elif item.lot.fulfillment == "shipped" %}{{ _("Handed over or shipped") }}
+          {% else %}{{ _("Waiting for handover") }}{% endif %}
+        </span>
+      </p>
+      {% if is_seller and not item.lot.fulfillment %}
+        <form method="post" action="{{ url_for('auction.shipped', lot_id=item.lot.id) }}">
+          <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+          <button type="submit" class="button">{{ _("I have handed over or shipped the item") }}</button>
+        </form>
+      {% endif %}
+      {% if is_winner and item.lot.fulfillment != "received" %}
+        <form method="post" action="{{ url_for('auction.received', lot_id=item.lot.id) }}">
+          <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+          <button type="submit" class="button">{{ _("I have received the item") }}</button>
+        </form>
+      {% endif %}
+    {% else %}
+      <p class="muted">{{ _("This lot is sold.") }}</p>
+    {% endif %}
+  {% else %}
+    <p>{{ _("This lot closed without a buyer.") }}</p>
+  {% endif %}
+</section>
+{% endif %}
+
+{% if history %}
+<section class="card">
+  <h2>{{ _("Bids") }}</h2>
+  <table class="table">
+    <tbody>
+    {% for row in history %}
+      <tr><td>{% if row.mine %}<strong>{{ _("You") }}</strong>{% else %}{{ _("Bidder %(n)s", n=row.bidder) }}{% endif %}</td>
+          <td>{{ row.amount }}</td><td class="small muted">{{ row.at|datetimeformat('dd.MM. HH:mm:ss') }}</td></tr>
+    {% endfor %}
+    </tbody>
+  </table>
+</section>
+{% endif %}
+
+<p class="small muted">{{ _("Questions about this lot? Ask Clubi: it knows the description and the rules.") }}</p>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/auction.js', v=asset_version) }}" defer></script>
 {% endblock %}

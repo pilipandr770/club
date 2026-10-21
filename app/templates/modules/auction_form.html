@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+
+{% block title %}{% if lot %}{{ _("Edit lot") }}{% else %}{{ _("Create a lot") }}{% endif %} · {{ _("Auction") }}{% endblock %}
+
+{% macro val(key, default='') -%}{{ form.get(key) if form and key in form else default }}{%- endmacro %}
+
+{% block content %}
+<h1>{% if lot %}{{ _("Edit lot") }}{% else %}{{ _("Create a lot") }}{% endif %}</h1>
+<p class="muted">{{ _("Describe the item honestly and set the rules. Our team checks every lot before it opens. Bids can only start after that.") }}</p>
+
+<form method="post" enctype="multipart/form-data" class="form form-wide" action="{{ url_for('auction.edit', lot_id=lot.id) if lot else url_for('auction.new') }}">
+  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+  <section class="card">
+    <h2>{{ _("The item") }}</h2>
+    <div class="field {% if 'title' in errors %}field-error{% endif %}">
+      <label for="title">{{ _("Title") }}</label>
+      <input id="title" name="title" type="text" maxlength="160" required value="{{ val('title', lot.title if lot else '') }}">
+    </div>
+    <div class="field {% if 'description' in errors %}field-error{% endif %}">
+      <label for="description">{{ _("Description") }}</label>
+      <p class="small">{{ description_hint }}</p>
+      <textarea id="description" name="description" rows="6" maxlength="3000" required>{{ val('description', lot.description if lot else '') }}</textarea>
+      <details class="examples">
+        <summary>{{ _("Show examples") }}</summary>
+        <ul class="module-list">{% for example in description_examples %}<li>{{ example }}</li>{% endfor %}</ul>
+        <p class="small">{{ _("Examples are for orientation only. Describe your own item in your own words.") }}</p>
+      </details>
+    </div>
+    <div class="field">
+      <label for="condition">{{ _("Condition") }}</label>
+      <select id="condition" name="condition">
+        <option value="">{{ _("Not specified") }}</option>
+        {% for value in conditions %}
+          <option value="{{ value }}" {% if val('condition', lot.condition if lot and lot.condition else '') == value %}selected{% endif %}>{{ condition_label(value) }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <div class="field">
+      <label for="pickup_info">{{ _("Handover and shipping") }} <span class="small muted">({{ _("optional") }})</span></label>
+      <p class="small">{{ pickup_hint }}</p>
+      <textarea id="pickup_info" name="pickup_info" rows="3" maxlength="1000">{{ val('pickup_info', lot.pickup_info if lot else '') }}</textarea>
+      <details class="examples">
+        <summary>{{ _("Show examples") }}</summary>
+        <ul class="module-list">{% for example in pickup_examples %}<li>{{ example }}</li>{% endfor %}</ul>
+      </details>
+    </div>
+    <div class="field">
+      <label for="image">{{ _("Photo") }}</label>
+      <p class="small">{{ photo_hint }}</p>
+      {% if lot and lot.image_key %}
+        <p><img class="cover-thumb" src="{{ url_for('auction.image', lot_id=lot.id) }}" alt="" width="160" height="100"></p>
+        <label class="check"><input type="checkbox" name="remove_image" value="1"> {{ _("Remove the current photo") }}</label>
+      {% endif %}
+      <input id="image" name="image" type="file" accept="image/jpeg,image/png,image/webp">
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>{{ _("Rules and prices") }}</h2>
+    <p class="small">{{ mode_help }}</p>
+    <div class="field">
+      <label for="mode">{{ _("Mode") }}</label>
+      <select id="mode" name="mode">
+        <option value="ascending" {% if val('mode', lot.mode if lot else 'ascending') == 'ascending' %}selected{% endif %}>{{ _("Highest bid wins (price rises)") }}</option>
+        <option value="descending" {% if val('mode', lot.mode if lot else 'ascending') == 'descending' %}selected{% endif %}>{{ _("Price falls over time") }}</option>
+      </select>
+    </div>
+    <div class="field {% if 'start_price' in errors %}field-error{% endif %}">
+      <label for="start_price">{{ _("Start price (EUR)") }}</label>
+      <input id="start_price" name="start_price" type="text" inputmode="decimal" required value="{{ val('start_price', (lot.start_price_cents / 100)|string if lot else '') }}">
+    </div>
+    <div class="field {% if 'step' in errors %}field-error{% endif %}">
+      <label for="step">{{ _("Step (EUR): bid increment or price drop") }}</label>
+      <input id="step" name="step" type="text" inputmode="decimal" required value="{{ val('step', (lot.step_cents / 100)|string if lot else '') }}">
+    </div>
+    <div class="field {% if 'reserve_price' in errors %}field-error{% endif %}">
+      <label for="reserve_price">{{ _("Reserve price (EUR), only for rising price") }} <span class="small muted">({{ _("optional") }})</span></label>
+      <p class="small">{{ reserve_help }}</p>
+      <input id="reserve_price" name="reserve_price" type="text" inputmode="decimal" value="{{ val('reserve_price', (lot.reserve_price_cents / 100)|string if lot and lot.reserve_price_cents else '') }}">
+    </div>
+    <div class="field {% if 'floor_price' in errors %}field-error{% endif %}">
+      <label for="floor_price">{{ _("Lowest price (EUR), only for falling price") }}</label>
+      <input id="floor_price" name="floor_price" type="text" inputmode="decimal" value="{{ val('floor_price', (lot.floor_price_cents / 100)|string if lot and lot.floor_price_cents else '') }}">
+    </div>
+    <div class="field {% if 'drop_interval' in errors %}field-error{% endif %}">
+      <label for="drop_interval_minutes">{{ _("Minutes between drops, only for falling price") }}</label>
+      <input id="drop_interval_minutes" name="drop_interval_minutes" type="number" min="1" value="{{ val('drop_interval_minutes', ((lot.drop_interval_seconds or 300) // 60)|string if lot else '5') }}">
+    </div>
+    <div class="field">
+      <label for="duration_days">{{ _("Duration") }}</label>
+      <p class="small">{{ _("The countdown starts when our team publishes the lot.") }}</p>
+      <select id="duration_days" name="duration_days">
+        {% for days in durations %}
+          <option value="{{ days }}" {% if (val('duration_days', '7'))|string == days|string %}selected{% endif %}>{{ ngettext("%(num)d day", "%(num)d days", days) }}</option>
+        {% endfor %}
+      </select>
+    </div>
+  </section>
+
+  <section class="card">
+    <label class="check {% if 'seller_consent' in errors %}field-error{% endif %}">
+      <input type="checkbox" name="seller_consent" value="1" required {% if form.get('seller_consent') or lot %}checked{% endif %}>
+      {{ _("If the lot is sold, the buyer may see my name and e-mail address to arrange the handover.") }}
+    </label>
+    <p class="small muted">{{ _("The club does not handle payment. You agree on payment and handover directly with the buyer.") }}</p>
+  </section>
+
+  <button type="submit" class="button">{% if lot %}{{ _("Send changes for review") }}{% else %}{{ _("Send for review") }}{% endif %}</button>
+</form>
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block title %}{{ _("My lots and bids") }} · {{ _("Auction") }}{% endblock %}
+
+{% block content %}
+<h1>{{ _("My lots and bids") }}</h1>
+<p class="button-row">
+  <a class="button" href="{{ url_for('auction.new') }}">{{ _("Create a lot") }}</a>
+  <a class="button button-secondary" href="{{ url_for('auction.index') }}">{{ _("All lots") }}</a>
+</p>
+
+<h2>{{ _("Lots I sell") }}</h2>
+<div class="grid-cards">
+{% for item in selling %}
+  <article class="card project-card">
+    {% if item.lot.image_key %}<img class="project-thumb" src="{{ url_for('auction.image', lot_id=item.lot.id) }}" alt="" width="320" height="180" loading="lazy">{% endif %}
+    <h3><a href="{{ url_for('auction.detail', lot_id=item.lot.id) }}">{{ item.lot.title }}</a></h3>
+    <p class="status-line">
+      {% if item.lot.status == "pending" %}<span class="pill pill-warn">{{ _("Waiting for review") }}</span>
+      {% elif item.lot.status == "rejected" %}<span class="pill pill-warn">{{ _("Not published") }}</span>
+      {% elif item.lot.status == "open" %}<span class="pill pill-ok">{{ _("Open") }}</span>
+      {% elif item.sold %}<span class="pill pill-ok">{{ _("sold") }}</span>
+      {% else %}<span class="pill pill-warn">{{ _("not sold") }}</span>{% endif %}
+      {% if item.sold and item.lot.fulfillment != "received" %}<span class="pill pill-warn">{{ _("Waiting for handover") }}</span>{% endif %}
+    </p>
+    {% if item.lot.status == "rejected" and item.lot.rejection_reason %}<p class="small">{{ item.lot.rejection_reason }}</p>{% endif %}
+    <p><strong>{{ item.price }}</strong></p>
+    <a class="button button-secondary" href="{{ url_for('auction.detail', lot_id=item.lot.id) }}">{{ _("Open lot") }}</a>
+  </article>
+{% else %}
+  <p>{{ _("You have not created any lots yet.") }}</p>
+{% endfor %}
+</div>
+
+<h2>{{ _("Lots I bid on") }}</h2>
+<div class="grid-cards">
+{% for item in bidding %}
+  <article class="card project-card">
+    {% if item.lot.image_key %}<img class="project-thumb" src="{{ url_for('auction.image', lot_id=item.lot.id) }}" alt="" width="320" height="180" loading="lazy">{% endif %}
+    <h3><a href="{{ url_for('auction.detail', lot_id=item.lot.id) }}">{{ item.lot.title }}</a></h3>
+    <p class="status-line">
+      {% if item.lot.status == "open" %}
+        {% if item.lot.id in leading %}<span class="pill pill-ok">{{ _("You are the highest bidder.") }}</span>{% else %}<span class="pill pill-warn">{{ _("Outbid") }}</span>{% endif %}
+      {% elif item.lot.winner_id == current_user.id %}<span class="pill pill-ok">{{ _("You won this lot.") }}</span>
+      {% else %}<span class="pill">{{ _("Finished") }}</span>{% endif %}
+    </p>
+    <p><strong>{{ item.price }}</strong></p>
+    <a class="button button-secondary" href="{{ url_for('auction.detail', lot_id=item.lot.id) }}">{{ _("Open lot") }}</a>
+  </article>
+{% else %}
+  <p>{{ _("You have not placed any bids yet.") }}</p>
+{% endfor %}
+</div>
+{% endblock %}

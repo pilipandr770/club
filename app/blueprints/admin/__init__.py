@@ -13,7 +13,14 @@ from ...models import Startup, Trip
 from ...services import travel as travel_service
 from ...services.ai import status as ai_status
 from ...services import startups as startup_service
-from ...services.auction_engine import cancel_lot, create_lot, validate_lot_input
+from ...services.auction_engine import (
+    AuctionError,
+    approve_lot,
+    cancel_lot,
+    create_lot,
+    reject_lot,
+    validate_lot_input,
+)
 from ...utils import eur_to_cents, format_eur, local_to_utc, utcnow
 
 bp = Blueprint("admin", __name__, url_prefix="/admin")
@@ -148,6 +155,24 @@ def lots():
 
     items = Lot.query.order_by(Lot.created_at.desc()).limit(200).all()
     return render_template("admin/lots.html", lots=items, format_eur=format_eur)
+
+
+@bp.route("/lots/<int:lot_id>/review", methods=["POST"])
+@admin_required
+def review_lot(lot_id):
+    lot = db.session.get(Lot, lot_id) or abort(404)
+    try:
+        if request.form.get("decision") == "approve":
+            approve_lot(current_user, lot)
+            flash(_("The lot is published."), "success")
+        else:
+            reject_lot(current_user, lot, request.form.get("reason", ""))
+            flash(_("The lot is rejected."), "success")
+        db.session.commit()
+    except AuctionError:
+        db.session.rollback()
+        flash(_("This lot is not waiting for review."), "error")
+    return redirect(url_for("admin.lots"))
 
 
 @bp.route("/lots/<int:lot_id>/cancel", methods=["POST"])

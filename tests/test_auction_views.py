@@ -43,7 +43,7 @@ def test_premium_member_places_ascending_bid_through_form(app, client):
     make_user(app, verified=True, plan="premium")
     login(client)
 
-    response = client.post(f"/auction/{lot_id}/bid", data={"amount": "12,50"})
+    response = client.post(f"/auction/{lot_id}/bid", data={"amount": "12,50", "share_contact": "1"})
 
     assert response.status_code == 302
     with app.app_context():
@@ -56,7 +56,7 @@ def test_too_low_bid_shows_message_and_changes_nothing(app, client):
     make_user(app, verified=True, plan="premium")
     login(client)
 
-    response = client.post(f"/auction/{lot_id}/bid", data={"amount": "5"}, follow_redirects=True)
+    response = client.post(f"/auction/{lot_id}/bid", data={"amount": "5", "share_contact": "1"}, follow_redirects=True)
 
     assert "Dein Gebot liegt unter dem Mindestbetrag. Bitte erhöhe es." in response.get_data(as_text=True)
     with app.app_context():
@@ -72,7 +72,7 @@ def test_descending_buy_button_takes_current_price(app, client):
     # Лот открыт минуту назад, шаг 100 центов за минуту: текущая цена 9,00 €
     assert 'name="amount" value="9.00"' in body
 
-    client.post(f"/auction/{lot_id}/bid", data={"amount": "9.00"})
+    client.post(f"/auction/{lot_id}/bid", data={"amount": "9.00", "share_contact": "1"})
     with app.app_context():
         lot = db.session.get(Lot, lot_id)
         assert lot.status == "closed"

@@ -150,12 +150,26 @@ def _ctx_lot(user, args):
     if not has_feature(user, "auction.access"):
         return None
     lot = db.session.get(Lot, args["lot_id"])
-    if lot is None:
+    if lot is None or (lot.status in ("pending", "rejected") and lot.seller_id != user.id and not user.is_admin):
         return None
-    parts = [f"title: {_clean(lot.title)}", f"mode: {lot.mode}", f"status: {lot.status}",
-             f"current_price: {_money(lot.current_price_cents)}", f"ends_at_utc: {lot.ends_at}",
-             f"description: {_clean(lot.description)}"]
-    return _("Auction lot"), "\n".join(parts)
+    parts = [f"title: {_clean(lot.title)}", f"mode: {lot.mode} (ascending = highest bid wins, descending = price falls)",
+             f"status: {lot.status}", f"current_price: {_money(lot.current_price_cents)}",
+             f"start_price: {_money(lot.start_price_cents)}", f"step: {_money(lot.step_cents)}",
+             f"ends_at_utc: {lot.ends_at}", f"bids_count: {len(lot.bids)}"]
+    if lot.mode == "descending":
+        parts.append(f"lowest_price: {_money(lot.floor_price_cents)}, drop every {lot.drop_interval_seconds} seconds")
+    if lot.reserve_price_cents is not None and lot.mode == "ascending":
+        # Сумму резерва помощнику не даём: её не знают и участники
+        parts.append(f"reserve_price_reached: {bool(lot.bids) and lot.current_price_cents >= lot.reserve_price_cents}")
+    if lot.condition:
+        parts.append(f"condition: {lot.condition}")
+    parts.append(f"description: {_clean(lot.description, 2000)}")
+    if lot.pickup_info:
+        parts.append(f"handover_and_shipping: {_clean(lot.pickup_info, 1000)}")
+    parts.append("rules: bids are binding; a bid in the last two minutes extends the auction by two minutes; "
+                 "the club does not handle payment, buyer and seller arrange payment and handover directly; "
+                 "contact details are shown only to buyer and seller after the sale")
+    return _("Auction lot"), chr(10).join(parts)
 
 
 def _ctx_matches(user, args):

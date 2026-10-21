@@ -1392,3 +1392,7 @@ hr { border: 0; border-block-start: 1px solid var(--color-border); margin-block:
 }
 
 .filter-bar .field { min-inline-size: 11rem; }
+
+/* ---------- Аукцион ---------- */
+.price { font-size: 2rem; letter-spacing: -0.02em; }
+.price-line { margin-block: 0.5rem; }

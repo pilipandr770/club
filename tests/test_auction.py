@@ -114,7 +114,7 @@ def test_ascending_winner_is_last_bidder_after_end(app):
         db.session.commit()
 
         lot = db.session.get(Lot, lot_id)
-        assert closed == 1
+        assert len(closed) == 1
         assert lot.status == "closed"
         assert lot.winner_id == user_id
         assert lot.winning_price_cents == 1200

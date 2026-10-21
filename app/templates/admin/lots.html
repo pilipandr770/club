@@ -6,6 +6,29 @@
 <h1>{{ _("Auction lots") }}</h1>
 <p><a href="{{ url_for('admin.dashboard') }}">{{ _("Back to admin") }}</a></p>
 
+{% set pending = lots|selectattr("status", "equalto", "pending")|list %}
+{% if pending %}
+<section class="card">
+  <h2>{{ _("Lots from members to review") }}</h2>
+  {% for lot in pending %}
+  <article>
+    <h3><a href="{{ url_for('auction.detail', lot_id=lot.id) }}">{{ lot.title }}</a></h3>
+    <p class="small">{{ lot.seller.email if lot.seller else '' }} · {{ lot.mode }} · {{ format_eur(lot.start_price_cents) }}</p>
+    <p>{{ lot.description[:300] }}</p>
+    <form method="post" action="{{ url_for('admin.review_lot', lot_id=lot.id) }}" class="form">
+      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+      <button type="submit" name="decision" value="approve" class="button">{{ _("Publish") }}</button>
+      <div class="field">
+        <label for="reason-{{ lot.id }}">{{ _("Reason for rejection (optional)") }}</label>
+        <input id="reason-{{ lot.id }}" name="reason" type="text" maxlength="300">
+      </div>
+      <button type="submit" name="decision" value="reject" class="button button-danger">{{ _("Reject") }}</button>
+    </form>
+  </article>
+  {% endfor %}
+</section>
+{% endif %}
+
 <section class="card">
   <h2>{{ _("New lot") }}</h2>
   <form method="post" action="{{ url_for('admin.lots') }}" class="form">
@@ -77,7 +100,7 @@
         <td>{{ lot.status }}</td>
         <td>{% if lot.winning_price_cents %}{{ format_eur(lot.winning_price_cents) }}{% elif lot.status == "closed" %}{{ _("no buyer") }}{% endif %}</td>
         <td>
-          {% if lot.status == "open" %}
+          {% if lot.status in ["open", "pending"] %}
           <form method="post" action="{{ url_for('admin.cancel', lot_id=lot.id) }}" class="inline-form">
             <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
             <button type="submit" class="link-button">{{ _("Close") }}</button>

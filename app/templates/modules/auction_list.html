@@ -4,20 +4,47 @@
 
 {% block content %}
 <h1>{{ _("Auction") }}</h1>
-<p class="muted">{{ _("Bids are placed in the lot. Payments are not yet processed in this version.") }}</p>
+<p class="muted">{{ _("Members offer items and bid on them. The club does not handle payment: buyer and seller arrange the handover and the payment directly.") }}</p>
 
-{% if not items %}
-  <p>{{ _("There are no lots yet.") }}</p>
-{% endif %}
-
-{% for item in items %}
-<section class="card">
-  <h2><a href="{{ url_for('auction.detail', lot_id=item.lot.id) }}">{{ item.lot.title }}</a></h2>
-  <p class="small">
-    {% if item.is_descending %}{{ _("Price falls over time") }}{% else %}{{ _("Highest bid wins") }}{% endif %}
-    · {{ _("Price") }}: {{ item.price }}
-    {% if item.lot.status == "closed" %} · {{ _("closed") }}{% endif %}
+<section class="card cta-card">
+  <div>
+    <h2>{{ _("Have something to sell?") }}</h2>
+    <p>{{ _("Create a lot with a photo and a description. After our review it opens for bids, and the highest bidder or the first buyer at the falling price wins.") }}</p>
+  </div>
+  <p class="button-row">
+    <a class="button" href="{{ url_for('auction.new') }}">{{ _("Create a lot") }}</a>
+    <a class="button button-secondary" href="{{ url_for('auction.mine') }}">{{ _("My lots and bids") }}</a>
   </p>
 </section>
+
+<p class="button-row">
+  <a class="button {% if state != 'open' %}button-secondary{% endif %}" href="{{ url_for('auction.index') }}">{{ _("Open now") }}</a>
+  <a class="button {% if state != 'upcoming' %}button-secondary{% endif %}" href="{{ url_for('auction.index', state='upcoming') }}">{{ _("Upcoming") }}</a>
+  <a class="button {% if state != 'closed' %}button-secondary{% endif %}" href="{{ url_for('auction.index', state='closed') }}">{{ _("Finished") }}</a>
+</p>
+
+<div class="grid-cards">
+{% for item in items %}
+  <article class="card project-card">
+    {% if item.lot.image_key %}
+      <a href="{{ url_for('auction.detail', lot_id=item.lot.id) }}"><img class="project-thumb" src="{{ url_for('auction.image', lot_id=item.lot.id) }}" alt="" width="320" height="180" loading="lazy"></a>
+    {% endif %}
+    <h2><a href="{{ url_for('auction.detail', lot_id=item.lot.id) }}">{{ item.lot.title }}</a></h2>
+    <p class="status-line">
+      <span class="pill">{% if item.is_descending %}{{ _("Price falls over time") }}{% else %}{{ _("Highest bid wins") }}{% endif %}</span>
+      {% if item.lot.status == "closed" %}
+        <span class="pill {% if item.sold %}pill-ok{% else %}pill-warn{% endif %}">{% if item.sold %}{{ _("sold") }}{% else %}{{ _("not sold") }}{% endif %}</span>
+      {% elif item.is_upcoming %}
+        <span class="pill">{{ _("starts %(when)s", when=item.lot.opens_at|datetimeformat('dd.MM. HH:mm')) }}</span>
+      {% else %}
+        <span class="pill pill-ok">{{ _("ends %(when)s", when=item.lot.ends_at|datetimeformat('dd.MM. HH:mm')) }}</span>
+      {% endif %}
+    </p>
+    <p><strong>{{ item.price }}</strong>{% if not item.is_descending %} · {{ ngettext("%(num)d bid", "%(num)d bids", item.bid_count) }}{% endif %}</p>
+    <a class="button button-secondary" href="{{ url_for('auction.detail', lot_id=item.lot.id) }}">{{ _("Open lot") }}</a>
+  </article>
+{% else %}
+  <p>{{ _("There are no lots here yet.") }}</p>
 {% endfor %}
+</div>
 {% endblock %}
