@@ -52,9 +52,6 @@ services:
       - /tmp
     volumes:
       - uploads:/app/uploads
-    networks:
-      - default
-      - laws_net
     healthcheck:
       test: ["CMD", "python", "-c", "import urllib.request,sys; sys.exit(0 if urllib.request.urlopen('http://127.0.0.1:8000/healthz', timeout=3).status == 200 else 1)"]
       interval: 15s
@@ -92,11 +89,6 @@ services:
     depends_on:
       app:
         condition: service_healthy
-
-networks:
-  # Сеть внутреннего сервиса поиска по закону (laws-api). Локально: docker network create laws_net
-  laws_net:
-    external: true
 
 volumes:
   pgdata:
