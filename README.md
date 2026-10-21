@@ -25,6 +25,12 @@ docker compose exec app flask db upgrade
 docker compose exec app flask i18n extract       # строки → messages.pot
 docker compose exec app flask i18n update        # → каталоги переводов
 docker compose exec app flask i18n compile       # → .mo (без этого перевод не работает)
+
+**Законы внутри клуба.** Корпус федерального права хранится в Postgres (таблицы `law_*`, pgvector). Команды:
+`flask laws-import --laws-dir <папка> --qdrant <адрес>` (разовый перенос из старого сервиса), `flask laws-sync` (полная синхронизация
+с gesetze-im-internet.de, только изменившиеся законы), `flask laws-status`. Раз в неделю синхронизацию запускает сервис `scheduler`.
+Таблицы `law_*` не входят в бэкапы (`pg_dump -T 'law_*'`): они восстанавливаются из публичного источника. Для смыслового поиска нужен
+`MISTRAL_API_KEY`; без него работает полнотекстовый поиск.
 ```
 
 Новая строка в интерфейсе: `extract` → `update` → перевод в `translations/de/LC_MESSAGES/messages.po` → `compile`. Тест `test_german_catalog_is_complete` не пропустит непереведённую строку.

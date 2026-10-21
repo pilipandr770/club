@@ -14,6 +14,7 @@
 - `flask db migrate -m "..." && flask db upgrade` — миграции (Flask-Migrate; `upgrade` при старте делает сервис `migrate`)
 - `flask i18n extract | update | compile` — переводы (обёртка над `pybabel`)
 - `flask close-auctions` — закрытие аукционов (ф4, из планировщика)
+- `flask laws-import | laws-sync | laws-status` — корпус законов внутри клуба (Postgres, pgvector); `laws-sync` раз в неделю из `scheduler`; таблицы `law_*` не бэкапим
 
 ## Архитектура (кратко)
 - Flask App-Factory (`app/__init__.py`). Blueprints: `public`, `auth`, `member` (`/app`), `admin` (`/admin`), `webhooks`, затем `billing`, `sections`, `startups`, `travel`, `documents`, `auction`.

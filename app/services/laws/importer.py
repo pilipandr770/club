@@ -97,7 +97,8 @@ def build_vector_index(progress=print) -> None:
     """HNSW-индекс по косинусу. Строится после загрузки: так на порядок быстрее, чем при вставке."""
     progress("HNSW-Index wird gebaut (einige Minuten) ...")
     db.session.execute(text("SET maintenance_work_mem = '1GB'"))
-    db.session.execute(text("SET max_parallel_maintenance_workers = 2"))
+    # Без параллельных воркеров: в Docker /dev/shm всего 64 МБ, и параллельная сборка падает с DiskFull
+    db.session.execute(text("SET max_parallel_maintenance_workers = 0"))
     db.session.execute(text("CREATE INDEX IF NOT EXISTS ix_law_chunks_embedding ON law_chunks "
                             "USING hnsw (embedding vector_cosine_ops) WITH (m = 16, ef_construction = 64)"))
     db.session.commit()
