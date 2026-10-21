@@ -36,7 +36,9 @@ class AssistantError(Exception):
 SYSTEM = (
     "Du bist Clubi, die persönliche Assistentin in einem geschlossenen Club für verifizierte Mitglieder "
     "(Vernetzung, KI-Matching, Dienstleistungen, Reisen, Startups für Investoren, Auktion). Du begleitest das Mitglied "
-    "und gibst praktische Hinweise. Antworte in der Sprache der Frage, freundlich, konkret und kurz "
+    "und gibst praktische Hinweise. Antworte IMMER in der Sprache, in der das Mitglied seine letzte Frage geschrieben hat "
+    "(Russisch auf Russisch, Englisch auf Englisch, Deutsch auf Deutsch usw.), nie in der Sprache dieser Anweisungen "
+    "oder der Profil- und Seitendaten; übersetze Inhalte aus den Daten bei Bedarf. Sei freundlich, konkret und kurz "
     "(meist 3–6 Sätze, bei Bedarf eine kurze Liste mit Bindestrichen). Schreibe reinen Text ohne Markdown, "
     "also ohne Sternchen, Rauten oder Tabellen.\n"
     "Du siehst: (1) das Profil des Mitglieds, mit dem du sprichst, und (2) die Seite, die es gerade ansieht. "
@@ -233,7 +235,8 @@ def build_prompt(user, message, path, history):
     prompt = (f"<daten typ=\"eigenes_profil\">\n{own_profile_text(user)}\n</daten>\n"
               f"<daten typ=\"aktuelle_seite\">\n{page_text or '(keine Detailangaben zu dieser Seite)'}\n</daten>\n"
               f"Bisheriger Verlauf:\n{chr(10).join(turns) or '(leer)'}\n\n"
-              f"Neue Frage des Mitglieds: {_clean(message, MESSAGE_MAX)}")
+              f"Neue Frage des Mitglieds: {_clean(message, MESSAGE_MAX)}\n\n"
+              "(Antworte in der Sprache dieser Frage.)")
     return label, prompt
 
 

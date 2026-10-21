@@ -157,3 +157,14 @@ def test_widget_is_rendered_for_members_only(app, client):
     login(client, "me@example.com")
 
     assert b'id="assistant"' in client.get("/app/").data
+
+
+def test_prompt_tells_the_model_to_answer_in_the_language_of_the_question(app, client, prompts):
+    make_user(app, email="me@example.com", verified=True, plan="starter")
+    login(client, "me@example.com")
+
+    _ask(client, message="Привет! Как лучше заполнить анкету?")
+
+    assert "Привет! Как лучше заполнить анкету?" in prompts[0]
+    assert prompts[0].rstrip().endswith("(Antworte in der Sprache dieser Frage.)")
+    assert "IMMER in der Sprache" in assistant.SYSTEM
