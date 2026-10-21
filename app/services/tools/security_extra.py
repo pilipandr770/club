@@ -526,7 +526,7 @@ def _rdap_base(tld: str) -> str:
     now = time.time()
     if now - _BOOTSTRAP["at"] > 86400 or not _BOOTSTRAP["data"]:
         try:
-            r = fetch("https://data.iana.org/rdap/dns.json", max_bytes=400_000)
+            r = fetch("https://data.iana.org/rdap/dns.json", max_bytes=2_000_000)
             if r.status == 200:
                 _BOOTSTRAP.update(at=now, data=json.loads(r.text))
         except (FetchError, ValueError):
