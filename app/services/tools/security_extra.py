@@ -531,7 +531,8 @@ def _rdap_base(tld: str) -> str:
                 _BOOTSTRAP.update(at=now, data=json.loads(r.text))
         except (FetchError, ValueError):
             pass
-    return rdap_base_for(_BOOTSTRAP["data"], tld)
+    # .de (DENIC) steht nicht im IANA-Bootstrap, hat aber einen eigenen RDAP-Dienst
+    return rdap_base_for(_BOOTSTRAP["data"], tld) or {"de": "https://rdap.denic.de"}.get(tld.lower(), "")
 
 
 def _certificate_entries(org: str):
