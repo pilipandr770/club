@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block title %}{{ _("My meetings") }} · {{ _("Events") }}{% endblock %}
+
+{% block content %}
+<h1>{{ _("My meetings") }}</h1>
+<p class="button-row">
+  {% if can_create %}<a class="button" href="{{ url_for('events.new') }}">{{ _("Create a meeting") }}</a>{% endif %}
+  <a class="button button-secondary" href="{{ url_for('events.index') }}">{{ _("All meetings") }}</a>
+</p>
+
+<h2>{{ _("Meetings I organise") }}</h2>
+<div class="grid-cards">
+{% for item in organised %}
+  <article class="card project-card">
+    {% if item.event.image_key %}<img class="project-thumb" src="{{ url_for('events.image', event_id=item.event.id) }}" alt="" width="320" height="180" loading="lazy">{% endif %}
+    <h3><a href="{{ url_for('events.detail', event_id=item.event.id) }}">{{ item.event.title }}</a></h3>
+    <p class="small">{{ item.event.starts_at|datetimeformat('dd.MM.yyyy HH:mm') }}</p>
+    <p class="status-line">
+      {% if item.event.status == "pending" %}<span class="pill pill-warn">{{ _("Waiting for review") }}</span>
+      {% elif item.event.status == "open" %}<span class="pill pill-ok">{{ _("Published") }}</span>
+      {% elif item.event.status == "rejected" %}<span class="pill pill-warn">{{ _("Not published") }}</span>
+      {% else %}<span class="pill pill-warn">{{ _("Cancelled") }}</span>{% endif %}
+      <span class="pill">{{ ngettext("%(num)d person is going", "%(num)d people are going", item.going) }}</span>
+    </p>
+    {% if item.event.status == "rejected" and item.event.rejection_reason %}<p class="small">{{ item.event.rejection_reason }}</p>{% endif %}
+    <a class="button button-secondary" href="{{ url_for('events.detail', event_id=item.event.id) }}">{{ _("Open meeting") }}</a>
+  </article>
+{% else %}
+  <p>{{ _("You have not created any meetings yet.") }}</p>
+{% endfor %}
+</div>
+
+<h2>{{ _("Meetings I am going to") }}</h2>
+<div class="grid-cards">
+{% for item in going %}
+  <article class="card project-card">
+    {% if item.event.image_key %}<img class="project-thumb" src="{{ url_for('events.image', event_id=item.event.id) }}" alt="" width="320" height="180" loading="lazy">{% endif %}
+    <h3><a href="{{ url_for('events.detail', event_id=item.event.id) }}">{{ item.event.title }}</a></h3>
+    <p class="small">{{ item.event.starts_at|datetimeformat('EEE dd.MM.yyyy, HH:mm') }}</p>
+    {% if item.event.status == "cancelled" %}<p class="status-line"><span class="pill pill-warn">{{ _("Cancelled") }}</span></p>{% endif %}
+    <a class="button button-secondary" href="{{ url_for('events.detail', event_id=item.event.id) }}">{{ _("Open meeting") }}</a>
+  </article>
+{% else %}
+  <p>{{ _("You have not signed up for any meetings yet.") }}</p>
+{% endfor %}
+</div>
+{% endblock %}

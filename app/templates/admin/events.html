@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}{{ _("Events") }} · {{ _("Admin") }}{% endblock %}
+
+{% block content %}
+<h1>{{ _("Events") }}</h1>
+<p><a href="{{ url_for('admin.dashboard') }}">{{ _("Back to admin") }}</a></p>
+
+<nav class="admin-nav">
+  <a href="{{ url_for('admin.events', status='pending') }}">{{ _("To review") }}</a>
+  <a href="{{ url_for('admin.events', status='open') }}">{{ _("Published") }}</a>
+  <a href="{{ url_for('admin.events', status='rejected') }}">{{ _("Rejected") }}</a>
+  <a href="{{ url_for('admin.events', status='cancelled') }}">{{ _("Cancelled") }}</a>
+</nav>
+
+{% for event in items %}
+<section class="card">
+  <h2><a href="{{ url_for('events.detail', event_id=event.id) }}">{{ event.title }}</a></h2>
+  <p class="small">{{ event.organizer.email }} · {{ event_type_label(event.event_type) }} · {{ event_format_label(event.event_format) }} · {{ event.starts_at|datetimeformat('dd.MM.yyyy HH:mm') }}</p>
+  <p>{{ event.description[:400] }}</p>
+  <p class="small">{{ event.venue }}{% if event.address %}, {{ event.address }}{% endif %}</p>
+  <p class="small">{{ event.status }}{% if event.rejection_reason %} · {{ event.rejection_reason }}{% endif %}</p>
+
+  {% if event.status == "pending" %}
+  <form method="post" action="{{ url_for('admin.review_event', event_id=event.id) }}" class="form">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+    <button type="submit" name="decision" value="approve" class="button">{{ _("Publish") }}</button>
+    <div class="field">
+      <label for="reason-{{ event.id }}">{{ _("Reason for rejection (optional)") }}</label>
+      <input id="reason-{{ event.id }}" name="reason" type="text" maxlength="300">
+    </div>
+    <button type="submit" name="decision" value="reject" class="button button-danger">{{ _("Reject") }}</button>
+  </form>
+  {% endif %}
+</section>
+{% else %}
+  <p>{{ _("Nothing here.") }}</p>
+{% endfor %}
+{% endblock %}

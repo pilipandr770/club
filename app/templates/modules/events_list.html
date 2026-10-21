@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+{% block title %}{{ _("Events") }} · {{ _("Club") }}{% endblock %}
+
+{% block content %}
+<h1>{{ _("Events") }}</h1>
+<p class="muted">{{ _("Meetings of club members: meet in person or online, learn from each other and get to know new people.") }}</p>
+
+<section class="card cta-card">
+  <div>
+    <h2>{{ _("Want to host a meeting?") }}</h2>
+    <p>{{ _("Describe what, where, when and for whom. After our review all members see it, and you can invite people personally.") }}</p>
+  </div>
+  {% if can_create %}
+    <p class="button-row">
+      <a class="button" href="{{ url_for('events.new') }}">{{ _("Create a meeting") }}</a>
+      <a class="button button-secondary" href="{{ url_for('events.mine') }}">{{ _("My meetings") }}</a>
+    </p>
+  {% else %}
+    <p class="small muted">{{ _("Creating meetings is included in a higher plan.") }}</p>
+  {% endif %}
+</section>
+
+{% if invited %}
+<section class="card">
+  <h2>{{ _("You are invited") }}</h2>
+  <ul class="module-list">
+    {% for item in invited %}
+      <li><a href="{{ url_for('events.detail', event_id=item.event.id) }}">{{ item.event.title }}</a>
+        <span class="small muted">· {{ item.event.starts_at|datetimeformat('dd.MM.yyyy HH:mm') }}</span></li>
+    {% endfor %}
+  </ul>
+</section>
+{% endif %}
+
+<form method="get" action="{{ url_for('events.index') }}" class="filter-bar">
+  <div class="field">
+    <label for="scope">{{ _("Show") }}</label>
+    <select id="scope" name="scope">
+      <option value="upcoming" {% if scope == 'upcoming' %}selected{% endif %}>{{ _("Upcoming") }}</option>
+      <option value="past" {% if scope == 'past' %}selected{% endif %}>{{ _("Past meetings") }}</option>
+    </select>
+  </div>
+  <div class="field">
+    <label for="type">{{ _("Type") }}</label>
+    <select id="type" name="type">
+      <option value="">{{ _("All types") }}</option>
+      {% for value in types %}<option value="{{ value }}" {% if kind == value %}selected{% endif %}>{{ event_type_label(value) }}</option>{% endfor %}
+    </select>
+  </div>
+  <button type="submit" class="button button-secondary">{{ _("Filter") }}</button>
+</form>
+
+<div class="grid-cards">
+{% for item in items %}
+  <article class="card project-card">
+    {% if item.event.image_key %}
+      <a href="{{ url_for('events.detail', event_id=item.event.id) }}"><img class="project-thumb" src="{{ url_for('events.image', event_id=item.event.id) }}" alt="" width="320" height="180" loading="lazy"></a>
+    {% endif %}
+    <h2><a href="{{ url_for('events.detail', event_id=item.event.id) }}">{{ item.event.title }}</a></h2>
+    <p><strong>{{ item.event.starts_at|datetimeformat('EEE dd.MM.yyyy, HH:mm') }}</strong></p>
+    <p class="small">{% if item.event.venue %}{{ item.event.venue }}{% else %}{{ event_format_label(item.event.event_format) }}{% endif %}</p>
+    <p class="status-line">
+      <span class="pill">{{ event_type_label(item.event.event_type) }}</span>
+      <span class="pill">{{ event_format_label(item.event.event_format) }}</span>
+      {% if item.is_full %}<span class="pill pill-warn">{{ _("fully booked") }}</span>
+      {% elif item.seats_left is not none %}<span class="pill pill-ok">{{ _("places left: %(count)s", count=item.seats_left) }}</span>{% endif %}
+      {% if item.price %}<span class="pill">{{ item.price }}</span>{% else %}<span class="pill">{{ _("free") }}</span>{% endif %}
+    </p>
+    <a class="button button-secondary" href="{{ url_for('events.detail', event_id=item.event.id) }}">{{ _("Open meeting") }}</a>
+  </article>
+{% else %}
+  <p>{{ _("No meetings here yet.") }}</p>
+{% endfor %}
+</div>
+{% endblock %}

@@ -51,3 +51,13 @@ def local_to_utc(value, tz=BERLIN):
     local = _dt.fromisoformat(value.strip())
     aware = local.replace(tzinfo=ZoneInfo(tz))
     return aware.astimezone(UTC).replace(tzinfo=None)
+
+
+def utc_to_local_input(value, tz=BERLIN):
+    """naive UTC datetime -> '2026-10-25T18:00' для поля datetime-local (время по Берлину)."""
+    from datetime import timezone
+    from zoneinfo import ZoneInfo
+
+    if value is None:
+        return ""
+    return value.replace(tzinfo=timezone.utc).astimezone(ZoneInfo(tz)).strftime("%Y-%m-%dT%H:%M")

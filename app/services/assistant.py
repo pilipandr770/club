@@ -11,8 +11,9 @@ from flask import current_app
 from flask_babel import gettext as _
 
 from ..extensions import db
-from ..models import Lot, Service, Startup, ToolRun, Trip, User
+from ..models import Event, Lot, Service, Startup, ToolRun, Trip, User
 from ..profile_guide import FIELDS
+from ..event_guide import EVENT_FIELDS
 from ..startup_guide import PITCH_FIELDS
 from ..travel_guide import TRIP_FIELDS
 from ..utils import utcnow
@@ -129,6 +130,24 @@ def _ctx_trip(user, args):
     return _("Trip"), chr(10).join(parts)
 
 
+def _ctx_event(user, args):
+    event = db.session.get(Event, args["event_id"])
+    if event is None or (event.status not in ("open", "cancelled") and event.organizer_id != user.id and not user.is_admin):
+        return None
+    going = sum(r.guests for r in event.rsvps if r.status == "going")
+    parts = [f"title: {_clean(event.title)}", f"type: {event.event_type}", f"format: {event.event_format}",
+             f"status: {event.status}", f"starts_at_utc: {event.starts_at}", f"ends_at_utc: {event.ends_at}",
+             f"venue: {_clean(event.venue, 160)}", f"address: {_clean(event.address, 300)}",
+             f"language: {_clean(event.language, 60)}", f"places_taken: {going}" + (
+                 f" of {event.capacity}" if event.capacity else " (no limit)"),
+             f"price_per_person: {_money(event.price_cents) if event.price_cents else 'free'}"]
+    for field in EVENT_FIELDS:
+        value = _clean(getattr(event, field.key, ""), 2000)
+        if value:
+            parts.append(f"{field.key}: {value}")
+    return _("Meeting"), chr(10).join(parts)
+
+
 def _ctx_startup(user, args):
     startup = db.session.get(Startup, args["startup_id"])
     if startup is None or (startup.status != "approved" and startup.owner_id != user.id and not user.is_admin):
@@ -203,6 +222,7 @@ CONTEXTS = {
     "profile.matches": (_ctx_matches, "community.read"),
     "services.detail": (_ctx_service, "services.use"),
     "travel.detail": (_ctx_trip, "community.read"),
+    "events.detail": (_ctx_event, "community.read"),
     "startups.detail": (_ctx_startup, "community.read"),
     "auction.detail": (_ctx_lot, "auction.access"),
     "services.tool_run": (_ctx_tool_run, "services.use"),

@@ -1,0 +1,150 @@
+{% extends "base.html" %}
+
+{% set event = view.event %}
+
+{% block title %}{{ event.title }} · {{ _("Events") }}{% endblock %}
+
+{% block content %}
+<p class="crumbs"><a href="{{ url_for('events.mine') if is_organizer else url_for('events.index') }}">← {% if is_organizer %}{{ _("Back to my meetings") }}{% else %}{{ _("Back to all meetings") }}{% endif %}</a></p>
+
+<section class="project-head">
+  {% if event.image_key %}
+    <img class="project-cover" src="{{ url_for('events.image', event_id=event.id) }}" alt="" width="220" height="160">
+  {% endif %}
+  <div>
+    <h1>{{ event.title }}</h1>
+    <p class="lead">{{ event.starts_at|datetimeformat('EEEE, dd.MM.yyyy, HH:mm') }} – {{ event.ends_at|datetimeformat('HH:mm') }}</p>
+    <p class="status-line">
+      <span class="pill">{{ event_type_label(event.event_type) }}</span>
+      <span class="pill">{{ event_format_label(event.event_format) }}</span>
+      {% if view.is_full %}<span class="pill pill-warn">{{ _("fully booked") }}</span>
+      {% elif view.seats_left is not none %}<span class="pill pill-ok">{{ _("places left: %(count)s", count=view.seats_left) }}</span>{% endif %}
+      <span class="pill">{% if view.price %}{{ view.price }}{% else %}{{ _("free") }}{% endif %}</span>
+      {% if event.language %}<span class="pill">{{ event.language }}</span>{% endif %}
+    </p>
+    <p class="small muted">{{ _("Organised by") }}: {{ event.organizer.first_name }} · {{ ngettext("%(num)d person is going", "%(num)d people are going", view.going) }}</p>
+    {% if event.status == "open" and not view.is_past %}
+      <p class="button-row"><a class="button button-secondary" href="{{ url_for('events.calendar', event_id=event.id) }}">{{ _("Add to calendar") }}</a></p>
+    {% endif %}
+  </div>
+</section>
+
+{% if event.status == "cancelled" %}
+  <p class="flash flash-error">{{ _("This meeting is cancelled.") }}</p>
+{% elif event.status != "open" and (is_organizer or current_user.is_admin) %}
+  <p class="notice">
+    {% if event.status == "pending" %}{{ _("Waiting for review. Members do not see this meeting yet.") }}
+    {% else %}{{ _("Not published.") }} {{ event.rejection_reason or '' }}{% endif %}
+  </p>
+{% endif %}
+{% if was_invited and event.status == "open" %}<p class="notice">{{ _("You are invited to this meeting.") }}</p>{% endif %}
+
+{% if is_organizer and can_edit %}
+  <div class="button-row">
+    <a class="button button-secondary" href="{{ url_for('events.edit', event_id=event.id) }}">{{ _("Edit") }}</a>
+    {% if event.status in ["open", "pending"] %}
+    <form method="post" action="{{ url_for('events.cancel', event_id=event.id) }}" class="inline-form">
+      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+      <button type="submit" class="link-button">{{ _("Cancel this meeting") }}</button>
+    </form>
+    {% endif %}
+  </div>
+{% endif %}
+
+<section class="card">
+  <h2>{{ _("What is it about?") }}</h2>
+  <p class="prose">{{ event.description }}</p>
+</section>
+
+<section class="card">
+  <h2>{{ _("Where and when") }}</h2>
+  <p>{{ event.starts_at|datetimeformat('dd.MM.yyyy HH:mm') }} – {{ event.ends_at|datetimeformat('dd.MM.yyyy HH:mm') }}</p>
+  {% if event.venue %}<p><strong>{{ event.venue }}</strong>{% if event.address %}<br>{{ event.address }}{% endif %}</p>{% endif %}
+  {% if show_online %}
+    <p>{{ _("Online link") }}: <a href="{{ event.online_url }}" rel="noopener nofollow" target="_blank">{{ event.online_url }}</a></p>
+  {% elif event.online_url %}
+    <p class="muted">{{ _("The online link is shown after you sign up.") }}</p>
+  {% endif %}
+</section>
+
+{% for key, title in [('audience', _("Who is it for?")), ('agenda', _("How does it work?")), ('requirements', _("What to bring and what to know"))] %}
+  {% if event[key] %}
+  <section class="card">
+    <h2>{{ title }}</h2>
+    <p class="prose">{{ event[key] }}</p>
+  </section>
+  {% endif %}
+{% endfor %}
+
+<section class="card">
+  <h2>{{ _("Who is going") }}</h2>
+  {% if is_organizer and roster %}
+    <ul class="module-list">
+      {% for name, guests, email in roster %}
+        <li>{{ name }} · {{ ngettext("%(num)d place", "%(num)d places", guests) }}{% if email %} · <a href="mailto:{{ email }}">{{ email }}</a>{% endif %}</li>
+      {% endfor %}
+    </ul>
+    <p class="small muted">{{ _("Members allowed you to see their e-mail address when signing up. Please use it only for this meeting.") }}</p>
+  {% elif names %}
+    <p>{{ names | join(", ") }}</p>
+  {% else %}
+    <p class="muted">{{ _("No one has signed up yet.") }}</p>
+  {% endif %}
+</section>
+
+{% if my_rsvp %}
+<section class="card">
+  <p><strong>{{ _("You are signed up.") }}</strong> {{ ngettext("%(num)d place", "%(num)d places", my_rsvp.guests) }}</p>
+  <p class="small muted">{{ _("Questions about the meeting? Ask Clubi: it knows the whole card.") }}</p>
+  <form method="post" action="{{ url_for('events.leave_event', event_id=event.id) }}">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+    <button type="submit" class="button button-secondary">{{ _("Cancel my sign-up") }}</button>
+  </form>
+</section>
+{% elif can_join %}
+<section class="card">
+  <h2>{{ _("Join this meeting") }}</h2>
+  <p class="small muted">{{ _("Questions about the meeting? Ask Clubi: it knows the whole card.") }}</p>
+  {% if view.is_full %}
+    <p class="muted">{{ _("This meeting is fully booked.") }}</p>
+  {% else %}
+  <form method="post" action="{{ url_for('events.join_event', event_id=event.id) }}" class="form">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+    <div class="field">
+      <label for="guests">{{ _("Places (you and your guests)") }}</label>
+      <input id="guests" name="guests" type="number" min="1" max="{{ max_guests }}" value="1" required>
+    </div>
+    <label class="check">
+      <input type="checkbox" name="share_contact" value="1" required>
+      {{ _("The organiser may see my name and e-mail address to contact me about this meeting.") }}
+    </label>
+    <p class="small">{{ _("Costs on site are arranged directly with the organiser. The club does not handle money.") }}</p>
+    <button type="submit" class="button">{{ _("Sign up") }}</button>
+  </form>
+  {% endif %}
+</section>
+{% elif not is_organizer and event.status == "open" and not view.is_past %}
+  <p class="muted">{{ _("Signing up is included in a higher plan.") }}</p>
+{% endif %}
+
+{% if is_organizer and event.status == "open" and not view.is_past %}
+<section class="card">
+  <h2>{{ _("Invite members") }}</h2>
+  <p class="small muted">{{ _("Members from the directory get a personal invitation by e-mail. You will not see their addresses. Up to 20 invitations per meeting; already invited: %(count)s.", count=invited_count) }}</p>
+  {% if invitable %}
+  <form method="post" action="{{ url_for('events.invite', event_id=event.id) }}" class="form">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+    <fieldset class="consents">
+      <legend>{{ _("Members") }}</legend>
+      {% for member in invitable %}
+        <label class="check"><input type="checkbox" name="members" value="{{ member.id }}"> {{ member.first_name }}{% if member.profile and member.profile.headline %} · <span class="small muted">{{ member.profile.headline }}</span>{% endif %}</label>
+      {% endfor %}
+    </fieldset>
+    <button type="submit" class="button">{{ _("Send invitations") }}</button>
+  </form>
+  {% else %}
+    <p class="muted">{{ _("There is nobody left to invite.") }}</p>
+  {% endif %}
+</section>
+{% endif %}
+{% endblock %}

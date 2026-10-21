@@ -113,9 +113,13 @@ def create_app(env=None):
     from .services.catalog import status_label as inquiry_status_label
 
     from .auction_guide import condition_label
-    from .utils import format_eur
+    from .event_guide import format_label as event_format_label
+    from .event_guide import type_label as event_type_label
+    from .utils import format_eur, utc_to_local_input
 
     app.jinja_env.filters["eur"] = format_eur
+    app.jinja_env.filters["local_input"] = utc_to_local_input
+    app.jinja_env.globals.update(event_type_label=event_type_label, event_format_label=event_format_label)
     app.jinja_env.globals.update(condition_label=condition_label, category_label=category_label, stage_label=stage_label,
                                  intro_status_label=intro_status_label,
                                  inquiry_status_label=inquiry_status_label)

@@ -9,7 +9,8 @@ from ...extensions import db
 from ...models import AuditLog, Consent, Lot, User
 from ...models.user import ROLES, VERIFICATION_STATUSES
 from ...services.audit import audit
-from ...models import Startup, Trip
+from ...models import Event, Startup, Trip
+from ...services import events as event_service
 from ...services import travel as travel_service
 from ...services.ai import status as ai_status
 from ...services import startups as startup_service
@@ -225,6 +226,35 @@ def audit_log():
             .outerjoin(User, User.id == AuditLog.actor_id)
             .order_by(AuditLog.created_at.desc()).limit(200).all())
     return render_template("admin/audit.html", rows=rows)
+
+
+@bp.route("/events")
+@admin_required
+def events():
+    status = request.args.get("status", "pending")
+    query = Event.query
+    if status in ("pending", "open", "rejected", "cancelled"):
+        query = query.filter_by(status=status)
+    items = query.order_by(Event.starts_at).limit(200).all()
+    return render_template("admin/events.html", items=items, status=status)
+
+
+@bp.route("/events/<int:event_id>/review", methods=["POST"])
+@admin_required
+def review_event(event_id):
+    event = db.session.get(Event, event_id) or abort(404)
+    try:
+        if request.form.get("decision") == "approve":
+            event_service.approve_event(current_user, event)
+            flash(_("The meeting is published."), "success")
+        else:
+            event_service.reject_event(current_user, event, request.form.get("reason", ""))
+            flash(_("The meeting is rejected."), "success")
+        db.session.commit()
+    except event_service.EventError:
+        db.session.rollback()
+        flash(_("This meeting is not waiting for review."), "error")
+    return redirect(url_for("admin.events", status="pending"))
 
 
 @bp.route("/startups")

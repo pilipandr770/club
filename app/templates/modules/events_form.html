@@ -1,0 +1,108 @@
+{% extends "base.html" %}
+
+{% block title %}{% if event %}{{ _("Edit meeting") }}{% else %}{{ _("Create a meeting") }}{% endif %} · {{ _("Events") }}{% endblock %}
+
+{% macro val(key, default='') -%}{{ form.get(key) if form and key in form else default }}{%- endmacro %}
+
+{% block content %}
+<h1>{% if event %}{{ _("Edit meeting") }}{% else %}{{ _("Create a meeting") }}{% endif %}</h1>
+<p class="muted">{{ _("Describe your meeting step by step: what, where, when, for whom and how. Our team checks it before all members see it. Every change by a member is checked again.") }}</p>
+
+<form method="post" enctype="multipart/form-data" class="form form-wide" action="{{ url_for('events.edit', event_id=event.id) if event else url_for('events.new') }}">
+  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+  <section class="card">
+    <h2>{{ _("The basics") }}</h2>
+    <div class="field {% if 'title' in errors %}field-error{% endif %}">
+      <label for="title">{{ _("Title") }}</label>
+      <p class="small">{{ _("A short, clear name, for example: Founders evening in Frankfurt.") }}</p>
+      <input id="title" name="title" type="text" maxlength="160" required value="{{ val('title', event.title if event else '') }}">
+    </div>
+    <div class="field">
+      <label for="event_type">{{ _("Type") }}</label>
+      <select id="event_type" name="event_type">
+        {% for value in types %}<option value="{{ value }}" {% if val('event_type', event.event_type if event else 'meetup') == value %}selected{% endif %}>{{ event_type_label(value) }}</option>{% endfor %}
+      </select>
+    </div>
+    <div class="field {% if 'event_format' in errors %}field-error{% endif %}">
+      <label for="event_format">{{ _("Format") }}</label>
+      <select id="event_format" name="event_format">
+        {% for value in formats %}<option value="{{ value }}" {% if val('event_format', event.event_format if event else 'in_person') == value %}selected{% endif %}>{{ event_format_label(value) }}</option>{% endfor %}
+      </select>
+    </div>
+    <div class="field {% if 'times' in errors %}field-error{% endif %}">
+      <label for="starts_at">{{ _("Starts (Berlin time)") }}</label>
+      <input id="starts_at" name="starts_at" type="datetime-local" required value="{{ val('starts_at', (event.starts_at|local_input) if event else '') }}">
+    </div>
+    <div class="field {% if 'times' in errors %}field-error{% endif %}">
+      <label for="ends_at">{{ _("Ends (Berlin time)") }}</label>
+      <input id="ends_at" name="ends_at" type="datetime-local" required value="{{ val('ends_at', (event.ends_at|local_input) if event else '') }}">
+    </div>
+    <div class="field">
+      <label for="language">{{ _("Language") }} <span class="small muted">({{ _("optional") }})</span></label>
+      <p class="small">{{ _("For example: German, English or German and English.") }}</p>
+      <input id="language" name="language" type="text" maxlength="60" value="{{ val('language', event.language if event else '') }}">
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>{{ _("Where") }}</h2>
+    <div class="field {% if 'venue' in errors %}field-error{% endif %}">
+      <label for="venue">{{ _("Venue") }}</label>
+      <p class="small">{{ venue_hint }}</p>
+      <input id="venue" name="venue" type="text" maxlength="160" value="{{ val('venue', event.venue if event else '') }}">
+    </div>
+    <div class="field">
+      <label for="address">{{ _("Address") }} <span class="small muted">({{ _("optional") }})</span></label>
+      <input id="address" name="address" type="text" maxlength="300" value="{{ val('address', event.address if event else '') }}">
+    </div>
+    <div class="field {% if 'online_url' in errors %}field-error{% endif %}">
+      <label for="online_url">{{ _("Online link") }} <span class="small muted">({{ _("for online and hybrid meetings") }})</span></label>
+      <p class="small">{{ online_hint }}</p>
+      <input id="online_url" name="online_url" type="url" maxlength="300" value="{{ val('online_url', event.online_url or '' if event else '') }}">
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>{{ _("About the meeting") }}</h2>
+    {% for field in fields %}
+    <div class="field {% if field.key in errors %}field-error{% endif %}">
+      <label for="{{ field.key }}">{{ field.label }}{% if not field.required %} <span class="small muted">({{ _("optional") }})</span>{% endif %}</label>
+      <p class="small">{{ field.hint }}</p>
+      <textarea id="{{ field.key }}" name="{{ field.key }}" rows="{{ 5 if field.required else 4 }}" maxlength="{{ field.max_length }}" {% if field.required %}required{% endif %}>{{ val(field.key, event[field.key] if event else '') }}</textarea>
+      <details class="examples">
+        <summary>{{ _("Show examples") }}</summary>
+        <ul class="module-list">{% for example in field.examples %}<li>{{ example }}</li>{% endfor %}</ul>
+        <p class="small">{{ _("Examples are for orientation only. Write about your own meeting in your own words.") }}</p>
+      </details>
+    </div>
+    {% endfor %}
+  </section>
+
+  <section class="card">
+    <h2>{{ _("Places, price and photo") }}</h2>
+    <div class="field {% if 'capacity' in errors %}field-error{% endif %}">
+      <label for="capacity">{{ _("Number of places") }} <span class="small muted">({{ _("optional") }})</span></label>
+      <p class="small">{{ _("Leave empty for no limit. Sign-ups close when all places are taken.") }}</p>
+      <input id="capacity" name="capacity" type="number" min="1" max="1000" value="{{ val('capacity', event.capacity if event and event.capacity else '') }}">
+    </div>
+    <div class="field {% if 'price' in errors %}field-error{% endif %}">
+      <label for="price">{{ _("Price per person (EUR, optional)") }}</label>
+      <p class="small">{{ _("A guide price, empty means free. Payment is arranged directly with you; the club does not handle money.") }}</p>
+      <input id="price" name="price" type="text" inputmode="decimal" value="{{ val('price', (event.price_cents / 100)|string if event and event.price_cents else '') }}">
+    </div>
+    <div class="field">
+      <label for="image">{{ _("Photo") }}</label>
+      <p class="small">{{ image_hint }}</p>
+      {% if event and event.image_key %}
+        <p><img class="cover-thumb" src="{{ url_for('events.image', event_id=event.id) }}" alt="" width="160" height="100"></p>
+        <label class="check"><input type="checkbox" name="remove_image" value="1"> {{ _("Remove the current photo") }}</label>
+      {% endif %}
+      <input id="image" name="image" type="file" accept="image/jpeg,image/png,image/webp">
+    </div>
+    <p class="small muted">{{ _("Do not upload private data of other people. Everything here is visible to all verified members.") }}</p>
+  </section>
+
+  <button type="submit" class="button">{% if event %}{{ _("Save changes") }}{% else %}{{ _("Send for review") }}{% endif %}</button>
+</form>
+{% endblock %}

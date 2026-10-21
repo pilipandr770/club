@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Club 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-21 12:50+0000\n"
+"POT-Creation-Date: 2026-10-21 13:42+0000\n"
 "PO-Revision-Date: 2026-10-19 21:00+0000\n"
 "Last-Translator: \n"
 "Language: de\n"
@@ -117,6 +117,190 @@ msgstr "Guter Zustand"
 #: app/auction_guide.py:27
 msgid "Used"
 msgstr "Gebraucht"
+
+#: app/event_guide.py:21 app/templates/modules/events_detail.html:55
+msgid "What is it about?"
+msgstr "Worum geht es?"
+
+#: app/event_guide.py:22
+msgid ""
+"Two or three sentences: what happens, why it is worth coming and what the "
+"mood will be."
+msgstr ""
+"Zwei bis drei Sätze: Was passiert, warum es sich lohnt zu kommen und wie "
+"die Stimmung wird."
+
+#: app/event_guide.py:24
+msgid ""
+"An evening for founders and freelancers: short talks about first customers,"
+" then relaxed conversations over dinner."
+msgstr ""
+"Ein Abend für Gründerinnen, Gründer und Freiberufler: kurze Vorträge über "
+"die ersten Kunden, danach entspannte Gespräche beim Abendessen."
+
+#: app/event_guide.py:25
+msgid ""
+"A hands-on workshop: we build a simple landing page together and everyone "
+"leaves with a working draft."
+msgstr ""
+"Ein praktischer Workshop: Wir bauen gemeinsam eine einfache Landingpage, "
+"und alle gehen mit einem funktionierenden Entwurf nach Hause."
+
+#: app/event_guide.py:26
+msgid ""
+"A Sunday walk along the Main with coffee stops. A chance to get to know "
+"club members outside of work."
+msgstr ""
+"Ein Sonntagsspaziergang am Main mit Kaffeepausen. Eine Gelegenheit, Club-"
+"Mitglieder außerhalb der Arbeit kennenzulernen."
+
+#: app/event_guide.py:33 app/templates/modules/events_detail.html:70
+msgid "Who is it for?"
+msgstr "Für wen ist es?"
+
+#: app/event_guide.py:34
+msgid ""
+"Who should come and who will get the most out of it. Say if beginners are "
+"welcome."
+msgstr ""
+"Wer kommen sollte und wer am meisten davon hat. Sag, ob Anfänger willkommen"
+" sind."
+
+#: app/event_guide.py:36
+msgid ""
+"Founders, freelancers and anyone planning to start a business. No "
+"preparation needed."
+msgstr ""
+"Gründerinnen, Gründer, Freiberufler und alle, die ein Unternehmen planen. "
+"Keine Vorbereitung nötig."
+
+#: app/event_guide.py:37
+msgid ""
+"Members with some experience in marketing; bring a project you want "
+"feedback on."
+msgstr ""
+"Mitglieder mit etwas Marketing-Erfahrung; bring ein Projekt mit, zu dem du "
+"Feedback möchtest."
+
+#: app/event_guide.py:42 app/templates/modules/events_detail.html:70
+msgid "How does it work?"
+msgstr "Wie läuft es ab?"
+
+#: app/event_guide.py:43
+msgid ""
+"The schedule in short lines: arrival, main part, breaks, end. Fixed times "
+"help people plan."
+msgstr ""
+"Der Ablauf in kurzen Zeilen: Ankunft, Hauptteil, Pausen, Ende. Feste Zeiten"
+" helfen beim Planen."
+
+#: app/event_guide.py:45
+msgid ""
+"18:30 arrival and drinks. 19:00 two short talks. 20:00 dinner and open "
+"conversations. 22:00 end."
+msgstr ""
+"18:30 Ankunft und Getränke. 19:00 zwei kurze Vorträge. 20:00 Abendessen und"
+" offene Gespräche. 22:00 Ende."
+
+#: app/event_guide.py:46
+msgid ""
+"10:00 welcome, 10:30 workshop part one, 12:00 lunch break, 13:00 part two, "
+"15:00 wrap-up."
+msgstr ""
+"10:00 Begrüßung, 10:30 Workshop Teil eins, 12:00 Mittagspause, 13:00 Teil "
+"zwei, 15:00 Abschluss."
+
+#: app/event_guide.py:51 app/templates/modules/events_detail.html:70
+msgid "What to bring and what to know"
+msgstr "Was mitzubringen ist und was man wissen sollte"
+
+#: app/event_guide.py:52
+msgid ""
+"Things to bring, costs on site, accessibility, dress code, deadlines or "
+"rules."
+msgstr ""
+"Mitzubringendes, Kosten vor Ort, Barrierefreiheit, Dresscode, Fristen oder "
+"Regeln."
+
+#: app/event_guide.py:54
+msgid ""
+"Bring a laptop. Drinks and dinner are paid on site, about 30 euros. The "
+"venue is wheelchair accessible."
+msgstr ""
+"Bring einen Laptop mit. Getränke und Abendessen werden vor Ort bezahlt, "
+"etwa 30 Euro. Der Ort ist rollstuhlgerecht."
+
+#: app/event_guide.py:55
+msgid ""
+"Comfortable shoes and a bottle of water. We walk about 8 km at an easy "
+"pace. Cancellation is possible until the day before."
+msgstr ""
+"Bequeme Schuhe und eine Flasche Wasser. Wir gehen etwa 8 km im gemütlichen "
+"Tempo. Absagen ist bis zum Vortag möglich."
+
+#: app/event_guide.py:61
+msgid "Meetup"
+msgstr "Treffen"
+
+#: app/event_guide.py:62
+msgid "Workshop"
+msgstr "Workshop"
+
+#: app/event_guide.py:63
+msgid "Talk"
+msgstr "Vortrag"
+
+#: app/event_guide.py:64
+msgid "Dinner"
+msgstr "Essen"
+
+#: app/event_guide.py:65
+msgid "Outdoor"
+msgstr "Draußen"
+
+#: app/event_guide.py:66
+msgid "Online session"
+msgstr "Online-Treffen"
+
+#: app/event_guide.py:67 app/modules/startups/labels.py:12
+msgid "Other"
+msgstr "Sonstiges"
+
+#: app/event_guide.py:70
+msgid "In person"
+msgstr "Vor Ort"
+
+#: app/event_guide.py:71
+msgid "Online"
+msgstr "Online"
+
+#: app/event_guide.py:72
+msgid "Hybrid"
+msgstr "Hybrid"
+
+#: app/event_guide.py:84
+msgid ""
+"A photo that shows the place or the mood of the meeting (JPG, PNG or WebP, "
+"up to 5 MB)."
+msgstr ""
+"Ein Foto, das den Ort oder die Stimmung des Treffens zeigt (JPG, PNG oder "
+"WebP, bis 5 MB)."
+
+#: app/event_guide.py:85
+msgid ""
+"Name of the place and a general address, for example a cafe or a co-working"
+" space. Do not write a private home address."
+msgstr ""
+"Name des Ortes und eine allgemeine Adresse, zum Beispiel ein Café oder ein "
+"Co-Working-Space. Schreibe keine private Wohnadresse."
+
+#: app/event_guide.py:86
+msgid ""
+"For online or hybrid meetings: the link to join. Only members who sign up "
+"can see it."
+msgstr ""
+"Für Online- oder Hybrid-Treffen: der Link zum Beitreten. Nur Mitglieder, "
+"die sich anmelden, sehen ihn."
 
 #: app/profile_guide.py:27 app/templates/modules/profile.html:13
 msgid "Headline"
@@ -770,88 +954,101 @@ msgstr ""
 "MB, 60 Seiten). Mitglieder können es herunterladen. Clubi kann es auch "
 "lesen, um Fragen zur Reise zu beantworten."
 
-#: app/blueprints/admin/__init__.py:128
+#: app/blueprints/admin/__init__.py:129
 msgid "Changes are saved."
 msgstr "Änderungen sind gespeichert."
 
-#: app/blueprints/admin/__init__.py:130 app/blueprints/admin/__init__.py:253
-#: app/blueprints/admin/__init__.py:283
+#: app/blueprints/admin/__init__.py:131 app/blueprints/admin/__init__.py:283
+#: app/blueprints/admin/__init__.py:313
 msgid "Nothing has changed."
 msgstr "Nichts hat sich geändert."
 
-#: app/blueprints/admin/__init__.py:149
+#: app/blueprints/admin/__init__.py:150
 #, python-format
 msgid "Please check the lot fields: %(fields)s"
 msgstr "Bitte prüfe die Felder des Loses: %(fields)s"
 
-#: app/blueprints/admin/__init__.py:153
+#: app/blueprints/admin/__init__.py:154
 msgid "The lot is created."
 msgstr "Das Los ist angelegt."
 
-#: app/blueprints/admin/__init__.py:167
+#: app/blueprints/admin/__init__.py:168
 msgid "The lot is published."
 msgstr "Das Los ist veröffentlicht."
 
-#: app/blueprints/admin/__init__.py:170
+#: app/blueprints/admin/__init__.py:171
 msgid "The lot is rejected."
 msgstr "Das Los ist abgelehnt."
 
-#: app/blueprints/admin/__init__.py:174 app/modules/auction/__init__.py:63
+#: app/blueprints/admin/__init__.py:175 app/modules/auction/__init__.py:64
 msgid "This lot is not waiting for review."
 msgstr "Dieses Los wartet nicht auf Prüfung."
 
-#: app/blueprints/admin/__init__.py:184
+#: app/blueprints/admin/__init__.py:185
 msgid "The lot is closed."
 msgstr "Das Los ist geschlossen."
 
-#: app/blueprints/admin/__init__.py:248
+#: app/blueprints/admin/__init__.py:249
+msgid "The meeting is published."
+msgstr "Das Treffen ist veröffentlicht."
+
+#: app/blueprints/admin/__init__.py:252
+msgid "The meeting is rejected."
+msgstr "Das Treffen ist abgelehnt."
+
+#: app/blueprints/admin/__init__.py:256
+msgid "This meeting is not waiting for review."
+msgstr "Dieses Treffen wartet nicht auf Prüfung."
+
+#: app/blueprints/admin/__init__.py:278
 msgid "The startup is published."
 msgstr "Der Startup ist veröffentlicht."
 
-#: app/blueprints/admin/__init__.py:251
+#: app/blueprints/admin/__init__.py:281
 msgid "The startup is rejected."
 msgstr "Der Startup ist abgelehnt."
 
-#: app/blueprints/admin/__init__.py:278
+#: app/blueprints/admin/__init__.py:308
 msgid "The offer is published."
 msgstr "Das Angebot ist veröffentlicht."
 
-#: app/blueprints/admin/__init__.py:281
+#: app/blueprints/admin/__init__.py:311
 msgid "The offer is rejected."
 msgstr "Das Angebot ist abgelehnt."
 
-#: app/blueprints/admin/__init__.py:334
+#: app/blueprints/admin/__init__.py:364
 #, python-format
 msgid "Participant created. Temporary password (shown once): %(password)s"
 msgstr ""
 "Teilnehmende Person angelegt. Temporäres Passwort (wird nur einmal "
 "gezeigt): %(password)s"
 
-#: app/blueprints/admin/__init__.py:336
+#: app/blueprints/admin/__init__.py:366
 msgid "Participant created."
 msgstr "Teilnehmende Person angelegt."
 
-#: app/blueprints/admin/__init__.py:338 app/modules/auction/__init__.py:226
-#: app/modules/auction/__init__.py:252 app/modules/profile/__init__.py:70
+#: app/blueprints/admin/__init__.py:368 app/modules/auction/__init__.py:227
+#: app/modules/auction/__init__.py:253 app/modules/events/__init__.py:131
+#: app/modules/events/__init__.py:158 app/modules/profile/__init__.py:70
 #: app/modules/startups/__init__.py:72 app/modules/travel/__init__.py:201
 #: app/modules/travel/__init__.py:247
 #, python-format
 msgid "Please check these fields: %(fields)s"
 msgstr "Bitte prüfe diese Felder: %(fields)s"
 
-#: app/blueprints/admin/__init__.py:355
+#: app/blueprints/admin/__init__.py:385
 msgid "The identity check is marked as verified."
 msgstr "Die Identitätsprüfung ist als bestätigt markiert."
 
-#: app/blueprints/admin/__init__.py:396
+#: app/blueprints/admin/__init__.py:426
 msgid "Please enter a title."
 msgstr "Bitte gib einen Titel ein."
 
-#: app/blueprints/admin/__init__.py:400
+#: app/blueprints/admin/__init__.py:430
 msgid "The service is saved."
 msgstr "Die Leistung ist gespeichert."
 
-#: app/blueprints/admin/__init__.py:427
+#: app/blueprints/admin/__init__.py:457
 msgid "Unknown status."
 msgstr "Unbekannter Status."
 
@@ -869,9 +1066,10 @@ msgstr ""
 msgid "You have reached today's limit of questions. It renews tomorrow."
 msgstr "Du hast das Tageslimit an Fragen erreicht. Es erneuert sich morgen."
 
-#: app/blueprints/assistant/__init__.py:19 app/modules/profile/__init__.py:188
-#: app/modules/services/__init__.py:18 app/modules/startups/__init__.py:35
-#: app/modules/travel/__init__.py:44 app/templates/partials/assistant.html:4
+#: app/blueprints/assistant/__init__.py:19 app/modules/events/__init__.py:51
+#: app/modules/profile/__init__.py:188 app/modules/services/__init__.py:18
+#: app/modules/startups/__init__.py:35 app/modules/travel/__init__.py:44
+#: app/templates/partials/assistant.html:4
 msgid "Something went wrong. Please try again."
 msgstr "Etwas ist schiefgelaufen. Bitte versuche es erneut."
 
@@ -985,7 +1183,7 @@ msgstr ""
 "Erzähl dem Club, wer du bist, was du brauchst und wobei du helfen kannst. "
 "Damit entstehen deine Vorschläge."
 
-#: app/modules/__init__.py:25 app/templates/admin/dashboard.html:12
+#: app/modules/__init__.py:25 app/templates/admin/dashboard.html:13
 #: app/templates/admin/services.html:3 app/templates/admin/services.html:6
 #: app/templates/modules/service_detail.html:3
 #: app/templates/modules/services_list.html:3
@@ -1016,17 +1214,35 @@ msgstr ""
 "Schließ dich gemeinsamen Reisen an oder biete anderen Mitgliedern deine "
 "eigene Reise an."
 
-#: app/modules/__init__.py:29 app/templates/modules/startups_detail.html:3
+#: app/modules/__init__.py:29 app/templates/admin/dashboard.html:12
+#: app/templates/admin/events.html:3 app/templates/admin/events.html:6
+#: app/templates/modules/events_detail.html:5
+#: app/templates/modules/events_form.html:3
+#: app/templates/modules/events_list.html:3
+#: app/templates/modules/events_list.html:6
+#: app/templates/modules/events_mine.html:3
+msgid "Events"
+msgstr "Treffen"
+
+#: app/modules/__init__.py:30
+msgid ""
+"Meet members in person or online: create a meeting and invite others, or "
+"join one."
+msgstr ""
+"Triff Mitglieder vor Ort oder online: Erstelle ein Treffen und lade andere "
+"ein oder mach bei einem mit."
+
+#: app/modules/__init__.py:31 app/templates/modules/startups_detail.html:3
 #: app/templates/modules/startups_list.html:3
 #: app/templates/modules/startups_list.html:6
 msgid "Startups for investors"
 msgstr "Startups für Investoren"
 
-#: app/modules/__init__.py:30
+#: app/modules/__init__.py:32
 msgid "Present your startup to investors or discover young companies."
 msgstr "Stelle dein Startup Investoren vor oder entdecke junge Unternehmen."
 
-#: app/modules/__init__.py:31 app/templates/modules/auction_detail.html:3
+#: app/modules/__init__.py:33 app/templates/modules/auction_detail.html:3
 #: app/templates/modules/auction_form.html:3
 #: app/templates/modules/auction_list.html:3
 #: app/templates/modules/auction_list.html:6
@@ -1034,123 +1250,220 @@ msgstr "Stelle dein Startup Investoren vor oder entdecke junge Unternehmen."
 msgid "Auction"
 msgstr "Auktion"
 
-#: app/modules/__init__.py:32
+#: app/modules/__init__.py:34
 msgid "Exclusive lots with rising or falling prices."
 msgstr "Exklusive Lose mit steigenden oder fallenden Preisen."
 
-#: app/modules/auction/__init__.py:52
+#: app/modules/auction/__init__.py:53
 msgid "This lot is closed."
 msgstr "Dieses Los ist geschlossen."
 
-#: app/modules/auction/__init__.py:53
+#: app/modules/auction/__init__.py:54
 msgid "This lot has not started yet."
 msgstr "Dieses Los hat noch nicht begonnen."
 
-#: app/modules/auction/__init__.py:54
+#: app/modules/auction/__init__.py:55
 msgid "Your bid is below the minimum. Please raise it."
 msgstr "Dein Gebot liegt unter dem Mindestbetrag. Bitte erhöhe es."
 
-#: app/modules/auction/__init__.py:55
+#: app/modules/auction/__init__.py:56
 msgid "The price has dropped below your offer. Please reload the page."
 msgstr "Der Preis ist unter dein Angebot gefallen. Bitte lade die Seite neu."
 
-#: app/modules/auction/__init__.py:56
+#: app/modules/auction/__init__.py:57
 msgid "This lot does not exist."
 msgstr "Dieses Los existiert nicht."
 
-#: app/modules/auction/__init__.py:57
+#: app/modules/auction/__init__.py:58
 msgid "You cannot bid on your own lot."
 msgstr "Du kannst nicht auf dein eigenes Los bieten."
 
-#: app/modules/auction/__init__.py:58
+#: app/modules/auction/__init__.py:59
 msgid "Please allow the seller to see your contact details if you win."
 msgstr "Bitte erlaube dem Verkäufer, deine Kontaktdaten zu sehen, falls du gewinnst."
 
-#: app/modules/auction/__init__.py:59 app/modules/profile/__init__.py:185
-#: app/modules/startups/__init__.py:33 app/modules/travel/__init__.py:39
+#: app/modules/auction/__init__.py:60 app/modules/events/__init__.py:45
+#: app/modules/profile/__init__.py:185 app/modules/startups/__init__.py:33
+#: app/modules/travel/__init__.py:39
 msgid "This is not available to you."
 msgstr "Das ist für dich nicht verfügbar."
 
-#: app/modules/auction/__init__.py:60
+#: app/modules/auction/__init__.py:61
 msgid "This lot has no buyer."
 msgstr "Dieses Los hat keinen Käufer."
 
-#: app/modules/auction/__init__.py:61
+#: app/modules/auction/__init__.py:62
 msgid "This lot can no longer be edited."
 msgstr "Dieses Los kann nicht mehr bearbeitet werden."
 
-#: app/modules/auction/__init__.py:62
+#: app/modules/auction/__init__.py:63
 msgid "A lot with bids cannot be withdrawn."
 msgstr "Ein Los mit Geboten kann nicht zurückgezogen werden."
 
-#: app/modules/auction/__init__.py:65
+#: app/modules/auction/__init__.py:66
 msgid "The bid could not be placed."
 msgstr "Das Gebot konnte nicht abgegeben werden."
 
-#: app/modules/auction/__init__.py:70 app/modules/profile/__init__.py:36
-#: app/modules/startups/__init__.py:40 app/modules/travel/__init__.py:49
+#: app/modules/auction/__init__.py:71 app/modules/events/__init__.py:56
+#: app/modules/profile/__init__.py:36 app/modules/startups/__init__.py:40
+#: app/modules/travel/__init__.py:49
 msgid "The file is empty."
 msgstr "Die Datei ist leer."
 
-#: app/modules/auction/__init__.py:71 app/modules/startups/__init__.py:41
-#: app/modules/travel/__init__.py:50
+#: app/modules/auction/__init__.py:72 app/modules/events/__init__.py:57
+#: app/modules/startups/__init__.py:41 app/modules/travel/__init__.py:50
 msgid "The file is too large."
 msgstr "Die Datei ist zu groß."
 
-#: app/modules/auction/__init__.py:72 app/modules/startups/__init__.py:42
-#: app/modules/travel/__init__.py:51
+#: app/modules/auction/__init__.py:73 app/modules/events/__init__.py:58
+#: app/modules/startups/__init__.py:42 app/modules/travel/__init__.py:51
 msgid "The picture has too many pixels."
 msgstr "Das Bild hat zu viele Pixel."
 
-#: app/modules/auction/__init__.py:73 app/modules/startups/__init__.py:43
-#: app/modules/travel/__init__.py:52
+#: app/modules/auction/__init__.py:74 app/modules/events/__init__.py:59
+#: app/modules/startups/__init__.py:43 app/modules/travel/__init__.py:52
 msgid "This file is not a picture."
 msgstr "Diese Datei ist kein Bild."
 
-#: app/modules/auction/__init__.py:74 app/modules/startups/__init__.py:44
-#: app/modules/travel/__init__.py:53
+#: app/modules/auction/__init__.py:75 app/modules/events/__init__.py:60
+#: app/modules/startups/__init__.py:44 app/modules/travel/__init__.py:53
 msgid "Please use a JPG, PNG or WebP picture."
 msgstr "Bitte nutze ein Bild als JPG, PNG oder WebP."
 
-#: app/modules/auction/__init__.py:76 app/modules/startups/__init__.py:49
-#: app/modules/travel/__init__.py:58
+#: app/modules/auction/__init__.py:77 app/modules/events/__init__.py:62
+#: app/modules/startups/__init__.py:49 app/modules/travel/__init__.py:58
 msgid "The file could not be saved."
 msgstr "Die Datei konnte nicht gespeichert werden."
 
-#: app/modules/auction/__init__.py:238
+#: app/modules/auction/__init__.py:239
 msgid "Your lot is sent for review. We will publish it after the check."
 msgstr "Dein Los ist zur Prüfung gesendet. Wir veröffentlichen es nach der Prüfung."
 
-#: app/modules/auction/__init__.py:268 app/modules/startups/__init__.py:174
-#: app/modules/travel/__init__.py:262
+#: app/modules/auction/__init__.py:269 app/modules/events/__init__.py:175
+#: app/modules/startups/__init__.py:174 app/modules/travel/__init__.py:262
 msgid "Your changes are sent for review."
 msgstr "Deine Änderungen sind zur Prüfung eingereicht."
 
-#: app/modules/auction/__init__.py:339
+#: app/modules/auction/__init__.py:311
+#: app/templates/modules/auction_detail.html:33
+#: app/templates/modules/auction_list.html:43
+#, python-format
+msgid "%(num)d bid"
+msgid_plural "%(num)d bids"
+msgstr[0] "%(num)d Gebot"
+msgstr[1] "%(num)d Gebote"
+
+#: app/modules/auction/__init__.py:341
 msgid "Please enter a valid amount."
 msgstr "Bitte gib einen gültigen Betrag ein."
 
-#: app/modules/auction/__init__.py:356
+#: app/modules/auction/__init__.py:358
 msgid "You bought the lot. The seller and you can now arrange the handover."
 msgstr ""
 "Du hast das Los gekauft. Du und der Verkäufer könnt jetzt die Übergabe "
 "vereinbaren."
 
-#: app/modules/auction/__init__.py:359
+#: app/modules/auction/__init__.py:361
 msgid "Your bid is placed."
 msgstr "Dein Gebot ist abgegeben."
 
-#: app/modules/auction/__init__.py:376
+#: app/modules/auction/__init__.py:378
 msgid "The lot is withdrawn."
 msgstr "Das Los ist zurückgezogen."
 
-#: app/modules/auction/__init__.py:396
+#: app/modules/auction/__init__.py:398
 msgid "Marked as handed over."
 msgstr "Als übergeben markiert."
 
-#: app/modules/auction/__init__.py:398
+#: app/modules/auction/__init__.py:400
 msgid "Thank you. The deal is complete."
 msgstr "Danke. Das Geschäft ist abgeschlossen."
+
+#: app/modules/events/__init__.py:36
+msgid "This meeting does not exist."
+msgstr "Dieses Treffen gibt es nicht."
+
+#: app/modules/events/__init__.py:37
+msgid "This meeting is not open for sign-ups."
+msgstr "Dieses Treffen ist nicht für Anmeldungen offen."
+
+#: app/modules/events/__init__.py:38
+msgid "This meeting is already over."
+msgstr "Dieses Treffen ist bereits vorbei."
+
+#: app/modules/events/__init__.py:39
+msgid "You are the organiser of this meeting."
+msgstr "Du bist der Organisator dieses Treffens."
+
+#: app/modules/events/__init__.py:40
+msgid "You are already signed up."
+msgstr "Du bist bereits angemeldet."
+
+#: app/modules/events/__init__.py:41
+msgid "There are not enough places left."
+msgstr "Es sind nicht genug Plätze übrig."
+
+#: app/modules/events/__init__.py:42
+msgid "Please choose between 1 and 5 places."
+msgstr "Bitte wähle zwischen 1 und 5 Plätzen."
+
+#: app/modules/events/__init__.py:43 app/modules/travel/__init__.py:41
+msgid ""
+"Please allow the organiser to see your e-mail address, otherwise they "
+"cannot reach you."
+msgstr ""
+"Bitte erlaube dem Organisator, deine E-Mail-Adresse zu sehen, sonst kann er"
+" dich nicht erreichen."
+
+#: app/modules/events/__init__.py:44
+msgid "You are not signed up for this meeting."
+msgstr "Du bist für dieses Treffen nicht angemeldet."
+
+#: app/modules/events/__init__.py:46
+msgid "This meeting can no longer be edited."
+msgstr "Dieses Treffen kann nicht mehr bearbeitet werden."
+
+#: app/modules/events/__init__.py:47
+msgid "More people are already signed up than the number of places you entered."
+msgstr "Es sind bereits mehr Personen angemeldet, als du Plätze eingegeben hast."
+
+#: app/modules/events/__init__.py:48
+msgid "Please choose at least one member to invite."
+msgstr "Bitte wähle mindestens ein Mitglied zum Einladen aus."
+
+#: app/modules/events/__init__.py:49
+msgid "You can invite up to 20 members to one meeting."
+msgstr "Du kannst bis zu 20 Mitglieder zu einem Treffen einladen."
+
+#: app/modules/events/__init__.py:143
+msgid "Your meeting is published."
+msgstr "Dein Treffen ist veröffentlicht."
+
+#: app/modules/events/__init__.py:144
+msgid "Your meeting is sent for review. We will publish it after the check."
+msgstr ""
+"Dein Treffen ist zur Prüfung gesendet. Wir veröffentlichen es nach der "
+"Prüfung."
+
+#: app/modules/events/__init__.py:174 app/modules/travel/__init__.py:262
+msgid "Your changes are saved."
+msgstr "Deine Änderungen sind gespeichert."
+
+#: app/modules/events/__init__.py:248
+msgid "You are signed up. See you there!"
+msgstr "Du bist angemeldet. Bis dann!"
+
+#: app/modules/events/__init__.py:262
+msgid "Your sign-up is cancelled."
+msgstr "Deine Anmeldung ist storniert."
+
+#: app/modules/events/__init__.py:281
+msgid "The invitations are sent."
+msgstr "Die Einladungen sind gesendet."
+
+#: app/modules/events/__init__.py:299
+msgid "The meeting is cancelled. Everyone who signed up is informed."
+msgstr "Das Treffen ist abgesagt. Alle Angemeldeten werden informiert."
 
 #: app/modules/profile/__init__.py:32
 msgid "The photo is too large. Please use a file up to 5 MB."
@@ -1326,10 +1639,6 @@ msgstr "Bildung"
 msgid "Consumer"
 msgstr "Konsum"
 
-#: app/modules/startups/labels.py:12
-msgid "Other"
-msgstr "Sonstiges"
-
 #: app/modules/startups/labels.py:16
 msgid "Idea"
 msgstr "Idee"
@@ -1384,14 +1693,6 @@ msgstr ""
 "Nur Reiseveranstalterinnen, Veranstalter und Agenturen können Angebote "
 "veröffentlichen."
 
-#: app/modules/travel/__init__.py:41
-msgid ""
-"Please allow the organiser to see your e-mail address, otherwise they "
-"cannot reach you."
-msgstr ""
-"Bitte erlaube dem Organisator, deine E-Mail-Adresse zu sehen, sonst kann er"
-" dich nicht erreichen."
-
 #: app/modules/travel/__init__.py:42
 msgid "There are already more seats booked than you entered."
 msgstr "Es sind bereits mehr Plätze gebucht, als du eingegeben hast."
@@ -1414,43 +1715,43 @@ msgstr ""
 msgid "Your trip is open for others to join."
 msgstr "Deine Reise ist offen, damit andere mitfahren können."
 
-#: app/modules/travel/__init__.py:262
-msgid "Your changes are saved."
-msgstr "Deine Änderungen sind gespeichert."
-
 #: app/modules/travel/__init__.py:291
 msgid "The trip is cancelled."
 msgstr "Die Reise ist storniert."
 
-#: app/services/assistant.py:100
+#: app/services/assistant.py:101
 msgid "Your own public profile"
 msgstr "Dein eigenes öffentliches Profil"
 
-#: app/services/assistant.py:101
+#: app/services/assistant.py:102
 msgid "Profile of another member"
 msgstr "Profil eines anderen Mitglieds"
 
-#: app/services/assistant.py:111 app/templates/admin/service_form.html:3
+#: app/services/assistant.py:112 app/templates/admin/service_form.html:3
 msgid "Service"
 msgstr "Leistung"
 
-#: app/services/assistant.py:129
+#: app/services/assistant.py:130
 msgid "Trip"
 msgstr "Reise"
 
-#: app/services/assistant.py:146
+#: app/services/assistant.py:148
+msgid "Meeting"
+msgstr "Treffen"
+
+#: app/services/assistant.py:165
 msgid "Startup"
 msgstr "Startup"
 
-#: app/services/assistant.py:172
+#: app/services/assistant.py:191
 msgid "Auction lot"
 msgstr "Auktionslos"
 
-#: app/services/assistant.py:185
+#: app/services/assistant.py:204
 msgid "Your matches"
 msgstr "Deine Vorschläge"
 
-#: app/services/assistant.py:197
+#: app/services/assistant.py:216
 msgid "Your report"
 msgstr "Dein Bericht"
 
@@ -1557,6 +1858,30 @@ msgstr "Dieser Bereich öffnet sich nach deiner Identitätsprüfung."
 msgid "This section is not included in your plan."
 msgstr "Dieser Bereich ist in deinem Tarif nicht enthalten."
 
+#: app/services/events.py:29
+#, python-format
+msgid "Invitation: %(title)s"
+msgstr "Einladung: %(title)s"
+
+#: app/services/events.py:30
+#, python-format
+msgid ""
+"%(organizer)s invites you to the meeting \"%(title)s\" on %(when)s.\n"
+"Details and sign-up: %(url)s"
+msgstr ""
+"%(organizer)s lädt dich zum Treffen „%(title)s“ am %(when)s ein.\n"
+"Details und Anmeldung: %(url)s"
+
+#: app/services/events.py:32
+#, python-format
+msgid "Meeting cancelled: %(title)s"
+msgstr "Treffen abgesagt: %(title)s"
+
+#: app/services/events.py:33
+#, python-format
+msgid "The meeting \"%(title)s\" on %(when)s has been cancelled by the organiser."
+msgstr "Das Treffen „%(title)s“ am %(when)s wurde vom Organisator abgesagt."
+
 #: app/services/intros.py:113
 msgid "Not accepted this time."
 msgstr "Diesmal nicht angenommen."
@@ -1657,7 +1982,8 @@ msgstr "Bis zu 100 fiktive Personas bewerten deine Produktidee vor dem Start."
 #: app/templates/auth/register.html:3 app/templates/base.html:6
 #: app/templates/base.html:11 app/templates/base.html:42
 #: app/templates/member/dashboard.html:3
-#: app/templates/modules/auction_list.html:3 app/templates/modules/profile.html:3
+#: app/templates/modules/auction_list.html:3
+#: app/templates/modules/events_list.html:3 app/templates/modules/profile.html:3
 #: app/templates/modules/profile_directory.html:3
 #: app/templates/modules/profile_edit.html:3
 #: app/templates/modules/profile_intros.html:3
@@ -1676,8 +2002,8 @@ msgid "My account"
 msgstr "Mein Konto"
 
 #: app/templates/admin/audit.html:3 app/templates/admin/dashboard.html:3
-#: app/templates/admin/dashboard.html:6 app/templates/admin/lots.html:3
-#: app/templates/admin/service_form.html:3
+#: app/templates/admin/dashboard.html:6 app/templates/admin/events.html:3
+#: app/templates/admin/lots.html:3 app/templates/admin/service_form.html:3
 #: app/templates/admin/service_inquiries.html:3
 #: app/templates/admin/services.html:3 app/templates/admin/startups.html:3
 #: app/templates/admin/travel.html:3 app/templates/admin/user_detail.html:3
@@ -1702,13 +2028,14 @@ msgid "Register"
 msgstr "Registrieren"
 
 #: app/templates/admin/audit.html:3 app/templates/admin/audit.html:6
-#: app/templates/admin/dashboard.html:13
+#: app/templates/admin/dashboard.html:14
 msgid "Audit log"
 msgstr "Protokoll"
 
-#: app/templates/admin/audit.html:7 app/templates/admin/lots.html:7
-#: app/templates/admin/services.html:7 app/templates/admin/startups.html:7
-#: app/templates/admin/travel.html:7 app/templates/admin/users.html:7
+#: app/templates/admin/audit.html:7 app/templates/admin/events.html:7
+#: app/templates/admin/lots.html:7 app/templates/admin/services.html:7
+#: app/templates/admin/startups.html:7 app/templates/admin/travel.html:7
+#: app/templates/admin/users.html:7
 msgid "Back to admin"
 msgstr "Zurück zur Verwaltung"
 
@@ -1736,8 +2063,9 @@ msgstr "Details"
 msgid "The log is empty."
 msgstr "Das Protokoll ist leer."
 
-#: app/templates/admin/dashboard.html:8 app/templates/admin/dashboard.html:17
+#: app/templates/admin/dashboard.html:8 app/templates/admin/dashboard.html:18
 #: app/templates/admin/users.html:3 app/templates/admin/users.html:6
+#: app/templates/modules/events_detail.html:138
 #: app/templates/modules/profile_directory.html:3
 #: app/templates/modules/profile_directory.html:6
 #: app/templates/modules/profile_view.html:3
@@ -1759,35 +2087,35 @@ msgstr "Startups"
 msgid "Travel offers"
 msgstr "Reiseangebote"
 
-#: app/templates/admin/dashboard.html:26
+#: app/templates/admin/dashboard.html:27
 msgid "Identity checks"
 msgstr "Identitätsprüfungen"
 
-#: app/templates/admin/dashboard.html:35
+#: app/templates/admin/dashboard.html:36
 msgid "Open auction lots"
 msgstr "Offene Auktionslose"
 
-#: app/templates/admin/dashboard.html:39
+#: app/templates/admin/dashboard.html:40
 msgid "AI models"
 msgstr "KI-Modelle"
 
-#: app/templates/admin/dashboard.html:41
+#: app/templates/admin/dashboard.html:42
 msgid "Language model"
 msgstr "Sprachmodell"
 
-#: app/templates/admin/dashboard.html:41
+#: app/templates/admin/dashboard.html:42
 msgid "on"
 msgstr "an"
 
-#: app/templates/admin/dashboard.html:41
+#: app/templates/admin/dashboard.html:42
 msgid "off"
 msgstr "aus"
 
-#: app/templates/admin/dashboard.html:42
+#: app/templates/admin/dashboard.html:43
 msgid "Embeddings"
 msgstr "Embeddings"
 
-#: app/templates/admin/dashboard.html:44
+#: app/templates/admin/dashboard.html:45
 msgid ""
 "Models are set in the server settings. Changing them does not need a code "
 "change."
@@ -1795,24 +2123,51 @@ msgstr ""
 "Die Modelle werden in den Servereinstellungen festgelegt. Ein Wechsel "
 "erfordert keine Codeänderung."
 
-#: app/templates/admin/lots.html:12
-msgid "Lots from members to review"
-msgstr "Lose von Mitgliedern zur Prüfung"
+#: app/templates/admin/events.html:10 app/templates/admin/startups.html:10
+#: app/templates/admin/travel.html:10
+msgid "To review"
+msgstr "Zu prüfen"
 
-#: app/templates/admin/lots.html:20 app/templates/admin/startups.html:25
-#: app/templates/admin/travel.html:23
+#: app/templates/admin/events.html:11 app/templates/admin/startups.html:11
+#: app/templates/admin/travel.html:11 app/templates/modules/events_mine.html:21
+#: app/templates/modules/startups_mine.html:20
+msgid "Published"
+msgstr "Veröffentlicht"
+
+#: app/templates/admin/events.html:12 app/templates/admin/startups.html:12
+#: app/templates/admin/travel.html:12
+msgid "Rejected"
+msgstr "Abgelehnt"
+
+#: app/templates/admin/events.html:13 app/templates/modules/events_mine.html:23
+#: app/templates/modules/events_mine.html:41
+#: app/templates/modules/travel_mine.html:26
+msgid "Cancelled"
+msgstr "Storniert"
+
+#: app/templates/admin/events.html:27 app/templates/admin/lots.html:20
+#: app/templates/admin/startups.html:25 app/templates/admin/travel.html:23
 msgid "Publish"
 msgstr "Veröffentlichen"
 
-#: app/templates/admin/lots.html:22 app/templates/admin/startups.html:27
-#: app/templates/admin/travel.html:25
+#: app/templates/admin/events.html:29 app/templates/admin/lots.html:22
+#: app/templates/admin/startups.html:27 app/templates/admin/travel.html:25
 msgid "Reason for rejection (optional)"
 msgstr "Grund für die Ablehnung (optional)"
 
-#: app/templates/admin/lots.html:25 app/templates/admin/startups.html:30
-#: app/templates/admin/travel.html:28
+#: app/templates/admin/events.html:32 app/templates/admin/lots.html:25
+#: app/templates/admin/startups.html:30 app/templates/admin/travel.html:28
 msgid "Reject"
 msgstr "Ablehnen"
+
+#: app/templates/admin/events.html:37 app/templates/admin/startups.html:35
+#: app/templates/admin/travel.html:33
+msgid "Nothing here."
+msgstr "Hier ist nichts."
+
+#: app/templates/admin/lots.html:12
+msgid "Lots from members to review"
+msgstr "Lose von Mitgliedern zur Prüfung"
 
 #: app/templates/admin/lots.html:33
 msgid "New lot"
@@ -1821,6 +2176,7 @@ msgstr "Neues Los"
 #: app/templates/admin/lots.html:38 app/templates/admin/lots.html:93
 #: app/templates/admin/service_form.html:12
 #: app/templates/modules/auction_form.html:17
+#: app/templates/modules/events_form.html:17
 #: app/templates/modules/travel_form.html:21
 msgid "Title"
 msgstr "Titel"
@@ -1867,7 +2223,7 @@ msgstr "Minuten zwischen den Preisstufen, nur bei fallendem Preis"
 msgid "Opens (Berlin time)"
 msgstr "Beginn (Berliner Zeit)"
 
-#: app/templates/admin/lots.html:81
+#: app/templates/admin/lots.html:81 app/templates/modules/events_form.html:38
 msgid "Ends (Berlin time)"
 msgstr "Ende (Berliner Zeit)"
 
@@ -1980,6 +2336,7 @@ msgstr "Verborgen"
 
 #: app/templates/admin/services.html:14
 #: app/templates/modules/auction_detail.html:48
+#: app/templates/modules/events_detail.html:44
 #: app/templates/modules/startups_detail.html:32
 #: app/templates/modules/startups_mine.html:26
 #: app/templates/modules/travel_detail.html:38
@@ -1990,23 +2347,6 @@ msgstr "Bearbeiten"
 #: app/templates/admin/services.html:17
 msgid "No services yet."
 msgstr "Noch keine Leistungen."
-
-#: app/templates/admin/startups.html:10 app/templates/admin/travel.html:10
-msgid "To review"
-msgstr "Zu prüfen"
-
-#: app/templates/admin/startups.html:11 app/templates/admin/travel.html:11
-#: app/templates/modules/startups_mine.html:20
-msgid "Published"
-msgstr "Veröffentlicht"
-
-#: app/templates/admin/startups.html:12 app/templates/admin/travel.html:12
-msgid "Rejected"
-msgstr "Abgelehnt"
-
-#: app/templates/admin/startups.html:35 app/templates/admin/travel.html:33
-msgid "Nothing here."
-msgstr "Hier ist nichts."
 
 #: app/templates/admin/user_detail.html:7 app/templates/admin/user_new.html:8
 msgid "Back to members"
@@ -2065,6 +2405,7 @@ msgid "Reason"
 msgstr "Grund"
 
 #: app/templates/admin/user_detail.html:75
+#: app/templates/modules/events_form.html:106
 #: app/templates/modules/travel_form.html:91
 msgid "Save changes"
 msgstr "Änderungen speichern"
@@ -2405,19 +2746,12 @@ msgstr "Aktueller Preis"
 msgid "Ends %(when)s"
 msgstr "Endet %(when)s"
 
-#: app/templates/modules/auction_detail.html:33
-#: app/templates/modules/auction_list.html:43
-#, python-format
-msgid "%(num)d bid"
-msgid_plural "%(num)d bids"
-msgstr[0] "%(num)d Gebot"
-msgstr[1] "%(num)d Gebote"
-
 #: app/templates/modules/auction_detail.html:41
 msgid "Waiting for review. Members do not see this lot yet."
 msgstr "Wartet auf Prüfung. Mitglieder sehen dieses Los noch nicht."
 
 #: app/templates/modules/auction_detail.html:43
+#: app/templates/modules/events_detail.html:37
 #: app/templates/modules/startups_detail.html:31
 #: app/templates/modules/travel_detail.html:32
 msgid "Not published."
@@ -2588,6 +2922,7 @@ msgstr "Der Gegenstand"
 
 #: app/templates/modules/auction_form.html:25
 #: app/templates/modules/auction_form.html:44
+#: app/templates/modules/events_form.html:74
 #: app/templates/modules/profile_edit.html:34
 #: app/templates/modules/profile_edit.html:51
 #: app/templates/modules/startups_form.html:59
@@ -2611,18 +2946,24 @@ msgstr "Nicht angegeben"
 
 #: app/templates/modules/auction_form.html:40
 #: app/templates/modules/auction_form.html:78
+#: app/templates/modules/events_form.html:42
+#: app/templates/modules/events_form.html:56
+#: app/templates/modules/events_form.html:70
+#: app/templates/modules/events_form.html:85
 #: app/templates/modules/startups_form.html:55
 #: app/templates/modules/travel_form.html:53
 msgid "optional"
 msgstr "optional"
 
 #: app/templates/modules/auction_form.html:49
+#: app/templates/modules/events_form.html:95
 #: app/templates/modules/profile_edit.html:48
 #: app/templates/modules/travel_form.html:70
 msgid "Photo"
 msgstr "Foto"
 
 #: app/templates/modules/auction_form.html:53
+#: app/templates/modules/events_form.html:99
 #: app/templates/modules/travel_form.html:74
 msgid "Remove the current photo"
 msgstr "Aktuelles Foto entfernen"
@@ -2672,6 +3013,7 @@ msgid "Send changes for review"
 msgstr "Änderungen zur Prüfung senden"
 
 #: app/templates/modules/auction_form.html:109
+#: app/templates/modules/events_form.html:106
 #: app/templates/modules/startups_form.html:92
 #: app/templates/modules/travel_form.html:91
 msgid "Send for review"
@@ -2709,6 +3051,7 @@ msgid "Open now"
 msgstr "Jetzt offen"
 
 #: app/templates/modules/auction_list.html:22
+#: app/templates/modules/events_list.html:40
 msgid "Upcoming"
 msgstr "Demnächst"
 
@@ -2752,12 +3095,14 @@ msgid "Lots I sell"
 msgstr "Lose, die ich verkaufe"
 
 #: app/templates/modules/auction_mine.html:19
+#: app/templates/modules/events_mine.html:20
 #: app/templates/modules/startups_mine.html:21
 #: app/templates/modules/travel_mine.html:23
 msgid "Waiting for review"
 msgstr "Wartet auf Prüfung"
 
 #: app/templates/modules/auction_mine.html:20
+#: app/templates/modules/events_mine.html:22
 #: app/templates/modules/startups_mine.html:22
 #: app/templates/modules/travel_mine.html:25
 msgid "Not published"
@@ -2784,6 +3129,370 @@ msgstr "Überboten"
 #: app/templates/modules/auction_mine.html:51
 msgid "You have not placed any bids yet."
 msgstr "Du hast noch keine Gebote abgegeben."
+
+#: app/templates/modules/events_detail.html:8
+msgid "Back to my meetings"
+msgstr "Zurück zu meinen Treffen"
+
+#: app/templates/modules/events_detail.html:8
+msgid "Back to all meetings"
+msgstr "Zurück zu allen Treffen"
+
+#: app/templates/modules/events_detail.html:20
+#: app/templates/modules/events_list.html:66
+msgid "fully booked"
+msgstr "ausgebucht"
+
+#: app/templates/modules/events_detail.html:21
+#: app/templates/modules/events_list.html:67
+#, python-format
+msgid "places left: %(count)s"
+msgstr "freie Plätze: %(count)s"
+
+#: app/templates/modules/events_detail.html:22
+#: app/templates/modules/events_list.html:68
+msgid "free"
+msgstr "kostenlos"
+
+#: app/templates/modules/events_detail.html:25
+#: app/templates/modules/travel_detail.html:20
+msgid "Organised by"
+msgstr "Organisiert von"
+
+#: app/templates/modules/events_detail.html:25
+#: app/templates/modules/events_mine.html:24
+#, python-format
+msgid "%(num)d person is going"
+msgid_plural "%(num)d people are going"
+msgstr[0] "%(num)d Person kommt"
+msgstr[1] "%(num)d Personen kommen"
+
+#: app/templates/modules/events_detail.html:27
+msgid "Add to calendar"
+msgstr "Zum Kalender hinzufügen"
+
+#: app/templates/modules/events_detail.html:33
+msgid "This meeting is cancelled."
+msgstr "Dieses Treffen ist abgesagt."
+
+#: app/templates/modules/events_detail.html:36
+msgid "Waiting for review. Members do not see this meeting yet."
+msgstr "Wartet auf Prüfung. Mitglieder sehen dieses Treffen noch nicht."
+
+#: app/templates/modules/events_detail.html:40
+msgid "You are invited to this meeting."
+msgstr "Du bist zu diesem Treffen eingeladen."
+
+#: app/templates/modules/events_detail.html:48
+msgid "Cancel this meeting"
+msgstr "Dieses Treffen absagen"
+
+#: app/templates/modules/events_detail.html:60
+msgid "Where and when"
+msgstr "Wo und wann"
+
+#: app/templates/modules/events_detail.html:64
+#: app/templates/modules/events_form.html:60
+msgid "Online link"
+msgstr "Online-Link"
+
+#: app/templates/modules/events_detail.html:66
+msgid "The online link is shown after you sign up."
+msgstr "Der Online-Link wird nach deiner Anmeldung angezeigt."
+
+#: app/templates/modules/events_detail.html:80
+msgid "Who is going"
+msgstr "Wer kommt"
+
+#: app/templates/modules/events_detail.html:84
+#: app/templates/modules/events_detail.html:97
+#, python-format
+msgid "%(num)d place"
+msgid_plural "%(num)d places"
+msgstr[0] "%(num)d Platz"
+msgstr[1] "%(num)d Plätze"
+
+#: app/templates/modules/events_detail.html:87
+msgid ""
+"Members allowed you to see their e-mail address when signing up. Please use"
+" it only for this meeting."
+msgstr ""
+"Mitglieder haben dir bei der Anmeldung erlaubt, ihre E-Mail-Adresse zu "
+"sehen. Bitte nutze sie nur für dieses Treffen."
+
+#: app/templates/modules/events_detail.html:91
+msgid "No one has signed up yet."
+msgstr "Noch niemand hat sich angemeldet."
+
+#: app/templates/modules/events_detail.html:97
+msgid "You are signed up."
+msgstr "Du bist angemeldet."
+
+#: app/templates/modules/events_detail.html:98
+#: app/templates/modules/events_detail.html:107
+msgid "Questions about the meeting? Ask Clubi: it knows the whole card."
+msgstr "Fragen zum Treffen? Frag Clubi: Clubi kennt die ganze Karte."
+
+#: app/templates/modules/events_detail.html:101
+msgid "Cancel my sign-up"
+msgstr "Meine Anmeldung stornieren"
+
+#: app/templates/modules/events_detail.html:106
+msgid "Join this meeting"
+msgstr "Bei diesem Treffen mitmachen"
+
+#: app/templates/modules/events_detail.html:109
+msgid "This meeting is fully booked."
+msgstr "Dieses Treffen ist ausgebucht."
+
+#: app/templates/modules/events_detail.html:114
+msgid "Places (you and your guests)"
+msgstr "Plätze (du und deine Gäste)"
+
+#: app/templates/modules/events_detail.html:119
+msgid ""
+"The organiser may see my name and e-mail address to contact me about this "
+"meeting."
+msgstr ""
+"Der Organisator darf meinen Namen und meine E-Mail-Adresse sehen, um mich "
+"zu diesem Treffen zu kontaktieren."
+
+#: app/templates/modules/events_detail.html:121
+msgid ""
+"Costs on site are arranged directly with the organiser. The club does not "
+"handle money."
+msgstr ""
+"Kosten vor Ort werden direkt mit dem Organisator geregelt. Der Club wickelt"
+" kein Geld ab."
+
+#: app/templates/modules/events_detail.html:122
+msgid "Sign up"
+msgstr "Anmelden"
+
+#: app/templates/modules/events_detail.html:127
+msgid "Signing up is included in a higher plan."
+msgstr "Die Anmeldung ist in einem höheren Tarif enthalten."
+
+#: app/templates/modules/events_detail.html:132
+msgid "Invite members"
+msgstr "Mitglieder einladen"
+
+#: app/templates/modules/events_detail.html:133
+#, python-format
+msgid ""
+"Members from the directory get a personal invitation by e-mail. You will "
+"not see their addresses. Up to 20 invitations per meeting; already invited:"
+" %(count)s."
+msgstr ""
+"Mitglieder aus dem Verzeichnis erhalten eine persönliche Einladung per "
+"E-Mail. Du siehst ihre Adressen nicht. Bis zu 20 Einladungen pro Treffen; "
+"bereits eingeladen: %(count)s."
+
+#: app/templates/modules/events_detail.html:143
+msgid "Send invitations"
+msgstr "Einladungen senden"
+
+#: app/templates/modules/events_detail.html:146
+msgid "There is nobody left to invite."
+msgstr "Es gibt niemanden mehr zum Einladen."
+
+#: app/templates/modules/events_form.html:3
+#: app/templates/modules/events_form.html:8
+msgid "Edit meeting"
+msgstr "Treffen bearbeiten"
+
+#: app/templates/modules/events_form.html:3
+#: app/templates/modules/events_form.html:8
+#: app/templates/modules/events_list.html:16
+#: app/templates/modules/events_mine.html:8
+msgid "Create a meeting"
+msgstr "Treffen erstellen"
+
+#: app/templates/modules/events_form.html:9
+msgid ""
+"Describe your meeting step by step: what, where, when, for whom and how. "
+"Our team checks it before all members see it. Every change by a member is "
+"checked again."
+msgstr ""
+"Beschreibe dein Treffen Schritt für Schritt: was, wo, wann, für wen und "
+"wie. Unser Team prüft es, bevor alle Mitglieder es sehen. Jede Änderung "
+"durch ein Mitglied wird erneut geprüft."
+
+#: app/templates/modules/events_form.html:15
+#: app/templates/modules/startups_form.html:15
+#: app/templates/modules/travel_form.html:19
+msgid "The basics"
+msgstr "Die Grundlagen"
+
+#: app/templates/modules/events_form.html:18
+msgid "A short, clear name, for example: Founders evening in Frankfurt."
+msgstr "Ein kurzer, klarer Name, zum Beispiel: Gründerabend in Frankfurt."
+
+#: app/templates/modules/events_form.html:22
+#: app/templates/modules/events_list.html:45
+msgid "Type"
+msgstr "Art"
+
+#: app/templates/modules/events_form.html:28
+msgid "Format"
+msgstr "Format"
+
+#: app/templates/modules/events_form.html:34
+msgid "Starts (Berlin time)"
+msgstr "Beginn (Berliner Zeit)"
+
+#: app/templates/modules/events_form.html:42
+msgid "Language"
+msgstr "Sprache"
+
+#: app/templates/modules/events_form.html:43
+msgid "For example: German, English or German and English."
+msgstr "Zum Beispiel: Deutsch, Englisch oder Deutsch und Englisch."
+
+#: app/templates/modules/events_form.html:49
+msgid "Where"
+msgstr "Wo"
+
+#: app/templates/modules/events_form.html:51
+msgid "Venue"
+msgstr "Ort"
+
+#: app/templates/modules/events_form.html:56
+msgid "Address"
+msgstr "Adresse"
+
+#: app/templates/modules/events_form.html:60
+msgid "for online and hybrid meetings"
+msgstr "für Online- und Hybrid-Treffen"
+
+#: app/templates/modules/events_form.html:67
+msgid "About the meeting"
+msgstr "Über das Treffen"
+
+#: app/templates/modules/events_form.html:76
+msgid ""
+"Examples are for orientation only. Write about your own meeting in your own"
+" words."
+msgstr ""
+"Die Beispiele dienen nur zur Orientierung. Schreibe über dein eigenes "
+"Treffen in deinen eigenen Worten."
+
+#: app/templates/modules/events_form.html:83
+msgid "Places, price and photo"
+msgstr "Plätze, Preis und Foto"
+
+#: app/templates/modules/events_form.html:85
+msgid "Number of places"
+msgstr "Anzahl der Plätze"
+
+#: app/templates/modules/events_form.html:86
+msgid "Leave empty for no limit. Sign-ups close when all places are taken."
+msgstr ""
+"Leer lassen für keine Begrenzung. Die Anmeldung schließt, wenn alle Plätze "
+"vergeben sind."
+
+#: app/templates/modules/events_form.html:90
+#: app/templates/modules/travel_form.html:43
+msgid "Price per person (EUR, optional)"
+msgstr "Preis pro Person (EUR, optional)"
+
+#: app/templates/modules/events_form.html:91
+msgid ""
+"A guide price, empty means free. Payment is arranged directly with you; the"
+" club does not handle money."
+msgstr ""
+"Ein Richtpreis, leer bedeutet kostenlos. Die Zahlung regelst du direkt mit "
+"den Gästen; der Club wickelt kein Geld ab."
+
+#: app/templates/modules/events_form.html:103
+#: app/templates/modules/travel_form.html:87
+msgid ""
+"Do not upload private data of other people. Everything here is visible to "
+"all verified members."
+msgstr ""
+"Lade keine privaten Daten anderer Personen hoch. Alles hier ist für alle "
+"verifizierten Mitglieder sichtbar."
+
+#: app/templates/modules/events_list.html:7
+msgid ""
+"Meetings of club members: meet in person or online, learn from each other "
+"and get to know new people."
+msgstr ""
+"Treffen von Club-Mitgliedern: vor Ort oder online, voneinander lernen und "
+"neue Menschen kennenlernen."
+
+#: app/templates/modules/events_list.html:11
+msgid "Want to host a meeting?"
+msgstr "Du möchtest ein Treffen ausrichten?"
+
+#: app/templates/modules/events_list.html:12
+msgid ""
+"Describe what, where, when and for whom. After our review all members see "
+"it, and you can invite people personally."
+msgstr ""
+"Beschreibe was, wo, wann und für wen. Nach unserer Prüfung sehen es alle "
+"Mitglieder, und du kannst Leute persönlich einladen."
+
+#: app/templates/modules/events_list.html:17
+#: app/templates/modules/events_mine.html:3
+#: app/templates/modules/events_mine.html:6
+msgid "My meetings"
+msgstr "Meine Treffen"
+
+#: app/templates/modules/events_list.html:20
+msgid "Creating meetings is included in a higher plan."
+msgstr "Das Erstellen von Treffen ist in einem höheren Tarif enthalten."
+
+#: app/templates/modules/events_list.html:26
+msgid "You are invited"
+msgstr "Du bist eingeladen"
+
+#: app/templates/modules/events_list.html:38
+msgid "Show"
+msgstr "Anzeigen"
+
+#: app/templates/modules/events_list.html:41
+msgid "Past meetings"
+msgstr "Vergangene Treffen"
+
+#: app/templates/modules/events_list.html:47
+msgid "All types"
+msgstr "Alle Arten"
+
+#: app/templates/modules/events_list.html:51
+#: app/templates/modules/startups_list.html:43
+msgid "Filter"
+msgstr "Filtern"
+
+#: app/templates/modules/events_list.html:70
+#: app/templates/modules/events_mine.html:27
+#: app/templates/modules/events_mine.html:42
+msgid "Open meeting"
+msgstr "Treffen öffnen"
+
+#: app/templates/modules/events_list.html:73
+msgid "No meetings here yet."
+msgstr "Hier gibt es noch keine Treffen."
+
+#: app/templates/modules/events_mine.html:9
+msgid "All meetings"
+msgstr "Alle Treffen"
+
+#: app/templates/modules/events_mine.html:12
+msgid "Meetings I organise"
+msgstr "Treffen, die ich organisiere"
+
+#: app/templates/modules/events_mine.html:30
+msgid "You have not created any meetings yet."
+msgstr "Du hast noch keine Treffen erstellt."
+
+#: app/templates/modules/events_mine.html:34
+msgid "Meetings I am going to"
+msgstr "Treffen, zu denen ich gehe"
+
+#: app/templates/modules/events_mine.html:45
+msgid "You have not signed up for any meetings yet."
+msgstr "Du hast dich noch für keine Treffen angemeldet."
 
 #: app/templates/modules/profile.html:7
 msgid ""
@@ -3221,11 +3930,6 @@ msgstr ""
 "Mitgliedern gezeigt, nachdem unser Team sie geprüft hat. Jede Änderung wird"
 " erneut geprüft."
 
-#: app/templates/modules/startups_form.html:15
-#: app/templates/modules/travel_form.html:19
-msgid "The basics"
-msgstr "Die Grundlagen"
-
 #: app/templates/modules/startups_form.html:21
 msgid "One-line summary"
 msgstr "Kurzbeschreibung in einem Satz"
@@ -3337,10 +4041,6 @@ msgstr "Alle Kategorien"
 #: app/templates/modules/startups_list.html:37
 msgid "All stages"
 msgstr "Alle Phasen"
-
-#: app/templates/modules/startups_list.html:43
-msgid "Filter"
-msgstr "Filtern"
 
 #: app/templates/modules/startups_list.html:55
 msgid "Open project card"
@@ -3834,10 +4534,6 @@ msgstr "freie Plätze: %(count)s"
 msgid "per person"
 msgstr "pro Person"
 
-#: app/templates/modules/travel_detail.html:20
-msgid "Organised by"
-msgstr "Organisiert von"
-
 #: app/templates/modules/travel_detail.html:22
 msgid "Download programme (PDF)"
 msgstr "Programm herunterladen (PDF)"
@@ -3974,10 +4670,6 @@ msgstr "Verfügbare Plätze"
 msgid "How many people can join in total, without you."
 msgstr "Wie viele Personen insgesamt mitkommen können, ohne dich."
 
-#: app/templates/modules/travel_form.html:43
-msgid "Price per person (EUR, optional)"
-msgstr "Preis pro Person (EUR, optional)"
-
 #: app/templates/modules/travel_form.html:44
 msgid ""
 "A guide price. Payment is arranged directly with you; the club does not "
@@ -4013,14 +4705,6 @@ msgstr "Aktuelles Programm (PDF)"
 #: app/templates/modules/travel_form.html:83
 msgid "Remove the current programme"
 msgstr "Aktuelles Programm entfernen"
-
-#: app/templates/modules/travel_form.html:87
-msgid ""
-"Do not upload private data of other people. Everything here is visible to "
-"all verified members."
-msgstr ""
-"Lade keine privaten Daten anderer Personen hoch. Alles hier ist für alle "
-"verifizierten Mitglieder sichtbar."
 
 #: app/templates/modules/travel_form.html:91
 msgid "Open the trip"
@@ -4089,10 +4773,6 @@ msgstr "Alle Reisen"
 #: app/templates/modules/travel_mine.html:13
 msgid "Trips I organise"
 msgstr "Reisen, die ich organisiere"
-
-#: app/templates/modules/travel_mine.html:26
-msgid "Cancelled"
-msgstr "Storniert"
 
 #: app/templates/modules/travel_mine.html:37
 msgid "Cancel this trip"
