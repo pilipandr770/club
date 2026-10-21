@@ -16,6 +16,11 @@
       <a class="button" href="{{ url_for('auth.register') }}">{{ _("Become a member") }}</a>
       <a class="button button-secondary" href="{{ url_for('auth.login') }}">{{ _("Log in") }}</a>
     </div>
+    <ul class="trust">
+      <li>{{ _("Verified members only") }}</li>
+      <li>{{ _("Matching only with your consent") }}</li>
+      <li>{{ _("No identity documents stored") }}</li>
+    </ul>
   </div>
 
   <div class="stack" aria-hidden="true">

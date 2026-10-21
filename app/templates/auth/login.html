@@ -2,7 +2,10 @@
 
 {% block title %}{{ _("Log in") }} · {{ _("Club") }}{% endblock %}
 
+{% block main_class %}auth{% endblock %}
+
 {% block content %}
+<div class="card auth-card">
 <h1>{{ _("Log in") }}</h1>
 
 {% if error %}<p class="flash flash-error" role="alert">{{ error }}</p>{% endif %}
@@ -27,6 +30,7 @@
 
   <button type="submit" class="button">{{ _("Log in") }}</button>
 </form>
+</div>
 
-<p class="small">{{ _("No account yet?") }} <a href="{{ url_for('auth.register') }}">{{ _("Register") }}</a></p>
+<p class="auth-alt">{{ _("No account yet?") }} <a href="{{ url_for('auth.register') }}">{{ _("Register") }}</a></p>
 {% endblock %}

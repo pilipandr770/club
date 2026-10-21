@@ -2,7 +2,10 @@
 
 {% block title %}{{ _("Register") }} · {{ _("Club") }}{% endblock %}
 
+{% block main_class %}auth auth-wide{% endblock %}
+
 {% block content %}
+<div class="card auth-card">
 <h1>{{ _("Create an account") }}</h1>
 <p class="muted">{{ _("Every account needs an identity check before you can use the club. The check is done by Stripe, we do not store your documents.") }}</p>
 
@@ -70,6 +73,7 @@
 
   <button type="submit" class="button">{{ _("Create account") }}</button>
 </form>
+</div>
 
-<p class="small">{{ _("Already registered?") }} <a href="{{ url_for('auth.login') }}">{{ _("Log in") }}</a></p>
+<p class="auth-alt">{{ _("Already registered?") }} <a href="{{ url_for('auth.login') }}">{{ _("Log in") }}</a></p>
 {% endblock %}
