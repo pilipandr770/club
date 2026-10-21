@@ -1,6 +1,6 @@
 import os
 
-from flask import Flask
+from flask import Flask, request
 import importlib
 
 from flask_babel import get_locale
@@ -133,6 +133,11 @@ def create_app(env=None):
         response.headers.setdefault("X-Content-Type-Options", "nosniff")
         response.headers.setdefault("Referrer-Policy", "strict-origin-when-cross-origin")
         response.headers.setdefault("X-Frame-Options", "DENY")
+        response.headers.setdefault("Permissions-Policy", "camera=(), microphone=(), geolocation=(), payment=()")
+        response.headers.setdefault("Cross-Origin-Opener-Policy", "same-origin")
+        # HSTS только в production и только за HTTPS (локально без TLS он помешал бы работе браузера)
+        if app.config.get("APP_ENV") == "production" and request.is_secure:
+            response.headers.setdefault("Strict-Transport-Security", "max-age=15552000")
         return response
 
     return app

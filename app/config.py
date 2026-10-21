@@ -23,6 +23,7 @@ class Config:
     APP_ENV = os.environ.get("APP_ENV", "development")
     SECRET_KEY = os.environ.get("SECRET_KEY", "")
     BASE_URL = os.environ.get("BASE_URL", "https://localhost")
+    SECURITY_CONTACT = os.environ.get("SECURITY_CONTACT", "info@andrii-it.de")  # адрес для security.txt
 
     SQLALCHEMY_DATABASE_URI = _database_url()
     SQLALCHEMY_TRACK_MODIFICATIONS = False
