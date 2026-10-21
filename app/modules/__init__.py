@@ -11,6 +11,7 @@ class ModuleSpec:
     title: object  # LazyString для меню
     feature: str  # функция из config/plans.py, без которой модуль закрыт
     package: str  # пакет с blueprint `bp`
+    description: object = ""  # короткое пояснение для плитки на главной кабинета
 
     @property
     def endpoint(self):
@@ -19,11 +20,16 @@ class ModuleSpec:
 
 
 MODULES = (
-    ModuleSpec("profile", _l("About me"), "profile.edit", "app.modules.profile"),
-    ModuleSpec("services", _l("Services"), "services.use", "app.modules.services"),
-    ModuleSpec("travel", _l("Travel"), "community.read", "app.modules.travel"),
-    ModuleSpec("startups", _l("Startups for investors"), "community.read", "app.modules.startups"),
-    ModuleSpec("auction", _l("Auction"), "auction.access", "app.modules.auction"),
+    ModuleSpec("profile", _l("About me"), "profile.edit", "app.modules.profile",
+               _l("Tell the club who you are, what you need and how you can help. This powers your matches.")),
+    ModuleSpec("services", _l("Services"), "services.use", "app.modules.services",
+               _l("Partner offers for members and built-in tools: website checks, law search, market panel.")),
+    ModuleSpec("travel", _l("Travel"), "community.read", "app.modules.travel",
+               _l("Join shared trips or offer your own journey to other members.")),
+    ModuleSpec("startups", _l("Startups for investors"), "community.read", "app.modules.startups",
+               _l("Present your startup to investors or discover young companies.")),
+    ModuleSpec("auction", _l("Auction"), "auction.access", "app.modules.auction",
+               _l("Exclusive lots with rising or falling prices.")),
 )
 
 MODULE_KEYS = tuple(module.key for module in MODULES)

@@ -4,7 +4,12 @@
 
 {% block content %}
 <h1>{{ _("Hello, %(name)s", name=current_user.first_name) }}</h1>
+<p class="status-line">
+  <span class="pill">{{ _("Your plan") }}: {{ plan_name }}</span>
+  {% if current_user.verification_status == "verified" %}<span class="pill pill-ok">{{ _("Identity verified") }}</span>{% endif %}
+</p>
 
+{% if current_user.verification_status != "verified" %}
 <section class="card">
   <h2>{{ _("Your access") }}</h2>
 
@@ -16,7 +21,7 @@
     </form>
 
   {% elif current_user.verification_status == "verified" %}
-    <p>{{ _("Your identity is verified. You have guest access to the club.") }}</p>
+    <p>{{ _("Your identity is verified. Welcome to the club.") }}</p>
 
   {% elif current_user.verification_status == "pending" %}
     <p>{{ _("Your identity check is in progress.") }}</p>
@@ -45,6 +50,7 @@
     </form>
   {% endif %}
 </section>
+{% endif %}
 
 {% if current_user.is_verified and not publication_decided %}
 <section class="card">
@@ -54,20 +60,16 @@
 </section>
 {% endif %}
 
-<section class="card">
-  <h2>{{ _("Your plan") }}: {{ plan_name }}</h2>
-  <ul class="module-list">
-    {% for item in modules %}
-      <li>
-        {% if item.available %}
-          <a href="{{ url_for(item.spec.endpoint) }}">{{ item.spec.title }}</a>
-        {% else %}
-          <span class="muted">{{ item.spec.title }}: {{ _("not included in your plan") }}</span>
-        {% endif %}
-      </li>
-    {% endfor %}
-  </ul>
-</section>
+<h2>{{ _("Your areas") }}</h2>
+<div class="grid-cards">
+  {% for item in modules %}
+    {% if item.available %}
+      <a class="tile" href="{{ url_for(item.spec.endpoint) }}"><strong>{{ item.spec.title }}</strong><span>{{ item.spec.description }}</span></a>
+    {% else %}
+      <div class="tile tile-off"><strong>{{ item.spec.title }}</strong><span>{{ _("not included in your plan") }}</span></div>
+    {% endif %}
+  {% endfor %}
+</div>
 
 <section class="card">
   <h2>{{ _("Your data") }}</h2>

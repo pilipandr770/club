@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Club 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-21 08:10+0000\n"
+"POT-Creation-Date: 2026-10-21 11:08+0000\n"
 "PO-Revision-Date: 2026-10-19 21:00+0000\n"
 "Last-Translator: \n"
 "Language: de\n"
@@ -220,7 +220,7 @@ msgstr "Python, React, Produktdesign"
 msgid "energy storage, fundraising, financial models"
 msgstr "Energiespeicher, Fundraising, Finanzmodelle"
 
-#: app/modules/__init__.py:22 app/profile_guide.py:144
+#: app/modules/__init__.py:23 app/profile_guide.py:144
 #: app/templates/modules/profile.html:3 app/templates/modules/profile.html:6
 #: app/templates/modules/profile_edit.html:3
 #: app/templates/modules/profile_edit.html:6
@@ -457,7 +457,15 @@ msgstr ""
 "Allgemeine Informationen, keine Rechtsberatung. Gilt nur für das deutsche "
 "Recht."
 
-#: app/modules/__init__.py:23 app/templates/admin/dashboard.html:12
+#: app/modules/__init__.py:24
+msgid ""
+"Tell the club who you are, what you need and how you can help. This powers "
+"your matches."
+msgstr ""
+"Erzähl dem Club, wer du bist, was du brauchst und wobei du helfen kannst. "
+"Damit entstehen deine Vorschläge."
+
+#: app/modules/__init__.py:25 app/templates/admin/dashboard.html:12
 #: app/templates/admin/services.html:3 app/templates/admin/services.html:6
 #: app/templates/modules/service_detail.html:3
 #: app/templates/modules/services_list.html:3
@@ -466,7 +474,15 @@ msgstr ""
 msgid "Services"
 msgstr "Dienstleistungen"
 
-#: app/modules/__init__.py:24 app/templates/modules/travel_detail.html:3
+#: app/modules/__init__.py:26
+msgid ""
+"Partner offers for members and built-in tools: website checks, law search, "
+"market panel."
+msgstr ""
+"Angebote von Partnern für Mitglieder und eingebaute Werkzeuge: Website-"
+"Checks, Gesetzes-Suche, Markt-Panel."
+
+#: app/modules/__init__.py:27 app/templates/modules/travel_detail.html:3
 #: app/templates/modules/travel_form.html:3
 #: app/templates/modules/travel_list.html:3
 #: app/templates/modules/travel_list.html:6
@@ -474,17 +490,31 @@ msgstr "Dienstleistungen"
 msgid "Travel"
 msgstr "Reisen"
 
-#: app/modules/__init__.py:25 app/templates/modules/startups_detail.html:3
+#: app/modules/__init__.py:28
+msgid "Join shared trips or offer your own journey to other members."
+msgstr ""
+"Schließ dich gemeinsamen Reisen an oder biete anderen Mitgliedern deine "
+"eigene Reise an."
+
+#: app/modules/__init__.py:29 app/templates/modules/startups_detail.html:3
 #: app/templates/modules/startups_list.html:3
 #: app/templates/modules/startups_list.html:6
 msgid "Startups for investors"
 msgstr "Startups für Investoren"
 
-#: app/modules/__init__.py:26 app/templates/modules/auction_detail.html:3
+#: app/modules/__init__.py:30
+msgid "Present your startup to investors or discover young companies."
+msgstr "Stelle dein Startup Investoren vor oder entdecke junge Unternehmen."
+
+#: app/modules/__init__.py:31 app/templates/modules/auction_detail.html:3
 #: app/templates/modules/auction_list.html:3
 #: app/templates/modules/auction_list.html:6
 msgid "Auction"
 msgstr "Auktion"
+
+#: app/modules/__init__.py:32
+msgid "Exclusive lots with rising or falling prices."
+msgstr "Exklusive Lose mit steigenden oder fallenden Preisen."
 
 #: app/modules/auction/__init__.py:18
 msgid "This lot is closed."
@@ -1508,44 +1538,52 @@ msgstr "Schon registriert?"
 msgid "Hello, %(name)s"
 msgstr "Hallo, %(name)s"
 
+#: app/templates/member/dashboard.html:8
+msgid "Your plan"
+msgstr "Dein Tarif"
+
 #: app/templates/member/dashboard.html:9
+msgid "Identity verified"
+msgstr "Identität geprüft"
+
+#: app/templates/member/dashboard.html:14
 msgid "Your access"
 msgstr "Dein Zugang"
 
-#: app/templates/member/dashboard.html:12
+#: app/templates/member/dashboard.html:17
 msgid "Please confirm your e-mail address first. We have sent you a link."
 msgstr ""
 "Bitte bestätige zuerst deine E-Mail-Adresse. Wir haben dir einen Link "
 "geschickt."
 
-#: app/templates/member/dashboard.html:15
+#: app/templates/member/dashboard.html:20
 msgid "Send the link again"
 msgstr "Link erneut senden"
 
-#: app/templates/member/dashboard.html:19
-msgid "Your identity is verified. You have guest access to the club."
-msgstr "Deine Identität ist geprüft. Du hast Gastzugang zum Club."
+#: app/templates/member/dashboard.html:24
+msgid "Your identity is verified. Welcome to the club."
+msgstr "Deine Identität ist geprüft. Willkommen im Club."
 
-#: app/templates/member/dashboard.html:22
+#: app/templates/member/dashboard.html:27
 msgid "Your identity check is in progress."
 msgstr "Deine Identitätsprüfung läuft."
 
-#: app/templates/member/dashboard.html:26
+#: app/templates/member/dashboard.html:31
 msgid "Your identity check needs a manual review. Our team will contact you."
 msgstr ""
 "Deine Identitätsprüfung braucht eine manuelle Prüfung. Unser Team meldet "
 "sich bei dir."
 
-#: app/templates/member/dashboard.html:30
+#: app/templates/member/dashboard.html:35
 msgid "We could not confirm your identity."
 msgstr "Wir konnten deine Identität nicht bestätigen."
 
-#: app/templates/member/dashboard.html:35
+#: app/templates/member/dashboard.html:40
 #: app/templates/modules/tool_report_panel.html:24
 msgid "Try again"
 msgstr "Erneut versuchen"
 
-#: app/templates/member/dashboard.html:40
+#: app/templates/member/dashboard.html:45
 msgid ""
 "To use the club, we first check your identity with Stripe. It takes a few "
 "minutes."
@@ -1553,11 +1591,11 @@ msgstr ""
 "Um den Club zu nutzen, prüfen wir zuerst deine Identität über Stripe. Das "
 "dauert ein paar Minuten."
 
-#: app/templates/member/dashboard.html:44
+#: app/templates/member/dashboard.html:49
 msgid "Start identity check"
 msgstr "Identitätsprüfung starten"
 
-#: app/templates/member/dashboard.html:51
+#: app/templates/member/dashboard.html:57
 #: app/templates/modules/profile_edit.html:73
 #: app/templates/modules/profile_matches.html:17
 #: app/templates/modules/profile_privacy.html:3
@@ -1565,7 +1603,7 @@ msgstr "Identitätsprüfung starten"
 msgid "Publication and matching"
 msgstr "Veröffentlichung und Matching"
 
-#: app/templates/member/dashboard.html:52
+#: app/templates/member/dashboard.html:58
 msgid ""
 "Decide whether other members can see your profile and whether it is used "
 "for matching. Both are off until you choose."
@@ -1573,31 +1611,31 @@ msgstr ""
 "Entscheide, ob andere Mitglieder dein Profil sehen und ob es für das "
 "Matching genutzt wird. Beides ist aus, bis du dich entscheidest."
 
-#: app/templates/member/dashboard.html:53
+#: app/templates/member/dashboard.html:59
 msgid "Make my choices"
 msgstr "Meine Auswahl treffen"
 
-#: app/templates/member/dashboard.html:58
-msgid "Your plan"
-msgstr "Dein Tarif"
+#: app/templates/member/dashboard.html:63
+msgid "Your areas"
+msgstr "Deine Bereiche"
 
-#: app/templates/member/dashboard.html:65
+#: app/templates/member/dashboard.html:69
 msgid "not included in your plan"
 msgstr "nicht im Tarif enthalten"
 
-#: app/templates/member/dashboard.html:73
+#: app/templates/member/dashboard.html:75
 msgid "Your data"
 msgstr "Deine Daten"
 
-#: app/templates/member/dashboard.html:74
+#: app/templates/member/dashboard.html:76
 msgid "Download my data (JSON)"
 msgstr "Meine Daten herunterladen (JSON)"
 
-#: app/templates/member/dashboard.html:77
+#: app/templates/member/dashboard.html:79
 msgid "Delete my account"
 msgstr "Mein Konto löschen"
 
-#: app/templates/member/dashboard.html:78
+#: app/templates/member/dashboard.html:80
 msgid ""
 "This deletes your account, your consent history and your identity check "
 "data at Stripe. This cannot be undone."
@@ -1605,11 +1643,11 @@ msgstr ""
 "Das löscht dein Konto, deinen Einwilligungsverlauf und deine Prüfdaten bei "
 "Stripe. Das lässt sich nicht rückgängig machen."
 
-#: app/templates/member/dashboard.html:82
+#: app/templates/member/dashboard.html:84
 msgid "Confirm with your password"
 msgstr "Mit deinem Passwort bestätigen"
 
-#: app/templates/member/dashboard.html:85
+#: app/templates/member/dashboard.html:87
 msgid "Delete account permanently"
 msgstr "Konto endgültig löschen"
 
@@ -2858,8 +2896,8 @@ msgid ""
 "Clubi is an AI. It does not give legal or financial advice and never shows "
 "contact details. Conversations are not stored on the server."
 msgstr ""
-"Clubi ist eine KI. Sie gibt keine Rechts- oder Finanzberatung und zeigt nie "
-"Kontaktdaten. Gespräche werden nicht auf dem Server gespeichert."
+"Clubi ist eine KI. Sie gibt keine Rechts- oder Finanzberatung und zeigt nie"
+" Kontaktdaten. Gespräche werden nicht auf dem Server gespeichert."
 
 #: app/templates/partials/assistant.html:19
 msgid "Send"
