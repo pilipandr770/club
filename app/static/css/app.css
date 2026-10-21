@@ -1396,3 +1396,21 @@ hr { border: 0; border-block-start: 1px solid var(--color-border); margin-block:
 /* ---------- Аукцион ---------- */
 .price { font-size: 2rem; letter-spacing: -0.02em; }
 .price-line { margin-block: 0.5rem; }
+
+/* ---------- Лендинг: возможности ---------- */
+.feature-group {
+  margin-block: 2.25rem 0.5rem;
+  font-size: 1.15rem;
+  color: var(--color-accent);
+  letter-spacing: 0.01em;
+}
+
+.features {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 17rem), 1fr));
+  gap: 1rem;
+  margin-block-start: 0.75rem;
+}
+
+.features .tilt-card h3 { margin-block: 0.5rem 0.4rem; }
+.features .tilt-card p { font-size: 0.95rem; }

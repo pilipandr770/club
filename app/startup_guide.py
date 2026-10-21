@@ -43,7 +43,7 @@ PITCH_FIELDS = (
         hint=_l("How does your product solve it, and why is it better than what people use now?"),
         examples=(
             _l("Photo in, booking out: the app recognises amount, tax rate and category and exports it for the tax adviser."),
-            _l("A battery pool with automatic trading, so shops pay a flat monthly fee and save about 15 % on energy."),
+            _l("A battery pool with automatic trading, so shops pay a flat monthly fee and save about 15 percent on energy."),
         ),
     ),
     PitchField(
