@@ -152,7 +152,76 @@ def seed_services_command():
     click.echo(f"Услуг добавлено: {seed_default_services()}")
 
 
+@click.command("laws-import")
+@click.option("--laws-dir", required=True, type=click.Path(exists=True, file_okay=False), help="Папка laws_data старого сервиса.")
+@click.option("--qdrant", required=True, help="Адрес Qdrant старого сервиса, например http://qdrant:6333.")
+@click.option("--no-index", is_flag=True, help="Не строить HNSW-индекс после загрузки.")
+def laws_import_command(laws_dir, qdrant, no_index):
+    """Переносит корпус законов (тексты и готовые векторы) из старого сервиса. Повторный запуск безопасен."""
+    from pathlib import Path
+
+    from .services.laws.importer import build_vector_index, import_laws, import_vectors
+
+    laws = import_laws(Path(laws_dir), progress=click.echo)
+    click.echo(f"Законов загружено: {laws}")
+    chunks = import_vectors(qdrant, progress=click.echo)
+    click.echo(f"Кусков с векторами загружено: {chunks}")
+    if not no_index:
+        build_vector_index(progress=click.echo)
+
+
+@click.command("laws-index")
+def laws_index_command():
+    """Строит HNSW-индекс по векторам корпуса законов (если ещё нет)."""
+    from .services.laws.importer import build_vector_index
+
+    build_vector_index(progress=click.echo)
+
+
+@click.command("laws-sync")
+@click.option("--only", multiple=True, help="Только эти slug (можно несколько раз).")
+@click.option("--limit", type=int, default=None, help="Первые N законов оглавления (для проверки).")
+@click.option("--no-embed", is_flag=True, help="Не считать векторы (поиск будет полнотекстовым).")
+def laws_sync_command(only, limit, no_embed):
+    """Синхронизация корпуса с gesetze-im-internet.de: скачивает, разбирает и векторизует только изменившееся."""
+    from .services.laws.sync import sync
+
+    summary = sync(only=list(only) or None, limit=limit, embed_new=not no_embed, progress=click.echo)
+    click.echo(f"Новых: {summary['new']}, обновлено: {summary['updated']}, без изменений: {summary['unchanged']}, "
+               f"ошибок: {len(summary['errors'])}, секунд: {summary['seconds']}")
+    for error in summary["errors"]:
+        click.echo(f"  ! {error}")
+
+
+@click.command("laws-sync-if-due")
+def laws_sync_if_due_command():
+    """Для планировщика: запускает laws-sync по понедельникам ночью, если корпус уже загружен и сегодня ещё не обновляли."""
+    from .services.laws.sync import sync, sync_due
+
+    if sync_due():
+        summary = sync()
+        click.echo(f"laws-sync: новых {summary['new']}, обновлено {summary['updated']}, ошибок {len(summary['errors'])}")
+
+
+@click.command("laws-status")
+def laws_status_command():
+    """Состояние корпуса законов."""
+    from .extensions import db
+    from .models import LawSyncState
+    from .services.laws.search import corpus_stats
+
+    stats = corpus_stats()
+    state = db.session.get(LawSyncState, 1)
+    click.echo(f"Законов: {stats['laws']}, кусков: {stats['chunks']}, с векторами: {stats['vectors']}")
+    click.echo(f"Последняя синхронизация: {state.last_run_at if state else 'ещё не было'}")
+
+
 def register(app):
+    app.cli.add_command(laws_import_command)
+    app.cli.add_command(laws_index_command)
+    app.cli.add_command(laws_sync_command)
+    app.cli.add_command(laws_sync_if_due_command)
+    app.cli.add_command(laws_status_command)
     app.cli.add_command(seed_services_command)
     app.cli.add_command(ai_check_command)
     app.cli.add_command(seed_demo_profiles_command)

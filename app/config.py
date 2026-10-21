@@ -68,7 +68,8 @@ class Config:
     LLM_PROVIDER = os.environ.get("LLM_PROVIDER", "anthropic")
     LLM_MODEL = os.environ.get("LLM_MODEL", "claude-haiku-5-5")
     LLM_BASE_URL = os.environ.get("LLM_BASE_URL", "")  # только для openai_compatible (локальный сервер)
-    LAWS_API_URL = os.environ.get("LAWS_API_URL", "").rstrip("/")  # внутренний сервис поиска по закону (laws-api)
+    LAWS_API_URL = os.environ.get("LAWS_API_URL", "").rstrip("/")  # внешний сервис поиска по закону (laws-api), необязателен
+    LAWS_SOURCE = os.environ.get("LAWS_SOURCE", "auto")  # auto | local | remote: корпус внутри клуба или внешний сервис
     LLM_API_KEY = os.environ.get("LLM_API_KEY", "")  # для openai_compatible, если нужен
     # EMBEDDING_PROVIDER: lexical | openai | google | mistral | openai_compatible | none
     EMBEDDING_PROVIDER = os.environ.get("EMBEDDING_PROVIDER", "lexical")

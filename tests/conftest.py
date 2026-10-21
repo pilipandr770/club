@@ -45,6 +45,8 @@ def app():
     application = create_app("test")
     with application.app_context():
         db.drop_all()
+        db.session.execute(db.text("CREATE EXTENSION IF NOT EXISTS vector"))  # векторы корпуса законов (pgvector)
+        db.session.commit()
         db.create_all()
     yield application
     with application.app_context():

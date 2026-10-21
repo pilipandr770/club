@@ -12,6 +12,7 @@ import urllib.request
 
 from flask import current_app
 
+from ..laws import search as local_search
 from .common import ToolError, json_from_llm
 
 log = logging.getLogger(__name__)
@@ -26,18 +27,34 @@ CATEGORIES = (
 )
 
 
+def _source() -> str:
+    """local — корпус внутри клуба; remote — внешний laws-api; пусто — инструмент выключен.
+
+    LAWS_SOURCE=auto (по умолчанию): локальный корпус, если он загружен, иначе внешний сервис, если задан адрес."""
+    mode = current_app.config.get("LAWS_SOURCE", "auto")
+    has_remote = bool(current_app.config.get("LAWS_API_URL"))
+    if mode in ("auto", "local") and local_search.corpus_ready():
+        return "local"
+    if mode in ("auto", "remote") and has_remote:
+        return "remote"
+    return ""
+
+
 def enabled() -> bool:
-    return bool(current_app.config.get("LAWS_API_URL"))
+    return bool(_source())
 
 
 def search(query: str, category: str = "", k: int = 6) -> list[dict]:
     """Treffer der internen Suche; jeder trägt den Original-Gesetzestext."""
-    base = current_app.config.get("LAWS_API_URL")
-    if not base:
+    source = _source()
+    if not source:
         raise ToolError("Die Gesetzes-Suche ist auf dieser Installation nicht eingerichtet.")
     query = query.strip()[:800]
     if not query:
         raise ToolError("Bitte gib eine Frage oder ein Stichwort ein.")
+    if source == "local":
+        return local_search.search(query, category if category in CATEGORIES else "", k)
+    base = current_app.config.get("LAWS_API_URL")
     params = {"q": query, "k": max(1, min(MAX_HITS, k))}
     if category in CATEGORIES:
         params["category"] = category
