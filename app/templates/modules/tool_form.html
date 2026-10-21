@@ -17,6 +17,19 @@
   <p class="notice">{{ _("This is not legal advice. The tool quotes the text of federal laws and explains what the text says. It never assesses your individual case. Replies are written by an AI. For a binding opinion ask a lawyer.") }}</p>
 {% elif spec.kind == 'domain' %}
   <p class="notice">{{ _("Passive check only: the tool looks at what any visitor or mail server can see. No port scan and no attacks. This is not a penetration test.") }}</p>
+  <details class="examples">
+    <summary>{{ _("What is checked?") }}</summary>
+    <ul class="module-list">
+      <li>{{ _("Encryption: TLS versions, certificate and its expiry, redirect to https, HSTS.") }}</li>
+      <li>{{ _("Security headers and the quality of the Content-Security-Policy.") }}</li>
+      <li>{{ _("Page content: insecure (http) content, third-party sources, scripts without integrity check, outdated components that are visible.") }}</li>
+      <li>{{ _("Cookies: Secure, HttpOnly and SameSite flags.") }}</li>
+      <li>{{ _("E-mail protection: SPF (including the number of lookups), DKIM, DMARC, MTA-STS and TLS-RPT.") }}</li>
+      <li>{{ _("Domain: name servers, expiry date, abandoned www redirect, DNSSEC, CAA and security.txt.") }}</li>
+      <li>{{ _("Subdomains that are publicly visible in certificate lists, for example test or admin systems.") }}</li>
+    </ul>
+    <p class="small muted">{{ _("To look up the expiry date and the subdomains, the domain name is sent to two public directories: rdap.org (domain registers) and crt.sh (certificate transparency logs). Please only check domains that belong to you or that you manage.") }}</p>
+  </details>
 {% else %}
   <p class="notice">{{ _("Only the public page you enter and a few standard files are fetched. It is an automatic snapshot, not a guarantee and not legal advice.") }}</p>
 {% endif %}

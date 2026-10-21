@@ -16,6 +16,7 @@ from urllib.parse import urlparse
 
 from ..safe_fetch import FetchError, public_ips
 from .common import ToolError as SeoCheckError
+from . import security_extra as extra
 from .common import _f, _get, ai_report, score_of
 
 log = logging.getLogger(__name__)
@@ -124,10 +125,10 @@ def analyze(raw: str) -> dict:
 
     # ---- HTTP(S) abrufen (Startseite) und Weiterleitung von http
     try:
-        resp, _, elapsed, final = _fetch(f"https://{host}/")
+        resp, page_body, elapsed, final = _fetch(f"https://{host}/")
         https_ok = True
     except SeoCheckError as exc:
-        resp, final, https_ok, https_err = None, "", False, str(exc)
+        resp, page_body, final, https_ok, https_err = None, b"", "", False, str(exc)
     hdr = {k.lower(): v for k, v in (resp.headers.items() if resp is not None else [])}
     cookies: list[str] = list(resp.cookies) if resp is not None else []
 
@@ -206,7 +207,10 @@ def analyze(raw: str) -> dict:
     # ---- E-Mail-Sicherheit (DNS)
     spf_recs = [t for t in _txt(host) + (_txt(org) if org != host else []) if t.lower().startswith("v=spf1")]
     spf = spf_recs[0] if spf_recs else ""
-    if not spf:
+    if not spf and not extra.records(org, "MX"):
+        F.append(_f("spf", MAIL, "warn", "SPF", "Die Domain empfängt keine Mails, ist aber nicht gegen Missbrauch als Absender geschützt.", 3,
+                    "SPF „v=spf1 -all“ eintragen: damit ist klar, dass von dieser Domain keine Mails kommen dürfen."))
+    elif not spf:
         F.append(_f("spf", MAIL, "fail", "SPF", "Kein SPF-Eintrag: Fremde können leichter in deinem Namen Mails versenden.", 6,
                     "SPF-Eintrag (TXT, „v=spf1 … -all“) mit den erlaubten Versendern anlegen."))
     else:
@@ -224,6 +228,7 @@ def analyze(raw: str) -> dict:
         F.append(_f("dmarc", MAIL, "ok" if pol in ("quarantine", "reject") else "warn", "DMARC",
                     f"Richtlinie p={pol}." + (" Nur Beobachtung, kein Schutz." if pol == "none" else ""), 8,
                     "Nach der Beobachtungsphase auf p=quarantine bzw. p=reject umstellen."))
+        F.extend(extra.dmarc_findings(dmarc_recs[0]))
     dkim = next((s for s in DKIM_SELECTORS if any("p=" in t for t in _txt(f"{s}._domainkey.{org}"))), None)
     F.append(_f("dkim", MAIL, "ok" if dkim else "info", "DKIM",
                 f"Schlüssel gefunden (Selektor „{dkim}“)." if dkim else "Über gängige Selektoren kein Schlüssel gefunden — "
@@ -238,22 +243,36 @@ def analyze(raw: str) -> dict:
                 "Vorhanden." if has_caa else "Nicht gesetzt (empfohlen).", 2,
                 "CAA-Eintrag anlegen, damit nur gewünschte Stellen Zertifikate ausstellen dürfen."))
     sectxt = False
+    sectxt_text = None
     try:
         r3, body, _, _ = _fetch(f"https://{host}/.well-known/security.txt", max_bytes=20_000)
         sectxt = r3.status_code == 200 and b"contact:" in body.lower()
+        if sectxt:
+            sectxt_text = body.decode("utf-8", errors="replace")
     except SeoCheckError:
         pass
     F.append(_f("sectxt", DNS, "ok" if sectxt else "warn", "security.txt (Meldestelle für Sicherheitslücken)",
                 "Vorhanden." if sectxt else "Keine /.well-known/security.txt gefunden.", 3,
                 "Eine security.txt mit Kontakt für Sicherheitsmeldungen unter /.well-known/ veröffentlichen (RFC 9116)."))
 
+    # Zusatzprüfungen (parallel, jede darf scheitern); doppelte Schlüssel der Hauptprüfung werden nicht überschrieben
+    known = {f["key"] for f in F}
+    html = page_body.decode(resp.encoding or "utf-8", errors="replace") if resp is not None else ""
+    try:
+        F.extend(f for f in extra.run_extras(host, org, html, hdr, https_ok, bool(cookies), spf, sectxt_text)
+                 if f["key"] not in known)
+    except Exception:  # noqa: BLE001 - die Hauptprüfung bleibt auch ohne Zusatzprüfungen gültig
+        log.exception("Zusatzprüfungen fehlgeschlagen")
+
     return {"url": f"https://{host}", "score": score_of(F), "findings": F,
-            "facts": {"host": host, "domain": org, "tls": tls.get("version", ""), "aussteller": tls.get("issuer", "")}}
+            "facts": {"host": host, "domain": org, "tls": tls.get("version", ""), "aussteller": tls.get("issuer", ""),
+                      "pruefungen": len(F)}}
 
 
 _SYSTEM = ("Du bist Berater für IT-Sicherheit im Club und schreibst einen Prüfbericht für Unternehmer:innen ohne "
            "Technik-Vorwissen. Ton: ruhig, klar, sachlich, Deutsch, du-Form. Grundlage ist ausschließlich eine PASSIVE Prüfung "
-           "öffentlich sichtbarer Einstellungen (TLS, HTTP-Header, Cookies, E-Mail-DNS). Sage klar, dass das KEIN Penetrationstest "
+           "öffentlich sichtbarer Einstellungen (TLS, HTTP-Header, Seiteninhalt und eingebundene Drittanbieter, Cookies, E-Mail-DNS, "
+           "Domain-Laufzeit, öffentlich sichtbare Subdomains). Sage klar, dass das KEIN Penetrationstest "
            "und keine Schwachstellenprüfung ist und Systeme, Software-Stände und Zugänge nicht geprüft wurden. Keine Rechtsberatung. "
            "Nutze NUR die Prüfergebnisse (erfinde nichts). Ordne Maßnahmen nach Risiko (kritisch zuerst), dann nach Wirkung geteilt "
            "durch Aufwand; erkläre jede Maßnahme verständlich und sage, wer sie umsetzt (z. B. Hoster, Webagentur, Mailanbieter). "

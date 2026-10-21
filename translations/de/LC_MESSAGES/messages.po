@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Club 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-21 14:22+0000\n"
+"POT-Creation-Date: 2026-10-21 16:30+0000\n"
 "PO-Revision-Date: 2026-10-19 21:00+0000\n"
 "Last-Translator: \n"
 "Language: de\n"
@@ -2125,43 +2125,43 @@ msgstr "Deine Reise ist offen, damit andere mitfahren können."
 msgid "The trip is cancelled."
 msgstr "Die Reise ist storniert."
 
-#: app/services/assistant.py:104
+#: app/services/assistant.py:106
 msgid "Your own public profile"
 msgstr "Dein eigenes öffentliches Profil"
 
-#: app/services/assistant.py:105
+#: app/services/assistant.py:107
 msgid "Profile of another member"
 msgstr "Profil eines anderen Mitglieds"
 
-#: app/services/assistant.py:115 app/templates/admin/service_form.html:3
+#: app/services/assistant.py:117 app/templates/admin/service_form.html:3
 msgid "Service"
 msgstr "Leistung"
 
-#: app/services/assistant.py:133
+#: app/services/assistant.py:135
 msgid "Trip"
 msgstr "Reise"
 
-#: app/services/assistant.py:151
+#: app/services/assistant.py:153
 msgid "Meeting"
 msgstr "Treffen"
 
-#: app/services/assistant.py:169
+#: app/services/assistant.py:171
 msgid "Mini-club"
 msgstr "Mini-Club"
 
-#: app/services/assistant.py:186
+#: app/services/assistant.py:188
 msgid "Startup"
 msgstr "Startup"
 
-#: app/services/assistant.py:212
+#: app/services/assistant.py:214
 msgid "Auction lot"
 msgstr "Auktionslos"
 
-#: app/services/assistant.py:225
+#: app/services/assistant.py:227
 msgid "Your matches"
 msgstr "Deine Vorschläge"
 
-#: app/services/assistant.py:237
+#: app/services/assistant.py:239
 msgid "Your report"
 msgstr "Dein Bericht"
 
@@ -2668,7 +2668,7 @@ msgstr "Titel"
 #: app/templates/admin/lots.html:43 app/templates/admin/service_form.html:16
 #: app/templates/modules/auction_detail.html:59
 #: app/templates/modules/auction_form.html:21
-#: app/templates/modules/tool_form.html:60
+#: app/templates/modules/tool_form.html:73
 msgid "Description"
 msgstr "Beschreibung"
 
@@ -4975,6 +4975,70 @@ msgstr ""
 "kein Penetrationstest."
 
 #: app/templates/modules/tool_form.html:21
+msgid "What is checked?"
+msgstr "Was wird geprüft?"
+
+#: app/templates/modules/tool_form.html:23
+msgid ""
+"Encryption: TLS versions, certificate and its expiry, redirect to https, "
+"HSTS."
+msgstr ""
+"Verschlüsselung: TLS-Versionen, Zertifikat und Ablaufdatum, Weiterleitung "
+"auf https, HSTS."
+
+#: app/templates/modules/tool_form.html:24
+msgid "Security headers and the quality of the Content-Security-Policy."
+msgstr "Sicherheits-Header und die Qualität der Content-Security-Policy."
+
+#: app/templates/modules/tool_form.html:25
+msgid ""
+"Page content: insecure (http) content, third-party sources, scripts without"
+" integrity check, outdated components that are visible."
+msgstr ""
+"Seiteninhalt: unsichere (http) Inhalte, Drittanbieter-Quellen, Skripte ohne"
+" Integritätsprüfung, sichtbar veraltete Komponenten."
+
+#: app/templates/modules/tool_form.html:26
+msgid "Cookies: Secure, HttpOnly and SameSite flags."
+msgstr "Cookies: Secure-, HttpOnly- und SameSite-Attribute."
+
+#: app/templates/modules/tool_form.html:27
+msgid ""
+"E-mail protection: SPF (including the number of lookups), DKIM, DMARC, MTA-"
+"STS and TLS-RPT."
+msgstr ""
+"E-Mail-Schutz: SPF (inklusive Anzahl der Abfragen), DKIM, DMARC, MTA-STS "
+"und TLS-RPT."
+
+#: app/templates/modules/tool_form.html:28
+msgid ""
+"Domain: name servers, expiry date, abandoned www redirect, DNSSEC, CAA and "
+"security.txt."
+msgstr ""
+"Domain: Namenserver, Ablaufdatum, verwaiste www-Weiterleitung, DNSSEC, CAA "
+"und security.txt."
+
+#: app/templates/modules/tool_form.html:29
+msgid ""
+"Subdomains that are publicly visible in certificate lists, for example test"
+" or admin systems."
+msgstr ""
+"Subdomains, die in Zertifikatslisten öffentlich sichtbar sind, zum Beispiel"
+" Test- oder Admin-Systeme."
+
+#: app/templates/modules/tool_form.html:31
+msgid ""
+"To look up the expiry date and the subdomains, the domain name is sent to "
+"two public directories: rdap.org (domain registers) and crt.sh (certificate"
+" transparency logs). Please only check domains that belong to you or that "
+"you manage."
+msgstr ""
+"Für Ablaufdatum und Subdomains wird der Domainname an zwei öffentliche "
+"Verzeichnisse gesendet: rdap.org (Domain-Register) und crt.sh (Zertifikats-"
+"Transparenzlisten). Bitte prüfe nur Domains, die dir gehören oder die du "
+"verwaltest."
+
+#: app/templates/modules/tool_form.html:34
 msgid ""
 "Only the public page you enter and a few standard files are fetched. It is "
 "an automatic snapshot, not a guarantee and not legal advice."
@@ -4983,35 +5047,35 @@ msgstr ""
 "Standarddateien. Es ist eine automatische Momentaufnahme, keine Garantie "
 "und keine Rechtsberatung."
 
-#: app/templates/modules/tool_form.html:29
+#: app/templates/modules/tool_form.html:42
 msgid "Your domain"
 msgstr "Deine Domain"
 
-#: app/templates/modules/tool_form.html:29
+#: app/templates/modules/tool_form.html:42
 msgid "Address of your website"
 msgstr "Adresse deiner Website"
 
-#: app/templates/modules/tool_form.html:35
+#: app/templates/modules/tool_form.html:48
 msgid "Search terms (optional, up to five, separated by commas)"
 msgstr "Suchbegriffe (optional, bis zu fünf, durch Kommas getrennt)"
 
-#: app/templates/modules/tool_form.html:42
+#: app/templates/modules/tool_form.html:55
 msgid "Your question or keyword"
 msgstr "Deine Frage oder dein Stichwort"
 
-#: app/templates/modules/tool_form.html:46
+#: app/templates/modules/tool_form.html:59
 msgid "Area of law (optional)"
 msgstr "Rechtsgebiet (optional)"
 
-#: app/templates/modules/tool_form.html:48
+#: app/templates/modules/tool_form.html:61
 msgid "All areas"
 msgstr "Alle Gebiete"
 
-#: app/templates/modules/tool_form.html:55
+#: app/templates/modules/tool_form.html:68
 msgid "Product name"
 msgstr "Name des Produkts"
 
-#: app/templates/modules/tool_form.html:62
+#: app/templates/modules/tool_form.html:75
 msgid ""
 "What is it, for whom, what can it do, what is special? The more concrete, "
 "the better (at least 40 characters)."
@@ -5019,63 +5083,63 @@ msgstr ""
 "Was ist es, für wen, was kann es, was ist besonders? Je konkreter, desto "
 "besser (mindestens 40 Zeichen)."
 
-#: app/templates/modules/tool_form.html:66
+#: app/templates/modules/tool_form.html:79
 msgid "Price A in euros (optional)"
 msgstr "Preis A in Euro (optional)"
 
-#: app/templates/modules/tool_form.html:71
+#: app/templates/modules/tool_form.html:84
 msgid "Price B in euros (optional, for an A/B comparison)"
 msgstr "Preis B in Euro (optional, für einen A/B-Vergleich)"
 
-#: app/templates/modules/tool_form.html:76
+#: app/templates/modules/tool_form.html:89
 msgid "Billing"
 msgstr "Abrechnung"
 
-#: app/templates/modules/tool_form.html:78
+#: app/templates/modules/tool_form.html:91
 msgid "one-off"
 msgstr "einmalig"
 
-#: app/templates/modules/tool_form.html:79
+#: app/templates/modules/tool_form.html:92
 msgid "per month"
 msgstr "pro Monat"
 
-#: app/templates/modules/tool_form.html:80
+#: app/templates/modules/tool_form.html:93
 msgid "per year"
 msgstr "pro Jahr"
 
-#: app/templates/modules/tool_form.html:84
+#: app/templates/modules/tool_form.html:97
 msgid "Target group"
 msgstr "Zielgruppe"
 
-#: app/templates/modules/tool_form.html:86
+#: app/templates/modules/tool_form.html:99
 msgid "Private persons and business decision makers"
 msgstr "Privatpersonen und Geschäftsentscheider"
 
-#: app/templates/modules/tool_form.html:87
+#: app/templates/modules/tool_form.html:100
 msgid "Private persons only"
 msgstr "Nur Privatpersonen"
 
-#: app/templates/modules/tool_form.html:88
+#: app/templates/modules/tool_form.html:101
 msgid "Business decision makers only"
 msgstr "Nur Geschäftsentscheider"
 
-#: app/templates/modules/tool_form.html:92
+#: app/templates/modules/tool_form.html:105
 msgid "Region"
 msgstr "Region"
 
-#: app/templates/modules/tool_form.html:94
+#: app/templates/modules/tool_form.html:107
 msgid "All of Germany"
 msgstr "Deutschlandweit"
 
-#: app/templates/modules/tool_form.html:95
+#: app/templates/modules/tool_form.html:108
 msgid "Rhine-Main area"
 msgstr "Rhein-Main-Gebiet"
 
-#: app/templates/modules/tool_form.html:99
+#: app/templates/modules/tool_form.html:112
 msgid "Number of personas"
 msgstr "Anzahl der Personas"
 
-#: app/templates/modules/tool_form.html:106
+#: app/templates/modules/tool_form.html:119
 msgid "Run"
 msgstr "Starten"
 
