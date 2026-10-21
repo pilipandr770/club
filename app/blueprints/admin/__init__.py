@@ -9,8 +9,9 @@ from ...extensions import db
 from ...models import AuditLog, Consent, Lot, User
 from ...models.user import ROLES, VERIFICATION_STATUSES
 from ...services.audit import audit
-from ...models import Event, Startup, Trip
+from ...models import Event, MiniClub, MiniClubReport, Startup, Trip
 from ...services import events as event_service
+from ...services import miniclubs as miniclub_service
 from ...services import travel as travel_service
 from ...services.ai import status as ai_status
 from ...services import startups as startup_service
@@ -255,6 +256,52 @@ def review_event(event_id):
         db.session.rollback()
         flash(_("This meeting is not waiting for review."), "error")
     return redirect(url_for("admin.events", status="pending"))
+
+
+@bp.route("/miniclubs")
+@admin_required
+def miniclubs():
+    from ...miniclub_guide import flagged_terms
+
+    status = request.args.get("status", "pending")
+    query = MiniClub.query
+    if status in ("pending", "open", "rejected", "closed"):
+        query = query.filter_by(status=status)
+    items = query.order_by(MiniClub.created_at.desc()).limit(200).all()
+    flags = {c.id: flagged_terms(c.name, c.description, c.audience, c.schedule, c.rules) for c in items}
+    reports = (MiniClubReport.query.filter_by(handled=False).order_by(MiniClubReport.created_at).all())
+    return render_template("admin/miniclubs.html", items=items, status=status, flags=flags, reports=reports)
+
+
+@bp.route("/miniclubs/<int:club_id>/review", methods=["POST"])
+@admin_required
+def review_miniclub(club_id):
+    club = db.session.get(MiniClub, club_id) or abort(404)
+    decision = request.form.get("decision")
+    try:
+        if decision == "approve":
+            miniclub_service.approve_club(current_user, club)
+            flash(_("The mini-club is published."), "success")
+        elif decision == "close":
+            miniclub_service.close_club(current_user, club, request.form.get("reason", ""))
+            flash(_("The mini-club is closed."), "success")
+        else:
+            miniclub_service.reject_club(current_user, club, request.form.get("reason", ""))
+            flash(_("The mini-club is rejected."), "success")
+        db.session.commit()
+    except miniclub_service.MiniClubError:
+        db.session.rollback()
+        flash(_("This mini-club is not waiting for review."), "error")
+    return redirect(url_for("admin.miniclubs", status="pending"))
+
+
+@bp.route("/miniclubs/reports/<int:report_id>/handled", methods=["POST"])
+@admin_required
+def handle_miniclub_report(report_id):
+    report = db.session.get(MiniClubReport, report_id) or abort(404)
+    miniclub_service.handle_report(current_user, report)
+    db.session.commit()
+    return redirect(url_for("admin.miniclubs", status="open"))
 
 
 @bp.route("/startups")

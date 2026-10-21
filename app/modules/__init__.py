@@ -28,6 +28,8 @@ MODULES = (
                _l("Join shared trips or offer your own journey to other members.")),
     ModuleSpec("events", _l("Events"), "community.read", "app.modules.events",
                _l("Meet members in person or online: create a meeting and invite others, or join one.")),
+    ModuleSpec("miniclubs", _l("Mini-Clubs"), "community.read", "app.modules.miniclubs",
+               _l("Small groups of members around a shared interest: games without stakes, trips, hobbies, neighbourly help.")),
     ModuleSpec("startups", _l("Startups for investors"), "community.read", "app.modules.startups",
                _l("Present your startup to investors or discover young companies.")),
     ModuleSpec("auction", _l("Auction"), "auction.access", "app.modules.auction",

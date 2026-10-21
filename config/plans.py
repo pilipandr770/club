@@ -11,7 +11,8 @@ def _inherit(base, *extra):
 
 
 GUEST_FEATURES = frozenset({"dashboard", "profile.edit", "community.read", "assistant.use"})
-STARTER_FEATURES = _inherit(GUEST_FEATURES, "services.use", "travel.book", "events.join", "events.create")
+STARTER_FEATURES = _inherit(GUEST_FEATURES, "services.use", "travel.book", "events.join", "events.create",
+                           "miniclubs.join", "miniclubs.create")
 GROWTH_FEATURES = _inherit(STARTER_FEATURES, "startups.publish", "startups.interest", "travel.offer")
 PREMIUM_FEATURES = _inherit(GROWTH_FEATURES, "auction.access")
 

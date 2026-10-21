@@ -1,0 +1,167 @@
+{% extends "base.html" %}
+
+{% block title %}{{ club.name }} · {{ _("Mini-Clubs") }}{% endblock %}
+
+{% block content %}
+<p class="crumbs"><a href="{{ url_for('miniclubs.mine') if is_organizer else url_for('miniclubs.index') }}">← {% if is_organizer %}{{ _("Back to my mini-clubs") }}{% else %}{{ _("Back to all mini-clubs") }}{% endif %}</a></p>
+
+<section class="project-head">
+  {% if club.image_key %}
+    <img class="project-cover" src="{{ url_for('miniclubs.image', club_id=club.id) }}" alt="" width="220" height="160">
+  {% endif %}
+  <div>
+    <h1>{{ club.name }}</h1>
+    <p class="status-line">
+      <span class="pill">{{ miniclub_topic_label(club.topic) }}</span>
+      <span class="pill">{% if club.online %}{{ _("Online") }}{% if club.city %} · {{ club.city }}{% endif %}{% else %}{{ club.city }}{% endif %}</span>
+      <span class="pill">{{ ngettext("%(num)d member", "%(num)d members", card.members) }}</span>
+      {% if card.places_left is not none %}<span class="pill {% if card.places_left == 0 %}pill-warn{% else %}pill-ok{% endif %}">{{ _("places left: %(count)s", count=card.places_left) }}</span>{% endif %}
+    </p>
+    <p class="small muted">{{ _("Run by") }}: {{ club.organizer.first_name }} · {{ miniclub_join_label(club.join_mode) }}</p>
+  </div>
+</section>
+
+<p class="notice">{{ disclaimer }} <a href="{{ url_for('miniclubs.rules') }}">{{ _("Rules for mini-clubs") }}</a></p>
+
+{% if club.status == "pending" and (is_organizer or current_user.is_admin) %}
+  <p class="notice">{{ _("Waiting for review. Members do not see this mini-club yet.") }}</p>
+{% elif club.status == "rejected" and (is_organizer or current_user.is_admin) %}
+  <p class="notice">{{ _("Not published.") }} {{ club.rejection_reason or '' }}</p>
+{% elif club.status == "closed" %}
+  <p class="flash flash-error">{{ _("This mini-club is closed.") }}</p>
+{% endif %}
+
+{% if is_organizer and club.status != "closed" %}
+  <div class="button-row">
+    <a class="button button-secondary" href="{{ url_for('miniclubs.edit', club_id=club.id) }}">{{ _("Edit") }}</a>
+    <form method="post" action="{{ url_for('miniclubs.close', club_id=club.id) }}" class="inline-form">
+      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+      <button type="submit" class="link-button">{{ _("Close this mini-club") }}</button>
+    </form>
+  </div>
+{% endif %}
+
+<section class="card">
+  <h2>{{ _("What is this mini-club about?") }}</h2>
+  <p class="prose">{{ club.description }}</p>
+</section>
+
+{% for key, title in [('audience', _("Who is it for?")), ('schedule', _("When and how often?")), ('rules', _("Rules of this group"))] %}
+  {% if club[key] %}
+  <section class="card">
+    <h2>{{ title }}</h2>
+    <p class="prose">{{ club[key] }}</p>
+  </section>
+  {% endif %}
+{% endfor %}
+
+<section class="card">
+  <h2>{{ _("Members") }}</h2>
+  <p>{{ club.organizer.first_name }} <span class="small muted">({{ _("organiser") }})</span>{% for r in members %}, {{ r.user.first_name }}{% endfor %}</p>
+  {% if is_organizer and members %}
+    <details class="examples">
+      <summary>{{ _("Manage members") }}</summary>
+      <ul class="module-list">
+        {% for r in members %}
+          <li>{{ r.user.first_name }}{% if r.share_contact %} · <a href="mailto:{{ r.user.email }}">{{ r.user.email }}</a>{% endif %}
+            <form method="post" action="{{ url_for('miniclubs.remove', row_id=r.id) }}" class="inline-form">
+              <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+              <button type="submit" class="link-button">{{ _("Remove") }}</button>
+            </form></li>
+        {% endfor %}
+      </ul>
+      <p class="small muted">{{ _("Members allowed you to see their e-mail address. Please use it only for this mini-club.") }}</p>
+    </details>
+  {% endif %}
+</section>
+
+{% if is_organizer and pending %}
+<section class="card">
+  <h2>{{ _("Requests to join") }}</h2>
+  {% for r in pending %}
+    <div class="field">
+      <p><strong>{{ r.user.first_name }}</strong>{% if r.user.profile and r.user.profile.headline %} · <span class="small muted">{{ r.user.profile.headline }}</span>{% endif %}</p>
+      {% if r.message %}<p class="prose">{{ r.message }}</p>{% endif %}
+      <form method="post" action="{{ url_for('miniclubs.answer', row_id=r.id) }}" class="inline-form">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+        <button type="submit" name="answer" value="accept" class="button">{{ _("Accept") }}</button>
+        <button type="submit" name="answer" value="decline" class="button button-secondary">{{ _("Decline") }}</button>
+      </form>
+    </div>
+  {% endfor %}
+</section>
+{% endif %}
+
+{% if is_organizer and club.status == "open" %}
+<section class="card">
+  <h2>{{ _("Message to all members") }}</h2>
+  <p class="small muted">{{ _("Sent by e-mail to every member, once a day at most. The message comes from you, not from the club.") }}</p>
+  <form method="post" action="{{ url_for('miniclubs.announce_view', club_id=club.id) }}" class="form">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+    <div class="field">
+      <label for="text">{{ _("Your message") }}</label>
+      <textarea id="text" name="text" rows="4" maxlength="{{ announcement_max }}" required></textarea>
+    </div>
+    <button type="submit" class="button">{{ _("Send") }}</button>
+  </form>
+</section>
+{% endif %}
+
+{% if row and row.status == "member" %}
+<section class="card">
+  <p><strong>{{ _("You are a member.") }}</strong></p>
+  <p class="small muted">{{ _("Questions about this mini-club? Ask Clubi: it knows the description and the rules.") }}</p>
+  <form method="post" action="{{ url_for('miniclubs.leave_club', club_id=club.id) }}">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+    <button type="submit" class="button button-secondary">{{ _("Leave the mini-club") }}</button>
+  </form>
+</section>
+{% elif row and row.status == "pending" %}
+<section class="card">
+  <p>{{ _("Your request is with the organiser.") }}</p>
+  <form method="post" action="{{ url_for('miniclubs.leave_club', club_id=club.id) }}">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+    <button type="submit" class="button button-secondary">{{ _("Withdraw my request") }}</button>
+  </form>
+</section>
+{% elif can_join %}
+<section class="card">
+  <h2>{% if club.join_mode == "open" %}{{ _("Join this mini-club") }}{% else %}{{ _("Ask to join") }}{% endif %}</h2>
+  <p class="small muted">{{ _("Questions about this mini-club? Ask Clubi: it knows the description and the rules.") }}</p>
+  {% if card.places_left == 0 %}
+    <p class="muted">{{ _("This mini-club has no places left.") }}</p>
+  {% else %}
+  <form method="post" action="{{ url_for('miniclubs.join_club', club_id=club.id) }}" class="form">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+    <div class="field">
+      <label for="message">{{ _("A few words about you") }} <span class="small muted">({{ _("optional") }})</span></label>
+      <textarea id="message" name="message" rows="3" maxlength="500"></textarea>
+    </div>
+    <label class="check">
+      <input type="checkbox" name="share_contact" value="1" required>
+      {{ _("The organiser may see my name and e-mail address to contact me about this mini-club.") }}
+    </label>
+    <p class="small">{{ _("I am an adult. Children take part only together with their parents.") }}</p>
+    <button type="submit" class="button">{% if club.join_mode == "open" %}{{ _("Join") }}{% else %}{{ _("Send request") }}{% endif %}</button>
+  </form>
+  {% endif %}
+</section>
+{% elif not is_organizer and club.status == "open" %}
+  <p class="muted">{{ _("Joining mini-clubs is included in a higher plan.") }}</p>
+{% endif %}
+
+{% if not is_organizer and club.status == "open" %}
+<details class="examples">
+  <summary>{{ _("Report this mini-club") }}</summary>
+  <form method="post" action="{{ url_for('miniclubs.report', club_id=club.id) }}" class="form">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+    <p class="small">{{ _("For example games for money, paid childcare or other offers that are not allowed.") }}</p>
+    <div class="field">
+      <label for="reason">{{ _("What is the problem?") }}</label>
+      <textarea id="reason" name="reason" rows="3" maxlength="1000" required></textarea>
+    </div>
+    <button type="submit" class="button button-secondary">{{ _("Send report") }}</button>
+  </form>
+</details>
+{% endif %}
+{% endblock %}

@@ -115,11 +115,14 @@ def create_app(env=None):
     from .auction_guide import condition_label
     from .event_guide import format_label as event_format_label
     from .event_guide import type_label as event_type_label
+    from .miniclub_guide import join_label as miniclub_join_label
+    from .miniclub_guide import topic_label as miniclub_topic_label
     from .utils import format_eur, utc_to_local_input
 
     app.jinja_env.filters["eur"] = format_eur
     app.jinja_env.filters["local_input"] = utc_to_local_input
-    app.jinja_env.globals.update(event_type_label=event_type_label, event_format_label=event_format_label)
+    app.jinja_env.globals.update(event_type_label=event_type_label, event_format_label=event_format_label,
+                                 miniclub_topic_label=miniclub_topic_label, miniclub_join_label=miniclub_join_label)
     app.jinja_env.globals.update(condition_label=condition_label, category_label=category_label, stage_label=stage_label,
                                  intro_status_label=intro_status_label,
                                  inquiry_status_label=inquiry_status_label)

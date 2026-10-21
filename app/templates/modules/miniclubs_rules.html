@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}{{ _("Rules for mini-clubs") }} · {{ _("Mini-Clubs") }}{% endblock %}
+
+{% block content %}
+<p class="crumbs"><a href="{{ url_for('miniclubs.index') }}">← {{ _("Back to all mini-clubs") }}</a></p>
+<h1>{{ _("Rules for mini-clubs") }}</h1>
+<p class="lead">{{ disclaimer }}</p>
+
+{% for title, text in rules %}
+<section class="card">
+  <h2>{{ title }}</h2>
+  <p class="prose">{{ text }}</p>
+</section>
+{% endfor %}
+{% endblock %}

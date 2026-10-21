@@ -50,7 +50,7 @@ class Config:
     )
 
     # Модули клуба, которые работают (см. app/modules/__init__.py). Список через запятую в .env.
-    ENABLED_MODULES = _csv("ENABLED_MODULES", ("profile", "services", "travel", "events", "startups", "auction"))
+    ENABLED_MODULES = _csv("ENABLED_MODULES", ("profile", "services", "travel", "events", "miniclubs", "startups", "auction"))
 
     # Версия текстов согласий (записывается в каждое согласие)
     CONSENT_VERSION = "2026-10-19"

@@ -47,7 +47,7 @@ def delete_user(user, provider) -> None:
         provider.redact(user.stripe_verification_session_id)
     from flask import current_app
 
-    from ..models import Event, Startup, Trip
+    from ..models import Event, MiniClub, Startup, Trip
 
     # Файлы лежат вне БД: ключи запоминаем до удаления строк и стираем после commit
     keys = [user.profile.photo_key] if user.profile and user.profile.photo_key else []
@@ -57,6 +57,8 @@ def delete_user(user, provider) -> None:
         keys += [key for key in (trip.cover_key, trip.program_key) if key]
     for event in Event.query.filter_by(organizer_id=user.id).all():
         keys += [event.image_key] if event.image_key else []
+    for club in MiniClub.query.filter_by(organizer_id=user.id).all():
+        keys += [club.image_key] if club.image_key else []
     audit("account.deleted", target=f"user:{user.id}", actor_id=user.id)
     db.session.delete(user)  # профиль, согласия и стартапы удаляются каскадом
     db.session.commit()

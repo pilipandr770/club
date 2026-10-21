@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+
+{% block title %}{% if club %}{{ _("Edit mini-club") }}{% else %}{{ _("Create a mini-club") }}{% endif %} · {{ _("Mini-Clubs") }}{% endblock %}
+
+{% macro val(key, default='') -%}{{ form.get(key) if form and key in form else default }}{%- endmacro %}
+
+{% block content %}
+<h1>{% if club %}{{ _("Edit mini-club") }}{% else %}{{ _("Create a mini-club") }}{% endif %}</h1>
+<p class="muted">{{ _("Describe what you want to do together and set the rules of your group. Our team checks every mini-club before it is published. Every change is checked again.") }}</p>
+<p class="notice">{{ disclaimer }} <a href="{{ url_for('miniclubs.rules') }}" target="_blank" rel="noopener">{{ _("Rules for mini-clubs") }}</a></p>
+
+<form method="post" enctype="multipart/form-data" class="form form-wide" action="{{ url_for('miniclubs.edit', club_id=club.id) if club else url_for('miniclubs.new') }}">
+  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+  <section class="card">
+    <h2>{{ _("The basics") }}</h2>
+    <div class="field {% if 'name' in errors %}field-error{% endif %}">
+      <label for="name">{{ _("Name") }}</label>
+      <p class="small">{{ _("A short, clear name, for example: Chess evening Offenbach.") }}</p>
+      <input id="name" name="name" type="text" maxlength="120" required value="{{ val('name', club.name if club else '') }}">
+    </div>
+    <div class="field {% if 'topic' in errors %}field-error{% endif %}">
+      <label for="topic">{{ _("Topic") }}</label>
+      <select id="topic" name="topic">
+        {% for value in topics %}<option value="{{ value }}" {% if val('topic', club.topic if club else 'games') == value %}selected{% endif %}>{{ miniclub_topic_label(value) }}</option>{% endfor %}
+      </select>
+    </div>
+    <div class="field {% if 'city' in errors %}field-error{% endif %}">
+      <label for="city">{{ _("City or region") }}</label>
+      <input id="city" name="city" type="text" maxlength="80" value="{{ val('city', club.city if club else '') }}">
+    </div>
+    <label class="check">
+      <input type="checkbox" name="online" value="1" {% if form.get('online') or (club and club.online and not form) %}checked{% endif %}>
+      {{ _("The group also or only meets online") }}
+    </label>
+    <div class="field {% if 'capacity' in errors %}field-error{% endif %}">
+      <label for="capacity">{{ _("Maximum number of members") }} <span class="small muted">({{ _("optional") }})</span></label>
+      <p class="small">{{ _("Including you. Leave empty for no limit.") }}</p>
+      <input id="capacity" name="capacity" type="number" min="2" max="200" value="{{ val('capacity', club.capacity if club and club.capacity else '') }}">
+    </div>
+    <div class="field">
+      <label for="join_mode">{{ _("How do people join?") }}</label>
+      <select id="join_mode" name="join_mode">
+        {% for value in join_modes %}<option value="{{ value }}" {% if val('join_mode', club.join_mode if club else 'approval') == value %}selected{% endif %}>{{ miniclub_join_label(value) }}</option>{% endfor %}
+      </select>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>{{ _("About the group") }}</h2>
+    {% for field in fields %}
+    <div class="field {% if field.key in errors %}field-error{% endif %}">
+      <label for="{{ field.key }}">{{ field.label }}{% if not field.required %} <span class="small muted">({{ _("optional") }})</span>{% endif %}</label>
+      <p class="small">{{ field.hint }}</p>
+      <textarea id="{{ field.key }}" name="{{ field.key }}" rows="{{ 5 if field.required else 3 }}" maxlength="{{ field.max_length }}" {% if field.required %}required{% endif %}>{{ val(field.key, club[field.key] if club else '') }}</textarea>
+      <details class="examples">
+        <summary>{{ _("Show examples") }}</summary>
+        <ul class="module-list">{% for example in field.examples %}<li>{{ example }}</li>{% endfor %}</ul>
+        <p class="small">{{ _("Examples are for orientation only. Write about your own group in your own words.") }}</p>
+      </details>
+    </div>
+    {% endfor %}
+    <div class="field">
+      <label for="image">{{ _("Photo") }}</label>
+      <p class="small">{{ image_hint }}</p>
+      {% if club and club.image_key %}
+        <p><img class="cover-thumb" src="{{ url_for('miniclubs.image', club_id=club.id) }}" alt="" width="160" height="100"></p>
+        <label class="check"><input type="checkbox" name="remove_image" value="1"> {{ _("Remove the current photo") }}</label>
+      {% endif %}
+      <input id="image" name="image" type="file" accept="image/jpeg,image/png,image/webp">
+    </div>
+  </section>
+
+  <section class="card">
+    <label class="check {% if 'accept_rules' in errors %}field-error{% endif %}">
+      <input type="checkbox" name="accept_rules" value="1" required {% if club %}checked{% endif %}>
+      {{ _("I have read the rules for mini-clubs. My group has no games for money, no paid childcare and no other offers that need a permit, and I am responsible for my group and its meetings.") }}
+    </label>
+  </section>
+
+  <button type="submit" class="button">{% if club %}{{ _("Save changes") }}{% else %}{{ _("Send for review") }}{% endif %}</button>
+</form>
+{% endblock %}

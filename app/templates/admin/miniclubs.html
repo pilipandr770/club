@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% block title %}{{ _("Mini-Clubs") }} · {{ _("Admin") }}{% endblock %}
+
+{% block content %}
+<h1>{{ _("Mini-Clubs") }}</h1>
+<p><a href="{{ url_for('admin.dashboard') }}">{{ _("Back to admin") }}</a></p>
+
+{% if reports %}
+<section class="card">
+  <h2>{{ _("Open reports") }}: {{ reports|length }}</h2>
+  {% for report in reports %}
+  <article>
+    <p><strong><a href="{{ url_for('miniclubs.detail', club_id=report.club_id) }}">{{ report.club.name }}</a></strong>
+      <span class="small muted">· {{ report.reporter.email }} · {{ report.created_at|datetimeformat('dd.MM.yyyy HH:mm') }}</span></p>
+    <p class="prose">{{ report.reason }}</p>
+    <div class="button-row">
+      <form method="post" action="{{ url_for('admin.review_miniclub', club_id=report.club_id) }}" class="inline-form">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+        <input type="hidden" name="reason" value="report">
+        <button type="submit" name="decision" value="close" class="button button-danger">{{ _("Close the mini-club") }}</button>
+      </form>
+      <form method="post" action="{{ url_for('admin.handle_miniclub_report', report_id=report.id) }}" class="inline-form">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+        <button type="submit" class="button button-secondary">{{ _("Mark as handled") }}</button>
+      </form>
+    </div>
+  </article>
+  {% endfor %}
+</section>
+{% endif %}
+
+<nav class="admin-nav">
+  <a href="{{ url_for('admin.miniclubs', status='pending') }}">{{ _("To review") }}</a>
+  <a href="{{ url_for('admin.miniclubs', status='open') }}">{{ _("Published") }}</a>
+  <a href="{{ url_for('admin.miniclubs', status='rejected') }}">{{ _("Rejected") }}</a>
+  <a href="{{ url_for('admin.miniclubs', status='closed') }}">{{ _("Closed") }}</a>
+</nav>
+
+{% for club in items %}
+<section class="card">
+  <h2><a href="{{ url_for('miniclubs.detail', club_id=club.id) }}">{{ club.name }}</a></h2>
+  <p class="small">{{ club.organizer.email }} · {{ miniclub_topic_label(club.topic) }} · {{ club.city }}{% if club.online %} · {{ _("Online") }}{% endif %}</p>
+  {% if flags[club.id] %}
+    <p class="notice"><strong>{{ _("Check these words against the rules:") }}</strong> {{ flags[club.id]|join(", ") }}</p>
+  {% endif %}
+  <p>{{ club.description[:400] }}</p>
+  {% if club.rules %}<p class="small"><em>{{ _("Rules of this group") }}:</em> {{ club.rules[:300] }}</p>{% endif %}
+  <p class="small">{{ club.status }}{% if club.rejection_reason %} · {{ club.rejection_reason }}{% endif %}</p>
+
+  {% if club.status == "pending" %}
+  <form method="post" action="{{ url_for('admin.review_miniclub', club_id=club.id) }}" class="form">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+    <button type="submit" name="decision" value="approve" class="button">{{ _("Publish") }}</button>
+    <div class="field">
+      <label for="reason-{{ club.id }}">{{ _("Reason for rejection (optional)") }}</label>
+      <input id="reason-{{ club.id }}" name="reason" type="text" maxlength="300">
+    </div>
+    <button type="submit" name="decision" value="reject" class="button button-danger">{{ _("Reject") }}</button>
+  </form>
+  {% elif club.status == "open" %}
+  <form method="post" action="{{ url_for('admin.review_miniclub', club_id=club.id) }}" class="inline-form">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+    <button type="submit" name="decision" value="close" class="button button-danger">{{ _("Close the mini-club") }}</button>
+  </form>
+  {% endif %}
+</section>
+{% else %}
+  <p>{{ _("Nothing here.") }}</p>
+{% endfor %}
+{% endblock %}

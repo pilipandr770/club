@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-10-21 13:42+0000\n"
+"POT-Creation-Date: 2026-10-21 14:22+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -124,7 +124,9 @@ msgid ""
 "club members outside of work."
 msgstr ""
 
-#: app/event_guide.py:33 app/templates/modules/events_detail.html:70
+#: app/event_guide.py:33 app/miniclub_guide.py:39
+#: app/templates/modules/events_detail.html:70
+#: app/templates/modules/miniclubs_detail.html:49
 msgid "Who is it for?"
 msgstr ""
 
@@ -214,7 +216,8 @@ msgstr ""
 msgid "Online session"
 msgstr ""
 
-#: app/event_guide.py:67 app/modules/startups/labels.py:12
+#: app/event_guide.py:67 app/miniclub_guide.py:74
+#: app/modules/startups/labels.py:12
 msgid "Other"
 msgstr ""
 
@@ -222,7 +225,9 @@ msgstr ""
 msgid "In person"
 msgstr ""
 
-#: app/event_guide.py:71
+#: app/event_guide.py:71 app/templates/admin/miniclubs.html:43
+#: app/templates/modules/miniclubs_detail.html:16
+#: app/templates/modules/miniclubs_list.html:50
 msgid "Online"
 msgstr ""
 
@@ -246,6 +251,218 @@ msgstr ""
 msgid ""
 "For online or hybrid meetings: the link to join. Only members who sign up"
 " can see it."
+msgstr ""
+
+#: app/miniclub_guide.py:27 app/templates/modules/miniclubs_detail.html:45
+msgid "What is this mini-club about?"
+msgstr ""
+
+#: app/miniclub_guide.py:28
+msgid ""
+"Two or three sentences: what you do together, what the mood is and why "
+"someone should join."
+msgstr ""
+
+#: app/miniclub_guide.py:30
+msgid ""
+"We play chess on Tuesday evenings, for fun and without stakes. Beginners "
+"and experienced players are welcome."
+msgstr ""
+
+#: app/miniclub_guide.py:31
+msgid ""
+"A small group that goes fishing on weekends at lakes around Frankfurt and"
+" shares tips and gear."
+msgstr ""
+
+#: app/miniclub_guide.py:32
+msgid ""
+"Neighbours who help each other for free: carrying, small repairs, a lift "
+"to the doctor, a chat over coffee."
+msgstr ""
+
+#: app/miniclub_guide.py:40
+msgid "Who fits the group: level, age, language, interests. Members are adults."
+msgstr ""
+
+#: app/miniclub_guide.py:42
+msgid "Adults of any level who enjoy chess. We speak German and English."
+msgstr ""
+
+#: app/miniclub_guide.py:43
+msgid ""
+"Parents with small children who want to meet other families. Parents stay"
+" with their children at all times."
+msgstr ""
+
+#: app/miniclub_guide.py:48 app/templates/modules/miniclubs_detail.html:49
+msgid "When and how often?"
+msgstr ""
+
+#: app/miniclub_guide.py:49
+msgid ""
+"Regular days and times, or how you agree on dates. Specific meetings can "
+"be planned later."
+msgstr ""
+
+#: app/miniclub_guide.py:51
+msgid "Every Tuesday from 19:00 to 21:30, in a cafe or online."
+msgstr ""
+
+#: app/miniclub_guide.py:52
+msgid "About once a month on a Saturday morning; dates are agreed in the group."
+msgstr ""
+
+#: app/miniclub_guide.py:57
+msgid "Rules of your group"
+msgstr ""
+
+#: app/miniclub_guide.py:58
+msgid ""
+"The members set their own rules: respect, punctuality, costs shared among"
+" members. The club rules for mini-clubs always apply as well."
+msgstr ""
+
+#: app/miniclub_guide.py:60
+msgid ""
+"Be friendly and on time. Costs such as petrol or entrance fees are shared"
+" among those who join."
+msgstr ""
+
+#: app/miniclub_guide.py:61
+msgid "We play without stakes. Please cancel early if you cannot come."
+msgstr ""
+
+#: app/miniclub_guide.py:67
+msgid "Games without stakes"
+msgstr ""
+
+#: app/miniclub_guide.py:68
+msgid "Sport and movement"
+msgstr ""
+
+#: app/miniclub_guide.py:69
+msgid "Outdoors and trips"
+msgstr ""
+
+#: app/miniclub_guide.py:70
+msgid "Creative and hobbies"
+msgstr ""
+
+#: app/miniclub_guide.py:71
+msgid "Learning and languages"
+msgstr ""
+
+#: app/miniclub_guide.py:72
+msgid "Parents and children together"
+msgstr ""
+
+#: app/miniclub_guide.py:73
+msgid "Neighbourly help"
+msgstr ""
+
+#: app/miniclub_guide.py:77
+msgid "Open: everyone can join right away"
+msgstr ""
+
+#: app/miniclub_guide.py:78
+msgid "By request: you accept new members"
+msgstr ""
+
+#: app/miniclub_guide.py:90
+msgid "A photo that shows what you do together (JPG, PNG or WebP, up to 5 MB)."
+msgstr ""
+
+#: app/miniclub_guide.py:93
+msgid ""
+"Mini-clubs are run by members, not by the club. The club is an online "
+"platform: it has no premises, organises no games or care and handles no "
+"payments. It only helps members get to know each other."
+msgstr ""
+
+#: app/miniclub_guide.py:98
+msgid "What the club is and is not"
+msgstr ""
+
+#: app/miniclub_guide.py:99
+msgid ""
+"The club is an online platform. We have no premises and do not host "
+"meetings, games or care of any kind. We bring members together and help "
+"them get in touch. Mini-clubs are created and run by members. The founder"
+" and the participants are responsible for their meetings, their rules and"
+" their behaviour."
+msgstr ""
+
+#: app/miniclub_guide.py:102
+msgid "Not allowed in mini-clubs"
+msgstr ""
+
+#: app/miniclub_guide.py:103
+msgid ""
+"Gambling and games for money or valuables: stakes, bets, pots, "
+"tournaments with cash prizes. Offers that need an official permit, for "
+"example paid childcare (day care, childminding), care or nursing "
+"services, medical or therapeutic treatment, serving alcohol for money. "
+"Offers to look after other people's children without their parents. "
+"Anything illegal or harmful."
+msgstr ""
+
+#: app/miniclub_guide.py:107
+msgid "Allowed and welcome"
+msgstr ""
+
+#: app/miniclub_guide.py:108
+msgid ""
+"Games for fun without stakes, such as chess or cards. Trips, hobbies, "
+"sport, learning together. Neighbourly help between members without "
+"payment. Parent-and-child meetings where the parents stay with their "
+"children. Shared costs, for example petrol or an entrance fee, that "
+"participants split among themselves."
+msgstr ""
+
+#: app/miniclub_guide.py:111
+msgid "Families and private arrangements"
+msgstr ""
+
+#: app/miniclub_guide.py:112
+msgid ""
+"Adults only can be members. Children take part only together with their "
+"parents. If families know each other and their children visit one "
+"another, that is a private matter between the families. It is not a mini-"
+"club offer, and a mini-club must not advertise it or offer it for money."
+msgstr ""
+
+#: app/miniclub_guide.py:115
+msgid "Money"
+msgstr ""
+
+#: app/miniclub_guide.py:116
+msgid ""
+"The club handles no payments and does not arrange paid services. What "
+"members agree on among themselves, such as sharing costs, is their own "
+"matter. A mini-club may not collect fees for care, games or other "
+"regulated services."
+msgstr ""
+
+#: app/miniclub_guide.py:118
+msgid "Reports and removal"
+msgstr ""
+
+#: app/miniclub_guide.py:119
+msgid ""
+"Every mini-club has a report button. We review mini-clubs before they are"
+" published and remove any that break these rules. Members who break them "
+"can be removed."
+msgstr ""
+
+#: app/miniclub_guide.py:121
+msgid "Please note"
+msgstr ""
+
+#: app/miniclub_guide.py:122
+msgid ""
+"These rules are not legal advice. The club team can change or remove "
+"mini-clubs at any time."
 msgstr ""
 
 #: app/profile_guide.py:27 app/templates/modules/profile.html:13
@@ -308,7 +525,7 @@ msgstr ""
 msgid "Energy"
 msgstr ""
 
-#: app/profile_guide.py:63
+#: app/profile_guide.py:63 app/templates/modules/miniclubs_list.html:34
 msgid "City"
 msgstr ""
 
@@ -802,99 +1019,116 @@ msgid ""
 "questions about the trip."
 msgstr ""
 
-#: app/blueprints/admin/__init__.py:129
+#: app/blueprints/admin/__init__.py:130
 msgid "Changes are saved."
 msgstr ""
 
-#: app/blueprints/admin/__init__.py:131 app/blueprints/admin/__init__.py:283
-#: app/blueprints/admin/__init__.py:313
+#: app/blueprints/admin/__init__.py:132 app/blueprints/admin/__init__.py:330
+#: app/blueprints/admin/__init__.py:360
 msgid "Nothing has changed."
 msgstr ""
 
-#: app/blueprints/admin/__init__.py:150
+#: app/blueprints/admin/__init__.py:151
 #, python-format
 msgid "Please check the lot fields: %(fields)s"
 msgstr ""
 
-#: app/blueprints/admin/__init__.py:154
+#: app/blueprints/admin/__init__.py:155
 msgid "The lot is created."
 msgstr ""
 
-#: app/blueprints/admin/__init__.py:168
+#: app/blueprints/admin/__init__.py:169
 msgid "The lot is published."
 msgstr ""
 
-#: app/blueprints/admin/__init__.py:171
+#: app/blueprints/admin/__init__.py:172
 msgid "The lot is rejected."
 msgstr ""
 
-#: app/blueprints/admin/__init__.py:175 app/modules/auction/__init__.py:64
+#: app/blueprints/admin/__init__.py:176 app/modules/auction/__init__.py:64
 msgid "This lot is not waiting for review."
 msgstr ""
 
-#: app/blueprints/admin/__init__.py:185
+#: app/blueprints/admin/__init__.py:186
 msgid "The lot is closed."
 msgstr ""
 
-#: app/blueprints/admin/__init__.py:249
+#: app/blueprints/admin/__init__.py:250
 msgid "The meeting is published."
 msgstr ""
 
-#: app/blueprints/admin/__init__.py:252
+#: app/blueprints/admin/__init__.py:253
 msgid "The meeting is rejected."
 msgstr ""
 
-#: app/blueprints/admin/__init__.py:256
+#: app/blueprints/admin/__init__.py:257
 msgid "This meeting is not waiting for review."
 msgstr ""
 
-#: app/blueprints/admin/__init__.py:278
+#: app/blueprints/admin/__init__.py:284
+msgid "The mini-club is published."
+msgstr ""
+
+#: app/blueprints/admin/__init__.py:287 app/modules/miniclubs/__init__.py:305
+msgid "The mini-club is closed."
+msgstr ""
+
+#: app/blueprints/admin/__init__.py:290
+msgid "The mini-club is rejected."
+msgstr ""
+
+#: app/blueprints/admin/__init__.py:294
+msgid "This mini-club is not waiting for review."
+msgstr ""
+
+#: app/blueprints/admin/__init__.py:325
 msgid "The startup is published."
 msgstr ""
 
-#: app/blueprints/admin/__init__.py:281
+#: app/blueprints/admin/__init__.py:328
 msgid "The startup is rejected."
 msgstr ""
 
-#: app/blueprints/admin/__init__.py:308
+#: app/blueprints/admin/__init__.py:355
 msgid "The offer is published."
 msgstr ""
 
-#: app/blueprints/admin/__init__.py:311
+#: app/blueprints/admin/__init__.py:358
 msgid "The offer is rejected."
 msgstr ""
 
-#: app/blueprints/admin/__init__.py:364
+#: app/blueprints/admin/__init__.py:411
 #, python-format
 msgid "Participant created. Temporary password (shown once): %(password)s"
 msgstr ""
 
-#: app/blueprints/admin/__init__.py:366
+#: app/blueprints/admin/__init__.py:413
 msgid "Participant created."
 msgstr ""
 
-#: app/blueprints/admin/__init__.py:368 app/modules/auction/__init__.py:227
+#: app/blueprints/admin/__init__.py:415 app/modules/auction/__init__.py:227
 #: app/modules/auction/__init__.py:253 app/modules/events/__init__.py:131
-#: app/modules/events/__init__.py:158 app/modules/profile/__init__.py:70
+#: app/modules/events/__init__.py:158 app/modules/miniclubs/__init__.py:135
+#: app/modules/miniclubs/__init__.py:162 app/modules/profile/__init__.py:70
 #: app/modules/startups/__init__.py:72 app/modules/travel/__init__.py:201
 #: app/modules/travel/__init__.py:247
 #, python-format
 msgid "Please check these fields: %(fields)s"
 msgstr ""
 
-#: app/blueprints/admin/__init__.py:385
+#: app/blueprints/admin/__init__.py:432
 msgid "The identity check is marked as verified."
 msgstr ""
 
-#: app/blueprints/admin/__init__.py:426
+#: app/blueprints/admin/__init__.py:473
 msgid "Please enter a title."
 msgstr ""
 
-#: app/blueprints/admin/__init__.py:430
+#: app/blueprints/admin/__init__.py:477
 msgid "The service is saved."
 msgstr ""
 
-#: app/blueprints/admin/__init__.py:457
+#: app/blueprints/admin/__init__.py:504
 msgid "Unknown status."
 msgstr ""
 
@@ -911,9 +1145,9 @@ msgid "You have reached today's limit of questions. It renews tomorrow."
 msgstr ""
 
 #: app/blueprints/assistant/__init__.py:19 app/modules/events/__init__.py:51
-#: app/modules/profile/__init__.py:188 app/modules/services/__init__.py:18
-#: app/modules/startups/__init__.py:35 app/modules/travel/__init__.py:44
-#: app/templates/partials/assistant.html:4
+#: app/modules/miniclubs/__init__.py:53 app/modules/profile/__init__.py:188
+#: app/modules/services/__init__.py:18 app/modules/startups/__init__.py:35
+#: app/modules/travel/__init__.py:44 app/templates/partials/assistant.html:4
 msgid "Something went wrong. Please try again."
 msgstr ""
 
@@ -1017,7 +1251,7 @@ msgid ""
 "powers your matches."
 msgstr ""
 
-#: app/modules/__init__.py:25 app/templates/admin/dashboard.html:13
+#: app/modules/__init__.py:25 app/templates/admin/dashboard.html:14
 #: app/templates/admin/services.html:3 app/templates/admin/services.html:6
 #: app/templates/modules/service_detail.html:3
 #: app/templates/modules/services_list.html:3
@@ -1060,17 +1294,34 @@ msgid ""
 "join one."
 msgstr ""
 
-#: app/modules/__init__.py:31 app/templates/modules/startups_detail.html:3
+#: app/modules/__init__.py:31 app/templates/admin/dashboard.html:13
+#: app/templates/admin/miniclubs.html:3 app/templates/admin/miniclubs.html:6
+#: app/templates/modules/miniclubs_detail.html:3
+#: app/templates/modules/miniclubs_form.html:3
+#: app/templates/modules/miniclubs_list.html:3
+#: app/templates/modules/miniclubs_list.html:6
+#: app/templates/modules/miniclubs_mine.html:3
+#: app/templates/modules/miniclubs_rules.html:3
+msgid "Mini-Clubs"
+msgstr ""
+
+#: app/modules/__init__.py:32
+msgid ""
+"Small groups of members around a shared interest: games without stakes, "
+"trips, hobbies, neighbourly help."
+msgstr ""
+
+#: app/modules/__init__.py:33 app/templates/modules/startups_detail.html:3
 #: app/templates/modules/startups_list.html:3
 #: app/templates/modules/startups_list.html:6
 msgid "Startups for investors"
 msgstr ""
 
-#: app/modules/__init__.py:32
+#: app/modules/__init__.py:34
 msgid "Present your startup to investors or discover young companies."
 msgstr ""
 
-#: app/modules/__init__.py:33 app/templates/modules/auction_detail.html:3
+#: app/modules/__init__.py:35 app/templates/modules/auction_detail.html:3
 #: app/templates/modules/auction_form.html:3
 #: app/templates/modules/auction_list.html:3
 #: app/templates/modules/auction_list.html:6
@@ -1078,7 +1329,7 @@ msgstr ""
 msgid "Auction"
 msgstr ""
 
-#: app/modules/__init__.py:34
+#: app/modules/__init__.py:36
 msgid "Exclusive lots with rising or falling prices."
 msgstr ""
 
@@ -1111,8 +1362,8 @@ msgid "Please allow the seller to see your contact details if you win."
 msgstr ""
 
 #: app/modules/auction/__init__.py:60 app/modules/events/__init__.py:45
-#: app/modules/profile/__init__.py:185 app/modules/startups/__init__.py:33
-#: app/modules/travel/__init__.py:39
+#: app/modules/miniclubs/__init__.py:44 app/modules/profile/__init__.py:185
+#: app/modules/startups/__init__.py:33 app/modules/travel/__init__.py:39
 msgid "This is not available to you."
 msgstr ""
 
@@ -1133,33 +1384,38 @@ msgid "The bid could not be placed."
 msgstr ""
 
 #: app/modules/auction/__init__.py:71 app/modules/events/__init__.py:56
-#: app/modules/profile/__init__.py:36 app/modules/startups/__init__.py:40
-#: app/modules/travel/__init__.py:49
+#: app/modules/miniclubs/__init__.py:58 app/modules/profile/__init__.py:36
+#: app/modules/startups/__init__.py:40 app/modules/travel/__init__.py:49
 msgid "The file is empty."
 msgstr ""
 
 #: app/modules/auction/__init__.py:72 app/modules/events/__init__.py:57
-#: app/modules/startups/__init__.py:41 app/modules/travel/__init__.py:50
+#: app/modules/miniclubs/__init__.py:59 app/modules/startups/__init__.py:41
+#: app/modules/travel/__init__.py:50
 msgid "The file is too large."
 msgstr ""
 
 #: app/modules/auction/__init__.py:73 app/modules/events/__init__.py:58
-#: app/modules/startups/__init__.py:42 app/modules/travel/__init__.py:51
+#: app/modules/miniclubs/__init__.py:60 app/modules/startups/__init__.py:42
+#: app/modules/travel/__init__.py:51
 msgid "The picture has too many pixels."
 msgstr ""
 
 #: app/modules/auction/__init__.py:74 app/modules/events/__init__.py:59
-#: app/modules/startups/__init__.py:43 app/modules/travel/__init__.py:52
+#: app/modules/miniclubs/__init__.py:61 app/modules/startups/__init__.py:43
+#: app/modules/travel/__init__.py:52
 msgid "This file is not a picture."
 msgstr ""
 
 #: app/modules/auction/__init__.py:75 app/modules/events/__init__.py:60
-#: app/modules/startups/__init__.py:44 app/modules/travel/__init__.py:53
+#: app/modules/miniclubs/__init__.py:62 app/modules/startups/__init__.py:44
+#: app/modules/travel/__init__.py:53
 msgid "Please use a JPG, PNG or WebP picture."
 msgstr ""
 
 #: app/modules/auction/__init__.py:77 app/modules/events/__init__.py:62
-#: app/modules/startups/__init__.py:49 app/modules/travel/__init__.py:58
+#: app/modules/miniclubs/__init__.py:64 app/modules/startups/__init__.py:49
+#: app/modules/travel/__init__.py:58
 msgid "The file could not be saved."
 msgstr ""
 
@@ -1168,7 +1424,8 @@ msgid "Your lot is sent for review. We will publish it after the check."
 msgstr ""
 
 #: app/modules/auction/__init__.py:269 app/modules/events/__init__.py:175
-#: app/modules/startups/__init__.py:174 app/modules/travel/__init__.py:262
+#: app/modules/miniclubs/__init__.py:179 app/modules/startups/__init__.py:174
+#: app/modules/travel/__init__.py:262
 msgid "Your changes are sent for review."
 msgstr ""
 
@@ -1233,7 +1490,8 @@ msgstr ""
 msgid "Please choose between 1 and 5 places."
 msgstr ""
 
-#: app/modules/events/__init__.py:43 app/modules/travel/__init__.py:41
+#: app/modules/events/__init__.py:43 app/modules/miniclubs/__init__.py:42
+#: app/modules/travel/__init__.py:41
 msgid ""
 "Please allow the organiser to see your e-mail address, otherwise they "
 "cannot reach you."
@@ -1267,7 +1525,8 @@ msgstr ""
 msgid "Your meeting is sent for review. We will publish it after the check."
 msgstr ""
 
-#: app/modules/events/__init__.py:174 app/modules/travel/__init__.py:262
+#: app/modules/events/__init__.py:174 app/modules/miniclubs/__init__.py:178
+#: app/modules/travel/__init__.py:262
 msgid "Your changes are saved."
 msgstr ""
 
@@ -1285,6 +1544,99 @@ msgstr ""
 
 #: app/modules/events/__init__.py:299
 msgid "The meeting is cancelled. Everyone who signed up is informed."
+msgstr ""
+
+#: app/modules/miniclubs/__init__.py:36
+msgid "This mini-club does not exist."
+msgstr ""
+
+#: app/modules/miniclubs/__init__.py:37
+msgid "This mini-club is not open right now."
+msgstr ""
+
+#: app/modules/miniclubs/__init__.py:38
+msgid "This is your own mini-club."
+msgstr ""
+
+#: app/modules/miniclubs/__init__.py:39
+msgid "You are already a member or your request is pending."
+msgstr ""
+
+#: app/modules/miniclubs/__init__.py:40
+msgid "The organiser has already answered your request."
+msgstr ""
+
+#: app/modules/miniclubs/__init__.py:41
+#: app/templates/modules/miniclubs_detail.html:132
+msgid "This mini-club has no places left."
+msgstr ""
+
+#: app/modules/miniclubs/__init__.py:43
+msgid "You are not a member of this mini-club."
+msgstr ""
+
+#: app/modules/miniclubs/__init__.py:45
+msgid "This mini-club can no longer be edited."
+msgstr ""
+
+#: app/modules/miniclubs/__init__.py:46 app/modules/profile/__init__.py:186
+msgid "This request has already been answered."
+msgstr ""
+
+#: app/modules/miniclubs/__init__.py:47
+msgid "Please write a message."
+msgstr ""
+
+#: app/modules/miniclubs/__init__.py:48
+msgid "The message is too long."
+msgstr ""
+
+#: app/modules/miniclubs/__init__.py:49
+msgid "You can send one message to all members per day."
+msgstr ""
+
+#: app/modules/miniclubs/__init__.py:50
+msgid "There are no members yet."
+msgstr ""
+
+#: app/modules/miniclubs/__init__.py:51
+msgid "Please describe the problem in a few words."
+msgstr ""
+
+#: app/modules/miniclubs/__init__.py:147
+msgid "Your mini-club is published."
+msgstr ""
+
+#: app/modules/miniclubs/__init__.py:148
+msgid "Your mini-club is sent for review. We will publish it after the check."
+msgstr ""
+
+#: app/modules/miniclubs/__init__.py:241
+msgid "Your request is sent to the organiser."
+msgstr ""
+
+#: app/modules/miniclubs/__init__.py:243
+msgid "You are a member now."
+msgstr ""
+
+#: app/modules/miniclubs/__init__.py:250
+msgid "You left the mini-club."
+msgstr ""
+
+#: app/modules/miniclubs/__init__.py:260 app/modules/startups/__init__.py:225
+msgid "Your answer is saved."
+msgstr ""
+
+#: app/modules/miniclubs/__init__.py:272
+msgid "The member is removed."
+msgstr ""
+
+#: app/modules/miniclubs/__init__.py:285
+msgid "Your message is sent to all members."
+msgstr ""
+
+#: app/modules/miniclubs/__init__.py:295
+msgid "Thank you. Our team will look at it."
 msgstr ""
 
 #: app/modules/profile/__init__.py:32
@@ -1335,10 +1687,6 @@ msgstr ""
 
 #: app/modules/profile/__init__.py:184
 msgid "You have reached today's limit of requests. Please try again tomorrow."
-msgstr ""
-
-#: app/modules/profile/__init__.py:186
-msgid "This request has already been answered."
 msgstr ""
 
 #: app/modules/profile/__init__.py:197
@@ -1425,10 +1773,6 @@ msgstr ""
 msgid ""
 "Your startup is sent for review. We will let you know when it is "
 "published."
-msgstr ""
-
-#: app/modules/startups/__init__.py:225
-msgid "Your answer is saved."
 msgstr ""
 
 #: app/modules/startups/labels.py:6
@@ -1531,39 +1875,43 @@ msgstr ""
 msgid "The trip is cancelled."
 msgstr ""
 
-#: app/services/assistant.py:101
+#: app/services/assistant.py:104
 msgid "Your own public profile"
 msgstr ""
 
-#: app/services/assistant.py:102
+#: app/services/assistant.py:105
 msgid "Profile of another member"
 msgstr ""
 
-#: app/services/assistant.py:112 app/templates/admin/service_form.html:3
+#: app/services/assistant.py:115 app/templates/admin/service_form.html:3
 msgid "Service"
 msgstr ""
 
-#: app/services/assistant.py:130
+#: app/services/assistant.py:133
 msgid "Trip"
 msgstr ""
 
-#: app/services/assistant.py:148
+#: app/services/assistant.py:151
 msgid "Meeting"
 msgstr ""
 
-#: app/services/assistant.py:165
+#: app/services/assistant.py:169
+msgid "Mini-club"
+msgstr ""
+
+#: app/services/assistant.py:186
 msgid "Startup"
 msgstr ""
 
-#: app/services/assistant.py:191
+#: app/services/assistant.py:212
 msgid "Auction lot"
 msgstr ""
 
-#: app/services/assistant.py:204
+#: app/services/assistant.py:225
 msgid "Your matches"
 msgstr ""
 
-#: app/services/assistant.py:216
+#: app/services/assistant.py:237
 msgid "Your report"
 msgstr ""
 
@@ -1646,7 +1994,8 @@ msgstr ""
 msgid "Done"
 msgstr ""
 
-#: app/services/catalog.py:96
+#: app/services/catalog.py:96 app/templates/admin/miniclubs.html:37
+#: app/templates/modules/miniclubs_mine.html:22
 msgid "Closed"
 msgstr ""
 
@@ -1694,6 +2043,55 @@ msgstr ""
 
 #: app/services/intros.py:116 app/templates/modules/profile_intros.html:38
 msgid "Waiting for an answer."
+msgstr ""
+
+#: app/services/miniclubs.py:27
+#, python-format
+msgid "Message from the mini-club %(club)s"
+msgstr ""
+
+#: app/services/miniclubs.py:28
+#, python-format
+msgid ""
+"%(organizer)s, the organiser of the mini-club \"%(club)s\", writes to the"
+" members:\n"
+"\n"
+"%(text)s\n"
+"\n"
+"This message was sent by a member, not by the club. The club is only an "
+"online platform. You can leave the mini-club or report it here: %(url)s"
+msgstr ""
+
+#: app/services/miniclubs.py:31
+#, python-format
+msgid "New request for your mini-club %(club)s"
+msgstr ""
+
+#: app/services/miniclubs.py:32
+#, python-format
+msgid ""
+"%(member)s would like to join your mini-club \"%(club)s\".\n"
+"Please answer here: %(url)s"
+msgstr ""
+
+#: app/services/miniclubs.py:33
+#, python-format
+msgid "Your request for %(club)s"
+msgstr ""
+
+#: app/services/miniclubs.py:34
+#, python-format
+msgid ""
+"Good news: you are now a member of the mini-club \"%(club)s\".\n"
+"%(url)s"
+msgstr ""
+
+#: app/services/miniclubs.py:35
+#, python-format
+msgid ""
+"Unfortunately the organiser of \"%(club)s\" could not accept your request"
+" this time.\n"
+"%(url)s"
 msgstr ""
 
 #: app/services/verification.py:147
@@ -1774,6 +2172,7 @@ msgstr ""
 #: app/templates/member/dashboard.html:3
 #: app/templates/modules/auction_list.html:3
 #: app/templates/modules/events_list.html:3
+#: app/templates/modules/miniclubs_list.html:3
 #: app/templates/modules/profile.html:3
 #: app/templates/modules/profile_directory.html:3
 #: app/templates/modules/profile_edit.html:3
@@ -1794,7 +2193,8 @@ msgstr ""
 
 #: app/templates/admin/audit.html:3 app/templates/admin/dashboard.html:3
 #: app/templates/admin/dashboard.html:6 app/templates/admin/events.html:3
-#: app/templates/admin/lots.html:3 app/templates/admin/service_form.html:3
+#: app/templates/admin/lots.html:3 app/templates/admin/miniclubs.html:3
+#: app/templates/admin/service_form.html:3
 #: app/templates/admin/service_inquiries.html:3
 #: app/templates/admin/services.html:3 app/templates/admin/startups.html:3
 #: app/templates/admin/travel.html:3 app/templates/admin/user_detail.html:3
@@ -1819,14 +2219,14 @@ msgid "Register"
 msgstr ""
 
 #: app/templates/admin/audit.html:3 app/templates/admin/audit.html:6
-#: app/templates/admin/dashboard.html:14
+#: app/templates/admin/dashboard.html:15
 msgid "Audit log"
 msgstr ""
 
 #: app/templates/admin/audit.html:7 app/templates/admin/events.html:7
-#: app/templates/admin/lots.html:7 app/templates/admin/services.html:7
-#: app/templates/admin/startups.html:7 app/templates/admin/travel.html:7
-#: app/templates/admin/users.html:7
+#: app/templates/admin/lots.html:7 app/templates/admin/miniclubs.html:7
+#: app/templates/admin/services.html:7 app/templates/admin/startups.html:7
+#: app/templates/admin/travel.html:7 app/templates/admin/users.html:7
 msgid "Back to admin"
 msgstr ""
 
@@ -1854,9 +2254,10 @@ msgstr ""
 msgid "The log is empty."
 msgstr ""
 
-#: app/templates/admin/dashboard.html:8 app/templates/admin/dashboard.html:18
+#: app/templates/admin/dashboard.html:8 app/templates/admin/dashboard.html:19
 #: app/templates/admin/users.html:3 app/templates/admin/users.html:6
 #: app/templates/modules/events_detail.html:138
+#: app/templates/modules/miniclubs_detail.html:59
 #: app/templates/modules/profile_directory.html:3
 #: app/templates/modules/profile_directory.html:6
 #: app/templates/modules/profile_view.html:3
@@ -1878,53 +2279,55 @@ msgstr ""
 msgid "Travel offers"
 msgstr ""
 
-#: app/templates/admin/dashboard.html:27
+#: app/templates/admin/dashboard.html:28
 msgid "Identity checks"
 msgstr ""
 
-#: app/templates/admin/dashboard.html:36
+#: app/templates/admin/dashboard.html:37
 msgid "Open auction lots"
 msgstr ""
 
-#: app/templates/admin/dashboard.html:40
+#: app/templates/admin/dashboard.html:41
 msgid "AI models"
 msgstr ""
 
-#: app/templates/admin/dashboard.html:42
+#: app/templates/admin/dashboard.html:43
 msgid "Language model"
 msgstr ""
 
-#: app/templates/admin/dashboard.html:42
+#: app/templates/admin/dashboard.html:43
 msgid "on"
 msgstr ""
 
-#: app/templates/admin/dashboard.html:42
+#: app/templates/admin/dashboard.html:43
 msgid "off"
 msgstr ""
 
-#: app/templates/admin/dashboard.html:43
+#: app/templates/admin/dashboard.html:44
 msgid "Embeddings"
 msgstr ""
 
-#: app/templates/admin/dashboard.html:45
+#: app/templates/admin/dashboard.html:46
 msgid ""
 "Models are set in the server settings. Changing them does not need a code"
 " change."
 msgstr ""
 
-#: app/templates/admin/events.html:10 app/templates/admin/startups.html:10
-#: app/templates/admin/travel.html:10
+#: app/templates/admin/events.html:10 app/templates/admin/miniclubs.html:34
+#: app/templates/admin/startups.html:10 app/templates/admin/travel.html:10
 msgid "To review"
 msgstr ""
 
-#: app/templates/admin/events.html:11 app/templates/admin/startups.html:11
-#: app/templates/admin/travel.html:11 app/templates/modules/events_mine.html:21
+#: app/templates/admin/events.html:11 app/templates/admin/miniclubs.html:35
+#: app/templates/admin/startups.html:11 app/templates/admin/travel.html:11
+#: app/templates/modules/events_mine.html:21
+#: app/templates/modules/miniclubs_mine.html:20
 #: app/templates/modules/startups_mine.html:20
 msgid "Published"
 msgstr ""
 
-#: app/templates/admin/events.html:12 app/templates/admin/startups.html:12
-#: app/templates/admin/travel.html:12
+#: app/templates/admin/events.html:12 app/templates/admin/miniclubs.html:36
+#: app/templates/admin/startups.html:12 app/templates/admin/travel.html:12
 msgid "Rejected"
 msgstr ""
 
@@ -1935,22 +2338,25 @@ msgid "Cancelled"
 msgstr ""
 
 #: app/templates/admin/events.html:27 app/templates/admin/lots.html:20
-#: app/templates/admin/startups.html:25 app/templates/admin/travel.html:23
+#: app/templates/admin/miniclubs.html:54 app/templates/admin/startups.html:25
+#: app/templates/admin/travel.html:23
 msgid "Publish"
 msgstr ""
 
 #: app/templates/admin/events.html:29 app/templates/admin/lots.html:22
-#: app/templates/admin/startups.html:27 app/templates/admin/travel.html:25
+#: app/templates/admin/miniclubs.html:56 app/templates/admin/startups.html:27
+#: app/templates/admin/travel.html:25
 msgid "Reason for rejection (optional)"
 msgstr ""
 
 #: app/templates/admin/events.html:32 app/templates/admin/lots.html:25
-#: app/templates/admin/startups.html:30 app/templates/admin/travel.html:28
+#: app/templates/admin/miniclubs.html:59 app/templates/admin/startups.html:30
+#: app/templates/admin/travel.html:28
 msgid "Reject"
 msgstr ""
 
-#: app/templates/admin/events.html:37 app/templates/admin/startups.html:35
-#: app/templates/admin/travel.html:33
+#: app/templates/admin/events.html:37 app/templates/admin/miniclubs.html:69
+#: app/templates/admin/startups.html:35 app/templates/admin/travel.html:33
 msgid "Nothing here."
 msgstr ""
 
@@ -2045,6 +2451,27 @@ msgstr ""
 msgid "No lots yet."
 msgstr ""
 
+#: app/templates/admin/miniclubs.html:11
+msgid "Open reports"
+msgstr ""
+
+#: app/templates/admin/miniclubs.html:21 app/templates/admin/miniclubs.html:64
+msgid "Close the mini-club"
+msgstr ""
+
+#: app/templates/admin/miniclubs.html:25
+msgid "Mark as handled"
+msgstr ""
+
+#: app/templates/admin/miniclubs.html:45
+msgid "Check these words against the rules:"
+msgstr ""
+
+#: app/templates/admin/miniclubs.html:48
+#: app/templates/modules/miniclubs_detail.html:49
+msgid "Rules of this group"
+msgstr ""
+
 #: app/templates/admin/service_form.html:6
 msgid "Edit service"
 msgstr ""
@@ -2128,6 +2555,7 @@ msgstr ""
 #: app/templates/admin/services.html:14
 #: app/templates/modules/auction_detail.html:48
 #: app/templates/modules/events_detail.html:44
+#: app/templates/modules/miniclubs_detail.html:36
 #: app/templates/modules/startups_detail.html:32
 #: app/templates/modules/startups_mine.html:26
 #: app/templates/modules/travel_detail.html:38
@@ -2152,6 +2580,7 @@ msgid "Last login"
 msgstr ""
 
 #: app/templates/admin/user_detail.html:11
+#: app/templates/modules/miniclubs_form.html:18
 #: app/templates/modules/startups_form.html:17
 msgid "Name"
 msgstr ""
@@ -2195,6 +2624,7 @@ msgstr ""
 
 #: app/templates/admin/user_detail.html:75
 #: app/templates/modules/events_form.html:106
+#: app/templates/modules/miniclubs_form.html:81
 #: app/templates/modules/travel_form.html:91
 msgid "Save changes"
 msgstr ""
@@ -2523,6 +2953,7 @@ msgstr ""
 
 #: app/templates/modules/auction_detail.html:43
 #: app/templates/modules/events_detail.html:37
+#: app/templates/modules/miniclubs_detail.html:29
 #: app/templates/modules/startups_detail.html:31
 #: app/templates/modules/travel_detail.html:32
 msgid "Not published."
@@ -2686,6 +3117,7 @@ msgstr ""
 #: app/templates/modules/auction_form.html:25
 #: app/templates/modules/auction_form.html:44
 #: app/templates/modules/events_form.html:74
+#: app/templates/modules/miniclubs_form.html:57
 #: app/templates/modules/profile_edit.html:34
 #: app/templates/modules/profile_edit.html:51
 #: app/templates/modules/startups_form.html:59
@@ -2713,6 +3145,9 @@ msgstr ""
 #: app/templates/modules/events_form.html:56
 #: app/templates/modules/events_form.html:70
 #: app/templates/modules/events_form.html:85
+#: app/templates/modules/miniclubs_detail.html:137
+#: app/templates/modules/miniclubs_form.html:37
+#: app/templates/modules/miniclubs_form.html:53
 #: app/templates/modules/startups_form.html:55
 #: app/templates/modules/travel_form.html:53
 msgid "optional"
@@ -2720,6 +3155,7 @@ msgstr ""
 
 #: app/templates/modules/auction_form.html:49
 #: app/templates/modules/events_form.html:95
+#: app/templates/modules/miniclubs_form.html:64
 #: app/templates/modules/profile_edit.html:48
 #: app/templates/modules/travel_form.html:70
 msgid "Photo"
@@ -2727,6 +3163,7 @@ msgstr ""
 
 #: app/templates/modules/auction_form.html:53
 #: app/templates/modules/events_form.html:99
+#: app/templates/modules/miniclubs_form.html:68
 #: app/templates/modules/travel_form.html:74
 msgid "Remove the current photo"
 msgstr ""
@@ -2773,6 +3210,7 @@ msgstr ""
 
 #: app/templates/modules/auction_form.html:109
 #: app/templates/modules/events_form.html:106
+#: app/templates/modules/miniclubs_form.html:81
 #: app/templates/modules/startups_form.html:92
 #: app/templates/modules/travel_form.html:91
 msgid "Send for review"
@@ -2851,6 +3289,7 @@ msgstr ""
 
 #: app/templates/modules/auction_mine.html:19
 #: app/templates/modules/events_mine.html:20
+#: app/templates/modules/miniclubs_mine.html:19
 #: app/templates/modules/startups_mine.html:21
 #: app/templates/modules/travel_mine.html:23
 msgid "Waiting for review"
@@ -2858,6 +3297,7 @@ msgstr ""
 
 #: app/templates/modules/auction_mine.html:20
 #: app/templates/modules/events_mine.html:22
+#: app/templates/modules/miniclubs_mine.html:21
 #: app/templates/modules/startups_mine.html:22
 #: app/templates/modules/travel_mine.html:25
 msgid "Not published"
@@ -2900,6 +3340,7 @@ msgstr ""
 
 #: app/templates/modules/events_detail.html:21
 #: app/templates/modules/events_list.html:67
+#: app/templates/modules/miniclubs_detail.html:18
 #, python-format
 msgid "places left: %(count)s"
 msgstr ""
@@ -3062,6 +3503,7 @@ msgid ""
 msgstr ""
 
 #: app/templates/modules/events_form.html:15
+#: app/templates/modules/miniclubs_form.html:16
 #: app/templates/modules/startups_form.html:15
 #: app/templates/modules/travel_form.html:19
 msgid "The basics"
@@ -3191,6 +3633,7 @@ msgid "All types"
 msgstr ""
 
 #: app/templates/modules/events_list.html:51
+#: app/templates/modules/miniclubs_list.html:37
 #: app/templates/modules/startups_list.html:43
 msgid "Filter"
 msgstr ""
@@ -3223,6 +3666,313 @@ msgstr ""
 
 #: app/templates/modules/events_mine.html:45
 msgid "You have not signed up for any meetings yet."
+msgstr ""
+
+#: app/templates/modules/miniclubs_detail.html:6
+msgid "Back to my mini-clubs"
+msgstr ""
+
+#: app/templates/modules/miniclubs_detail.html:6
+#: app/templates/modules/miniclubs_rules.html:6
+msgid "Back to all mini-clubs"
+msgstr ""
+
+#: app/templates/modules/miniclubs_detail.html:17
+#: app/templates/modules/miniclubs_list.html:51
+#: app/templates/modules/miniclubs_mine.html:23
+#, python-format
+msgid "%(num)d member"
+msgid_plural "%(num)d members"
+msgstr[0] ""
+msgstr[1] ""
+
+#: app/templates/modules/miniclubs_detail.html:20
+msgid "Run by"
+msgstr ""
+
+#: app/templates/modules/miniclubs_detail.html:24
+#: app/templates/modules/miniclubs_form.html:10
+#: app/templates/modules/miniclubs_list.html:8
+#: app/templates/modules/miniclubs_rules.html:3
+#: app/templates/modules/miniclubs_rules.html:7
+msgid "Rules for mini-clubs"
+msgstr ""
+
+#: app/templates/modules/miniclubs_detail.html:27
+msgid "Waiting for review. Members do not see this mini-club yet."
+msgstr ""
+
+#: app/templates/modules/miniclubs_detail.html:31
+msgid "This mini-club is closed."
+msgstr ""
+
+#: app/templates/modules/miniclubs_detail.html:39
+msgid "Close this mini-club"
+msgstr ""
+
+#: app/templates/modules/miniclubs_detail.html:60
+msgid "organiser"
+msgstr ""
+
+#: app/templates/modules/miniclubs_detail.html:63
+msgid "Manage members"
+msgstr ""
+
+#: app/templates/modules/miniclubs_detail.html:69
+msgid "Remove"
+msgstr ""
+
+#: app/templates/modules/miniclubs_detail.html:73
+msgid ""
+"Members allowed you to see their e-mail address. Please use it only for "
+"this mini-club."
+msgstr ""
+
+#: app/templates/modules/miniclubs_detail.html:80
+msgid "Requests to join"
+msgstr ""
+
+#: app/templates/modules/miniclubs_detail.html:87
+msgid "Accept"
+msgstr ""
+
+#: app/templates/modules/miniclubs_detail.html:88
+#: app/templates/modules/profile_intros.html:19
+#: app/templates/modules/startups_mine.html:43
+msgid "Decline"
+msgstr ""
+
+#: app/templates/modules/miniclubs_detail.html:97
+msgid "Message to all members"
+msgstr ""
+
+#: app/templates/modules/miniclubs_detail.html:98
+msgid ""
+"Sent by e-mail to every member, once a day at most. The message comes "
+"from you, not from the club."
+msgstr ""
+
+#: app/templates/modules/miniclubs_detail.html:102
+#: app/templates/modules/service_detail.html:27
+msgid "Your message"
+msgstr ""
+
+#: app/templates/modules/miniclubs_detail.html:105
+#: app/templates/partials/assistant.html:19
+msgid "Send"
+msgstr ""
+
+#: app/templates/modules/miniclubs_detail.html:112
+msgid "You are a member."
+msgstr ""
+
+#: app/templates/modules/miniclubs_detail.html:113
+#: app/templates/modules/miniclubs_detail.html:130
+msgid ""
+"Questions about this mini-club? Ask Clubi: it knows the description and "
+"the rules."
+msgstr ""
+
+#: app/templates/modules/miniclubs_detail.html:116
+msgid "Leave the mini-club"
+msgstr ""
+
+#: app/templates/modules/miniclubs_detail.html:121
+msgid "Your request is with the organiser."
+msgstr ""
+
+#: app/templates/modules/miniclubs_detail.html:124
+msgid "Withdraw my request"
+msgstr ""
+
+#: app/templates/modules/miniclubs_detail.html:129
+msgid "Join this mini-club"
+msgstr ""
+
+#: app/templates/modules/miniclubs_detail.html:129
+msgid "Ask to join"
+msgstr ""
+
+#: app/templates/modules/miniclubs_detail.html:137
+msgid "A few words about you"
+msgstr ""
+
+#: app/templates/modules/miniclubs_detail.html:142
+msgid ""
+"The organiser may see my name and e-mail address to contact me about this"
+" mini-club."
+msgstr ""
+
+#: app/templates/modules/miniclubs_detail.html:144
+msgid "I am an adult. Children take part only together with their parents."
+msgstr ""
+
+#: app/templates/modules/miniclubs_detail.html:145
+msgid "Join"
+msgstr ""
+
+#: app/templates/modules/miniclubs_detail.html:145
+#: app/templates/modules/service_detail.html:34
+msgid "Send request"
+msgstr ""
+
+#: app/templates/modules/miniclubs_detail.html:150
+msgid "Joining mini-clubs is included in a higher plan."
+msgstr ""
+
+#: app/templates/modules/miniclubs_detail.html:155
+msgid "Report this mini-club"
+msgstr ""
+
+#: app/templates/modules/miniclubs_detail.html:158
+msgid ""
+"For example games for money, paid childcare or other offers that are not "
+"allowed."
+msgstr ""
+
+#: app/templates/modules/miniclubs_detail.html:160
+msgid "What is the problem?"
+msgstr ""
+
+#: app/templates/modules/miniclubs_detail.html:163
+msgid "Send report"
+msgstr ""
+
+#: app/templates/modules/miniclubs_form.html:3
+#: app/templates/modules/miniclubs_form.html:8
+msgid "Edit mini-club"
+msgstr ""
+
+#: app/templates/modules/miniclubs_form.html:3
+#: app/templates/modules/miniclubs_form.html:8
+#: app/templates/modules/miniclubs_list.html:17
+#: app/templates/modules/miniclubs_mine.html:8
+msgid "Create a mini-club"
+msgstr ""
+
+#: app/templates/modules/miniclubs_form.html:9
+msgid ""
+"Describe what you want to do together and set the rules of your group. "
+"Our team checks every mini-club before it is published. Every change is "
+"checked again."
+msgstr ""
+
+#: app/templates/modules/miniclubs_form.html:19
+msgid "A short, clear name, for example: Chess evening Offenbach."
+msgstr ""
+
+#: app/templates/modules/miniclubs_form.html:23
+#: app/templates/modules/miniclubs_list.html:27
+msgid "Topic"
+msgstr ""
+
+#: app/templates/modules/miniclubs_form.html:29
+msgid "City or region"
+msgstr ""
+
+#: app/templates/modules/miniclubs_form.html:34
+msgid "The group also or only meets online"
+msgstr ""
+
+#: app/templates/modules/miniclubs_form.html:37
+msgid "Maximum number of members"
+msgstr ""
+
+#: app/templates/modules/miniclubs_form.html:38
+msgid "Including you. Leave empty for no limit."
+msgstr ""
+
+#: app/templates/modules/miniclubs_form.html:42
+msgid "How do people join?"
+msgstr ""
+
+#: app/templates/modules/miniclubs_form.html:50
+msgid "About the group"
+msgstr ""
+
+#: app/templates/modules/miniclubs_form.html:59
+msgid ""
+"Examples are for orientation only. Write about your own group in your own"
+" words."
+msgstr ""
+
+#: app/templates/modules/miniclubs_form.html:77
+msgid ""
+"I have read the rules for mini-clubs. My group has no games for money, no"
+" paid childcare and no other offers that need a permit, and I am "
+"responsible for my group and its meetings."
+msgstr ""
+
+#: app/templates/modules/miniclubs_list.html:7
+msgid ""
+"Small groups of members around a shared interest. Find people for chess, "
+"a fishing trip, a walk, neighbourly help or a parents' group."
+msgstr ""
+
+#: app/templates/modules/miniclubs_list.html:12
+msgid "Start your own mini-club"
+msgstr ""
+
+#: app/templates/modules/miniclubs_list.html:13
+msgid ""
+"Describe what you want to do together, set the rules of your group and "
+"gather members. We check every mini-club before it is published."
+msgstr ""
+
+#: app/templates/modules/miniclubs_list.html:18
+#: app/templates/modules/miniclubs_mine.html:3
+#: app/templates/modules/miniclubs_mine.html:6
+msgid "My mini-clubs"
+msgstr ""
+
+#: app/templates/modules/miniclubs_list.html:21
+msgid "Creating mini-clubs is included in a higher plan."
+msgstr ""
+
+#: app/templates/modules/miniclubs_list.html:29
+msgid "All topics"
+msgstr ""
+
+#: app/templates/modules/miniclubs_list.html:52
+msgid "full"
+msgstr ""
+
+#: app/templates/modules/miniclubs_list.html:54
+#: app/templates/modules/miniclubs_mine.html:26
+#: app/templates/modules/miniclubs_mine.html:39
+msgid "Open mini-club"
+msgstr ""
+
+#: app/templates/modules/miniclubs_list.html:57
+msgid "No mini-clubs here yet. Be the first to start one!"
+msgstr ""
+
+#: app/templates/modules/miniclubs_mine.html:9
+msgid "All mini-clubs"
+msgstr ""
+
+#: app/templates/modules/miniclubs_mine.html:12
+msgid "Mini-clubs I run"
+msgstr ""
+
+#: app/templates/modules/miniclubs_mine.html:29
+msgid "You have not started a mini-club yet."
+msgstr ""
+
+#: app/templates/modules/miniclubs_mine.html:33
+msgid "Mini-clubs I joined"
+msgstr ""
+
+#: app/templates/modules/miniclubs_mine.html:38
+msgid "Member"
+msgstr ""
+
+#: app/templates/modules/miniclubs_mine.html:38
+msgid "Request pending"
+msgstr ""
+
+#: app/templates/modules/miniclubs_mine.html:42
+msgid "You have not joined any mini-clubs yet."
 msgstr ""
 
 #: app/templates/modules/profile.html:7
@@ -3317,11 +4067,6 @@ msgstr ""
 
 #: app/templates/modules/profile_intros.html:18
 msgid "Accept and share my e-mail"
-msgstr ""
-
-#: app/templates/modules/profile_intros.html:19
-#: app/templates/modules/startups_mine.html:43
-msgid "Decline"
 msgstr ""
 
 #: app/templates/modules/profile_intros.html:22
@@ -3489,16 +4234,8 @@ msgid ""
 " you tick the box below."
 msgstr ""
 
-#: app/templates/modules/service_detail.html:27
-msgid "Your message"
-msgstr ""
-
 #: app/templates/modules/service_detail.html:32
 msgid "Pass my e-mail address to the provider so they can reply to me."
-msgstr ""
-
-#: app/templates/modules/service_detail.html:34
-msgid "Send request"
 msgstr ""
 
 #: app/templates/modules/services_list.html:6
@@ -4450,10 +5187,6 @@ msgstr ""
 msgid ""
 "Clubi is an AI. It does not give legal or financial advice and never "
 "shows contact details. Conversations are not stored on the server."
-msgstr ""
-
-#: app/templates/partials/assistant.html:19
-msgid "Send"
 msgstr ""
 
 #: app/templates/public/index.html:3

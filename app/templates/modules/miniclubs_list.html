@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block title %}{{ _("Mini-Clubs") }} · {{ _("Club") }}{% endblock %}
+
+{% block content %}
+<h1>{{ _("Mini-Clubs") }}</h1>
+<p class="muted">{{ _("Small groups of members around a shared interest. Find people for chess, a fishing trip, a walk, neighbourly help or a parents' group.") }}</p>
+<p class="notice">{{ disclaimer }} <a href="{{ url_for('miniclubs.rules') }}">{{ _("Rules for mini-clubs") }}</a></p>
+
+<section class="card cta-card">
+  <div>
+    <h2>{{ _("Start your own mini-club") }}</h2>
+    <p>{{ _("Describe what you want to do together, set the rules of your group and gather members. We check every mini-club before it is published.") }}</p>
+  </div>
+  {% if can_create %}
+    <p class="button-row">
+      <a class="button" href="{{ url_for('miniclubs.new') }}">{{ _("Create a mini-club") }}</a>
+      <a class="button button-secondary" href="{{ url_for('miniclubs.mine') }}">{{ _("My mini-clubs") }}</a>
+    </p>
+  {% else %}
+    <p class="small muted">{{ _("Creating mini-clubs is included in a higher plan.") }}</p>
+  {% endif %}
+</section>
+
+<form method="get" action="{{ url_for('miniclubs.index') }}" class="filter-bar">
+  <div class="field">
+    <label for="topic">{{ _("Topic") }}</label>
+    <select id="topic" name="topic">
+      <option value="">{{ _("All topics") }}</option>
+      {% for value in topics %}<option value="{{ value }}" {% if topic == value %}selected{% endif %}>{{ miniclub_topic_label(value) }}</option>{% endfor %}
+    </select>
+  </div>
+  <div class="field">
+    <label for="city">{{ _("City") }}</label>
+    <input id="city" name="city" type="text" maxlength="60" value="{{ city }}">
+  </div>
+  <button type="submit" class="button button-secondary">{{ _("Filter") }}</button>
+</form>
+
+<div class="grid-cards">
+{% for item in items %}
+  <article class="card project-card">
+    {% if item.club.image_key %}
+      <a href="{{ url_for('miniclubs.detail', club_id=item.club.id) }}"><img class="project-thumb" src="{{ url_for('miniclubs.image', club_id=item.club.id) }}" alt="" width="320" height="180" loading="lazy"></a>
+    {% endif %}
+    <h2><a href="{{ url_for('miniclubs.detail', club_id=item.club.id) }}">{{ item.club.name }}</a></h2>
+    <p>{{ item.club.description[:160] }}{% if item.club.description|length > 160 %}…{% endif %}</p>
+    <p class="status-line">
+      <span class="pill">{{ miniclub_topic_label(item.club.topic) }}</span>
+      <span class="pill">{% if item.club.online %}{{ _("Online") }}{% if item.club.city %} · {{ item.club.city }}{% endif %}{% else %}{{ item.club.city }}{% endif %}</span>
+      <span class="pill">{{ ngettext("%(num)d member", "%(num)d members", item.members) }}</span>
+      {% if item.places_left == 0 %}<span class="pill pill-warn">{{ _("full") }}</span>{% endif %}
+    </p>
+    <a class="button button-secondary" href="{{ url_for('miniclubs.detail', club_id=item.club.id) }}">{{ _("Open mini-club") }}</a>
+  </article>
+{% else %}
+  <p>{{ _("No mini-clubs here yet. Be the first to start one!") }}</p>
+{% endfor %}
+</div>
+{% endblock %}

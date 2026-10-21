@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}{{ _("My mini-clubs") }} · {{ _("Mini-Clubs") }}{% endblock %}
+
+{% block content %}
+<h1>{{ _("My mini-clubs") }}</h1>
+<p class="button-row">
+  {% if can_create %}<a class="button" href="{{ url_for('miniclubs.new') }}">{{ _("Create a mini-club") }}</a>{% endif %}
+  <a class="button button-secondary" href="{{ url_for('miniclubs.index') }}">{{ _("All mini-clubs") }}</a>
+</p>
+
+<h2>{{ _("Mini-clubs I run") }}</h2>
+<div class="grid-cards">
+{% for item in organised %}
+  <article class="card project-card">
+    {% if item.club.image_key %}<img class="project-thumb" src="{{ url_for('miniclubs.image', club_id=item.club.id) }}" alt="" width="320" height="180" loading="lazy">{% endif %}
+    <h3><a href="{{ url_for('miniclubs.detail', club_id=item.club.id) }}">{{ item.club.name }}</a></h3>
+    <p class="status-line">
+      {% if item.club.status == "pending" %}<span class="pill pill-warn">{{ _("Waiting for review") }}</span>
+      {% elif item.club.status == "open" %}<span class="pill pill-ok">{{ _("Published") }}</span>
+      {% elif item.club.status == "rejected" %}<span class="pill pill-warn">{{ _("Not published") }}</span>
+      {% else %}<span class="pill pill-warn">{{ _("Closed") }}</span>{% endif %}
+      <span class="pill">{{ ngettext("%(num)d member", "%(num)d members", item.members) }}</span>
+    </p>
+    {% if item.club.status == "rejected" and item.club.rejection_reason %}<p class="small">{{ item.club.rejection_reason }}</p>{% endif %}
+    <a class="button button-secondary" href="{{ url_for('miniclubs.detail', club_id=item.club.id) }}">{{ _("Open mini-club") }}</a>
+  </article>
+{% else %}
+  <p>{{ _("You have not started a mini-club yet.") }}</p>
+{% endfor %}
+</div>
+
+<h2>{{ _("Mini-clubs I joined") }}</h2>
+<div class="grid-cards">
+{% for item, state in joined %}
+  <article class="card project-card">
+    <h3><a href="{{ url_for('miniclubs.detail', club_id=item.club.id) }}">{{ item.club.name }}</a></h3>
+    <p class="status-line"><span class="pill {% if state == 'member' %}pill-ok{% else %}pill-warn{% endif %}">{% if state == 'member' %}{{ _("Member") }}{% else %}{{ _("Request pending") }}{% endif %}</span></p>
+    <a class="button button-secondary" href="{{ url_for('miniclubs.detail', club_id=item.club.id) }}">{{ _("Open mini-club") }}</a>
+  </article>
+{% else %}
+  <p>{{ _("You have not joined any mini-clubs yet.") }}</p>
+{% endfor %}
+</div>
+{% endblock %}
