@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-10-21 11:11+0000\n"
+"POT-Creation-Date: 2026-10-21 12:01+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -242,6 +242,192 @@ msgstr ""
 msgid "No group photos, no sunglasses, no heavy filters."
 msgstr ""
 
+#: app/startup_guide.py:21 app/templates/modules/startups_detail.html:37
+msgid "What is it?"
+msgstr ""
+
+#: app/startup_guide.py:22
+msgid ""
+"Two or three sentences: what the project does and for whom. This is the "
+"first thing investors read."
+msgstr ""
+
+#: app/startup_guide.py:24
+msgid ""
+"An app that reads receipts with a phone camera and prepares the "
+"bookkeeping for freelancers."
+msgstr ""
+
+#: app/startup_guide.py:25
+msgid ""
+"A subscription service that delivers repair kits for household "
+"appliances, with video guides."
+msgstr ""
+
+#: app/startup_guide.py:26
+msgid ""
+"A platform where small energy storage owners sell spare capacity to local"
+" businesses."
+msgstr ""
+
+#: app/startup_guide.py:33 app/templates/modules/tool_report_findings.html:41
+msgid "Problem"
+msgstr ""
+
+#: app/startup_guide.py:34
+msgid ""
+"Whose problem do you solve and how painful is it today? Use a concrete "
+"situation or number."
+msgstr ""
+
+#: app/startup_guide.py:36
+msgid ""
+"Freelancers spend about five hours a month sorting receipts and often "
+"lose deductible costs."
+msgstr ""
+
+#: app/startup_guide.py:37
+msgid ""
+"Small shops pay for peak energy prices because they cannot store power "
+"from their own roofs."
+msgstr ""
+
+#: app/startup_guide.py:42
+msgid "Solution"
+msgstr ""
+
+#: app/startup_guide.py:43
+msgid ""
+"How does your product solve it, and why is it better than what people use"
+" now?"
+msgstr ""
+
+#: app/startup_guide.py:45
+msgid ""
+"Photo in, booking out: the app recognises amount, tax rate and category "
+"and exports it for the tax adviser."
+msgstr ""
+
+#: app/startup_guide.py:46
+#, python-format
+msgid ""
+"A battery pool with automatic trading, so shops pay a flat monthly fee "
+"and save about 15 % on energy."
+msgstr ""
+
+#: app/startup_guide.py:51
+msgid "Market and customers"
+msgstr ""
+
+#: app/startup_guide.py:52
+msgid "Who pays? How many such customers exist and how do you reach them?"
+msgstr ""
+
+#: app/startup_guide.py:54
+msgid ""
+"About 1.4 million freelancers in Germany. First channel: tax advisers who"
+" recommend the app to clients."
+msgstr ""
+
+#: app/startup_guide.py:55
+msgid ""
+"Around 60,000 small shops with solar roofs. First channel: partnerships "
+"with regional energy suppliers."
+msgstr ""
+
+#: app/startup_guide.py:60
+msgid "Progress so far"
+msgstr ""
+
+#: app/startup_guide.py:61
+msgid ""
+"Facts, not plans: users, revenue, pilot customers, letters of intent, "
+"prototype milestones."
+msgstr ""
+
+#: app/startup_guide.py:63
+msgid "Beta since March with 320 users, 41 of them paying 9 euros a month."
+msgstr ""
+
+#: app/startup_guide.py:64
+msgid ""
+"Prototype tested in two shops for six months; letter of intent from one "
+"regional supplier."
+msgstr ""
+
+#: app/startup_guide.py:69
+msgid "Business model"
+msgstr ""
+
+#: app/startup_guide.py:70
+msgid "How do you earn money? Prices, margins, recurring or one-off revenue."
+msgstr ""
+
+#: app/startup_guide.py:72
+msgid ""
+"Monthly subscription of 9 euros per user; tax advisers get a partner "
+"licence of 99 euros per month."
+msgstr ""
+
+#: app/startup_guide.py:73
+msgid "Flat fee per shop plus a share of the trading gains."
+msgstr ""
+
+#: app/startup_guide.py:78
+msgid "Team"
+msgstr ""
+
+#: app/startup_guide.py:79
+msgid ""
+"Who is behind the project? Roles, relevant experience, what is still "
+"missing."
+msgstr ""
+
+#: app/startup_guide.py:81
+msgid ""
+"Anna (CEO, ten years in accounting software), Ben (CTO, built two mobile "
+"apps). We are looking for a sales lead."
+msgstr ""
+
+#: app/startup_guide.py:82
+msgid ""
+"Two engineers from the energy sector and an advisor who ran a regional "
+"utility."
+msgstr ""
+
+#: app/startup_guide.py:87
+msgid "Use of funds"
+msgstr ""
+
+#: app/startup_guide.py:88
+msgid ""
+"What would you do with the money, and what will be different after 12 "
+"months?"
+msgstr ""
+
+#: app/startup_guide.py:90
+msgid ""
+"150,000 euros: two developers and marketing. Goal: 3,000 paying users in "
+"12 months."
+msgstr ""
+
+#: app/startup_guide.py:91
+msgid "400,000 euros: ten more pilot sites and the trading software."
+msgstr ""
+
+#: app/startup_guide.py:96
+msgid ""
+"Optional: your presentation as a PDF (up to 10 MB, 60 pages). Members can"
+" download it. Clubi can also read it to answer questions about your "
+"project."
+msgstr ""
+
+#: app/startup_guide.py:97
+msgid ""
+"A clear picture of your product, your logo or your team (JPG, PNG or "
+"WebP, up to 5 MB)."
+msgstr ""
+
 #: app/blueprints/admin/__init__.py:121
 msgid "Changes are saved."
 msgstr ""
@@ -290,7 +476,7 @@ msgid "Participant created."
 msgstr ""
 
 #: app/blueprints/admin/__init__.py:313 app/modules/profile/__init__.py:70
-#: app/modules/startups/__init__.py:35 app/modules/travel/__init__.py:130
+#: app/modules/startups/__init__.py:72 app/modules/travel/__init__.py:130
 #: app/modules/travel/__init__.py:150
 #, python-format
 msgid "Please check these fields: %(fields)s"
@@ -325,7 +511,7 @@ msgid "You have reached today's limit of questions. It renews tomorrow."
 msgstr ""
 
 #: app/blueprints/assistant/__init__.py:19 app/modules/profile/__init__.py:188
-#: app/modules/services/__init__.py:18 app/modules/startups/__init__.py:31
+#: app/modules/services/__init__.py:18 app/modules/startups/__init__.py:35
 #: app/modules/travel/__init__.py:38 app/templates/partials/assistant.html:4
 msgid "Something went wrong. Please try again."
 msgstr ""
@@ -525,7 +711,7 @@ msgstr ""
 msgid "This file is not a valid photo."
 msgstr ""
 
-#: app/modules/profile/__init__.py:36
+#: app/modules/profile/__init__.py:36 app/modules/startups/__init__.py:40
 msgid "The file is empty."
 msgstr ""
 
@@ -563,7 +749,7 @@ msgstr ""
 msgid "You have reached today's limit of requests. Please try again tomorrow."
 msgstr ""
 
-#: app/modules/profile/__init__.py:185 app/modules/startups/__init__.py:29
+#: app/modules/profile/__init__.py:185 app/modules/startups/__init__.py:33
 #: app/modules/travel/__init__.py:35
 msgid "This is not available to you."
 msgstr ""
@@ -618,39 +804,71 @@ msgid ""
 "start of next month."
 msgstr ""
 
-#: app/modules/startups/__init__.py:25
+#: app/modules/startups/__init__.py:29
 msgid "This startup is not open for interest right now."
 msgstr ""
 
-#: app/modules/startups/__init__.py:26
+#: app/modules/startups/__init__.py:30
 msgid "You cannot express interest in your own startup."
 msgstr ""
 
-#: app/modules/startups/__init__.py:27
+#: app/modules/startups/__init__.py:31
 msgid "You have already sent your interest in this startup."
 msgstr ""
 
-#: app/modules/startups/__init__.py:28
+#: app/modules/startups/__init__.py:32
 msgid "You have already answered this interest."
 msgstr ""
 
-#: app/modules/startups/__init__.py:80
+#: app/modules/startups/__init__.py:41
+msgid "The file is too large."
+msgstr ""
+
+#: app/modules/startups/__init__.py:42
+msgid "The picture has too many pixels."
+msgstr ""
+
+#: app/modules/startups/__init__.py:43
+msgid "This file is not a picture."
+msgstr ""
+
+#: app/modules/startups/__init__.py:44
+msgid "Please use a JPG, PNG or WebP picture."
+msgstr ""
+
+#: app/modules/startups/__init__.py:45
+msgid "This file is not a readable PDF."
+msgstr ""
+
+#: app/modules/startups/__init__.py:46
+msgid "Password-protected PDFs are not accepted."
+msgstr ""
+
+#: app/modules/startups/__init__.py:47
+msgid "The PDF has too many pages (up to 60)."
+msgstr ""
+
+#: app/modules/startups/__init__.py:49
+msgid "The file could not be saved."
+msgstr ""
+
+#: app/modules/startups/__init__.py:119
 msgid ""
 "Your interest is sent. The founder decides whether to share contact "
 "details."
 msgstr ""
 
-#: app/modules/startups/__init__.py:103
+#: app/modules/startups/__init__.py:149
 msgid ""
 "Your startup is sent for review. We will let you know when it is "
 "published."
 msgstr ""
 
-#: app/modules/startups/__init__.py:122
+#: app/modules/startups/__init__.py:174
 msgid "Your changes are sent for review."
 msgstr ""
 
-#: app/modules/startups/__init__.py:141
+#: app/modules/startups/__init__.py:225
 msgid "Your answer is saved."
 msgstr ""
 
@@ -754,35 +972,35 @@ msgstr ""
 msgid "The trip is cancelled."
 msgstr ""
 
-#: app/services/assistant.py:94
+#: app/services/assistant.py:96
 msgid "Your own public profile"
 msgstr ""
 
-#: app/services/assistant.py:95
+#: app/services/assistant.py:97
 msgid "Profile of another member"
 msgstr ""
 
-#: app/services/assistant.py:105 app/templates/admin/service_form.html:3
+#: app/services/assistant.py:107 app/templates/admin/service_form.html:3
 msgid "Service"
 msgstr ""
 
-#: app/services/assistant.py:117
+#: app/services/assistant.py:119
 msgid "Trip"
 msgstr ""
 
-#: app/services/assistant.py:127
+#: app/services/assistant.py:136
 msgid "Startup"
 msgstr ""
 
-#: app/services/assistant.py:139
+#: app/services/assistant.py:148
 msgid "Auction lot"
 msgstr ""
 
-#: app/services/assistant.py:152
+#: app/services/assistant.py:161
 msgid "Your matches"
 msgstr ""
 
-#: app/services/assistant.py:164
+#: app/services/assistant.py:173
 msgid "Your report"
 msgstr ""
 
@@ -1069,7 +1287,6 @@ msgid "Title"
 msgstr ""
 
 #: app/templates/admin/lots.html:20 app/templates/admin/service_form.html:16
-#: app/templates/modules/startups_form.html:23
 #: app/templates/modules/tool_form.html:60
 #: app/templates/modules/travel_form.html:47
 msgid "Description"
@@ -1222,7 +1439,8 @@ msgid "Hidden"
 msgstr ""
 
 #: app/templates/admin/services.html:14
-#: app/templates/modules/startups_detail.html:16
+#: app/templates/modules/startups_detail.html:32
+#: app/templates/modules/startups_mine.html:26
 msgid "Edit"
 msgstr ""
 
@@ -1235,7 +1453,7 @@ msgid "To review"
 msgstr ""
 
 #: app/templates/admin/startups.html:11 app/templates/admin/travel.html:11
-#: app/templates/modules/startups_mine.html:13
+#: app/templates/modules/startups_mine.html:20
 msgid "Published"
 msgstr ""
 
@@ -1272,7 +1490,7 @@ msgid "Last login"
 msgstr ""
 
 #: app/templates/admin/user_detail.html:11
-#: app/templates/modules/startups_form.html:13
+#: app/templates/modules/startups_form.html:17
 msgid "Name"
 msgstr ""
 
@@ -1696,6 +1914,7 @@ msgstr ""
 
 #: app/templates/modules/profile_edit.html:34
 #: app/templates/modules/profile_edit.html:51
+#: app/templates/modules/startups_form.html:59
 msgid "Show examples"
 msgstr ""
 
@@ -1752,7 +1971,7 @@ msgid "Accept and share my e-mail"
 msgstr ""
 
 #: app/templates/modules/profile_intros.html:19
-#: app/templates/modules/startups_mine.html:32
+#: app/templates/modules/startups_mine.html:43
 msgid "Decline"
 msgstr ""
 
@@ -1960,113 +2179,182 @@ msgstr ""
 msgid "No services are published yet."
 msgstr ""
 
-#: app/templates/modules/startups_detail.html:8
+#: app/templates/modules/startups_detail.html:6
+msgid "Back to all startups"
+msgstr ""
+
+#: app/templates/modules/startups_detail.html:18
 #, python-format
 msgid "Funding goal: %(amount)s"
 msgstr ""
 
-#: app/templates/modules/startups_detail.html:12
-msgid "Published."
-msgstr ""
-
-#: app/templates/modules/startups_detail.html:13
-msgid "Waiting for review."
-msgstr ""
-
-#: app/templates/modules/startups_detail.html:14
-msgid "Not published."
+#: app/templates/modules/startups_detail.html:21
+msgid "Download presentation (PDF)"
 msgstr ""
 
 #: app/templates/modules/startups_detail.html:22
 msgid "Website"
 msgstr ""
 
-#: app/templates/modules/startups_detail.html:28
+#: app/templates/modules/startups_detail.html:29
+msgid "Published."
+msgstr ""
+
+#: app/templates/modules/startups_detail.html:30
+msgid "Waiting for review. Members do not see this card yet."
+msgstr ""
+
+#: app/templates/modules/startups_detail.html:31
+msgid "Not published."
+msgstr ""
+
+#: app/templates/modules/startups_detail.html:52
 msgid "Contact"
 msgstr ""
 
-#: app/templates/modules/startups_detail.html:29
+#: app/templates/modules/startups_detail.html:53
 msgid "The founder has accepted your interest. You can reach them at:"
 msgstr ""
 
-#: app/templates/modules/startups_detail.html:36
+#: app/templates/modules/startups_detail.html:59
+msgid "Interested?"
+msgstr ""
+
+#: app/templates/modules/startups_detail.html:60
+msgid ""
+"Questions about the project? Ask Clubi: it knows the full card and the "
+"presentation."
+msgstr ""
+
+#: app/templates/modules/startups_detail.html:62
 msgid "Showing interest is included in a higher plan."
 msgstr ""
 
-#: app/templates/modules/startups_detail.html:39
+#: app/templates/modules/startups_detail.html:65
 msgid "Your interest is with the founder."
 msgstr ""
 
-#: app/templates/modules/startups_detail.html:40
+#: app/templates/modules/startups_detail.html:66
 msgid "Your interest was accepted."
 msgstr ""
 
-#: app/templates/modules/startups_detail.html:41
+#: app/templates/modules/startups_detail.html:67
 msgid "Your interest was not accepted this time."
 msgstr ""
 
-#: app/templates/modules/startups_detail.html:47
+#: app/templates/modules/startups_detail.html:73
 msgid "Your message to the founder"
 msgstr ""
 
-#: app/templates/modules/startups_detail.html:49
+#: app/templates/modules/startups_detail.html:75
 msgid "Your contact details are not shared unless the founder accepts."
 msgstr ""
 
-#: app/templates/modules/startups_detail.html:51
+#: app/templates/modules/startups_detail.html:77
 msgid "Show interest"
-msgstr ""
-
-#: app/templates/modules/startups_detail.html:57
-msgid "Back to all startups"
 msgstr ""
 
 #: app/templates/modules/startups_form.html:3
 msgid "Your startup"
 msgstr ""
 
-#: app/templates/modules/startups_form.html:6
-msgid "Edit startup"
+#: app/templates/modules/startups_form.html:8
+msgid "Edit project card"
 msgstr ""
 
-#: app/templates/modules/startups_form.html:6
-#: app/templates/modules/startups_mine.html:7
-msgid "Publish a startup"
+#: app/templates/modules/startups_form.html:8
+#: app/templates/modules/startups_list.html:16
+#: app/templates/modules/startups_mine.html:8
+msgid "Create project card"
 msgstr ""
 
-#: app/templates/modules/startups_form.html:7
+#: app/templates/modules/startups_form.html:9
 msgid ""
-"Every change is checked by our team before the startup is shown to "
-"investors."
+"Describe your project step by step. The card is shown to all members "
+"after our team has checked it. Every change is checked again."
 msgstr ""
 
-#: app/templates/modules/startups_form.html:18
+#: app/templates/modules/startups_form.html:15
+msgid "The basics"
+msgstr ""
+
+#: app/templates/modules/startups_form.html:21
 msgid "One-line summary"
 msgstr ""
 
-#: app/templates/modules/startups_form.html:28
-#: app/templates/modules/startups_list.html:11
+#: app/templates/modules/startups_form.html:22
+msgid ""
+"One sentence that makes someone want to read on, for example: Receipts "
+"in, bookkeeping out."
+msgstr ""
+
+#: app/templates/modules/startups_form.html:26
+#: app/templates/modules/startups_list.html:26
 msgid "Category"
 msgstr ""
 
-#: app/templates/modules/startups_form.html:37
-#: app/templates/modules/startups_list.html:20
+#: app/templates/modules/startups_form.html:34
+#: app/templates/modules/startups_list.html:35
 msgid "Stage"
 msgstr ""
 
-#: app/templates/modules/startups_form.html:46
+#: app/templates/modules/startups_form.html:42
 msgid "Funding goal (EUR, optional)"
 msgstr ""
 
-#: app/templates/modules/startups_form.html:51
+#: app/templates/modules/startups_form.html:46
 msgid "Website (optional)"
 msgstr ""
 
-#: app/templates/modules/startups_form.html:55
-msgid "Send changes for review"
+#: app/templates/modules/startups_form.html:52
+msgid "Your pitch"
 msgstr ""
 
 #: app/templates/modules/startups_form.html:55
+msgid "optional"
+msgstr ""
+
+#: app/templates/modules/startups_form.html:63
+msgid ""
+"Examples are for orientation only. Write about your own project in your "
+"own words."
+msgstr ""
+
+#: app/templates/modules/startups_form.html:70
+msgid "Picture and presentation"
+msgstr ""
+
+#: app/templates/modules/startups_form.html:72
+msgid "Picture"
+msgstr ""
+
+#: app/templates/modules/startups_form.html:76
+msgid "Remove the current picture"
+msgstr ""
+
+#: app/templates/modules/startups_form.html:81
+msgid "Presentation (PDF)"
+msgstr ""
+
+#: app/templates/modules/startups_form.html:84
+msgid "Current presentation (PDF)"
+msgstr ""
+
+#: app/templates/modules/startups_form.html:85
+msgid "Remove the current presentation"
+msgstr ""
+
+#: app/templates/modules/startups_form.html:89
+msgid ""
+"Do not upload secrets or personal data of third parties. Everything in "
+"the card and the PDF is visible to all verified members."
+msgstr ""
+
+#: app/templates/modules/startups_form.html:92
+msgid "Send changes for review"
+msgstr ""
+
+#: app/templates/modules/startups_form.html:92
 #: app/templates/modules/travel_form.html:51
 msgid "Send for review"
 msgstr ""
@@ -2077,58 +2365,82 @@ msgid ""
 "appears here."
 msgstr ""
 
-#: app/templates/modules/startups_list.html:13
-msgid "All categories"
+#: app/templates/modules/startups_list.html:11
+msgid "Have a startup?"
 msgstr ""
 
-#: app/templates/modules/startups_list.html:22
-msgid "All stages"
+#: app/templates/modules/startups_list.html:12
+msgid ""
+"Create a project card with your pitch, a picture and your presentation. "
+"After our review, all members can see it, and Clubi can answer their "
+"questions about it."
 msgstr ""
 
-#: app/templates/modules/startups_list.html:28
-msgid "Filter"
-msgstr ""
-
-#: app/templates/modules/startups_list.html:38
-msgid "No startups match this filter yet."
-msgstr ""
-
+#: app/templates/modules/startups_list.html:17
 #: app/templates/modules/startups_mine.html:3
 #: app/templates/modules/startups_mine.html:6
 msgid "My startups"
 msgstr ""
 
-#: app/templates/modules/startups_mine.html:14
+#: app/templates/modules/startups_list.html:20
+msgid "Publishing your startup is included in a higher plan."
+msgstr ""
+
+#: app/templates/modules/startups_list.html:28
+msgid "All categories"
+msgstr ""
+
+#: app/templates/modules/startups_list.html:37
+msgid "All stages"
+msgstr ""
+
+#: app/templates/modules/startups_list.html:43
+msgid "Filter"
+msgstr ""
+
+#: app/templates/modules/startups_list.html:55
+msgid "Open project card"
+msgstr ""
+
+#: app/templates/modules/startups_list.html:58
+msgid "No startups match this filter yet."
+msgstr ""
+
+#: app/templates/modules/startups_mine.html:9
+msgid "All startups"
+msgstr ""
+
+#: app/templates/modules/startups_mine.html:21
 #: app/templates/modules/travel_mine.html:19
 msgid "Waiting for review"
 msgstr ""
 
-#: app/templates/modules/startups_mine.html:15
+#: app/templates/modules/startups_mine.html:22
 #: app/templates/modules/travel_mine.html:21
 msgid "Not published"
 msgstr ""
 
-#: app/templates/modules/startups_mine.html:19
+#: app/templates/modules/startups_mine.html:29
 msgid "You have no startups yet."
 msgstr ""
 
-#: app/templates/modules/startups_mine.html:23
+#: app/templates/modules/startups_mine.html:34
 msgid "Interest from investors"
 msgstr ""
 
-#: app/templates/modules/startups_mine.html:31
+#: app/templates/modules/startups_mine.html:42
 msgid "Accept and share my contact"
 msgstr ""
 
-#: app/templates/modules/startups_mine.html:35
+#: app/templates/modules/startups_mine.html:46
 msgid "You accepted. Your contact is shared."
 msgstr ""
 
-#: app/templates/modules/startups_mine.html:35
+#: app/templates/modules/startups_mine.html:46
 msgid "You declined."
 msgstr ""
 
-#: app/templates/modules/startups_mine.html:39
+#: app/templates/modules/startups_mine.html:50
 msgid "No interest yet."
 msgstr ""
 
@@ -2316,10 +2628,6 @@ msgstr ""
 
 #: app/templates/modules/tool_report_findings.html:41
 msgid "Check"
-msgstr ""
-
-#: app/templates/modules/tool_report_findings.html:41
-msgid "Problem"
 msgstr ""
 
 #: app/templates/modules/tool_report_findings.html:41

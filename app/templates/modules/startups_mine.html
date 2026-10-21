@@ -4,20 +4,31 @@
 
 {% block content %}
 <h1>{{ _("My startups") }}</h1>
-<p><a href="{{ url_for('startups.new') }}" class="button">{{ _("Publish a startup") }}</a></p>
+<p class="button-row">
+  <a href="{{ url_for('startups.new') }}" class="button">{{ _("Create project card") }}</a>
+  <a href="{{ url_for('startups.index') }}" class="button button-secondary">{{ _("All startups") }}</a>
+</p>
 
+<div class="grid-cards">
 {% for startup in items %}
-<section class="card">
+<article class="card project-card">
+  {% if startup.logo_key %}
+    <img class="project-thumb" src="{{ url_for('startups.logo', startup_id=startup.id) }}" alt="" width="320" height="180" loading="lazy">
+  {% endif %}
   <h2><a href="{{ url_for('startups.detail', startup_id=startup.id) }}">{{ startup.name }}</a></h2>
-  <p class="small">
-    {% if startup.status == "approved" %}{{ _("Published") }}
-    {% elif startup.status == "pending" %}{{ _("Waiting for review") }}
-    {% else %}{{ _("Not published") }}{% endif %}
+  <p class="status-line">
+    {% if startup.status == "approved" %}<span class="pill pill-ok">{{ _("Published") }}</span>
+    {% elif startup.status == "pending" %}<span class="pill pill-warn">{{ _("Waiting for review") }}</span>
+    {% else %}<span class="pill pill-warn">{{ _("Not published") }}</span>{% endif %}
+    {% if startup.deck_key %}<span class="pill">PDF</span>{% endif %}
   </p>
-</section>
+  {% if startup.status == "rejected" and startup.rejection_reason %}<p class="small">{{ startup.rejection_reason }}</p>{% endif %}
+  <a class="button button-secondary" href="{{ url_for('startups.edit', startup_id=startup.id) }}">{{ _("Edit") }}</a>
+</article>
 {% else %}
   <p>{{ _("You have no startups yet.") }}</p>
 {% endfor %}
+</div>
 
 <section>
   <h2>{{ _("Interest from investors") }}</h2>

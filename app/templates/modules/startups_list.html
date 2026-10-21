@@ -6,7 +6,22 @@
 <h1>{{ _("Startups for investors") }}</h1>
 <p class="muted">{{ _("Startups from our members. Each one is checked by our team before it appears here.") }}</p>
 
-<form method="get" action="{{ url_for('startups.index') }}" class="form">
+<section class="card cta-card">
+  <div>
+    <h2>{{ _("Have a startup?") }}</h2>
+    <p>{{ _("Create a project card with your pitch, a picture and your presentation. After our review, all members can see it, and Clubi can answer their questions about it.") }}</p>
+  </div>
+  {% if can_publish %}
+    <p class="button-row">
+      <a class="button" href="{{ url_for('startups.new') }}">{{ _("Create project card") }}</a>
+      <a class="button button-secondary" href="{{ url_for('startups.mine') }}">{{ _("My startups") }}</a>
+    </p>
+  {% else %}
+    <p class="small muted">{{ _("Publishing your startup is included in a higher plan.") }}</p>
+  {% endif %}
+</section>
+
+<form method="get" action="{{ url_for('startups.index') }}" class="filter-bar">
   <div class="field">
     <label for="category">{{ _("Category") }}</label>
     <select id="category" name="category">
@@ -28,13 +43,19 @@
   <button type="submit" class="button button-secondary">{{ _("Filter") }}</button>
 </form>
 
+<div class="grid-cards">
 {% for startup in items %}
-<section class="card">
-  <h2><a href="{{ url_for('startups.detail', startup_id=startup.id) }}">{{ startup.name }}</a></h2>
-  <p>{{ startup.tagline }}</p>
-  <p class="small">{{ category_label(startup.category) }} · {{ stage_label(startup.stage) }}</p>
-</section>
+  <article class="card project-card">
+    {% if startup.logo_key %}
+      <a href="{{ url_for('startups.detail', startup_id=startup.id) }}"><img class="project-thumb" src="{{ url_for('startups.logo', startup_id=startup.id) }}" alt="" width="320" height="180" loading="lazy"></a>
+    {% endif %}
+    <h2><a href="{{ url_for('startups.detail', startup_id=startup.id) }}">{{ startup.name }}</a></h2>
+    <p>{{ startup.tagline }}</p>
+    <p class="status-line"><span class="pill">{{ category_label(startup.category) }}</span> <span class="pill">{{ stage_label(startup.stage) }}</span></p>
+    <a class="button button-secondary" href="{{ url_for('startups.detail', startup_id=startup.id) }}">{{ _("Open project card") }}</a>
+  </article>
 {% else %}
   <p>{{ _("No startups match this filter yet.") }}</p>
 {% endfor %}
+</div>
 {% endblock %}

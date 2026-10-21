@@ -23,6 +23,17 @@ class Startup(db.Model):
     name: Mapped[str] = mapped_column(String(120))
     tagline: Mapped[str] = mapped_column(String(160), default="")
     description: Mapped[str] = mapped_column(Text, default="")
+    # Структура питча: каждое поле — отдельный абзац карточки проекта (см. startup_guide.py)
+    problem: Mapped[str] = mapped_column(Text, default="", server_default="")
+    solution: Mapped[str] = mapped_column(Text, default="", server_default="")
+    market: Mapped[str] = mapped_column(Text, default="", server_default="")
+    traction: Mapped[str] = mapped_column(Text, default="", server_default="")
+    business_model: Mapped[str] = mapped_column(Text, default="", server_default="")
+    team: Mapped[str] = mapped_column(Text, default="", server_default="")
+    use_of_funds: Mapped[str] = mapped_column(Text, default="", server_default="")
+    logo_key: Mapped[str | None] = mapped_column(String(200))  # картинка проекта, хранится за интерфейсом media
+    deck_key: Mapped[str | None] = mapped_column(String(200))  # PDF-презентация (пересобранная)
+    deck_text: Mapped[str] = mapped_column(Text, default="", server_default="")  # текст из PDF для помощника Clubi
     stage: Mapped[str] = mapped_column(String(12))
     category: Mapped[str] = mapped_column(String(20))
     funding_goal_cents: Mapped[int | None] = mapped_column(Integer)

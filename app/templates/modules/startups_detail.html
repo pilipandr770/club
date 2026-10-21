@@ -3,25 +3,49 @@
 {% block title %}{{ startup.name }} · {{ _("Startups for investors") }}{% endblock %}
 
 {% block content %}
-<h1>{{ startup.name }}</h1>
-<p class="muted">{{ startup.tagline }}</p>
-<p class="small">{{ category_label(startup.category) }} · {{ stage_label(startup.stage) }}{% if funding %} · {{ _("Funding goal: %(amount)s", amount=funding) }}{% endif %}</p>
+<p class="crumbs"><a href="{{ url_for('startups.index') }}">← {{ _("Back to all startups") }}</a></p>
 
-{% if is_owner %}
-  <p class="small">
+<section class="project-head">
+  {% if startup.logo_key %}
+    <img class="project-cover" src="{{ url_for('startups.logo', startup_id=startup.id) }}" alt="" width="220" height="160">
+  {% endif %}
+  <div>
+    <h1>{{ startup.name }}</h1>
+    {% if startup.tagline %}<p class="lead">{{ startup.tagline }}</p>{% endif %}
+    <p class="status-line">
+      <span class="pill">{{ category_label(startup.category) }}</span>
+      <span class="pill">{{ stage_label(startup.stage) }}</span>
+      {% if funding %}<span class="pill pill-ok">{{ _("Funding goal: %(amount)s", amount=funding) }}</span>{% endif %}
+    </p>
+    <p class="button-row">
+      {% if startup.deck_key %}<a class="button" href="{{ url_for('startups.deck', startup_id=startup.id) }}">{{ _("Download presentation (PDF)") }}</a>{% endif %}
+      {% if startup.website_url %}<a class="button button-secondary" href="{{ startup.website_url }}" rel="noopener nofollow" target="_blank">{{ _("Website") }}</a>{% endif %}
+    </p>
+  </div>
+</section>
+
+{% if is_owner or current_user.is_admin %}
+  <p class="notice">
     {% if startup.status == "approved" %}{{ _("Published.") }}
-    {% elif startup.status == "pending" %}{{ _("Waiting for review.") }}
+    {% elif startup.status == "pending" %}{{ _("Waiting for review. Members do not see this card yet.") }}
     {% else %}{{ _("Not published.") }} {{ startup.rejection_reason or '' }}{% endif %}
+    {% if is_owner %}<a href="{{ url_for('startups.edit', startup_id=startup.id) }}">{{ _("Edit") }}</a>{% endif %}
   </p>
-  <p><a href="{{ url_for('startups.edit', startup_id=startup.id) }}">{{ _("Edit") }}</a></p>
 {% endif %}
 
 <section class="card">
-  <p>{{ startup.description }}</p>
-  {% if startup.website_url %}
-    <p><a href="{{ startup.website_url }}" rel="noopener nofollow" target="_blank">{{ _("Website") }}</a></p>
-  {% endif %}
+  <h2>{{ _("What is it?") }}</h2>
+  <p class="prose">{{ startup.description }}</p>
 </section>
+
+{% for key, title in sections %}
+  {% if startup[key] %}
+  <section class="card">
+    <h2>{{ title }}</h2>
+    <p class="prose">{{ startup[key] }}</p>
+  </section>
+  {% endif %}
+{% endfor %}
 
 {% if contact %}
 <section class="card">
@@ -32,6 +56,8 @@
 
 {% if not is_owner and startup.status == "approved" %}
 <section class="card">
+  <h2>{{ _("Interested?") }}</h2>
+  <p class="small muted">{{ _("Questions about the project? Ask Clubi: it knows the full card and the presentation.") }}</p>
   {% if not can_interest and not my_interest %}
     <p class="muted">{{ _("Showing interest is included in a higher plan.") }}</p>
   {% elif my_interest %}
@@ -53,6 +79,4 @@
   {% endif %}
 </section>
 {% endif %}
-
-<p><a href="{{ url_for('startups.index') }}">{{ _("Back to all startups") }}</a></p>
 {% endblock %}

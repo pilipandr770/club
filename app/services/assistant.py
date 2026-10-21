@@ -13,6 +13,7 @@ from flask_babel import gettext as _
 from ..extensions import db
 from ..models import Lot, Service, Startup, ToolRun, Trip, User
 from ..profile_guide import FIELDS
+from ..startup_guide import PITCH_FIELDS
 from ..utils import utcnow
 from .ai import llm
 from .ai.http import AIUnavailable
@@ -23,6 +24,7 @@ MESSAGE_MAX = 1000
 HISTORY_TURNS = 8
 HISTORY_CHARS = 1200
 TEXT_CAP = 700
+DECK_CONTEXT_CHARS = 8000
 
 
 class AssistantError(Exception):
@@ -119,12 +121,19 @@ def _ctx_trip(user, args):
 
 def _ctx_startup(user, args):
     startup = db.session.get(Startup, args["startup_id"])
-    if startup is None or (startup.status != "approved" and startup.owner_id != user.id):
+    if startup is None or (startup.status != "approved" and startup.owner_id != user.id and not user.is_admin):
         return None
     parts = [f"name: {_clean(startup.name)}", f"tagline: {_clean(startup.tagline)}", f"stage: {startup.stage}",
-             f"category: {startup.category}", f"funding_goal: {_money(startup.funding_goal_cents)}",
-             f"description: {_clean(startup.description)}"]
-    return _("Startup"), "\n".join(parts)
+             f"category: {startup.category}", f"funding_goal: {_money(startup.funding_goal_cents)}"]
+    # Полная карточка: помощник отвечает по всем разделам питча, а не по краткому описанию
+    parts.append(f"description: {_clean(startup.description, 3000)}")
+    for field in PITCH_FIELDS[1:]:
+        value = _clean(getattr(startup, field.key, ""), 1500)
+        if value:
+            parts.append(f"{field.key}: {value}")
+    if startup.deck_text:
+        parts.append(f"presentation_text (extracted from the uploaded PDF): {_clean(startup.deck_text, DECK_CONTEXT_CHARS)}")
+    return _("Startup"), chr(10).join(parts)
 
 
 def _ctx_lot(user, args):

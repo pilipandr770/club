@@ -2,55 +2,92 @@
 
 {% block title %}{{ _("Your startup") }} · {{ _("Club") }}{% endblock %}
 
-{% block content %}
-<h1>{% if startup %}{{ _("Edit startup") }}{% else %}{{ _("Publish a startup") }}{% endif %}</h1>
-<p class="muted">{{ _("Every change is checked by our team before the startup is shown to investors.") }}</p>
+{% macro val(key, default='') -%}{{ form.get(key) if form and key in form else (startup[key] if startup and startup[key] else default) }}{%- endmacro %}
 
-<form method="post" class="form" action="{{ url_for('startups.edit', startup_id=startup.id) if startup else url_for('startups.new') }}">
+{% block content %}
+<h1>{% if startup %}{{ _("Edit project card") }}{% else %}{{ _("Create project card") }}{% endif %}</h1>
+<p class="muted">{{ _("Describe your project step by step. The card is shown to all members after our team has checked it. Every change is checked again.") }}</p>
+
+<form method="post" enctype="multipart/form-data" class="form form-wide" action="{{ url_for('startups.edit', startup_id=startup.id) if startup else url_for('startups.new') }}">
   <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
 
-  <div class="field {% if 'name' in errors %}field-error{% endif %}">
-    <label for="name">{{ _("Name") }}</label>
-    <input id="name" name="name" type="text" maxlength="120" required value="{{ form.get('name', startup.name if startup else '') }}">
-  </div>
+  <section class="card">
+    <h2>{{ _("The basics") }}</h2>
+    <div class="field {% if 'name' in errors %}field-error{% endif %}">
+      <label for="name">{{ _("Name") }}</label>
+      <input id="name" name="name" type="text" maxlength="120" required value="{{ val('name') }}">
+    </div>
+    <div class="field {% if 'tagline' in errors %}field-error{% endif %}">
+      <label for="tagline">{{ _("One-line summary") }}</label>
+      <p class="small">{{ _("One sentence that makes someone want to read on, for example: Receipts in, bookkeeping out.") }}</p>
+      <input id="tagline" name="tagline" type="text" maxlength="160" value="{{ val('tagline') }}">
+    </div>
+    <div class="field {% if 'category' in errors %}field-error{% endif %}">
+      <label for="category">{{ _("Category") }}</label>
+      <select id="category" name="category" required>
+        {% for value in categories %}
+          <option value="{{ value }}" {% if val('category') == value %}selected{% endif %}>{{ category_label(value) }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <div class="field {% if 'stage' in errors %}field-error{% endif %}">
+      <label for="stage">{{ _("Stage") }}</label>
+      <select id="stage" name="stage" required>
+        {% for value in stages %}
+          <option value="{{ value }}" {% if val('stage') == value %}selected{% endif %}>{{ stage_label(value) }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <div class="field {% if 'funding_goal' in errors %}field-error{% endif %}">
+      <label for="funding_goal">{{ _("Funding goal (EUR, optional)") }}</label>
+      <input id="funding_goal" name="funding_goal" type="text" inputmode="decimal" value="{{ form.get('funding_goal', (startup.funding_goal_cents / 100)|string if startup and startup.funding_goal_cents else '') }}">
+    </div>
+    <div class="field {% if 'website_url' in errors %}field-error{% endif %}">
+      <label for="website_url">{{ _("Website (optional)") }}</label>
+      <input id="website_url" name="website_url" type="url" maxlength="300" value="{{ val('website_url') }}">
+    </div>
+  </section>
 
-  <div class="field {% if 'tagline' in errors %}field-error{% endif %}">
-    <label for="tagline">{{ _("One-line summary") }}</label>
-    <input id="tagline" name="tagline" type="text" maxlength="160" value="{{ form.get('tagline', startup.tagline if startup else '') }}">
-  </div>
+  <section class="card">
+    <h2>{{ _("Your pitch") }}</h2>
+    {% for field in pitch_fields %}
+    <div class="field {% if field.key in errors %}field-error{% endif %}">
+      <label for="{{ field.key }}">{{ field.label }}{% if not field.required %} <span class="small muted">({{ _("optional") }})</span>{% endif %}</label>
+      <p class="small">{{ field.hint }}</p>
+      <textarea id="{{ field.key }}" name="{{ field.key }}" rows="{{ 6 if field.required else 4 }}" maxlength="{{ field.max_length }}" {% if field.required %}required{% endif %}>{{ val(field.key) }}</textarea>
+      <details class="examples">
+        <summary>{{ _("Show examples") }}</summary>
+        <ul class="module-list">
+          {% for example in field.examples %}<li>{{ example }}</li>{% endfor %}
+        </ul>
+        <p class="small">{{ _("Examples are for orientation only. Write about your own project in your own words.") }}</p>
+      </details>
+    </div>
+    {% endfor %}
+  </section>
 
-  <div class="field {% if 'description' in errors %}field-error{% endif %}">
-    <label for="description">{{ _("Description") }}</label>
-    <textarea id="description" name="description" rows="8" maxlength="3000" required>{{ form.get('description', startup.description if startup else '') }}</textarea>
-  </div>
-
-  <div class="field {% if 'category' in errors %}field-error{% endif %}">
-    <label for="category">{{ _("Category") }}</label>
-    <select id="category" name="category" required>
-      {% for value in categories %}
-        <option value="{{ value }}" {% if (form.get('category') or (startup.category if startup else '')) == value %}selected{% endif %}>{{ category_label(value) }}</option>
-      {% endfor %}
-    </select>
-  </div>
-
-  <div class="field {% if 'stage' in errors %}field-error{% endif %}">
-    <label for="stage">{{ _("Stage") }}</label>
-    <select id="stage" name="stage" required>
-      {% for value in stages %}
-        <option value="{{ value }}" {% if (form.get('stage') or (startup.stage if startup else '')) == value %}selected{% endif %}>{{ stage_label(value) }}</option>
-      {% endfor %}
-    </select>
-  </div>
-
-  <div class="field {% if 'funding_goal' in errors %}field-error{% endif %}">
-    <label for="funding_goal">{{ _("Funding goal (EUR, optional)") }}</label>
-    <input id="funding_goal" name="funding_goal" type="text" inputmode="decimal" value="{{ form.get('funding_goal', '') }}">
-  </div>
-
-  <div class="field {% if 'website_url' in errors %}field-error{% endif %}">
-    <label for="website_url">{{ _("Website (optional)") }}</label>
-    <input id="website_url" name="website_url" type="url" maxlength="300" value="{{ form.get('website_url', startup.website_url or '' if startup else '') }}">
-  </div>
+  <section class="card">
+    <h2>{{ _("Picture and presentation") }}</h2>
+    <div class="field">
+      <label for="logo">{{ _("Picture") }}</label>
+      <p class="small">{{ logo_hint }}</p>
+      {% if startup and startup.logo_key %}
+        <p><img class="cover-thumb" src="{{ url_for('startups.logo', startup_id=startup.id) }}" alt="" width="160" height="100"></p>
+        <label class="check"><input type="checkbox" name="remove_logo" value="1"> {{ _("Remove the current picture") }}</label>
+      {% endif %}
+      <input id="logo" name="logo" type="file" accept="image/jpeg,image/png,image/webp">
+    </div>
+    <div class="field">
+      <label for="deck">{{ _("Presentation (PDF)") }}</label>
+      <p class="small">{{ deck_hint }}</p>
+      {% if startup and startup.deck_key %}
+        <p class="small"><a href="{{ url_for('startups.deck', startup_id=startup.id) }}">{{ _("Current presentation (PDF)") }}</a></p>
+        <label class="check"><input type="checkbox" name="remove_deck" value="1"> {{ _("Remove the current presentation") }}</label>
+      {% endif %}
+      <input id="deck" name="deck" type="file" accept="application/pdf">
+    </div>
+    <p class="small muted">{{ _("Do not upload secrets or personal data of third parties. Everything in the card and the PDF is visible to all verified members.") }}</p>
+  </section>
 
   <button type="submit" class="button">{% if startup %}{{ _("Send changes for review") }}{% else %}{{ _("Send for review") }}{% endif %}</button>
 </form>

@@ -5,8 +5,10 @@ from datetime import datetime
 from ..extensions import db
 from ..models import InvestorInterest, Startup
 from ..models.startups import CATEGORIES, STAGES
+from ..startup_guide import PITCH_FIELDS
 from ..utils import clean_url, eur_to_cents, utcnow
 from .audit import audit
+from .media import process_image, process_pdf, startup_file_key
 
 NAME_MAX = 120
 TAGLINE_MAX = 160
@@ -40,6 +42,11 @@ def parse_startup_form(form) -> tuple[dict, list[str]]:
         errors.append("stage")
     if data["category"] not in CATEGORIES:
         errors.append("category")
+    for field in PITCH_FIELDS[1:]:  # описание проверено выше, остальные разделы питча необязательны
+        value = form.get(field.key, "").strip()
+        if len(value) > field.max_length:
+            errors.append(field.key)
+        data[field.key] = value
 
     raw_goal = form.get("funding_goal", "").strip()
     data["funding_goal_cents"] = None
@@ -58,6 +65,43 @@ def parse_startup_form(form) -> tuple[dict, list[str]]:
         else:
             data["website_url"] = cleaned[:300]
     return data, errors
+
+
+def save_files(startup: Startup, storage, logo, deck, remove_logo=False, remove_deck=False, *,
+               image_max_bytes: int, deck_max_bytes: int) -> list[str]:
+    """Сохраняет картинку и PDF. Старые файлы удаляются после успешной записи. Бросает MediaError.
+
+    Все проверки идут до записи в хранилище: при ошибке ничего не меняется.
+    """
+    new_logo = new_deck = None
+    if logo is not None and logo.filename:
+        data, ext, _mime = process_image(logo.read(image_max_bytes + 1), image_max_bytes)
+        new_logo = (startup_file_key(startup.id, "logo", ext), data)
+    if deck is not None and deck.filename:
+        data, text = process_pdf(deck.read(deck_max_bytes + 1), deck_max_bytes)
+        new_deck = (startup_file_key(startup.id, "deck", "pdf"), data, text)
+
+    obsolete = []
+    if new_logo:
+        storage.save(*new_logo)
+        obsolete.append(startup.logo_key)
+        startup.logo_key = new_logo[0]
+    elif remove_logo and startup.logo_key:
+        obsolete.append(startup.logo_key)
+        startup.logo_key = None
+    if new_deck:
+        storage.save(new_deck[0], new_deck[1])
+        obsolete.append(startup.deck_key)
+        startup.deck_key, startup.deck_text = new_deck[0], new_deck[2]
+    elif remove_deck and startup.deck_key:
+        obsolete.append(startup.deck_key)
+        startup.deck_key, startup.deck_text = None, ""
+    return [key for key in obsolete if key]
+
+
+def delete_files(storage, keys) -> None:
+    for key in keys:
+        storage.delete(key)
 
 
 def create_startup(owner, data) -> Startup:

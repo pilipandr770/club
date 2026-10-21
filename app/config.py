@@ -93,7 +93,8 @@ class Config:
     # Загрузки (фото профилей). Сейчас — локальный диск, позже — S3 (Cloudflare R2) при деплое.
     MEDIA_ROOT = os.environ.get("MEDIA_ROOT", os.path.join(os.path.dirname(os.path.dirname(__file__)), "uploads"))
     MEDIA_MAX_BYTES = 5 * 1024 * 1024
-    MAX_CONTENT_LENGTH = MEDIA_MAX_BYTES + 512 * 1024  # общий предел запроса, включая форму
+    DECK_MAX_BYTES = 10 * 1024 * 1024  # PDF-презентация стартапа
+    MAX_CONTENT_LENGTH = MEDIA_MAX_BYTES + DECK_MAX_BYTES + 512 * 1024  # общий предел запроса, включая форму
 
 
 class DevelopmentConfig(Config):

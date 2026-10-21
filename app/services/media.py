@@ -95,3 +95,53 @@ def process_image(raw: bytes, max_bytes: int) -> tuple[bytes, str, str]:
 
 def profile_photo_key(user_id: int, ext: str) -> str:
     return f"avatars/{user_id}/{uuid.uuid4().hex}.{ext}"
+
+
+# --------------------------------------------------------------------------- PDF-презентации
+MAX_PDF_PAGES = 60
+DECK_TEXT_CHARS = 30000
+
+
+def process_pdf(raw: bytes, max_bytes: int) -> tuple[bytes, str]:
+    """Проверяет PDF, пересобирает его из страниц и вынимает текст. Возвращает (байты, текст). Бросает MediaError.
+
+    Пересборка отбрасывает вложения, скрипты уровня документа и действия при открытии. Файл всё равно отдаётся
+    только как скачивание, не в окне браузера.
+    """
+    from pypdf import PdfReader, PdfWriter
+    from pypdf.errors import PyPdfError
+
+    if not raw:
+        raise MediaError("empty")
+    if len(raw) > max_bytes:
+        raise MediaError("too_large")
+    if raw.lstrip()[:5] != b"%PDF-":
+        raise MediaError("not_a_pdf")
+    try:
+        reader = PdfReader(io.BytesIO(raw))
+        if reader.is_encrypted:
+            raise MediaError("encrypted")
+        if len(reader.pages) == 0:
+            raise MediaError("not_a_pdf")
+        if len(reader.pages) > MAX_PDF_PAGES:
+            raise MediaError("too_many_pages")
+        writer = PdfWriter()
+        parts = []
+        for page in reader.pages:
+            writer.add_page(page)
+            try:
+                parts.append(page.extract_text() or "")
+            except Exception:  # noqa: BLE001 - одна «плохая» страница не должна ронять загрузку
+                parts.append("")
+        out = io.BytesIO()
+        writer.write(out)
+    except MediaError:
+        raise
+    except (PyPdfError, ValueError, OSError, KeyError, TypeError, RecursionError):
+        raise MediaError("not_a_pdf") from None
+    text = " ".join(" ".join(parts).split())[:DECK_TEXT_CHARS]
+    return out.getvalue(), text
+
+
+def startup_file_key(startup_id: int, kind: str, ext: str) -> str:
+    return f"startups/{startup_id}/{kind}-{uuid.uuid4().hex}.{ext}"

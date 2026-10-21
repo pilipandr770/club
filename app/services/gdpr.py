@@ -45,6 +45,18 @@ def delete_user(user, provider) -> None:
     """Сначала удаляем данные у провайдера, потом у нас. Если провайдер недоступен, ничего не удаляем."""
     if user.stripe_verification_session_id:
         provider.redact(user.stripe_verification_session_id)
+    from flask import current_app
+
+    from ..models import Startup
+
+    # Файлы лежат вне БД: ключи запоминаем до удаления строк и стираем после commit
+    keys = [user.profile.photo_key] if user.profile and user.profile.photo_key else []
+    for startup in Startup.query.filter_by(owner_id=user.id).all():
+        keys += [key for key in (startup.logo_key, startup.deck_key) if key]
     audit("account.deleted", target=f"user:{user.id}", actor_id=user.id)
-    db.session.delete(user)  # профиль и согласия удаляются каскадом
+    db.session.delete(user)  # профиль, согласия и стартапы удаляются каскадом
     db.session.commit()
+    storage = current_app.extensions.get("media")
+    if storage is not None:
+        for key in keys:
+            storage.delete(key)
