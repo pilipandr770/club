@@ -1291,20 +1291,20 @@ hr { border: 0; border-block-start: 1px solid var(--color-border); margin-block:
 .faq summary::after { content: "+"; color: var(--color-accent); font-size: 1.3rem; line-height: 1; }
 .faq[open] summary::after { content: "−"; }
 
-.final {
+.landing .block.final {
   max-inline-size: 52rem;
   margin-block: 2rem 4rem;
   padding: 3.5rem 1.5rem;
   border-radius: 28px;
-  background: linear-gradient(135deg, var(--color-accent), #9b6cf3);
+  background: linear-gradient(135deg, #4253e6, #9b6cf3);
   color: #ffffff;
-  clip-path: none !important;
-  box-shadow: var(--shadow-m) !important;
+  clip-path: none;
+  box-shadow: var(--shadow-m);
 }
 
 .final h2 { color: #ffffff; }
 
-.final .button {
+.landing .final .button {
   background: #ffffff;
   border-color: #ffffff;
   color: #3a3fb8;
