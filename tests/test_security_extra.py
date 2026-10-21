@@ -165,3 +165,12 @@ def test_bad_domains_are_still_refused(raw):
 
     with pytest.raises(ToolError):
         security.hostname_from(raw)
+
+
+def test_rdap_bootstrap_lookup_and_certspotter_mapping():
+    bootstrap = {"services": [[["de", "at"], ["https://rdap.denic.de/"]], [["com"], ["https://rdap.verisign.com/com/v1/"]]]}
+
+    assert x.rdap_base_for(bootstrap, "DE") == "https://rdap.denic.de"
+    assert x.rdap_base_for(bootstrap, "xyz") == ""
+    entries = x.certspotter_entries([{"dns_names": ["example.com", "dev.example.com"]}, "junk", {"dns_names": []}])
+    assert x.subdomain_names(entries, "example.com") == ["dev.example.com"]

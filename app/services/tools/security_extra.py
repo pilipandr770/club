@@ -11,6 +11,7 @@ import logging
 import re
 import socket
 import ssl
+import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime, timezone
 from html.parser import HTMLParser
@@ -294,6 +295,20 @@ def rdap_expiry(data: dict):
     return expires, registrar
 
 
+def rdap_base_for(bootstrap: dict, tld: str) -> str:
+    """Адрес RDAP-сервиса зоны по файлу IANA (data.iana.org/rdap/dns.json); пусто, если зона не найдена."""
+    for names, urls in bootstrap.get("services", []):
+        if tld.lower() in [n.lower() for n in names] and urls:
+            return urls[0].rstrip("/")
+    return ""
+
+
+def certspotter_entries(data: list) -> list[dict]:
+    """Ответ Cert Spotter -> та же форма, что у crt.sh: [{'name_value': 'a
+b'}]."""
+    return [{"name_value": chr(10).join(item.get("dns_names", []))} for item in data if isinstance(item, dict)]
+
+
 def subdomain_names(entries: list[dict], org: str) -> list[str]:
     names = set()
     for entry in entries:
@@ -475,8 +490,9 @@ def domain_findings(org: str, host: str) -> list[dict]:
                       else f"www zeigt auf {target}, das nicht mehr existiert: Übernahme durch Fremde möglich (Subdomain Takeover).", 6,
                       "Den CNAME-Eintrag löschen oder auf ein existierendes Ziel umstellen."))
     try:
-        r = fetch(f"https://rdap.org/domain/{org}", max_bytes=300_000)
-        if r.status == 200:
+        base = _rdap_base(org.rsplit(".", 1)[-1])
+        r = fetch(f"{base}/domain/{org}", max_bytes=300_000) if base else None
+        if r is not None and r.status == 200:
             expires, registrar = rdap_expiry(json.loads(r.text))
             if expires:
                 days = (expires - datetime.now(timezone.utc)).days
@@ -484,6 +500,10 @@ def domain_findings(org: str, host: str) -> list[dict]:
                               f"Läuft in {days} Tagen ab" + (f" (Registrar: {registrar})." if registrar else ".")
                               if days >= 0 else f"Seit {-days} Tagen abgelaufen.", 5,
                               "Automatische Verlängerung beim Registrar aktivieren und eine gepflegte Kontakt-Adresse hinterlegen."))
+            else:
+                out.append(_f("domain_exp", DOMAIN, "info", "Domain-Laufzeit",
+                              "Die Registrierungsstelle dieser Endung veröffentlicht kein Ablaufdatum (bei .de üblich).", 0,
+                              "Im Kundenkonto des Registrars prüfen, wann die Domain abläuft, und automatische Verlängerung aktivieren."))
     except (FetchError, ValueError):
         pass
     try:
@@ -498,22 +518,52 @@ def domain_findings(org: str, host: str) -> list[dict]:
     return out
 
 
-def subdomain_findings(org: str) -> list[dict]:
+_BOOTSTRAP: dict = {"at": 0.0, "data": {}}
+
+
+def _rdap_base(tld: str) -> str:
+    """RDAP-Dienst der Endung laut IANA-Bootstrap (einmal pro Tag geladen); leer, wenn unbekannt."""
+    now = time.time()
+    if now - _BOOTSTRAP["at"] > 86400 or not _BOOTSTRAP["data"]:
+        try:
+            r = fetch("https://data.iana.org/rdap/dns.json", max_bytes=400_000)
+            if r.status == 200:
+                _BOOTSTRAP.update(at=now, data=json.loads(r.text))
+        except (FetchError, ValueError):
+            pass
+    return rdap_base_for(_BOOTSTRAP["data"], tld)
+
+
+def _certificate_entries(org: str):
+    """Zertifikats-Transparenzdaten: erst Cert Spotter, dann crt.sh (dort oft Zeitüberschreitungen). None = nichts erreichbar."""
+    try:
+        r = fetch(f"https://api.certspotter.com/v1/issuances?domain={org}&include_subdomains=true&expand=dns_names",
+                  max_bytes=1_500_000)
+        if r.status == 200:
+            return certspotter_entries(json.loads(r.text))
+    except (FetchError, ValueError):
+        pass
     try:
         r = fetch(f"https://crt.sh/?q=%25.{org}&output=json", max_bytes=1_500_000)
     except FetchError:
-        return [_f("subs", SUBS, "info", "Öffentlich sichtbare Subdomains", "Die Zertifikats-Verzeichnisse waren nicht erreichbar.", 0)]
+        return None
     if r.status != 200:
-        return [_f("subs", SUBS, "info", "Öffentlich sichtbare Subdomains", "Die Zertifikats-Verzeichnisse waren nicht erreichbar.", 0)]
+        return None
     text = r.text
     try:
-        entries = json.loads(text)
+        return json.loads(text)
     except ValueError:  # bei großen Domains wird die Antwort gekürzt: gültigen Anfang verwenden
         cut = text.rfind("},{")
         try:
-            entries = json.loads(text[:cut + 1] + "]") if cut > 0 else []
+            return json.loads(text[:cut + 1] + "]") if cut > 0 else []
         except ValueError:
-            entries = []
+            return []
+
+
+def subdomain_findings(org: str) -> list[dict]:
+    entries = _certificate_entries(org)
+    if entries is None:
+        return [_f("subs", SUBS, "info", "Öffentlich sichtbare Subdomains", "Die Zertifikats-Verzeichnisse waren nicht erreichbar.", 0)]
     names = subdomain_names(entries, org)
     if not names:
         return [_f("subs", SUBS, "info", "Öffentlich sichtbare Subdomains", "In den öffentlichen Zertifikatslisten wurden keine Subdomains gefunden.", 0)]
