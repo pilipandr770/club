@@ -2,6 +2,7 @@ from datetime import timedelta
 
 from flask import Blueprint, Response, abort, current_app, flash, jsonify, redirect, render_template, request, url_for
 from flask_babel import gettext as _
+from flask_babel import ngettext
 from flask_login import current_user
 
 from ...auction_guide import (
@@ -307,6 +308,7 @@ def state(lot_id):
     drop = next_drop_at(lot, now) if lot.status == "open" else None
     return jsonify(
         status=lot.status, price=item["price"], min_bid=item["min_bid"], bids=item["bid_count"],
+        bids_label=ngettext("%(num)d bid", "%(num)d bids", item["bid_count"]),
         leader=bool(lot.bids) and lot.bids[-1].user_id == current_user.id,
         seconds_left=max(0, int((lot.ends_at - now).total_seconds())) if lot.status == "open" else 0,
         seconds_to_start=max(0, int((lot.opens_at - now).total_seconds())),

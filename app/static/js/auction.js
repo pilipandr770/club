@@ -51,7 +51,7 @@
     if (buyLabel) { buyLabel.textContent = buyLabel.textContent.replace(/[\d.,]+\s*€/, state.price); }
     if (amountField) { amountField.value = state.price_plain; }
     if (bidsEl && state.bids !== lastBids) {
-      bidsEl.textContent = state.bids + " " + root.dataset.labelBids.toLowerCase();
+      bidsEl.textContent = state.bids_label;
       lastBids = state.bids;
     }
     if (leaderEl) { leaderEl.hidden = !state.leader; }
