@@ -1,6 +1,6 @@
 from datetime import date, datetime
 
-from sqlalchemy import CheckConstraint, Date, DateTime, ForeignKey, Integer, String, Text, UniqueConstraint
+from sqlalchemy import Boolean, CheckConstraint, Date, DateTime, ForeignKey, Integer, String, Text, UniqueConstraint
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from ..extensions import db
@@ -21,6 +21,15 @@ class Trip(db.Model):
     kind: Mapped[str] = mapped_column(String(10))
     title: Mapped[str] = mapped_column(String(160))
     description: Mapped[str] = mapped_column(Text, default="")
+    # Разделы карточки поездки (см. travel_guide.py)
+    program: Mapped[str] = mapped_column(Text, default="", server_default="")
+    included: Mapped[str] = mapped_column(Text, default="", server_default="")
+    not_included: Mapped[str] = mapped_column(Text, default="", server_default="")
+    meeting_point: Mapped[str] = mapped_column(Text, default="", server_default="")
+    requirements: Mapped[str] = mapped_column(Text, default="", server_default="")
+    cover_key: Mapped[str | None] = mapped_column(String(200))  # обложка, хранится за интерфейсом media
+    program_key: Mapped[str | None] = mapped_column(String(200))  # PDF с программой (пересобранный)
+    program_text: Mapped[str] = mapped_column(Text, default="", server_default="")  # текст PDF для Clubi
     destination: Mapped[str] = mapped_column(String(120))
     starts_on: Mapped[date] = mapped_column(Date)
     ends_on: Mapped[date] = mapped_column(Date)
@@ -53,6 +62,8 @@ class Booking(db.Model):
     user_id: Mapped[int] = mapped_column(ForeignKey("users.id", ondelete="CASCADE"), index=True)
     seats: Mapped[int] = mapped_column(Integer, default=1)
     status: Mapped[str] = mapped_column(String(12), default="confirmed")
+    # Участник явно разрешил организатору увидеть его e-mail (флажок при записи)
+    share_contact: Mapped[bool] = mapped_column(Boolean, default=False, server_default="false")
     created_at: Mapped[datetime] = mapped_column(DateTime, default=utcnow)
     cancelled_at: Mapped[datetime | None] = mapped_column(DateTime)
 

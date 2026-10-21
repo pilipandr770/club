@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Club 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-21 12:01+0000\n"
+"POT-Creation-Date: 2026-10-21 12:24+0000\n"
 "PO-Revision-Date: 2026-10-19 21:00+0000\n"
 "Last-Translator: \n"
 "Language: de\n"
@@ -491,6 +491,184 @@ msgstr ""
 "Ein klares Bild deines Produkts, dein Logo oder dein Team (JPG, PNG oder "
 "WebP, bis 5 MB)."
 
+#: app/templates/modules/travel_detail.html:43 app/travel_guide.py:22
+msgid "What is the trip about?"
+msgstr "Worum geht es bei der Reise?"
+
+#: app/travel_guide.py:23
+msgid ""
+"Two or three sentences: the idea, the mood and who you would like to travel"
+" with."
+msgstr ""
+"Zwei bis drei Sätze: die Idee, die Stimmung und mit wem du gern reisen "
+"möchtest."
+
+#: app/travel_guide.py:25
+msgid ""
+"A relaxed week in Lisbon for founders: mornings to work, afternoons to "
+"explore the city together."
+msgstr ""
+"Eine entspannte Woche in Lissabon für Gründerinnen und Gründer: vormittags "
+"arbeiten, nachmittags gemeinsam die Stadt entdecken."
+
+#: app/travel_guide.py:26
+msgid ""
+"A weekend hike in the Black Forest for a small group, with a cosy farmhouse"
+" and a shared dinner."
+msgstr ""
+"Ein Wanderwochenende im Schwarzwald für eine kleine Gruppe, mit gemütlichem"
+" Bauernhaus und gemeinsamem Abendessen."
+
+#: app/travel_guide.py:27
+msgid ""
+"Five days in Tuscany by car: wine villages, a cooking class and plenty of "
+"time for conversations."
+msgstr ""
+"Fünf Tage in der Toskana mit dem Auto: Weindörfer, ein Kochkurs und viel "
+"Zeit für Gespräche."
+
+#: app/travel_guide.py:34
+msgid "Programme"
+msgstr "Programm"
+
+#: app/travel_guide.py:35
+msgid ""
+"Day by day, in short lines. Fixed points matter most: arrival, highlights, "
+"departure."
+msgstr ""
+"Tag für Tag in kurzen Zeilen. Feste Punkte sind am wichtigsten: Anreise, "
+"Höhepunkte, Abreise."
+
+#: app/travel_guide.py:37
+msgid ""
+"Day 1: arrival and welcome dinner. Day 2: old town walk and co-working. Day"
+" 3: day trip to Sintra."
+msgstr ""
+"Tag 1: Anreise und Willkommensessen. Tag 2: Altstadtspaziergang und Co-"
+"Working. Tag 3: Tagesausflug nach Sintra."
+
+#: app/travel_guide.py:38
+msgid ""
+"Saturday: hike to the lake, picnic. Sunday: sauna and breakfast, departure "
+"at noon."
+msgstr ""
+"Samstag: Wanderung zum See, Picknick. Sonntag: Sauna und Frühstück, Abreise"
+" mittags."
+
+#: app/travel_guide.py:43
+msgid "What is included"
+msgstr "Was ist enthalten"
+
+#: app/travel_guide.py:44
+msgid "What the price covers, or what you will organise for the group."
+msgstr "Was der Preis abdeckt oder was du für die Gruppe organisierst."
+
+#: app/travel_guide.py:46
+msgid ""
+"Six nights in shared apartments, breakfast, one guided tour and the welcome"
+" dinner."
+msgstr ""
+"Sechs Nächte in gemeinsamen Apartments, Frühstück, eine Führung und das "
+"Willkommensessen."
+
+#: app/travel_guide.py:47
+msgid ""
+"Farmhouse stay and a shared dinner. Everyone brings their own food for the "
+"day."
+msgstr ""
+"Übernachtung im Bauernhaus und ein gemeinsames Abendessen. Verpflegung "
+"tagsüber bringt jeder selbst mit."
+
+#: app/travel_guide.py:52
+msgid "What is not included"
+msgstr "Was nicht enthalten ist"
+
+#: app/travel_guide.py:53
+msgid "Costs that everyone pays on their own, so nobody is surprised."
+msgstr "Kosten, die jeder selbst trägt, damit niemand überrascht wird."
+
+#: app/travel_guide.py:55
+msgid "Flights, local transport, lunches and personal spending."
+msgstr "Flüge, Nahverkehr vor Ort, Mittagessen und persönliche Ausgaben."
+
+#: app/travel_guide.py:56
+msgid "Travel to the meeting point and travel insurance."
+msgstr "Anreise zum Treffpunkt und Reiseversicherung."
+
+#: app/travel_guide.py:61
+msgid "Meeting point and getting there"
+msgstr "Treffpunkt und Anreise"
+
+#: app/travel_guide.py:62
+msgid ""
+"Where the group meets and how people arrive. Do not write private addresses"
+" of other people."
+msgstr ""
+"Wo sich die Gruppe trifft und wie man anreist. Schreibe keine privaten "
+"Adressen anderer Personen."
+
+#: app/travel_guide.py:64
+msgid ""
+"We meet on Monday at 10:00 at the hotel lobby. The airport is 25 minutes "
+"away by metro."
+msgstr ""
+"Wir treffen uns am Montag um 10:00 Uhr in der Hotellobby. Der Flughafen ist"
+" 25 Minuten mit der U-Bahn entfernt."
+
+#: app/travel_guide.py:65
+msgid ""
+"Car pool from Frankfurt main station on Friday at 17:00, or meet us at the "
+"farmhouse."
+msgstr ""
+"Fahrgemeinschaft ab Frankfurt Hauptbahnhof am Freitag um 17:00 Uhr oder "
+"Treffen direkt am Bauernhaus."
+
+#: app/travel_guide.py:70
+msgid "Who is it for and what to know"
+msgstr "Für wen und was man wissen sollte"
+
+#: app/travel_guide.py:71
+msgid ""
+"Fitness level, documents, languages, group rules, deadlines for booking or "
+"cancelling."
+msgstr ""
+"Fitness, Dokumente, Sprachen, Gruppenregeln, Fristen für Buchung oder "
+"Stornierung."
+
+#: app/travel_guide.py:73
+msgid ""
+"Easy pace, no special fitness needed. Please book by 1 March; free "
+"cancellation until 15 March."
+msgstr ""
+"Gemütliches Tempo, keine besondere Fitness nötig. Bitte bis 1. März buchen;"
+" kostenlose Stornierung bis 15. März."
+
+#: app/travel_guide.py:74
+msgid ""
+"Walking about 15 km per day. Passport or ID card required. The group speaks"
+" German and English."
+msgstr ""
+"Etwa 15 km Wandern pro Tag. Reisepass oder Personalausweis erforderlich. "
+"Die Gruppe spricht Deutsch und Englisch."
+
+#: app/travel_guide.py:79
+msgid ""
+"A photo that shows the place or the mood of the trip (JPG, PNG or WebP, up "
+"to 5 MB)."
+msgstr ""
+"Ein Foto, das den Ort oder die Stimmung der Reise zeigt (JPG, PNG oder "
+"WebP, bis 5 MB)."
+
+#: app/travel_guide.py:80
+msgid ""
+"Optional: a detailed programme or a brochure as a PDF (up to 10 MB, 60 "
+"pages). Members can download it. Clubi can also read it to answer questions"
+" about the trip."
+msgstr ""
+"Optional: ein ausführliches Programm oder eine Broschüre als PDF (bis 10 "
+"MB, 60 Seiten). Mitglieder können es herunterladen. Clubi kann es auch "
+"lesen, um Fragen zur Reise zu beantworten."
+
 #: app/blueprints/admin/__init__.py:121
 msgid "Changes are saved."
 msgstr "Änderungen sind gespeichert."
@@ -541,8 +719,8 @@ msgid "Participant created."
 msgstr "Teilnehmende Person angelegt."
 
 #: app/blueprints/admin/__init__.py:313 app/modules/profile/__init__.py:70
-#: app/modules/startups/__init__.py:72 app/modules/travel/__init__.py:130
-#: app/modules/travel/__init__.py:150
+#: app/modules/startups/__init__.py:72 app/modules/travel/__init__.py:201
+#: app/modules/travel/__init__.py:247
 #, python-format
 msgid "Please check these fields: %(fields)s"
 msgstr "Bitte prüfe diese Felder: %(fields)s"
@@ -579,7 +757,7 @@ msgstr "Du hast das Tageslimit an Fragen erreicht. Es erneuert sich morgen."
 
 #: app/blueprints/assistant/__init__.py:19 app/modules/profile/__init__.py:188
 #: app/modules/services/__init__.py:18 app/modules/startups/__init__.py:35
-#: app/modules/travel/__init__.py:38 app/templates/partials/assistant.html:4
+#: app/modules/travel/__init__.py:44 app/templates/partials/assistant.html:4
 msgid "Something went wrong. Please try again."
 msgstr "Etwas ist schiefgelaufen. Bitte versuche es erneut."
 
@@ -793,6 +971,7 @@ msgid "This file is not a valid photo."
 msgstr "Diese Datei ist kein gültiges Foto."
 
 #: app/modules/profile/__init__.py:36 app/modules/startups/__init__.py:40
+#: app/modules/travel/__init__.py:49
 msgid "The file is empty."
 msgstr "Die Datei ist leer."
 
@@ -835,7 +1014,7 @@ msgstr ""
 "erneut."
 
 #: app/modules/profile/__init__.py:185 app/modules/startups/__init__.py:33
-#: app/modules/travel/__init__.py:35
+#: app/modules/travel/__init__.py:39
 msgid "This is not available to you."
 msgstr "Das ist für dich nicht verfügbar."
 
@@ -907,35 +1086,35 @@ msgstr "Du hast dein Interesse an diesem Startup schon gesendet."
 msgid "You have already answered this interest."
 msgstr "Auf dieses Interesse hast du bereits geantwortet."
 
-#: app/modules/startups/__init__.py:41
+#: app/modules/startups/__init__.py:41 app/modules/travel/__init__.py:50
 msgid "The file is too large."
 msgstr "Die Datei ist zu groß."
 
-#: app/modules/startups/__init__.py:42
+#: app/modules/startups/__init__.py:42 app/modules/travel/__init__.py:51
 msgid "The picture has too many pixels."
 msgstr "Das Bild hat zu viele Pixel."
 
-#: app/modules/startups/__init__.py:43
+#: app/modules/startups/__init__.py:43 app/modules/travel/__init__.py:52
 msgid "This file is not a picture."
 msgstr "Diese Datei ist kein Bild."
 
-#: app/modules/startups/__init__.py:44
+#: app/modules/startups/__init__.py:44 app/modules/travel/__init__.py:53
 msgid "Please use a JPG, PNG or WebP picture."
 msgstr "Bitte nutze ein Bild als JPG, PNG oder WebP."
 
-#: app/modules/startups/__init__.py:45
+#: app/modules/startups/__init__.py:45 app/modules/travel/__init__.py:54
 msgid "This file is not a readable PDF."
 msgstr "Diese Datei ist kein lesbares PDF."
 
-#: app/modules/startups/__init__.py:46
+#: app/modules/startups/__init__.py:46 app/modules/travel/__init__.py:55
 msgid "Password-protected PDFs are not accepted."
 msgstr "Passwortgeschützte PDFs werden nicht akzeptiert."
 
-#: app/modules/startups/__init__.py:47
+#: app/modules/startups/__init__.py:47 app/modules/travel/__init__.py:56
 msgid "The PDF has too many pages (up to 60)."
 msgstr "Das PDF hat zu viele Seiten (bis zu 60)."
 
-#: app/modules/startups/__init__.py:49
+#: app/modules/startups/__init__.py:49 app/modules/travel/__init__.py:58
 msgid "The file could not be saved."
 msgstr "Die Datei konnte nicht gespeichert werden."
 
@@ -951,7 +1130,7 @@ msgstr ""
 "Dein Startup ist zur Prüfung eingereicht. Wir melden uns, sobald es "
 "veröffentlicht ist."
 
-#: app/modules/startups/__init__.py:174
+#: app/modules/startups/__init__.py:174 app/modules/travel/__init__.py:262
 msgid "Your changes are sent for review."
 msgstr "Deine Änderungen sind zur Prüfung eingereicht."
 
@@ -1003,95 +1182,111 @@ msgstr "Erste Umsätze"
 msgid "Growth"
 msgstr "Wachstum"
 
-#: app/modules/travel/__init__.py:27
+#: app/modules/travel/__init__.py:31
 msgid "This trip does not exist."
 msgstr "Diese Reise existiert nicht."
 
-#: app/modules/travel/__init__.py:28
+#: app/modules/travel/__init__.py:32
 msgid "This trip is not open for bookings."
 msgstr "Diese Reise nimmt gerade keine Buchungen an."
 
-#: app/modules/travel/__init__.py:29
+#: app/modules/travel/__init__.py:33
 msgid "This trip has already ended."
 msgstr "Diese Reise ist bereits beendet."
 
-#: app/modules/travel/__init__.py:30
+#: app/modules/travel/__init__.py:34
 msgid "You cannot book your own trip."
 msgstr "Du kannst deine eigene Reise nicht buchen."
 
-#: app/modules/travel/__init__.py:31
+#: app/modules/travel/__init__.py:35
 msgid "You are already booked on this trip."
 msgstr "Du bist für diese Reise bereits gebucht."
 
-#: app/modules/travel/__init__.py:32
+#: app/modules/travel/__init__.py:36
 msgid "There are not enough seats left."
 msgstr "Es sind nicht genug Plätze frei."
 
-#: app/modules/travel/__init__.py:33
+#: app/modules/travel/__init__.py:37
 msgid "Please choose between 1 and 6 seats."
 msgstr "Bitte wähle zwischen 1 und 6 Plätzen."
 
-#: app/modules/travel/__init__.py:34
+#: app/modules/travel/__init__.py:38
 msgid "You are not booked on this trip."
 msgstr "Du bist für diese Reise nicht gebucht."
 
-#: app/modules/travel/__init__.py:36
+#: app/modules/travel/__init__.py:40
 msgid "Only travel operators and agents can publish offers."
 msgstr ""
 "Nur Reiseveranstalterinnen, Veranstalter und Agenturen können Angebote "
 "veröffentlichen."
 
-#: app/modules/travel/__init__.py:97
+#: app/modules/travel/__init__.py:41
+msgid ""
+"Please allow the organiser to see your e-mail address, otherwise they "
+"cannot reach you."
+msgstr ""
+"Bitte erlaube dem Organisator, deine E-Mail-Adresse zu sehen, sonst kann er"
+" dich nicht erreichen."
+
+#: app/modules/travel/__init__.py:42
+msgid "There are already more seats booked than you entered."
+msgstr "Es sind bereits mehr Plätze gebucht, als du eingegeben hast."
+
+#: app/modules/travel/__init__.py:179
 msgid "You are booked. The organiser will contact you."
 msgstr "Du bist gebucht. Die Organisatorin oder der Organisator meldet sich bei dir."
 
-#: app/modules/travel/__init__.py:111
+#: app/modules/travel/__init__.py:193
 msgid "Your booking is cancelled."
 msgstr "Deine Buchung ist storniert."
 
-#: app/modules/travel/__init__.py:128
-msgid "Your trip is open for others to join."
-msgstr "Deine Reise ist offen, damit andere mitfahren können."
-
-#: app/modules/travel/__init__.py:144
+#: app/modules/travel/__init__.py:216
 msgid "Your offer is sent for review. We will publish it after the check."
 msgstr ""
 "Dein Angebot ist zur Prüfung eingereicht. Wir veröffentlichen es nach der "
 "Prüfung."
 
-#: app/modules/travel/__init__.py:178
+#: app/modules/travel/__init__.py:217
+msgid "Your trip is open for others to join."
+msgstr "Deine Reise ist offen, damit andere mitfahren können."
+
+#: app/modules/travel/__init__.py:262
+msgid "Your changes are saved."
+msgstr "Deine Änderungen sind gespeichert."
+
+#: app/modules/travel/__init__.py:291
 msgid "The trip is cancelled."
 msgstr "Die Reise ist storniert."
 
-#: app/services/assistant.py:96
+#: app/services/assistant.py:100
 msgid "Your own public profile"
 msgstr "Dein eigenes öffentliches Profil"
 
-#: app/services/assistant.py:97
+#: app/services/assistant.py:101
 msgid "Profile of another member"
 msgstr "Profil eines anderen Mitglieds"
 
-#: app/services/assistant.py:107 app/templates/admin/service_form.html:3
+#: app/services/assistant.py:111 app/templates/admin/service_form.html:3
 msgid "Service"
 msgstr "Leistung"
 
-#: app/services/assistant.py:119
+#: app/services/assistant.py:129
 msgid "Trip"
 msgstr "Reise"
 
-#: app/services/assistant.py:136
+#: app/services/assistant.py:146
 msgid "Startup"
 msgstr "Startup"
 
-#: app/services/assistant.py:148
+#: app/services/assistant.py:158
 msgid "Auction lot"
 msgstr "Auktionslos"
 
-#: app/services/assistant.py:161
+#: app/services/assistant.py:171
 msgid "Your matches"
 msgstr "Deine Vorschläge"
 
-#: app/services/assistant.py:173
+#: app/services/assistant.py:183
 msgid "Your report"
 msgstr "Dein Bericht"
 
@@ -1382,13 +1577,12 @@ msgstr "Neues Los"
 
 #: app/templates/admin/lots.html:15 app/templates/admin/lots.html:70
 #: app/templates/admin/service_form.html:12
-#: app/templates/modules/travel_form.html:17
+#: app/templates/modules/travel_form.html:21
 msgid "Title"
 msgstr "Titel"
 
 #: app/templates/admin/lots.html:20 app/templates/admin/service_form.html:16
 #: app/templates/modules/tool_form.html:60
-#: app/templates/modules/travel_form.html:47
 msgid "Description"
 msgstr "Beschreibung"
 
@@ -1539,6 +1733,8 @@ msgstr "Verborgen"
 #: app/templates/admin/services.html:14
 #: app/templates/modules/startups_detail.html:32
 #: app/templates/modules/startups_mine.html:26
+#: app/templates/modules/travel_detail.html:38
+#: app/templates/modules/travel_mine.html:32
 msgid "Edit"
 msgstr "Bearbeiten"
 
@@ -1632,6 +1828,7 @@ msgid "Reason"
 msgstr "Grund"
 
 #: app/templates/admin/user_detail.html:75
+#: app/templates/modules/travel_form.html:91
 msgid "Save changes"
 msgstr "Änderungen speichern"
 
@@ -2040,6 +2237,7 @@ msgstr "Für das Matching fülle bitte außerdem aus:"
 #: app/templates/modules/profile_edit.html:34
 #: app/templates/modules/profile_edit.html:51
 #: app/templates/modules/startups_form.html:59
+#: app/templates/modules/travel_form.html:57
 msgid "Show examples"
 msgstr "Beispiele anzeigen"
 
@@ -2050,6 +2248,7 @@ msgstr ""
 "Worten über dich."
 
 #: app/templates/modules/profile_edit.html:48
+#: app/templates/modules/travel_form.html:70
 msgid "Photo"
 msgstr "Foto"
 
@@ -2356,6 +2555,7 @@ msgid "Waiting for review. Members do not see this card yet."
 msgstr "Wartet auf Prüfung. Mitglieder sehen diese Karte noch nicht."
 
 #: app/templates/modules/startups_detail.html:31
+#: app/templates/modules/travel_detail.html:32
 msgid "Not published."
 msgstr "Nicht veröffentlicht."
 
@@ -2435,6 +2635,7 @@ msgstr ""
 " erneut geprüft."
 
 #: app/templates/modules/startups_form.html:15
+#: app/templates/modules/travel_form.html:19
 msgid "The basics"
 msgstr "Die Grundlagen"
 
@@ -2471,6 +2672,7 @@ msgid "Your pitch"
 msgstr "Dein Pitch"
 
 #: app/templates/modules/startups_form.html:55
+#: app/templates/modules/travel_form.html:53
 msgid "optional"
 msgstr "optional"
 
@@ -2519,7 +2721,7 @@ msgid "Send changes for review"
 msgstr "Änderungen zur Prüfung senden"
 
 #: app/templates/modules/startups_form.html:92
-#: app/templates/modules/travel_form.html:51
+#: app/templates/modules/travel_form.html:91
 msgid "Send for review"
 msgstr "Zur Prüfung senden"
 
@@ -2580,12 +2782,12 @@ msgid "All startups"
 msgstr "Alle Startups"
 
 #: app/templates/modules/startups_mine.html:21
-#: app/templates/modules/travel_mine.html:19
+#: app/templates/modules/travel_mine.html:23
 msgid "Waiting for review"
 msgstr "Wartet auf Prüfung"
 
 #: app/templates/modules/startups_mine.html:22
-#: app/templates/modules/travel_mine.html:21
+#: app/templates/modules/travel_mine.html:25
 msgid "Not published"
 msgstr "Nicht veröffentlicht"
 
@@ -3017,7 +3219,7 @@ msgstr ""
 "Ergebnisse sind Hinweise, keine Rechts- oder Fachberatung."
 
 #: app/templates/modules/tools_index.html:19
-#: app/templates/modules/travel_mine.html:20
+#: app/templates/modules/travel_mine.html:24
 msgid "Open"
 msgstr "Öffnen"
 
@@ -3037,59 +3239,107 @@ msgstr "läuft"
 msgid "failed"
 msgstr "fehlgeschlagen"
 
-#: app/templates/modules/travel_detail.html:9
-#: app/templates/modules/travel_list.html:21
-#: app/templates/modules/travel_mine.html:18
+#: app/templates/modules/travel_detail.html:6
+msgid "Back to my trips"
+msgstr "Zurück zu meinen Reisen"
+
+#: app/templates/modules/travel_detail.html:6
+msgid "Back to all trips"
+msgstr "Zurück zu allen Reisen"
+
+#: app/templates/modules/travel_detail.html:16
+#: app/templates/modules/travel_list.html:39
+#: app/templates/modules/travel_mine.html:22
 msgid "Offer"
 msgstr "Angebot"
 
-#: app/templates/modules/travel_detail.html:9
-#: app/templates/modules/travel_list.html:21
-#: app/templates/modules/travel_mine.html:18
+#: app/templates/modules/travel_detail.html:16
+#: app/templates/modules/travel_list.html:39
+#: app/templates/modules/travel_mine.html:22
 msgid "Shared trip"
 msgstr "Gemeinsame Reise"
 
-#: app/templates/modules/travel_detail.html:10
-#: app/templates/modules/travel_list.html:22
+#: app/templates/modules/travel_detail.html:17
+#: app/templates/modules/travel_list.html:40
+#: app/templates/modules/travel_mine.html:29
 #, python-format
 msgid "seats left: %(count)s"
 msgstr "freie Plätze: %(count)s"
 
-#: app/templates/modules/travel_detail.html:11
-#: app/templates/modules/travel_list.html:23
+#: app/templates/modules/travel_detail.html:18
+#: app/templates/modules/travel_list.html:41
 msgid "per person"
 msgstr "pro Person"
-
-#: app/templates/modules/travel_detail.html:15
-msgid "This trip is cancelled."
-msgstr "Diese Reise ist storniert."
 
 #: app/templates/modules/travel_detail.html:20
 msgid "Organised by"
 msgstr "Organisiert von"
 
-#: app/templates/modules/travel_detail.html:24
+#: app/templates/modules/travel_detail.html:22
+msgid "Download programme (PDF)"
+msgstr "Programm herunterladen (PDF)"
+
+#: app/templates/modules/travel_detail.html:28
+msgid "This trip is cancelled."
+msgstr "Diese Reise ist storniert."
+
+#: app/templates/modules/travel_detail.html:31
+msgid "Waiting for review. Members do not see this trip yet."
+msgstr "Wartet auf Prüfung. Mitglieder sehen diese Reise noch nicht."
+
+#: app/templates/modules/travel_detail.html:57
 msgid "Participants"
 msgstr "Teilnehmende"
 
-#: app/templates/modules/travel_detail.html:28
+#: app/templates/modules/travel_detail.html:61
+#: app/templates/modules/travel_mine.html:51
+#, python-format
+msgid "%(count)s seat(s)"
+msgstr "%(count)s Platz/Plätze"
+
+#: app/templates/modules/travel_detail.html:64
+msgid ""
+"Members allowed you to see their e-mail address by booking. Please use it "
+"only for this trip."
+msgstr ""
+"Mitglieder haben dir mit ihrer Buchung erlaubt, ihre E-Mail-Adresse zu "
+"sehen. Bitte nutze sie nur für diese Reise."
+
+#: app/templates/modules/travel_detail.html:68
 msgid "No one has booked yet."
 msgstr "Noch niemand hat gebucht."
 
-#: app/templates/modules/travel_detail.html:34
+#: app/templates/modules/travel_detail.html:74
 #, python-format
 msgid "You are booked with %(count)s seat(s)."
 msgstr "Du bist mit %(count)s Platz/Plätzen gebucht."
 
-#: app/templates/modules/travel_detail.html:37
+#: app/templates/modules/travel_detail.html:75
+#: app/templates/modules/travel_detail.html:84
+msgid "Questions about the trip? Ask Clubi: it knows the full card."
+msgstr "Fragen zur Reise? Frag Clubi: Clubi kennt die ganze Karte."
+
+#: app/templates/modules/travel_detail.html:78
 msgid "Cancel my booking"
 msgstr "Meine Buchung stornieren"
 
-#: app/templates/modules/travel_detail.html:45
+#: app/templates/modules/travel_detail.html:83
+msgid "Join this trip"
+msgstr "Bei dieser Reise mitmachen"
+
+#: app/templates/modules/travel_detail.html:88
 msgid "Seats"
 msgstr "Plätze"
 
-#: app/templates/modules/travel_detail.html:48
+#: app/templates/modules/travel_detail.html:93
+msgid ""
+"The organiser may see my name and e-mail address to contact me about this "
+"trip."
+msgstr ""
+"Der Organisator darf meinen Namen und meine E-Mail-Adresse sehen, um mich "
+"zu dieser Reise zu kontaktieren."
+
+#: app/templates/modules/travel_detail.html:95
 msgid ""
 "Payment is arranged directly with the organiser. The club does not handle "
 "money yet."
@@ -3097,63 +3347,123 @@ msgstr ""
 "Die Zahlung wird direkt mit der Organisatorin oder dem Organisator "
 "vereinbart. Der Club wickelt Geld noch nicht ab."
 
-#: app/templates/modules/travel_detail.html:49
+#: app/templates/modules/travel_detail.html:96
 msgid "Book"
 msgstr "Buchen"
 
-#: app/templates/modules/travel_detail.html:53
+#: app/templates/modules/travel_detail.html:100
 msgid "Booking is included in a higher plan."
 msgstr "Buchen ist im höheren Tarif enthalten."
 
-#: app/templates/modules/travel_detail.html:57
-msgid "Back to my trips"
-msgstr "Zurück zu meinen Reisen"
-
-#: app/templates/modules/travel_detail.html:59
-msgid "Back to all trips"
-msgstr "Zurück zu allen Reisen"
+#: app/templates/modules/travel_form.html:3
+#: app/templates/modules/travel_form.html:8
+msgid "Edit trip"
+msgstr "Reise bearbeiten"
 
 #: app/templates/modules/travel_form.html:3
-#: app/templates/modules/travel_form.html:6
+#: app/templates/modules/travel_form.html:8
 #: app/templates/modules/travel_mine.html:9
 msgid "New offer"
 msgstr "Neues Angebot"
 
 #: app/templates/modules/travel_form.html:3
-#: app/templates/modules/travel_form.html:6
-#: app/templates/modules/travel_mine.html:8
+#: app/templates/modules/travel_form.html:8
 msgid "New shared trip"
 msgstr "Neue gemeinsame Reise"
 
-#: app/templates/modules/travel_form.html:8
-msgid "Offers are checked by our team before they are published."
-msgstr "Angebote prüft unser Team, bevor sie veröffentlicht werden."
-
 #: app/templates/modules/travel_form.html:10
-msgid "Shared trips are open for other members to join."
-msgstr "Gemeinsame Reisen sind offen, damit andere Mitglieder mitfahren können."
+msgid ""
+"Offers are checked by our team before they are published. Every change is "
+"checked again."
+msgstr ""
+"Angebote werden von unserem Team geprüft, bevor sie veröffentlicht werden. "
+"Jede Änderung wird erneut geprüft."
+
+#: app/templates/modules/travel_form.html:12
+msgid ""
+"Describe your trip step by step. It is shown to all members right away, and"
+" interested members can join."
+msgstr ""
+"Beschreibe deine Reise Schritt für Schritt. Sie wird allen Mitgliedern "
+"sofort gezeigt, und Interessierte können mitmachen."
 
 #: app/templates/modules/travel_form.html:22
+msgid "A short, clear name, for example: Founders week in Lisbon."
+msgstr "Ein kurzer, klarer Name, zum Beispiel: Gründerwoche in Lissabon."
+
+#: app/templates/modules/travel_form.html:26
 msgid "Destination"
 msgstr "Reiseziel"
 
-#: app/templates/modules/travel_form.html:27
+#: app/templates/modules/travel_form.html:30
 msgid "Starts on"
 msgstr "Beginn"
 
-#: app/templates/modules/travel_form.html:32
+#: app/templates/modules/travel_form.html:34
 msgid "Ends on"
 msgstr "Ende"
 
-#: app/templates/modules/travel_form.html:37
+#: app/templates/modules/travel_form.html:38
 msgid "Places available"
 msgstr "Verfügbare Plätze"
 
-#: app/templates/modules/travel_form.html:42
+#: app/templates/modules/travel_form.html:39
+msgid "How many people can join in total, without you."
+msgstr "Wie viele Personen insgesamt mitkommen können, ohne dich."
+
+#: app/templates/modules/travel_form.html:43
 msgid "Price per person (EUR, optional)"
 msgstr "Preis pro Person (EUR, optional)"
 
-#: app/templates/modules/travel_form.html:51
+#: app/templates/modules/travel_form.html:44
+msgid ""
+"A guide price. Payment is arranged directly with you; the club does not "
+"handle money."
+msgstr ""
+"Ein Richtpreis. Die Zahlung regelst du direkt mit den Teilnehmern; der Club"
+" wickelt kein Geld ab."
+
+#: app/templates/modules/travel_form.html:50
+msgid "About the trip"
+msgstr "Über die Reise"
+
+#: app/templates/modules/travel_form.html:61
+msgid ""
+"Examples are for orientation only. Write about your own trip in your own "
+"words."
+msgstr ""
+"Die Beispiele dienen nur zur Orientierung. Schreibe über deine eigene Reise"
+" in deinen eigenen Worten."
+
+#: app/templates/modules/travel_form.html:68
+msgid "Photo and programme"
+msgstr "Foto und Programm"
+
+#: app/templates/modules/travel_form.html:74
+msgid "Remove the current photo"
+msgstr "Aktuelles Foto entfernen"
+
+#: app/templates/modules/travel_form.html:79
+msgid "Programme (PDF)"
+msgstr "Programm (PDF)"
+
+#: app/templates/modules/travel_form.html:82
+msgid "Current programme (PDF)"
+msgstr "Aktuelles Programm (PDF)"
+
+#: app/templates/modules/travel_form.html:83
+msgid "Remove the current programme"
+msgstr "Aktuelles Programm entfernen"
+
+#: app/templates/modules/travel_form.html:87
+msgid ""
+"Do not upload private data of other people. Everything here is visible to "
+"all verified members."
+msgstr ""
+"Lade keine privaten Daten anderer Personen hoch. Alles hier ist für alle "
+"verifizierten Mitglieder sichtbar."
+
+#: app/templates/modules/travel_form.html:91
 msgid "Open the trip"
 msgstr "Reise öffnen"
 
@@ -3166,54 +3476,78 @@ msgstr ""
 "Veranstaltern und Agenturen. Alle können sie lesen; gebucht wird je nach "
 "Tarif."
 
-#: app/templates/modules/travel_list.html:10
-msgid "Shared trips"
-msgstr "Gemeinsame Reisen"
-
 #: app/templates/modules/travel_list.html:11
-msgid "Offers"
-msgstr "Angebote"
+msgid "Planning a trip?"
+msgstr "Planst du eine Reise?"
 
 #: app/templates/modules/travel_list.html:12
-msgid "All"
-msgstr "Alle"
+msgid ""
+"Create a trip card with the programme, a photo and the details. Other "
+"members can see it right away and join."
+msgstr ""
+"Erstelle eine Reisekarte mit Programm, Foto und Details. Andere Mitglieder "
+"sehen sie sofort und können mitmachen."
 
-#: app/templates/modules/travel_list.html:13
+#: app/templates/modules/travel_list.html:16
+#: app/templates/modules/travel_mine.html:8
+msgid "Create a trip"
+msgstr "Reise erstellen"
+
+#: app/templates/modules/travel_list.html:17
 #: app/templates/modules/travel_mine.html:3
 #: app/templates/modules/travel_mine.html:6
 msgid "My trips"
 msgstr "Meine Reisen"
 
+#: app/templates/modules/travel_list.html:20
+msgid "Creating trips is included in a higher plan."
+msgstr "Das Erstellen von Reisen ist in einem höheren Tarif enthalten."
+
+#: app/templates/modules/travel_list.html:25
+msgid "Shared trips"
+msgstr "Gemeinsame Reisen"
+
+#: app/templates/modules/travel_list.html:26
+msgid "Offers"
+msgstr "Angebote"
+
 #: app/templates/modules/travel_list.html:27
+msgid "All"
+msgstr "Alle"
+
+#: app/templates/modules/travel_list.html:43
+msgid "Open trip card"
+msgstr "Reisekarte öffnen"
+
+#: app/templates/modules/travel_list.html:46
 msgid "No trips are planned yet."
 msgstr "Es sind noch keine Reisen geplant."
+
+#: app/templates/modules/travel_mine.html:10
+msgid "All trips"
+msgstr "Alle Reisen"
 
 #: app/templates/modules/travel_mine.html:13
 msgid "Trips I organise"
 msgstr "Reisen, die ich organisiere"
 
-#: app/templates/modules/travel_mine.html:22
+#: app/templates/modules/travel_mine.html:26
 msgid "Cancelled"
 msgstr "Storniert"
 
-#: app/templates/modules/travel_mine.html:27
+#: app/templates/modules/travel_mine.html:37
 msgid "Cancel this trip"
 msgstr "Diese Reise stornieren"
 
-#: app/templates/modules/travel_mine.html:32
+#: app/templates/modules/travel_mine.html:43
 msgid "You have not organised any trips yet."
 msgstr "Du organisierst noch keine Reisen."
 
-#: app/templates/modules/travel_mine.html:37
+#: app/templates/modules/travel_mine.html:47
 msgid "My bookings"
 msgstr "Meine Buchungen"
 
-#: app/templates/modules/travel_mine.html:41
-#, python-format
-msgid "%(count)s seat(s)"
-msgstr "%(count)s Platz/Plätze"
-
-#: app/templates/modules/travel_mine.html:44
+#: app/templates/modules/travel_mine.html:54
 msgid "You have no bookings."
 msgstr "Du hast keine Buchungen."
 
@@ -3523,4 +3857,7 @@ msgstr "Bereit loszulegen?"
 #~ "Jede Änderung wird von unserem Team "
 #~ "geprüft, bevor das Startup Investorinnen "
 #~ "und Investoren gezeigt wird."
+
+#~ msgid "Shared trips are open for other members to join."
+#~ msgstr "Gemeinsame Reisen sind offen, damit andere Mitglieder mitfahren können."
 

@@ -14,6 +14,7 @@ from ..extensions import db
 from ..models import Lot, Service, Startup, ToolRun, Trip, User
 from ..profile_guide import FIELDS
 from ..startup_guide import PITCH_FIELDS
+from ..travel_guide import TRIP_FIELDS
 from ..utils import utcnow
 from .ai import llm
 from .ai.http import AIUnavailable
@@ -112,14 +113,20 @@ def _ctx_service(user, args):
 
 def _ctx_trip(user, args):
     trip = db.session.get(Trip, args["trip_id"])
-    if trip is None or (trip.status != "open" and trip.author_id != user.id):
+    if trip is None or (trip.status != "open" and trip.author_id != user.id and not user.is_admin):
         return None
     free = trip.seats_total - sum(b.seats for b in trip.bookings if b.status == "confirmed")
     parts = [f"title: {_clean(trip.title)}", f"destination: {_clean(trip.destination)}",
-             f"dates: {trip.starts_on} to {trip.ends_on}", f"description: {_clean(trip.description)}",
-             f"price_per_person: {_money(trip.price_per_person_cents)}", f"free_seats: {max(0, free)}",
-             f"kind: {trip.kind}"]
-    return _("Trip"), "\n".join(parts)
+             f"dates: {trip.starts_on} to {trip.ends_on}", f"price_per_person: {_money(trip.price_per_person_cents)}",
+             f"free_seats: {max(0, free)} of {trip.seats_total}", f"kind: {trip.kind}",
+             f"description: {_clean(trip.description, 2000)}"]
+    for field in TRIP_FIELDS[1:]:
+        value = _clean(getattr(trip, field.key, ""), 1500)
+        if value:
+            parts.append(f"{field.key}: {value}")
+    if trip.program_text:
+        parts.append(f"programme_text (extracted from the uploaded PDF): {_clean(trip.program_text, DECK_CONTEXT_CHARS)}")
+    return _("Trip"), chr(10).join(parts)
 
 
 def _ctx_startup(user, args):

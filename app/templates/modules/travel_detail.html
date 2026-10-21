@@ -3,26 +3,66 @@
 {% block title %}{{ item.trip.title }} · {{ _("Travel") }}{% endblock %}
 
 {% block content %}
-<h1>{{ item.trip.title }}</h1>
-<p>{{ item.trip.destination }} · {{ item.trip.starts_on.strftime('%d.%m.%Y') }} – {{ item.trip.ends_on.strftime('%d.%m.%Y') }}</p>
-<p class="small">
-  {% if item.is_offer %}{{ _("Offer") }}{% else %}{{ _("Shared trip") }}{% endif %}
-  · {{ _("seats left: %(count)s", count=item.seats_left) }} / {{ item.trip.seats_total }}
-  {% if item.price %} · {{ item.price }} {{ _("per person") }}{% endif %}
-</p>
+<p class="crumbs"><a href="{{ url_for('travel.mine') if is_author else url_for('travel.index') }}">← {% if is_author %}{{ _("Back to my trips") }}{% else %}{{ _("Back to all trips") }}{% endif %}</a></p>
+
+<section class="project-head">
+  {% if item.trip.cover_key %}
+    <img class="project-cover" src="{{ url_for('travel.cover', trip_id=item.trip.id) }}" alt="" width="220" height="160">
+  {% endif %}
+  <div>
+    <h1>{{ item.trip.title }}</h1>
+    <p class="lead">{{ item.trip.destination }} · {{ item.trip.starts_on.strftime('%d.%m.%Y') }} – {{ item.trip.ends_on.strftime('%d.%m.%Y') }}</p>
+    <p class="status-line">
+      <span class="pill">{% if item.is_offer %}{{ _("Offer") }}{% else %}{{ _("Shared trip") }}{% endif %}</span>
+      <span class="pill {% if item.seats_left == 0 %}pill-warn{% else %}pill-ok{% endif %}">{{ _("seats left: %(count)s", count=item.seats_left) }} / {{ item.trip.seats_total }}</span>
+      {% if item.price %}<span class="pill">{{ item.price }} {{ _("per person") }}</span>{% endif %}
+    </p>
+    <p class="small muted">{{ _("Organised by") }}: {{ item.trip.author.first_name }}</p>
+    {% if item.trip.program_key %}
+      <p class="button-row"><a class="button button-secondary" href="{{ url_for('travel.program', trip_id=item.trip.id) }}">{{ _("Download programme (PDF)") }}</a></p>
+    {% endif %}
+  </div>
+</section>
 
 {% if item.trip.status == "cancelled" %}
   <p class="flash flash-error">{{ _("This trip is cancelled.") }}</p>
+{% elif item.trip.status != "open" and (is_author or current_user.is_admin) %}
+  <p class="notice">
+    {% if item.trip.status == "pending" %}{{ _("Waiting for review. Members do not see this trip yet.") }}
+    {% else %}{{ _("Not published.") }} {{ item.trip.rejection_reason or '' }}{% endif %}
+  </p>
+{% endif %}
+
+{% if can_edit %}
+  <p class="button-row">
+    <a class="button button-secondary" href="{{ url_for('travel.edit', trip_id=item.trip.id) }}">{{ _("Edit") }}</a>
+  </p>
 {% endif %}
 
 <section class="card">
-  <p>{{ item.trip.description }}</p>
-  <p class="small">{{ _("Organised by") }}: {{ item.trip.author.first_name }}</p>
+  <h2>{{ _("What is the trip about?") }}</h2>
+  <p class="prose">{{ item.trip.description }}</p>
 </section>
+
+{% for key, title in sections %}
+  {% if item.trip[key] %}
+  <section class="card">
+    <h2>{{ title }}</h2>
+    <p class="prose">{{ item.trip[key] }}</p>
+  </section>
+  {% endif %}
+{% endfor %}
 
 <section class="card">
   <h2>{{ _("Participants") }}</h2>
-  {% if participants %}
+  {% if is_author and roster %}
+    <ul class="module-list">
+      {% for name, seats, email in roster %}
+        <li>{{ name }} · {{ _("%(count)s seat(s)", count=seats) }}{% if email %} · <a href="mailto:{{ email }}">{{ email }}</a>{% endif %}</li>
+      {% endfor %}
+    </ul>
+    <p class="small muted">{{ _("Members allowed you to see their e-mail address by booking. Please use it only for this trip.") }}</p>
+  {% elif participants %}
     <p>{{ participants | join(", ") }}</p>
   {% else %}
     <p class="muted">{{ _("No one has booked yet.") }}</p>
@@ -32,6 +72,7 @@
 {% if my_booking %}
 <section class="card">
   <p>{{ _("You are booked with %(count)s seat(s).", count=my_booking.seats) }}</p>
+  <p class="small muted">{{ _("Questions about the trip? Ask Clubi: it knows the full card.") }}</p>
   <form method="post" action="{{ url_for('travel.leave_trip', trip_id=item.trip.id) }}">
     <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
     <button type="submit" class="button button-secondary">{{ _("Cancel my booking") }}</button>
@@ -39,23 +80,23 @@
 </section>
 {% elif can_book %}
 <section class="card">
+  <h2>{{ _("Join this trip") }}</h2>
+  <p class="small muted">{{ _("Questions about the trip? Ask Clubi: it knows the full card.") }}</p>
   <form method="post" action="{{ url_for('travel.join_trip', trip_id=item.trip.id) }}" class="form">
     <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
     <div class="field">
       <label for="seats">{{ _("Seats") }}</label>
       <input id="seats" name="seats" type="number" min="1" max="6" value="1" required>
     </div>
+    <label class="check">
+      <input type="checkbox" name="share_contact" value="1" required>
+      {{ _("The organiser may see my name and e-mail address to contact me about this trip.") }}
+    </label>
     <p class="small">{{ _("Payment is arranged directly with the organiser. The club does not handle money yet.") }}</p>
     <button type="submit" class="button">{{ _("Book") }}</button>
   </form>
 </section>
 {% elif not is_author and item.trip.status == "open" and not item.is_past %}
   <p class="muted">{{ _("Booking is included in a higher plan.") }}</p>
-{% endif %}
-
-{% if is_author %}
-<p><a href="{{ url_for('travel.mine') }}">{{ _("Back to my trips") }}</a></p>
-{% else %}
-<p><a href="{{ url_for('travel.index') }}">{{ _("Back to all trips") }}</a></p>
 {% endif %}
 {% endblock %}

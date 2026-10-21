@@ -145,3 +145,39 @@ def process_pdf(raw: bytes, max_bytes: int) -> tuple[bytes, str]:
 
 def startup_file_key(startup_id: int, kind: str, ext: str) -> str:
     return f"startups/{startup_id}/{kind}-{uuid.uuid4().hex}.{ext}"
+
+
+def attach_files(obj, storage, prefix: str, image, doc, remove_image=False, remove_doc=False, *,
+                 attrs: tuple[str, str, str], image_max_bytes: int, doc_max_bytes: int) -> list[str]:
+    """Сохраняет картинку и PDF для любой записи (стартап, поездка). Бросает MediaError до записи в хранилище.
+
+    attrs — имена полей записи: (ключ картинки, ключ PDF, текст PDF). prefix — каталог, например "trips/5".
+    Возвращает ключи старых файлов: их стирают после успешного commit.
+    """
+    image_attr, doc_attr, text_attr = attrs
+    new_image = new_doc = None
+    if image is not None and image.filename:
+        data, ext, _mime = process_image(image.read(image_max_bytes + 1), image_max_bytes)
+        new_image = (f"{prefix}/image-{uuid.uuid4().hex}.{ext}", data)
+    if doc is not None and doc.filename:
+        data, text = process_pdf(doc.read(doc_max_bytes + 1), doc_max_bytes)
+        new_doc = (f"{prefix}/doc-{uuid.uuid4().hex}.pdf", data, text)
+
+    obsolete = []
+    if new_image:
+        storage.save(*new_image)
+        obsolete.append(getattr(obj, image_attr))
+        setattr(obj, image_attr, new_image[0])
+    elif remove_image and getattr(obj, image_attr):
+        obsolete.append(getattr(obj, image_attr))
+        setattr(obj, image_attr, None)
+    if new_doc:
+        storage.save(new_doc[0], new_doc[1])
+        obsolete.append(getattr(obj, doc_attr))
+        setattr(obj, doc_attr, new_doc[0])
+        setattr(obj, text_attr, new_doc[2])
+    elif remove_doc and getattr(obj, doc_attr):
+        obsolete.append(getattr(obj, doc_attr))
+        setattr(obj, doc_attr, None)
+        setattr(obj, text_attr, "")
+    return [key for key in obsolete if key]

@@ -78,7 +78,7 @@ def test_guest_cannot_join(app, client):
     make_user(app, email="guest@example.com", verified=True, plan="guest")
     login(client, "guest@example.com")
 
-    client.post(f"/travel/{trip_id}/join", data={"seats": "1"})
+    client.post(f"/travel/{trip_id}/join", data={"seats": "1", "share_contact": "1"})
 
     with app.app_context():
         assert Booking.query.count() == 0
@@ -90,7 +90,7 @@ def test_starter_joins_and_seats_drop(app, client):
     make_user(app, email="a@example.com", verified=True, plan="starter")
     login(client, "a@example.com")
 
-    client.post(f"/travel/{trip_id}/join", data={"seats": "2"})
+    client.post(f"/travel/{trip_id}/join", data={"seats": "2", "share_contact": "1"})
 
     with app.app_context():
         booking = Booking.query.one()
@@ -104,10 +104,10 @@ def test_capacity_is_enforced(app):
     first_id = make_user(app, email="a@example.com", verified=True, plan="starter")
     second_id = make_user(app, email="b@example.com", verified=True, plan="starter")
     with app.app_context():
-        join(db.session.get(User, first_id), trip_id, 2, today=TODAY)
+        join(db.session.get(User, first_id), trip_id, 2, today=TODAY, share_contact=True)
         db.session.commit()
         try:
-            join(db.session.get(User, second_id), trip_id, 2, today=TODAY)
+            join(db.session.get(User, second_id), trip_id, 2, today=TODAY, share_contact=True)
             raised = None
         except TravelError as exc:
             raised = exc.code
@@ -121,13 +121,13 @@ def test_double_booking_is_refused_and_leave_frees_seats(app, client):
     make_user(app, email="a@example.com", verified=True, plan="starter")
     login(client, "a@example.com")
 
-    client.post(f"/travel/{trip_id}/join", data={"seats": "1"})
-    client.post(f"/travel/{trip_id}/join", data={"seats": "1"})
+    client.post(f"/travel/{trip_id}/join", data={"seats": "1", "share_contact": "1"})
+    client.post(f"/travel/{trip_id}/join", data={"seats": "1", "share_contact": "1"})
     with app.app_context():
         assert Booking.query.count() == 1
 
     client.post(f"/travel/{trip_id}/leave")
-    client.post(f"/travel/{trip_id}/join", data={"seats": "2"})
+    client.post(f"/travel/{trip_id}/join", data={"seats": "2", "share_contact": "1"})
     with app.app_context():
         assert Booking.query.count() == 1  # та же строка: история сохранена
         assert Booking.query.one().seats == 2
@@ -138,7 +138,7 @@ def test_organiser_cannot_book_own_trip(app, client):
     trip_id = _trip(app, org_id)
     login(client, "org@example.com")
 
-    client.post(f"/travel/{trip_id}/join", data={"seats": "1"})
+    client.post(f"/travel/{trip_id}/join", data={"seats": "1", "share_contact": "1"})
 
     with app.app_context():
         assert Booking.query.count() == 0
@@ -149,7 +149,7 @@ def test_participants_are_listed_by_first_name(app, client):
     trip_id = _trip(app, org_id)
     make_user(app, email="a@example.com", verified=True, plan="starter")
     login(client, "a@example.com")
-    client.post(f"/travel/{trip_id}/join", data={"seats": "1"})
+    client.post(f"/travel/{trip_id}/join", data={"seats": "1", "share_contact": "1"})
 
     body = client.get(f"/travel/{trip_id}").get_data(as_text=True)
 
@@ -235,7 +235,7 @@ def test_cannot_book_unapproved_offer(app, client):
     make_user(app, email="a@example.com", verified=True, plan="starter")
     login(client, "a@example.com")
 
-    client.post(f"/travel/{offer_id}/join", data={"seats": "1"})
+    client.post(f"/travel/{offer_id}/join", data={"seats": "1", "share_contact": "1"})
 
     with app.app_context():
         assert Booking.query.count() == 0

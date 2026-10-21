@@ -4,44 +4,53 @@
 
 {% block content %}
 <h1>{{ _("My trips") }}</h1>
-<p>
-  {% if can_book %}<a href="{{ url_for('travel.new_shared') }}" class="button">{{ _("New shared trip") }}</a>{% endif %}
+<p class="button-row">
+  {% if can_book %}<a href="{{ url_for('travel.new_shared') }}" class="button">{{ _("Create a trip") }}</a>{% endif %}
   {% if can_offer %}<a href="{{ url_for('travel.new_offer') }}" class="button button-secondary">{{ _("New offer") }}</a>{% endif %}
+  <a href="{{ url_for('travel.index') }}" class="button button-secondary">{{ _("All trips") }}</a>
 </p>
 
-<section>
-  <h2>{{ _("Trips I organise") }}</h2>
-  {% for item in authored %}
-  <section class="card">
-    <h3><a href="{{ url_for('travel.detail', trip_id=item.trip.id) }}">{{ item.trip.title }}</a></h3>
-    <p class="small">
-      {% if item.is_offer %}{{ _("Offer") }}{% else %}{{ _("Shared trip") }}{% endif %} ·
-      {% if item.trip.status == "pending" %}{{ _("Waiting for review") }}
-      {% elif item.trip.status == "open" %}{{ _("Open") }}
-      {% elif item.trip.status == "rejected" %}{{ _("Not published") }}{% if item.trip.rejection_reason %}: {{ item.trip.rejection_reason }}{% endif %}
-      {% else %}{{ _("Cancelled") }}{% endif %}
-    </p>
-    {% if item.trip.status in ["open", "pending"] %}
-    <form method="post" action="{{ url_for('travel.cancel', trip_id=item.trip.id) }}" class="inline-form">
-      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
-      <button type="submit" class="link-button">{{ _("Cancel this trip") }}</button>
-    </form>
+<h2>{{ _("Trips I organise") }}</h2>
+<div class="grid-cards">
+{% for item in authored %}
+  <article class="card project-card">
+    {% if item.trip.cover_key %}
+      <img class="project-thumb" src="{{ url_for('travel.cover', trip_id=item.trip.id) }}" alt="" width="320" height="180" loading="lazy">
     {% endif %}
-  </section>
-  {% else %}
-    <p>{{ _("You have not organised any trips yet.") }}</p>
-  {% endfor %}
-</section>
+    <h3><a href="{{ url_for('travel.detail', trip_id=item.trip.id) }}">{{ item.trip.title }}</a></h3>
+    <p class="status-line">
+      <span class="pill">{% if item.is_offer %}{{ _("Offer") }}{% else %}{{ _("Shared trip") }}{% endif %}</span>
+      {% if item.trip.status == "pending" %}<span class="pill pill-warn">{{ _("Waiting for review") }}</span>
+      {% elif item.trip.status == "open" %}<span class="pill pill-ok">{{ _("Open") }}</span>
+      {% elif item.trip.status == "rejected" %}<span class="pill pill-warn">{{ _("Not published") }}</span>
+      {% else %}<span class="pill pill-warn">{{ _("Cancelled") }}</span>{% endif %}
+    </p>
+    {% if item.trip.status == "rejected" and item.trip.rejection_reason %}<p class="small">{{ item.trip.rejection_reason }}</p>{% endif %}
+    <p class="small">{{ _("seats left: %(count)s", count=item.seats_left) }} / {{ item.trip.seats_total }}</p>
+    <div class="button-row">
+      {% if item.trip.status in ["open", "pending", "rejected"] and not item.is_past %}
+        <a class="button button-secondary" href="{{ url_for('travel.edit', trip_id=item.trip.id) }}">{{ _("Edit") }}</a>
+      {% endif %}
+      {% if item.trip.status in ["open", "pending"] %}
+        <form method="post" action="{{ url_for('travel.cancel', trip_id=item.trip.id) }}" class="inline-form">
+          <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+          <button type="submit" class="link-button">{{ _("Cancel this trip") }}</button>
+        </form>
+      {% endif %}
+    </div>
+  </article>
+{% else %}
+  <p>{{ _("You have not organised any trips yet.") }}</p>
+{% endfor %}
+</div>
 
-<section>
-  <h2>{{ _("My bookings") }}</h2>
-  {% for booking in bookings %}
-  <section class="card">
-    <h3><a href="{{ url_for('travel.detail', trip_id=booking.trip.id) }}">{{ booking.trip.title }}</a></h3>
-    <p class="small">{{ booking.trip.starts_on.strftime('%d.%m.%Y') }} · {{ _("%(count)s seat(s)", count=booking.seats) }}</p>
-  </section>
-  {% else %}
-    <p>{{ _("You have no bookings.") }}</p>
-  {% endfor %}
+<h2>{{ _("My bookings") }}</h2>
+{% for booking in bookings %}
+<section class="card">
+  <h3><a href="{{ url_for('travel.detail', trip_id=booking.trip.id) }}">{{ booking.trip.title }}</a></h3>
+  <p class="small">{{ booking.trip.starts_on.strftime('%d.%m.%Y') }} · {{ _("%(count)s seat(s)", count=booking.seats) }}</p>
 </section>
+{% else %}
+  <p>{{ _("You have no bookings.") }}</p>
+{% endfor %}
 {% endblock %}

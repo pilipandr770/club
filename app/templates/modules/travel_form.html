@@ -1,53 +1,94 @@
 {% extends "base.html" %}
 
-{% block title %}{% if offer %}{{ _("New offer") }}{% else %}{{ _("New shared trip") }}{% endif %} · {{ _("Travel") }}{% endblock %}
+{% block title %}{% if trip %}{{ _("Edit trip") }}{% elif offer %}{{ _("New offer") }}{% else %}{{ _("New shared trip") }}{% endif %} · {{ _("Travel") }}{% endblock %}
+
+{% macro val(key, default='') -%}{{ form.get(key) if form and key in form else (trip[key] if trip and trip[key] else default) }}{%- endmacro %}
 
 {% block content %}
-<h1>{% if offer %}{{ _("New offer") }}{% else %}{{ _("New shared trip") }}{% endif %}</h1>
+<h1>{% if trip %}{{ _("Edit trip") }}{% elif offer %}{{ _("New offer") }}{% else %}{{ _("New shared trip") }}{% endif %}</h1>
 {% if offer %}
-  <p class="muted">{{ _("Offers are checked by our team before they are published.") }}</p>
+  <p class="muted">{{ _("Offers are checked by our team before they are published. Every change is checked again.") }}</p>
 {% else %}
-  <p class="muted">{{ _("Shared trips are open for other members to join.") }}</p>
+  <p class="muted">{{ _("Describe your trip step by step. It is shown to all members right away, and interested members can join.") }}</p>
 {% endif %}
 
-<form method="post" class="form" action="{{ url_for('travel.new_offer') if offer else url_for('travel.new_shared') }}">
+<form method="post" enctype="multipart/form-data" class="form form-wide" action="{{ url_for('travel.edit', trip_id=trip.id) if trip else (url_for('travel.new_offer') if offer else url_for('travel.new_shared')) }}">
   <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
 
-  <div class="field">
-    <label for="title">{{ _("Title") }}</label>
-    <input id="title" name="title" type="text" maxlength="160" required value="{{ form.get('title', '') }}">
-  </div>
+  <section class="card">
+    <h2>{{ _("The basics") }}</h2>
+    <div class="field {% if 'title' in errors %}field-error{% endif %}">
+      <label for="title">{{ _("Title") }}</label>
+      <p class="small">{{ _("A short, clear name, for example: Founders week in Lisbon.") }}</p>
+      <input id="title" name="title" type="text" maxlength="160" required value="{{ val('title') }}">
+    </div>
+    <div class="field {% if 'destination' in errors %}field-error{% endif %}">
+      <label for="destination">{{ _("Destination") }}</label>
+      <input id="destination" name="destination" type="text" maxlength="120" required value="{{ val('destination') }}">
+    </div>
+    <div class="field {% if 'dates' in errors %}field-error{% endif %}">
+      <label for="starts_on">{{ _("Starts on") }}</label>
+      <input id="starts_on" name="starts_on" type="date" required value="{{ form.get('starts_on') or (trip.starts_on.isoformat() if trip else '') }}">
+    </div>
+    <div class="field {% if 'dates' in errors %}field-error{% endif %}">
+      <label for="ends_on">{{ _("Ends on") }}</label>
+      <input id="ends_on" name="ends_on" type="date" required value="{{ form.get('ends_on') or (trip.ends_on.isoformat() if trip else '') }}">
+    </div>
+    <div class="field {% if 'seats_total' in errors %}field-error{% endif %}">
+      <label for="seats_total">{{ _("Places available") }}</label>
+      <p class="small">{{ _("How many people can join in total, without you.") }}</p>
+      <input id="seats_total" name="seats_total" type="number" min="1" max="500" required value="{{ form.get('seats_total') or (trip.seats_total if trip else '') }}">
+    </div>
+    <div class="field {% if 'price' in errors %}field-error{% endif %}">
+      <label for="price">{{ _("Price per person (EUR, optional)") }}</label>
+      <p class="small">{{ _("A guide price. Payment is arranged directly with you; the club does not handle money.") }}</p>
+      <input id="price" name="price" type="text" inputmode="decimal" value="{{ form.get('price') or ((trip.price_per_person_cents / 100)|string if trip and trip.price_per_person_cents else '') }}">
+    </div>
+  </section>
 
-  <div class="field">
-    <label for="destination">{{ _("Destination") }}</label>
-    <input id="destination" name="destination" type="text" maxlength="120" required value="{{ form.get('destination', '') }}">
-  </div>
+  <section class="card">
+    <h2>{{ _("About the trip") }}</h2>
+    {% for field in trip_fields %}
+    <div class="field {% if field.key in errors %}field-error{% endif %}">
+      <label for="{{ field.key }}">{{ field.label }}{% if not field.required %} <span class="small muted">({{ _("optional") }})</span>{% endif %}</label>
+      <p class="small">{{ field.hint }}</p>
+      <textarea id="{{ field.key }}" name="{{ field.key }}" rows="{{ 5 if field.required else 4 }}" maxlength="{{ field.max_length }}">{{ val(field.key) }}</textarea>
+      <details class="examples">
+        <summary>{{ _("Show examples") }}</summary>
+        <ul class="module-list">
+          {% for example in field.examples %}<li>{{ example }}</li>{% endfor %}
+        </ul>
+        <p class="small">{{ _("Examples are for orientation only. Write about your own trip in your own words.") }}</p>
+      </details>
+    </div>
+    {% endfor %}
+  </section>
 
-  <div class="field">
-    <label for="starts_on">{{ _("Starts on") }}</label>
-    <input id="starts_on" name="starts_on" type="date" required value="{{ form.get('starts_on', '') }}">
-  </div>
+  <section class="card">
+    <h2>{{ _("Photo and programme") }}</h2>
+    <div class="field">
+      <label for="cover">{{ _("Photo") }}</label>
+      <p class="small">{{ cover_hint }}</p>
+      {% if trip and trip.cover_key %}
+        <p><img class="cover-thumb" src="{{ url_for('travel.cover', trip_id=trip.id) }}" alt="" width="160" height="100"></p>
+        <label class="check"><input type="checkbox" name="remove_cover" value="1"> {{ _("Remove the current photo") }}</label>
+      {% endif %}
+      <input id="cover" name="cover" type="file" accept="image/jpeg,image/png,image/webp">
+    </div>
+    <div class="field">
+      <label for="program">{{ _("Programme (PDF)") }}</label>
+      <p class="small">{{ program_hint }}</p>
+      {% if trip and trip.program_key %}
+        <p class="small"><a href="{{ url_for('travel.program', trip_id=trip.id) }}">{{ _("Current programme (PDF)") }}</a></p>
+        <label class="check"><input type="checkbox" name="remove_program" value="1"> {{ _("Remove the current programme") }}</label>
+      {% endif %}
+      <input id="program" name="program" type="file" accept="application/pdf">
+    </div>
+    <p class="small muted">{{ _("Do not upload private data of other people. Everything here is visible to all verified members.") }}</p>
+  </section>
 
-  <div class="field">
-    <label for="ends_on">{{ _("Ends on") }}</label>
-    <input id="ends_on" name="ends_on" type="date" required value="{{ form.get('ends_on', '') }}">
-  </div>
-
-  <div class="field">
-    <label for="seats_total">{{ _("Places available") }}</label>
-    <input id="seats_total" name="seats_total" type="number" min="1" max="500" required value="{{ form.get('seats_total', '') }}">
-  </div>
-
-  <div class="field">
-    <label for="price">{{ _("Price per person (EUR, optional)") }}</label>
-    <input id="price" name="price" type="text" inputmode="decimal" value="{{ form.get('price', '') }}">
-  </div>
-
-  <div class="field">
-    <label for="description">{{ _("Description") }}</label>
-    <textarea id="description" name="description" rows="6" maxlength="2000">{{ form.get('description', '') }}</textarea>
-  </div>
-
-  <button type="submit" class="button">{% if offer %}{{ _("Send for review") }}{% else %}{{ _("Open the trip") }}{% endif %}</button>
+  <button type="submit" class="button">
+    {% if trip %}{{ _("Save changes") }}{% elif offer %}{{ _("Send for review") }}{% else %}{{ _("Open the trip") }}{% endif %}
+  </button>
 </form>
 {% endblock %}
