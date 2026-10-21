@@ -38,10 +38,17 @@ def complete(system: str, user: str, max_tokens: int = 900, timeout: int = 30) -
         key = _key(cfg, "anthropic")
         if not key:
             raise AIUnavailable("no_key")
-        data = post_json(ANTHROPIC_URL, {"x-api-key": key, "anthropic-version": "2023-06-01"}, {
-            "model": model, "max_tokens": max_tokens, "system": system,
-            "messages": [{"role": "user", "content": user}],
-        }, timeout)
+        body = {"model": model, "max_tokens": max_tokens, "system": system,
+                "messages": [{"role": "user", "content": user}]}
+        headers = {"x-api-key": key, "anthropic-version": "2023-06-01"}
+        # Рассуждающие модели тратят часть max_tokens на «мысли», и ответ обрывается на полуслове.
+        # Нашим задачам (короткие ответы, JSON) рассуждение не нужно: выключаем его.
+        try:
+            data = post_json(ANTHROPIC_URL, headers, {**body, "thinking": {"type": "disabled"}}, timeout)
+        except AIUnavailable as exc:
+            if str(exc) != "http_400":  # модель не знает параметр thinking: повторяем без него
+                raise
+            data = post_json(ANTHROPIC_URL, headers, body, timeout)
         return "".join(block.get("text", "") for block in data.get("content", []) if block.get("type") == "text")
 
     if provider == "google":

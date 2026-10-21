@@ -220,3 +220,30 @@ def test_profiles_from_another_model_are_not_compared(app, monkeypatch):
         db.session.get(User, other).profile.embed_provider = "openai:old-model"
         db.session.commit()
         assert candidates(db.session.get(User, me)) == []
+
+
+def test_anthropic_requests_turn_thinking_off(app, monkeypatch, calls):
+    _config(app, monkeypatch, LLM_PROVIDER="anthropic", LLM_MODEL="claude-haiku-5-5", ANTHROPIC_API_KEY="k1")
+    calls["state"]["response"] = {"content": [{"type": "text", "text": "Hallo"}]}
+    with app.app_context():
+        ask("sys", "user")
+
+    assert calls["captured"][0]["body"]["thinking"] == {"type": "disabled"}
+
+
+def test_anthropic_retries_without_thinking_if_model_rejects_it(app, monkeypatch):
+    _config(app, monkeypatch, LLM_PROVIDER="anthropic", LLM_MODEL="old-model", ANTHROPIC_API_KEY="k1")
+    bodies = []
+
+    def fake_urlopen(request, timeout=None):
+        body = json.loads(request.data.decode("utf-8"))
+        bodies.append(body)
+        if "thinking" in body:
+            raise urllib.error.HTTPError(request.full_url, 400, "bad request", {}, None)
+        return FakeResponse({"content": [{"type": "text", "text": "Hallo"}]})
+
+    monkeypatch.setattr("urllib.request.urlopen", fake_urlopen)
+    with app.app_context():
+        assert ask("sys", "user") == "Hallo"
+
+    assert len(bodies) == 2 and "thinking" not in bodies[1]
