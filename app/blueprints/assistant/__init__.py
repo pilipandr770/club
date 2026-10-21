@@ -1,4 +1,4 @@
-"""Личный помощник Aiko: один JSON-эндпоинт. Страница и анкета определяются на сервере (services/assistant.py)."""
+"""Личный помощник Clubi: один JSON-эндпоинт. Страница и анкета определяются на сервере (services/assistant.py)."""
 
 from flask import Blueprint, jsonify, request
 from flask_babel import gettext as _

@@ -32,5 +32,5 @@ TOOL_LIMITS = {
     "premium": {"seo": 30, "compliance": 30, "security": 30, "laws": 100, "panel": 10},
 }
 
-# Вопросов личному помощнику Aiko в сутки. Цифры предварительные, как и цены.
+# Вопросов личному помощнику Clubi в сутки. Цифры предварительные, как и цены.
 ASSISTANT_DAILY = {"guest": 15, "starter": 40, "growth": 80, "premium": 200}

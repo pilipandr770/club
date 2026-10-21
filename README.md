@@ -39,7 +39,7 @@ docker compose exec app flask i18n compile       # → .mo (без этого п
 
 ## Что ещё не сделано (фазы 1+)
 
-Фаза 1b: профили, матчинг, ассистент Aiko, сброс пароля, тарифы (`config/plans.py`, пока только гостевой). Redis, scheduler, backup, mailpit, `en`/`ru`.
+Фаза 1b: профили, матчинг, ассистент Clubi, сброс пароля, тарифы (`config/plans.py`, пока только гостевой). Redis, scheduler, backup, mailpit, `en`/`ru`.
 
 ## Регистрация и проверка личности
 

@@ -14,7 +14,7 @@ def prompts(monkeypatch):
 
     def fake_complete(system, user, max_tokens=900, timeout=30):
         seen.append(user)
-        return "Antwort von Aiko"
+        return "Antwort von Clubi"
 
     monkeypatch.setattr(llm, "complete", fake_complete)
     monkeypatch.setattr(assistant, "llm_enabled", lambda: True)
@@ -50,7 +50,7 @@ def test_answer_contains_own_profile_and_current_page(app, client, prompts):
 
     response = _ask(client, path=f"/profile/{other_id}")
 
-    assert response.status_code == 200 and response.get_json()["answer"] == "Antwort von Aiko"
+    assert response.status_code == 200 and response.get_json()["answer"] == "Antwort von Clubi"
     prompt = prompts[0]
     assert "Steuerberaterin aus Mainz" in prompt
     assert "Gründerin im Bereich Energie" in prompt

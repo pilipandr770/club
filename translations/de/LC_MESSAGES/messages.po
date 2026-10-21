@@ -2821,33 +2821,33 @@ msgstr "Du hast keine Buchungen."
 
 #: app/templates/partials/assistant.html:3
 msgid ""
-"Hello! I am Aiko, your personal assistant in the club. I can see your "
+"Hello! I am Clubi, your personal assistant in the club. I can see your "
 "profile and the page you are on. Ask me anything about it."
 msgstr ""
-"Hallo! Ich bin Aiko, deine persönliche Assistentin im Club. Ich sehe dein "
+"Hallo! Ich bin Clubi, deine persönliche Assistentin im Club. Ich sehe dein "
 "Profil und die Seite, auf der du gerade bist. Frag mich dazu, was du "
 "möchtest."
 
 #: app/templates/partials/assistant.html:4
-msgid "Aiko is thinking …"
-msgstr "Aiko denkt nach …"
+msgid "Clubi is thinking …"
+msgstr "Clubi denkt nach …"
 
 #: app/templates/partials/assistant.html:5
 #, python-format
-msgid "Aiko sees: %(page)s"
-msgstr "Aiko sieht: %(page)s"
+msgid "Clubi sees: %(page)s"
+msgstr "Clubi sieht: %(page)s"
 
 #: app/templates/partials/assistant.html:6
-msgid "Ask Aiko"
-msgstr "Aiko fragen"
+msgid "Ask Clubi"
+msgstr "Clubi fragen"
 
 #: app/templates/partials/assistant.html:7
-msgid "Personal assistant Aiko"
-msgstr "Persönliche Assistentin Aiko"
+msgid "Personal assistant Clubi"
+msgstr "Persönliche Assistentin Clubi"
 
 #: app/templates/partials/assistant.html:9
-msgid "Aiko"
-msgstr "Aiko"
+msgid "Clubi"
+msgstr "Clubi"
 
 #: app/templates/partials/assistant.html:10
 msgid "New conversation"
@@ -2855,10 +2855,10 @@ msgstr "Neues Gespräch"
 
 #: app/templates/partials/assistant.html:13
 msgid ""
-"Aiko is an AI. It does not give legal or financial advice and never shows "
+"Clubi is an AI. It does not give legal or financial advice and never shows "
 "contact details. Conversations are not stored on the server."
 msgstr ""
-"Aiko ist eine KI. Sie gibt keine Rechts- oder Finanzberatung und zeigt nie "
+"Clubi ist eine KI. Sie gibt keine Rechts- oder Finanzberatung und zeigt nie "
 "Kontaktdaten. Gespräche werden nicht auf dem Server gespeichert."
 
 #: app/templates/partials/assistant.html:19

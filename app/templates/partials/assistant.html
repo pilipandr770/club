@@ -1,16 +1,16 @@
 <div class="assistant" id="assistant" data-endpoint="{{ url_for('assistant.ask_view') }}" data-csrf="{{ csrf_token() }}"
      data-user="{{ current_user.id }}"
-     data-intro="{{ _('Hello! I am Aiko, your personal assistant in the club. I can see your profile and the page you are on. Ask me anything about it.') }}"
-     data-thinking="{{ _('Aiko is thinking …') }}" data-failed="{{ _('Something went wrong. Please try again.') }}"
-     data-sees="{{ _('Aiko sees: %(page)s', page='%s') }}">
-  <button type="button" class="assistant-toggle button" aria-expanded="false" aria-controls="assistant-panel">{{ _("Ask Aiko") }}</button>
-  <section class="assistant-panel" id="assistant-panel" hidden aria-label="{{ _('Personal assistant Aiko') }}">
+     data-intro="{{ _('Hello! I am Clubi, your personal assistant in the club. I can see your profile and the page you are on. Ask me anything about it.') }}"
+     data-thinking="{{ _('Clubi is thinking …') }}" data-failed="{{ _('Something went wrong. Please try again.') }}"
+     data-sees="{{ _('Clubi sees: %(page)s', page='%s') }}">
+  <button type="button" class="assistant-toggle button" aria-expanded="false" aria-controls="assistant-panel">{{ _("Ask Clubi") }}</button>
+  <section class="assistant-panel" id="assistant-panel" hidden aria-label="{{ _('Personal assistant Clubi') }}">
     <header class="assistant-head">
-      <strong>{{ _("Aiko") }}</strong>
+      <strong>{{ _("Clubi") }}</strong>
       <button type="button" class="link-button assistant-clear">{{ _("New conversation") }}</button>
       <button type="button" class="link-button assistant-close" aria-label="{{ _('Close') }}">×</button>
     </header>
-    <p class="assistant-note small muted">{{ _("Aiko is an AI. It does not give legal or financial advice and never shows contact details. Conversations are not stored on the server.") }}</p>
+    <p class="assistant-note small muted">{{ _("Clubi is an AI. It does not give legal or financial advice and never shows contact details. Conversations are not stored on the server.") }}</p>
     <div class="assistant-log" role="log" aria-live="polite"></div>
     <p class="assistant-context small muted"></p>
     <form class="assistant-form">

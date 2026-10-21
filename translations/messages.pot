@@ -2669,29 +2669,29 @@ msgstr ""
 
 #: app/templates/partials/assistant.html:3
 msgid ""
-"Hello! I am Aiko, your personal assistant in the club. I can see your "
+"Hello! I am Clubi, your personal assistant in the club. I can see your "
 "profile and the page you are on. Ask me anything about it."
 msgstr ""
 
 #: app/templates/partials/assistant.html:4
-msgid "Aiko is thinking …"
+msgid "Clubi is thinking …"
 msgstr ""
 
 #: app/templates/partials/assistant.html:5
 #, python-format
-msgid "Aiko sees: %(page)s"
+msgid "Clubi sees: %(page)s"
 msgstr ""
 
 #: app/templates/partials/assistant.html:6
-msgid "Ask Aiko"
+msgid "Ask Clubi"
 msgstr ""
 
 #: app/templates/partials/assistant.html:7
-msgid "Personal assistant Aiko"
+msgid "Personal assistant Clubi"
 msgstr ""
 
 #: app/templates/partials/assistant.html:9
-msgid "Aiko"
+msgid "Clubi"
 msgstr ""
 
 #: app/templates/partials/assistant.html:10
@@ -2700,7 +2700,7 @@ msgstr ""
 
 #: app/templates/partials/assistant.html:13
 msgid ""
-"Aiko is an AI. It does not give legal or financial advice and never shows"
+"Clubi is an AI. It does not give legal or financial advice and never shows"
 " contact details. Conversations are not stored on the server."
 msgstr ""
 

@@ -1,4 +1,4 @@
-// Личный помощник Aiko. Строки берём из data-атрибутов (CSP: без inline-скриптов).
+// Личный помощник Clubi. Строки берём из data-атрибутов (CSP: без inline-скриптов).
 (function () {
   var root = document.getElementById("assistant");
   if (!root) { return; }

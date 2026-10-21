@@ -1,4 +1,4 @@
-"""Личный помощник Aiko: отвечает с учётом анкеты участника и страницы, которую он сейчас смотрит.
+"""Личный помощник Clubi: отвечает с учётом анкеты участника и страницы, которую он сейчас смотрит.
 
 Контекст собирает сервер, а не браузер: клиент присылает только адрес страницы, сервер сам разбирает его
 через url_map и применяет те же правила видимости, что и сами страницы. Контакты (e-mail), имена других
@@ -32,7 +32,7 @@ class AssistantError(Exception):
 
 
 SYSTEM = (
-    "Du bist Aiko, die persönliche Assistentin in einem geschlossenen Club für verifizierte Mitglieder "
+    "Du bist Clubi, die persönliche Assistentin in einem geschlossenen Club für verifizierte Mitglieder "
     "(Vernetzung, KI-Matching, Dienstleistungen, Reisen, Startups für Investoren, Auktion). Du begleitest das Mitglied "
     "und gibst praktische Hinweise. Antworte in der Sprache der Frage, freundlich, konkret und kurz "
     "(meist 3–6 Sätze, bei Bedarf eine kurze Liste).\n"
@@ -218,7 +218,7 @@ def build_prompt(user, message, path, history):
     for item in (history or [])[-HISTORY_TURNS:]:
         if not isinstance(item, dict) or item.get("role") not in ("user", "assistant"):
             continue
-        role = "Mitglied" if item["role"] == "user" else "Aiko"
+        role = "Mitglied" if item["role"] == "user" else "Clubi"
         turns.append(f"{role}: {_clean(item.get('text'), HISTORY_CHARS)}")
     prompt = (f"<daten typ=\"eigenes_profil\">\n{own_profile_text(user)}\n</daten>\n"
               f"<daten typ=\"aktuelle_seite\">\n{page_text or '(keine Detailangaben zu dieser Seite)'}\n</daten>\n"

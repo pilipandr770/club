@@ -230,7 +230,7 @@ def synthesize(run: dict, res: dict, rows: list[dict]) -> dict:
                             f"Kaufwahrscheinlichkeit bei {ov.get('prob', 0)} %."),
         "bedenken": _theme_fallback(con_t), "nutzen": _theme_fallback(pro_t), "aenderungen": _theme_fallback(chg_t),
         "empfehlungen": [], "zielgruppen_fazit": "", "preis_fazit": "", "verzerrung_hinweis": "", "ai": False}
-    system = ("Du bist Aiko, Analystin des Clubs, und wertest ein SYNTHETISCHES Markt-Panel aus (fiktive KI-Personas, "
+    system = ("Du bist Clubi, Analystin des Clubs, und wertest ein SYNTHETISCHES Markt-Panel aus (fiktive KI-Personas, "
               "keine echten Menschen). Schreibe für Unternehmer:innen: ruhig, klar, ehrlich, Deutsch, du-Form. Nutze NUR die gelieferten "
               "Zahlen und Aussagen. Behaupte nie, dass das Ergebnis die Meinung realer Gruppen abbildet oder Umsätze vorhersagt; sprich "
               "von Hinweisen und Hypothesen, die mit echten Kund:innen zu prüfen sind. Fasse die Aussagen zu 3–6 Themen je Liste zusammen "
