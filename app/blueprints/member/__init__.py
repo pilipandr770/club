@@ -20,6 +20,7 @@ log = logging.getLogger(__name__)
 @bp.route("/")
 @login_required
 def dashboard():
+    from ...profile_guide import matchable, missing_for_matching
     from ...services.entitlements import has_feature
     from config.plans import PLANS, DEFAULT_PLAN
 
@@ -34,6 +35,9 @@ def dashboard():
         modules=modules,
         plan_name=plan["name"],
         publication_decided=latest_consent(current_user, "directory") is not None,
+        profile_enabled=any(item["spec"].key == "profile" and item["available"] for item in modules),
+        matching_ready=bool(current_user.profile and matchable(current_user.profile)),
+        matching_fields_ready=bool(current_user.profile and not missing_for_matching(current_user.profile)),
     )
 
 

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Club 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-21 18:49+0000\n"
+"POT-Creation-Date: 2026-10-23 13:12+0200\n"
 "PO-Revision-Date: 2026-10-19 21:00+0000\n"
 "Last-Translator: \n"
 "Language: de\n"
@@ -16,6 +16,42 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.17.0\n"
+
+#: app/__init__.py:52 app/__init__.py:104
+msgid "Please log in to access this page."
+msgstr "Bitte melde dich an, um diese Seite zu öffnen."
+
+#: app/__init__.py:103
+msgid "The request could not be processed. Refresh the page and try again."
+msgstr ""
+"Die Anfrage konnte nicht verarbeitet werden. Lade die Seite neu und "
+"versuche es erneut."
+
+#: app/__init__.py:105
+msgid "You do not have access to this page."
+msgstr "Du hast keinen Zugriff auf diese Seite."
+
+#: app/__init__.py:106
+msgid "This page could not be found."
+msgstr "Diese Seite wurde nicht gefunden."
+
+#: app/__init__.py:107
+msgid "This action is not available for this request."
+msgstr "Diese Aktion ist für diese Anfrage nicht verfügbar."
+
+#: app/__init__.py:108
+msgid "The uploaded file is too large."
+msgstr "Die hochgeladene Datei ist zu groß."
+
+#: app/__init__.py:109
+msgid "Too many requests. Please wait a little and try again."
+msgstr "Zu viele Anfragen. Warte kurz und versuche es erneut."
+
+#: app/__init__.py:110
+msgid "The server could not complete the request. Please try again later."
+msgstr ""
+"Der Server konnte die Anfrage nicht abschließen. Bitte versuche es später"
+" erneut."
 
 #: app/auction_guide.py:5
 msgid ""
@@ -306,6 +342,1065 @@ msgid ""
 msgstr ""
 "Für Online- oder Hybrid-Treffen: der Link zum Beitreten. Nur Mitglieder, "
 "die sich anmelden, sehen ihn."
+
+#: app/i18n_labels.py:5
+msgid "Mittelstadt"
+msgstr "Mittelstadt"
+
+#: app/i18n_labels.py:6
+msgid "ländlicher Raum"
+msgstr "ländlicher Raum"
+
+#: app/i18n_labels.py:7
+msgid "Technik"
+msgstr "Technik"
+
+#: app/i18n_labels.py:8
+msgid "Inhalt"
+msgstr "Inhalt"
+
+#: app/i18n_labels.py:9
+msgid "Snippets & Social"
+msgstr "Snippets & Social"
+
+#: app/i18n_labels.py:10
+msgid "Keywords"
+msgstr "Keywords"
+
+#: app/i18n_labels.py:11
+msgid "Verschlüsselung (TLS)"
+msgstr "Verschlüsselung (TLS)"
+
+#: app/i18n_labels.py:12
+msgid "HTTP-Sicherheits-Header"
+msgstr "HTTP-Sicherheits-Header"
+
+#: app/i18n_labels.py:13
+msgid "Cookies"
+msgstr "Cookies"
+
+#: app/i18n_labels.py:14
+msgid "E-Mail-Sicherheit"
+msgstr "E-Mail-Sicherheit"
+
+#: app/i18n_labels.py:15
+msgid "DNS und Kontakt"
+msgstr "DNS und Kontakt"
+
+#: app/i18n_labels.py:16
+msgid "Seiteninhalt und Drittanbieter"
+msgstr "Seiteninhalt und Drittanbieter"
+
+#: app/i18n_labels.py:17
+msgid "Domain und Registrierung"
+msgstr "Domain und Registrierung"
+
+#: app/i18n_labels.py:18
+msgid "Sichtbare Subdomains"
+msgstr "Sichtbare Subdomains"
+
+#: app/i18n_labels.py:19
+msgid "erlaubt 'unsafe-inline' für Skripte"
+msgstr "erlaubt 'unsafe-inline' für Skripte"
+
+#: app/i18n_labels.py:20
+msgid "erlaubt 'unsafe-eval'"
+msgstr "erlaubt 'unsafe-eval'"
+
+#: app/i18n_labels.py:21
+msgid "erlaubt Skripte von beliebigen Quellen"
+msgstr "erlaubt Skripte von beliebigen Quellen"
+
+#: app/i18n_labels.py:22
+msgid "erlaubt data:-Skripte"
+msgstr "erlaubt data:-Skripte"
+
+#: app/i18n_labels.py:23
+msgid "object-src fehlt"
+msgstr "object-src fehlt"
+
+#: app/i18n_labels.py:24
+msgid "base-uri fehlt"
+msgstr "base-uri fehlt"
+
+#: app/i18n_labels.py:25
+msgid "Pflichtangaben"
+msgstr "Pflichtangaben"
+
+#: app/i18n_labels.py:26
+msgid "Cookies & Tracking"
+msgstr "Cookies & Tracking"
+
+#: app/i18n_labels.py:27
+msgid "Sicherheit (Grundschutz)"
+msgstr "Sicherheit (Grundschutz)"
+
+#: app/i18n_labels.py:28
+msgid "Weitere Hinweise"
+msgstr "Weitere Hinweise"
+
+#: app/i18n_labels.py:29
+msgid "Verantwortliche Stelle"
+msgstr "Verantwortliche Stelle"
+
+#: app/i18n_labels.py:30
+msgid "Verantwortliche Stelle mit Kontaktdaten nennen."
+msgstr "Verantwortliche Stelle mit Kontaktdaten nennen."
+
+#: app/i18n_labels.py:31
+msgid "Betroffenenrechte"
+msgstr "Betroffenenrechte"
+
+#: app/i18n_labels.py:32
+msgid ""
+"Rechte auf Auskunft, Berichtigung, Löschung, Widerspruch und "
+"Datenübertragbarkeit aufführen."
+msgstr ""
+"Rechte auf Auskunft, Berichtigung, Löschung, Widerspruch und "
+"Datenübertragbarkeit aufführen."
+
+#: app/i18n_labels.py:33
+msgid "Beschwerderecht Aufsichtsbehörde"
+msgstr "Beschwerderecht Aufsichtsbehörde"
+
+#: app/i18n_labels.py:34
+msgid "Beschwerderecht bei einer Aufsichtsbehörde nennen."
+msgstr "Beschwerderecht bei einer Aufsichtsbehörde nennen."
+
+#: app/i18n_labels.py:35
+msgid "Rechtsgrundlagen"
+msgstr "Rechtsgrundlagen"
+
+#: app/i18n_labels.py:36
+msgid "Zu jedem Zweck die Rechtsgrundlage (Art. 6 DSGVO) nennen."
+msgstr "Zu jedem Zweck die Rechtsgrundlage (Art. 6 DSGVO) nennen."
+
+#: app/i18n_labels.py:37
+msgid "Speicherdauer"
+msgstr "Speicherdauer"
+
+#: app/i18n_labels.py:38
+msgid "Angaben zur Speicherdauer bzw. zu den Löschfristen ergänzen."
+msgstr "Angaben zur Speicherdauer bzw. zu den Löschfristen ergänzen."
+
+#: app/i18n_labels.py:39
+msgid "Hosting und Server-Logfiles"
+msgstr "Hosting und Server-Logfiles"
+
+#: app/i18n_labels.py:40
+msgid "Hosting-Anbieter und Server-Logfiles beschreiben."
+msgstr "Hosting-Anbieter und Server-Logfiles beschreiben."
+
+#: app/i18n_labels.py:41
+msgid "Empfänger und Drittlandtransfer"
+msgstr "Empfänger und Drittlandtransfer"
+
+#: app/i18n_labels.py:42
+msgid "Empfänger/Auftragsverarbeiter und ggf. Drittlandübermittlungen nennen."
+msgstr "Empfänger/Auftragsverarbeiter und ggf. Drittlandübermittlungen nennen."
+
+#: app/i18n_labels.py:43
+msgid "Cookies und Tracking"
+msgstr "Cookies und Tracking"
+
+#: app/i18n_labels.py:44
+msgid "Einsatz von Cookies und Tracking-Diensten erläutern."
+msgstr "Einsatz von Cookies und Tracking-Diensten erläutern."
+
+#: app/i18n_labels.py:45
+msgid "Bitte gib die Adresse deiner Website ein."
+msgstr "Bitte gib die Adresse deiner Website ein."
+
+#: app/i18n_labels.py:46
+msgid "Das ist keine gültige Web-Adresse (z. B. https://www.beispiel.de)."
+msgstr "Das ist keine gültige Web-Adresse (z. B. https://www.beispiel.de)."
+
+#: app/i18n_labels.py:47
+msgid "Adressen mit Zugangsdaten sind nicht erlaubt."
+msgstr "Adressen mit Zugangsdaten sind nicht erlaubt."
+
+#: app/i18n_labels.py:48 app/services/tools/security.py:46
+msgid "Es sind nur die Standard-Ports 80 und 443 erlaubt."
+msgstr "Es sind nur die Standard-Ports 80 und 443 erlaubt."
+
+#: app/i18n_labels.py:49
+msgid ""
+"Diese Domain konnte nicht aufgelöst werden. Ist die Adresse richtig "
+"geschrieben?"
+msgstr ""
+"Diese Domain konnte nicht aufgelöst werden. Ist die Adresse richtig "
+"geschrieben?"
+
+#: app/i18n_labels.py:50
+msgid ""
+"Diese Adresse ist nicht öffentlich erreichbar und kann nicht geprüft "
+"werden."
+msgstr ""
+"Diese Adresse ist nicht öffentlich erreichbar und kann nicht geprüft "
+"werden."
+
+#: app/i18n_labels.py:51
+msgid ""
+"Das HTTPS-Zertifikat der Seite ist ungültig oder abgelaufen — das ist "
+"schon ein wichtiger Befund."
+msgstr ""
+"Das HTTPS-Zertifikat der Seite ist ungültig oder abgelaufen — das ist "
+"schon ein wichtiger Befund."
+
+#: app/i18n_labels.py:52
+msgid ""
+"Die Seite ist nicht erreichbar (Zeitüberschreitung oder "
+"Verbindungsfehler)."
+msgstr ""
+"Die Seite ist nicht erreichbar (Zeitüberschreitung oder "
+"Verbindungsfehler)."
+
+#: app/i18n_labels.py:53
+msgid "Zu viele Weiterleitungen hintereinander."
+msgstr "Zu viele Weiterleitungen hintereinander."
+
+#: app/i18n_labels.py:54
+msgid "kauft sofort"
+msgstr "kauft sofort"
+
+#: app/i18n_labels.py:55
+msgid "kauft nach Test"
+msgstr "kauft nach Test"
+
+#: app/i18n_labels.py:56
+msgid "vielleicht"
+msgstr "vielleicht"
+
+#: app/i18n_labels.py:57
+msgid "nein"
+msgstr "nein"
+
+#: app/i18n_labels.py:58
+msgid "Zielgruppe"
+msgstr "Zielgruppe"
+
+#: app/i18n_labels.py:59
+msgid "Privatpersonen"
+msgstr "Privatpersonen"
+
+#: app/i18n_labels.py:60
+msgid "Geschäftsentscheider"
+msgstr "Geschäftsentscheider"
+
+#: app/i18n_labels.py:61
+msgid "Alter"
+msgstr "Alter"
+
+#: app/i18n_labels.py:62
+msgid "Einkommen (Privat)"
+msgstr "Einkommen (Privat)"
+
+#: app/i18n_labels.py:63
+msgid "Technikaffinität"
+msgstr "Technikaffinität"
+
+#: app/i18n_labels.py:64
+msgid "hoch (4–5)"
+msgstr "hoch (4–5)"
+
+#: app/i18n_labels.py:65
+msgid "mittel (3)"
+msgstr "mittel (3)"
+
+#: app/i18n_labels.py:66
+msgid "niedrig (1–2)"
+msgstr "niedrig (1–2)"
+
+#: app/i18n_labels.py:67
+msgid "Preisbewusstsein"
+msgstr "Preisbewusstsein"
+
+#: app/i18n_labels.py:68
+msgid "Wohnort"
+msgstr "Wohnort"
+
+#: app/i18n_labels.py:69
+msgid "Gesundheit"
+msgstr "Gesundheit"
+
+#: app/i18n_labels.py:70
+msgid "gesund"
+msgstr "gesund"
+
+#: app/i18n_labels.py:71
+msgid "mit Erkrankung/Einschränkung"
+msgstr "mit Erkrankung/Einschränkung"
+
+#: app/i18n_labels.py:72
+msgid "Geschäftsführer:in Kleinbetrieb (1–10 MA)"
+msgstr "Geschäftsführer:in Kleinbetrieb (1–10 MA)"
+
+#: app/i18n_labels.py:73
+msgid "Geschäftsführer:in KMU (10–50 MA)"
+msgstr "Geschäftsführer:in KMU (10–50 MA)"
+
+#: app/i18n_labels.py:74
+msgid "Geschäftsführer:in Mittelstand (50–250 MA)"
+msgstr "Geschäftsführer:in Mittelstand (50–250 MA)"
+
+#: app/i18n_labels.py:75
+msgid "Solo-Selbstständige:r"
+msgstr "Solo-Selbstständige:r"
+
+#: app/i18n_labels.py:76
+msgid "Startup-Gründer:in (Pre-Seed)"
+msgstr "Startup-Gründer:in (Pre-Seed)"
+
+#: app/i18n_labels.py:77
+msgid "Startup-Gründer:in (Seed, B2C-App)"
+msgstr "Startup-Gründer:in (Seed, B2C-App)"
+
+#: app/i18n_labels.py:78
+msgid "CFO / Finanzleiter:in Mittelstand"
+msgstr "CFO / Finanzleiter:in Mittelstand"
+
+#: app/i18n_labels.py:79
+msgid "Controller:in"
+msgstr "Controller:in"
+
+#: app/i18n_labels.py:80
+msgid "Buchhalter:in / Lohnbuchhaltung"
+msgstr "Buchhalter:in / Lohnbuchhaltung"
+
+#: app/i18n_labels.py:81
+msgid "Steuerberater:in (Kanzlei, 15 MA)"
+msgstr "Steuerberater:in (Kanzlei, 15 MA)"
+
+#: app/i18n_labels.py:82
+msgid "IT-Leiter:in Mittelstand"
+msgstr "IT-Leiter:in Mittelstand"
+
+#: app/i18n_labels.py:83
+msgid "CISO / IT-Sicherheitsbeauftragte:r"
+msgstr "CISO / IT-Sicherheitsbeauftragte:r"
+
+#: app/i18n_labels.py:84
+msgid "Datenschutzbeauftragte:r"
+msgstr "Datenschutzbeauftragte:r"
+
+#: app/i18n_labels.py:85
+msgid "Compliance-Officer Konzern"
+msgstr "Compliance-Officer Konzern"
+
+#: app/i18n_labels.py:86
+msgid "Einkaufsleiter:in"
+msgstr "Einkaufsleiter:in"
+
+#: app/i18n_labels.py:87
+msgid "Vertriebsleiter:in B2B"
+msgstr "Vertriebsleiter:in B2B"
+
+#: app/i18n_labels.py:88
+msgid "Account Manager:in"
+msgstr "Account Manager:in"
+
+#: app/i18n_labels.py:89
+msgid "Marketingleiter:in"
+msgstr "Marketingleiter:in"
+
+#: app/i18n_labels.py:90
+msgid "Performance-Marketing-Manager:in"
+msgstr "Performance-Marketing-Manager:in"
+
+#: app/i18n_labels.py:91
+msgid "E-Commerce-Manager:in"
+msgstr "E-Commerce-Manager:in"
+
+#: app/i18n_labels.py:92
+msgid "HR-Leiter:in"
+msgstr "HR-Leiter:in"
+
+#: app/i18n_labels.py:93
+msgid "Recruiter:in"
+msgstr "Recruiter:in"
+
+#: app/i18n_labels.py:94
+msgid "Betriebsleiter:in / Produktionsleiter:in"
+msgstr "Betriebsleiter:in / Produktionsleiter:in"
+
+#: app/i18n_labels.py:95
+msgid "Logistikleiter:in"
+msgstr "Logistikleiter:in"
+
+#: app/i18n_labels.py:96
+msgid "Facility-Manager:in"
+msgstr "Facility-Manager:in"
+
+#: app/i18n_labels.py:97
+msgid "Praxisinhaber:in (Arzt/Zahnarzt)"
+msgstr "Praxisinhaber:in (Arzt/Zahnarzt)"
+
+#: app/i18n_labels.py:98
+msgid "Kanzlei-Partner:in (Recht)"
+msgstr "Kanzlei-Partner:in (Recht)"
+
+#: app/i18n_labels.py:99
+msgid "Inhaber:in Architekturbüro"
+msgstr "Inhaber:in Architekturbüro"
+
+#: app/i18n_labels.py:100
+msgid "Bauunternehmer:in"
+msgstr "Bauunternehmer:in"
+
+#: app/i18n_labels.py:101
+msgid "Hotelier oder Restaurantleiter:in"
+msgstr "Hotelier oder Restaurantleiter:in"
+
+#: app/i18n_labels.py:102
+msgid "Agenturinhaber:in (Marketing/Design)"
+msgstr "Agenturinhaber:in (Marketing/Design)"
+
+#: app/i18n_labels.py:103
+msgid "Unternehmensberater:in (selbstständig)"
+msgstr "Unternehmensberater:in (selbstständig)"
+
+#: app/i18n_labels.py:104
+msgid "Vereinsvorstand oder NGO-Geschäftsführung"
+msgstr "Vereinsvorstand oder NGO-Geschäftsführung"
+
+#: app/i18n_labels.py:105
+msgid "Kommunale:r IT-Entscheider:in"
+msgstr "Kommunale:r IT-Entscheider:in"
+
+#: app/i18n_labels.py:106
+msgid "Schulleiter:in"
+msgstr "Schulleiter:in"
+
+#: app/i18n_labels.py:107
+msgid "Innovationsmanager:in Konzern"
+msgstr "Innovationsmanager:in Konzern"
+
+#: app/i18n_labels.py:108
+msgid "Product Manager:in SaaS"
+msgstr "Product Manager:in SaaS"
+
+#: app/i18n_labels.py:109
+msgid "Head of Operations / COO Scale-up"
+msgstr "Head of Operations / COO Scale-up"
+
+#: app/i18n_labels.py:110
+msgid "unter 30"
+msgstr "unter 30"
+
+#: app/i18n_labels.py:111
+msgid "30–49"
+msgstr "30–49"
+
+#: app/i18n_labels.py:112
+msgid "50–64"
+msgstr "50–64"
+
+#: app/i18n_labels.py:113
+msgid "65+"
+msgstr "65+"
+
+#: app/i18n_labels.py:114
+msgid "niedrig (bis 2.400 €)"
+msgstr "niedrig (bis 2.400 €)"
+
+#: app/i18n_labels.py:115
+msgid "mittel (2.400–4.600 €)"
+msgstr "mittel (2.400–4.600 €)"
+
+#: app/i18n_labels.py:116
+msgid "hoch (ab 4.600 €)"
+msgstr "hoch (ab 4.600 €)"
+
+#: app/i18n_labels.py:117
+msgid "Schüler:in Oberstufe"
+msgstr "Schüler:in Oberstufe"
+
+#: app/i18n_labels.py:118
+msgid "Auszubildende:r im Handwerk"
+msgstr "Auszubildende:r im Handwerk"
+
+#: app/i18n_labels.py:119
+msgid "Auszubildende:r kaufmännisch"
+msgstr "Auszubildende:r kaufmännisch"
+
+#: app/i18n_labels.py:120
+msgid "Student:in (Bachelor)"
+msgstr "Student:in (Bachelor)"
+
+#: app/i18n_labels.py:121
+msgid "Masterstudent:in oder Promovierende:r"
+msgstr "Masterstudent:in oder Promovierende:r"
+
+#: app/i18n_labels.py:122
+msgid "Berufseinsteiger:in im Büro"
+msgstr "Berufseinsteiger:in im Büro"
+
+#: app/i18n_labels.py:123
+msgid "Pflegefachkraft"
+msgstr "Pflegefachkraft"
+
+#: app/i18n_labels.py:124
+msgid "Erzieher:in"
+msgstr "Erzieher:in"
+
+#: app/i18n_labels.py:125
+msgid "Grundschullehrer:in"
+msgstr "Grundschullehrer:in"
+
+#: app/i18n_labels.py:126
+msgid "Gymnasiallehrer:in"
+msgstr "Gymnasiallehrer:in"
+
+#: app/i18n_labels.py:127
+msgid "Softwareentwickler:in"
+msgstr "Softwareentwickler:in"
+
+#: app/i18n_labels.py:128
+msgid "IT-Administrator:in"
+msgstr "IT-Administrator:in"
+
+#: app/i18n_labels.py:129
+msgid "Bankkaufmann/-frau"
+msgstr "Bankkaufmann/-frau"
+
+#: app/i18n_labels.py:130
+msgid "Versicherungsvertreter:in"
+msgstr "Versicherungsvertreter:in"
+
+#: app/i18n_labels.py:131
+msgid "Verkäufer:in im Einzelhandel"
+msgstr "Verkäufer:in im Einzelhandel"
+
+#: app/i18n_labels.py:132
+msgid "Lagerhelfer:in oder Kassierer:in"
+msgstr "Lagerhelfer:in oder Kassierer:in"
+
+#: app/i18n_labels.py:133
+msgid "LKW-Fahrer:in"
+msgstr "LKW-Fahrer:in"
+
+#: app/i18n_labels.py:134
+msgid "Paketzusteller:in"
+msgstr "Paketzusteller:in"
+
+#: app/i18n_labels.py:135
+msgid "Elektriker:in (Geselle)"
+msgstr "Elektriker:in (Geselle)"
+
+#: app/i18n_labels.py:136
+msgid "Handwerksmeister:in (selbstständig)"
+msgstr "Handwerksmeister:in (selbstständig)"
+
+#: app/i18n_labels.py:137
+msgid "Friseur:in"
+msgstr "Friseur:in"
+
+#: app/i18n_labels.py:138
+msgid "Koch oder Köchin"
+msgstr "Koch oder Köchin"
+
+#: app/i18n_labels.py:139
+msgid "Gastronom:in (Inhaber:in)"
+msgstr "Gastronom:in (Inhaber:in)"
+
+#: app/i18n_labels.py:140
+msgid "Ärzt:in im Krankenhaus"
+msgstr "Ärzt:in im Krankenhaus"
+
+#: app/i18n_labels.py:141
+msgid "Hausärzt:in mit eigener Praxis"
+msgstr "Hausärzt:in mit eigener Praxis"
+
+#: app/i18n_labels.py:142
+msgid "Medizinische Fachangestellte"
+msgstr "Medizinische Fachangestellte"
+
+#: app/i18n_labels.py:143
+msgid "Apotheker:in"
+msgstr "Apotheker:in"
+
+#: app/i18n_labels.py:144
+msgid "Physiotherapeut:in"
+msgstr "Physiotherapeut:in"
+
+#: app/i18n_labels.py:145
+msgid "Rechtsanwält:in"
+msgstr "Rechtsanwält:in"
+
+#: app/i18n_labels.py:146
+msgid "Steuerberater:in"
+msgstr "Steuerberater:in"
+
+#: app/i18n_labels.py:147
+msgid "Ingenieur:in im Maschinenbau"
+msgstr "Ingenieur:in im Maschinenbau"
+
+#: app/i18n_labels.py:148
+msgid "Produktionsmitarbeiter:in"
+msgstr "Produktionsmitarbeiter:in"
+
+#: app/i18n_labels.py:149
+msgid "Beamt:in in der Verwaltung"
+msgstr "Beamt:in in der Verwaltung"
+
+#: app/i18n_labels.py:150
+msgid "Polizist:in"
+msgstr "Polizist:in"
+
+#: app/i18n_labels.py:151
+msgid "Freelance-Designer:in"
+msgstr "Freelance-Designer:in"
+
+#: app/i18n_labels.py:152
+msgid "Content-Creator:in"
+msgstr "Content-Creator:in"
+
+#: app/i18n_labels.py:153
+msgid "Journalist:in"
+msgstr "Journalist:in"
+
+#: app/i18n_labels.py:154
+msgid "Selbstständige:r Berater:in"
+msgstr "Selbstständige:r Berater:in"
+
+#: app/i18n_labels.py:155
+msgid "Kleinunternehmer:in mit Online-Shop"
+msgstr "Kleinunternehmer:in mit Online-Shop"
+
+#: app/i18n_labels.py:156
+msgid "Landwirt:in"
+msgstr "Landwirt:in"
+
+#: app/i18n_labels.py:157
+msgid "Rentner:in mit Grundsicherung"
+msgstr "Rentner:in mit Grundsicherung"
+
+#: app/i18n_labels.py:158
+msgid "Rentner:in, gut situiert"
+msgstr "Rentner:in, gut situiert"
+
+#: app/i18n_labels.py:159
+msgid "Frührentner:in mit Gesundheitsproblemen"
+msgstr "Frührentner:in mit Gesundheitsproblemen"
+
+#: app/i18n_labels.py:160
+msgid "Alleinerziehende:r in Teilzeit"
+msgstr "Alleinerziehende:r in Teilzeit"
+
+#: app/i18n_labels.py:161
+msgid "Familie mit zwei kleinen Kindern (Doppelverdiener)"
+msgstr "Familie mit zwei kleinen Kindern (Doppelverdiener)"
+
+#: app/i18n_labels.py:162
+msgid "Hausfrau oder Hausmann"
+msgstr "Hausfrau oder Hausmann"
+
+#: app/i18n_labels.py:163
+msgid "Mutter oder Vater in Elternzeit"
+msgstr "Mutter oder Vater in Elternzeit"
+
+#: app/i18n_labels.py:164
+msgid "Pendler:in aus dem Umland"
+msgstr "Pendler:in aus dem Umland"
+
+#: app/i18n_labels.py:165
+msgid "Arbeitsuchende:r (Bürgergeld/ALG I)"
+msgstr "Arbeitsuchende:r (Bürgergeld/ALG I)"
+
+#: app/i18n_labels.py:166
+msgid "Minijobber:in"
+msgstr "Minijobber:in"
+
+#: app/i18n_labels.py:167
+msgid "Quereinsteiger:in ohne Abschluss"
+msgstr "Quereinsteiger:in ohne Abschluss"
+
+#: app/i18n_labels.py:168
+msgid "Fachkraft aus dem Ausland (Blue Card)"
+msgstr "Fachkraft aus dem Ausland (Blue Card)"
+
+#: app/i18n_labels.py:169
+msgid "Pflegende:r Angehörige:r neben dem Job"
+msgstr "Pflegende:r Angehörige:r neben dem Job"
+
+#: app/i18n_labels.py:170
+msgid "Fitness- und Sportbegeisterte:r"
+msgstr "Fitness- und Sportbegeisterte:r"
+
+#: app/i18n_labels.py:171
+msgid "Vielspieler:in (Gaming)"
+msgstr "Vielspieler:in (Gaming)"
+
+#: app/i18n_labels.py:172
+msgid "Nachhaltigkeitsbewusste:r Konsument:in"
+msgstr "Nachhaltigkeitsbewusste:r Konsument:in"
+
+#: app/i18n_labels.py:173
+msgid "Führungskraft im Konzern"
+msgstr "Führungskraft im Konzern"
+
+#: app/i18n_labels.py:174
+msgid "Remote-Worker oder Digitalnomad"
+msgstr "Remote-Worker oder Digitalnomad"
+
+#: app/i18n_labels.py:175
+msgid "ÖPNV-abhängige:r Dorfbewohner:in"
+msgstr "ÖPNV-abhängige:r Dorfbewohner:in"
+
+#: app/i18n_labels.py:176
+msgid "Studierende mit Kind"
+msgstr "Studierende mit Kind"
+
+#: app/i18n_labels.py:177
+msgid "Senior:in, digital skeptisch"
+msgstr "Senior:in, digital skeptisch"
+
+#: app/i18n_labels.py:178
+msgid "Senior:in, technikaffin (Silver Surfer)"
+msgstr "Senior:in, technikaffin (Silver Surfer)"
+
+#: app/i18n_labels.py:179 app/services/tools/compliance.py:264
+msgid "Im HTML wurden keine bekannten Tracking- oder Einbettungsdienste gefunden."
+msgstr "Im HTML wurden keine bekannten Tracking- oder Einbettungsdienste gefunden."
+
+#: app/i18n_labels.py:180 app/services/tools/compliance.py:264
+msgid " Ein Cookie-Hinweis ist vorhanden."
+msgstr " Ein Cookie-Hinweis ist vorhanden."
+
+#: app/i18n_labels.py:181 app/services/tools/compliance.py:279
+msgid "Nicht in der Erklärung erwähnt: "
+msgstr "Nicht in der Erklärung erwähnt: "
+
+#: app/i18n_labels.py:182 app/services/tools/security.py:145
+msgid "Zertifikat wird von Browsern akzeptiert."
+msgstr "Zertifikat wird von Browsern akzeptiert."
+
+#: app/i18n_labels.py:183 app/services/tools/security.py:145
+#, python-format
+msgid " Aussteller: %(value0)s."
+msgstr " Aussteller: %(value0)s."
+
+#: app/i18n_labels.py:184 app/services/tools/security.py:191
+msgid "Preisgegeben: "
+msgstr "Preisgegeben: "
+
+#: app/i18n_labels.py:185 app/services/tools/security.py:231
+#, python-format
+msgid "Richtlinie p=%(value0)s."
+msgstr "Richtlinie p=%(value0)s."
+
+#: app/i18n_labels.py:186 app/services/tools/security.py:231
+msgid " Nur Beobachtung, kein Schutz."
+msgstr " Nur Beobachtung, kein Schutz."
+
+#: app/i18n_labels.py:187 app/services/tools/security.py:221
+#, python-format
+msgid "Eintrag vorhanden, Abschluss „%(value0)s“."
+msgstr "Eintrag vorhanden, Abschluss „%(value0)s“."
+
+#: app/i18n_labels.py:188 app/services/tools/security.py:221
+msgid " Empfohlen ist „-all“."
+msgstr " Empfohlen ist „-all“."
+
+#: app/i18n_labels.py:189 app/services/tools/security_extra.py:106
+msgid "Gesetzt: "
+msgstr "Gesetzt: "
+
+#: app/i18n_labels.py:190 app/services/tools/security_extra.py:79
+msgid "Auffällig: "
+msgstr "Auffällig: "
+
+#: app/i18n_labels.py:191 app/services/tools/security_extra.py:580
+msgid "Öffentlich sichtbar: "
+msgstr "Öffentlich sichtbar: "
+
+#: app/i18n_labels.py:192 app/services/tools/security_extra.py:517
+msgid "Die robots.txt nennt sensible Pfade: "
+msgstr "Die robots.txt nennt sensible Pfade: "
+
+#: app/i18n_labels.py:193 app/services/tools/security_extra.py:517
+msgid ". Sie ist öffentlich lesbar."
+msgstr ". Sie ist öffentlich lesbar."
+
+#: app/i18n_labels.py:194 app/services/tools/security_extra.py:503
+#, python-format
+msgid "Läuft in %(value0)s Tagen ab"
+msgstr "Läuft in %(value0)s Tagen ab"
+
+#: app/i18n_labels.py:195 app/services/tools/security_extra.py:503
+#, python-format
+msgid " (Registrar: %(value0)s)."
+msgstr " (Registrar: %(value0)s)."
+
+#: app/i18n_labels.py:196
+msgid "Verfassungsrecht"
+msgstr "Verfassungsrecht"
+
+#: app/i18n_labels.py:197
+msgid "Zivilrecht"
+msgstr "Zivilrecht"
+
+#: app/i18n_labels.py:198
+msgid "Handelsrecht"
+msgstr "Handelsrecht"
+
+#: app/i18n_labels.py:199
+msgid "Gesellschaftsrecht"
+msgstr "Gesellschaftsrecht"
+
+#: app/i18n_labels.py:200
+msgid "Insolvenzrecht"
+msgstr "Insolvenzrecht"
+
+#: app/i18n_labels.py:201
+msgid "Verfahrensrecht"
+msgstr "Verfahrensrecht"
+
+#: app/i18n_labels.py:202
+msgid "Anwaltsrecht"
+msgstr "Anwaltsrecht"
+
+#: app/i18n_labels.py:203
+msgid "Wettbewerbsrecht"
+msgstr "Wettbewerbsrecht"
+
+#: app/i18n_labels.py:204
+msgid "Notarrecht"
+msgstr "Notarrecht"
+
+#: app/i18n_labels.py:205
+msgid "Strafrecht"
+msgstr "Strafrecht"
+
+#: app/i18n_labels.py:206
+msgid "Strafverfahrensrecht"
+msgstr "Strafverfahrensrecht"
+
+#: app/i18n_labels.py:207
+msgid "Wirtschaftsstrafrecht"
+msgstr "Wirtschaftsstrafrecht"
+
+#: app/i18n_labels.py:208
+msgid "IT-/Digitalrecht"
+msgstr "IT-/Digitalrecht"
+
+#: app/i18n_labels.py:209
+msgid "Datenschutzrecht"
+msgstr "Datenschutzrecht"
+
+#: app/i18n_labels.py:210
+msgid "IT-Sicherheitsrecht"
+msgstr "IT-Sicherheitsrecht"
+
+#: app/i18n_labels.py:211
+msgid "Urheberrecht"
+msgstr "Urheberrecht"
+
+#: app/i18n_labels.py:212
+msgid "Wirtschaftsrecht"
+msgstr "Wirtschaftsrecht"
+
+#: app/i18n_labels.py:213
+msgid "Finanzaufsichtsrecht"
+msgstr "Finanzaufsichtsrecht"
+
+#: app/i18n_labels.py:214
+msgid "Steuerrecht"
+msgstr "Steuerrecht"
+
+#: app/i18n_labels.py:215
+msgid "Steuerverfahrensrecht"
+msgstr "Steuerverfahrensrecht"
+
+#: app/i18n_labels.py:216
+msgid "Allgemeine Geschäftsbedingungen (AGB)"
+msgstr "Allgemeine Geschäftsbedingungen (AGB)"
+
+#: app/i18n_labels.py:217
+msgid "AGB bereitstellen und im Bestellprozess einbeziehen."
+msgstr "AGB bereitstellen und im Bestellprozess einbeziehen."
+
+#: app/i18n_labels.py:218
+msgid "Widerrufsbelehrung"
+msgstr "Widerrufsbelehrung"
+
+#: app/i18n_labels.py:219
+msgid ""
+"Widerrufsbelehrung und Muster-Widerrufsformular für Verbraucher "
+"bereitstellen."
+msgstr ""
+"Widerrufsbelehrung und Muster-Widerrufsformular für Verbraucher "
+"bereitstellen."
+
+#: app/i18n_labels.py:220
+msgid "Großstadt"
+msgstr "Großstadt"
+
+#: app/i18n_labels.py:221
+msgid "Kleinstadt"
+msgstr "Kleinstadt"
+
+#: app/i18n_labels.py:222
+msgid "ländlich"
+msgstr "ländlich"
+
+#: app/i18n_labels.py:226
+msgid "Confirmed manually"
+msgstr "Manuell bestätigt"
+
+#: app/i18n_labels.py:227
+msgid "Review required"
+msgstr "Prüfung erforderlich"
+
+#: app/i18n_labels.py:228
+msgid "Country not supported"
+msgstr "Land nicht unterstützt"
+
+#: app/i18n_labels.py:229
+msgid "Under 18"
+msgstr "Unter 18 Jahren"
+
+#: app/i18n_labels.py:230
+msgid "More information required"
+msgstr "Weitere Angaben erforderlich"
+
+#: app/i18n_labels.py:231 app/i18n_labels.py:244
+#: app/templates/admin/events.html:13 app/templates/modules/events_mine.html:23
+#: app/templates/modules/events_mine.html:41
+#: app/templates/modules/travel_mine.html:26
+msgid "Cancelled"
+msgstr "Storniert"
+
+#: app/i18n_labels.py:232
+msgid "Attempt limit reached"
+msgstr "Maximale Anzahl an Versuchen erreicht"
+
+#: app/i18n_labels.py:233
+msgid "Active"
+msgstr "Aktiv"
+
+#: app/i18n_labels.py:234
+msgid "Blocked"
+msgstr "Gesperrt"
+
+#: app/i18n_labels.py:235
+msgid "Not started"
+msgstr "Nicht begonnen"
+
+#: app/i18n_labels.py:236
+msgid "Pending"
+msgstr "Ausstehend"
+
+#: app/i18n_labels.py:237
+msgid "Verified"
+msgstr "Verifiziert"
+
+#: app/i18n_labels.py:238
+msgid "Failed"
+msgstr "Fehlgeschlagen"
+
+#: app/i18n_labels.py:239
+msgid "Manual review"
+msgstr "Manuelle Prüfung"
+
+#: app/i18n_labels.py:240 app/templates/modules/auction_mine.html:21
+#: app/templates/modules/tools_index.html:19
+#: app/templates/modules/travel_mine.html:24
+msgid "Open"
+msgstr "Öffnen"
+
+#: app/i18n_labels.py:241 app/templates/admin/events.html:11
+#: app/templates/admin/miniclubs.html:35 app/templates/admin/startups.html:11
+#: app/templates/admin/travel.html:11 app/templates/modules/events_mine.html:21
+#: app/templates/modules/miniclubs_mine.html:20
+#: app/templates/modules/startups_mine.html:20
+msgid "Published"
+msgstr "Veröffentlicht"
+
+#: app/i18n_labels.py:242 app/templates/admin/events.html:12
+#: app/templates/admin/miniclubs.html:36 app/templates/admin/startups.html:12
+#: app/templates/admin/travel.html:12
+msgid "Rejected"
+msgstr "Abgelehnt"
+
+#: app/i18n_labels.py:243 app/services/catalog.py:96
+#: app/templates/admin/miniclubs.html:37
+#: app/templates/modules/miniclubs_mine.html:22
+msgid "Closed"
+msgstr "Abgeschlossen"
+
+#: app/i18n_labels.py:245
+msgid "Draft"
+msgstr "Entwurf"
+
+#: app/i18n_labels.py:246 app/templates/modules/miniclubs_mine.html:38
+msgid "Member"
+msgstr "Mitglied"
+
+#: app/i18n_labels.py:247
+msgid "Travel operator"
+msgstr "Reiseveranstalter"
+
+#: app/i18n_labels.py:248
+msgid "Travel agent"
+msgstr "Reisevermittler"
+
+#: app/i18n_labels.py:249 app/templates/public/index.html:101
+msgid "Privacy"
+msgstr "Datenschutz"
+
+#: app/i18n_labels.py:250
+msgid "Terms of use"
+msgstr "Nutzungsbedingungen"
+
+#: app/i18n_labels.py:251 app/templates/admin/user_detail.html:58
+msgid "Identity check"
+msgstr "Identitätsprüfung"
+
+#: app/i18n_labels.py:252 app/templates/modules/profile_privacy.html:36
+#: app/templates/public/index.html:29
+msgid "Matching"
+msgstr "Matching"
+
+#: app/i18n_labels.py:253 app/templates/modules/profile_privacy.html:36
+msgid "Directory"
+msgstr "Verzeichnis"
+
+#: app/i18n_labels.py:254
+msgid "Won"
+msgstr "Gewonnen"
+
+#: app/i18n_labels.py:255
+msgid "Lost"
+msgstr "Verloren"
+
+#: app/i18n_labels.py:256
+msgid "Rising price"
+msgstr "Steigender Preis"
+
+#: app/i18n_labels.py:257
+msgid "Falling price"
+msgstr "Fallender Preis"
+
+#: app/i18n_labels.py:258
+msgid "English"
+msgstr "Englisch"
+
+#: app/i18n_labels.py:259
+msgid "German"
+msgstr "Deutsch"
+
+#: app/i18n_labels.py:260 app/i18n_labels.py:263
+msgid "Low"
+msgstr "Niedrig"
+
+#: app/i18n_labels.py:261
+msgid "Medium"
+msgstr "Mittel"
+
+#: app/i18n_labels.py:262
+msgid "High"
+msgstr "Hoch"
 
 #: app/miniclub_guide.py:27 app/templates/modules/miniclubs_detail.html:45
 msgid "What is this mini-club about?"
@@ -1374,71 +2469,71 @@ msgstr "Du hast das Tageslimit an Fragen erreicht. Es erneuert sich morgen."
 msgid "Something went wrong. Please try again."
 msgstr "Etwas ist schiefgelaufen. Bitte versuche es erneut."
 
-#: app/blueprints/auth/__init__.py:26
+#: app/blueprints/auth/__init__.py:27
 msgid "Please confirm your e-mail address"
 msgstr "Bitte bestätige deine E-Mail-Adresse"
 
-#: app/blueprints/auth/__init__.py:27
+#: app/blueprints/auth/__init__.py:28
 msgid "Please open this link to confirm your e-mail address:"
 msgstr "Öffne bitte diesen Link, um deine E-Mail-Adresse zu bestätigen:"
 
-#: app/blueprints/auth/__init__.py:51
+#: app/blueprints/auth/__init__.py:52
 msgid "Please enter your first name."
 msgstr "Bitte gib deinen Vornamen ein."
 
-#: app/blueprints/auth/__init__.py:53
+#: app/blueprints/auth/__init__.py:54
 msgid "Please enter a valid e-mail address."
 msgstr "Bitte gib eine gültige E-Mail-Adresse ein."
 
-#: app/blueprints/auth/__init__.py:55
+#: app/blueprints/auth/__init__.py:56
 msgid "An account with this e-mail address already exists."
 msgstr "Mit dieser E-Mail-Adresse gibt es bereits ein Konto."
 
-#: app/blueprints/auth/__init__.py:57
+#: app/blueprints/auth/__init__.py:58
 msgid "The password must be at least 10 characters long."
 msgstr "Das Passwort muss mindestens 10 Zeichen lang sein."
 
-#: app/blueprints/auth/__init__.py:59
+#: app/blueprints/auth/__init__.py:60
 msgid "Please choose your country of residence."
 msgstr "Bitte wähle dein Wohnsitzland."
 
-#: app/blueprints/auth/__init__.py:61
+#: app/blueprints/auth/__init__.py:62
 msgid "We cannot open an account for residents of this country."
 msgstr "Für Menschen mit Wohnsitz in diesem Land können wir kein Konto eröffnen."
 
-#: app/blueprints/auth/__init__.py:64
+#: app/blueprints/auth/__init__.py:65
 msgid "This confirmation is required to create an account."
 msgstr "Diese Bestätigung brauchen wir, um ein Konto anzulegen."
 
-#: app/blueprints/auth/__init__.py:78
+#: app/blueprints/auth/__init__.py:79
 msgid "Welcome. Please confirm your e-mail address to continue."
 msgstr "Willkommen. Bitte bestätige deine E-Mail-Adresse, um weiterzumachen."
 
-#: app/blueprints/auth/__init__.py:96
+#: app/blueprints/auth/__init__.py:97
 msgid "E-mail or password is not correct."
 msgstr "E-Mail oder Passwort sind nicht korrekt."
 
-#: app/blueprints/auth/__init__.py:98
+#: app/blueprints/auth/__init__.py:99
 msgid "This account is blocked. Please contact support."
 msgstr "Dieses Konto ist gesperrt. Bitte wende dich an den Support."
 
-#: app/blueprints/auth/__init__.py:111
+#: app/blueprints/auth/__init__.py:112
 msgid "You have been logged out."
 msgstr "Du bist abgemeldet."
 
-#: app/blueprints/auth/__init__.py:119 app/blueprints/auth/__init__.py:124
+#: app/blueprints/auth/__init__.py:120 app/blueprints/auth/__init__.py:125
 msgid "The link is invalid or has expired. Please request a new one."
 msgstr "Der Link ist ungültig oder abgelaufen. Bitte fordere einen neuen an."
 
-#: app/blueprints/auth/__init__.py:131
+#: app/blueprints/auth/__init__.py:132
 msgid "Your e-mail address is confirmed."
 msgstr "Deine E-Mail-Adresse ist bestätigt."
 
-#: app/blueprints/member/__init__.py:46 app/blueprints/member/__init__.py:52
+#: app/blueprints/member/__init__.py:50 app/blueprints/member/__init__.py:56
 msgid "Verification cannot be started right now."
 msgstr "Die Prüfung kann gerade nicht gestartet werden."
 
-#: app/blueprints/member/__init__.py:63
+#: app/blueprints/member/__init__.py:67
 msgid ""
 "We are checking your details. This can take a few minutes. The result "
 "appears here and we will not send it by e-mail."
@@ -1446,23 +2541,23 @@ msgstr ""
 "Wir prüfen deine Angaben. Das kann einige Minuten dauern. Das Ergebnis "
 "erscheint hier; wir schicken es nicht per E-Mail."
 
-#: app/blueprints/member/__init__.py:76
+#: app/blueprints/member/__init__.py:80
 msgid "If your address is not yet confirmed, we have sent a new link."
 msgstr ""
 "Falls deine Adresse noch nicht bestätigt ist, haben wir dir einen neuen "
 "Link geschickt."
 
-#: app/blueprints/member/__init__.py:98
+#: app/blueprints/member/__init__.py:102
 msgid "The password is not correct. Your account was not deleted."
 msgstr "Das Passwort ist nicht korrekt. Dein Konto wurde nicht gelöscht."
 
-#: app/blueprints/member/__init__.py:106
+#: app/blueprints/member/__init__.py:110
 msgid "Your account could not be deleted right now. Please try again later."
 msgstr ""
 "Dein Konto konnte gerade nicht gelöscht werden. Bitte versuche es später "
 "noch einmal."
 
-#: app/blueprints/member/__init__.py:110
+#: app/blueprints/member/__init__.py:114
 msgid "Your account and your data have been deleted."
 msgstr "Dein Konto und deine Daten wurden gelöscht."
 
@@ -1489,7 +2584,7 @@ msgstr ""
 #: app/templates/modules/service_detail.html:3
 #: app/templates/modules/services_list.html:3
 #: app/templates/modules/services_mine.html:3
-#: app/templates/modules/tools_index.html:3 app/templates/public/index.html:104
+#: app/templates/modules/tools_index.html:3 app/templates/public/index.html:110
 msgid "Services"
 msgstr "Dienstleistungen"
 
@@ -1505,8 +2600,8 @@ msgstr ""
 #: app/templates/modules/travel_form.html:3
 #: app/templates/modules/travel_list.html:3
 #: app/templates/modules/travel_list.html:6
-#: app/templates/modules/travel_mine.html:3 app/templates/public/index.html:36
-#: app/templates/public/index.html:143
+#: app/templates/modules/travel_mine.html:3 app/templates/public/index.html:37
+#: app/templates/public/index.html:149
 msgid "Travel"
 msgstr "Reisen"
 
@@ -1522,7 +2617,7 @@ msgstr ""
 #: app/templates/modules/events_form.html:3
 #: app/templates/modules/events_list.html:3
 #: app/templates/modules/events_list.html:6
-#: app/templates/modules/events_mine.html:3 app/templates/public/index.html:133
+#: app/templates/modules/events_mine.html:3 app/templates/public/index.html:139
 msgid "Events"
 msgstr "Treffen"
 
@@ -1568,7 +2663,7 @@ msgstr "Stelle dein Startup Investoren vor oder entdecke junge Unternehmen."
 #: app/templates/modules/auction_list.html:3
 #: app/templates/modules/auction_list.html:6
 #: app/templates/modules/auction_mine.html:3
-#: app/templates/public/index.html:148
+#: app/templates/public/index.html:154
 msgid "Auction"
 msgstr "Auktion"
 
@@ -2076,7 +3171,8 @@ msgstr "Prototyp"
 msgid "First revenue"
 msgstr "Erste Umsätze"
 
-#: app/modules/startups/labels.py:19 app/templates/public/index.html:179
+#: app/modules/startups/labels.py:19 app/templates/public/index.html:185
+#: config/plans.py:24
 msgid "Growth"
 msgstr "Wachstum"
 
@@ -2277,11 +3373,6 @@ msgstr "Kontaktiert"
 msgid "Done"
 msgstr "Erledigt"
 
-#: app/services/catalog.py:96 app/templates/admin/miniclubs.html:37
-#: app/templates/modules/miniclubs_mine.html:22
-msgid "Closed"
-msgstr "Abgeschlossen"
-
 #: app/services/entitlements.py:40 app/services/entitlements.py:56
 msgid "This area opens after your identity check."
 msgstr "Dieser Bereich öffnet sich nach deiner Identitätsprüfung."
@@ -2322,13 +3413,30 @@ msgstr "Diesmal nicht angenommen."
 msgid "Withdrawn."
 msgstr "Zurückgezogen."
 
-#: app/services/intros.py:115 app/templates/modules/profile_matches.html:36
+#: app/services/intros.py:115 app/templates/modules/profile_matches.html:42
 msgid "Accepted."
 msgstr "Angenommen."
 
 #: app/services/intros.py:116 app/templates/modules/profile_intros.html:38
 msgid "Waiting for an answer."
 msgstr "Wartet auf eine Antwort."
+
+#: app/services/matching.py:30
+msgid "Good fit"
+msgstr "gut passend"
+
+#: app/services/matching.py:30
+msgid "Partial fit"
+msgstr "teilweise passend"
+
+#: app/services/matching.py:30
+msgid "Little overlap"
+msgstr "wenig Überschneidung"
+
+#: app/services/matching.py:140
+#, python-format
+msgid "Need: %(need)s — offer: %(offer)s."
+msgstr "Thema: „%(need)s“ — Angebot: „%(offer)s“."
 
 #: app/services/miniclubs.py:27
 #, python-format
@@ -2456,7 +3564,7 @@ msgstr ""
 "Passive Prüfung von Verschlüsselung, Sicherheits-Headern, Cookies und E"
 "-Mail-Schutz deiner Domain."
 
-#: app/services/tools/__init__.py:36 app/templates/public/index.html:114
+#: app/services/tools/__init__.py:36 app/templates/public/index.html:120
 msgid "Law search"
 msgstr "Gesetzes-Suche"
 
@@ -2468,7 +3576,7 @@ msgstr ""
 "Findet Vorschriften im deutschen Bundesrecht, zitiert sie wörtlich und "
 "erklärt, was sie bedeuten."
 
-#: app/services/tools/__init__.py:38 app/templates/public/index.html:119
+#: app/services/tools/__init__.py:38 app/templates/public/index.html:125
 msgid "Market panel"
 msgstr "Markt-Panel"
 
@@ -2476,10 +3584,1766 @@ msgstr "Markt-Panel"
 msgid "Up to 100 fictional personas rate your product idea before you launch."
 msgstr "Bis zu 100 fiktive Personas bewerten deine Produktidee vor dem Start."
 
+#: app/services/tools/common.py:119
+msgid "Very well positioned"
+msgstr "sehr gut aufgestellt"
+
+#: app/services/tools/common.py:119
+msgid "Solid, with clear room for improvement"
+msgstr "solide, mit klaren Verbesserungsmöglichkeiten"
+
+#: app/services/tools/common.py:120
+msgid "Significant improvements needed"
+msgstr "mit deutlichem Nachholbedarf"
+
+#: app/services/tools/common.py:121
+#, python-format
+msgid ""
+"Check result: %(verdict)s (score %(score)s/100). The most useful "
+"improvements are listed below in order of impact."
+msgstr ""
+"Ergebnis der Prüfung: %(verdict)s (Score %(score)s/100). Die wichtigsten "
+"Hebel stehen unten in der Reihenfolge ihrer Wirkung."
+
+#: app/services/tools/common.py:123
+msgid "Apply the actions in order, then check the page again."
+msgstr ""
+"Die Maßnahmen der Reihe nach umsetzen und die Seite danach erneut prüfen "
+"lassen."
+
+#: app/services/tools/compliance.py:137
+#, python-format
+msgid "HTTP %(value0)s"
+msgstr "HTTP %(value0)s"
+
+#: app/services/tools/compliance.py:148 app/services/tools/seo.py:103
+#, python-format
+msgid "Die Seite antwortet mit dem Fehlercode %(value0)s."
+msgstr "Die Seite antwortet mit dem Fehlercode %(value0)s."
+
+#: app/services/tools/compliance.py:162
+msgid "Impressum verlinkt"
+msgstr "Impressum verlinkt"
+
+#: app/services/tools/compliance.py:162
+msgid "Auf der Startseite wurde kein Link „Impressum“ gefunden."
+msgstr "Auf der Startseite wurde kein Link „Impressum“ gefunden."
+
+#: app/services/tools/compliance.py:163
+msgid ""
+"Ein Impressum anlegen und von jeder Seite (z. B. im Footer) mit einem "
+"Klick erreichbar machen (§ 5 DDG)."
+msgstr ""
+"Ein Impressum anlegen und von jeder Seite (z. B. im Footer) mit einem "
+"Klick erreichbar machen (§ 5 DDG)."
+
+#: app/services/tools/compliance.py:167
+msgid "Impressum vorhanden"
+msgstr "Impressum vorhanden"
+
+#: app/services/tools/compliance.py:168 app/services/tools/compliance.py:212
+#, python-format
+msgid "Erreichbar unter %(value0)s (%(value1)s Wörter)."
+msgstr "Erreichbar unter %(value0)s (%(value1)s Wörter)."
+
+#: app/services/tools/compliance.py:169
+msgid "Impressum mit allen Pflichtangaben ausbauen."
+msgstr "Impressum mit allen Pflichtangaben ausbauen."
+
+#: app/services/tools/compliance.py:171
+msgid "Impressum erreichbar"
+msgstr "Impressum erreichbar"
+
+#: app/services/tools/compliance.py:171 app/services/tools/compliance.py:215
+#, python-format
+msgid "Der Link %(value0)s lässt sich nicht abrufen."
+msgstr "Der Link %(value0)s lässt sich nicht abrufen."
+
+#: app/services/tools/compliance.py:172
+msgid "Den Link reparieren, damit das Impressum erreichbar ist."
+msgstr "Den Link reparieren, damit das Impressum erreichbar ist."
+
+#: app/services/tools/compliance.py:177
+msgid "Impressum: ladungsfähige Anschrift"
+msgstr "Impressum: ladungsfähige Anschrift"
+
+#: app/services/tools/compliance.py:177
+msgid "Straße, Hausnummer, PLZ und Ort erkannt."
+msgstr "Straße, Hausnummer, PLZ und Ort erkannt."
+
+#: app/services/tools/compliance.py:178
+msgid "Anschrift nur teilweise oder gar nicht erkannt."
+msgstr "Anschrift nur teilweise oder gar nicht erkannt."
+
+#: app/services/tools/compliance.py:179
+msgid ""
+"Vollständige Anschrift (kein Postfach allein) mit Straße, Hausnummer, PLZ"
+" und Ort angeben."
+msgstr ""
+"Vollständige Anschrift (kein Postfach allein) mit Straße, Hausnummer, PLZ"
+" und Ort angeben."
+
+#: app/services/tools/compliance.py:181
+msgid "Impressum: E-Mail-Adresse"
+msgstr "Impressum: E-Mail-Adresse"
+
+#: app/services/tools/compliance.py:182
+msgid "E-Mail-Adresse erkannt."
+msgstr "E-Mail-Adresse erkannt."
+
+#: app/services/tools/compliance.py:182
+msgid "Keine E-Mail-Adresse erkannt."
+msgstr "Keine E-Mail-Adresse erkannt."
+
+#: app/services/tools/compliance.py:183
+msgid "Eine E-Mail-Adresse für schnelle elektronische Kontaktaufnahme angeben."
+msgstr "Eine E-Mail-Adresse für schnelle elektronische Kontaktaufnahme angeben."
+
+#: app/services/tools/compliance.py:185
+msgid "Impressum: Telefonnummer"
+msgstr "Impressum: Telefonnummer"
+
+#: app/services/tools/compliance.py:186
+msgid "Telefonnummer erkannt."
+msgstr "Telefonnummer erkannt."
+
+#: app/services/tools/compliance.py:186
+msgid ""
+"Keine Telefonnummer erkannt (nicht zwingend, wenn eine zweite schnelle "
+"Kontaktmöglichkeit besteht)."
+msgstr ""
+"Keine Telefonnummer erkannt (nicht zwingend, wenn eine zweite schnelle "
+"Kontaktmöglichkeit besteht)."
+
+#: app/services/tools/compliance.py:186
+msgid "Telefonnummer oder Kontaktformular ergänzen."
+msgstr "Telefonnummer oder Kontaktformular ergänzen."
+
+#: app/services/tools/compliance.py:190
+msgid "Impressum: Vertretungsberechtigte"
+msgstr "Impressum: Vertretungsberechtigte"
+
+#: app/services/tools/compliance.py:191
+msgid "Vertretung genannt."
+msgstr "Vertretung genannt."
+
+#: app/services/tools/compliance.py:191
+msgid "Rechtsform erkannt, aber keine vertretungsberechtigte Person."
+msgstr "Rechtsform erkannt, aber keine vertretungsberechtigte Person."
+
+#: app/services/tools/compliance.py:192
+msgid ""
+"Geschäftsführung/Vorstand bzw. vertretungsberechtigte Person mit Namen "
+"nennen."
+msgstr ""
+"Geschäftsführung/Vorstand bzw. vertretungsberechtigte Person mit Namen "
+"nennen."
+
+#: app/services/tools/compliance.py:194
+msgid "Impressum: Registerangaben"
+msgstr "Impressum: Registerangaben"
+
+#: app/services/tools/compliance.py:195
+msgid "Registergericht/Nummer erkannt."
+msgstr "Registergericht/Nummer erkannt."
+
+#: app/services/tools/compliance.py:195
+msgid "Bei dieser Rechtsform fehlen Register und Registernummer."
+msgstr "Bei dieser Rechtsform fehlen Register und Registernummer."
+
+#: app/services/tools/compliance.py:196
+msgid ""
+"Registergericht und Registernummer (z. B. HRB 12345, Amtsgericht "
+"Frankfurt) ergänzen."
+msgstr ""
+"Registergericht und Registernummer (z. B. HRB 12345, Amtsgericht "
+"Frankfurt) ergänzen."
+
+#: app/services/tools/compliance.py:198
+msgid "Impressum: Umsatzsteuer-ID"
+msgstr "Impressum: Umsatzsteuer-ID"
+
+#: app/services/tools/compliance.py:199
+msgid "USt-IdNr. erkannt."
+msgstr "USt-IdNr. erkannt."
+
+#: app/services/tools/compliance.py:199
+msgid "Keine USt-IdNr. erkannt (nur nötig, falls vorhanden)."
+msgstr "Keine USt-IdNr. erkannt (nur nötig, falls vorhanden)."
+
+#: app/services/tools/compliance.py:200
+msgid "Falls vorhanden, die Umsatzsteuer-Identifikationsnummer angeben."
+msgstr "Falls vorhanden, die Umsatzsteuer-Identifikationsnummer angeben."
+
+#: app/services/tools/compliance.py:206
+msgid "Datenschutzerklärung verlinkt"
+msgstr "Datenschutzerklärung verlinkt"
+
+#: app/services/tools/compliance.py:206
+msgid "Auf der Startseite wurde kein Link zur Datenschutzerklärung gefunden."
+msgstr "Auf der Startseite wurde kein Link zur Datenschutzerklärung gefunden."
+
+#: app/services/tools/compliance.py:207
+msgid ""
+"Eine Datenschutzerklärung nach Art. 13 DSGVO bereitstellen und von jeder "
+"Seite verlinken."
+msgstr ""
+"Eine Datenschutzerklärung nach Art. 13 DSGVO bereitstellen und von jeder "
+"Seite verlinken."
+
+#: app/services/tools/compliance.py:211
+msgid "Datenschutzerklärung vorhanden"
+msgstr "Datenschutzerklärung vorhanden"
+
+#: app/services/tools/compliance.py:213
+msgid ""
+"Die Erklärung ist sehr kurz; für die eingesetzten Dienste ist meist "
+"deutlich mehr Text nötig."
+msgstr ""
+"Die Erklärung ist sehr kurz; für die eingesetzten Dienste ist meist "
+"deutlich mehr Text nötig."
+
+#: app/services/tools/compliance.py:215
+msgid "Datenschutzerklärung erreichbar"
+msgstr "Datenschutzerklärung erreichbar"
+
+#: app/services/tools/compliance.py:216
+msgid "Den Link reparieren."
+msgstr "Den Link reparieren."
+
+#: app/services/tools/compliance.py:231
+#, python-format
+msgid "Datenschutz: %(value0)s"
+msgstr "Datenschutz: %(value0)s"
+
+#: app/services/tools/compliance.py:232
+msgid "Im Text erkennbar."
+msgstr "Im Text erkennbar."
+
+#: app/services/tools/compliance.py:232
+msgid "Im Text nicht erkennbar."
+msgstr "Im Text nicht erkennbar."
+
+#: app/services/tools/compliance.py:242
+#, python-format
+msgid "Link gefunden: %(value0)s"
+msgstr "Link gefunden: %(value0)s"
+
+#: app/services/tools/compliance.py:242
+msgid "Kein Link gefunden."
+msgstr "Kein Link gefunden."
+
+#: app/services/tools/compliance.py:244
+msgid "Erklärung zur Barrierefreiheit (BFSG)"
+msgstr "Erklärung zur Barrierefreiheit (BFSG)"
+
+#: app/services/tools/compliance.py:245
+msgid "Link gefunden."
+msgstr "Link gefunden."
+
+#: app/services/tools/compliance.py:245
+msgid ""
+"Kein Link gefunden. Für Online-Shops mit Verbraucherkunden gilt seit "
+"28.06.2025 das BFSG (Ausnahmen für Kleinstunternehmen)."
+msgstr ""
+"Kein Link gefunden. Für Online-Shops mit Verbraucherkunden gilt seit "
+"28.06.2025 das BFSG (Ausnahmen für Kleinstunternehmen)."
+
+#: app/services/tools/compliance.py:245
+msgid ""
+"Prüfen, ob das BFSG gilt, und ggf. eine Barrierefreiheitserklärung "
+"veröffentlichen."
+msgstr ""
+"Prüfen, ob das BFSG gilt, und ggf. eine Barrierefreiheitserklärung "
+"veröffentlichen."
+
+#: app/services/tools/compliance.py:247
+msgid "Online-Shop"
+msgstr "Online-Shop"
+
+#: app/services/tools/compliance.py:247
+msgid ""
+"Kein Online-Shop erkannt — AGB, Widerrufsbelehrung und Preisangaben "
+"wurden daher nicht verlangt."
+msgstr ""
+"Kein Online-Shop erkannt — AGB, Widerrufsbelehrung und Preisangaben "
+"wurden daher nicht verlangt."
+
+#: app/services/tools/compliance.py:255
+msgid "Einwilligungsbanner (Cookie-Consent)"
+msgstr "Einwilligungsbanner (Cookie-Consent)"
+
+#: app/services/tools/compliance.py:256
+#, python-format
+msgid "Consent-Lösung erkannt. Eingebunden sind u. a.: %(value0)s."
+msgstr "Consent-Lösung erkannt. Eingebunden sind u. a.: %(value0)s."
+
+#: app/services/tools/compliance.py:257
+#, python-format
+msgid ""
+"Tracking-/Einbettungsdienste gefunden (%(value0)s), aber kein "
+"Einwilligungsbanner erkannt."
+msgstr ""
+"Tracking-/Einbettungsdienste gefunden (%(value0)s), aber kein "
+"Einwilligungsbanner erkannt."
+
+#: app/services/tools/compliance.py:258
+msgid ""
+"Einwilligungsbanner (Consent-Manager) einsetzen und diese Dienste erst "
+"nach aktiver Einwilligung laden (§ 25 TDDDG)."
+msgstr ""
+"Einwilligungsbanner (Consent-Manager) einsetzen und diese Dienste erst "
+"nach aktiver Einwilligung laden (§ 25 TDDDG)."
+
+#: app/services/tools/compliance.py:260
+msgid "Laden nach Einwilligung"
+msgstr "Laden nach Einwilligung"
+
+#: app/services/tools/compliance.py:261
+msgid ""
+"Ob die Dienste tatsächlich erst nach Zustimmung laden, kann diese "
+"statische Prüfung nicht beurteilen. Bitte im Browser mit geleertem Cache "
+"und ohne Zustimmung testen (Netzwerk-Tab)."
+msgstr ""
+"Ob die Dienste tatsächlich erst nach Zustimmung laden, kann diese "
+"statische Prüfung nicht beurteilen. Bitte im Browser mit geleertem Cache "
+"und ohne Zustimmung testen (Netzwerk-Tab)."
+
+#: app/services/tools/compliance.py:263
+msgid "Keine einwilligungspflichtigen Dienste erkannt"
+msgstr "Keine einwilligungspflichtigen Dienste erkannt"
+
+#: app/services/tools/compliance.py:266
+msgid "Cookies beim ersten Aufruf"
+msgstr "Cookies beim ersten Aufruf"
+
+#: app/services/tools/compliance.py:267
+#, python-format
+msgid "Tracking-Cookies schon ohne Einwilligung gesetzt: %(value0)s."
+msgstr "Tracking-Cookies schon ohne Einwilligung gesetzt: %(value0)s."
+
+#: app/services/tools/compliance.py:268
+#, python-format
+msgid "Gesetzte Cookies: %(value0)s."
+msgstr "Gesetzte Cookies: %(value0)s."
+
+#: app/services/tools/compliance.py:269 app/services/tools/security.py:207
+msgid "Beim ersten Aufruf werden keine Cookies gesetzt."
+msgstr "Beim ersten Aufruf werden keine Cookies gesetzt."
+
+#: app/services/tools/compliance.py:270
+msgid "Tracking-Cookies erst nach Einwilligung setzen."
+msgstr "Tracking-Cookies erst nach Einwilligung setzen."
+
+#: app/services/tools/compliance.py:272
+msgid "Schriftarten lokal eingebunden"
+msgstr "Schriftarten lokal eingebunden"
+
+#: app/services/tools/compliance.py:273
+msgid ""
+"Schriftarten werden von Google-Servern geladen (IP-Übermittlung; "
+"Rechtsprechung mahnt hier wiederholt ab)."
+msgstr ""
+"Schriftarten werden von Google-Servern geladen (IP-Übermittlung; "
+"Rechtsprechung mahnt hier wiederholt ab)."
+
+#: app/services/tools/compliance.py:274
+msgid "Keine externen Google-Fonts erkannt."
+msgstr "Keine externen Google-Fonts erkannt."
+
+#: app/services/tools/compliance.py:274
+msgid "Schriftarten lokal auf dem eigenen Server hosten."
+msgstr "Schriftarten lokal auf dem eigenen Server hosten."
+
+#: app/services/tools/compliance.py:278
+msgid "Eingesetzte Dienste in der Datenschutzerklärung"
+msgstr "Eingesetzte Dienste in der Datenschutzerklärung"
+
+#: app/services/tools/compliance.py:280
+msgid "Alle erkannten Dienste werden in der Datenschutzerklärung erwähnt."
+msgstr "Alle erkannten Dienste werden in der Datenschutzerklärung erwähnt."
+
+#: app/services/tools/compliance.py:281
+msgid ""
+"Jeden eingesetzten Dienst mit Zweck, Rechtsgrundlage und Empfänger in der"
+" Datenschutzerklärung beschreiben."
+msgstr ""
+"Jeden eingesetzten Dienst mit Zweck, Rechtsgrundlage und Empfänger in der"
+" Datenschutzerklärung beschreiben."
+
+#: app/services/tools/compliance.py:286
+msgid "HTTPS"
+msgstr "HTTPS"
+
+#: app/services/tools/compliance.py:286
+msgid "Verschlüsselte Verbindung."
+msgstr "Verschlüsselte Verbindung."
+
+#: app/services/tools/compliance.py:286
+msgid "Seite ohne HTTPS."
+msgstr "Seite ohne HTTPS."
+
+#: app/services/tools/compliance.py:287
+msgid "HTTPS einrichten und erzwingen (Art. 32 DSGVO)."
+msgstr "HTTPS einrichten und erzwingen (Art. 32 DSGVO)."
+
+#: app/services/tools/compliance.py:294
+#, python-format
+msgid "Sicherheits-Header: %(value0)s"
+msgstr "Sicherheits-Header: %(value0)s"
+
+#: app/services/tools/compliance.py:295 app/services/tools/security.py:175
+#: app/services/tools/security.py:179 app/services/tools/security.py:182
+#: app/services/tools/security.py:184 app/services/tools/security.py:187
+msgid "Gesetzt."
+msgstr "Gesetzt."
+
+#: app/services/tools/compliance.py:295 app/services/tools/security.py:175
+#: app/services/tools/security.py:182 app/services/tools/security.py:184
+msgid "Nicht gesetzt."
+msgstr "Nicht gesetzt."
+
+#: app/services/tools/compliance.py:299
+msgid "Chatbot/Live-Chat erkannt"
+msgstr "Chatbot/Live-Chat erkannt"
+
+#: app/services/tools/compliance.py:300
+msgid ""
+"Wenn der Chat KI nutzt, muss den Nutzer:innen erkennbar sein, dass sie "
+"mit einer KI sprechen (Art. 50 KI-VO)."
+msgstr ""
+"Wenn der Chat KI nutzt, muss den Nutzer:innen erkennbar sein, dass sie "
+"mit einer KI sprechen (Art. 50 KI-VO)."
+
+#: app/services/tools/compliance.py:305
+msgid "Formular mit E-Mail-Feld"
+msgstr "Formular mit E-Mail-Feld"
+
+#: app/services/tools/compliance.py:306
+msgid "Datenschutzhinweis auf der Seite vorhanden."
+msgstr "Datenschutzhinweis auf der Seite vorhanden."
+
+#: app/services/tools/compliance.py:306
+msgid "Formular ohne erkennbaren Datenschutzhinweis."
+msgstr "Formular ohne erkennbaren Datenschutzhinweis."
+
+#: app/services/tools/compliance.py:307
+msgid "Bei jedem Formular auf die Datenschutzerklärung hinweisen (Art. 13 DSGVO)."
+msgstr "Bei jedem Formular auf die Datenschutzerklärung hinweisen (Art. 13 DSGVO)."
+
+#: app/services/tools/compliance.py:309
+msgid "Newsletter-Anmeldung"
+msgstr "Newsletter-Anmeldung"
+
+#: app/services/tools/compliance.py:309
+msgid ""
+"Für Newsletter ist ein Double-Opt-in mit Protokoll üblich und rechtlich "
+"geboten."
+msgstr ""
+"Für Newsletter ist ein Double-Opt-in mit Protokoll üblich und rechtlich "
+"geboten."
+
+#: app/services/tools/laws.py:53
+msgid "Die Gesetzes-Suche ist auf dieser Installation nicht eingerichtet."
+msgstr "Die Gesetzes-Suche ist auf dieser Installation nicht eingerichtet."
+
+#: app/services/tools/laws.py:56
+msgid "Bitte gib eine Frage oder ein Stichwort ein."
+msgstr "Bitte gib eine Frage oder ein Stichwort ein."
+
+#: app/services/tools/laws.py:68
+msgid ""
+"Die Gesetzes-Suche ist gerade nicht erreichbar. Bitte versuch es in ein "
+"paar Minuten erneut."
+msgstr ""
+"Die Gesetzes-Suche ist gerade nicht erreichbar. Bitte versuch es in ein "
+"paar Minuten erneut."
+
+#: app/services/tools/laws.py:70 app/services/tools/laws.py:72
+msgid "Die Gesetzes-Suche hat eine unerwartete Antwort geliefert."
+msgstr "Die Gesetzes-Suche hat eine unerwartete Antwort geliefert."
+
+#: app/services/tools/laws.py:117
+msgid ""
+"Automatic search results without AI explanations (no AI connection "
+"configured). Read the quoted texts directly."
+msgstr ""
+"Automatische Fundstellen ohne KI-Erläuterung (keine KI-Anbindung "
+"konfiguriert). Prüfe die zitierten Texte direkt."
+
+#: app/services/tools/laws.py:124
+msgid "No matching legal provisions were found for this question."
+msgstr "Zu dieser Frage wurden keine passenden Fundstellen gefunden."
+
+#: app/services/tools/panel.py:229
+#, python-format
+msgid ""
+"%(valid)s of %(total)s fictional personas answered. %(intent)s %% intend "
+"to buy now or after a trial; the average purchase probability is %(prob)s"
+" %%."
+msgstr ""
+"%(valid)s von %(total)s fiktiven Personas haben geantwortet. %(intent)s "
+"%% zeigen Kaufabsicht (sofort oder nach Test), im Mittel liegt die "
+"Kaufwahrscheinlichkeit bei %(prob)s %%."
+
+#: app/services/tools/panel.py:277
+msgid "The run was interrupted by a restart or timeout. Please start it again."
+msgstr ""
+"Der Lauf wurde unterbrochen (Neustart oder Zeitüberschreitung). Bitte "
+"erneut starten."
+
+#: app/services/tools/panel.py:328
+msgid "No persona returned a usable answer. The AI service may be unavailable."
+msgstr "Keine Persona hat verwertbar geantwortet (KI nicht erreichbar?)."
+
+#: app/services/tools/panel.py:340
+msgid "The panel could not be completed. Please try again later."
+msgstr ""
+"Das Markt-Panel konnte nicht abgeschlossen werden. Bitte versuche es "
+"später erneut."
+
+#: app/services/tools/security.py:34
+msgid "Bitte gib die Domain deiner Website ein."
+msgstr "Bitte gib die Domain deiner Website ein."
+
+#: app/services/tools/security.py:39 app/services/tools/security.py:42
+msgid "Das ist keine gültige Domain (z. B. beispiel.de)."
+msgstr "Das ist keine gültige Domain (z. B. beispiel.de)."
+
+#: app/services/tools/security.py:44
+msgid "Bitte eine Domain statt einer IP-Adresse angeben."
+msgstr "Bitte eine Domain statt einer IP-Adresse angeben."
+
+#: app/services/tools/security.py:62
+msgid ""
+"Diese Domain ist nicht öffentlich erreichbar oder konnte nicht aufgelöst "
+"werden."
+msgstr ""
+"Diese Domain ist nicht öffentlich erreichbar oder konnte nicht aufgelöst "
+"werden."
+
+#: app/services/tools/security.py:139
+msgid "HTTPS erreichbar"
+msgstr "HTTPS erreichbar"
+
+#: app/services/tools/security.py:140
+msgid "Die Seite ist über HTTPS erreichbar."
+msgstr "Die Seite ist über HTTPS erreichbar."
+
+#: app/services/tools/security.py:141
+#, python-format
+msgid "HTTPS nicht nutzbar: %(value0)s"
+msgstr "HTTPS nicht nutzbar: %(value0)s"
+
+#: app/services/tools/security.py:142
+msgid ""
+"HTTPS mit gültigem Zertifikat einrichten (z. B. kostenlos über Let's "
+"Encrypt)."
+msgstr ""
+"HTTPS mit gültigem Zertifikat einrichten (z. B. kostenlos über Let's "
+"Encrypt)."
+
+#: app/services/tools/security.py:144
+msgid "Zertifikat gültig und passend zur Domain"
+msgstr "Zertifikat gültig und passend zur Domain"
+
+#: app/services/tools/security.py:146
+#, python-format
+msgid "Zertifikat wird nicht akzeptiert: %(value0)s"
+msgstr "Zertifikat wird nicht akzeptiert: %(value0)s"
+
+#: app/services/tools/security.py:147
+msgid ""
+"Ein gültiges, zur Domain passendes Zertifikat installieren und die Kette "
+"vollständig ausliefern."
+msgstr ""
+"Ein gültiges, zur Domain passendes Zertifikat installieren und die Kette "
+"vollständig ausliefern."
+
+#: app/services/tools/security.py:150
+msgid "Laufzeit des Zertifikats"
+msgstr "Laufzeit des Zertifikats"
+
+#: app/services/tools/security.py:151
+#, python-format
+msgid "Läuft in %(value0)s Tagen ab."
+msgstr "Läuft in %(value0)s Tagen ab."
+
+#: app/services/tools/security.py:151 app/services/tools/security_extra.py:504
+#, python-format
+msgid "Seit %(value0)s Tagen abgelaufen."
+msgstr "Seit %(value0)s Tagen abgelaufen."
+
+#: app/services/tools/security.py:152
+msgid "Automatische Erneuerung einrichten und überwachen."
+msgstr "Automatische Erneuerung einrichten und überwachen."
+
+#: app/services/tools/security.py:154
+msgid "TLS-Version"
+msgstr "TLS-Version"
+
+#: app/services/tools/security.py:155
+#, python-format
+msgid "Ausgehandelt: %(value0)s."
+msgstr "Ausgehandelt: %(value0)s."
+
+#: app/services/tools/security.py:155
+msgid "Nicht ermittelt."
+msgstr "Nicht ermittelt."
+
+#: app/services/tools/security.py:156
+msgid "Nur TLS 1.2 und 1.3 zulassen; ältere Protokolle abschalten."
+msgstr "Nur TLS 1.2 und 1.3 zulassen; ältere Protokolle abschalten."
+
+#: app/services/tools/security.py:162
+msgid "Weiterleitung von http auf https"
+msgstr "Weiterleitung von http auf https"
+
+#: app/services/tools/security.py:163
+msgid "Aufrufe über http werden auf https umgeleitet."
+msgstr "Aufrufe über http werden auf https umgeleitet."
+
+#: app/services/tools/security.py:163
+msgid "http-Aufrufe landen nicht auf https."
+msgstr "http-Aufrufe landen nicht auf https."
+
+#: app/services/tools/security.py:164
+msgid "Alle http-Anfragen dauerhaft (301) auf https umleiten."
+msgstr "Alle http-Anfragen dauerhaft (301) auf https umleiten."
+
+#: app/services/tools/security.py:171
+msgid "HSTS (erzwingt HTTPS im Browser)"
+msgstr "HSTS (erzwingt HTTPS im Browser)"
+
+#: app/services/tools/security.py:172
+#, python-format
+msgid "max-age=%(value0)s Sekunden%(value1)s."
+msgstr "max-age=%(value0)s Sekunden%(value1)s."
+
+#: app/services/tools/security.py:173
+msgid "Header fehlt."
+msgstr "Header fehlt."
+
+#: app/services/tools/security.py:173
+msgid "Strict-Transport-Security mit max-age von mindestens 6 Monaten setzen."
+msgstr "Strict-Transport-Security mit max-age von mindestens 6 Monaten setzen."
+
+#: app/services/tools/security.py:175
+msgid "Content-Security-Policy"
+msgstr "Content-Security-Policy"
+
+#: app/services/tools/security.py:176
+msgid ""
+"Eine Content-Security-Policy gegen das Einschleusen fremder Skripte "
+"einführen (erst im Report-Only-Modus testen)."
+msgstr ""
+"Eine Content-Security-Policy gegen das Einschleusen fremder Skripte "
+"einführen (erst im Report-Only-Modus testen)."
+
+#: app/services/tools/security.py:178
+msgid "Schutz vor Einbettung (Clickjacking)"
+msgstr "Schutz vor Einbettung (Clickjacking)"
+
+#: app/services/tools/security.py:179
+msgid "Weder X-Frame-Options noch frame-ancestors vorhanden."
+msgstr "Weder X-Frame-Options noch frame-ancestors vorhanden."
+
+#: app/services/tools/security.py:180
+msgid "X-Frame-Options: DENY (oder SAMEORIGIN) bzw. CSP frame-ancestors setzen."
+msgstr "X-Frame-Options: DENY (oder SAMEORIGIN) bzw. CSP frame-ancestors setzen."
+
+#: app/services/tools/security.py:181
+msgid "X-Content-Type-Options"
+msgstr "X-Content-Type-Options"
+
+#: app/services/tools/security.py:182
+msgid "X-Content-Type-Options: nosniff setzen."
+msgstr "X-Content-Type-Options: nosniff setzen."
+
+#: app/services/tools/security.py:183
+msgid "Referrer-Policy"
+msgstr "Referrer-Policy"
+
+#: app/services/tools/security.py:185
+msgid "Referrer-Policy: strict-origin-when-cross-origin setzen."
+msgstr "Referrer-Policy: strict-origin-when-cross-origin setzen."
+
+#: app/services/tools/security.py:186
+msgid "Permissions-Policy"
+msgstr "Permissions-Policy"
+
+#: app/services/tools/security.py:187 app/services/tools/security.py:244
+msgid "Nicht gesetzt (empfohlen)."
+msgstr "Nicht gesetzt (empfohlen)."
+
+#: app/services/tools/security.py:188
+msgid ""
+"Nicht benötigte Browser-Funktionen (Kamera, Mikrofon, Standort) per "
+"Permissions-Policy sperren."
+msgstr ""
+"Nicht benötigte Browser-Funktionen (Kamera, Mikrofon, Standort) per "
+"Permissions-Policy sperren."
+
+#: app/services/tools/security.py:190
+msgid "Keine Software-Versionen im Header"
+msgstr "Keine Software-Versionen im Header"
+
+#: app/services/tools/security.py:191
+msgid "Keine Versionsnummern in Server-Headern erkannt."
+msgstr "Keine Versionsnummern in Server-Headern erkannt."
+
+#: app/services/tools/security.py:192
+msgid "Versionsangaben in Server- und X-Powered-By-Headern entfernen."
+msgstr "Versionsangaben in Server- und X-Powered-By-Headern entfernen."
+
+#: app/services/tools/security.py:203 app/services/tools/security.py:207
+msgid "Cookie-Schutzattribute"
+msgstr "Cookie-Schutzattribute"
+
+#: app/services/tools/security.py:204
+#, python-format
+msgid ""
+"%(value0)s Cookie(s): %(value1)s× ohne Secure, %(value2)s× ohne HttpOnly,"
+" %(value3)s× ohne SameSite."
+msgstr ""
+"%(value0)s Cookie(s): %(value1)s× ohne Secure, %(value2)s× ohne HttpOnly,"
+" %(value3)s× ohne SameSite."
+
+#: app/services/tools/security.py:205
+msgid ""
+"Cookies mit Secure, HttpOnly (falls ohne Skriptzugriff) und "
+"SameSite=Lax/Strict setzen."
+msgstr ""
+"Cookies mit Secure, HttpOnly (falls ohne Skriptzugriff) und "
+"SameSite=Lax/Strict setzen."
+
+#: app/services/tools/security.py:213 app/services/tools/security.py:216
+#: app/services/tools/security.py:221
+msgid "SPF"
+msgstr "SPF"
+
+#: app/services/tools/security.py:213
+msgid ""
+"Die Domain empfängt keine Mails, ist aber nicht gegen Missbrauch als "
+"Absender geschützt."
+msgstr ""
+"Die Domain empfängt keine Mails, ist aber nicht gegen Missbrauch als "
+"Absender geschützt."
+
+#: app/services/tools/security.py:214
+msgid ""
+"SPF „v=spf1 -all“ eintragen: damit ist klar, dass von dieser Domain keine"
+" Mails kommen dürfen."
+msgstr ""
+"SPF „v=spf1 -all“ eintragen: damit ist klar, dass von dieser Domain keine"
+" Mails kommen dürfen."
+
+#: app/services/tools/security.py:216
+msgid "Kein SPF-Eintrag: Fremde können leichter in deinem Namen Mails versenden."
+msgstr "Kein SPF-Eintrag: Fremde können leichter in deinem Namen Mails versenden."
+
+#: app/services/tools/security.py:217
+msgid "SPF-Eintrag (TXT, „v=spf1 … -all“) mit den erlaubten Versendern anlegen."
+msgstr "SPF-Eintrag (TXT, „v=spf1 … -all“) mit den erlaubten Versendern anlegen."
+
+#: app/services/tools/security.py:222
+msgid ""
+"SPF strikt mit „-all“ (oder mindestens „~all“) abschließen; „+all“ und "
+"„?all“ schützen nicht."
+msgstr ""
+"SPF strikt mit „-all“ (oder mindestens „~all“) abschließen; „+all“ und "
+"„?all“ schützen nicht."
+
+#: app/services/tools/security.py:225 app/services/tools/security.py:230
+msgid "DMARC"
+msgstr "DMARC"
+
+#: app/services/tools/security.py:225
+msgid "Kein DMARC-Eintrag."
+msgstr "Kein DMARC-Eintrag."
+
+#: app/services/tools/security.py:226
+msgid ""
+"DMARC-Eintrag anlegen (zuerst p=none mit Berichten, dann p=quarantine "
+"oder p=reject)."
+msgstr ""
+"DMARC-Eintrag anlegen (zuerst p=none mit Berichten, dann p=quarantine "
+"oder p=reject)."
+
+#: app/services/tools/security.py:232
+msgid "Nach der Beobachtungsphase auf p=quarantine bzw. p=reject umstellen."
+msgstr "Nach der Beobachtungsphase auf p=quarantine bzw. p=reject umstellen."
+
+#: app/services/tools/security.py:235
+msgid "DKIM"
+msgstr "DKIM"
+
+#: app/services/tools/security.py:236
+#, python-format
+msgid "Schlüssel gefunden (Selektor „%(value0)s“)."
+msgstr "Schlüssel gefunden (Selektor „%(value0)s“)."
+
+#: app/services/tools/security.py:236
+msgid ""
+"Über gängige Selektoren kein Schlüssel gefunden — das beweist nichts, da "
+"Selektoren frei wählbar sind. Bitte beim Mailanbieter prüfen."
+msgstr ""
+"Über gängige Selektoren kein Schlüssel gefunden — das beweist nichts, da "
+"Selektoren frei wählbar sind. Bitte beim Mailanbieter prüfen."
+
+#: app/services/tools/security.py:237
+msgid ""
+"DKIM beim Mailanbieter aktivieren und den Schlüssel im DNS "
+"veröffentlichen."
+msgstr ""
+"DKIM beim Mailanbieter aktivieren und den Schlüssel im DNS "
+"veröffentlichen."
+
+#: app/services/tools/security.py:240
+msgid "DNSSEC"
+msgstr "DNSSEC"
+
+#: app/services/tools/security.py:240
+msgid "Signiert (DS-Eintrag vorhanden)."
+msgstr "Signiert (DS-Eintrag vorhanden)."
+
+#: app/services/tools/security.py:241
+msgid "Nicht aktiviert."
+msgstr "Nicht aktiviert."
+
+#: app/services/tools/security.py:241
+msgid "DNSSEC beim Domain-Registrar bzw. DNS-Anbieter aktivieren."
+msgstr "DNSSEC beim Domain-Registrar bzw. DNS-Anbieter aktivieren."
+
+#: app/services/tools/security.py:243
+msgid "CAA (erlaubte Zertifikatsaussteller)"
+msgstr "CAA (erlaubte Zertifikatsaussteller)"
+
+#: app/services/tools/security.py:244 app/services/tools/security.py:256
+msgid "Vorhanden."
+msgstr "Vorhanden."
+
+#: app/services/tools/security.py:245
+msgid ""
+"CAA-Eintrag anlegen, damit nur gewünschte Stellen Zertifikate ausstellen "
+"dürfen."
+msgstr ""
+"CAA-Eintrag anlegen, damit nur gewünschte Stellen Zertifikate ausstellen "
+"dürfen."
+
+#: app/services/tools/security.py:255
+msgid "security.txt (Meldestelle für Sicherheitslücken)"
+msgstr "security.txt (Meldestelle für Sicherheitslücken)"
+
+#: app/services/tools/security.py:256
+msgid "Keine /.well-known/security.txt gefunden."
+msgstr "Keine /.well-known/security.txt gefunden."
+
+#: app/services/tools/security.py:257
+msgid ""
+"Eine security.txt mit Kontakt für Sicherheitsmeldungen unter /.well-"
+"known/ veröffentlichen (RFC 9116)."
+msgstr ""
+"Eine security.txt mit Kontakt für Sicherheitsmeldungen unter /.well-"
+"known/ veröffentlichen (RFC 9116)."
+
+#: app/services/tools/security_extra.py:78
+msgid "Qualität der Content-Security-Policy"
+msgstr "Qualität der Content-Security-Policy"
+
+#: app/services/tools/security_extra.py:79
+#: app/services/tools/security_extra.py:106
+#: app/services/tools/security_extra.py:225
+#: app/services/tools/security_extra.py:503
+#: app/services/tools/security_extra.py:580
+msgid "."
+msgstr "."
+
+#: app/services/tools/security_extra.py:79
+msgid "Keine typischen Schwächen erkannt."
+msgstr "Keine typischen Schwächen erkannt."
+
+#: app/services/tools/security_extra.py:80
+msgid ""
+"Die Policy verschärfen: kein 'unsafe-inline'/'unsafe-eval', Skriptquellen"
+" einzeln benennen, object-src 'none' und base-uri 'self' setzen."
+msgstr ""
+"Die Policy verschärfen: kein 'unsafe-inline'/'unsafe-eval', Skriptquellen"
+" einzeln benennen, object-src 'none' und base-uri 'self' setzen."
+
+#: app/services/tools/security_extra.py:85
+msgid "CORS-Freigabe"
+msgstr "CORS-Freigabe"
+
+#: app/services/tools/security_extra.py:86
+msgid ""
+"Alle Herkünfte erlaubt, zusammen mit Zugangsdaten: gefährliche "
+"Kombination."
+msgstr ""
+"Alle Herkünfte erlaubt, zusammen mit Zugangsdaten: gefährliche "
+"Kombination."
+
+#: app/services/tools/security_extra.py:87
+msgid ""
+"Alle Herkünfte dürfen die Antwort lesen (bei öffentlichen Inhalten meist "
+"gewollt)."
+msgstr ""
+"Alle Herkünfte dürfen die Antwort lesen (bei öffentlichen Inhalten meist "
+"gewollt)."
+
+#: app/services/tools/security_extra.py:88
+#, python-format
+msgid "Freigabe nur für %(value0)s."
+msgstr "Freigabe nur für %(value0)s."
+
+#: app/services/tools/security_extra.py:89
+msgid ""
+"Access-Control-Allow-Origin nicht auf * setzen, wenn Zugangsdaten oder "
+"private Daten im Spiel sind."
+msgstr ""
+"Access-Control-Allow-Origin nicht auf * setzen, wenn Zugangsdaten oder "
+"private Daten im Spiel sind."
+
+#: app/services/tools/security_extra.py:93
+msgid "Caching bei Seiten mit Cookies"
+msgstr "Caching bei Seiten mit Cookies"
+
+#: app/services/tools/security_extra.py:94
+msgid "Cache-Control schützt personenbezogene Antworten."
+msgstr "Cache-Control schützt personenbezogene Antworten."
+
+#: app/services/tools/security_extra.py:95
+msgid ""
+"Die Seite setzt Cookies, aber Cache-Control sagt nichts zu 'private' oder"
+" 'no-store'."
+msgstr ""
+"Die Seite setzt Cookies, aber Cache-Control sagt nichts zu 'private' oder"
+" 'no-store'."
+
+#: app/services/tools/security_extra.py:96
+msgid ""
+"Bei Seiten mit persönlichen Inhalten Cache-Control: private bzw. no-store"
+" setzen."
+msgstr ""
+"Bei Seiten mit persönlichen Inhalten Cache-Control: private bzw. no-store"
+" setzen."
+
+#: app/services/tools/security_extra.py:100
+msgid "HSTS-Preload"
+msgstr "HSTS-Preload"
+
+#: app/services/tools/security_extra.py:101
+msgid "Erfüllt die Voraussetzungen für die Browser-Preload-Liste."
+msgstr "Erfüllt die Voraussetzungen für die Browser-Preload-Liste."
+
+#: app/services/tools/security_extra.py:102
+msgid ""
+"Noch nicht preload-fähig (max-age ≥ 1 Jahr, includeSubDomains und preload"
+" nötig)."
+msgstr ""
+"Noch nicht preload-fähig (max-age ≥ 1 Jahr, includeSubDomains und preload"
+" nötig)."
+
+#: app/services/tools/security_extra.py:103
+msgid ""
+"Optional: HSTS mit max-age=31536000; includeSubDomains; preload setzen "
+"und auf hstspreload.org eintragen."
+msgstr ""
+"Optional: HSTS mit max-age=31536000; includeSubDomains; preload setzen "
+"und auf hstspreload.org eintragen."
+
+#: app/services/tools/security_extra.py:105
+msgid "Moderne Isolations-Header (COOP/CORP)"
+msgstr "Moderne Isolations-Header (COOP/CORP)"
+
+#: app/services/tools/security_extra.py:106
+msgid "Nicht gesetzt (optional, stärkt die Trennung der Seite)."
+msgstr "Nicht gesetzt (optional, stärkt die Trennung der Seite)."
+
+#: app/services/tools/security_extra.py:107
+msgid ""
+"Optional Cross-Origin-Opener-Policy: same-origin setzen, wenn keine Pop-"
+"ups fremder Seiten nötig sind."
+msgstr ""
+"Optional Cross-Origin-Opener-Policy: same-origin setzen, wenn keine Pop-"
+"ups fremder Seiten nötig sind."
+
+#: app/services/tools/security_extra.py:203
+msgid "Keine unsicheren Inhalte auf der HTTPS-Seite"
+msgstr "Keine unsicheren Inhalte auf der HTTPS-Seite"
+
+#: app/services/tools/security_extra.py:204
+#, python-format
+msgid "%(value0)s Inhalt(e) über http geladen, z. B. %(value1)s."
+msgstr "%(value0)s Inhalt(e) über http geladen, z. B. %(value1)s."
+
+#: app/services/tools/security_extra.py:205
+msgid "Keine http-Inhalte auf der Startseite gefunden."
+msgstr "Keine http-Inhalte auf der Startseite gefunden."
+
+#: app/services/tools/security_extra.py:206
+msgid ""
+"Alle Skripte, Bilder und Formulare über https laden (Mixed Content "
+"beheben)."
+msgstr ""
+"Alle Skripte, Bilder und Formulare über https laden (Mixed Content "
+"beheben)."
+
+#: app/services/tools/security_extra.py:208
+msgid "Drittanbieter-Quellen auf der Startseite"
+msgstr "Drittanbieter-Quellen auf der Startseite"
+
+#: app/services/tools/security_extra.py:209
+#, python-format
+msgid "%(value0)s fremde Quelle(n): %(value1)s."
+msgstr "%(value0)s fremde Quelle(n): %(value1)s."
+
+#: app/services/tools/security_extra.py:210
+msgid "Skripte, Schriften und Frames kommen nur von der eigenen Domain."
+msgstr "Skripte, Schriften und Frames kommen nur von der eigenen Domain."
+
+#: app/services/tools/security_extra.py:211
+msgid ""
+"Jede fremde Quelle prüfen: wird sie wirklich gebraucht, steht sie in der "
+"Datenschutzerklärung?"
+msgstr ""
+"Jede fremde Quelle prüfen: wird sie wirklich gebraucht, steht sie in der "
+"Datenschutzerklärung?"
+
+#: app/services/tools/security_extra.py:215
+msgid "Fremde Skripte ohne Integritätsprüfung (SRI)"
+msgstr "Fremde Skripte ohne Integritätsprüfung (SRI)"
+
+#: app/services/tools/security_extra.py:216
+#, python-format
+msgid "%(value0)s fremde(s) Skript(e) ohne integrity-Attribut, z. B. %(value1)s."
+msgstr "%(value0)s fremde(s) Skript(e) ohne integrity-Attribut, z. B. %(value1)s."
+
+#: app/services/tools/security_extra.py:217
+msgid ""
+"Bei fremden Skripten ein integrity-Attribut setzen oder die Dateien "
+"selbst hosten."
+msgstr ""
+"Bei fremden Skripten ein integrity-Attribut setzen oder die Dateien "
+"selbst hosten."
+
+#: app/services/tools/security_extra.py:219
+msgid "Passwortfelder nur über https"
+msgstr "Passwortfelder nur über https"
+
+#: app/services/tools/security_extra.py:220
+msgid "Ein Formular mit Passwortfeld sendet die Daten über http."
+msgstr "Ein Formular mit Passwortfeld sendet die Daten über http."
+
+#: app/services/tools/security_extra.py:221
+msgid "Keine Passwortformulare mit unsicherem Ziel gefunden."
+msgstr "Keine Passwortformulare mit unsicherem Ziel gefunden."
+
+#: app/services/tools/security_extra.py:222
+msgid "Formulare mit Passwortfeld ausschließlich über https absenden."
+msgstr "Formulare mit Passwortfeld ausschließlich über https absenden."
+
+#: app/services/tools/security_extra.py:224
+msgid "Sichtbare Software-Versionen"
+msgstr "Sichtbare Software-Versionen"
+
+#: app/services/tools/security_extra.py:225
+msgid "Keine veralteten oder verratenen Versionen in Seite und Headern erkannt."
+msgstr "Keine veralteten oder verratenen Versionen in Seite und Headern erkannt."
+
+#: app/services/tools/security_extra.py:226
+msgid ""
+"Veraltete Komponenten aktualisieren und Versionsangaben aus Seite und "
+"Headern entfernen."
+msgstr ""
+"Veraltete Komponenten aktualisieren und Versionsangaben aus Seite und "
+"Headern entfernen."
+
+#: app/services/tools/security_extra.py:265
+msgid "DMARC für Subdomains"
+msgstr "DMARC für Subdomains"
+
+#: app/services/tools/security_extra.py:265
+msgid "Subdomains haben die schwächere Richtlinie sp=none."
+msgstr "Subdomains haben die schwächere Richtlinie sp=none."
+
+#: app/services/tools/security_extra.py:266
+msgid "sp auf quarantine oder reject setzen oder entfernen."
+msgstr "sp auf quarantine oder reject setzen oder entfernen."
+
+#: app/services/tools/security_extra.py:269
+msgid "DMARC-Anteil"
+msgstr "DMARC-Anteil"
+
+#: app/services/tools/security_extra.py:269
+#, python-format
+msgid "Die Richtlinie gilt nur für %(value0)s %% der Mails."
+msgstr "Die Richtlinie gilt nur für %(value0)s %% der Mails."
+
+#: app/services/tools/security_extra.py:270
+msgid "pct nach der Testphase auf 100 setzen."
+msgstr "pct nach der Testphase auf 100 setzen."
+
+#: app/services/tools/security_extra.py:272
+msgid "DMARC-Berichte"
+msgstr "DMARC-Berichte"
+
+#: app/services/tools/security_extra.py:272
+msgid "Keine Adresse für Auswertungsberichte (rua) eingetragen."
+msgstr "Keine Adresse für Auswertungsberichte (rua) eingetragen."
+
+#: app/services/tools/security_extra.py:273
+msgid ""
+"Eine rua-Adresse eintragen, um Missbrauch und Fehlkonfigurationen zu "
+"sehen."
+msgstr ""
+"Eine rua-Adresse eintragen, um Missbrauch und Fehlkonfigurationen zu "
+"sehen."
+
+#: app/services/tools/security_extra.py:352
+#: app/services/tools/security_extra.py:358
+msgid "security.txt aktuell"
+msgstr "security.txt aktuell"
+
+#: app/services/tools/security_extra.py:353
+msgid "Das Ablaufdatum (Expires) ist überschritten."
+msgstr "Das Ablaufdatum (Expires) ist überschritten."
+
+#: app/services/tools/security_extra.py:353
+msgid "Ablaufdatum liegt in der Zukunft."
+msgstr "Ablaufdatum liegt in der Zukunft."
+
+#: app/services/tools/security_extra.py:354
+msgid "Das Expires-Datum in der security.txt erneuern."
+msgstr "Das Expires-Datum in der security.txt erneuern."
+
+#: app/services/tools/security_extra.py:358
+msgid "Kein Expires-Feld (nach RFC 9116 vorgeschrieben)."
+msgstr "Kein Expires-Feld (nach RFC 9116 vorgeschrieben)."
+
+#: app/services/tools/security_extra.py:359
+msgid "Ein Expires-Feld mit einem Datum in höchstens einem Jahr ergänzen."
+msgstr "Ein Expires-Feld mit einem Datum in höchstens einem Jahr ergänzen."
+
+#: app/services/tools/security_extra.py:429
+msgid "TLS 1.3"
+msgstr "TLS 1.3"
+
+#: app/services/tools/security_extra.py:430
+msgid "Der Server unterstützt TLS 1.3."
+msgstr "Der Server unterstützt TLS 1.3."
+
+#: app/services/tools/security_extra.py:430
+msgid "TLS 1.3 wird nicht angeboten."
+msgstr "TLS 1.3 wird nicht angeboten."
+
+#: app/services/tools/security_extra.py:431
+msgid "TLS 1.3 beim Hoster aktivieren (schneller und sicherer)."
+msgstr "TLS 1.3 beim Hoster aktivieren (schneller und sicherer)."
+
+#: app/services/tools/security_extra.py:433
+#: app/services/tools/security_extra.py:437
+msgid "Veraltete TLS-Versionen"
+msgstr "Veraltete TLS-Versionen"
+
+#: app/services/tools/security_extra.py:434
+msgid "Der Server akzeptiert TLS 1.0 oder 1.1, die als unsicher gelten."
+msgstr "Der Server akzeptiert TLS 1.0 oder 1.1, die als unsicher gelten."
+
+#: app/services/tools/security_extra.py:435
+msgid "TLS 1.0 und 1.1 abschalten; nur TLS 1.2 und 1.3 zulassen."
+msgstr "TLS 1.0 und 1.1 abschalten; nur TLS 1.2 und 1.3 zulassen."
+
+#: app/services/tools/security_extra.py:438
+msgid "TLS 1.0/1.1 wurden nicht akzeptiert (Best-Effort-Test)."
+msgstr "TLS 1.0/1.1 wurden nicht akzeptiert (Best-Effort-Test)."
+
+#: app/services/tools/security_extra.py:446
+#: app/services/tools/security_extra.py:449
+msgid "Mailserver (MX)"
+msgstr "Mailserver (MX)"
+
+#: app/services/tools/security_extra.py:446
+msgid "Die Domain hat keinen MX-Eintrag und empfängt keine Mails."
+msgstr "Die Domain hat keinen MX-Eintrag und empfängt keine Mails."
+
+#: app/services/tools/security_extra.py:447
+msgid ""
+"Wenn die Domain nie Mails versendet, SPF „v=spf1 -all“ und DMARC p=reject"
+" setzen."
+msgstr ""
+"Wenn die Domain nie Mails versendet, SPF „v=spf1 -all“ und DMARC p=reject"
+" setzen."
+
+#: app/services/tools/security_extra.py:449
+#, python-format
+msgid "%(value0)s MX-Eintrag/Einträge vorhanden."
+msgstr "%(value0)s MX-Eintrag/Einträge vorhanden."
+
+#: app/services/tools/security_extra.py:453
+msgid "SPF: Anzahl der DNS-Abfragen"
+msgstr "SPF: Anzahl der DNS-Abfragen"
+
+#: app/services/tools/security_extra.py:454
+#, python-format
+msgid "%(value0)s Abfragen; erlaubt sind höchstens 10, sonst wird SPF ungültig."
+msgstr "%(value0)s Abfragen; erlaubt sind höchstens 10, sonst wird SPF ungültig."
+
+#: app/services/tools/security_extra.py:455
+#, python-format
+msgid "%(value0)s von höchstens 10 Abfragen."
+msgstr "%(value0)s von höchstens 10 Abfragen."
+
+#: app/services/tools/security_extra.py:456
+msgid ""
+"SPF vereinfachen: überflüssige includes entfernen oder Versender "
+"zusammenfassen."
+msgstr ""
+"SPF vereinfachen: überflüssige includes entfernen oder Versender "
+"zusammenfassen."
+
+#: app/services/tools/security_extra.py:458
+msgid "SPF: ptr-Mechanismus"
+msgstr "SPF: ptr-Mechanismus"
+
+#: app/services/tools/security_extra.py:458
+msgid "ptr ist veraltet und langsam."
+msgstr "ptr ist veraltet und langsam."
+
+#: app/services/tools/security_extra.py:458
+msgid "ptr aus dem SPF-Eintrag entfernen."
+msgstr "ptr aus dem SPF-Eintrag entfernen."
+
+#: app/services/tools/security_extra.py:468
+msgid "MTA-STS (verschlüsselter Mailempfang)"
+msgstr "MTA-STS (verschlüsselter Mailempfang)"
+
+#: app/services/tools/security_extra.py:469
+msgid "Aktiv im Modus enforce."
+msgstr "Aktiv im Modus enforce."
+
+#: app/services/tools/security_extra.py:469
+#, python-format
+msgid "Eingerichtet, aber Modus „%(value0)s“."
+msgstr "Eingerichtet, aber Modus „%(value0)s“."
+
+#: app/services/tools/security_extra.py:470
+msgid "Nicht eingerichtet (empfohlen, wenn die Domain Mails empfängt)."
+msgstr "Nicht eingerichtet (empfohlen, wenn die Domain Mails empfängt)."
+
+#: app/services/tools/security_extra.py:471
+msgid ""
+"MTA-STS mit mode: enforce einrichten, damit eingehende Mails "
+"verschlüsselt zugestellt werden."
+msgstr ""
+"MTA-STS mit mode: enforce einrichten, damit eingehende Mails "
+"verschlüsselt zugestellt werden."
+
+#: app/services/tools/security_extra.py:473
+msgid "TLS-RPT (Berichte zur Mailverschlüsselung)"
+msgstr "TLS-RPT (Berichte zur Mailverschlüsselung)"
+
+#: app/services/tools/security_extra.py:474
+msgid "Eingerichtet."
+msgstr "Eingerichtet."
+
+#: app/services/tools/security_extra.py:474
+msgid "Nicht eingerichtet (optional)."
+msgstr "Nicht eingerichtet (optional)."
+
+#: app/services/tools/security_extra.py:475
+msgid ""
+"Optional einen TLS-RPT-Eintrag anlegen, um Zustellprobleme der "
+"Verschlüsselung zu sehen."
+msgstr ""
+"Optional einen TLS-RPT-Eintrag anlegen, um Zustellprobleme der "
+"Verschlüsselung zu sehen."
+
+#: app/services/tools/security_extra.py:483
+msgid "Namenserver"
+msgstr "Namenserver"
+
+#: app/services/tools/security_extra.py:484
+#, python-format
+msgid "%(value0)s Namenserver eingetragen."
+msgstr "%(value0)s Namenserver eingetragen."
+
+#: app/services/tools/security_extra.py:484
+msgid "Nur ein Namenserver: fällt er aus, ist die Domain weg."
+msgstr "Nur ein Namenserver: fällt er aus, ist die Domain weg."
+
+#: app/services/tools/security_extra.py:485
+msgid ""
+"Mindestens zwei Namenserver, am besten bei unterschiedlichen Anbietern, "
+"eintragen."
+msgstr ""
+"Mindestens zwei Namenserver, am besten bei unterschiedlichen Anbietern, "
+"eintragen."
+
+#: app/services/tools/security_extra.py:491
+msgid "Verwaiste Weiterleitung (CNAME)"
+msgstr "Verwaiste Weiterleitung (CNAME)"
+
+#: app/services/tools/security_extra.py:492
+msgid "Die www-Adresse zeigt auf ein erreichbares Ziel."
+msgstr "Die www-Adresse zeigt auf ein erreichbares Ziel."
+
+#: app/services/tools/security_extra.py:493
+#, python-format
+msgid ""
+"www zeigt auf %(value0)s, das nicht mehr existiert: Übernahme durch "
+"Fremde möglich (Subdomain Takeover)."
+msgstr ""
+"www zeigt auf %(value0)s, das nicht mehr existiert: Übernahme durch "
+"Fremde möglich (Subdomain Takeover)."
+
+#: app/services/tools/security_extra.py:494
+msgid "Den CNAME-Eintrag löschen oder auf ein existierendes Ziel umstellen."
+msgstr "Den CNAME-Eintrag löschen oder auf ein existierendes Ziel umstellen."
+
+#: app/services/tools/security_extra.py:502
+#: app/services/tools/security_extra.py:507
+msgid "Domain-Laufzeit"
+msgstr "Domain-Laufzeit"
+
+#: app/services/tools/security_extra.py:505
+msgid ""
+"Automatische Verlängerung beim Registrar aktivieren und eine gepflegte "
+"Kontakt-Adresse hinterlegen."
+msgstr ""
+"Automatische Verlängerung beim Registrar aktivieren und eine gepflegte "
+"Kontakt-Adresse hinterlegen."
+
+#: app/services/tools/security_extra.py:508
+msgid ""
+"Die Registrierungsstelle dieser Endung veröffentlicht kein Ablaufdatum "
+"(bei .de üblich)."
+msgstr ""
+"Die Registrierungsstelle dieser Endung veröffentlicht kein Ablaufdatum "
+"(bei .de üblich)."
+
+#: app/services/tools/security_extra.py:509
+msgid ""
+"Im Kundenkonto des Registrars prüfen, wann die Domain abläuft, und "
+"automatische Verlängerung aktivieren."
+msgstr ""
+"Im Kundenkonto des Registrars prüfen, wann die Domain abläuft, und "
+"automatische Verlängerung aktivieren."
+
+#: app/services/tools/security_extra.py:516
+msgid "Hinweise in der robots.txt"
+msgstr "Hinweise in der robots.txt"
+
+#: app/services/tools/security_extra.py:518
+msgid ""
+"Sensible Bereiche per Zugangsschutz sichern; die robots.txt ist kein "
+"Schutz."
+msgstr ""
+"Sensible Bereiche per Zugangsschutz sichern; die robots.txt ist kein "
+"Schutz."
+
+#: app/services/tools/security_extra.py:570
+#: app/services/tools/security_extra.py:573
+#: app/services/tools/security_extra.py:576
+msgid "Öffentlich sichtbare Subdomains"
+msgstr "Öffentlich sichtbare Subdomains"
+
+#: app/services/tools/security_extra.py:570
+msgid "Die Zertifikats-Verzeichnisse waren nicht erreichbar."
+msgstr "Die Zertifikats-Verzeichnisse waren nicht erreichbar."
+
+#: app/services/tools/security_extra.py:573
+msgid "In den öffentlichen Zertifikatslisten wurden keine Subdomains gefunden."
+msgstr "In den öffentlichen Zertifikatslisten wurden keine Subdomains gefunden."
+
+#: app/services/tools/security_extra.py:575
+#, python-format
+msgid "%(count)s subdomains in public certificate logs, for example %(examples)s."
+msgstr ""
+"%(count)s Subdomains in öffentlichen Zertifikatslisten, z. B. "
+"%(examples)s."
+
+#: app/services/tools/security_extra.py:577
+msgid ""
+"Prüfen, ob alle Subdomains noch gebraucht werden; nicht mehr genutzte "
+"Einträge entfernen."
+msgstr ""
+"Prüfen, ob alle Subdomains noch gebraucht werden; nicht mehr genutzte "
+"Einträge entfernen."
+
+#: app/services/tools/security_extra.py:579
+msgid "Subdomains, die nach Test- oder Verwaltungssystemen aussehen"
+msgstr "Subdomains, die nach Test- oder Verwaltungssystemen aussehen"
+
+#: app/services/tools/security_extra.py:581
+msgid ""
+"Test-, Admin- und Entwicklungssysteme nicht öffentlich erreichbar lassen "
+"oder mit Zugangsschutz sichern."
+msgstr ""
+"Test-, Admin- und Entwicklungssysteme nicht öffentlich erreichbar lassen "
+"oder mit Zugangsschutz sichern."
+
+#: app/services/tools/seo.py:105
+msgid "Unter dieser Adresse liegt keine Webseite (kein HTML)."
+msgstr "Unter dieser Adresse liegt keine Webseite (kein HTML)."
+
+#: app/services/tools/seo.py:121
+msgid "Sichere Verbindung (HTTPS)"
+msgstr "Sichere Verbindung (HTTPS)"
+
+#: app/services/tools/seo.py:122
+msgid "Die Seite wird über HTTPS ausgeliefert."
+msgstr "Die Seite wird über HTTPS ausgeliefert."
+
+#: app/services/tools/seo.py:122
+msgid "Die Seite lädt ohne HTTPS."
+msgstr "Die Seite lädt ohne HTTPS."
+
+#: app/services/tools/seo.py:123
+msgid ""
+"HTTPS einrichten und alle http-Adressen dauerhaft (301) auf https "
+"umleiten."
+msgstr ""
+"HTTPS einrichten und alle http-Adressen dauerhaft (301) auf https "
+"umleiten."
+
+#: app/services/tools/seo.py:125
+msgid "Antwortzeit des Servers"
+msgstr "Antwortzeit des Servers"
+
+#: app/services/tools/seo.py:125
+#, python-format
+msgid "%(value0)s Sekunden bis das HTML da ist."
+msgstr "%(value0)s Sekunden bis das HTML da ist."
+
+#: app/services/tools/seo.py:126
+msgid ""
+"Caching aktivieren, Hosting/Plugins prüfen, Bilder und Skripte "
+"verkleinern."
+msgstr ""
+"Caching aktivieren, Hosting/Plugins prüfen, Bilder und Skripte "
+"verkleinern."
+
+#: app/services/tools/seo.py:128
+msgid "Größe der HTML-Seite"
+msgstr "Größe der HTML-Seite"
+
+#: app/services/tools/seo.py:128
+#, python-format
+msgid "%(value0)s KB."
+msgstr "%(value0)s KB."
+
+#: app/services/tools/seo.py:129
+msgid "Unnötigen Code und eingebettete Daten aus dem HTML entfernen."
+msgstr "Unnötigen Code und eingebettete Daten aus dem HTML entfernen."
+
+#: app/services/tools/seo.py:141 app/services/tools/seo.py:148
+msgid "robots.txt"
+msgstr "robots.txt"
+
+#: app/services/tools/seo.py:141
+msgid "Keine robots.txt gefunden."
+msgstr "Keine robots.txt gefunden."
+
+#: app/services/tools/seo.py:142
+msgid "Eine einfache robots.txt anlegen und darin die Sitemap nennen."
+msgstr "Eine einfache robots.txt anlegen und darin die Sitemap nennen."
+
+#: app/services/tools/seo.py:144
+msgid "robots.txt sperrt die ganze Seite"
+msgstr "robots.txt sperrt die ganze Seite"
+
+#: app/services/tools/seo.py:145
+msgid "Die Datei enthält „Disallow: /“ für alle Suchmaschinen."
+msgstr "Die Datei enthält „Disallow: /“ für alle Suchmaschinen."
+
+#: app/services/tools/seo.py:146
+msgid ""
+"Die Sperre entfernen, sonst wird die Seite nicht in Suchergebnissen "
+"erscheinen."
+msgstr ""
+"Die Sperre entfernen, sonst wird die Seite nicht in Suchergebnissen "
+"erscheinen."
+
+#: app/services/tools/seo.py:148
+msgid "Vorhanden und sperrt die Seite nicht."
+msgstr "Vorhanden und sperrt die Seite nicht."
+
+#: app/services/tools/seo.py:156
+msgid "XML-Sitemap"
+msgstr "XML-Sitemap"
+
+#: app/services/tools/seo.py:157
+msgid "Sitemap gefunden."
+msgstr "Sitemap gefunden."
+
+#: app/services/tools/seo.py:157
+msgid "Keine Sitemap gefunden."
+msgstr "Keine Sitemap gefunden."
+
+#: app/services/tools/seo.py:158
+msgid ""
+"Eine sitemap.xml erzeugen (die meisten CMS können das) und in der "
+"robots.txt eintragen."
+msgstr ""
+"Eine sitemap.xml erzeugen (die meisten CMS können das) und in der "
+"robots.txt eintragen."
+
+#: app/services/tools/seo.py:160
+msgid "Canonical-Link"
+msgstr "Canonical-Link"
+
+#: app/services/tools/seo.py:161
+#, python-format
+msgid "Gesetzt auf %(value0)s"
+msgstr "Gesetzt auf %(value0)s"
+
+#: app/services/tools/seo.py:161
+msgid "Kein Canonical-Link."
+msgstr "Kein Canonical-Link."
+
+#: app/services/tools/seo.py:162
+msgid ""
+"Pro Seite ein <link rel=\"canonical\"> auf die bevorzugte Adresse setzen "
+"(vermeidet Duplikate)."
+msgstr ""
+"Pro Seite ein <link rel=\"canonical\"> auf die bevorzugte Adresse setzen "
+"(vermeidet Duplikate)."
+
+#: app/services/tools/seo.py:165
+msgid "Indexierung erlaubt"
+msgstr "Indexierung erlaubt"
+
+#: app/services/tools/seo.py:166
+msgid "Die Seite trägt „noindex“ und wird nicht in Suchergebnissen gelistet."
+msgstr "Die Seite trägt „noindex“ und wird nicht in Suchergebnissen gelistet."
+
+#: app/services/tools/seo.py:167
+msgid "Kein „noindex“ gefunden."
+msgstr "Kein „noindex“ gefunden."
+
+#: app/services/tools/seo.py:168
+msgid "Das noindex-Tag entfernen, wenn die Seite gefunden werden soll."
+msgstr "Das noindex-Tag entfernen, wenn die Seite gefunden werden soll."
+
+#: app/services/tools/seo.py:169
+msgid "Sprachangabe"
+msgstr "Sprachangabe"
+
+#: app/services/tools/seo.py:169
+#, python-format
+msgid "lang=\"%(value0)s\""
+msgstr "lang=\"%(value0)s\""
+
+#: app/services/tools/seo.py:169
+msgid "Keine Sprache im <html>-Tag."
+msgstr "Keine Sprache im <html>-Tag."
+
+#: app/services/tools/seo.py:170
+msgid "Im <html>-Tag lang=\"de\" (oder die passende Sprache) setzen."
+msgstr "Im <html>-Tag lang=\"de\" (oder die passende Sprache) setzen."
+
+#: app/services/tools/seo.py:171
+msgid "Mobile Darstellung (Viewport)"
+msgstr "Mobile Darstellung (Viewport)"
+
+#: app/services/tools/seo.py:172
+msgid "Viewport-Angabe vorhanden."
+msgstr "Viewport-Angabe vorhanden."
+
+#: app/services/tools/seo.py:172
+msgid "Keine Viewport-Angabe — mobil oft unbrauchbar."
+msgstr "Keine Viewport-Angabe — mobil oft unbrauchbar."
+
+#: app/services/tools/seo.py:173
+msgid ""
+"<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"> "
+"ergänzen und Layout mobil prüfen."
+msgstr ""
+"<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"> "
+"ergänzen und Layout mobil prüfen."
+
+#: app/services/tools/seo.py:177
+msgid "Seitentitel (Title)"
+msgstr "Seitentitel (Title)"
+
+#: app/services/tools/seo.py:178
+#, python-format
+msgid "„%(value0)s“ (%(value1)s Zeichen)"
+msgstr "„%(value0)s“ (%(value1)s Zeichen)"
+
+#: app/services/tools/seo.py:178
+msgid "Kein Title gefunden."
+msgstr "Kein Title gefunden."
+
+#: app/services/tools/seo.py:179
+msgid ""
+"Einen eindeutigen Titel mit 30–60 Zeichen schreiben, wichtigstes "
+"Thema/Keyword vorn."
+msgstr ""
+"Einen eindeutigen Titel mit 30–60 Zeichen schreiben, wichtigstes "
+"Thema/Keyword vorn."
+
+#: app/services/tools/seo.py:181
+msgid "Meta-Beschreibung"
+msgstr "Meta-Beschreibung"
+
+#: app/services/tools/seo.py:182
+#, python-format
+msgid "%(value0)s Zeichen."
+msgstr "%(value0)s Zeichen."
+
+#: app/services/tools/seo.py:182
+msgid "Keine Meta-Beschreibung."
+msgstr "Keine Meta-Beschreibung."
+
+#: app/services/tools/seo.py:183
+msgid "Eine Beschreibung mit 70–160 Zeichen schreiben, die zum Klick einlädt."
+msgstr "Eine Beschreibung mit 70–160 Zeichen schreiben, die zum Klick einlädt."
+
+#: app/services/tools/seo.py:184
+msgid "Hauptüberschrift (H1)"
+msgstr "Hauptüberschrift (H1)"
+
+#: app/services/tools/seo.py:185
+#, python-format
+msgid "„%(value0)s“"
+msgstr "„%(value0)s“"
+
+#: app/services/tools/seo.py:185
+#, python-format
+msgid "%(value0)s H1-Überschriften."
+msgstr "%(value0)s H1-Überschriften."
+
+#: app/services/tools/seo.py:185
+msgid "Keine H1."
+msgstr "Keine H1."
+
+#: app/services/tools/seo.py:186
+msgid "Genau eine H1 pro Seite, die das Thema klar benennt."
+msgstr "Genau eine H1 pro Seite, die das Thema klar benennt."
+
+#: app/services/tools/seo.py:188
+msgid "Gliederung (H2/H3)"
+msgstr "Gliederung (H2/H3)"
+
+#: app/services/tools/seo.py:188
+#, python-format
+msgid "%(value0)s Zwischenüberschriften (H2)."
+msgstr "%(value0)s Zwischenüberschriften (H2)."
+
+#: app/services/tools/seo.py:189
+msgid "Den Text mit mehreren H2-Zwischenüberschriften gliedern."
+msgstr "Den Text mit mehreren H2-Zwischenüberschriften gliedern."
+
+#: app/services/tools/seo.py:190
+msgid "Textumfang"
+msgstr "Textumfang"
+
+#: app/services/tools/seo.py:191
+#, python-format
+msgid "ca. %(value0)s Wörter."
+msgstr "ca. %(value0)s Wörter."
+
+#: app/services/tools/seo.py:191
+msgid "Mehr hilfreichen, eigenständigen Text bieten (Richtwert ab 300 Wörter)."
+msgstr "Mehr hilfreichen, eigenständigen Text bieten (Richtwert ab 300 Wörter)."
+
+#: app/services/tools/seo.py:194
+msgid "Alt-Texte bei Bildern"
+msgstr "Alt-Texte bei Bildern"
+
+#: app/services/tools/seo.py:195
+#, python-format
+msgid "%(value0)s von %(value1)s Bildern haben einen Alt-Text."
+msgstr "%(value0)s von %(value1)s Bildern haben einen Alt-Text."
+
+#: app/services/tools/seo.py:196
+msgid ""
+"Jedem inhaltlichen Bild eine kurze, beschreibende Alternativbeschreibung "
+"geben."
+msgstr ""
+"Jedem inhaltlichen Bild eine kurze, beschreibende Alternativbeschreibung "
+"geben."
+
+#: app/services/tools/seo.py:199
+msgid "Interne Verlinkung"
+msgstr "Interne Verlinkung"
+
+#: app/services/tools/seo.py:200
+#, python-format
+msgid "%(value0)s interne Links."
+msgstr "%(value0)s interne Links."
+
+#: app/services/tools/seo.py:200
+msgid "Wichtige Seiten untereinander verlinken, mit sprechenden Linktexten."
+msgstr "Wichtige Seiten untereinander verlinken, mit sprechenden Linktexten."
+
+#: app/services/tools/seo.py:204
+msgid "Open Graph (Vorschau in sozialen Netzwerken)"
+msgstr "Open Graph (Vorschau in sozialen Netzwerken)"
+
+#: app/services/tools/seo.py:205
+#, python-format
+msgid "%(value0)s von 3 Angaben vorhanden."
+msgstr "%(value0)s von 3 Angaben vorhanden."
+
+#: app/services/tools/seo.py:205
+msgid ""
+"og:title, og:description und og:image setzen — bestimmt die Vorschau bei "
+"LinkedIn, WhatsApp & Co."
+msgstr ""
+"og:title, og:description und og:image setzen — bestimmt die Vorschau bei "
+"LinkedIn, WhatsApp & Co."
+
+#: app/services/tools/seo.py:206
+msgid "Strukturierte Daten (JSON-LD)"
+msgstr "Strukturierte Daten (JSON-LD)"
+
+#: app/services/tools/seo.py:207
+#, python-format
+msgid "%(value0)s Block/Blöcke gefunden."
+msgstr "%(value0)s Block/Blöcke gefunden."
+
+#: app/services/tools/seo.py:207
+msgid "Keine strukturierten Daten."
+msgstr "Keine strukturierten Daten."
+
+#: app/services/tools/seo.py:208
+msgid ""
+"Schema.org-Auszeichnung ergänzen (z. B. Organization, LocalBusiness, "
+"Event, Article)."
+msgstr ""
+"Schema.org-Auszeichnung ergänzen (z. B. Organization, LocalBusiness, "
+"Event, Article)."
+
+#: app/services/tools/seo.py:220
+#, python-format
+msgid "Keyword „%(value0)s“"
+msgstr "Keyword „%(value0)s“"
+
+#: app/services/tools/seo.py:221
+#, python-format
+msgid "In %(value0)s; %(value1)s× im Text."
+msgstr "In %(value0)s; %(value1)s× im Text."
+
+#: app/services/tools/seo.py:221
+msgid "none of the core elements"
+msgstr "keinem der Kernelemente"
+
+#: app/services/tools/seo.py:222
+#, python-format
+msgid ""
+"„%(value0)s“ natürlich in Title, H1 und Beschreibung sowie im Text "
+"verwenden — ohne Keyword-Stopfen."
+msgstr ""
+"„%(value0)s“ natürlich in Title, H1 und Beschreibung sowie im Text "
+"verwenden — ohne Keyword-Stopfen."
+
 #: app/templates/admin/dashboard.html:3 app/templates/auth/login.html:3
 #: app/templates/auth/register.html:3 app/templates/base.html:6
-#: app/templates/base.html:11 app/templates/base.html:42
-#: app/templates/member/dashboard.html:3
+#: app/templates/base.html:12 app/templates/base.html:54
+#: app/templates/errors/http.html:2 app/templates/member/dashboard.html:3
 #: app/templates/modules/auction_list.html:3
 #: app/templates/modules/events_list.html:3
 #: app/templates/modules/miniclubs_list.html:3
@@ -2497,7 +5361,19 @@ msgstr "Bis zu 100 fiktive Personas bewerten deine Produktidee vor dem Start."
 msgid "Club"
 msgstr "Club"
 
-#: app/templates/base.html:14 app/templates/member/dashboard.html:3
+#: app/templates/base.html:10
+msgid "Skip to content"
+msgstr "Zum Inhalt springen"
+
+#: app/templates/base.html:13
+msgid "Menu"
+msgstr "Menü"
+
+#: app/templates/base.html:14
+msgid "Main navigation"
+msgstr "Hauptnavigation"
+
+#: app/templates/base.html:16 app/templates/member/dashboard.html:3
 msgid "My account"
 msgstr "Mein Konto"
 
@@ -2509,24 +5385,34 @@ msgstr "Mein Konto"
 #: app/templates/admin/services.html:3 app/templates/admin/startups.html:3
 #: app/templates/admin/travel.html:3 app/templates/admin/user_detail.html:3
 #: app/templates/admin/user_new.html:3 app/templates/admin/users.html:3
-#: app/templates/base.html:16
+#: app/templates/base.html:18
 msgid "Admin"
 msgstr "Admin"
 
-#: app/templates/base.html:23
+#: app/templates/base.html:25
 msgid "Log out"
 msgstr "Abmelden"
 
 #: app/templates/auth/login.html:3 app/templates/auth/login.html:9
-#: app/templates/auth/login.html:31 app/templates/auth/register.html:78
-#: app/templates/base.html:26 app/templates/public/index.html:17
+#: app/templates/auth/login.html:31 app/templates/auth/register.html:84
+#: app/templates/base.html:28 app/templates/public/index.html:18
 msgid "Log in"
 msgstr "Anmelden"
 
 #: app/templates/auth/login.html:35 app/templates/auth/register.html:3
-#: app/templates/base.html:27
+#: app/templates/base.html:29
 msgid "Register"
 msgstr "Registrieren"
+
+#: app/templates/base.html:34 app/templates/modules/events_form.html:42
+msgid "Language"
+msgstr "Sprache"
+
+#: app/templates/admin/service_form.html:36 app/templates/base.html:39
+#: app/templates/modules/profile.html:25
+#: app/templates/modules/profile_edit.html:47
+msgid "Save"
+msgstr "Speichern"
 
 #: app/templates/admin/audit.html:3 app/templates/admin/audit.html:6
 #: app/templates/admin/dashboard.html:15
@@ -2580,8 +5466,8 @@ msgid "Auction lots"
 msgstr "Auktionslose"
 
 #: app/templates/admin/dashboard.html:10 app/templates/admin/startups.html:3
-#: app/templates/admin/startups.html:6 app/templates/public/index.html:32
-#: app/templates/public/index.html:124
+#: app/templates/admin/startups.html:6 app/templates/public/index.html:33
+#: app/templates/public/index.html:130
 msgid "Startups"
 msgstr "Startups"
 
@@ -2630,25 +5516,6 @@ msgstr ""
 #: app/templates/admin/startups.html:10 app/templates/admin/travel.html:10
 msgid "To review"
 msgstr "Zu prüfen"
-
-#: app/templates/admin/events.html:11 app/templates/admin/miniclubs.html:35
-#: app/templates/admin/startups.html:11 app/templates/admin/travel.html:11
-#: app/templates/modules/events_mine.html:21
-#: app/templates/modules/miniclubs_mine.html:20
-#: app/templates/modules/startups_mine.html:20
-msgid "Published"
-msgstr "Veröffentlicht"
-
-#: app/templates/admin/events.html:12 app/templates/admin/miniclubs.html:36
-#: app/templates/admin/startups.html:12 app/templates/admin/travel.html:12
-msgid "Rejected"
-msgstr "Abgelehnt"
-
-#: app/templates/admin/events.html:13 app/templates/modules/events_mine.html:23
-#: app/templates/modules/events_mine.html:41
-#: app/templates/modules/travel_mine.html:26
-msgid "Cancelled"
-msgstr "Storniert"
 
 #: app/templates/admin/events.html:27 app/templates/admin/lots.html:20
 #: app/templates/admin/miniclubs.html:54 app/templates/admin/startups.html:25
@@ -2833,12 +5700,6 @@ msgstr "Reihenfolge"
 msgid "Visible to members"
 msgstr "Für Mitglieder sichtbar"
 
-#: app/templates/admin/service_form.html:36
-#: app/templates/modules/profile.html:25
-#: app/templates/modules/profile_edit.html:44
-msgid "Save"
-msgstr "Speichern"
-
 #: app/templates/admin/service_inquiries.html:3
 #: app/templates/admin/service_inquiries.html:6
 #: app/templates/admin/services.html:7
@@ -2929,10 +5790,6 @@ msgstr "Kontostatus"
 msgid "Administrator (all rights)"
 msgstr "Administrator (alle Rechte)"
 
-#: app/templates/admin/user_detail.html:58
-msgid "Identity check"
-msgstr "Identitätsprüfung"
-
 #: app/templates/admin/user_detail.html:67
 msgid "Reason"
 msgstr "Grund"
@@ -2982,19 +5839,19 @@ msgstr ""
 " und Einladungen."
 
 #: app/templates/admin/user_new.html:14 app/templates/admin/users.html:20
-#: app/templates/auth/login.html:17 app/templates/auth/register.html:27
+#: app/templates/auth/login.html:17 app/templates/auth/register.html:33
 msgid "E-mail"
 msgstr "E-Mail"
 
-#: app/templates/admin/user_new.html:18 app/templates/auth/register.html:16
+#: app/templates/admin/user_new.html:18 app/templates/auth/register.html:22
 msgid "First name"
 msgstr "Vorname"
 
-#: app/templates/admin/user_new.html:22 app/templates/auth/register.html:22
+#: app/templates/admin/user_new.html:22 app/templates/auth/register.html:28
 msgid "Last name"
 msgstr "Nachname"
 
-#: app/templates/admin/user_new.html:26 app/templates/auth/register.html:40
+#: app/templates/admin/user_new.html:26 app/templates/auth/register.html:46
 msgid "Country of residence"
 msgstr "Wohnsitzland"
 
@@ -3034,7 +5891,7 @@ msgstr "Admin"
 msgid "No members found."
 msgstr "Keine Mitglieder gefunden."
 
-#: app/templates/auth/login.html:22 app/templates/auth/register.html:33
+#: app/templates/auth/login.html:22 app/templates/auth/register.html:39
 msgid "Password"
 msgstr "Passwort"
 
@@ -3046,7 +5903,7 @@ msgstr "Auf diesem Gerät angemeldet bleiben"
 msgid "No account yet?"
 msgstr "Noch kein Konto?"
 
-#: app/templates/auth/register.html:9
+#: app/templates/auth/register.html:9 app/templates/auth/register.html:12
 msgid "Create an account"
 msgstr "Konto anlegen"
 
@@ -3058,19 +5915,36 @@ msgstr ""
 "Jedes Konto braucht eine Identitätsprüfung, bevor du den Club nutzen "
 "kannst. Die Prüfung macht Stripe, Dokumente speichern wir nicht."
 
-#: app/templates/auth/register.html:35
+#: app/templates/auth/register.html:11 app/templates/public/index.html:44
+#: app/templates/public/index.html:49
+msgid "How the club works"
+msgstr "So funktioniert der Club"
+
+#: app/templates/auth/register.html:13
+msgid "Confirm your e-mail"
+msgstr "Bestätige deine E-Mail-Adresse"
+
+#: app/templates/auth/register.html:14 app/templates/public/index.html:53
+msgid "Confirm your identity"
+msgstr "Identität bestätigen"
+
+#: app/templates/auth/register.html:15 app/templates/public/index.html:63
+msgid "Find matches"
+msgstr "Passende Menschen finden"
+
+#: app/templates/auth/register.html:41
 msgid "At least 10 characters."
 msgstr "Mindestens 10 Zeichen."
 
-#: app/templates/auth/register.html:42
+#: app/templates/auth/register.html:48
 msgid "Please choose"
 msgstr "Bitte wählen"
 
-#: app/templates/auth/register.html:51
+#: app/templates/auth/register.html:57
 msgid "Confirmations"
 msgstr "Bestätigungen"
 
-#: app/templates/auth/register.html:55
+#: app/templates/auth/register.html:61
 msgid ""
 "I have read the privacy notice and agree that my data is processed to run"
 " my account."
@@ -3078,11 +5952,11 @@ msgstr ""
 "Ich habe die Datenschutzhinweise gelesen und stimme zu, dass meine Daten "
 "für mein Konto verarbeitet werden."
 
-#: app/templates/auth/register.html:61
+#: app/templates/auth/register.html:67
 msgid "I accept the terms of use."
 msgstr "Ich akzeptiere die Nutzungsbedingungen."
 
-#: app/templates/auth/register.html:67
+#: app/templates/auth/register.html:73
 msgid ""
 "I agree that Stripe checks my identity document and a selfie. Stripe "
 "processes this data, the club only receives the result."
@@ -3090,17 +5964,21 @@ msgstr ""
 "Ich stimme zu, dass Stripe mein Ausweisdokument und ein Selfie prüft. "
 "Stripe verarbeitet diese Daten, der Club erhält nur das Ergebnis."
 
-#: app/templates/auth/register.html:72 app/templates/public/index.html:162
+#: app/templates/auth/register.html:78 app/templates/public/index.html:168
 msgid "Membership is for people aged 18 and over."
 msgstr "Die Mitgliedschaft ist für Menschen ab 18 Jahren."
 
-#: app/templates/auth/register.html:74
+#: app/templates/auth/register.html:80
 msgid "Create account"
 msgstr "Konto anlegen"
 
-#: app/templates/auth/register.html:78
+#: app/templates/auth/register.html:84
 msgid "Already registered?"
 msgstr "Schon registriert?"
+
+#: app/templates/errors/http.html:7
+msgid "Back to home"
+msgstr "Zur Startseite"
 
 #: app/templates/member/dashboard.html:6
 #, python-format
@@ -3165,8 +6043,9 @@ msgid "Start identity check"
 msgstr "Identitätsprüfung starten"
 
 #: app/templates/member/dashboard.html:57
-#: app/templates/modules/profile_edit.html:73
-#: app/templates/modules/profile_matches.html:17
+#: app/templates/modules/profile_edit.html:76
+#: app/templates/modules/profile_matches.html:9
+#: app/templates/modules/profile_matches.html:22
 #: app/templates/modules/profile_privacy.html:3
 #: app/templates/modules/profile_privacy.html:6
 msgid "Publication and matching"
@@ -3181,30 +6060,80 @@ msgstr ""
 "Matching genutzt wird. Beides ist aus, bis du dich entscheidest."
 
 #: app/templates/member/dashboard.html:59
+#: app/templates/modules/profile_edit.html:20
+#: app/templates/modules/profile_matches.html:23
 msgid "Make my choices"
 msgstr "Meine Auswahl treffen"
 
-#: app/templates/member/dashboard.html:63
+#: app/templates/member/dashboard.html:65
+msgid "Your next connection starts here"
+msgstr "Hier beginnt dein nächster Kontakt"
+
+#: app/templates/member/dashboard.html:66
+msgid "From your profile to a useful conversation"
+msgstr "Vom Profil zum hilfreichen Gespräch"
+
+#: app/templates/member/dashboard.html:68
+#: app/templates/member/dashboard.html:77
+msgid "Describe your offer and your goal"
+msgstr "Beschreibe dein Angebot und dein Ziel"
+
+#: app/templates/member/dashboard.html:68
+msgid "One concrete need and one way you can help are enough to start."
+msgstr ""
+"Ein konkreter Bedarf und ein Angebot, wie du helfen kannst, reichen für "
+"den Anfang."
+
+#: app/templates/member/dashboard.html:69
+#: app/templates/member/dashboard.html:75
+msgid "Choose your visibility"
+msgstr "Entscheide über deine Sichtbarkeit"
+
+#: app/templates/member/dashboard.html:69
+msgid "Directory visibility and matching are separate, optional choices."
+msgstr ""
+"Sichtbarkeit im Verzeichnis und Matching sind getrennte, freiwillige "
+"Entscheidungen."
+
+#: app/templates/member/dashboard.html:70
+#: app/templates/member/dashboard.html:73
+msgid "Explore your matches"
+msgstr "Entdecke passende Kontakte"
+
+#: app/templates/member/dashboard.html:70
+msgid "Read why someone fits, then request an introduction."
+msgstr "Lies, warum jemand passt, und frage dann einen Kontakt an."
+
+#: app/templates/member/dashboard.html:79
+#: app/templates/modules/profile_intros.html:3
+#: app/templates/modules/profile_intros.html:6
+#: app/templates/modules/profile_matches.html:10
+#: app/templates/modules/profile_matches.html:46
+#: app/templates/modules/profile_matches.html:64
+msgid "Contact requests"
+msgstr "Kontaktanfragen"
+
+#: app/templates/member/dashboard.html:83
 msgid "Your areas"
 msgstr "Deine Bereiche"
 
-#: app/templates/member/dashboard.html:69
+#: app/templates/member/dashboard.html:89
 msgid "not included in your plan"
 msgstr "nicht im Tarif enthalten"
 
-#: app/templates/member/dashboard.html:75
+#: app/templates/member/dashboard.html:95
 msgid "Your data"
 msgstr "Deine Daten"
 
-#: app/templates/member/dashboard.html:76
+#: app/templates/member/dashboard.html:96
 msgid "Download my data (JSON)"
 msgstr "Meine Daten herunterladen (JSON)"
 
-#: app/templates/member/dashboard.html:79
+#: app/templates/member/dashboard.html:99
 msgid "Delete my account"
 msgstr "Mein Konto löschen"
 
-#: app/templates/member/dashboard.html:80
+#: app/templates/member/dashboard.html:100
 msgid ""
 "This deletes your account, your consent history and your identity check "
 "data at Stripe. This cannot be undone."
@@ -3212,11 +6141,11 @@ msgstr ""
 "Das löscht dein Konto, deinen Einwilligungsverlauf und deine Prüfdaten "
 "bei Stripe. Das lässt sich nicht rückgängig machen."
 
-#: app/templates/member/dashboard.html:84
+#: app/templates/member/dashboard.html:104
 msgid "Confirm with your password"
 msgstr "Mit deinem Passwort bestätigen"
 
-#: app/templates/member/dashboard.html:87
+#: app/templates/member/dashboard.html:107
 msgid "Delete account permanently"
 msgstr "Konto endgültig löschen"
 
@@ -3463,8 +6392,8 @@ msgstr "Der Gegenstand"
 #: app/templates/modules/auction_form.html:44
 #: app/templates/modules/events_form.html:74
 #: app/templates/modules/miniclubs_form.html:57
-#: app/templates/modules/profile_edit.html:34
-#: app/templates/modules/profile_edit.html:51
+#: app/templates/modules/profile_edit.html:37
+#: app/templates/modules/profile_edit.html:54
 #: app/templates/modules/startups_form.html:59
 #: app/templates/modules/travel_form.html:57
 msgid "Show examples"
@@ -3503,7 +6432,7 @@ msgstr "optional"
 #: app/templates/modules/auction_form.html:49
 #: app/templates/modules/events_form.html:95
 #: app/templates/modules/miniclubs_form.html:64
-#: app/templates/modules/profile_edit.html:48
+#: app/templates/modules/profile_edit.html:51
 #: app/templates/modules/travel_form.html:70
 msgid "Photo"
 msgstr "Foto"
@@ -3659,12 +6588,6 @@ msgstr "Wartet auf Prüfung"
 #: app/templates/modules/travel_mine.html:25
 msgid "Not published"
 msgstr "Nicht veröffentlicht"
-
-#: app/templates/modules/auction_mine.html:21
-#: app/templates/modules/tools_index.html:19
-#: app/templates/modules/travel_mine.html:24
-msgid "Open"
-msgstr "Öffnen"
 
 #: app/templates/modules/auction_mine.html:31
 msgid "You have not created any lots yet."
@@ -3894,10 +6817,6 @@ msgstr "Format"
 #: app/templates/modules/events_form.html:34
 msgid "Starts (Berlin time)"
 msgstr "Beginn (Berliner Zeit)"
-
-#: app/templates/modules/events_form.html:42
-msgid "Language"
-msgstr "Sprache"
 
 #: app/templates/modules/events_form.html:43
 msgid "For example: German, English or German and English."
@@ -4370,10 +7289,6 @@ msgid "Mini-clubs I joined"
 msgstr "Mini-Clubs, denen ich beigetreten bin"
 
 #: app/templates/modules/miniclubs_mine.html:38
-msgid "Member"
-msgstr "Mitglied"
-
-#: app/templates/modules/miniclubs_mine.html:38
 msgid "Request pending"
 msgstr "Anfrage offen"
 
@@ -4434,43 +7349,43 @@ msgstr "Dein Profil kann für das Matching verwendet werden."
 msgid "For matching, please also fill in:"
 msgstr "Für das Matching fülle bitte außerdem aus:"
 
-#: app/templates/modules/profile_edit.html:38
+#: app/templates/modules/profile_edit.html:19
+#: app/templates/modules/profile_matches.html:21
+msgid "You also need to allow matching in your profile. It is off by default."
+msgstr ""
+"Außerdem musst du das Matching in deinem Profil erlauben. Standardmäßig "
+"ist es aus."
+
+#: app/templates/modules/profile_edit.html:41
 msgid "Examples are for orientation only. Write about yourself in your own words."
 msgstr ""
 "Die Beispiele dienen nur zur Orientierung. Schreibe in deinen eigenen "
 "Worten über dich."
 
-#: app/templates/modules/profile_edit.html:57
+#: app/templates/modules/profile_edit.html:60
 msgid "Your photo"
 msgstr "Dein Foto"
 
-#: app/templates/modules/profile_edit.html:60
+#: app/templates/modules/profile_edit.html:63
 msgid "Remove photo"
 msgstr "Foto entfernen"
 
-#: app/templates/modules/profile_edit.html:66
+#: app/templates/modules/profile_edit.html:69
 msgid "Choose a photo"
 msgstr "Foto auswählen"
 
-#: app/templates/modules/profile_edit.html:69
+#: app/templates/modules/profile_edit.html:72
 msgid "Upload photo"
 msgstr "Foto hochladen"
 
-#: app/templates/modules/profile_edit.html:73
-#: app/templates/modules/profile_matches.html:58
+#: app/templates/modules/profile_edit.html:76
+#: app/templates/modules/profile_matches.html:64
 msgid "Open the member directory"
 msgstr "Zum Mitgliederverzeichnis"
 
-#: app/templates/modules/profile_edit.html:73
+#: app/templates/modules/profile_edit.html:76
 msgid "My matches"
 msgstr "Meine Matches"
-
-#: app/templates/modules/profile_intros.html:3
-#: app/templates/modules/profile_intros.html:6
-#: app/templates/modules/profile_matches.html:40
-#: app/templates/modules/profile_matches.html:58
-msgid "Contact requests"
-msgstr "Kontaktanfragen"
 
 #: app/templates/modules/profile_intros.html:7
 msgid "Contact details are shared only when a request is accepted."
@@ -4514,7 +7429,19 @@ msgstr "Du hast noch keine Anfragen gesendet."
 msgid "Matches"
 msgstr "Matches"
 
-#: app/templates/modules/profile_matches.html:10
+#: app/templates/modules/profile_matches.html:7
+msgid "Matching navigation"
+msgstr "Matching-Navigation"
+
+#: app/templates/modules/profile_matches.html:8
+#: app/templates/modules/profile_matches.html:22
+#: app/templates/modules/profile_matches.html:23
+#: app/templates/modules/profile_privacy.html:43
+#: app/templates/modules/profile_view.html:39
+msgid "Edit my profile"
+msgstr "Mein Profil bearbeiten"
+
+#: app/templates/modules/profile_matches.html:15
 msgid ""
 "Matching works once your profile says what you can offer and what you are"
 " looking for."
@@ -4522,23 +7449,11 @@ msgstr ""
 "Matching funktioniert, sobald dein Profil sagt, was du anbietest und was "
 "du suchst."
 
-#: app/templates/modules/profile_matches.html:12
+#: app/templates/modules/profile_matches.html:17
 msgid "Please fill in:"
 msgstr "Bitte fülle außerdem aus:"
 
-#: app/templates/modules/profile_matches.html:16
-msgid "You also need to allow matching in your profile. It is off by default."
-msgstr ""
-"Außerdem musst du das Matching in deinem Profil erlauben. Standardmäßig "
-"ist es aus."
-
-#: app/templates/modules/profile_matches.html:17
-#: app/templates/modules/profile_privacy.html:43
-#: app/templates/modules/profile_view.html:39
-msgid "Edit my profile"
-msgstr "Mein Profil bearbeiten"
-
-#: app/templates/modules/profile_matches.html:20
+#: app/templates/modules/profile_matches.html:26
 msgid ""
 "Suggestions are based on what you need and what others offer. Contact "
 "details are shared only after both sides agree."
@@ -4546,33 +7461,33 @@ msgstr ""
 "Vorschläge beruhen darauf, was du brauchst und was andere anbieten. "
 "Kontaktdaten werden erst geteilt, wenn beide Seiten zustimmen."
 
-#: app/templates/modules/profile_matches.html:22
+#: app/templates/modules/profile_matches.html:28
 msgid "Explanations are short templates until the AI service is connected."
 msgstr "Erklärungen sind kurze Vorlagen, bis der KI-Dienst angebunden ist."
 
-#: app/templates/modules/profile_matches.html:34
+#: app/templates/modules/profile_matches.html:40
 msgid "Contact:"
 msgstr "Kontakt:"
 
-#: app/templates/modules/profile_matches.html:38
+#: app/templates/modules/profile_matches.html:44
 msgid "Your request is waiting for an answer."
 msgstr "Deine Anfrage wartet auf eine Antwort."
 
-#: app/templates/modules/profile_matches.html:40
+#: app/templates/modules/profile_matches.html:46
 msgid "This member has asked to contact you. Answer in your requests."
 msgstr ""
 "Dieses Mitglied möchte dich kontaktieren. Beantworte die Anfrage unter "
 "Kontaktanfragen."
 
-#: app/templates/modules/profile_matches.html:45
+#: app/templates/modules/profile_matches.html:51
 msgid "Short message (optional)"
 msgstr "Kurze Nachricht (optional)"
 
-#: app/templates/modules/profile_matches.html:48
+#: app/templates/modules/profile_matches.html:54
 msgid "Request contact"
 msgstr "Kontakt anfragen"
 
-#: app/templates/modules/profile_matches.html:54
+#: app/templates/modules/profile_matches.html:60
 msgid "No matches yet. New members appear here as they join."
 msgstr ""
 "Noch keine Matches. Neue Mitglieder erscheinen hier, sobald sie "
@@ -4631,15 +7546,6 @@ msgstr "Meine Auswahl speichern"
 #: app/templates/modules/profile_privacy.html:33
 msgid "History of your choices"
 msgstr "Verlauf deiner Auswahl"
-
-#: app/templates/modules/profile_privacy.html:36
-msgid "Directory"
-msgstr "Verzeichnis"
-
-#: app/templates/modules/profile_privacy.html:36
-#: app/templates/public/index.html:28
-msgid "Matching"
-msgstr "Matching"
 
 #: app/templates/modules/profile_privacy.html:36
 msgid "agreed"
@@ -5778,15 +8684,19 @@ msgstr ""
 msgid "Welcome"
 msgstr "Willkommen"
 
-#: app/templates/public/index.html:12
+#: app/templates/public/index.html:10
+msgid "Pause background animation"
+msgstr "Hintergrundanimation pausieren"
+
+#: app/templates/public/index.html:13
 msgid "A club for people who want to build something"
 msgstr "Ein Club für Menschen, die etwas bewegen wollen"
 
-#: app/templates/public/index.html:13
+#: app/templates/public/index.html:14
 msgid "Find the people who can move your project forward"
 msgstr "Finde die Menschen, die dein Projekt weiterbringen"
 
-#: app/templates/public/index.html:14
+#: app/templates/public/index.html:15
 msgid ""
 "Verified members share what they offer and what they need. AI matching "
 "suggests who fits. You decide who may contact you."
@@ -5795,43 +8705,47 @@ msgstr ""
 "KI-Matching schlägt passende Menschen vor. Wer dich kontaktieren darf, "
 "entscheidest du."
 
-#: app/templates/public/index.html:16 app/templates/public/index.html:211
+#: app/templates/public/index.html:17 app/templates/public/index.html:217
 msgid "Become a member"
 msgstr "Mitglied werden"
 
-#: app/templates/public/index.html:20
+#: app/templates/public/index.html:21
 msgid "Verified members only"
 msgstr "Nur verifizierte Mitglieder"
 
-#: app/templates/public/index.html:21
+#: app/templates/public/index.html:22
 msgid "Matching only with your consent"
 msgstr "Matching nur mit deiner Einwilligung"
 
-#: app/templates/public/index.html:22
+#: app/templates/public/index.html:23
 msgid "No identity documents stored"
 msgstr "Keine Ausweisdokumente gespeichert"
 
-#: app/templates/public/index.html:29
+#: app/templates/public/index.html:30
 msgid "Offers and needs are brought together."
 msgstr "Angebot und Bedarf werden zusammengebracht."
 
-#: app/templates/public/index.html:33
+#: app/templates/public/index.html:34
 msgid "Founders meet investors who are interested."
 msgstr "Gründerinnen und Gründer treffen interessierte Investoren."
 
-#: app/templates/public/index.html:37
+#: app/templates/public/index.html:38
 msgid "Shared trips and offers from operators and agents."
 msgstr "Gemeinsame Reisen und Angebote von Veranstaltern und Agenturen."
 
 #: app/templates/public/index.html:43
-msgid "How the club works"
-msgstr "So funktioniert der Club"
+msgid "Explore the club"
+msgstr "Entdecke den Club"
 
-#: app/templates/public/index.html:47
-msgid "Confirm your identity"
-msgstr "Identität bestätigen"
+#: app/templates/public/index.html:45 app/templates/public/index.html:75
+msgid "Everything the club offers"
+msgstr "Alles, was der Club bietet"
 
-#: app/templates/public/index.html:48
+#: app/templates/public/index.html:46 app/templates/public/index.html:173
+msgid "Plans"
+msgstr "Tarife"
+
+#: app/templates/public/index.html:54
 msgid ""
 "You confirm your identity with Stripe. Your ID and selfie stay with "
 "Stripe. The club only receives the result."
@@ -5839,11 +8753,11 @@ msgstr ""
 "Du bestätigst deine Identität bei Stripe. Ausweis und Selfie bleiben bei "
 "Stripe. Der Club erhält nur das Ergebnis."
 
-#: app/templates/public/index.html:52
+#: app/templates/public/index.html:58
 msgid "Describe yourself"
 msgstr "Beschreibe dich"
 
-#: app/templates/public/index.html:53
+#: app/templates/public/index.html:59
 msgid ""
 "Write what you do, what you need and how you can help others. Each field "
 "has examples."
@@ -5851,11 +8765,7 @@ msgstr ""
 "Schreibe, was du tust, was du brauchst und wobei du helfen kannst. Zu "
 "jedem Feld gibt es Beispiele."
 
-#: app/templates/public/index.html:57
-msgid "Find matches"
-msgstr "Passende Menschen finden"
-
-#: app/templates/public/index.html:58
+#: app/templates/public/index.html:64
 msgid ""
 "Matching compares what you need with what others offer. It works only for"
 " members who agreed to it."
@@ -5863,11 +8773,11 @@ msgstr ""
 "Das Matching vergleicht, was du brauchst, mit dem, was andere anbieten. "
 "Es läuft nur für Mitglieder, die zugestimmt haben."
 
-#: app/templates/public/index.html:62
+#: app/templates/public/index.html:68
 msgid "Get in touch"
 msgstr "In Kontakt kommen"
 
-#: app/templates/public/index.html:63
+#: app/templates/public/index.html:69
 msgid ""
 "You send a request. Contact details are shared only after both sides "
 "agree."
@@ -5875,11 +8785,7 @@ msgstr ""
 "Du schickst eine Anfrage. Kontaktdaten werden erst geteilt, wenn beide "
 "zustimmen."
 
-#: app/templates/public/index.html:69
-msgid "Everything the club offers"
-msgstr "Alles, was der Club bietet"
-
-#: app/templates/public/index.html:70
+#: app/templates/public/index.html:76
 msgid ""
 "One place for people, projects and everyday help. Every feature has a "
 "clear benefit for you, and you stay in control of your data."
@@ -5888,19 +8794,19 @@ msgstr ""
 "einen klaren Nutzen für dich, und deine Daten behältst du unter "
 "Kontrolle."
 
-#: app/templates/public/index.html:72
+#: app/templates/public/index.html:78
 msgid "Find the right people"
 msgstr "Die richtigen Menschen finden"
 
-#: app/templates/public/index.html:75
+#: app/templates/public/index.html:81
 msgid "AI matching"
 msgstr "KI-Matching"
 
-#: app/templates/public/index.html:76
+#: app/templates/public/index.html:82
 msgid "Needs meet offers"
 msgstr "Bedarf trifft Angebot"
 
-#: app/templates/public/index.html:77
+#: app/templates/public/index.html:83
 msgid ""
 "The club compares what you need with what others can offer and explains "
 "why a person fits. You find helpful contacts in minutes instead of "
@@ -5911,15 +8817,15 @@ msgstr ""
 "statt durch Listen zu blättern. Es funktioniert nur für Mitglieder, die "
 "zugestimmt haben."
 
-#: app/templates/public/index.html:80
+#: app/templates/public/index.html:86
 msgid "Your assistant"
 msgstr "Deine Assistentin"
 
-#: app/templates/public/index.html:81
+#: app/templates/public/index.html:87
 msgid "Clubi sees what you see"
 msgstr "Clubi sieht, was du siehst"
 
-#: app/templates/public/index.html:82
+#: app/templates/public/index.html:88
 msgid ""
 "Your personal AI assistant knows your profile and the page you are on: a "
 "member, a project, a trip, a lot or a meeting. Ask for advice, a summary "
@@ -5931,15 +8837,15 @@ msgstr ""
 "Treffen. Frag nach Rat, einer Zusammenfassung oder der ersten Nachricht "
 "an einen Kontakt. Clubi antwortet in der Sprache deiner Frage."
 
-#: app/templates/public/index.html:85
+#: app/templates/public/index.html:91
 msgid "Profile"
 msgstr "Profil"
 
-#: app/templates/public/index.html:86
+#: app/templates/public/index.html:92
 msgid "A profile that helps you"
 msgstr "Ein Profil, das dir hilft"
 
-#: app/templates/public/index.html:87
+#: app/templates/public/index.html:93
 msgid ""
 "Every field has a hint and examples, so you know what to write. The "
 "fuller your profile, the better your matches. You can add a photo and "
@@ -5950,15 +8856,15 @@ msgstr ""
 "Vorschläge. Du kannst ein Foto hinzufügen und getrennt über das "
 "Verzeichnis und das Matching entscheiden."
 
-#: app/templates/public/index.html:90
+#: app/templates/public/index.html:96
 msgid "Trust"
 msgstr "Vertrauen"
 
-#: app/templates/public/index.html:91
+#: app/templates/public/index.html:97
 msgid "Verified, adult members only"
 msgstr "Nur verifizierte, volljährige Mitglieder"
 
-#: app/templates/public/index.html:92
+#: app/templates/public/index.html:98
 msgid ""
 "Every member confirms their identity with Stripe. Documents and selfies "
 "stay with Stripe, the club only receives the result. You meet real "
@@ -5968,15 +8874,11 @@ msgstr ""
 "bleiben bei Stripe, der Club erhält nur das Ergebnis. Du triffst echte "
 "Menschen, keine Fake-Konten."
 
-#: app/templates/public/index.html:95
-msgid "Privacy"
-msgstr "Datenschutz"
-
-#: app/templates/public/index.html:96
+#: app/templates/public/index.html:102
 msgid "Contact only with your consent"
 msgstr "Kontakt nur mit deiner Zustimmung"
 
-#: app/templates/public/index.html:97
+#: app/templates/public/index.html:103
 msgid ""
 "Your e-mail address is shown only to members whose request you accepted, "
 "and only when you agreed. No spam, no cold messages from strangers. You "
@@ -5986,15 +8888,15 @@ msgstr ""
 "hast, und nur mit deiner Zustimmung. Kein Spam, keine Kaltakquise von "
 "Fremden. Du kannst alle deine Daten selbst exportieren oder löschen."
 
-#: app/templates/public/index.html:101
+#: app/templates/public/index.html:107
 msgid "Get things done"
 msgstr "Dinge erledigen"
 
-#: app/templates/public/index.html:105
+#: app/templates/public/index.html:111
 msgid "Checked partners with member conditions"
 msgstr "Geprüfte Partner mit Konditionen für Mitglieder"
 
-#: app/templates/public/index.html:106
+#: app/templates/public/index.html:112
 msgid ""
 "Chatbots, security checks, NIS2 and data protection, AI rules for your "
 "company: send a request in two clicks. Your contact details go to the "
@@ -6004,15 +8906,15 @@ msgstr ""
 "Unternehmen: Sende eine Anfrage in zwei Klicks. Deine Kontaktdaten gehen "
 "nur an den Partner, wenn du das Kästchen ankreuzt."
 
-#: app/templates/public/index.html:109
+#: app/templates/public/index.html:115
 msgid "Website checks"
 msgstr "Website-Checks"
 
-#: app/templates/public/index.html:110
+#: app/templates/public/index.html:116
 msgid "SEO, compliance and security in a minute"
 msgstr "SEO, Compliance und Sicherheit in einer Minute"
 
-#: app/templates/public/index.html:111
+#: app/templates/public/index.html:117
 msgid ""
 "Enter your address and get a clear report with the most important steps "
 "first: SEO, legal notice and cookies, encryption, e-mail protection and "
@@ -6023,11 +8925,11 @@ msgstr ""
 "Verschlüsselung, E-Mail-Schutz und öffentlich sichtbare Schwachstellen. "
 "Passive Prüfungen, keine Angriffe, zum Nachlesen gespeichert."
 
-#: app/templates/public/index.html:115
+#: app/templates/public/index.html:121
 msgid "German federal law, quoted and explained"
 msgstr "Deutsches Bundesrecht, zitiert und erklärt"
 
-#: app/templates/public/index.html:116
+#: app/templates/public/index.html:122
 msgid ""
 "Ask a question or enter a section such as § 433 BGB. You get the original"
 " text with the official source and a plain explanation of what it says. A"
@@ -6037,11 +8939,11 @@ msgstr ""
 "erhältst den Originaltext mit amtlicher Quelle und eine verständliche "
 "Erklärung, was er sagt. Eine erste Orientierung, keine Rechtsberatung."
 
-#: app/templates/public/index.html:120
+#: app/templates/public/index.html:126
 msgid "Test your idea on 100 AI personas"
 msgstr "Teste deine Idee an 100 KI-Personas"
 
-#: app/templates/public/index.html:121
+#: app/templates/public/index.html:127
 msgid ""
 "Describe your product and price. Fictional personas of different ages, "
 "incomes and professions react: purchase intent, price curve, concerns and"
@@ -6053,11 +8955,11 @@ msgstr ""
 "Bedenken und Empfehlungen vor dem Start. Ein Hinweis für deine "
 "Hypothesen, keine Prognose."
 
-#: app/templates/public/index.html:125
+#: app/templates/public/index.html:131
 msgid "Find investors, or find the next project"
 msgstr "Investoren finden oder das nächste Projekt entdecken"
 
-#: app/templates/public/index.html:126
+#: app/templates/public/index.html:132
 msgid ""
 "Create a project card with pitch, picture and presentation. After our "
 "review all members see it, and Clubi can answer questions about the whole"
@@ -6069,15 +8971,15 @@ msgstr ""
 "Projekt beantworten. Investoren zeigen Interesse, Kontakte werden nur "
 "geteilt, wenn du zustimmst."
 
-#: app/templates/public/index.html:130
+#: app/templates/public/index.html:136
 msgid "Meet and do things together"
 msgstr "Treffen und gemeinsam etwas unternehmen"
 
-#: app/templates/public/index.html:134
+#: app/templates/public/index.html:140
 msgid "Create meetings, invite people"
 msgstr "Treffen erstellen, Leute einladen"
 
-#: app/templates/public/index.html:135
+#: app/templates/public/index.html:141
 msgid ""
 "Describe what, where, when and for whom, add a photo and invite members "
 "personally. Guests sign up with one click, and everyone can add the "
@@ -6087,15 +8989,15 @@ msgstr ""
 "Mitglieder persönlich ein. Gäste melden sich mit einem Klick an, und alle"
 " können das Treffen in ihren Kalender übernehmen."
 
-#: app/templates/public/index.html:138
+#: app/templates/public/index.html:144
 msgid "Mini-clubs"
 msgstr "Mini-Clubs"
 
-#: app/templates/public/index.html:139
+#: app/templates/public/index.html:145
 msgid "Small groups around your interest"
 msgstr "Kleine Gruppen rund um dein Interesse"
 
-#: app/templates/public/index.html:140
+#: app/templates/public/index.html:146
 msgid ""
 "Chess, a fishing trip, a walk, neighbourly help or a parents' group: "
 "start a mini-club, set your own rules and gather members. The club only "
@@ -6106,11 +9008,11 @@ msgstr ""
 "sammle Mitglieder. Der Club bringt nur Menschen zusammen: keine Räume, "
 "keine Zahlungen, keine Spiele um Geld."
 
-#: app/templates/public/index.html:144
+#: app/templates/public/index.html:150
 msgid "Shared trips and offers"
 msgstr "Gemeinsame Reisen und Angebote"
 
-#: app/templates/public/index.html:145
+#: app/templates/public/index.html:151
 msgid ""
 "Plan a trip with programme and photos and let others join, or book places"
 " on trips of members and offers from operators and agents. The organiser "
@@ -6121,11 +9023,11 @@ msgstr ""
 "und Agenturen. Der Organisator sieht deinen Kontakt nur, wenn du es "
 "erlaubst."
 
-#: app/templates/public/index.html:149
+#: app/templates/public/index.html:155
 msgid "Offer and win lots"
 msgstr "Lose anbieten und gewinnen"
 
-#: app/templates/public/index.html:150
+#: app/templates/public/index.html:156
 msgid ""
 "Put your item up for rising or falling price, with a hidden reserve and "
 "protection against last-second bids. Bidders see a fair, anonymous bid "
@@ -6137,11 +9039,11 @@ msgstr ""
 "einen fairen, anonymen Gebotsverlauf. Übergabe und Zahlung vereinbaren "
 "beide Seiten direkt."
 
-#: app/templates/public/index.html:156
+#: app/templates/public/index.html:162
 msgid "What we promise"
 msgstr "Was wir versprechen"
 
-#: app/templates/public/index.html:158
+#: app/templates/public/index.html:164
 msgid ""
 "Nothing is published without your choice. The directory and matching are "
 "separate decisions, and both are off until you make them."
@@ -6149,7 +9051,7 @@ msgstr ""
 "Nichts wird ohne deine Wahl veröffentlicht. Verzeichnis und Matching sind"
 " getrennte Entscheidungen, und beide sind aus, bis du dich entscheidest."
 
-#: app/templates/public/index.html:159
+#: app/templates/public/index.html:165
 msgid ""
 "We do not store identity documents or dates of birth. The check runs with"
 " Stripe."
@@ -6157,13 +9059,13 @@ msgstr ""
 "Wir speichern keine Ausweisdokumente und keine Geburtsdaten. Die Prüfung "
 "läuft bei Stripe."
 
-#: app/templates/public/index.html:160
+#: app/templates/public/index.html:166
 msgid "Your e-mail address is shown only to members whose request you accepted."
 msgstr ""
 "Deine E-Mail-Adresse sehen nur Mitglieder, deren Anfrage du angenommen "
 "hast."
 
-#: app/templates/public/index.html:161
+#: app/templates/public/index.html:167
 msgid ""
 "You can change your decisions at any time and delete your account with "
 "all your data."
@@ -6171,19 +9073,15 @@ msgstr ""
 "Du kannst deine Entscheidungen jederzeit ändern und dein Konto mit allen "
 "Daten löschen."
 
-#: app/templates/public/index.html:167
-msgid "Plans"
-msgstr "Tarife"
-
-#: app/templates/public/index.html:168
+#: app/templates/public/index.html:174
 msgid "Prices will be published soon. Access depends on the plan."
 msgstr "Preise veröffentlichen wir bald. Der Zugang richtet sich nach dem Tarif."
 
-#: app/templates/public/index.html:171
+#: app/templates/public/index.html:177 config/plans.py:22
 msgid "Guest"
 msgstr "Gast"
 
-#: app/templates/public/index.html:172
+#: app/templates/public/index.html:178
 msgid ""
 "Free. Write your profile, read the member directory, see suggested "
 "matches, browse startups, trips, meetings and mini-clubs, ask Clubi and "
@@ -6193,11 +9091,11 @@ msgstr ""
 " Vorschläge an, stöbere in Startups, Reisen, Treffen und Mini-Clubs, frag"
 " Clubi und bitte um Kontakt."
 
-#: app/templates/public/index.html:175
+#: app/templates/public/index.html:181 config/plans.py:23
 msgid "Starter"
 msgstr "Starter"
 
-#: app/templates/public/index.html:176
+#: app/templates/public/index.html:182
 msgid ""
 "Everything in Guest, plus partner services and website tools, law search "
 "and market panel, booking and creating trips, creating and joining "
@@ -6207,7 +9105,7 @@ msgstr ""
 "Suche und Markt-Panel, Buchen und Erstellen von Reisen, Erstellen von und"
 " Teilnahme an Treffen sowie Mini-Clubs."
 
-#: app/templates/public/index.html:180
+#: app/templates/public/index.html:186
 msgid ""
 "Everything in Starter, plus publishing your startup for investors and "
 "offers for operators and agents."
@@ -6215,23 +9113,23 @@ msgstr ""
 "Alles aus Starter, dazu Startups für Investoren veröffentlichen und "
 "Angebote für Veranstalter und Agenturen einstellen."
 
-#: app/templates/public/index.html:183
+#: app/templates/public/index.html:189 config/plans.py:25
 msgid "Premium"
 msgstr "Premium"
 
-#: app/templates/public/index.html:184
+#: app/templates/public/index.html:190
 msgid "Everything in Growth, plus the auction."
 msgstr "Alles aus Wachstum, dazu die Auktion."
 
-#: app/templates/public/index.html:190
+#: app/templates/public/index.html:196
 msgid "Questions"
 msgstr "Fragen"
 
-#: app/templates/public/index.html:192
+#: app/templates/public/index.html:198
 msgid "Why do I need an identity check?"
 msgstr "Warum brauche ich eine Identitätsprüfung?"
 
-#: app/templates/public/index.html:193
+#: app/templates/public/index.html:199
 msgid ""
 "So that only real people aged 18 and over are in the club. Stripe runs "
 "the check. We only receive the result."
@@ -6239,11 +9137,11 @@ msgstr ""
 "Damit im Club nur echte Menschen ab 18 Jahren sind. Die Prüfung macht "
 "Stripe. Wir erhalten nur das Ergebnis."
 
-#: app/templates/public/index.html:196
+#: app/templates/public/index.html:202
 msgid "Who can see my profile?"
 msgstr "Wer sieht mein Profil?"
 
-#: app/templates/public/index.html:197
+#: app/templates/public/index.html:203
 msgid ""
 "Only verified members, and only if you agreed that your profile appears "
 "in the directory."
@@ -6251,11 +9149,11 @@ msgstr ""
 "Nur verifizierte Mitglieder, und nur wenn du zugestimmt hast, dass dein "
 "Profil im Verzeichnis erscheint."
 
-#: app/templates/public/index.html:200
+#: app/templates/public/index.html:206
 msgid "How does the AI matching work?"
 msgstr "Wie funktioniert das KI-Matching?"
 
-#: app/templates/public/index.html:201
+#: app/templates/public/index.html:207
 msgid ""
 "It compares what you need with what others offer. The suggestions are "
 "hints, not guarantees. Your texts go to AI services only if you agreed to"
@@ -6265,11 +9163,11 @@ msgstr ""
 "Vorschläge sind Hinweise, keine Garantien. Deine Texte gehen nur an KI-"
 "Dienste, wenn du dem Matching zugestimmt hast."
 
-#: app/templates/public/index.html:204
+#: app/templates/public/index.html:210
 msgid "Does the club handle payments?"
 msgstr "Wickelt der Club Zahlungen ab?"
 
-#: app/templates/public/index.html:205
+#: app/templates/public/index.html:211
 msgid ""
 "At the moment the club does not take money. Payments between members are "
 "arranged directly."
@@ -6277,7 +9175,7 @@ msgstr ""
 "Derzeit nimmt der Club kein Geld entgegen. Zahlungen zwischen Mitgliedern"
 " werden direkt vereinbart."
 
-#: app/templates/public/index.html:210
+#: app/templates/public/index.html:216
 msgid "Ready to start?"
 msgstr "Bereit loszulegen?"
 

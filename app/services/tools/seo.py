@@ -3,6 +3,8 @@
 Es wird nur die eine öffentliche Seite plus robots.txt und sitemap.xml abgerufen (kein Crawl, keine Anmeldung).
 Schutz vor SSRF liegt in services/safe_fetch.py. Der Bericht ist eine Momentaufnahme und keine Ranking-Garantie.
 """
+
+from flask_babel import gettext
 import logging
 import re
 from html.parser import HTMLParser
@@ -85,7 +87,8 @@ def _words(text: str) -> int:
 
 # --------------------------------------------------------------------------- Prüfungen
 def _f(key, cat, status, title, detail, weight, fix=""):
-    return {"key": key, "cat": cat, "status": status, "title": title, "detail": detail, "weight": weight, "fix": fix}
+    from .common import _f as finding
+    return finding(key, cat, status, title, detail, weight, fix)
 
 
 def analyze(url: str, keywords: list[str]) -> dict:
@@ -97,9 +100,9 @@ def analyze(url: str, keywords: list[str]) -> dict:
 
     ctype = resp.headers.get("Content-Type", "")
     if resp.status_code >= 400:
-        raise SeoCheckError(f"Die Seite antwortet mit dem Fehlercode {resp.status_code}.")
+        raise SeoCheckError(gettext('Die Seite antwortet mit dem Fehlercode %(value0)s.', value0=f'{resp.status_code}'))
     if "html" not in ctype.lower() and body[:200].lstrip()[:1] != b"<":
-        raise SeoCheckError("Unter dieser Adresse liegt keine Webseite (kein HTML).")
+        raise SeoCheckError(gettext('Unter dieser Adresse liegt keine Webseite (kein HTML).'))
     html = body.decode(resp.encoding or "utf-8", errors="replace")
     pg = _Page()
     try:
@@ -115,15 +118,15 @@ def analyze(url: str, keywords: list[str]) -> dict:
 
     # Technik
     https_ok = fp.scheme == "https"
-    findings.append(_f("https", T, "ok" if https_ok else "fail", "Sichere Verbindung (HTTPS)",
-                       "Die Seite wird über HTTPS ausgeliefert." if https_ok else "Die Seite lädt ohne HTTPS.", 10,
-                       "HTTPS einrichten und alle http-Adressen dauerhaft (301) auf https umleiten."))
+    findings.append(_f("https", T, "ok" if https_ok else "fail", gettext('Sichere Verbindung (HTTPS)'),
+                       gettext('Die Seite wird über HTTPS ausgeliefert.') if https_ok else gettext('Die Seite lädt ohne HTTPS.'), 10,
+                       gettext('HTTPS einrichten und alle http-Adressen dauerhaft (301) auf https umleiten.')))
     st = "ok" if elapsed < 1.0 else "warn" if elapsed < 2.5 else "fail"
-    findings.append(_f("speed", T, st, "Antwortzeit des Servers", f"{elapsed:.2f} Sekunden bis das HTML da ist.", 6,
-                       "Caching aktivieren, Hosting/Plugins prüfen, Bilder und Skripte verkleinern."))
+    findings.append(_f("speed", T, st, gettext('Antwortzeit des Servers'), gettext('%(value0)s Sekunden bis das HTML da ist.', value0=f'{elapsed:.2f}'), 6,
+                       gettext('Caching aktivieren, Hosting/Plugins prüfen, Bilder und Skripte verkleinern.')))
     kb = len(body) / 1024
-    findings.append(_f("size", T, "ok" if kb < 500 else "warn", "Größe der HTML-Seite", f"{kb:.0f} KB.", 3,
-                       "Unnötigen Code und eingebettete Daten aus dem HTML entfernen."))
+    findings.append(_f("size", T, "ok" if kb < 500 else "warn", gettext('Größe der HTML-Seite'), gettext('%(value0)s KB.', value0=f'{kb:.0f}'), 3,
+                       gettext('Unnötigen Code und eingebettete Daten aus dem HTML entfernen.')))
     robots_url = f"{base}/robots.txt"
     robots_txt, sitemap_in_robots = "", False
     try:
@@ -135,14 +138,14 @@ def analyze(url: str, keywords: list[str]) -> dict:
         pass
     blocks_all = bool(re.search(r"(?is)user-agent:\s*\*\s*(?:[^\n]*\n)*?\s*disallow:\s*/\s*$", robots_txt, re.M))
     if not robots_txt:
-        findings.append(_f("robots", T, "warn", "robots.txt", "Keine robots.txt gefunden.", 5,
-                           "Eine einfache robots.txt anlegen und darin die Sitemap nennen."))
+        findings.append(_f("robots", T, "warn", gettext('robots.txt'), gettext('Keine robots.txt gefunden.'), 5,
+                           gettext('Eine einfache robots.txt anlegen und darin die Sitemap nennen.')))
     elif blocks_all:
-        findings.append(_f("robots", T, "fail", "robots.txt sperrt die ganze Seite",
-                           "Die Datei enthält „Disallow: /“ für alle Suchmaschinen.", 12,
-                           "Die Sperre entfernen, sonst wird die Seite nicht in Suchergebnissen erscheinen."))
+        findings.append(_f("robots", T, "fail", gettext('robots.txt sperrt die ganze Seite'),
+                           gettext('Die Datei enthält „Disallow: /“ für alle Suchmaschinen.'), 12,
+                           gettext('Die Sperre entfernen, sonst wird die Seite nicht in Suchergebnissen erscheinen.')))
     else:
-        findings.append(_f("robots", T, "ok", "robots.txt", "Vorhanden und sperrt die Seite nicht.", 5))
+        findings.append(_f("robots", T, "ok", gettext('robots.txt'), gettext('Vorhanden und sperrt die Seite nicht.'), 5))
     sm_ok = sitemap_in_robots
     if not sm_ok:
         try:
@@ -150,59 +153,59 @@ def analyze(url: str, keywords: list[str]) -> dict:
             sm_ok = sr.status_code == 200 and (b"<urlset" in sb[:5000] or b"<sitemapindex" in sb[:5000])
         except SeoCheckError:
             sm_ok = False
-    findings.append(_f("sitemap", T, "ok" if sm_ok else "warn", "XML-Sitemap",
-                       "Sitemap gefunden." if sm_ok else "Keine Sitemap gefunden.", 5,
-                       "Eine sitemap.xml erzeugen (die meisten CMS können das) und in der robots.txt eintragen."))
+    findings.append(_f("sitemap", T, "ok" if sm_ok else "warn", gettext('XML-Sitemap'),
+                       gettext('Sitemap gefunden.') if sm_ok else gettext('Keine Sitemap gefunden.'), 5,
+                       gettext('Eine sitemap.xml erzeugen (die meisten CMS können das) und in der robots.txt eintragen.')))
     canon = next((h for rel, h in pg.links if "canonical" in rel), "")
-    findings.append(_f("canonical", T, "ok" if canon else "warn", "Canonical-Link",
-                       f"Gesetzt auf {canon[:120]}" if canon else "Kein Canonical-Link.", 4,
-                       "Pro Seite ein <link rel=\"canonical\"> auf die bevorzugte Adresse setzen (vermeidet Duplikate)."))
+    findings.append(_f("canonical", T, "ok" if canon else "warn", gettext('Canonical-Link'),
+                       gettext('Gesetzt auf %(value0)s', value0=f'{canon[:120]}') if canon else gettext('Kein Canonical-Link.'), 4,
+                       gettext('Pro Seite ein <link rel="canonical"> auf die bevorzugte Adresse setzen (vermeidet Duplikate).')))
     robots_meta = pg.meta.get("robots", "").lower()
     noindex = "noindex" in robots_meta
-    findings.append(_f("noindex", T, "fail" if noindex else "ok", "Indexierung erlaubt",
-                       "Die Seite trägt „noindex“ und wird nicht in Suchergebnissen gelistet." if noindex
-                       else "Kein „noindex“ gefunden.", 12,
-                       "Das noindex-Tag entfernen, wenn die Seite gefunden werden soll."))
-    findings.append(_f("lang", T, "ok" if pg.lang else "warn", "Sprachangabe", f"lang=\"{pg.lang}\"" if pg.lang else "Keine Sprache im <html>-Tag.", 2,
-                       "Im <html>-Tag lang=\"de\" (oder die passende Sprache) setzen."))
-    findings.append(_f("viewport", T, "ok" if "viewport" in pg.meta else "fail", "Mobile Darstellung (Viewport)",
-                       "Viewport-Angabe vorhanden." if "viewport" in pg.meta else "Keine Viewport-Angabe — mobil oft unbrauchbar.", 5,
-                       "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"> ergänzen und Layout mobil prüfen."))
+    findings.append(_f("noindex", T, "fail" if noindex else "ok", gettext('Indexierung erlaubt'),
+                       gettext('Die Seite trägt „noindex“ und wird nicht in Suchergebnissen gelistet.') if noindex
+                       else gettext('Kein „noindex“ gefunden.'), 12,
+                       gettext('Das noindex-Tag entfernen, wenn die Seite gefunden werden soll.')))
+    findings.append(_f("lang", T, "ok" if pg.lang else "warn", gettext('Sprachangabe'), gettext('lang="%(value0)s"', value0=f'{pg.lang}') if pg.lang else gettext('Keine Sprache im <html>-Tag.'), 2,
+                       gettext('Im <html>-Tag lang="de" (oder die passende Sprache) setzen.')))
+    findings.append(_f("viewport", T, "ok" if "viewport" in pg.meta else "fail", gettext('Mobile Darstellung (Viewport)'),
+                       gettext('Viewport-Angabe vorhanden.') if "viewport" in pg.meta else gettext('Keine Viewport-Angabe — mobil oft unbrauchbar.'), 5,
+                       gettext('<meta name="viewport" content="width=device-width, initial-scale=1"> ergänzen und Layout mobil prüfen.')))
 
     # Inhalt
     tl = len(title)
-    findings.append(_f("title", I, "ok" if 30 <= tl <= 62 else "warn" if tl else "fail", "Seitentitel (Title)",
-                       f"„{title[:90]}“ ({tl} Zeichen)" if tl else "Kein Title gefunden.", 10,
-                       "Einen eindeutigen Titel mit 30–60 Zeichen schreiben, wichtigstes Thema/Keyword vorn."))
+    findings.append(_f("title", I, "ok" if 30 <= tl <= 62 else "warn" if tl else "fail", gettext('Seitentitel (Title)'),
+                       gettext('„%(value0)s“ (%(value1)s Zeichen)', value0=f'{title[:90]}', value1=f'{tl}') if tl else gettext('Kein Title gefunden.'), 10,
+                       gettext('Einen eindeutigen Titel mit 30–60 Zeichen schreiben, wichtigstes Thema/Keyword vorn.')))
     dl = len(desc)
-    findings.append(_f("description", I, "ok" if 70 <= dl <= 165 else "warn" if dl else "fail", "Meta-Beschreibung",
-                       f"{dl} Zeichen." if dl else "Keine Meta-Beschreibung.", 8,
-                       "Eine Beschreibung mit 70–160 Zeichen schreiben, die zum Klick einlädt."))
-    findings.append(_f("h1", I, "ok" if len(h1s) == 1 else "warn" if len(h1s) > 1 else "fail", "Hauptüberschrift (H1)",
-                       f"„{h1s[0][:90]}“" if len(h1s) == 1 else (f"{len(h1s)} H1-Überschriften." if h1s else "Keine H1."), 7,
-                       "Genau eine H1 pro Seite, die das Thema klar benennt."))
+    findings.append(_f("description", I, "ok" if 70 <= dl <= 165 else "warn" if dl else "fail", gettext('Meta-Beschreibung'),
+                       gettext('%(value0)s Zeichen.', value0=f'{dl}') if dl else gettext('Keine Meta-Beschreibung.'), 8,
+                       gettext('Eine Beschreibung mit 70–160 Zeichen schreiben, die zum Klick einlädt.')))
+    findings.append(_f("h1", I, "ok" if len(h1s) == 1 else "warn" if len(h1s) > 1 else "fail", gettext('Hauptüberschrift (H1)'),
+                       gettext('„%(value0)s“', value0=f'{h1s[0][:90]}') if len(h1s) == 1 else (gettext('%(value0)s H1-Überschriften.', value0=f'{len(h1s)}') if h1s else gettext('Keine H1.')), 7,
+                       gettext('Genau eine H1 pro Seite, die das Thema klar benennt.')))
     h2n = len(pg.h["h2"])
-    findings.append(_f("h2", I, "ok" if h2n >= 2 else "warn", "Gliederung (H2/H3)", f"{h2n} Zwischenüberschriften (H2).", 3,
-                       "Den Text mit mehreren H2-Zwischenüberschriften gliedern."))
-    findings.append(_f("words", I, "ok" if words >= 300 else "warn" if words >= 120 else "fail", "Textumfang",
-                       f"ca. {words} Wörter.", 5, "Mehr hilfreichen, eigenständigen Text bieten (Richtwert ab 300 Wörter)."))
+    findings.append(_f("h2", I, "ok" if h2n >= 2 else "warn", gettext('Gliederung (H2/H3)'), gettext('%(value0)s Zwischenüberschriften (H2).', value0=f'{h2n}'), 3,
+                       gettext('Den Text mit mehreren H2-Zwischenüberschriften gliedern.')))
+    findings.append(_f("words", I, "ok" if words >= 300 else "warn" if words >= 120 else "fail", gettext('Textumfang'),
+                       gettext('ca. %(value0)s Wörter.', value0=f'{words}'), 5, gettext('Mehr hilfreichen, eigenständigen Text bieten (Richtwert ab 300 Wörter).')))
     if pg.imgs:
         ratio = pg.imgs_alt / pg.imgs
-        findings.append(_f("alt", I, "ok" if ratio >= 0.9 else "warn" if ratio >= 0.5 else "fail", "Alt-Texte bei Bildern",
-                           f"{pg.imgs_alt} von {pg.imgs} Bildern haben einen Alt-Text.", 5,
-                           "Jedem inhaltlichen Bild eine kurze, beschreibende Alternativbeschreibung geben."))
+        findings.append(_f("alt", I, "ok" if ratio >= 0.9 else "warn" if ratio >= 0.5 else "fail", gettext('Alt-Texte bei Bildern'),
+                           gettext('%(value0)s von %(value1)s Bildern haben einen Alt-Text.', value0=f'{pg.imgs_alt}', value1=f'{pg.imgs}'), 5,
+                           gettext('Jedem inhaltlichen Bild eine kurze, beschreibende Alternativbeschreibung geben.')))
     host = fp.hostname or ""
     internal = [a for a in pg.anchors if a.startswith("/") or host in a]
-    findings.append(_f("links", I, "ok" if len(internal) >= 3 else "warn", "Interne Verlinkung",
-                       f"{len(internal)} interne Links.", 3, "Wichtige Seiten untereinander verlinken, mit sprechenden Linktexten."))
+    findings.append(_f("links", I, "ok" if len(internal) >= 3 else "warn", gettext('Interne Verlinkung'),
+                       gettext('%(value0)s interne Links.', value0=f'{len(internal)}'), 3, gettext('Wichtige Seiten untereinander verlinken, mit sprechenden Linktexten.')))
 
     # Snippets & Social
     og = [k for k in ("og:title", "og:description", "og:image") if pg.meta.get(k)]
-    findings.append(_f("og", S, "ok" if len(og) == 3 else "warn" if og else "fail", "Open Graph (Vorschau in sozialen Netzwerken)",
-                       f"{len(og)} von 3 Angaben vorhanden.", 4, "og:title, og:description und og:image setzen — bestimmt die Vorschau bei LinkedIn, WhatsApp & Co."))
-    findings.append(_f("jsonld", S, "ok" if pg.jsonld else "warn", "Strukturierte Daten (JSON-LD)",
-                       f"{pg.jsonld} Block/Blöcke gefunden." if pg.jsonld else "Keine strukturierten Daten.", 5,
-                       "Schema.org-Auszeichnung ergänzen (z. B. Organization, LocalBusiness, Event, Article)."))
+    findings.append(_f("og", S, "ok" if len(og) == 3 else "warn" if og else "fail", gettext('Open Graph (Vorschau in sozialen Netzwerken)'),
+                       gettext('%(value0)s von 3 Angaben vorhanden.', value0=f'{len(og)}'), 4, gettext('og:title, og:description und og:image setzen — bestimmt die Vorschau bei LinkedIn, WhatsApp & Co.')))
+    findings.append(_f("jsonld", S, "ok" if pg.jsonld else "warn", gettext('Strukturierte Daten (JSON-LD)'),
+                       gettext('%(value0)s Block/Blöcke gefunden.', value0=f'{pg.jsonld}') if pg.jsonld else gettext('Keine strukturierten Daten.'), 5,
+                       gettext('Schema.org-Auszeichnung ergänzen (z. B. Organization, LocalBusiness, Event, Article).')))
 
     # Keywords
     kws = [k.strip() for k in keywords if k.strip()][:5]
@@ -214,9 +217,9 @@ def analyze(url: str, keywords: list[str]) -> dict:
         parts = [("Title", in_t), ("H1", in_h1), ("Beschreibung", in_d)]
         hit = sum(1 for _, v in parts if v)
         findings.append(_f(f"kw:{kw}", K, "ok" if hit >= 2 and n >= 2 else "warn" if hit or n else "fail",
-                           f"Keyword „{kw}“",
-                           f"In {', '.join(n_ for n_, v in parts if v) or 'keinem der Kernelemente'}; {n}× im Text.", 6,
-                           f"„{kw}“ natürlich in Title, H1 und Beschreibung sowie im Text verwenden — ohne Keyword-Stopfen."))
+                           gettext('Keyword „%(value0)s“', value0=f'{kw}'),
+                           gettext('In %(value0)s; %(value1)s× im Text.', value0=f"{', '.join((n_ for n_, v in parts if v)) or gettext('none of the core elements')}", value1=f'{n}'), 6,
+                           gettext('„%(value0)s“ natürlich in Title, H1 und Beschreibung sowie im Text verwenden — ohne Keyword-Stopfen.', value0=f'{kw}')))
 
     score = score_of(findings)
     return {"url": final_url, "score": score, "findings": findings,

@@ -8,6 +8,9 @@ Rechtlicher Rahmen (Stand 2026): DDG § 5 (Impressum), DSGVO Art. 13, TDDDG § 2
 """
 from __future__ import annotations
 
+from flask_babel import gettext
+from ...i18n_labels import display_label
+
 import logging
 import re
 from html.parser import HTMLParser
@@ -131,7 +134,7 @@ def _find_link(sc: _Scan, base: str, kind: str) -> str | None:
 def _fetch_text(url: str) -> tuple[str, int]:
     resp, body, _, _ = _get(url, max_bytes=800_000)
     if resp.status_code >= 400:
-        raise SeoCheckError(f"HTTP {resp.status_code}")
+        raise SeoCheckError(gettext('HTTP %(value0)s', value0=f'{resp.status_code}'))
     html = body.decode(resp.encoding or "utf-8", errors="replace")
     sc = _scan(html)
     text = " ".join(" ".join(sc.text_parts).split())
@@ -142,7 +145,7 @@ def analyze(url: str) -> dict:
     url = normalize_url(url)
     resp, body, elapsed, final_url = _get(url)
     if resp.status_code >= 400:
-        raise SeoCheckError(f"Die Seite antwortet mit dem Fehlercode {resp.status_code}.")
+        raise SeoCheckError(gettext('Die Seite antwortet mit dem Fehlercode %(value0)s.', value0=f'{resp.status_code}'))
     fp = urlparse(final_url)
     base = f"{fp.scheme}://{fp.netloc}/"
     html = body.decode(resp.encoding or "utf-8", errors="replace")
@@ -156,62 +159,61 @@ def analyze(url: str) -> dict:
     imp_url = _find_link(sc, base, "impressum")
     imp_text = ""
     if not imp_url:
-        F.append(_f("imp", P, "fail", "Impressum verlinkt", "Auf der Startseite wurde kein Link „Impressum“ gefunden.", 15,
-                    "Ein Impressum anlegen und von jeder Seite (z. B. im Footer) mit einem Klick erreichbar machen (§ 5 DDG)."))
+        F.append(_f("imp", P, "fail", gettext('Impressum verlinkt'), gettext('Auf der Startseite wurde kein Link „Impressum“ gefunden.'), 15,
+                    gettext('Ein Impressum anlegen und von jeder Seite (z. B. im Footer) mit einem Klick erreichbar machen (§ 5 DDG).')))
     else:
         try:
             imp_text, imp_words = _fetch_text(imp_url)
-            F.append(_f("imp", P, "ok" if imp_words >= 40 else "warn", "Impressum vorhanden",
-                        f"Erreichbar unter {imp_url[:120]} ({imp_words} Wörter).", 15,
-                        "Impressum mit allen Pflichtangaben ausbauen."))
+            F.append(_f("imp", P, "ok" if imp_words >= 40 else "warn", gettext('Impressum vorhanden'),
+                        gettext('Erreichbar unter %(value0)s (%(value1)s Wörter).', value0=f'{imp_url[:120]}', value1=f'{imp_words}'), 15,
+                        gettext('Impressum mit allen Pflichtangaben ausbauen.')))
         except SeoCheckError:
-            F.append(_f("imp", P, "fail", "Impressum erreichbar", f"Der Link {imp_url[:120]} lässt sich nicht abrufen.", 15,
-                        "Den Link reparieren, damit das Impressum erreichbar ist."))
+            F.append(_f("imp", P, "fail", gettext('Impressum erreichbar'), gettext('Der Link %(value0)s lässt sich nicht abrufen.', value0=f'{imp_url[:120]}'), 15,
+                        gettext('Den Link reparieren, damit das Impressum erreichbar ist.')))
     if imp_text:
         plz = re.search(r"\b\d{5}\s+[A-ZÄÖÜ][\wäöüß.\-]+", imp_text)
         street = re.search(r"[A-ZÄÖÜ][\wäöüß.\-]+(?:str\.|straße|strasse|weg|platz|allee|gasse|ring|damm|ufer)\s*\d+", imp_text)
         F.append(_f("imp_addr", P, "ok" if plz and street else "warn" if plz or street else "fail",
-                    "Impressum: ladungsfähige Anschrift", "Straße, Hausnummer, PLZ und Ort erkannt." if plz and street
-                    else "Anschrift nur teilweise oder gar nicht erkannt.", 6,
-                    "Vollständige Anschrift (kein Postfach allein) mit Straße, Hausnummer, PLZ und Ort angeben."))
+                    gettext('Impressum: ladungsfähige Anschrift'), gettext('Straße, Hausnummer, PLZ und Ort erkannt.') if plz and street
+                    else gettext('Anschrift nur teilweise oder gar nicht erkannt.'), 6,
+                    gettext('Vollständige Anschrift (kein Postfach allein) mit Straße, Hausnummer, PLZ und Ort angeben.')))
         mail = re.search(r"[\w.+-]+\s?(@|\(at\)|\[at\])\s?[\w-]+\.[\w.]+", imp_text, re.I)
-        F.append(_f("imp_mail", P, "ok" if mail else "fail", "Impressum: E-Mail-Adresse",
-                    "E-Mail-Adresse erkannt." if mail else "Keine E-Mail-Adresse erkannt.", 6,
-                    "Eine E-Mail-Adresse für schnelle elektronische Kontaktaufnahme angeben."))
+        F.append(_f("imp_mail", P, "ok" if mail else "fail", gettext('Impressum: E-Mail-Adresse'),
+                    gettext('E-Mail-Adresse erkannt.') if mail else gettext('Keine E-Mail-Adresse erkannt.'), 6,
+                    gettext('Eine E-Mail-Adresse für schnelle elektronische Kontaktaufnahme angeben.')))
         phone = re.search(r"(tel|telefon|fon|phone)[^\n]{0,20}[\d+(]", imp_text, re.I)
-        F.append(_f("imp_phone", P, "ok" if phone else "info", "Impressum: Telefonnummer",
-                    "Telefonnummer erkannt." if phone else "Keine Telefonnummer erkannt (nicht zwingend, wenn eine "
-                    "zweite schnelle Kontaktmöglichkeit besteht).", 2, "Telefonnummer oder Kontaktformular ergänzen."))
+        F.append(_f("imp_phone", P, "ok" if phone else "info", gettext('Impressum: Telefonnummer'),
+                    gettext('Telefonnummer erkannt.') if phone else gettext('Keine Telefonnummer erkannt (nicht zwingend, wenn eine zweite schnelle Kontaktmöglichkeit besteht).'), 2, gettext('Telefonnummer oder Kontaktformular ergänzen.')))
         corp = re.search(r"\b(GmbH|UG|AG|e\.\s?V\.|KG|OHG|GbR|SE|Ltd)\b", imp_text)
         if corp:
             rep = re.search(r"Gesch(ä|ae)ftsf(ü|ue)hrer|vertreten durch|Vorstand|vertretungsberechtigt|Inhaber", imp_text, re.I)
-            F.append(_f("imp_rep", P, "ok" if rep else "fail", "Impressum: Vertretungsberechtigte",
-                        "Vertretung genannt." if rep else "Rechtsform erkannt, aber keine vertretungsberechtigte Person.", 4,
-                        "Geschäftsführung/Vorstand bzw. vertretungsberechtigte Person mit Namen nennen."))
+            F.append(_f("imp_rep", P, "ok" if rep else "fail", gettext('Impressum: Vertretungsberechtigte'),
+                        gettext('Vertretung genannt.') if rep else gettext('Rechtsform erkannt, aber keine vertretungsberechtigte Person.'), 4,
+                        gettext('Geschäftsführung/Vorstand bzw. vertretungsberechtigte Person mit Namen nennen.')))
             reg = re.search(r"Handelsregister|Registergericht|HR[AB]\s?\d+|Vereinsregister", imp_text, re.I)
-            F.append(_f("imp_reg", P, "ok" if reg else "fail", "Impressum: Registerangaben",
-                        "Registergericht/Nummer erkannt." if reg else "Bei dieser Rechtsform fehlen Register und Registernummer.", 3,
-                        "Registergericht und Registernummer (z. B. HRB 12345, Amtsgericht Frankfurt) ergänzen."))
+            F.append(_f("imp_reg", P, "ok" if reg else "fail", gettext('Impressum: Registerangaben'),
+                        gettext('Registergericht/Nummer erkannt.') if reg else gettext('Bei dieser Rechtsform fehlen Register und Registernummer.'), 3,
+                        gettext('Registergericht und Registernummer (z. B. HRB 12345, Amtsgericht Frankfurt) ergänzen.')))
         vat = re.search(r"DE\s?\d{9}|USt-?Id|Umsatzsteuer-Identifikationsnummer|Umsatzsteuer.?ID", imp_text, re.I)
-        F.append(_f("imp_vat", P, "ok" if vat else "info", "Impressum: Umsatzsteuer-ID",
-                    "USt-IdNr. erkannt." if vat else "Keine USt-IdNr. erkannt (nur nötig, falls vorhanden).", 2,
-                    "Falls vorhanden, die Umsatzsteuer-Identifikationsnummer angeben."))
+        F.append(_f("imp_vat", P, "ok" if vat else "info", gettext('Impressum: Umsatzsteuer-ID'),
+                    gettext('USt-IdNr. erkannt.') if vat else gettext('Keine USt-IdNr. erkannt (nur nötig, falls vorhanden).'), 2,
+                    gettext('Falls vorhanden, die Umsatzsteuer-Identifikationsnummer angeben.')))
 
     # ---------------- Datenschutz
     ds_url = _find_link(sc, base, "datenschutz")
     ds_text = ""
     if not ds_url:
-        F.append(_f("ds", P, "fail", "Datenschutzerklärung verlinkt", "Auf der Startseite wurde kein Link zur Datenschutzerklärung gefunden.", 15,
-                    "Eine Datenschutzerklärung nach Art. 13 DSGVO bereitstellen und von jeder Seite verlinken."))
+        F.append(_f("ds", P, "fail", gettext('Datenschutzerklärung verlinkt'), gettext('Auf der Startseite wurde kein Link zur Datenschutzerklärung gefunden.'), 15,
+                    gettext('Eine Datenschutzerklärung nach Art. 13 DSGVO bereitstellen und von jeder Seite verlinken.')))
     else:
         try:
             ds_text, ds_words = _fetch_text(ds_url)
-            F.append(_f("ds", P, "ok" if ds_words >= 500 else "warn" if ds_words >= 250 else "fail", "Datenschutzerklärung vorhanden",
-                        f"Erreichbar unter {ds_url[:120]} ({ds_words} Wörter).", 15,
-                        "Die Erklärung ist sehr kurz; für die eingesetzten Dienste ist meist deutlich mehr Text nötig."))
+            F.append(_f("ds", P, "ok" if ds_words >= 500 else "warn" if ds_words >= 250 else "fail", gettext('Datenschutzerklärung vorhanden'),
+                        gettext('Erreichbar unter %(value0)s (%(value1)s Wörter).', value0=f'{ds_url[:120]}', value1=f'{ds_words}'), 15,
+                        gettext('Die Erklärung ist sehr kurz; für die eingesetzten Dienste ist meist deutlich mehr Text nötig.')))
         except SeoCheckError:
-            F.append(_f("ds", P, "fail", "Datenschutzerklärung erreichbar", f"Der Link {ds_url[:120]} lässt sich nicht abrufen.", 15,
-                        "Den Link reparieren."))
+            F.append(_f("ds", P, "fail", gettext('Datenschutzerklärung erreichbar'), gettext('Der Link %(value0)s lässt sich nicht abrufen.', value0=f'{ds_url[:120]}'), 15,
+                        gettext('Den Link reparieren.')))
     if ds_text:
         low = ds_text.lower()
         groups = [
@@ -226,8 +228,8 @@ def analyze(url: str) -> dict:
         ]
         for i, (label, pat, fix) in enumerate(groups):
             hit = bool(re.search(pat, low, re.S))
-            F.append(_f(f"ds{i}", P, "ok" if hit else "warn", f"Datenschutz: {label}",
-                        "Im Text erkennbar." if hit else "Im Text nicht erkennbar.", 3, fix))
+            F.append(_f(f"ds{i}", P, "ok" if hit else "warn", gettext('Datenschutz: %(value0)s', value0=display_label(label)),
+                        gettext('Im Text erkennbar.') if hit else gettext('Im Text nicht erkennbar.'), 3, fix))
 
     # ---------------- Shop-spezifisch
     is_shop = len(SHOP.findall(page_text + " " + blob)) >= 2
@@ -237,13 +239,12 @@ def analyze(url: str) -> dict:
             ("widerruf", "Widerrufsbelehrung", 8, "Widerrufsbelehrung und Muster-Widerrufsformular für Verbraucher bereitstellen."),
         ]:
             u = _find_link(sc, base, kind)
-            F.append(_f(kind, P, "ok" if u else "fail", label, f"Link gefunden: {u[:110]}" if u else "Kein Link gefunden.", w, fix))
+            F.append(_f(kind, P, "ok" if u else "fail", label, gettext('Link gefunden: %(value0)s', value0=f'{u[:110]}') if u else gettext('Kein Link gefunden.'), w, fix))
         u = _find_link(sc, base, "barrierefrei")
-        F.append(_f("bfsg", P, "ok" if u else "warn", "Erklärung zur Barrierefreiheit (BFSG)",
-                    "Link gefunden." if u else "Kein Link gefunden. Für Online-Shops mit Verbraucherkunden gilt seit 28.06.2025 das BFSG "
-                    "(Ausnahmen für Kleinstunternehmen).", 3, "Prüfen, ob das BFSG gilt, und ggf. eine Barrierefreiheitserklärung veröffentlichen."))
+        F.append(_f("bfsg", P, "ok" if u else "warn", gettext('Erklärung zur Barrierefreiheit (BFSG)'),
+                    gettext('Link gefunden.') if u else gettext('Kein Link gefunden. Für Online-Shops mit Verbraucherkunden gilt seit 28.06.2025 das BFSG (Ausnahmen für Kleinstunternehmen).'), 3, gettext('Prüfen, ob das BFSG gilt, und ggf. eine Barrierefreiheitserklärung veröffentlichen.')))
     else:
-        F.append(_f("shop", H, "info", "Online-Shop", "Kein Online-Shop erkannt — AGB, Widerrufsbelehrung und Preisangaben wurden daher nicht verlangt.", 0))
+        F.append(_f("shop", H, "info", gettext('Online-Shop'), gettext('Kein Online-Shop erkannt — AGB, Widerrufsbelehrung und Preisangaben wurden daher nicht verlangt.'), 0))
 
     # ---------------- Cookies & Tracking
     cookies_hdr = resp.cookies
@@ -251,62 +252,61 @@ def analyze(url: str) -> dict:
     found = [(name, needs, vend) for name, pat, vend, needs in TRACKERS if re.search(pat, blob, re.I)]
     consent_needed = [n for n, needs, _ in found if needs]
     if consent_needed:
-        F.append(_f("cmp", C, "ok" if cmp else "fail", "Einwilligungsbanner (Cookie-Consent)",
-                    f"Consent-Lösung erkannt. Eingebunden sind u. a.: {', '.join(consent_needed)}." if cmp
-                    else f"Tracking-/Einbettungsdienste gefunden ({', '.join(consent_needed)}), aber kein Einwilligungsbanner erkannt.", 12,
-                    "Einwilligungsbanner (Consent-Manager) einsetzen und diese Dienste erst nach aktiver Einwilligung laden (§ 25 TDDDG)."))
+        F.append(_f("cmp", C, "ok" if cmp else "fail", gettext('Einwilligungsbanner (Cookie-Consent)'),
+                    gettext('Consent-Lösung erkannt. Eingebunden sind u. a.: %(value0)s.', value0=f"{', '.join(consent_needed)}") if cmp
+                    else gettext('Tracking-/Einbettungsdienste gefunden (%(value0)s), aber kein Einwilligungsbanner erkannt.', value0=f"{', '.join(consent_needed)}"), 12,
+                    gettext('Einwilligungsbanner (Consent-Manager) einsetzen und diese Dienste erst nach aktiver Einwilligung laden (§ 25 TDDDG).')))
         if cmp:
-            F.append(_f("cmp_static", C, "info", "Laden nach Einwilligung",
-                        "Ob die Dienste tatsächlich erst nach Zustimmung laden, kann diese statische Prüfung nicht beurteilen. "
-                        "Bitte im Browser mit geleertem Cache und ohne Zustimmung testen (Netzwerk-Tab).", 0))
+            F.append(_f("cmp_static", C, "info", gettext('Laden nach Einwilligung'),
+                        gettext('Ob die Dienste tatsächlich erst nach Zustimmung laden, kann diese statische Prüfung nicht beurteilen. Bitte im Browser mit geleertem Cache und ohne Zustimmung testen (Netzwerk-Tab).'), 0))
     else:
-        F.append(_f("cmp", C, "ok", "Keine einwilligungspflichtigen Dienste erkannt",
-                    "Im HTML wurden keine bekannten Tracking- oder Einbettungsdienste gefunden." + (" Ein Cookie-Hinweis ist vorhanden." if cmp else ""), 12))
+        F.append(_f("cmp", C, "ok", gettext('Keine einwilligungspflichtigen Dienste erkannt'),
+                    gettext('Im HTML wurden keine bekannten Tracking- oder Einbettungsdienste gefunden.') + (gettext(' Ein Cookie-Hinweis ist vorhanden.') if cmp else ""), 12))
     bad_names = [c.split("=")[0].strip() for c in cookies_hdr if re.match(r"\s*(_ga|_gid|_gcl|_fbp|_hj|_clck|__utm|_pk_)", c)]
-    F.append(_f("cookies_set", C, "fail" if bad_names else "ok", "Cookies beim ersten Aufruf",
-                f"Tracking-Cookies schon ohne Einwilligung gesetzt: {', '.join(bad_names)}." if bad_names
-                else (f"Gesetzte Cookies: {', '.join(c.split('=')[0].strip() for c in cookies_hdr)[:200]}." if cookies_hdr
-                      else "Beim ersten Aufruf werden keine Cookies gesetzt."), 8,
-                "Tracking-Cookies erst nach Einwilligung setzen."))
+    F.append(_f("cookies_set", C, "fail" if bad_names else "ok", gettext('Cookies beim ersten Aufruf'),
+                gettext('Tracking-Cookies schon ohne Einwilligung gesetzt: %(value0)s.', value0=f"{', '.join(bad_names)}") if bad_names
+                else (gettext('Gesetzte Cookies: %(value0)s.', value0=f"{', '.join((c.split('=')[0].strip() for c in cookies_hdr))[:200]}") if cookies_hdr
+                      else gettext('Beim ersten Aufruf werden keine Cookies gesetzt.')), 8,
+                gettext('Tracking-Cookies erst nach Einwilligung setzen.')))
     ext_fonts = [n for n, needs, _ in found if n.startswith("Google Fonts")]
-    F.append(_f("fonts", C, "fail" if ext_fonts else "ok", "Schriftarten lokal eingebunden",
-                "Schriftarten werden von Google-Servern geladen (IP-Übermittlung; Rechtsprechung mahnt hier wiederholt ab)." if ext_fonts
-                else "Keine externen Google-Fonts erkannt.", 4, "Schriftarten lokal auf dem eigenen Server hosten."))
+    F.append(_f("fonts", C, "fail" if ext_fonts else "ok", gettext('Schriftarten lokal eingebunden'),
+                gettext('Schriftarten werden von Google-Servern geladen (IP-Übermittlung; Rechtsprechung mahnt hier wiederholt ab).') if ext_fonts
+                else gettext('Keine externen Google-Fonts erkannt.'), 4, gettext('Schriftarten lokal auf dem eigenen Server hosten.')))
     if ds_text:
         low = ds_text.lower()
         missing = [n for n, needs, vend in found if not any(v in low for v in vend)]
-        F.append(_f("ds_tools", C, "fail" if missing else "ok", "Eingesetzte Dienste in der Datenschutzerklärung",
-                    ("Nicht in der Erklärung erwähnt: " + ", ".join(missing)) if missing
-                    else "Alle erkannten Dienste werden in der Datenschutzerklärung erwähnt.", 6 if found else 0,
-                    "Jeden eingesetzten Dienst mit Zweck, Rechtsgrundlage und Empfänger in der Datenschutzerklärung beschreiben."))
+        F.append(_f("ds_tools", C, "fail" if missing else "ok", gettext('Eingesetzte Dienste in der Datenschutzerklärung'),
+                    (gettext('Nicht in der Erklärung erwähnt: ') + ", ".join(missing)) if missing
+                    else gettext('Alle erkannten Dienste werden in der Datenschutzerklärung erwähnt.'), 6 if found else 0,
+                    gettext('Jeden eingesetzten Dienst mit Zweck, Rechtsgrundlage und Empfänger in der Datenschutzerklärung beschreiben.')))
 
     # ---------------- Sicherheit
     hs = {k.lower(): v for k, v in resp.headers.items()}
     https = fp.scheme == "https"
-    F.append(_f("https", S, "ok" if https else "fail", "HTTPS", "Verschlüsselte Verbindung." if https else "Seite ohne HTTPS.", 8,
-                "HTTPS einrichten und erzwingen (Art. 32 DSGVO)."))
+    F.append(_f("https", S, "ok" if https else "fail", gettext('HTTPS'), gettext('Verschlüsselte Verbindung.') if https else gettext('Seite ohne HTTPS.'), 8,
+                gettext('HTTPS einrichten und erzwingen (Art. 32 DSGVO).')))
     for key, label, w, fix in [
         ("strict-transport-security", "HSTS (erzwingt HTTPS)", 3, "Header Strict-Transport-Security setzen."),
         ("x-content-type-options", "X-Content-Type-Options", 1, "Header X-Content-Type-Options: nosniff setzen."),
         ("referrer-policy", "Referrer-Policy", 1, "Referrer-Policy setzen, z. B. strict-origin-when-cross-origin."),
         ("content-security-policy", "Content-Security-Policy", 2, "Eine Content-Security-Policy gegen Einschleusen fremder Skripte einführen."),
     ]:
-        F.append(_f(key, S, "ok" if key in hs else "warn", f"Sicherheits-Header: {label}",
-                    "Gesetzt." if key in hs else "Nicht gesetzt.", w, fix))
+        F.append(_f(key, S, "ok" if key in hs else "warn", gettext('Sicherheits-Header: %(value0)s', value0=display_label(label)),
+                    gettext('Gesetzt.') if key in hs else gettext('Nicht gesetzt.'), w, fix))
 
     # ---------------- Weitere Hinweise
     if CHATBOTS.search(blob):
-        F.append(_f("chatbot", H, "info", "Chatbot/Live-Chat erkannt",
-                    "Wenn der Chat KI nutzt, muss den Nutzer:innen erkennbar sein, dass sie mit einer KI sprechen (Art. 50 KI-VO).", 0))
+        F.append(_f("chatbot", H, "info", gettext('Chatbot/Live-Chat erkannt'),
+                    gettext('Wenn der Chat KI nutzt, muss den Nutzer:innen erkennbar sein, dass sie mit einer KI sprechen (Art. 50 KI-VO).'), 0))
     for form in sc.forms:
         if "email" in form["types"] or any("mail" in n for n in form["names"]):
             near = bool(re.search(r"datenschutz|privacy", page_text, re.I))
             newsletter = bool(re.search(r"newsletter", page_text, re.I))
-            F.append(_f("form", H, "ok" if near else "warn", "Formular mit E-Mail-Feld",
-                        "Datenschutzhinweis auf der Seite vorhanden." if near else "Formular ohne erkennbaren Datenschutzhinweis.", 3,
-                        "Bei jedem Formular auf die Datenschutzerklärung hinweisen (Art. 13 DSGVO)."))
+            F.append(_f("form", H, "ok" if near else "warn", gettext('Formular mit E-Mail-Feld'),
+                        gettext('Datenschutzhinweis auf der Seite vorhanden.') if near else gettext('Formular ohne erkennbaren Datenschutzhinweis.'), 3,
+                        gettext('Bei jedem Formular auf die Datenschutzerklärung hinweisen (Art. 13 DSGVO).')))
             if newsletter:
-                F.append(_f("nl", H, "info", "Newsletter-Anmeldung", "Für Newsletter ist ein Double-Opt-in mit Protokoll üblich und rechtlich geboten.", 0))
+                F.append(_f("nl", H, "info", gettext('Newsletter-Anmeldung'), gettext('Für Newsletter ist ein Double-Opt-in mit Protokoll üblich und rechtlich geboten.'), 0))
             break
 
     return {"url": final_url, "score": score_of(F), "findings": F,

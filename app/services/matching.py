@@ -13,6 +13,7 @@ import logging
 import math
 
 from flask import current_app
+from flask_babel import get_locale, gettext as _, lazy_gettext as _l
 
 log = logging.getLogger(__name__)
 from ..extensions import db
@@ -26,7 +27,7 @@ WEIGHT_NEED_TO_OFFER = 0.6
 WEIGHT_REVERSE = 0.4
 DIM = 512
 TOP_K = 5
-LABELS = ((0.45, "gut passend"), (0.25, "teilweise passend"), (0.0, "wenig Überschneidung"))
+LABELS = ((0.45, _l("Good fit")), (0.25, _l("Partial fit")), (0.0, _l("Little overlap")))
 
 
 # --- тексты и версии -----------------------------------------------------------
@@ -93,8 +94,8 @@ def score(profile_a, profile_b) -> float:
 def fit_label(value: float) -> str:
     for threshold, label in LABELS:
         if value >= threshold:
-            return label
-    return LABELS[-1][1]
+            return str(label)
+    return str(LABELS[-1][1])
 
 
 # --- подбор ----------------------------------------------------------------------
@@ -136,7 +137,7 @@ def top_matches(user, k: int = TOP_K):
 def _template_text(profile, other_profile) -> str:
     need = (profile.q_looking_for or profile.q_challenge or "").strip()[:160]
     offer = (other_profile.q_can_help or other_profile.q_focus or "").strip()[:160]
-    return f"Thema: „{need}“ — Angebot: „{offer}“."
+    return _("Need: %(need)s — offer: %(offer)s.", need=need, offer=offer)
 
 
 def _llm_explanations(profile, others):
@@ -147,12 +148,13 @@ def _llm_explanations(profile, others):
     user_text = (
         f"Gesuch der Person:\n{need_text(profile)[:800]}\n\n"
         f"Angebote der Kandidaten:\n" + "\n\n".join(lines) + "\n\n"
-        "Schreibe für jeden Kandidaten einen kurzen Satz auf Deutsch, warum er zum Gesuch passt. "
+        "Schreibe für jeden Kandidaten einen kurzen Satz, warum er zum Gesuch passt. "
         "Antworte nur mit JSON: {\"1\": \"...\", \"2\": \"...\"}."
     )
     system = ("Du erklärst Mitgliedern eines Clubs kurz, warum zwei Profile zusammenpassen. "
               "Sei konkret und sachlich, ohne Werbung. Keine Namen, keine Kontaktdaten, keine Bewertungen der Person.")
-    raw = ask(system, user_text)
+    language = "Russian" if str(get_locale()) == "ru" else "German"
+    raw = ask(system + f" Write all explanation text in {language}. Keep the JSON keys unchanged.", user_text)
     start, end = raw.find("{"), raw.rfind("}")
     data = json.loads(raw[start:end + 1])
     return {index: str(data[str(index)]).strip()[:400] for index in range(1, len(others) + 1)
@@ -165,7 +167,8 @@ def get_matches(user, k: int = TOP_K):
     if not pairs:
         return []
     my_profile = user.profile
-    my_version = profile_version(my_profile)
+    # Включаем язык в существующий хеш: кэш не отдаёт объяснение на прежнем языке.
+    my_version = hashlib.sha256((profile_version(my_profile) + ":" + str(get_locale())).encode()).hexdigest()
     results = []
     stale = []
     for other, value in pairs:

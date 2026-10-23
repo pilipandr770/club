@@ -17,7 +17,7 @@
   <h2><a href="{{ url_for('startups.detail', startup_id=startup.id) }}">{{ startup.name }}</a></h2>
   <p>{{ startup.tagline }}</p>
   <p class="small">{{ startup.owner.email }} · {{ category_label(startup.category) }} · {{ stage_label(startup.stage) }}{% if startup.funding_goal_cents %} · {{ format_eur(startup.funding_goal_cents) }}{% endif %}</p>
-  <p class="small">{{ startup.status }}{% if startup.rejection_reason %} · {{ startup.rejection_reason }}{% endif %}</p>
+  <p class="small">{{ startup.status|label }}{% if startup.rejection_reason %} · {{ startup.rejection_reason }}{% endif %}</p>
 
   {% if startup.status != "approved" %}
   <form method="post" action="{{ url_for('admin.review_startup', startup_id=startup.id) }}" class="form">

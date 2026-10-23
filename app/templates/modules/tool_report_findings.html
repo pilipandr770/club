@@ -23,7 +23,7 @@
       <strong>{{ a.titel }}</strong>
       <p>{{ a.warum }}</p>
       {% if a.so_gehts %}<p class="small"><em>{{ _("How:") }}</em> {{ a.so_gehts }}</p>{% endif %}
-      <p class="small muted">{{ _("Effort") }}: {{ a.aufwand }} · {{ _("Impact") }}: {{ a.wirkung }}</p>
+      <p class="small muted">{{ _("Effort") }}: {{ a.aufwand|label }} · {{ _("Impact") }}: {{ a.wirkung|label }}</p>
     </li>
   {% endfor %}
   </ol>

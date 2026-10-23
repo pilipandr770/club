@@ -35,7 +35,7 @@
     <label for="role">{{ _("Role") }}</label>
     <select id="role" name="role">
       {% for role in roles %}
-        <option value="{{ role }}" {% if user.role == role %}selected{% endif %}>{{ role }}</option>
+        <option value="{{ role }}" {% if user.role == role %}selected{% endif %}>{{ role|label }}</option>
       {% endfor %}
     </select>
   </div>
@@ -44,7 +44,7 @@
     <label for="status">{{ _("Account status") }}</label>
     <select id="status" name="status">
       {% for status in statuses %}
-        <option value="{{ status }}" {% if user.status == status %}selected{% endif %}>{{ status }}</option>
+        <option value="{{ status }}" {% if user.status == status %}selected{% endif %}>{{ status|label }}</option>
       {% endfor %}
     </select>
   </div>
@@ -58,7 +58,7 @@
     <label for="verification_status">{{ _("Identity check") }}</label>
     <select id="verification_status" name="verification_status">
       {% for status in verification_statuses %}
-        <option value="{{ status }}" {% if user.verification_status == status %}selected{% endif %}>{{ status }}</option>
+        <option value="{{ status }}" {% if user.verification_status == status %}selected{% endif %}>{{ status|label }}</option>
       {% endfor %}
     </select>
   </div>
@@ -67,7 +67,7 @@
     <label for="verification_reason">{{ _("Reason") }}</label>
     <select id="verification_reason" name="verification_reason">
       {% for reason in reasons %}
-        <option value="{{ reason }}" {% if (user.verification_reason or '') == reason %}selected{% endif %}>{{ reason or '—' }}</option>
+        <option value="{{ reason }}" {% if (user.verification_reason or '') == reason %}selected{% endif %}>{{ reason|label if reason else '—' }}</option>
       {% endfor %}
     </select>
   </div>
@@ -79,7 +79,7 @@
   <h2>{{ _("Consents") }}</h2>
   <ul class="module-list">
     {% for consent in consents %}
-      <li>{{ consent.kind }}: {{ _("granted") if consent.granted else _("withdrawn") }} · {{ consent.version }} · {{ consent.created_at.strftime('%d.%m.%Y %H:%M') }}</li>
+      <li>{{ consent.kind|label }}: {{ _("granted") if consent.granted else _("withdrawn") }} · {{ consent.version }} · {{ consent.created_at.strftime('%d.%m.%Y %H:%M') }}</li>
     {% else %}
       <li class="muted">{{ _("No consents recorded.") }}</li>
     {% endfor %}

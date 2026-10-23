@@ -41,7 +41,7 @@
   <section class="card">
     <h2>{{ _("Answers by intent") }}</h2>
     <table class="table">
-      {% for label, count in result.intents.items() %}<tr><th scope="row">{{ label }}</th><td>{{ count }}</td></tr>{% endfor %}
+      {% for label, count in result.intents.items() %}<tr><th scope="row">{{ label|label }}</th><td>{{ count }}</td></tr>{% endfor %}
     </table>
   </section>
 
@@ -75,10 +75,10 @@
   <section class="card">
     <h2>{{ _("Target groups") }}</h2>
     {% for seg in result.segments %}
-    <h3>{{ seg.dimension }}</h3>
+    <h3>{{ seg.dimension|label }}</h3>
     <table class="table">
       <tr><th></th><th>{{ _("Personas") }}</th><th>{{ _("Intent") }}</th><th>{{ _("Probability") }}</th></tr>
-      {% for row in seg.rows %}<tr><th scope="row">{{ row.label }}</th><td>{{ row.n }}</td><td>{{ row.intent }} %</td><td>{{ row.prob }} %</td></tr>{% endfor %}
+      {% for row in seg.rows %}<tr><th scope="row">{{ row.label|label }}</th><td>{{ row.n }}</td><td>{{ row.intent }} %</td><td>{{ row.prob }} %</td></tr>{% endfor %}
     </table>
     {% endfor %}
     {% if report.zielgruppen_fazit %}<p>{{ report.zielgruppen_fazit }}</p>{% endif %}
@@ -111,7 +111,7 @@
     {% for group, items in [(_("Most likely buyers"), result.examples_yes), (_("Least likely buyers"), result.examples_no)] %}
       <h3>{{ group }}</h3>
       <ul class="module-list">
-        {% for ex in items %}<li>{{ ex.name }}, {{ ex.age }} ({{ ex.label }}) · {{ ex.prob }} %<br><span class="small muted">„{{ ex.text }}“</span></li>{% endfor %}
+        {% for ex in items %}<li>{{ ex.name }}, {{ ex.age }} ({{ ex.label|label }}) · {{ ex.prob }} %<br><span class="small muted">„{{ ex.text }}“</span></li>{% endfor %}
       </ul>
     {% endfor %}
   </section>

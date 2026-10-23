@@ -3,7 +3,7 @@ import os
 from flask import Flask, request
 import importlib
 
-from flask_babel import get_locale
+from flask_babel import get_locale, lazy_gettext as _l
 from flask_login import current_user
 from werkzeug.middleware.proxy_fix import ProxyFix
 
@@ -49,6 +49,7 @@ def create_app(env=None):
     limiter.init_app(app)
     login_manager.init_app(app)
     login_manager.login_view = "auth.login"
+    login_manager.login_message = _l("Please log in to access this page.")
     login_manager.login_message_category = "info"
 
     @login_manager.user_loader
@@ -98,8 +99,32 @@ def create_app(env=None):
 
     cli.register(app)
 
+    error_messages = {
+        400: _l("The request could not be processed. Refresh the page and try again."),
+        401: _l("Please log in to access this page."),
+        403: _l("You do not have access to this page."),
+        404: _l("This page could not be found."),
+        405: _l("This action is not available for this request."),
+        413: _l("The uploaded file is too large."),
+        429: _l("Too many requests. Please wait a little and try again."),
+        500: _l("The server could not complete the request. Please try again later."),
+    }
+
+    def translated_error(error):
+        from flask import render_template
+        response = error.get_response()
+        response.set_data(render_template("errors/http.html", code=error.code,
+                                          message=error_messages[error.code]))
+        response.content_type = "text/html; charset=utf-8"
+        return response
+
+    for code in error_messages:
+        app.register_error_handler(code, translated_error)
+
     # Текущий язык для <html lang="..."> и current_user в шаблонах
     app.jinja_env.globals["get_locale"] = get_locale
+    from .i18n_labels import display_label
+    app.jinja_env.filters["label"] = display_label
     from .modules.startups.labels import category_label, stage_label
 
     from .services.intros import status_label as intro_status_label

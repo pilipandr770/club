@@ -1,12 +1,14 @@
 """Общее для встроенных инструментов: безопасная загрузка, оценка находок, отчёт через ИИ с запасным вариантом.
 
-Тексты находок и отчётов — немецкий контент отчёта (как ответ ИИ), он сохраняется в ToolRun и не переводится.
-Интерфейс вокруг отчёта (формы, заголовки, подписи) идёт через gettext.
+Новые находки и отчёты создаются на выбранном языке и сохраняются в ToolRun.
+Исторические отчёты и исходные данные не переписываются при смене языка.
 """
 
 import json
 import logging
 import time
+
+from flask_babel import get_locale, gettext
 
 from ..ai import llm
 from ..ai.http import AIUnavailable
@@ -17,7 +19,7 @@ log = logging.getLogger(__name__)
 
 
 class ToolError(Exception):
-    """Понятное пользователю сообщение (немецкий)."""
+    """Понятное пользователю локализованное сообщение."""
 
 
 _FETCH_MESSAGES = {
@@ -55,7 +57,8 @@ def normalize_url(raw):
     try:
         return _normalize(raw)
     except FetchError as exc:
-        raise ToolError(_FETCH_MESSAGES.get(exc.code, _FETCH_MESSAGES["invalid"])) from None
+        from ...i18n_labels import display_label
+        raise ToolError(display_label(_FETCH_MESSAGES.get(exc.code, _FETCH_MESSAGES["invalid"]))) from None
 
 
 def _get(url, max_bytes=2 * 1024 * 1024):
@@ -63,12 +66,15 @@ def _get(url, max_bytes=2 * 1024 * 1024):
     try:
         fetched = fetch(url, max_bytes=max_bytes)
     except FetchError as exc:
-        raise ToolError(_FETCH_MESSAGES.get(exc.code, _FETCH_MESSAGES["unreachable"])) from None
+        from ...i18n_labels import display_label
+        raise ToolError(display_label(_FETCH_MESSAGES.get(exc.code, _FETCH_MESSAGES["unreachable"]))) from None
     return Resp(fetched), fetched.body, fetched.elapsed, fetched.url
 
 
 def _f(key, cat, status, title, detail, weight, fix=""):
-    return {"key": key, "cat": cat, "status": status, "title": title, "detail": detail, "weight": weight, "fix": fix}
+    from ...i18n_labels import display_label
+    return {"key": key, "cat": display_label(cat), "status": status, "title": display_label(title),
+            "detail": detail, "weight": weight, "fix": display_label(fix)}
 
 
 def score_of(findings):
@@ -80,6 +86,8 @@ def score_of(findings):
 
 def json_from_llm(system, payload, max_tokens=4500, purpose=""):
     """Ответ модели как JSON, две попытки. None — если ИИ недоступен или ответ не разобрать."""
+    language = "Russian" if str(get_locale()) == "ru" else "German"
+    system += f" Write all human-readable text values in {language}. Keep JSON keys, enum codes and original legal quotations unchanged."
     started = time.monotonic()
     for attempt in (1, 2):
         if attempt == 2 and time.monotonic() - started > 40:
@@ -108,12 +116,11 @@ def _fallback_report(result):
                 "aufwand": "mittel", "wirkung": "hoch" if f["weight"] >= 8 else "mittel" if f["weight"] >= 5 else "niedrig"}
                for i, f in enumerate(bad[:6])]
     s = result["score"]
-    verdict = ("sehr gut aufgestellt" if s >= 85 else "solide, mit klaren Verbesserungsmöglichkeiten" if s >= 65
-               else "mit deutlichem Nachholbedarf")
-    return {"zusammenfassung": f"Ergebnis der Prüfung: {verdict} (Score {s}/100). "
-                               f"Die wichtigsten Hebel stehen unten in der Reihenfolge ihrer Wirkung.",
+    verdict = (gettext("Very well positioned") if s >= 85 else gettext("Solid, with clear room for improvement") if s >= 65
+               else gettext("Significant improvements needed"))
+    return {"zusammenfassung": gettext("Check result: %(verdict)s (score %(score)s/100). The most useful improvements are listed below in order of impact.", verdict=verdict, score=s),
             "massnahmen": actions, "keyword_hinweise": "",
-            "naechste_schritte": "Die Maßnahmen der Reihe nach umsetzen und die Seite danach erneut prüfen lassen.",
+            "naechste_schritte": gettext("Apply the actions in order, then check the page again."),
             "ai": False}
 
 

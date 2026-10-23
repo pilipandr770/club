@@ -6,6 +6,8 @@ scan, keine Angriffsmuster. Das ist ausdrücklich KEIN Penetrationstest. Schutz 
 """
 from __future__ import annotations
 
+from flask_babel import gettext
+
 import logging
 import re
 import socket
@@ -29,19 +31,19 @@ SECOND_LEVEL = {"co.uk", "org.uk", "com.au", "co.nz", "com.br", "co.za"}
 def hostname_from(raw: str) -> str:
     raw = (raw or "").strip()
     if not raw:
-        raise SeoCheckError("Bitte gib die Domain deiner Website ein.")
+        raise SeoCheckError(gettext('Bitte gib die Domain deiner Website ein.'))
     if "://" not in raw:
         raw = "https://" + raw
     p = urlparse(raw)
     if p.scheme not in ("http", "https"):
-        raise SeoCheckError("Das ist keine gültige Domain (z. B. beispiel.de).")
+        raise SeoCheckError(gettext('Das ist keine gültige Domain (z. B. beispiel.de).'))
     host = (p.hostname or "").lower().rstrip(".")
     if not host or " " in raw or "." not in host or p.username or p.password:
-        raise SeoCheckError("Das ist keine gültige Domain (z. B. beispiel.de).")
+        raise SeoCheckError(gettext('Das ist keine gültige Domain (z. B. beispiel.de).'))
     if re.fullmatch(r"[\d.:]+", host):
-        raise SeoCheckError("Bitte eine Domain statt einer IP-Adresse angeben.")
+        raise SeoCheckError(gettext('Bitte eine Domain statt einer IP-Adresse angeben.'))
     if p.port not in (None, 80, 443):
-        raise SeoCheckError("Es sind nur die Standard-Ports 80 und 443 erlaubt.")
+        raise SeoCheckError(gettext('Es sind nur die Standard-Ports 80 und 443 erlaubt.'))
     return host
 
 
@@ -57,7 +59,7 @@ def _assert_public(host: str) -> None:
     try:
         public_ips(host)
     except FetchError:
-        raise SeoCheckError("Diese Domain ist nicht öffentlich erreichbar oder konnte nicht aufgelöst werden.") from None
+        raise SeoCheckError(gettext('Diese Domain ist nicht öffentlich erreichbar oder konnte nicht aufgelöst werden.')) from None
 
 
 def _tls(host: str) -> dict:
@@ -134,60 +136,60 @@ def analyze(raw: str) -> dict:
 
     # ---- TLS
     tls = _tls(host)
-    F.append(_f("https", TLS, "ok" if https_ok and tls.get("reachable") else "fail", "HTTPS erreichbar",
-                "Die Seite ist über HTTPS erreichbar." if https_ok and tls.get("reachable")
-                else f"HTTPS nicht nutzbar: {tls.get('error') or (https_err if not https_ok else '')}", 10,
-                "HTTPS mit gültigem Zertifikat einrichten (z. B. kostenlos über Let's Encrypt)."))
+    F.append(_f("https", TLS, "ok" if https_ok and tls.get("reachable") else "fail", gettext('HTTPS erreichbar'),
+                gettext('Die Seite ist über HTTPS erreichbar.') if https_ok and tls.get("reachable")
+                else gettext('HTTPS nicht nutzbar: %(value0)s', value0=f"{tls.get('error') or (https_err if not https_ok else '')}"), 10,
+                gettext("HTTPS mit gültigem Zertifikat einrichten (z. B. kostenlos über Let's Encrypt).")))
     if tls.get("reachable"):
-        F.append(_f("cert", TLS, "ok" if tls.get("valid") else "fail", "Zertifikat gültig und passend zur Domain",
-                    "Zertifikat wird von Browsern akzeptiert." + (f" Aussteller: {tls['issuer']}." if tls.get("issuer") else "")
-                    if tls.get("valid") else f"Zertifikat wird nicht akzeptiert: {tls.get('error', 'unbekannter Fehler')}", 12,
-                    "Ein gültiges, zur Domain passendes Zertifikat installieren und die Kette vollständig ausliefern."))
+        F.append(_f("cert", TLS, "ok" if tls.get("valid") else "fail", gettext('Zertifikat gültig und passend zur Domain'),
+                    gettext('Zertifikat wird von Browsern akzeptiert.') + (gettext(' Aussteller: %(value0)s.', value0=f"{tls['issuer']}") if tls.get("issuer") else "")
+                    if tls.get("valid") else gettext('Zertifikat wird nicht akzeptiert: %(value0)s', value0=f"{tls.get('error', 'unbekannter Fehler')}"), 12,
+                    gettext('Ein gültiges, zur Domain passendes Zertifikat installieren und die Kette vollständig ausliefern.')))
         if tls.get("not_after"):
             days = int((tls["not_after"] - time.time()) // 86400)
-            F.append(_f("cert_exp", TLS, "ok" if days > 30 else "warn" if days > 7 else "fail", "Laufzeit des Zertifikats",
-                        f"Läuft in {days} Tagen ab." if days >= 0 else f"Seit {-days} Tagen abgelaufen.", 6,
-                        "Automatische Erneuerung einrichten und überwachen."))
+            F.append(_f("cert_exp", TLS, "ok" if days > 30 else "warn" if days > 7 else "fail", gettext('Laufzeit des Zertifikats'),
+                        gettext('Läuft in %(value0)s Tagen ab.', value0=f'{days}') if days >= 0 else gettext('Seit %(value0)s Tagen abgelaufen.', value0=f'{-days}'), 6,
+                        gettext('Automatische Erneuerung einrichten und überwachen.')))
         ver = tls.get("version", "")
-        F.append(_f("tls_ver", TLS, "ok" if ver in ("TLSv1.3", "TLSv1.2") else "fail", "TLS-Version",
-                    f"Ausgehandelt: {ver}." if ver else "Nicht ermittelt.", 6,
-                    "Nur TLS 1.2 und 1.3 zulassen; ältere Protokolle abschalten."))
+        F.append(_f("tls_ver", TLS, "ok" if ver in ("TLSv1.3", "TLSv1.2") else "fail", gettext('TLS-Version'),
+                    gettext('Ausgehandelt: %(value0)s.', value0=f'{ver}') if ver else gettext('Nicht ermittelt.'), 6,
+                    gettext('Nur TLS 1.2 und 1.3 zulassen; ältere Protokolle abschalten.')))
     try:
         r2, _, _, f2 = _fetch(f"http://{host}/", max_bytes=20_000)
         redirected = urlparse(f2).scheme == "https"
     except SeoCheckError:
         redirected = False
-    F.append(_f("redir", TLS, "ok" if redirected else "warn", "Weiterleitung von http auf https",
-                "Aufrufe über http werden auf https umgeleitet." if redirected else "http-Aufrufe landen nicht auf https.", 5,
-                "Alle http-Anfragen dauerhaft (301) auf https umleiten."))
+    F.append(_f("redir", TLS, "ok" if redirected else "warn", gettext('Weiterleitung von http auf https'),
+                gettext('Aufrufe über http werden auf https umgeleitet.') if redirected else gettext('http-Aufrufe landen nicht auf https.'), 5,
+                gettext('Alle http-Anfragen dauerhaft (301) auf https umleiten.')))
 
     # ---- Header
     if resp is not None:
         hsts = hdr.get("strict-transport-security", "")
         m = re.search(r"max-age=(\d+)", hsts)
         age = int(m.group(1)) if m else 0
-        F.append(_f("hsts", HDR, "ok" if age >= 15552000 else "warn" if hsts else "fail", "HSTS (erzwingt HTTPS im Browser)",
-                    f"max-age={age} Sekunden{', inkl. Subdomains' if 'includesubdomains' in hsts.lower() else ''}." if hsts
-                    else "Header fehlt.", 6, "Strict-Transport-Security mit max-age von mindestens 6 Monaten setzen."))
+        F.append(_f("hsts", HDR, "ok" if age >= 15552000 else "warn" if hsts else "fail", gettext('HSTS (erzwingt HTTPS im Browser)'),
+                    gettext('max-age=%(value0)s Sekunden%(value1)s.', value0=f'{age}', value1=f"{(gettext('Including subdomains') if 'includesubdomains' in hsts.lower() else '')}") if hsts
+                    else gettext('Header fehlt.'), 6, gettext('Strict-Transport-Security mit max-age von mindestens 6 Monaten setzen.')))
         csp = hdr.get("content-security-policy", "")
-        F.append(_f("csp", HDR, "ok" if csp else "warn", "Content-Security-Policy", "Gesetzt." if csp else "Nicht gesetzt.", 5,
-                    "Eine Content-Security-Policy gegen das Einschleusen fremder Skripte einführen (erst im Report-Only-Modus testen)."))
+        F.append(_f("csp", HDR, "ok" if csp else "warn", gettext('Content-Security-Policy'), gettext('Gesetzt.') if csp else gettext('Nicht gesetzt.'), 5,
+                    gettext('Eine Content-Security-Policy gegen das Einschleusen fremder Skripte einführen (erst im Report-Only-Modus testen).')))
         frame = "x-frame-options" in hdr or "frame-ancestors" in csp.lower()
-        F.append(_f("frame", HDR, "ok" if frame else "warn", "Schutz vor Einbettung (Clickjacking)",
-                    "Gesetzt." if frame else "Weder X-Frame-Options noch frame-ancestors vorhanden.", 3,
-                    "X-Frame-Options: DENY (oder SAMEORIGIN) bzw. CSP frame-ancestors setzen."))
-        F.append(_f("xcto", HDR, "ok" if "x-content-type-options" in hdr else "warn", "X-Content-Type-Options",
-                    "Gesetzt." if "x-content-type-options" in hdr else "Nicht gesetzt.", 2, "X-Content-Type-Options: nosniff setzen."))
-        F.append(_f("refpol", HDR, "ok" if "referrer-policy" in hdr else "warn", "Referrer-Policy",
-                    "Gesetzt." if "referrer-policy" in hdr else "Nicht gesetzt.", 2,
-                    "Referrer-Policy: strict-origin-when-cross-origin setzen."))
-        F.append(_f("permpol", HDR, "ok" if "permissions-policy" in hdr else "info", "Permissions-Policy",
-                    "Gesetzt." if "permissions-policy" in hdr else "Nicht gesetzt (empfohlen).", 1,
-                    "Nicht benötigte Browser-Funktionen (Kamera, Mikrofon, Standort) per Permissions-Policy sperren."))
+        F.append(_f("frame", HDR, "ok" if frame else "warn", gettext('Schutz vor Einbettung (Clickjacking)'),
+                    gettext('Gesetzt.') if frame else gettext('Weder X-Frame-Options noch frame-ancestors vorhanden.'), 3,
+                    gettext('X-Frame-Options: DENY (oder SAMEORIGIN) bzw. CSP frame-ancestors setzen.')))
+        F.append(_f("xcto", HDR, "ok" if "x-content-type-options" in hdr else "warn", gettext('X-Content-Type-Options'),
+                    gettext('Gesetzt.') if "x-content-type-options" in hdr else gettext('Nicht gesetzt.'), 2, gettext('X-Content-Type-Options: nosniff setzen.')))
+        F.append(_f("refpol", HDR, "ok" if "referrer-policy" in hdr else "warn", gettext('Referrer-Policy'),
+                    gettext('Gesetzt.') if "referrer-policy" in hdr else gettext('Nicht gesetzt.'), 2,
+                    gettext('Referrer-Policy: strict-origin-when-cross-origin setzen.')))
+        F.append(_f("permpol", HDR, "ok" if "permissions-policy" in hdr else "info", gettext('Permissions-Policy'),
+                    gettext('Gesetzt.') if "permissions-policy" in hdr else gettext('Nicht gesetzt (empfohlen).'), 1,
+                    gettext('Nicht benötigte Browser-Funktionen (Kamera, Mikrofon, Standort) per Permissions-Policy sperren.')))
         leak = [f"{k}: {v}" for k, v in hdr.items() if k in ("server", "x-powered-by", "x-aspnet-version") and re.search(r"\d+\.\d+", v)]
-        F.append(_f("leak", HDR, "warn" if leak else "ok", "Keine Software-Versionen im Header",
-                    "Preisgegeben: " + "; ".join(leak) if leak else "Keine Versionsnummern in Server-Headern erkannt.", 3,
-                    "Versionsangaben in Server- und X-Powered-By-Headern entfernen."))
+        F.append(_f("leak", HDR, "warn" if leak else "ok", gettext('Keine Software-Versionen im Header'),
+                    gettext('Preisgegeben: ') + "; ".join(leak) if leak else gettext('Keine Versionsnummern in Server-Headern erkannt.'), 3,
+                    gettext('Versionsangaben in Server- und X-Powered-By-Headern entfernen.')))
 
     # ---- Cookies
     if cookies:
@@ -198,50 +200,49 @@ def analyze(raw: str) -> dict:
         no_http = sum(1 for c in cookies if not flag(c, "httponly"))
         no_same = sum(1 for c in cookies if not flag(c, "samesite"))
         weak = sum(1 for c in cookies if not (flag(c, "secure") and flag(c, "httponly") and flag(c, "samesite")))
-        F.append(_f("cookies", COO, "ok" if weak == 0 else "warn" if weak < total else "fail", "Cookie-Schutzattribute",
-                    f"{total} Cookie(s): {no_secure}× ohne Secure, {no_http}× ohne HttpOnly, {no_same}× ohne SameSite.", 6,
-                    "Cookies mit Secure, HttpOnly (falls ohne Skriptzugriff) und SameSite=Lax/Strict setzen."))
+        F.append(_f("cookies", COO, "ok" if weak == 0 else "warn" if weak < total else "fail", gettext('Cookie-Schutzattribute'),
+                    gettext('%(value0)s Cookie(s): %(value1)s× ohne Secure, %(value2)s× ohne HttpOnly, %(value3)s× ohne SameSite.', value0=f'{total}', value1=f'{no_secure}', value2=f'{no_http}', value3=f'{no_same}'), 6,
+                    gettext('Cookies mit Secure, HttpOnly (falls ohne Skriptzugriff) und SameSite=Lax/Strict setzen.')))
     else:
-        F.append(_f("cookies", COO, "info", "Cookie-Schutzattribute", "Beim ersten Aufruf werden keine Cookies gesetzt.", 0))
+        F.append(_f("cookies", COO, "info", gettext('Cookie-Schutzattribute'), gettext('Beim ersten Aufruf werden keine Cookies gesetzt.'), 0))
 
     # ---- E-Mail-Sicherheit (DNS)
     spf_recs = [t for t in _txt(host) + (_txt(org) if org != host else []) if t.lower().startswith("v=spf1")]
     spf = spf_recs[0] if spf_recs else ""
     if not spf and not extra.records(org, "MX"):
-        F.append(_f("spf", MAIL, "warn", "SPF", "Die Domain empfängt keine Mails, ist aber nicht gegen Missbrauch als Absender geschützt.", 3,
-                    "SPF „v=spf1 -all“ eintragen: damit ist klar, dass von dieser Domain keine Mails kommen dürfen."))
+        F.append(_f("spf", MAIL, "warn", gettext('SPF'), gettext('Die Domain empfängt keine Mails, ist aber nicht gegen Missbrauch als Absender geschützt.'), 3,
+                    gettext('SPF „v=spf1 -all“ eintragen: damit ist klar, dass von dieser Domain keine Mails kommen dürfen.')))
     elif not spf:
-        F.append(_f("spf", MAIL, "fail", "SPF", "Kein SPF-Eintrag: Fremde können leichter in deinem Namen Mails versenden.", 6,
-                    "SPF-Eintrag (TXT, „v=spf1 … -all“) mit den erlaubten Versendern anlegen."))
+        F.append(_f("spf", MAIL, "fail", gettext('SPF'), gettext('Kein SPF-Eintrag: Fremde können leichter in deinem Namen Mails versenden.'), 6,
+                    gettext('SPF-Eintrag (TXT, „v=spf1 … -all“) mit den erlaubten Versendern anlegen.')))
     else:
         end = spf.split()[-1].lower()
         st = "ok" if end == "-all" else "warn" if end == "~all" else "fail"
-        F.append(_f("spf", MAIL, st, "SPF", f"Eintrag vorhanden, Abschluss „{end}“." + (" Empfohlen ist „-all“." if st == "warn" else ""), 6,
-                    "SPF strikt mit „-all“ (oder mindestens „~all“) abschließen; „+all“ und „?all“ schützen nicht."))
+        F.append(_f("spf", MAIL, st, gettext('SPF'), gettext('Eintrag vorhanden, Abschluss „%(value0)s“.', value0=f'{end}') + (gettext(' Empfohlen ist „-all“.') if st == "warn" else ""), 6,
+                    gettext('SPF strikt mit „-all“ (oder mindestens „~all“) abschließen; „+all“ und „?all“ schützen nicht.')))
     dmarc_recs = [t for t in _txt(f"_dmarc.{host}") + (_txt(f"_dmarc.{org}") if org != host else []) if t.lower().startswith("v=dmarc1")]
     if not dmarc_recs:
-        F.append(_f("dmarc", MAIL, "fail", "DMARC", "Kein DMARC-Eintrag.", 8,
-                    "DMARC-Eintrag anlegen (zuerst p=none mit Berichten, dann p=quarantine oder p=reject)."))
+        F.append(_f("dmarc", MAIL, "fail", gettext('DMARC'), gettext('Kein DMARC-Eintrag.'), 8,
+                    gettext('DMARC-Eintrag anlegen (zuerst p=none mit Berichten, dann p=quarantine oder p=reject).')))
     else:
         pol = re.search(r"(?i)\bp=(\w+)", dmarc_recs[0])
         pol = (pol.group(1).lower() if pol else "none")
-        F.append(_f("dmarc", MAIL, "ok" if pol in ("quarantine", "reject") else "warn", "DMARC",
-                    f"Richtlinie p={pol}." + (" Nur Beobachtung, kein Schutz." if pol == "none" else ""), 8,
-                    "Nach der Beobachtungsphase auf p=quarantine bzw. p=reject umstellen."))
+        F.append(_f("dmarc", MAIL, "ok" if pol in ("quarantine", "reject") else "warn", gettext('DMARC'),
+                    gettext('Richtlinie p=%(value0)s.', value0=f'{pol}') + (gettext(' Nur Beobachtung, kein Schutz.') if pol == "none" else ""), 8,
+                    gettext('Nach der Beobachtungsphase auf p=quarantine bzw. p=reject umstellen.')))
         F.extend(extra.dmarc_findings(dmarc_recs[0]))
     dkim = next((s for s in DKIM_SELECTORS if any("p=" in t for t in _txt(f"{s}._domainkey.{org}"))), None)
-    F.append(_f("dkim", MAIL, "ok" if dkim else "info", "DKIM",
-                f"Schlüssel gefunden (Selektor „{dkim}“)." if dkim else "Über gängige Selektoren kein Schlüssel gefunden — "
-                "das beweist nichts, da Selektoren frei wählbar sind. Bitte beim Mailanbieter prüfen.", 3,
-                "DKIM beim Mailanbieter aktivieren und den Schlüssel im DNS veröffentlichen."))
+    F.append(_f("dkim", MAIL, "ok" if dkim else "info", gettext('DKIM'),
+                gettext('Schlüssel gefunden (Selektor „%(value0)s“).', value0=f'{dkim}') if dkim else gettext('Über gängige Selektoren kein Schlüssel gefunden — das beweist nichts, da Selektoren frei wählbar sind. Bitte beim Mailanbieter prüfen.'), 3,
+                gettext('DKIM beim Mailanbieter aktivieren und den Schlüssel im DNS veröffentlichen.')))
 
     # ---- DNS und Kontakt
-    F.append(_f("dnssec", DNS, "ok" if _has(org, "DS") else "warn", "DNSSEC", "Signiert (DS-Eintrag vorhanden)."
-                if _has(org, "DS") else "Nicht aktiviert.", 3, "DNSSEC beim Domain-Registrar bzw. DNS-Anbieter aktivieren."))
+    F.append(_f("dnssec", DNS, "ok" if _has(org, "DS") else "warn", gettext('DNSSEC'), gettext('Signiert (DS-Eintrag vorhanden).')
+                if _has(org, "DS") else gettext('Nicht aktiviert.'), 3, gettext('DNSSEC beim Domain-Registrar bzw. DNS-Anbieter aktivieren.')))
     has_caa = _has(org, "CAA")
-    F.append(_f("caa", DNS, "ok" if has_caa else "info", "CAA (erlaubte Zertifikatsaussteller)",
-                "Vorhanden." if has_caa else "Nicht gesetzt (empfohlen).", 2,
-                "CAA-Eintrag anlegen, damit nur gewünschte Stellen Zertifikate ausstellen dürfen."))
+    F.append(_f("caa", DNS, "ok" if has_caa else "info", gettext('CAA (erlaubte Zertifikatsaussteller)'),
+                gettext('Vorhanden.') if has_caa else gettext('Nicht gesetzt (empfohlen).'), 2,
+                gettext('CAA-Eintrag anlegen, damit nur gewünschte Stellen Zertifikate ausstellen dürfen.')))
     sectxt = False
     sectxt_text = None
     try:
@@ -251,9 +252,9 @@ def analyze(raw: str) -> dict:
             sectxt_text = body.decode("utf-8", errors="replace")
     except SeoCheckError:
         pass
-    F.append(_f("sectxt", DNS, "ok" if sectxt else "warn", "security.txt (Meldestelle für Sicherheitslücken)",
-                "Vorhanden." if sectxt else "Keine /.well-known/security.txt gefunden.", 3,
-                "Eine security.txt mit Kontakt für Sicherheitsmeldungen unter /.well-known/ veröffentlichen (RFC 9116)."))
+    F.append(_f("sectxt", DNS, "ok" if sectxt else "warn", gettext('security.txt (Meldestelle für Sicherheitslücken)'),
+                gettext('Vorhanden.') if sectxt else gettext('Keine /.well-known/security.txt gefunden.'), 3,
+                gettext('Eine security.txt mit Kontakt für Sicherheitsmeldungen unter /.well-known/ veröffentlichen (RFC 9116).')))
 
     # Zusatzprüfungen (parallel, jede darf scheitern); doppelte Schlüssel der Hauptprüfung werden nicht überschrieben
     known = {f["key"] for f in F}

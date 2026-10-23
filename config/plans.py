@@ -5,6 +5,8 @@
 Доступ проверяет services/entitlements.py, а не условия в шаблонах.
 """
 
+from flask_babel import lazy_gettext as _l
+
 
 def _inherit(base, *extra):
     return frozenset(base) | frozenset(extra)
@@ -17,10 +19,10 @@ GROWTH_FEATURES = _inherit(STARTER_FEATURES, "startups.publish", "startups.inter
 PREMIUM_FEATURES = _inherit(GROWTH_FEATURES, "auction.access")
 
 PLANS = {
-    "guest": {"name": "Gast", "price_eur_cents": 0, "features": GUEST_FEATURES},
-    "starter": {"name": "Starter", "price_eur_cents": None, "features": STARTER_FEATURES},
-    "growth": {"name": "Growth", "price_eur_cents": None, "features": GROWTH_FEATURES},
-    "premium": {"name": "Premium", "price_eur_cents": None, "features": PREMIUM_FEATURES},
+    "guest": {"name": _l("Guest"), "price_eur_cents": 0, "features": GUEST_FEATURES},
+    "starter": {"name": _l("Starter"), "price_eur_cents": None, "features": STARTER_FEATURES},
+    "growth": {"name": _l("Growth"), "price_eur_cents": None, "features": GROWTH_FEATURES},
+    "premium": {"name": _l("Premium"), "price_eur_cents": None, "features": PREMIUM_FEATURES},
 }
 
 DEFAULT_PLAN = "guest"

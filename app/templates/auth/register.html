@@ -8,6 +8,12 @@
 <div class="card auth-card">
 <h1>{{ _("Create an account") }}</h1>
 <p class="muted">{{ _("Every account needs an identity check before you can use the club. The check is done by Stripe, we do not store your documents.") }}</p>
+<ol class="registration-steps" aria-label="{{ _('How the club works') }}">
+  <li aria-current="step">{{ _("Create an account") }}</li>
+  <li>{{ _("Confirm your e-mail") }}</li>
+  <li>{{ _("Confirm your identity") }}</li>
+  <li>{{ _("Find matches") }}</li>
+</ol>
 
 <form method="post" action="{{ url_for('auth.register') }}" class="form">
   <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">

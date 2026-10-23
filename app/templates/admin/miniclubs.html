@@ -46,7 +46,7 @@
   {% endif %}
   <p>{{ club.description[:400] }}</p>
   {% if club.rules %}<p class="small"><em>{{ _("Rules of this group") }}:</em> {{ club.rules[:300] }}</p>{% endif %}
-  <p class="small">{{ club.status }}{% if club.rejection_reason %} · {{ club.rejection_reason }}{% endif %}</p>
+  <p class="small">{{ club.status|label }}{% if club.rejection_reason %} · {{ club.rejection_reason }}{% endif %}</p>
 
   {% if club.status == "pending" %}
   <form method="post" action="{{ url_for('admin.review_miniclub', club_id=club.id) }}" class="form">

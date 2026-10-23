@@ -7,6 +7,7 @@
 {% block content %}
 <section class="hero">
   <canvas class="hero-sphere" data-sphere aria-hidden="true"></canvas>
+  <button class="motion-toggle" type="button" data-motion-toggle aria-pressed="false" hidden>{{ _("Pause background animation") }}</button>
 
   <div class="hero-text">
     <p class="eyebrow">{{ _("A club for people who want to build something") }}</p>
@@ -39,7 +40,12 @@
   </div>
 </section>
 
-<section class="block">
+<nav class="section-nav" aria-label="{{ _('Explore the club') }}">
+  <a href="#how-it-works">{{ _("How the club works") }}</a>
+  <a href="#features">{{ _("Everything the club offers") }}</a>
+  <a href="#plans">{{ _("Plans") }}</a>
+</nav>
+<section class="block" id="how-it-works">
   <h2>{{ _("How the club works") }}</h2>
   <div class="steps">
     <article class="tilt-card" data-tilt>
@@ -164,7 +170,7 @@
 </section>
 
 <section class="block">
-  <h2>{{ _("Plans") }}</h2>
+  <h2 id="plans">{{ _("Plans") }}</h2>
   <p class="muted">{{ _("Prices will be published soon. Access depends on the plan.") }}</p>
   <div class="plans">
     <article class="plan tilt-card" data-tilt>

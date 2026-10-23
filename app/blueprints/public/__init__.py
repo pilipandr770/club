@@ -1,9 +1,11 @@
 from datetime import timedelta
 
-from flask import Blueprint, Response, current_app, jsonify, render_template
+from flask import Blueprint, Response, abort, current_app, jsonify, redirect, render_template, request, url_for
+from flask_login import current_user
 from sqlalchemy import text
 
 from ...extensions import db
+from ..._compat import safe_next
 from ...utils import utcnow
 
 bp = Blueprint("public", __name__)
@@ -12,6 +14,20 @@ bp = Blueprint("public", __name__)
 @bp.get("/")
 def index():
     return render_template("public/index.html")
+
+
+@bp.post("/language")
+def language():
+    locale = request.form.get("locale", "")
+    if locale not in current_app.config["LOCALES_ENABLED"]:
+        abort(400)
+    if current_user.is_authenticated:
+        current_user.locale = locale
+        db.session.commit()
+    response = redirect(safe_next(request.form.get("next")) or url_for("public.index"), code=303)
+    response.set_cookie("locale", locale, max_age=365 * 24 * 60 * 60, httponly=True,
+                        secure=current_app.config["SESSION_COOKIE_SECURE"], samesite="Lax")
+    return response
 
 
 @bp.get("/healthz")
