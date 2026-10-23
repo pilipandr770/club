@@ -3,7 +3,9 @@
 (function () {
   "use strict";
 
-  var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+  var finePointer = window.matchMedia("(hover: hover) and (pointer: fine)");
+  var reduceMotion = motionQuery.matches;
 
   // --- наклон карточек ----------------------------------------------------
   // Значения --rx и --ry задают поворот в градусах; CSS применяет их в transform.
@@ -12,13 +14,14 @@
     element.style.setProperty("--ry", ry.toFixed(2) + "deg");
   }
 
-  if (!reduceMotion) {
+  if (finePointer.matches) {
     document.querySelectorAll("[data-tilt]").forEach(function (element) {
       element.addEventListener("pointermove", function (event) {
+        if (reduceMotion || !finePointer.matches) return;
         var box = element.getBoundingClientRect();
         var x = (event.clientX - box.left) / box.width - 0.5;
         var y = (event.clientY - box.top) / box.height - 0.5;
-        setTilt(element, -y * 14, x * 14);
+        setTilt(element, -y * 6, x * 6);
       });
       element.addEventListener("pointerleave", function () {
         setTilt(element, 0, 0);
@@ -32,7 +35,14 @@
     return;
   }
   var context = canvas.getContext("2d");
+  if (!context) return;
   var points = [];
+  var links = [];
+  var visible = true;
+  var paused = false;
+  var motionToggle = document.querySelector("[data-motion-toggle]");
+  var lastTime = 0;
+  var color = accentColor();
   var POINT_COUNT = 140;
   var LINK_DISTANCE = 0.42; // доля радиуса, при которой точки соединяются линией
   var rotation = { x: 0.2, y: 0 };
@@ -51,6 +61,14 @@
     points.push({ x: Math.cos(theta) * radius, y: y, z: Math.sin(theta) * radius, phase: Math.random() * Math.PI * 2 });
   }
 
+  // Connections are invariant under rotation: compute once, rather than every frame.
+  for (var a = 0; a < points.length; a++) {
+    for (var b = a + 1; b < points.length; b++) {
+      if (Math.hypot(points[a].x - points[b].x, points[a].y - points[b].y,
+          points[a].z - points[b].z) < LINK_DISTANCE) links.push([a, b]);
+    }
+  }
+
   function accentColor() {
     var value = getComputedStyle(document.documentElement).getPropertyValue("--color-accent").trim();
     return value || "#1f5fbf";
@@ -64,6 +82,8 @@
     canvas.width = Math.round(width * ratio);
     canvas.height = Math.round(height * ratio);
     context.setTransform(ratio, 0, 0, ratio, 0, 0);
+    color = accentColor();
+    if (!running || reduceMotion) draw(0);
   }
 
   function project(point, scale, cx, cy) {
@@ -80,7 +100,6 @@
 
   function draw(time) {
     context.clearRect(0, 0, width, height);
-    var color = accentColor();
     var cx = width / 2;
     var cy = height / 2;
     var scale = Math.min(width, height) * 0.42;
@@ -95,22 +114,16 @@
 
     // Линии между близкими точками: метафора матчинга
     context.lineWidth = 1;
-    for (var a = 0; a < projected.length; a++) {
-      for (var b = a + 1; b < projected.length; b++) {
-        var dx = points[a].x - points[b].x;
-        var dy = points[a].y - points[b].y;
-        var dz = points[a].z - points[b].z;
-        if (Math.sqrt(dx * dx + dy * dy + dz * dz) < LINK_DISTANCE) {
-          var depth = (projected[a].s + projected[b].s) / 2;
-          context.strokeStyle = color;
-          context.globalAlpha = Math.max(0.05, Math.min(0.35, (depth - 0.6) * 0.5));
-          context.beginPath();
-          context.moveTo(projected[a].x, projected[a].y);
-          context.lineTo(projected[b].x, projected[b].y);
-          context.stroke();
-        }
-      }
-    }
+    links.forEach(function (link) {
+      var first = projected[link[0]], second = projected[link[1]];
+      var depth = (first.s + second.s) / 2;
+      context.strokeStyle = color;
+      context.globalAlpha = Math.max(0.05, Math.min(0.35, (depth - 0.6) * 0.5));
+      context.beginPath();
+      context.moveTo(first.x, first.y);
+      context.lineTo(second.x, second.y);
+      context.stroke();
+    });
 
     // Точки: дальние бледнее, ближние ярче и чуть пульсируют
     for (var p = 0; p < projected.length; p++) {
@@ -126,14 +139,14 @@
   }
 
   function loop(time) {
-    draw(time);
+    if (time - lastTime >= 1000 / 30) { draw(time); lastTime = time; }
     if (running && !reduceMotion) {
       frameId = requestAnimationFrame(loop);
     }
   }
 
   function start() {
-    if (running) return;
+    if (running || paused || reduceMotion || !visible || document.hidden) return;
     running = true;
     frameId = requestAnimationFrame(loop);
   }
@@ -144,6 +157,7 @@
   }
 
   window.addEventListener("pointermove", function (event) {
+    if (reduceMotion || !finePointer.matches) return;
     pointer.x = event.clientX / window.innerWidth - 0.5;
     pointer.y = event.clientY / window.innerHeight - 0.5;
     target.y = pointer.x * 1.4;
@@ -152,13 +166,32 @@
 
   window.addEventListener("resize", resize);
 
+  document.addEventListener("visibilitychange", function () {
+    document.hidden ? stop() : start();
+  });
+  motionQuery.addEventListener("change", function () {
+    reduceMotion = motionQuery.matches;
+    document.querySelectorAll("[data-tilt]").forEach(function (element) { setTilt(element, 0, 0); });
+    stop();
+    reduceMotion ? draw(0) : start();
+  });
+
+  if (motionToggle) {
+    motionToggle.hidden = reduceMotion;
+    motionToggle.addEventListener("click", function () {
+      paused = !paused;
+      motionToggle.setAttribute("aria-pressed", String(paused));
+      paused ? stop() : start();
+    });
+    motionQuery.addEventListener("change", function () { motionToggle.hidden = reduceMotion; });
+  }
+
   resize();
-  if (reduceMotion) {
-    draw(0);
-  } else if ("IntersectionObserver" in window) {
+  if ("IntersectionObserver" in window) {
     // Не тратим батарею, когда сфера не на экране
     new IntersectionObserver(function (entries) {
-      entries[0].isIntersecting ? start() : stop();
+      visible = entries[0].isIntersecting;
+      visible ? start() : stop();
     }).observe(canvas);
   } else {
     start();

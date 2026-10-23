@@ -184,5 +184,9 @@ def matchable(profile) -> bool:
 
 def missing_for_matching(profile) -> list[str]:
     """Какие поля мешают матчингу, для подсказки участнику."""
-    missing = [f.key for f in FIELDS if f.for_matching and not _filled(profile, f.key)]
+    missing = []
+    if not _filled(profile, "q_can_help"):
+        missing.append("q_can_help")
+    if not (_filled(profile, "q_looking_for") or _filled(profile, "q_challenge")):
+        missing.append("q_looking_for")
     return missing

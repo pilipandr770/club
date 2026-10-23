@@ -60,6 +60,26 @@
 </section>
 {% endif %}
 
+{% if current_user.is_verified and profile_enabled %}
+<section class="journey card" aria-labelledby="journey-title">
+  <p class="eyebrow">{{ _("Your next connection starts here") }}</p>
+  <h2 id="journey-title">{{ _("From your profile to a useful conversation") }}</h2>
+  <ol class="journey-steps">
+    <li><a href="{{ url_for('profile.edit') }}">{{ _("Describe your offer and your goal") }}</a><p>{{ _("One concrete need and one way you can help are enough to start.") }}</p></li>
+    <li><a href="{{ url_for('profile.privacy') }}">{{ _("Choose your visibility") }}</a><p>{{ _("Directory visibility and matching are separate, optional choices.") }}</p></li>
+    <li><a href="{{ url_for('profile.matches') }}">{{ _("Explore your matches") }}</a><p>{{ _("Read why someone fits, then request an introduction.") }}</p></li>
+  </ol>
+  {% if matching_ready %}
+  <a class="button" href="{{ url_for('profile.matches') }}">{{ _("Explore your matches") }}</a>
+  {% elif matching_fields_ready %}
+  <a class="button" href="{{ url_for('profile.privacy') }}">{{ _("Choose your visibility") }}</a>
+  {% else %}
+  <a class="button" href="{{ url_for('profile.edit') }}">{{ _("Describe your offer and your goal") }}</a>
+  {% endif %}
+  <a class="journey-inbox" href="{{ url_for('profile.intros_inbox') }}">{{ _("Contact requests") }}</a>
+</section>
+{% endif %}
+
 <h2>{{ _("Your areas") }}</h2>
 <div class="grid-cards">
   {% for item in modules %}

@@ -7,9 +7,11 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='css/app.css', v=asset_version) }}">
 </head>
 <body>
+  <a class="skip-link" href="#main-content">{{ _("Skip to content") }}</a>
   <header class="site-header">
     <a class="brand" href="{{ url_for('public.index') }}">{{ _("Club") }}</a>
-    <nav class="nav">
+    <button class="link-button nav-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation" hidden>{{ _("Menu") }}</button>
+    <nav class="nav" id="primary-navigation" aria-label="{{ _('Main navigation') }}">
       {% if current_user.is_authenticated %}
         <a href="{{ url_for('member.dashboard') }}"{% if request.endpoint == 'member.dashboard' %} aria-current="page"{% endif %}>{{ _("My account") }}</a>
         {% if current_user.is_admin %}
@@ -29,7 +31,7 @@
     </nav>
   </header>
 
-  <main class="{% block main_class %}container{% endblock %}">
+  <main id="main-content" tabindex="-1" class="{% block main_class %}container{% endblock %}">
     {% with messages = get_flashed_messages(with_categories=true) %}
       {% for category, message in messages %}
         <p class="flash flash-{{ category }}" role="status">{{ message }}</p>

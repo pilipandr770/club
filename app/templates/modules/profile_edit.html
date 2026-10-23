@@ -15,6 +15,9 @@
     <p class="small">{{ _("For matching, please also fill in:") }}
       {% for field in fields if field.key in missing %}{{ field.label }}{% if not loop.last %}, {% endif %}{% endfor %}
     </p>
+  {% else %}
+    <p class="small">{{ _("You also need to allow matching in your profile. It is off by default.") }}</p>
+    <a class="button button-secondary" href="{{ url_for('profile.privacy') }}">{{ _("Make my choices") }}</a>
   {% endif %}
 </section>
 

@@ -4,6 +4,11 @@
 
 {% block content %}
 <h1>{{ _("Matches") }}</h1>
+<nav class="section-nav" aria-label="{{ _('Matching navigation') }}">
+  <a href="{{ url_for('profile.edit') }}">{{ _("Edit my profile") }}</a>
+  <a href="{{ url_for('profile.privacy') }}">{{ _("Publication and matching") }}</a>
+  <a href="{{ url_for('profile.intros_inbox') }}">{{ _("Contact requests") }}</a>
+</nav>
 
 {% if not ready %}
   <section class="card">
@@ -15,6 +20,7 @@
     {% endif %}
     <p class="small">{{ _("You also need to allow matching in your profile. It is off by default.") }}</p>
     <p><a href="{{ url_for('profile.privacy') }}">{{ _("Publication and matching") }}</a> · <a href="{{ url_for('profile.edit') }}">{{ _("Edit my profile") }}</a></p>
+    <a class="button" href="{{ url_for('profile.edit' if missing else 'profile.privacy') }}">{{ _("Edit my profile") if missing else _("Make my choices") }}</a>
   </section>
 {% else %}
   <p class="muted">{{ _("Suggestions are based on what you need and what others offer. Contact details are shared only after both sides agree.") }}</p>

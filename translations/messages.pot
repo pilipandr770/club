@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-10-21 18:49+0000\n"
+"POT-Creation-Date: 2026-10-23 12:22+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1210,29 +1210,29 @@ msgstr ""
 msgid "Your e-mail address is confirmed."
 msgstr ""
 
-#: app/blueprints/member/__init__.py:46 app/blueprints/member/__init__.py:52
+#: app/blueprints/member/__init__.py:50 app/blueprints/member/__init__.py:56
 msgid "Verification cannot be started right now."
 msgstr ""
 
-#: app/blueprints/member/__init__.py:63
+#: app/blueprints/member/__init__.py:67
 msgid ""
 "We are checking your details. This can take a few minutes. The result "
 "appears here and we will not send it by e-mail."
 msgstr ""
 
-#: app/blueprints/member/__init__.py:76
+#: app/blueprints/member/__init__.py:80
 msgid "If your address is not yet confirmed, we have sent a new link."
 msgstr ""
 
-#: app/blueprints/member/__init__.py:98
+#: app/blueprints/member/__init__.py:102
 msgid "The password is not correct. Your account was not deleted."
 msgstr ""
 
-#: app/blueprints/member/__init__.py:106
+#: app/blueprints/member/__init__.py:110
 msgid "Your account could not be deleted right now. Please try again later."
 msgstr ""
 
-#: app/blueprints/member/__init__.py:110
+#: app/blueprints/member/__init__.py:114
 msgid "Your account and your data have been deleted."
 msgstr ""
 
@@ -1255,7 +1255,7 @@ msgstr ""
 #: app/templates/modules/service_detail.html:3
 #: app/templates/modules/services_list.html:3
 #: app/templates/modules/services_mine.html:3
-#: app/templates/modules/tools_index.html:3 app/templates/public/index.html:104
+#: app/templates/modules/tools_index.html:3 app/templates/public/index.html:110
 msgid "Services"
 msgstr ""
 
@@ -1269,8 +1269,8 @@ msgstr ""
 #: app/templates/modules/travel_form.html:3
 #: app/templates/modules/travel_list.html:3
 #: app/templates/modules/travel_list.html:6
-#: app/templates/modules/travel_mine.html:3 app/templates/public/index.html:36
-#: app/templates/public/index.html:143
+#: app/templates/modules/travel_mine.html:3 app/templates/public/index.html:37
+#: app/templates/public/index.html:149
 msgid "Travel"
 msgstr ""
 
@@ -1284,7 +1284,7 @@ msgstr ""
 #: app/templates/modules/events_form.html:3
 #: app/templates/modules/events_list.html:3
 #: app/templates/modules/events_list.html:6
-#: app/templates/modules/events_mine.html:3 app/templates/public/index.html:133
+#: app/templates/modules/events_mine.html:3 app/templates/public/index.html:139
 msgid "Events"
 msgstr ""
 
@@ -1326,7 +1326,7 @@ msgstr ""
 #: app/templates/modules/auction_list.html:3
 #: app/templates/modules/auction_list.html:6
 #: app/templates/modules/auction_mine.html:3
-#: app/templates/public/index.html:148
+#: app/templates/public/index.html:154
 msgid "Auction"
 msgstr ""
 
@@ -1812,7 +1812,7 @@ msgstr ""
 msgid "First revenue"
 msgstr ""
 
-#: app/modules/startups/labels.py:19 app/templates/public/index.html:179
+#: app/modules/startups/labels.py:19 app/templates/public/index.html:185
 msgid "Growth"
 msgstr ""
 
@@ -2038,7 +2038,7 @@ msgstr ""
 msgid "Withdrawn."
 msgstr ""
 
-#: app/services/intros.py:115 app/templates/modules/profile_matches.html:36
+#: app/services/intros.py:115 app/templates/modules/profile_matches.html:42
 msgid "Accepted."
 msgstr ""
 
@@ -2149,7 +2149,7 @@ msgid ""
 "protection of your domain."
 msgstr ""
 
-#: app/services/tools/__init__.py:36 app/templates/public/index.html:114
+#: app/services/tools/__init__.py:36 app/templates/public/index.html:120
 msgid "Law search"
 msgstr ""
 
@@ -2159,7 +2159,7 @@ msgid ""
 "what they say."
 msgstr ""
 
-#: app/services/tools/__init__.py:38 app/templates/public/index.html:119
+#: app/services/tools/__init__.py:38 app/templates/public/index.html:125
 msgid "Market panel"
 msgstr ""
 
@@ -2169,7 +2169,7 @@ msgstr ""
 
 #: app/templates/admin/dashboard.html:3 app/templates/auth/login.html:3
 #: app/templates/auth/register.html:3 app/templates/base.html:6
-#: app/templates/base.html:11 app/templates/base.html:42
+#: app/templates/base.html:12 app/templates/base.html:44
 #: app/templates/member/dashboard.html:3
 #: app/templates/modules/auction_list.html:3
 #: app/templates/modules/events_list.html:3
@@ -2188,7 +2188,19 @@ msgstr ""
 msgid "Club"
 msgstr ""
 
-#: app/templates/base.html:14 app/templates/member/dashboard.html:3
+#: app/templates/base.html:10
+msgid "Skip to content"
+msgstr ""
+
+#: app/templates/base.html:13
+msgid "Menu"
+msgstr ""
+
+#: app/templates/base.html:14
+msgid "Main navigation"
+msgstr ""
+
+#: app/templates/base.html:16 app/templates/member/dashboard.html:3
 msgid "My account"
 msgstr ""
 
@@ -2200,22 +2212,22 @@ msgstr ""
 #: app/templates/admin/services.html:3 app/templates/admin/startups.html:3
 #: app/templates/admin/travel.html:3 app/templates/admin/user_detail.html:3
 #: app/templates/admin/user_new.html:3 app/templates/admin/users.html:3
-#: app/templates/base.html:16
+#: app/templates/base.html:18
 msgid "Admin"
 msgstr ""
 
-#: app/templates/base.html:23
+#: app/templates/base.html:25
 msgid "Log out"
 msgstr ""
 
 #: app/templates/auth/login.html:3 app/templates/auth/login.html:9
-#: app/templates/auth/login.html:31 app/templates/auth/register.html:78
-#: app/templates/base.html:26 app/templates/public/index.html:17
+#: app/templates/auth/login.html:31 app/templates/auth/register.html:84
+#: app/templates/base.html:28 app/templates/public/index.html:18
 msgid "Log in"
 msgstr ""
 
 #: app/templates/auth/login.html:35 app/templates/auth/register.html:3
-#: app/templates/base.html:27
+#: app/templates/base.html:29
 msgid "Register"
 msgstr ""
 
@@ -2271,8 +2283,8 @@ msgid "Auction lots"
 msgstr ""
 
 #: app/templates/admin/dashboard.html:10 app/templates/admin/startups.html:3
-#: app/templates/admin/startups.html:6 app/templates/public/index.html:32
-#: app/templates/public/index.html:124
+#: app/templates/admin/startups.html:6 app/templates/public/index.html:33
+#: app/templates/public/index.html:130
 msgid "Startups"
 msgstr ""
 
@@ -2524,7 +2536,7 @@ msgstr ""
 
 #: app/templates/admin/service_form.html:36
 #: app/templates/modules/profile.html:25
-#: app/templates/modules/profile_edit.html:44
+#: app/templates/modules/profile_edit.html:47
 msgid "Save"
 msgstr ""
 
@@ -2667,19 +2679,19 @@ msgid ""
 msgstr ""
 
 #: app/templates/admin/user_new.html:14 app/templates/admin/users.html:20
-#: app/templates/auth/login.html:17 app/templates/auth/register.html:27
+#: app/templates/auth/login.html:17 app/templates/auth/register.html:33
 msgid "E-mail"
 msgstr ""
 
-#: app/templates/admin/user_new.html:18 app/templates/auth/register.html:16
+#: app/templates/admin/user_new.html:18 app/templates/auth/register.html:22
 msgid "First name"
 msgstr ""
 
-#: app/templates/admin/user_new.html:22 app/templates/auth/register.html:22
+#: app/templates/admin/user_new.html:22 app/templates/auth/register.html:28
 msgid "Last name"
 msgstr ""
 
-#: app/templates/admin/user_new.html:26 app/templates/auth/register.html:40
+#: app/templates/admin/user_new.html:26 app/templates/auth/register.html:46
 msgid "Country of residence"
 msgstr ""
 
@@ -2719,7 +2731,7 @@ msgstr ""
 msgid "No members found."
 msgstr ""
 
-#: app/templates/auth/login.html:22 app/templates/auth/register.html:33
+#: app/templates/auth/login.html:22 app/templates/auth/register.html:39
 msgid "Password"
 msgstr ""
 
@@ -2731,7 +2743,7 @@ msgstr ""
 msgid "No account yet?"
 msgstr ""
 
-#: app/templates/auth/register.html:9
+#: app/templates/auth/register.html:9 app/templates/auth/register.html:12
 msgid "Create an account"
 msgstr ""
 
@@ -2741,43 +2753,60 @@ msgid ""
 "check is done by Stripe, we do not store your documents."
 msgstr ""
 
-#: app/templates/auth/register.html:35
+#: app/templates/auth/register.html:11 app/templates/public/index.html:44
+#: app/templates/public/index.html:49
+msgid "How the club works"
+msgstr ""
+
+#: app/templates/auth/register.html:13
+msgid "Confirm your e-mail"
+msgstr ""
+
+#: app/templates/auth/register.html:14 app/templates/public/index.html:53
+msgid "Confirm your identity"
+msgstr ""
+
+#: app/templates/auth/register.html:15 app/templates/public/index.html:63
+msgid "Find matches"
+msgstr ""
+
+#: app/templates/auth/register.html:41
 msgid "At least 10 characters."
 msgstr ""
 
-#: app/templates/auth/register.html:42
+#: app/templates/auth/register.html:48
 msgid "Please choose"
 msgstr ""
 
-#: app/templates/auth/register.html:51
+#: app/templates/auth/register.html:57
 msgid "Confirmations"
 msgstr ""
 
-#: app/templates/auth/register.html:55
+#: app/templates/auth/register.html:61
 msgid ""
 "I have read the privacy notice and agree that my data is processed to run"
 " my account."
 msgstr ""
 
-#: app/templates/auth/register.html:61
+#: app/templates/auth/register.html:67
 msgid "I accept the terms of use."
 msgstr ""
 
-#: app/templates/auth/register.html:67
+#: app/templates/auth/register.html:73
 msgid ""
 "I agree that Stripe checks my identity document and a selfie. Stripe "
 "processes this data, the club only receives the result."
 msgstr ""
 
-#: app/templates/auth/register.html:72 app/templates/public/index.html:162
+#: app/templates/auth/register.html:78 app/templates/public/index.html:168
 msgid "Membership is for people aged 18 and over."
 msgstr ""
 
-#: app/templates/auth/register.html:74
+#: app/templates/auth/register.html:80
 msgid "Create account"
 msgstr ""
 
-#: app/templates/auth/register.html:78
+#: app/templates/auth/register.html:84
 msgid "Already registered?"
 msgstr ""
 
@@ -2838,8 +2867,9 @@ msgid "Start identity check"
 msgstr ""
 
 #: app/templates/member/dashboard.html:57
-#: app/templates/modules/profile_edit.html:73
-#: app/templates/modules/profile_matches.html:17
+#: app/templates/modules/profile_edit.html:76
+#: app/templates/modules/profile_matches.html:9
+#: app/templates/modules/profile_matches.html:22
 #: app/templates/modules/profile_privacy.html:3
 #: app/templates/modules/profile_privacy.html:6
 msgid "Publication and matching"
@@ -2852,40 +2882,86 @@ msgid ""
 msgstr ""
 
 #: app/templates/member/dashboard.html:59
+#: app/templates/modules/profile_edit.html:20
+#: app/templates/modules/profile_matches.html:23
 msgid "Make my choices"
 msgstr ""
 
-#: app/templates/member/dashboard.html:63
-msgid "Your areas"
+#: app/templates/member/dashboard.html:65
+msgid "Your next connection starts here"
+msgstr ""
+
+#: app/templates/member/dashboard.html:66
+msgid "From your profile to a useful conversation"
+msgstr ""
+
+#: app/templates/member/dashboard.html:68
+#: app/templates/member/dashboard.html:77
+msgid "Describe your offer and your goal"
+msgstr ""
+
+#: app/templates/member/dashboard.html:68
+msgid "One concrete need and one way you can help are enough to start."
 msgstr ""
 
 #: app/templates/member/dashboard.html:69
-msgid "not included in your plan"
-msgstr ""
-
 #: app/templates/member/dashboard.html:75
-msgid "Your data"
+msgid "Choose your visibility"
 msgstr ""
 
-#: app/templates/member/dashboard.html:76
-msgid "Download my data (JSON)"
+#: app/templates/member/dashboard.html:69
+msgid "Directory visibility and matching are separate, optional choices."
+msgstr ""
+
+#: app/templates/member/dashboard.html:70
+#: app/templates/member/dashboard.html:73
+msgid "Explore your matches"
+msgstr ""
+
+#: app/templates/member/dashboard.html:70
+msgid "Read why someone fits, then request an introduction."
 msgstr ""
 
 #: app/templates/member/dashboard.html:79
+#: app/templates/modules/profile_intros.html:3
+#: app/templates/modules/profile_intros.html:6
+#: app/templates/modules/profile_matches.html:10
+#: app/templates/modules/profile_matches.html:46
+#: app/templates/modules/profile_matches.html:64
+msgid "Contact requests"
+msgstr ""
+
+#: app/templates/member/dashboard.html:83
+msgid "Your areas"
+msgstr ""
+
+#: app/templates/member/dashboard.html:89
+msgid "not included in your plan"
+msgstr ""
+
+#: app/templates/member/dashboard.html:95
+msgid "Your data"
+msgstr ""
+
+#: app/templates/member/dashboard.html:96
+msgid "Download my data (JSON)"
+msgstr ""
+
+#: app/templates/member/dashboard.html:99
 msgid "Delete my account"
 msgstr ""
 
-#: app/templates/member/dashboard.html:80
+#: app/templates/member/dashboard.html:100
 msgid ""
 "This deletes your account, your consent history and your identity check "
 "data at Stripe. This cannot be undone."
 msgstr ""
 
-#: app/templates/member/dashboard.html:84
+#: app/templates/member/dashboard.html:104
 msgid "Confirm with your password"
 msgstr ""
 
-#: app/templates/member/dashboard.html:87
+#: app/templates/member/dashboard.html:107
 msgid "Delete account permanently"
 msgstr ""
 
@@ -3120,8 +3196,8 @@ msgstr ""
 #: app/templates/modules/auction_form.html:44
 #: app/templates/modules/events_form.html:74
 #: app/templates/modules/miniclubs_form.html:57
-#: app/templates/modules/profile_edit.html:34
-#: app/templates/modules/profile_edit.html:51
+#: app/templates/modules/profile_edit.html:37
+#: app/templates/modules/profile_edit.html:54
 #: app/templates/modules/startups_form.html:59
 #: app/templates/modules/travel_form.html:57
 msgid "Show examples"
@@ -3158,7 +3234,7 @@ msgstr ""
 #: app/templates/modules/auction_form.html:49
 #: app/templates/modules/events_form.html:95
 #: app/templates/modules/miniclubs_form.html:64
-#: app/templates/modules/profile_edit.html:48
+#: app/templates/modules/profile_edit.html:51
 #: app/templates/modules/travel_form.html:70
 msgid "Photo"
 msgstr ""
@@ -4023,40 +4099,38 @@ msgstr ""
 msgid "For matching, please also fill in:"
 msgstr ""
 
-#: app/templates/modules/profile_edit.html:38
+#: app/templates/modules/profile_edit.html:19
+#: app/templates/modules/profile_matches.html:21
+msgid "You also need to allow matching in your profile. It is off by default."
+msgstr ""
+
+#: app/templates/modules/profile_edit.html:41
 msgid "Examples are for orientation only. Write about yourself in your own words."
 msgstr ""
 
-#: app/templates/modules/profile_edit.html:57
+#: app/templates/modules/profile_edit.html:60
 msgid "Your photo"
 msgstr ""
 
-#: app/templates/modules/profile_edit.html:60
+#: app/templates/modules/profile_edit.html:63
 msgid "Remove photo"
 msgstr ""
 
-#: app/templates/modules/profile_edit.html:66
+#: app/templates/modules/profile_edit.html:69
 msgid "Choose a photo"
 msgstr ""
 
-#: app/templates/modules/profile_edit.html:69
+#: app/templates/modules/profile_edit.html:72
 msgid "Upload photo"
 msgstr ""
 
-#: app/templates/modules/profile_edit.html:73
-#: app/templates/modules/profile_matches.html:58
+#: app/templates/modules/profile_edit.html:76
+#: app/templates/modules/profile_matches.html:64
 msgid "Open the member directory"
 msgstr ""
 
-#: app/templates/modules/profile_edit.html:73
+#: app/templates/modules/profile_edit.html:76
 msgid "My matches"
-msgstr ""
-
-#: app/templates/modules/profile_intros.html:3
-#: app/templates/modules/profile_intros.html:6
-#: app/templates/modules/profile_matches.html:40
-#: app/templates/modules/profile_matches.html:58
-msgid "Contact requests"
 msgstr ""
 
 #: app/templates/modules/profile_intros.html:7
@@ -4101,57 +4175,59 @@ msgstr ""
 msgid "Matches"
 msgstr ""
 
-#: app/templates/modules/profile_matches.html:10
-msgid ""
-"Matching works once your profile says what you can offer and what you are"
-" looking for."
+#: app/templates/modules/profile_matches.html:7
+msgid "Matching navigation"
 msgstr ""
 
-#: app/templates/modules/profile_matches.html:12
-msgid "Please fill in:"
-msgstr ""
-
-#: app/templates/modules/profile_matches.html:16
-msgid "You also need to allow matching in your profile. It is off by default."
-msgstr ""
-
-#: app/templates/modules/profile_matches.html:17
+#: app/templates/modules/profile_matches.html:8
+#: app/templates/modules/profile_matches.html:22
+#: app/templates/modules/profile_matches.html:23
 #: app/templates/modules/profile_privacy.html:43
 #: app/templates/modules/profile_view.html:39
 msgid "Edit my profile"
 msgstr ""
 
-#: app/templates/modules/profile_matches.html:20
+#: app/templates/modules/profile_matches.html:15
+msgid ""
+"Matching works once your profile says what you can offer and what you are"
+" looking for."
+msgstr ""
+
+#: app/templates/modules/profile_matches.html:17
+msgid "Please fill in:"
+msgstr ""
+
+#: app/templates/modules/profile_matches.html:26
 msgid ""
 "Suggestions are based on what you need and what others offer. Contact "
 "details are shared only after both sides agree."
 msgstr ""
 
-#: app/templates/modules/profile_matches.html:22
+#: app/templates/modules/profile_matches.html:28
 msgid "Explanations are short templates until the AI service is connected."
 msgstr ""
 
-#: app/templates/modules/profile_matches.html:34
+#: app/templates/modules/profile_matches.html:40
 msgid "Contact:"
 msgstr ""
 
-#: app/templates/modules/profile_matches.html:38
+#: app/templates/modules/profile_matches.html:44
 msgid "Your request is waiting for an answer."
 msgstr ""
 
-#: app/templates/modules/profile_matches.html:40
+#: app/templates/modules/profile_matches.html:46
 msgid "This member has asked to contact you. Answer in your requests."
 msgstr ""
 
-#: app/templates/modules/profile_matches.html:45
+#: app/templates/modules/profile_matches.html:51
 msgid "Short message (optional)"
 msgstr ""
 
-#: app/templates/modules/profile_matches.html:48
+#: app/templates/modules/profile_matches.html:54
 msgid "Request contact"
 msgstr ""
 
-#: app/templates/modules/profile_matches.html:54
+#: app/templates/modules/profile_matches.html:60
 msgid "No matches yet. New members appear here as they join."
 msgstr ""
 
@@ -4202,7 +4278,7 @@ msgid "Directory"
 msgstr ""
 
 #: app/templates/modules/profile_privacy.html:36
-#: app/templates/public/index.html:28
+#: app/templates/public/index.html:29
 msgid "Matching"
 msgstr ""
 
@@ -5245,130 +5321,130 @@ msgstr ""
 msgid "Welcome"
 msgstr ""
 
-#: app/templates/public/index.html:12
-msgid "A club for people who want to build something"
+#: app/templates/public/index.html:10
+msgid "Pause background animation"
 msgstr ""
 
 #: app/templates/public/index.html:13
-msgid "Find the people who can move your project forward"
+msgid "A club for people who want to build something"
 msgstr ""
 
 #: app/templates/public/index.html:14
+msgid "Find the people who can move your project forward"
+msgstr ""
+
+#: app/templates/public/index.html:15
 msgid ""
 "Verified members share what they offer and what they need. AI matching "
 "suggests who fits. You decide who may contact you."
 msgstr ""
 
-#: app/templates/public/index.html:16 app/templates/public/index.html:211
+#: app/templates/public/index.html:17 app/templates/public/index.html:217
 msgid "Become a member"
 msgstr ""
 
-#: app/templates/public/index.html:20
+#: app/templates/public/index.html:21
 msgid "Verified members only"
 msgstr ""
 
-#: app/templates/public/index.html:21
+#: app/templates/public/index.html:22
 msgid "Matching only with your consent"
 msgstr ""
 
-#: app/templates/public/index.html:22
+#: app/templates/public/index.html:23
 msgid "No identity documents stored"
 msgstr ""
 
-#: app/templates/public/index.html:29
+#: app/templates/public/index.html:30
 msgid "Offers and needs are brought together."
 msgstr ""
 
-#: app/templates/public/index.html:33
+#: app/templates/public/index.html:34
 msgid "Founders meet investors who are interested."
 msgstr ""
 
-#: app/templates/public/index.html:37
+#: app/templates/public/index.html:38
 msgid "Shared trips and offers from operators and agents."
 msgstr ""
 
 #: app/templates/public/index.html:43
-msgid "How the club works"
+msgid "Explore the club"
 msgstr ""
 
-#: app/templates/public/index.html:47
-msgid "Confirm your identity"
+#: app/templates/public/index.html:45 app/templates/public/index.html:75
+msgid "Everything the club offers"
 msgstr ""
 
-#: app/templates/public/index.html:48
+#: app/templates/public/index.html:46 app/templates/public/index.html:173
+msgid "Plans"
+msgstr ""
+
+#: app/templates/public/index.html:54
 msgid ""
 "You confirm your identity with Stripe. Your ID and selfie stay with "
 "Stripe. The club only receives the result."
 msgstr ""
 
-#: app/templates/public/index.html:52
+#: app/templates/public/index.html:58
 msgid "Describe yourself"
 msgstr ""
 
-#: app/templates/public/index.html:53
+#: app/templates/public/index.html:59
 msgid ""
 "Write what you do, what you need and how you can help others. Each field "
 "has examples."
 msgstr ""
 
-#: app/templates/public/index.html:57
-msgid "Find matches"
-msgstr ""
-
-#: app/templates/public/index.html:58
+#: app/templates/public/index.html:64
 msgid ""
 "Matching compares what you need with what others offer. It works only for"
 " members who agreed to it."
 msgstr ""
 
-#: app/templates/public/index.html:62
+#: app/templates/public/index.html:68
 msgid "Get in touch"
 msgstr ""
 
-#: app/templates/public/index.html:63
+#: app/templates/public/index.html:69
 msgid ""
 "You send a request. Contact details are shared only after both sides "
 "agree."
 msgstr ""
 
-#: app/templates/public/index.html:69
-msgid "Everything the club offers"
-msgstr ""
-
-#: app/templates/public/index.html:70
+#: app/templates/public/index.html:76
 msgid ""
 "One place for people, projects and everyday help. Every feature has a "
 "clear benefit for you, and you stay in control of your data."
 msgstr ""
 
-#: app/templates/public/index.html:72
+#: app/templates/public/index.html:78
 msgid "Find the right people"
 msgstr ""
 
-#: app/templates/public/index.html:75
+#: app/templates/public/index.html:81
 msgid "AI matching"
 msgstr ""
 
-#: app/templates/public/index.html:76
+#: app/templates/public/index.html:82
 msgid "Needs meet offers"
 msgstr ""
 
-#: app/templates/public/index.html:77
+#: app/templates/public/index.html:83
 msgid ""
 "The club compares what you need with what others can offer and explains "
 "why a person fits. You find helpful contacts in minutes instead of "
 "scrolling through lists. It works only for members who agreed to it."
 msgstr ""
 
-#: app/templates/public/index.html:80
+#: app/templates/public/index.html:86
 msgid "Your assistant"
 msgstr ""
 
-#: app/templates/public/index.html:81
+#: app/templates/public/index.html:87
 msgid "Clubi sees what you see"
 msgstr ""
 
-#: app/templates/public/index.html:82
+#: app/templates/public/index.html:88
 msgid ""
 "Your personal AI assistant knows your profile and the page you are on: a "
 "member, a project, a trip, a lot or a meeting. Ask for advice, a summary "
@@ -5376,97 +5452,97 @@ msgid ""
 "question."
 msgstr ""
 
-#: app/templates/public/index.html:85
+#: app/templates/public/index.html:91
 msgid "Profile"
 msgstr ""
 
-#: app/templates/public/index.html:86
+#: app/templates/public/index.html:92
 msgid "A profile that helps you"
 msgstr ""
 
-#: app/templates/public/index.html:87
+#: app/templates/public/index.html:93
 msgid ""
 "Every field has a hint and examples, so you know what to write. The "
 "fuller your profile, the better your matches. You can add a photo and "
 "decide separately about the directory and about matching."
 msgstr ""
 
-#: app/templates/public/index.html:90
+#: app/templates/public/index.html:96
 msgid "Trust"
 msgstr ""
 
-#: app/templates/public/index.html:91
+#: app/templates/public/index.html:97
 msgid "Verified, adult members only"
 msgstr ""
 
-#: app/templates/public/index.html:92
+#: app/templates/public/index.html:98
 msgid ""
 "Every member confirms their identity with Stripe. Documents and selfies "
 "stay with Stripe, the club only receives the result. You meet real "
 "people, not fake accounts."
 msgstr ""
 
-#: app/templates/public/index.html:95
+#: app/templates/public/index.html:101
 msgid "Privacy"
 msgstr ""
 
-#: app/templates/public/index.html:96
+#: app/templates/public/index.html:102
 msgid "Contact only with your consent"
 msgstr ""
 
-#: app/templates/public/index.html:97
+#: app/templates/public/index.html:103
 msgid ""
 "Your e-mail address is shown only to members whose request you accepted, "
 "and only when you agreed. No spam, no cold messages from strangers. You "
 "can export or delete all your data yourself."
 msgstr ""
 
-#: app/templates/public/index.html:101
+#: app/templates/public/index.html:107
 msgid "Get things done"
 msgstr ""
 
-#: app/templates/public/index.html:105
+#: app/templates/public/index.html:111
 msgid "Checked partners with member conditions"
 msgstr ""
 
-#: app/templates/public/index.html:106
+#: app/templates/public/index.html:112
 msgid ""
 "Chatbots, security checks, NIS2 and data protection, AI rules for your "
 "company: send a request in two clicks. Your contact details go to the "
 "partner only if you tick the box."
 msgstr ""
 
-#: app/templates/public/index.html:109
+#: app/templates/public/index.html:115
 msgid "Website checks"
 msgstr ""
 
-#: app/templates/public/index.html:110
+#: app/templates/public/index.html:116
 msgid "SEO, compliance and security in a minute"
 msgstr ""
 
-#: app/templates/public/index.html:111
+#: app/templates/public/index.html:117
 msgid ""
 "Enter your address and get a clear report with the most important steps "
 "first: SEO, legal notice and cookies, encryption, e-mail protection and "
 "publicly visible weak spots. Passive checks, no attacks, saved for later."
 msgstr ""
 
-#: app/templates/public/index.html:115
+#: app/templates/public/index.html:121
 msgid "German federal law, quoted and explained"
 msgstr ""
 
-#: app/templates/public/index.html:116
+#: app/templates/public/index.html:122
 msgid ""
 "Ask a question or enter a section such as § 433 BGB. You get the original"
 " text with the official source and a plain explanation of what it says. A"
 " first orientation, not legal advice."
 msgstr ""
 
-#: app/templates/public/index.html:120
+#: app/templates/public/index.html:126
 msgid "Test your idea on 100 AI personas"
 msgstr ""
 
-#: app/templates/public/index.html:121
+#: app/templates/public/index.html:127
 msgid ""
 "Describe your product and price. Fictional personas of different ages, "
 "incomes and professions react: purchase intent, price curve, concerns and"
@@ -5474,11 +5550,11 @@ msgid ""
 "forecast."
 msgstr ""
 
-#: app/templates/public/index.html:125
+#: app/templates/public/index.html:131
 msgid "Find investors, or find the next project"
 msgstr ""
 
-#: app/templates/public/index.html:126
+#: app/templates/public/index.html:132
 msgid ""
 "Create a project card with pitch, picture and presentation. After our "
 "review all members see it, and Clubi can answer questions about the whole"
@@ -5486,52 +5562,52 @@ msgid ""
 "accept."
 msgstr ""
 
-#: app/templates/public/index.html:130
+#: app/templates/public/index.html:136
 msgid "Meet and do things together"
 msgstr ""
 
-#: app/templates/public/index.html:134
+#: app/templates/public/index.html:140
 msgid "Create meetings, invite people"
 msgstr ""
 
-#: app/templates/public/index.html:135
+#: app/templates/public/index.html:141
 msgid ""
 "Describe what, where, when and for whom, add a photo and invite members "
 "personally. Guests sign up with one click, and everyone can add the "
 "meeting to their calendar."
 msgstr ""
 
-#: app/templates/public/index.html:138
+#: app/templates/public/index.html:144
 msgid "Mini-clubs"
 msgstr ""
 
-#: app/templates/public/index.html:139
+#: app/templates/public/index.html:145
 msgid "Small groups around your interest"
 msgstr ""
 
-#: app/templates/public/index.html:140
+#: app/templates/public/index.html:146
 msgid ""
 "Chess, a fishing trip, a walk, neighbourly help or a parents' group: "
 "start a mini-club, set your own rules and gather members. The club only "
 "brings people together: no premises, no payments, no games for money."
 msgstr ""
 
-#: app/templates/public/index.html:144
+#: app/templates/public/index.html:150
 msgid "Shared trips and offers"
 msgstr ""
 
-#: app/templates/public/index.html:145
+#: app/templates/public/index.html:151
 msgid ""
 "Plan a trip with programme and photos and let others join, or book places"
 " on trips of members and offers from operators and agents. The organiser "
 "sees your contact only if you allow it."
 msgstr ""
 
-#: app/templates/public/index.html:149
+#: app/templates/public/index.html:155
 msgid "Offer and win lots"
 msgstr ""
 
-#: app/templates/public/index.html:150
+#: app/templates/public/index.html:156
 msgid ""
 "Put your item up for rising or falling price, with a hidden reserve and "
 "protection against last-second bids. Bidders see a fair, anonymous bid "
@@ -5539,122 +5615,118 @@ msgid ""
 "sides."
 msgstr ""
 
-#: app/templates/public/index.html:156
+#: app/templates/public/index.html:162
 msgid "What we promise"
 msgstr ""
 
-#: app/templates/public/index.html:158
+#: app/templates/public/index.html:164
 msgid ""
 "Nothing is published without your choice. The directory and matching are "
 "separate decisions, and both are off until you make them."
 msgstr ""
 
-#: app/templates/public/index.html:159
+#: app/templates/public/index.html:165
 msgid ""
 "We do not store identity documents or dates of birth. The check runs with"
 " Stripe."
 msgstr ""
 
-#: app/templates/public/index.html:160
+#: app/templates/public/index.html:166
 msgid "Your e-mail address is shown only to members whose request you accepted."
 msgstr ""
 
-#: app/templates/public/index.html:161
+#: app/templates/public/index.html:167
 msgid ""
 "You can change your decisions at any time and delete your account with "
 "all your data."
 msgstr ""
 
-#: app/templates/public/index.html:167
-msgid "Plans"
-msgstr ""
-
-#: app/templates/public/index.html:168
+#: app/templates/public/index.html:174
 msgid "Prices will be published soon. Access depends on the plan."
 msgstr ""
 
-#: app/templates/public/index.html:171
+#: app/templates/public/index.html:177
 msgid "Guest"
 msgstr ""
 
-#: app/templates/public/index.html:172
+#: app/templates/public/index.html:178
 msgid ""
 "Free. Write your profile, read the member directory, see suggested "
 "matches, browse startups, trips, meetings and mini-clubs, ask Clubi and "
 "ask for contact."
 msgstr ""
 
-#: app/templates/public/index.html:175
+#: app/templates/public/index.html:181
 msgid "Starter"
 msgstr ""
 
-#: app/templates/public/index.html:176
+#: app/templates/public/index.html:182
 msgid ""
 "Everything in Guest, plus partner services and website tools, law search "
 "and market panel, booking and creating trips, creating and joining "
 "meetings, and mini-clubs."
 msgstr ""
 
-#: app/templates/public/index.html:180
+#: app/templates/public/index.html:186
 msgid ""
 "Everything in Starter, plus publishing your startup for investors and "
 "offers for operators and agents."
 msgstr ""
 
-#: app/templates/public/index.html:183
+#: app/templates/public/index.html:189
 msgid "Premium"
 msgstr ""
 
-#: app/templates/public/index.html:184
+#: app/templates/public/index.html:190
 msgid "Everything in Growth, plus the auction."
 msgstr ""
 
-#: app/templates/public/index.html:190
+#: app/templates/public/index.html:196
 msgid "Questions"
 msgstr ""
 
-#: app/templates/public/index.html:192
+#: app/templates/public/index.html:198
 msgid "Why do I need an identity check?"
 msgstr ""
 
-#: app/templates/public/index.html:193
+#: app/templates/public/index.html:199
 msgid ""
 "So that only real people aged 18 and over are in the club. Stripe runs "
 "the check. We only receive the result."
 msgstr ""
 
-#: app/templates/public/index.html:196
+#: app/templates/public/index.html:202
 msgid "Who can see my profile?"
 msgstr ""
 
-#: app/templates/public/index.html:197
+#: app/templates/public/index.html:203
 msgid ""
 "Only verified members, and only if you agreed that your profile appears "
 "in the directory."
 msgstr ""
 
-#: app/templates/public/index.html:200
+#: app/templates/public/index.html:206
 msgid "How does the AI matching work?"
 msgstr ""
 
-#: app/templates/public/index.html:201
+#: app/templates/public/index.html:207
 msgid ""
 "It compares what you need with what others offer. The suggestions are "
 "hints, not guarantees. Your texts go to AI services only if you agreed to"
 " matching."
 msgstr ""
 
-#: app/templates/public/index.html:204
+#: app/templates/public/index.html:210
 msgid "Does the club handle payments?"
 msgstr ""
 
-#: app/templates/public/index.html:205
+#: app/templates/public/index.html:211
 msgid ""
 "At the moment the club does not take money. Payments between members are "
 "arranged directly."
 msgstr ""
 
-#: app/templates/public/index.html:210
+#: app/templates/public/index.html:216
 msgid "Ready to start?"
 msgstr ""
 
