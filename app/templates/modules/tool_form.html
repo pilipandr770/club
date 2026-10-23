@@ -59,7 +59,7 @@
       <label for="category">{{ _("Area of law (optional)") }}</label>
       <select id="category" name="category">
         <option value="">{{ _("All areas") }}</option>
-        {% for c in categories %}<option value="{{ c }}"{% if form.get('category') == c %} selected{% endif %}>{{ c }}</option>{% endfor %}
+        {% for c in categories %}<option value="{{ c }}"{% if form.get('category') == c %} selected{% endif %}>{{ c|label }}</option>{% endfor %}
       </select>
     </div>
 

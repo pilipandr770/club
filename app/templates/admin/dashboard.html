@@ -28,7 +28,7 @@
   <h2>{{ _("Identity checks") }}</h2>
   <ul class="module-list">
     {% for status, count in by_verification.items() %}
-      <li>{{ status }}: {{ count }}</li>
+      <li>{{ status|label }}: {{ count }}</li>
     {% endfor %}
   </ul>
 </section>

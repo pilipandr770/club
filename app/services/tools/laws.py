@@ -4,6 +4,8 @@ Die semantische Suche läuft in einem separaten internen Dienst (laws-api, nur i
 GET /search auf. Der zitierte Gesetzestext kommt unverändert aus der Datenbank (kein KI-Text). Die KI-Einordnung erklärt
 ausschließlich, was im Text steht — keine Rechtsberatung, keine Bewertung des Einzelfalls.
 """
+
+from flask_babel import gettext
 import json
 import logging
 import urllib.error
@@ -48,10 +50,10 @@ def search(query: str, category: str = "", k: int = 6) -> list[dict]:
     """Treffer der internen Suche; jeder trägt den Original-Gesetzestext."""
     source = _source()
     if not source:
-        raise ToolError("Die Gesetzes-Suche ist auf dieser Installation nicht eingerichtet.")
+        raise ToolError(gettext('Die Gesetzes-Suche ist auf dieser Installation nicht eingerichtet.'))
     query = query.strip()[:800]
     if not query:
-        raise ToolError("Bitte gib eine Frage oder ein Stichwort ein.")
+        raise ToolError(gettext('Bitte gib eine Frage oder ein Stichwort ein.'))
     if source == "local":
         return local_search.search(query, category if category in CATEGORIES else "", k)
     base = current_app.config.get("LAWS_API_URL")
@@ -63,11 +65,11 @@ def search(query: str, category: str = "", k: int = 6) -> list[dict]:
             data = json.loads(response.read().decode("utf-8"))
     except (urllib.error.URLError, TimeoutError, OSError):
         log.warning("laws-api nicht erreichbar")
-        raise ToolError("Die Gesetzes-Suche ist gerade nicht erreichbar. Bitte versuch es in ein paar Minuten erneut.") from None
+        raise ToolError(gettext('Die Gesetzes-Suche ist gerade nicht erreichbar. Bitte versuch es in ein paar Minuten erneut.')) from None
     except ValueError:
-        raise ToolError("Die Gesetzes-Suche hat eine unerwartete Antwort geliefert.") from None
+        raise ToolError(gettext('Die Gesetzes-Suche hat eine unerwartete Antwort geliefert.')) from None
     if not isinstance(data, list):
-        raise ToolError("Die Gesetzes-Suche hat eine unerwartete Antwort geliefert.")
+        raise ToolError(gettext('Die Gesetzes-Suche hat eine unerwartete Antwort geliefert.'))
     hits = []
     for i, h in enumerate(data[:MAX_HITS]):
         if not isinstance(h, dict) or not h.get("text"):
@@ -112,15 +114,14 @@ SYSTEM = (
 
 def _fallback(hits: list[dict]) -> dict:
     return {"erlaeuterungen": [], "nicht_passend": [h["id"] for h in hits],
-            "hinweis": "Automatische Fundstellen ohne KI-Erläuterung (keine KI-Anbindung konfiguriert). Prüfe die "
-                       "zitierten Texte direkt.", "ai": False}
+            "hinweis": gettext("Automatic search results without AI explanations (no AI connection configured). Read the quoted texts directly."), "ai": False}
 
 
 def explain(query: str, hits: list[dict]) -> dict:
     """{erlaeuterungen: [{id, text}], nicht_passend: [id], hinweis, ai}. Erklärt nur, empfiehlt nichts."""
     if not hits:
         return {"erlaeuterungen": [], "nicht_passend": [],
-                "hinweis": "Zu dieser Frage wurden keine passenden Fundstellen gefunden.", "ai": False}
+                "hinweis": gettext("No matching legal provisions were found for this question."), "ai": False}
     payload = {"frage": query, "fundstellen": [
         {"id": h["id"], "gesetz": h["law_abbreviation"] or h["slug"], "paragraph": h["enbez"], "titel": h["titel"],
          "kategorie": h["category"], "text": h["text"][:1200]} for h in hits]}

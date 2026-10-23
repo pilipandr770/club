@@ -16,7 +16,7 @@
 <section class="card">
   <h2>{{ trip.title }}</h2>
   <p>{{ trip.destination }} · {{ trip.starts_on.strftime('%d.%m.%Y') }} – {{ trip.ends_on.strftime('%d.%m.%Y') }} · {{ trip.seats_total }}</p>
-  <p class="small">{{ trip.author.email }} · {{ trip.author.role }} · {{ trip.status }}{% if trip.rejection_reason %} · {{ trip.rejection_reason }}{% endif %}</p>
+  <p class="small">{{ trip.author.email }} · {{ trip.author.role|label }} · {{ trip.status|label }}{% if trip.rejection_reason %} · {{ trip.rejection_reason }}{% endif %}</p>
   {% if trip.status != "open" %}
   <form method="post" action="{{ url_for('admin.review_travel', trip_id=trip.id) }}" class="form">
     <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">

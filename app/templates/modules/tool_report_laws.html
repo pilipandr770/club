@@ -22,7 +22,7 @@
   {% if not report.ai or hit.id not in report.nicht_passend %}
   <section class="card">
     <h2>{{ hit.law_abbreviation or hit.slug }} {{ hit.enbez }}{% if hit.titel %} · {{ hit.titel }}{% endif %}</h2>
-    <p class="small muted">{{ hit.law_title }}{% if hit.category %} · {{ hit.category }}{% endif %}</p>
+    <p class="small muted">{{ hit.law_title }}{% if hit.category %} · {{ hit.category|label }}{% endif %}</p>
     <blockquote class="quote">{{ hit.text }}</blockquote>
     {% if hit.source_url %}<p class="small"><a href="{{ hit.source_url }}" rel="noopener noreferrer" target="_blank">{{ _("Official source") }}</a></p>{% endif %}
     {% if explained.get(hit.id) %}

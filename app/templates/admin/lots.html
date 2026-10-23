@@ -13,7 +13,7 @@
   {% for lot in pending %}
   <article>
     <h3><a href="{{ url_for('auction.detail', lot_id=lot.id) }}">{{ lot.title }}</a></h3>
-    <p class="small">{{ lot.seller.email if lot.seller else '' }} · {{ lot.mode }} · {{ format_eur(lot.start_price_cents) }}</p>
+    <p class="small">{{ lot.seller.email if lot.seller else '' }} · {{ lot.mode|label }} · {{ format_eur(lot.start_price_cents) }}</p>
     <p>{{ lot.description[:300] }}</p>
     <form method="post" action="{{ url_for('admin.review_lot', lot_id=lot.id) }}" class="form">
       <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
@@ -96,8 +96,8 @@
       {% for lot in lots %}
       <tr>
         <td><a href="{{ url_for('auction.detail', lot_id=lot.id) }}">{{ lot.title }}</a></td>
-        <td>{{ lot.mode }}</td>
-        <td>{{ lot.status }}</td>
+        <td>{{ lot.mode|label }}</td>
+        <td>{{ lot.status|label }}</td>
         <td>{% if lot.winning_price_cents %}{{ format_eur(lot.winning_price_cents) }}{% elif lot.status == "closed" %}{{ _("no buyer") }}{% endif %}</td>
         <td>
           {% if lot.status in ["open", "pending"] %}

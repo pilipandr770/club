@@ -132,3 +132,19 @@ def test_profile_residence_is_stored(app, client):
     make_user(app, residence="AT")
     with app.app_context():
         assert Profile.query.one().residence_country == "AT"
+
+def test_registration_remembers_russian(app, client):
+    client.post("/language", data={"locale": "ru"})
+    response = client.post("/register", data=_register_form())
+    assert response.status_code == 302
+    with app.app_context():
+        assert User.query.filter_by(email="anna@example.com").one().locale == "ru"
+
+
+def test_member_can_change_saved_language(app, client):
+    user_id = make_user(app, verified=True)
+    login(client, "member@example.com")
+    response = client.post("/language", data={"locale": "ru", "next": "/app/"}, follow_redirects=True)
+    assert '<html lang="ru">' in response.get_data(as_text=True)
+    with app.app_context():
+        assert db.session.get(User, user_id).locale == "ru"

@@ -1,7 +1,7 @@
 import re
 
 from flask import (Blueprint, current_app, flash, redirect, render_template, request, url_for)
-from flask_babel import gettext as _
+from flask_babel import force_locale, get_locale, gettext as _
 from flask_login import current_user, login_required, login_user, logout_user
 
 from ..._compat import safe_next
@@ -21,11 +21,12 @@ MIN_PASSWORD_LENGTH = 10
 
 def send_confirmation(user) -> None:
     link = f"{current_app.config['BASE_URL']}{url_for('auth.confirm', token=make_email_token(user))}"
-    send_mail(
-        user.email,
-        _("Please confirm your e-mail address"),
-        _("Please open this link to confirm your e-mail address:") + "\n\n" + link + "\n",
-    )
+    with force_locale(user.locale or current_app.config["DEFAULT_LOCALE"]):
+        send_mail(
+            user.email,
+            _("Please confirm your e-mail address"),
+            _("Please open this link to confirm your e-mail address:") + "\n\n" + link + "\n",
+        )
 
 
 def _blocked_residence(code: str) -> bool:
@@ -64,7 +65,7 @@ def register():
                 errors[f"consent_{consent}"] = _("This confirmation is required to create an account.")
 
         if not errors:
-            user = User(email=email, first_name=first_name[:80], last_name=last_name[:80])
+            user = User(email=email, first_name=first_name[:80], last_name=last_name[:80], locale=str(get_locale()))
             user.set_password(password)
             user.profile = Profile(residence_country=residence)
             db.session.add(user)

@@ -88,10 +88,13 @@ def test_score_uses_the_agreed_weights():
     assert score(a, c) == 0.0
 
 
-def test_fit_label_thresholds():
-    assert fit_label(0.5) == "gut passend"
-    assert fit_label(0.3) == "teilweise passend"
-    assert fit_label(0.01) == "wenig Überschneidung"
+def test_fit_label_thresholds(app):
+    from flask_babel import force_locale
+
+    with app.app_context(), force_locale("de"):
+        assert fit_label(0.5) == "gut passend"
+        assert fit_label(0.3) == "teilweise passend"
+        assert fit_label(0.01) == "wenig Überschneidung"
 
 
 # --- подбор -------------------------------------------------------------------
@@ -206,3 +209,22 @@ def test_matches_page_never_shows_contact_details(app, client):
 
     assert "Partner headline" in body
     assert "partner@example.com" not in body
+
+def test_match_explanation_cache_changes_with_locale(app):
+    from flask_babel import force_locale
+
+    me = _member(app, "locale-me@example.com")
+    _member(app, "locale-other@example.com")
+    with app.app_context():
+        user = db.session.get(User, me)
+        with force_locale("de"):
+            german = get_matches(user)[0][2]
+            german_version = Match.query.one().version_a
+        with force_locale("ru"):
+            russian = get_matches(user)[0][2]
+            russian_version = Match.query.one().version_a
+            assert get_matches(user)[0][2] == russian
+        assert german.startswith("Thema:")
+        assert russian.startswith("Потребность:")
+        assert german_version != russian_version
+        assert Match.query.count() == 1

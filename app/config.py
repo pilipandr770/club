@@ -28,8 +28,8 @@ class Config:
     SQLALCHEMY_DATABASE_URI = _database_url()
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
-    # Язык: в интерфейсе включён только de (ARCHITECTURE.md §3)
-    LOCALES_ENABLED = ["de"]
+    # Языки интерфейса; юрисдикция выбирается независимо.
+    LOCALES_ENABLED = ["de", "ru"]
     DEFAULT_LOCALE = "de"
     DEFAULT_TIMEZONE = "Europe/Berlin"
 

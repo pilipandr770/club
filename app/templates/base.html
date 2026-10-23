@@ -28,6 +28,16 @@
         <a href="{{ url_for('auth.login') }}">{{ _("Log in") }}</a>
         <a href="{{ url_for('auth.register') }}">{{ _("Register") }}</a>
       {% endif %}
+      <form action="{{ url_for('public.language') }}" method="post" class="language-switch">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+        <input type="hidden" name="next" value="{{ request.full_path }}">
+        <label for="site-language">{{ _("Language") }}</label>
+        <select id="site-language" name="locale">
+          <option value="de" lang="de"{% if get_locale()|string == 'de' %} selected{% endif %}>Deutsch</option>
+          <option value="ru" lang="ru"{% if get_locale()|string == 'ru' %} selected{% endif %}>Русский</option>
+        </select>
+        <button class="link-button" type="submit">{{ _("Save") }}</button>
+      </form>
     </nav>
   </header>
 

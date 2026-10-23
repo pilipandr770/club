@@ -19,7 +19,7 @@
   <p class="small">{{ event.organizer.email }} · {{ event_type_label(event.event_type) }} · {{ event_format_label(event.event_format) }} · {{ event.starts_at|datetimeformat('dd.MM.yyyy HH:mm') }}</p>
   <p>{{ event.description[:400] }}</p>
   <p class="small">{{ event.venue }}{% if event.address %}, {{ event.address }}{% endif %}</p>
-  <p class="small">{{ event.status }}{% if event.rejection_reason %} · {{ event.rejection_reason }}{% endif %}</p>
+  <p class="small">{{ event.status|label }}{% if event.rejection_reason %} · {{ event.rejection_reason }}{% endif %}</p>
 
   {% if event.status == "pending" %}
   <form method="post" action="{{ url_for('admin.review_event', event_id=event.id) }}" class="form">

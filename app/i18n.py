@@ -5,7 +5,8 @@
 
 from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
 
-from flask import current_app, g, request
+from flask import current_app, request
+from flask_login import current_user
 from flask_babel import lazy_gettext as _l  # noqa: F401  (реэкспорт для моделей и реестров)
 
 
@@ -24,7 +25,7 @@ def pick_locale(user_locale, cookie_locale, accept_languages, enabled, default):
 def select_locale():
     enabled = current_app.config["LOCALES_ENABLED"]
     default = current_app.config["DEFAULT_LOCALE"]
-    user = g.get("current_user")
+    user = current_user
     return pick_locale(
         getattr(user, "locale", None),
         request.cookies.get("locale"),
@@ -47,5 +48,5 @@ def resolve_timezone(name, default):
 
 def select_timezone():
     default = current_app.config["DEFAULT_TIMEZONE"]
-    user = g.get("current_user")
+    user = current_user
     return resolve_timezone(getattr(user, "timezone", None), default)

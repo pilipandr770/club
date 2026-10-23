@@ -14,6 +14,7 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import timedelta
 
 from flask import current_app
+from flask_babel import force_locale, get_locale, gettext
 
 from ...extensions import db
 from ...models import ToolRun
@@ -91,7 +92,7 @@ def ask_persona(persona: pp.Persona, run: dict, price: float | None) -> dict | N
             '"1 Satz: was müsste sich ändern, damit du kaufst"}\nIn Textwerten keine doppelten Anführungszeichen.')
     for _ in (1, 2):
         try:
-            raw = llm.complete(SYSTEM, user, max_tokens=500, timeout=45)
+            raw = llm.complete(SYSTEM + (" Write all free-text answers in Russian; keep JSON keys and enum codes unchanged." if str(get_locale()) == "ru" else ""), user, max_tokens=500, timeout=45)
         except AIUnavailable:
             return None
         ans = parse_answers(raw)
@@ -225,9 +226,7 @@ def synthesize(run: dict, res: dict, rows: list[dict]) -> dict:
     numbered = lambda ts: [f"{i + 1}: {t}" for i, t in enumerate(ts)]  # noqa: E731
     ov = res.get("overall", {})
     fallback = {
-        "zusammenfassung": (f"{res['n_valid']} von {res['n_requested']} fiktiven Personas haben geantwortet. "
-                            f"{ov.get('intent', 0)} % zeigen Kaufabsicht (sofort oder nach Test), im Mittel liegt die "
-                            f"Kaufwahrscheinlichkeit bei {ov.get('prob', 0)} %."),
+        "zusammenfassung": gettext("%(valid)s of %(total)s fictional personas answered. %(intent)s %% intend to buy now or after a trial; the average purchase probability is %(prob)s %%.", valid=res['n_valid'], total=res['n_requested'], intent=ov.get('intent', 0), prob=ov.get('prob', 0)),
         "bedenken": _theme_fallback(con_t), "nutzen": _theme_fallback(pro_t), "aenderungen": _theme_fallback(chg_t),
         "empfehlungen": [], "zielgruppen_fazit": "", "preis_fazit": "", "verzerrung_hinweis": "", "ai": False}
     system = ("Du bist Clubi, Analystin des Clubs, und wertest ein SYNTHETISCHES Markt-Panel aus (fiktive KI-Personas, "
@@ -275,7 +274,7 @@ def refresh_status(run: ToolRun) -> ToolRun:
     """Hängende Läufe (Neustart des Servers) nach einer Frist als fehlgeschlagen markieren."""
     if run.status == "running" and utcnow() - (run.updated_at or run.created_at) > STALE_AFTER:
         run.status = "failed"
-        run.error = "Der Lauf wurde unterbrochen (Neustart oder Zeitüberschreitung). Bitte erneut starten."
+        run.error = gettext("The run was interrupted by a restart or timeout. Please start it again.")
         db.session.commit()
     return run
 
@@ -284,7 +283,7 @@ def start_run(user, form: dict, background: bool = True) -> ToolRun:
     """Legt den Lauf an und startet die Befragung im Hintergrund (in Tests synchron)."""
     spec = {"product_name": form["product_name"], "description": form["description"], "audience": form["audience"],
             "regional": form["regional"], "unit": form["unit"], "price_a": form.get("price_a"),
-            "price_b": form.get("price_b"), "n": form["n"], "seed": int(utcnow().timestamp()) % 1_000_000}
+            "price_b": form.get("price_b"), "n": form["n"], "seed": int(utcnow().timestamp()) % 1_000_000, "locale": str(get_locale())}
     run = ToolRun(user_id=user.id, tool="panel", subject=form["product_name"][:500], status="running",
                   n_total=form["n"], result={"spec": spec})
     db.session.add(run)
@@ -301,41 +300,42 @@ def run_worker(app, run_id: int) -> None:
     with app.app_context():
         run = db.session.get(ToolRun, run_id)
         spec = dict(run.result["spec"])
-        try:
-            personas = pp.sample(spec["n"], spec["audience"], spec["regional"], spec["seed"])
-            rows: list[dict] = []
+        with force_locale(spec.get("locale", "de")):
+            try:
+                personas = pp.sample(spec["n"], spec["audience"], spec["regional"], spec["seed"])
+                rows: list[dict] = []
 
-            def task(persona: pp.Persona):
-                variant = "B" if (spec["price_b"] and persona.idx % 2 == 1) else "A"
-                price = spec["price_b"] if variant == "B" else spec["price_a"]
-                with app.app_context():
-                    return persona, variant, ask_persona(persona, spec, price)
+                def task(persona: pp.Persona):
+                    variant = "B" if (spec["price_b"] and persona.idx % 2 == 1) else "A"
+                    price = spec["price_b"] if variant == "B" else spec["price_a"]
+                    with app.app_context(), force_locale(spec.get("locale", "de")):
+                        return persona, variant, ask_persona(persona, spec, price)
 
-            with ThreadPoolExecutor(max_workers=WORKERS) as pool:
-                futures = [pool.submit(task, persona) for persona in personas]
-                for future in as_completed(futures):
-                    try:
-                        persona, variant, answers = future.result()
-                    except Exception:  # pragma: no cover - ein Fehler einer Persona stoppt den Lauf nicht
-                        log.exception("Panel-Persona fehlgeschlagen")
-                        continue
-                    run.n_done += 1
-                    db.session.commit()
-                    rows.append({"p": persona.public(), "v": variant, "a": answers})
-            rows.sort(key=lambda r: r["p"]["idx"])
-            result = aggregate(rows, spec, spec["n"])
-            if not result.get("n_valid"):
-                raise RuntimeError("Keine Persona hat verwertbar geantwortet (KI nicht erreichbar?).")
-            result["spec"] = spec
-            run.result = result
-            run.report = synthesize({"product_name": spec["product_name"], "description": spec["description"],
-                                     "unit": spec["unit"], "price_a": spec["price_a"], "price_b": spec["price_b"]},
-                                    result, rows)
-            run.status = "done"
-            db.session.commit()
-        except Exception as exc:
-            log.exception("Markt-Panel %s fehlgeschlagen", run_id)
-            db.session.rollback()
-            run = db.session.get(ToolRun, run_id)
-            run.status, run.error = "failed", str(exc)[:290]
-            db.session.commit()
+                with ThreadPoolExecutor(max_workers=WORKERS) as pool:
+                    futures = [pool.submit(task, persona) for persona in personas]
+                    for future in as_completed(futures):
+                        try:
+                            persona, variant, answers = future.result()
+                        except Exception:  # pragma: no cover - ein Fehler einer Persona stoppt den Lauf nicht
+                            log.exception("Panel-Persona fehlgeschlagen")
+                            continue
+                        run.n_done += 1
+                        db.session.commit()
+                        rows.append({"p": persona.public(), "v": variant, "a": answers})
+                rows.sort(key=lambda r: r["p"]["idx"])
+                result = aggregate(rows, spec, spec["n"])
+                if not result.get("n_valid"):
+                    raise RuntimeError(gettext("No persona returned a usable answer. The AI service may be unavailable."))
+                result["spec"] = spec
+                run.result = result
+                run.report = synthesize({"product_name": spec["product_name"], "description": spec["description"],
+                                         "unit": spec["unit"], "price_a": spec["price_a"], "price_b": spec["price_b"]},
+                                        result, rows)
+                run.status = "done"
+                db.session.commit()
+            except Exception as exc:
+                log.exception("Markt-Panel %s fehlgeschlagen", run_id)
+                db.session.rollback()
+                run = db.session.get(ToolRun, run_id)
+                run.status, run.error = "failed", gettext("The panel could not be completed. Please try again later.")
+                db.session.commit()

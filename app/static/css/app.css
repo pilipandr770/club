@@ -1460,3 +1460,7 @@ hr { border: 0; border-block-start: 1px solid var(--color-border); margin-block:
 .motion-toggle[aria-pressed="true"] { border-color: var(--color-accent); color: var(--color-accent); }
 .registration-steps { display: flex; flex-wrap: wrap; gap: .75rem 1.75rem; padding-inline-start: 1.5rem; margin-block: 1.5rem; color: var(--color-muted); font-size: .9rem; }
 .registration-steps [aria-current="step"] { color: var(--color-accent); font-weight: 700; }
+.language-switch { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; margin: 0; }
+.language-switch label { font-size: .85rem; color: var(--color-muted); }
+.language-switch select { inline-size: auto; min-block-size: 44px; padding: .5rem; background: var(--color-card); color: var(--color-text); border: 1px solid var(--color-border); border-radius: .5rem; }
+.language-switch button { min-block-size: 44px; }
