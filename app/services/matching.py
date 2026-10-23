@@ -86,9 +86,23 @@ def cosine(a, b) -> float:
     return dot / (norm_a * norm_b)
 
 
+# Плотные модели (mistral-embed и др.) дают косинус 0,7-0,8 даже для несвязанных текстов:
+# без поправки все пары попали бы в «хорошее совпадение». Поправка сдвигает «пол» к нулю.
+DENSE_FLOOR = 0.65
+
+
+def _calibrated(profile, value: float) -> float:
+    if (profile.embed_provider or "").startswith("lexical"):
+        return value
+    if not profile.embed_provider:
+        return value
+    return min(1.0, max(0.0, (value - DENSE_FLOOR) / (1.0 - DENSE_FLOOR)))
+
+
 def score(profile_a, profile_b) -> float:
-    return (WEIGHT_NEED_TO_OFFER * cosine(profile_a.embed_need, profile_b.embed_offer)
-            + WEIGHT_REVERSE * cosine(profile_b.embed_need, profile_a.embed_offer))
+    need_to_offer = _calibrated(profile_a, cosine(profile_a.embed_need, profile_b.embed_offer))
+    reverse = _calibrated(profile_b, cosine(profile_b.embed_need, profile_a.embed_offer))
+    return WEIGHT_NEED_TO_OFFER * need_to_offer + WEIGHT_REVERSE * reverse
 
 
 def fit_label(value: float) -> str:
