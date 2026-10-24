@@ -220,9 +220,10 @@ OPEN_TO_LABELS = dict(OPEN_TO)
 
 CARD_HINTS = {
     "open_to": _l("Tick what you want from the club. Others can filter the community by this."),
+    "social": _l("Paste the address of your page or just your name, for example @yourname. Only the network you pick is accepted."),
     "languages": _l("Languages you work in, separated by commas."),
-    "website_url": _l("Your website or company page. Shown only to members whose contact request you accepted."),
-    "linkedin_url": _l("Your professional profile. Shown only to members whose contact request you accepted."),
+    "website_url": _l("Your website or company page."),
+    "linkedin_url": _l("Your professional profile."),
 }
 
 

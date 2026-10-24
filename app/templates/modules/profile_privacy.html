@@ -24,6 +24,11 @@
     {{ _("Use my profile for AI matching and personal suggestions. Off by default.") }}
   </label>
 
+  <label class="check">
+    <input type="checkbox" name="links_public" value="1" {% if profile.links_public %}checked{% endif %}>
+    {{ _("Show my website and social network links on my card to all verified members. Off by default: otherwise only members whose contact request you accepted see them.") }}
+  </label>
+
   <p class="small">{{ _("Contact details are never published. Other members can reach you only after you accept their request.") }}</p>
 
   <button type="submit" class="button">{{ _("Save my choices") }}</button>
@@ -33,7 +38,7 @@
   <h2>{{ _("History of your choices") }}</h2>
   <ul class="module-list">
     {% for row in history %}
-      <li>{{ row.created_at.strftime('%d.%m.%Y %H:%M') }} · {% if row.kind == "directory" %}{{ _("Directory") }}{% else %}{{ _("Matching") }}{% endif %}: {{ _("agreed") if row.granted else _("not agreed") }} · {{ row.version }}</li>
+      <li>{{ row.created_at.strftime('%d.%m.%Y %H:%M') }} · {% if row.kind == "directory" %}{{ _("Directory") }}{% elif row.kind == "social_links" %}{{ _("Links") }}{% else %}{{ _("Matching") }}{% endif %}: {{ _("agreed") if row.granted else _("not agreed") }} · {{ row.version }}</li>
     {% else %}
       <li class="muted">{{ _("You have not made a choice yet.") }}</li>
     {% endfor %}

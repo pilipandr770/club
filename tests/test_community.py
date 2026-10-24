@@ -71,3 +71,57 @@ def test_card_edit_form_and_own_preview(app, client):
     login(client, "me@example.com")
     assert 'name="cover_theme"' in client.get("/profile/").get_data(as_text=True)
     assert client.get(f"/profile/{me}").status_code == 200
+
+
+# --- ссылки на соцсети ---------------------------------------------------------
+
+def test_social_normalize_accepts_handle_and_checks_domain(app):
+    from app.social import normalize
+    assert normalize("telegram", "@anna") == "https://t.me/anna"
+    assert normalize("github", "annadev") == "https://github.com/annadev"
+    assert normalize("instagram", "https://www.instagram.com/anna/") == "https://www.instagram.com/anna/"
+    assert normalize("instagram", "instagram.com/anna") == "https://instagram.com/anna"
+    assert normalize("instagram", "https://evil.example/instagram.com") is None
+    assert normalize("instagram", "https://instagram.com.evil.example/x") is None
+    assert normalize("xing", "annadev") is None  # у сети нет короткого имени
+    assert normalize("x", "javascript:alert(1)") is None
+    assert normalize("nope", "https://x.com/a") is None
+
+
+def test_save_card_stores_social_links_and_reports_bad_ones(app, client):
+    me, _, _ = _setup(app)
+    login(client, "me@example.com")
+    response = client.post("/profile/card", data={"cover_theme": "violet", "social_telegram": "@anna",
+                                                  "social_instagram": "https://evil.example/x"},
+                           follow_redirects=True)
+    assert response.status_code == 200
+    with app.app_context():
+        assert db.session.get(User, me).profile.social_links == {"telegram": "https://t.me/anna"}
+
+
+def test_social_links_visible_only_by_consent_or_accepted_contact(app, client):
+    me, other, _ = _setup(app)
+    with app.app_context():
+        profile = db.session.get(User, other).profile
+        profile.social_links = {"telegram": "https://t.me/devperson"}
+        profile.links_public = False
+        db.session.commit()
+    login(client, "me@example.com")
+    page = client.get(f"/profile/{other}").get_data(as_text=True)
+    assert "t.me/devperson" not in page and "dev.example.org" not in page
+    with app.app_context():
+        db.session.get(User, other).profile.links_public = True
+        db.session.commit()
+    page = client.get(f"/profile/{other}").get_data(as_text=True)
+    assert "t.me/devperson" in page and "dev.example.org" in page
+
+
+def test_privacy_page_records_social_links_consent(app, client):
+    me, _, _ = _setup(app)
+    login(client, "me@example.com")
+    client.post("/profile/privacy", data={"visible_in_directory": "1", "allow_matching": "1", "links_public": "1"})
+    with app.app_context():
+        from app.services.consents import latest_consent
+        user = db.session.get(User, me)
+        assert user.profile.links_public is True
+        assert latest_consent(user, "social_links") is True

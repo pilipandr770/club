@@ -70,18 +70,20 @@
         <button type="submit" class="button">{{ _("Request contact") }}</button>
       </form>
     {% endif %}
-    {% if contact or state == "accepted" %}
-      {% if profile and (profile.website_url or profile.linkedin_url) %}
-      <ul class="link-row">
-        {% if profile.website_url %}<li><a href="{{ profile.website_url }}" rel="noopener noreferrer nofollow" target="_blank">{{ _("Website") }}</a></li>{% endif %}
-        {% if profile.linkedin_url %}<li><a href="{{ profile.linkedin_url }}" rel="noopener noreferrer nofollow" target="_blank">{{ _("Professional profile") }}</a></li>{% endif %}
-      </ul>
-      {% endif %}
-    {% endif %}
   </section>
-  {% elif profile and (profile.website_url or profile.linkedin_url) %}
-  <section class="card mini-contact">
-    <p class="small">{{ _("Your links are shown only to members whose contact request you accepted.") }}</p>
+  {% endif %}
+
+  {% if links %}
+  <section class="card mini-block mini-links">
+    <h2>{{ _("Links") }}</h2>
+    <ul class="link-row">
+      {% for label, url in links %}<li><a class="link-pill" href="{{ url }}" rel="noopener noreferrer nofollow ugc" target="_blank">{{ label }}</a></li>{% endfor %}
+    </ul>
+    {% if is_self and not profile.links_public %}<p class="small">{{ _("Your links are shown only to members whose contact request you accepted.") }}</p>{% endif %}
+  </section>
+  {% elif links_hidden %}
+  <section class="card mini-block">
+    <p class="small">{{ _("This member shares links only with accepted contacts.") }}</p>
   </section>
   {% endif %}
 

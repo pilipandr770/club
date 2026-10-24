@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Club 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-24 10:31+0000\n"
+"POT-Creation-Date: 2026-10-24 10:44+0000\n"
 "PO-Revision-Date: 2026-10-19 21:00+0000\n"
 "Last-Translator: \n"
 "Language: de\n"
@@ -1349,12 +1349,12 @@ msgstr "Nutzungsbedingungen"
 msgid "Identity check"
 msgstr "Identitätsprüfung"
 
-#: app/i18n_labels.py:252 app/templates/modules/profile_privacy.html:36
+#: app/i18n_labels.py:252 app/templates/modules/profile_privacy.html:41
 #: app/templates/public/index.html:29
 msgid "Matching"
 msgstr "Matching"
 
-#: app/i18n_labels.py:253 app/templates/modules/profile_privacy.html:36
+#: app/i18n_labels.py:253 app/templates/modules/profile_privacy.html:41
 msgid "Directory"
 msgstr "Verzeichnis"
 
@@ -1849,7 +1849,7 @@ msgid "Advice on getting my first angel investment."
 msgstr "Rat, wie ich mein erstes Business-Angel-Investment bekomme."
 
 #: app/profile_guide.py:131 app/templates/modules/profile_directory.html:77
-#: app/templates/modules/profile_view.html:103
+#: app/templates/modules/profile_view.html:105
 msgid "Skills and topics"
 msgstr "Fähigkeiten und Themen"
 
@@ -1975,24 +1975,65 @@ msgstr ""
 "filtern."
 
 #: app/profile_guide.py:223
+msgid ""
+"Paste the address of your page or just your name, for example @yourname. "
+"Only the network you pick is accepted."
+msgstr ""
+"Füge die Adresse deiner Seite ein oder nur deinen Namen, zum Beispiel "
+"@deinname. Akzeptiert wird nur das gewählte Netzwerk."
+
+#: app/profile_guide.py:224
 msgid "Languages you work in, separated by commas."
 msgstr "Sprachen, in denen du arbeitest, durch Kommas getrennt."
 
-#: app/profile_guide.py:224
-msgid ""
-"Your website or company page. Shown only to members whose contact request "
-"you accepted."
-msgstr ""
-"Deine Website oder Firmenseite. Nur für Mitglieder sichtbar, deren "
-"Kontaktanfrage du angenommen hast."
-
 #: app/profile_guide.py:225
-msgid ""
-"Your professional profile. Shown only to members whose contact request you "
-"accepted."
-msgstr ""
-"Dein berufliches Profil. Nur für Mitglieder sichtbar, deren Kontaktanfrage "
-"du angenommen hast."
+msgid "Your website or company page."
+msgstr "Deine Website oder Firmenseite."
+
+#: app/profile_guide.py:226
+msgid "Your professional profile."
+msgstr "Dein berufliches Profil."
+
+#: app/social.py:17
+msgid "Instagram"
+msgstr "Instagram"
+
+#: app/social.py:18
+msgid "Facebook"
+msgstr "Facebook"
+
+#: app/social.py:19
+msgid "X"
+msgstr "X"
+
+#: app/social.py:20
+msgid "Telegram"
+msgstr "Telegram"
+
+#: app/social.py:21
+msgid "YouTube"
+msgstr "YouTube"
+
+#: app/social.py:22
+msgid "TikTok"
+msgstr "TikTok"
+
+#: app/social.py:23
+msgid "GitHub"
+msgstr "GitHub"
+
+#: app/social.py:24
+msgid "Xing"
+msgstr "Xing"
+
+#: app/social.py:54 app/templates/modules/profile_edit.html:86
+#: app/templates/modules/startups_detail.html:22
+msgid "Website"
+msgstr "Website"
+
+#: app/social.py:56 app/templates/modules/profile_edit.html:91
+msgid "Professional profile"
+msgstr "Berufliches Profil"
 
 #: app/startup_guide.py:21 app/templates/modules/startups_detail.html:37
 msgid "What is it?"
@@ -2491,7 +2532,7 @@ msgstr "Teilnehmende Person angelegt."
 #: app/blueprints/admin/__init__.py:415 app/modules/auction/__init__.py:227
 #: app/modules/auction/__init__.py:253 app/modules/events/__init__.py:131
 #: app/modules/events/__init__.py:158 app/modules/miniclubs/__init__.py:135
-#: app/modules/miniclubs/__init__.py:162 app/modules/profile/__init__.py:72
+#: app/modules/miniclubs/__init__.py:162 app/modules/profile/__init__.py:73
 #: app/modules/startups/__init__.py:72 app/modules/travel/__init__.py:201
 #: app/modules/travel/__init__.py:247
 #, python-format
@@ -2529,7 +2570,7 @@ msgid "You have reached today's limit of questions. It renews tomorrow."
 msgstr "Du hast das Tageslimit an Fragen erreicht. Es erneuert sich morgen."
 
 #: app/blueprints/assistant/__init__.py:19 app/modules/events/__init__.py:51
-#: app/modules/miniclubs/__init__.py:53 app/modules/profile/__init__.py:224
+#: app/modules/miniclubs/__init__.py:53 app/modules/profile/__init__.py:238
 #: app/modules/services/__init__.py:18 app/modules/startups/__init__.py:35
 #: app/modules/travel/__init__.py:44 app/templates/partials/assistant.html:4
 msgid "Something went wrong. Please try again."
@@ -2765,7 +2806,7 @@ msgid "Please allow the seller to see your contact details if you win."
 msgstr "Bitte erlaube dem Verkäufer, deine Kontaktdaten zu sehen, falls du gewinnst."
 
 #: app/modules/auction/__init__.py:60 app/modules/events/__init__.py:45
-#: app/modules/miniclubs/__init__.py:44 app/modules/profile/__init__.py:221
+#: app/modules/miniclubs/__init__.py:44 app/modules/profile/__init__.py:235
 #: app/modules/startups/__init__.py:33 app/modules/travel/__init__.py:39
 msgid "This is not available to you."
 msgstr "Das ist für dich nicht verfügbar."
@@ -2787,7 +2828,7 @@ msgid "The bid could not be placed."
 msgstr "Das Gebot konnte nicht abgegeben werden."
 
 #: app/modules/auction/__init__.py:71 app/modules/events/__init__.py:56
-#: app/modules/miniclubs/__init__.py:58 app/modules/profile/__init__.py:38
+#: app/modules/miniclubs/__init__.py:58 app/modules/profile/__init__.py:39
 #: app/modules/startups/__init__.py:40 app/modules/travel/__init__.py:49
 msgid "The file is empty."
 msgstr "Die Datei ist leer."
@@ -2988,7 +3029,7 @@ msgstr "Du bist kein Mitglied dieses Mini-Clubs."
 msgid "This mini-club can no longer be edited."
 msgstr "Dieser Mini-Club kann nicht mehr bearbeitet werden."
 
-#: app/modules/miniclubs/__init__.py:46 app/modules/profile/__init__.py:222
+#: app/modules/miniclubs/__init__.py:46 app/modules/profile/__init__.py:236
 msgid "This request has already been answered."
 msgstr "Auf diese Anfrage wurde bereits geantwortet."
 
@@ -3050,45 +3091,45 @@ msgstr "Deine Nachricht ist an alle Mitglieder gesendet."
 msgid "Thank you. Our team will look at it."
 msgstr "Danke. Unser Team schaut sich das an."
 
-#: app/modules/profile/__init__.py:34
+#: app/modules/profile/__init__.py:35
 msgid "The photo is too large. Please use a file up to 5 MB."
 msgstr "Das Foto ist zu groß. Bitte nutze eine Datei bis 5 MB."
 
-#: app/modules/profile/__init__.py:35
+#: app/modules/profile/__init__.py:36
 msgid "The photo resolution is too high. Please use a smaller photo."
 msgstr "Die Auflösung des Fotos ist zu hoch. Bitte nutze ein kleineres Foto."
 
-#: app/modules/profile/__init__.py:36
+#: app/modules/profile/__init__.py:37
 msgid "Please upload a JPEG, PNG or WebP photo."
 msgstr "Bitte lade ein Foto im Format JPEG, PNG oder WebP hoch."
 
-#: app/modules/profile/__init__.py:37
+#: app/modules/profile/__init__.py:38
 msgid "This file is not a valid photo."
 msgstr "Diese Datei ist kein gültiges Foto."
 
-#: app/modules/profile/__init__.py:40
+#: app/modules/profile/__init__.py:41
 msgid "The photo could not be saved."
 msgstr "Das Foto konnte nicht gespeichert werden."
 
-#: app/modules/profile/__init__.py:70
+#: app/modules/profile/__init__.py:71
 msgid "Your profile is saved."
 msgstr "Dein Profil ist gespeichert."
 
-#: app/modules/profile/__init__.py:113
-msgid "Links must start with http:// or https://. The invalid ones were not saved."
+#: app/modules/profile/__init__.py:125
+msgid "Some links were not saved: they must be web addresses of the chosen network."
 msgstr ""
-"Links müssen mit http:// oder https:// beginnen. Ungültige wurden nicht "
-"gespeichert."
+"Einige Links wurden nicht gespeichert: Sie müssen Webadressen des gewählten"
+" Netzwerks sein."
 
-#: app/modules/profile/__init__.py:115
+#: app/modules/profile/__init__.py:127
 msgid "Your card is saved."
 msgstr "Deine Karte ist gespeichert."
 
-#: app/modules/profile/__init__.py:154
+#: app/modules/profile/__init__.py:168
 msgid "Your choices are saved."
 msgstr "Deine Entscheidungen sind gespeichert."
 
-#: app/modules/profile/__init__.py:178
+#: app/modules/profile/__init__.py:192
 msgid ""
 "Your request is sent. The other member decides whether to share contact "
 "details."
@@ -3096,33 +3137,33 @@ msgstr ""
 "Deine Anfrage ist gesendet. Das andere Mitglied entscheidet, ob es seine "
 "Kontaktdaten teilt."
 
-#: app/modules/profile/__init__.py:217
+#: app/modules/profile/__init__.py:231
 msgid "You cannot send a request to yourself."
 msgstr "Du kannst dir selbst keine Anfrage senden."
 
-#: app/modules/profile/__init__.py:218
+#: app/modules/profile/__init__.py:232
 msgid "This member cannot be contacted right now."
 msgstr "Dieses Mitglied kann gerade nicht kontaktiert werden."
 
-#: app/modules/profile/__init__.py:219
+#: app/modules/profile/__init__.py:233
 msgid "There is already a request between you two."
 msgstr "Zwischen euch beiden gibt es bereits eine Anfrage."
 
-#: app/modules/profile/__init__.py:220
+#: app/modules/profile/__init__.py:234
 msgid "You have reached today's limit of requests. Please try again tomorrow."
 msgstr ""
 "Du hast das heutige Limit an Anfragen erreicht. Bitte versuche es morgen "
 "erneut."
 
-#: app/modules/profile/__init__.py:233
+#: app/modules/profile/__init__.py:247
 msgid "Please choose a photo first."
 msgstr "Bitte wähle zuerst ein Foto aus."
 
-#: app/modules/profile/__init__.py:251
+#: app/modules/profile/__init__.py:265
 msgid "Your photo is saved."
 msgstr "Dein Foto ist gespeichert."
 
-#: app/modules/profile/__init__.py:265
+#: app/modules/profile/__init__.py:279
 msgid "Your photo is removed."
 msgstr "Dein Foto ist entfernt."
 
@@ -3319,19 +3360,19 @@ msgstr "Profil eines anderen Mitglieds"
 msgid "Service"
 msgstr "Leistung"
 
-#: app/services/assistant.py:141 app/templates/modules/profile_view.html:120
+#: app/services/assistant.py:141 app/templates/modules/profile_view.html:122
 msgid "Trip"
 msgstr "Reise"
 
-#: app/services/assistant.py:159 app/templates/modules/profile_view.html:121
+#: app/services/assistant.py:159 app/templates/modules/profile_view.html:123
 msgid "Meeting"
 msgstr "Treffen"
 
-#: app/services/assistant.py:177 app/templates/modules/profile_view.html:122
+#: app/services/assistant.py:177 app/templates/modules/profile_view.html:124
 msgid "Mini-club"
 msgstr "Mini-Club"
 
-#: app/services/assistant.py:194 app/templates/modules/profile_view.html:119
+#: app/services/assistant.py:194 app/templates/modules/profile_view.html:121
 msgid "Startup"
 msgstr "Startup"
 
@@ -6080,7 +6121,7 @@ msgid "Start identity check"
 msgstr "Identitätsprüfung starten"
 
 #: app/templates/member/dashboard.html:57
-#: app/templates/modules/profile_edit.html:125
+#: app/templates/modules/profile_edit.html:143
 #: app/templates/modules/profile_matches.html:9
 #: app/templates/modules/profile_matches.html:22
 #: app/templates/modules/profile_privacy.html:3
@@ -6427,7 +6468,7 @@ msgstr "Der Gegenstand"
 #: app/templates/modules/events_form.html:74
 #: app/templates/modules/miniclubs_form.html:57
 #: app/templates/modules/profile_edit.html:37
-#: app/templates/modules/profile_edit.html:103
+#: app/templates/modules/profile_edit.html:121
 #: app/templates/modules/startups_form.html:59
 #: app/templates/modules/travel_form.html:57
 msgid "Show examples"
@@ -6464,7 +6505,7 @@ msgstr "optional"
 #: app/templates/modules/auction_form.html:49
 #: app/templates/modules/events_form.html:95
 #: app/templates/modules/miniclubs_form.html:64
-#: app/templates/modules/profile_edit.html:100
+#: app/templates/modules/profile_edit.html:118
 #: app/templates/modules/travel_form.html:70
 msgid "Photo"
 msgstr "Foto"
@@ -7451,7 +7492,7 @@ msgid "Next"
 msgstr "Weiter"
 
 #: app/templates/modules/profile_directory.html:103
-#: app/templates/modules/profile_edit.html:125
+#: app/templates/modules/profile_edit.html:143
 msgid "My matches"
 msgstr "Meine Matches"
 
@@ -7459,7 +7500,7 @@ msgstr "Meine Matches"
 #: app/templates/modules/profile_matches.html:8
 #: app/templates/modules/profile_matches.html:22
 #: app/templates/modules/profile_matches.html:23
-#: app/templates/modules/profile_privacy.html:43
+#: app/templates/modules/profile_privacy.html:48
 #: app/templates/modules/profile_view.html:15
 #: app/templates/modules/profile_view.html:56
 msgid "Edit my profile"
@@ -7524,7 +7565,7 @@ msgid "I am open to"
 msgstr "Ich bin offen für"
 
 #: app/templates/modules/profile_edit.html:81
-#: app/templates/modules/profile_view.html:107
+#: app/templates/modules/profile_view.html:109
 msgid "Languages"
 msgstr "Sprachen"
 
@@ -7532,38 +7573,44 @@ msgstr "Sprachen"
 msgid "German, English, Russian"
 msgstr "Deutsch, Englisch, Russisch"
 
-#: app/templates/modules/profile_edit.html:86
-#: app/templates/modules/profile_view.html:76
-#: app/templates/modules/startups_detail.html:22
-msgid "Website"
-msgstr "Website"
+#: app/templates/modules/profile_edit.html:96
+msgid "Social networks"
+msgstr "Soziale Netzwerke"
 
-#: app/templates/modules/profile_edit.html:91
-#: app/templates/modules/profile_view.html:77
-msgid "Professional profile"
-msgstr "Berufliches Profil"
+#: app/templates/modules/profile_edit.html:107
+msgid "Your links are shown to all verified members who open your card."
+msgstr "Deine Links sehen alle verifizierten Mitglieder, die deine Karte öffnen."
 
-#: app/templates/modules/profile_edit.html:95
+#: app/templates/modules/profile_edit.html:108
+#: app/templates/modules/profile_view.html:82
+msgid "Your links are shown only to members whose contact request you accepted."
+msgstr "Deine Links sehen nur Mitglieder, deren Kontaktanfrage du angenommen hast."
+
+#: app/templates/modules/profile_edit.html:109
+msgid "Change who sees them"
+msgstr "Ändern, wer sie sieht"
+
+#: app/templates/modules/profile_edit.html:113
 msgid "Save my card"
 msgstr "Karte speichern"
 
-#: app/templates/modules/profile_edit.html:109
+#: app/templates/modules/profile_edit.html:127
 msgid "Your photo"
 msgstr "Dein Foto"
 
-#: app/templates/modules/profile_edit.html:112
+#: app/templates/modules/profile_edit.html:130
 msgid "Remove photo"
 msgstr "Foto entfernen"
 
-#: app/templates/modules/profile_edit.html:118
+#: app/templates/modules/profile_edit.html:136
 msgid "Choose a photo"
 msgstr "Foto auswählen"
 
-#: app/templates/modules/profile_edit.html:121
+#: app/templates/modules/profile_edit.html:139
 msgid "Upload photo"
 msgstr "Foto hochladen"
 
-#: app/templates/modules/profile_edit.html:125
+#: app/templates/modules/profile_edit.html:143
 #: app/templates/modules/profile_matches.html:64
 msgid "Open the community"
 msgstr "Community öffnen"
@@ -7707,7 +7754,17 @@ msgstr ""
 "Mein Profil für das KI-Matching und persönliche Vorschläge verwenden. "
 "Standardmäßig aus."
 
-#: app/templates/modules/profile_privacy.html:27
+#: app/templates/modules/profile_privacy.html:29
+msgid ""
+"Show my website and social network links on my card to all verified "
+"members. Off by default: otherwise only members whose contact request you "
+"accepted see them."
+msgstr ""
+"Meine Website und Links zu sozialen Netzwerken auf meiner Karte allen "
+"verifizierten Mitgliedern zeigen. Standardmäßig aus: Sonst sehen sie nur "
+"Mitglieder, deren Kontaktanfrage ich angenommen habe."
+
+#: app/templates/modules/profile_privacy.html:32
 msgid ""
 "Contact details are never published. Other members can reach you only after"
 " you accept their request."
@@ -7715,23 +7772,28 @@ msgstr ""
 "Kontaktdaten werden nie veröffentlicht. Andere Mitglieder können dich erst "
 "erreichen, nachdem du ihre Anfrage angenommen hast."
 
-#: app/templates/modules/profile_privacy.html:29
+#: app/templates/modules/profile_privacy.html:34
 msgid "Save my choices"
 msgstr "Meine Auswahl speichern"
 
-#: app/templates/modules/profile_privacy.html:33
+#: app/templates/modules/profile_privacy.html:38
 msgid "History of your choices"
 msgstr "Verlauf deiner Auswahl"
 
-#: app/templates/modules/profile_privacy.html:36
+#: app/templates/modules/profile_privacy.html:41
+#: app/templates/modules/profile_view.html:78
+msgid "Links"
+msgstr "Links"
+
+#: app/templates/modules/profile_privacy.html:41
 msgid "agreed"
 msgstr "zugestimmt"
 
-#: app/templates/modules/profile_privacy.html:36
+#: app/templates/modules/profile_privacy.html:41
 msgid "not agreed"
 msgstr "nicht zugestimmt"
 
-#: app/templates/modules/profile_privacy.html:38
+#: app/templates/modules/profile_privacy.html:43
 msgid "You have not made a choice yet."
 msgstr "Du hast noch keine Auswahl getroffen."
 
@@ -7768,15 +7830,15 @@ msgstr "In Kontakt kommen"
 msgid "Contact details are shared only after this member accepts."
 msgstr "Kontaktdaten werden erst weitergegeben, wenn dieses Mitglied zustimmt."
 
-#: app/templates/modules/profile_view.html:84
-msgid "Your links are shown only to members whose contact request you accepted."
-msgstr "Deine Links sehen nur Mitglieder, deren Kontaktanfrage du angenommen hast."
+#: app/templates/modules/profile_view.html:86
+msgid "This member shares links only with accepted contacts."
+msgstr "Dieses Mitglied teilt Links nur mit angenommenen Kontakten."
 
-#: app/templates/modules/profile_view.html:117
+#: app/templates/modules/profile_view.html:119
 msgid "Also in the club"
 msgstr "Außerdem im Club"
 
-#: app/templates/modules/profile_view.html:128
+#: app/templates/modules/profile_view.html:130
 msgid "Back to the community"
 msgstr "Zurück zur Community"
 
@@ -9433,4 +9495,30 @@ msgstr "Bereit loszulegen?"
 
 #~ msgid "No members in the directory yet."
 #~ msgstr "Noch keine Mitglieder im Verzeichnis."
+
+#~ msgid ""
+#~ "Your website or company page. Shown "
+#~ "only to members whose contact request "
+#~ "you accepted."
+#~ msgstr ""
+#~ "Deine Website oder Firmenseite. Nur für"
+#~ " Mitglieder sichtbar, deren Kontaktanfrage du"
+#~ " angenommen hast."
+
+#~ msgid ""
+#~ "Your professional profile. Shown only to"
+#~ " members whose contact request you "
+#~ "accepted."
+#~ msgstr ""
+#~ "Dein berufliches Profil. Nur für "
+#~ "Mitglieder sichtbar, deren Kontaktanfrage du "
+#~ "angenommen hast."
+
+#~ msgid ""
+#~ "Links must start with http:// or "
+#~ "https://. The invalid ones were not "
+#~ "saved."
+#~ msgstr ""
+#~ "Links müssen mit http:// oder https:// "
+#~ "beginnen. Ungültige wurden nicht gespeichert."
 

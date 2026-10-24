@@ -92,6 +92,24 @@
       <p class="small">{{ card_hints.linkedin_url }}</p>
       <input id="linkedin_url" name="linkedin_url" type="url" maxlength="300" value="{{ profile.linkedin_url or '' }}" placeholder="https://">
     </div>
+    <fieldset class="field">
+      <legend>{{ _("Social networks") }}</legend>
+      <p class="small">{{ card_hints.social }}</p>
+      <div class="social-grid">
+        {% for key, label, _d, _b in networks %}
+        <div class="field">
+          <label for="social_{{ key }}">{{ label }}</label>
+          <input id="social_{{ key }}" name="social_{{ key }}" type="text" maxlength="300" value="{{ social_values.get(key, '') }}" autocomplete="off">
+        </div>
+        {% endfor %}
+      </div>
+      <p class="small">
+        {% if profile.links_public %}{{ _("Your links are shown to all verified members who open your card.") }}
+        {% else %}{{ _("Your links are shown only to members whose contact request you accepted.") }}{% endif %}
+        <a href="{{ url_for('profile.privacy') }}">{{ _("Change who sees them") }}</a>
+      </p>
+    </fieldset>
+
     <button type="submit" class="button">{{ _("Save my card") }}</button>
   </form>
 </section>

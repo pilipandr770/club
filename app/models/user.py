@@ -18,6 +18,7 @@ CONSENT_KINDS = {
     "identity": "Identitätsprüfung über Stripe Identity (Verarbeitung durch Stripe)",
     "matching": "Profil für KI-gestütztes Matching verwenden",
     "directory": "Profil im Mitgliederverzeichnis sichtbar",
+    "social_links": "Links zu sozialen Netzwerken auf der Karte für alle Mitglieder sichtbar",
 }
 
 
@@ -120,6 +121,8 @@ class Profile(db.Model):
     languages: Mapped[str] = mapped_column(String(160), default="", server_default="")
     website_url: Mapped[str | None] = mapped_column(String(300))
     linkedin_url: Mapped[str | None] = mapped_column(String(300))
+    social_links: Mapped[dict | None] = mapped_column(JSON)  # {сеть: ссылка}, ключи из app/social.py
+    links_public: Mapped[bool] = mapped_column(Boolean, default=False, server_default="false")  # согласие: ссылки видят все
     # Согласия (append-only в consents). По умолчанию выключены
     visible_in_directory: Mapped[bool] = mapped_column(Boolean, default=False, server_default="false")
     allow_matching: Mapped[bool] = mapped_column(Boolean, default=False, server_default="false")

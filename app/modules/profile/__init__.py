@@ -9,6 +9,7 @@ from ...profile_guide import (CARD_HINTS, FIELD_BY_KEY, COVER_KEYS, COVER_THEMES
                               split_tags)
 from ...services.audit import audit
 from ...services.consents import latest_consent, record_consent
+from ... import social
 from ...services import community, intros
 from ...services.intros import IntroError
 from ...services.entitlements import requires_feature
@@ -86,6 +87,8 @@ def edit():
         open_to_options=OPEN_TO,
         open_to_selected=open_to_keys(profile),
         card_hints=CARD_HINTS,
+        networks=social.NETWORKS,
+        social_values=profile.social_links or {},
     )
 
 
@@ -106,11 +109,20 @@ def save_card():
         if raw and not cleaned:
             bad.append(key)
         setattr(profile, key, cleaned[:300] if cleaned else None)
+    saved = {}
+    for key, _label, _domains, _base in social.NETWORKS:
+        raw = request.form.get(f"social_{key}", "").strip()
+        value = social.normalize(key, raw)
+        if raw and not value:
+            bad.append(key)
+        if value:
+            saved[key] = value
+    profile.social_links = saved or None
     profile.updated_at = utcnow()
     audit("profile.card_updated", target=f"user:{current_user.id}", actor_id=current_user.id)
     db.session.commit()
     if bad:
-        flash(_("Links must start with http:// or https://. The invalid ones were not saved."), "error")
+        flash(_("Some links were not saved: they must be web addresses of the chosen network."), "error")
     else:
         flash(_("Your card is saved."), "success")
     return redirect(url_for("profile.edit") + "#card")
@@ -133,7 +145,8 @@ def matches():
                            llm_on=llm_enabled())
 
 
-PUBLICATION_KINDS = (("directory", "visible_in_directory"), ("matching", "allow_matching"))
+PUBLICATION_KINDS = (("directory", "visible_in_directory"), ("matching", "allow_matching"),
+                     ("social_links", "links_public"))
 
 
 @bp.route("/privacy", methods=["GET", "POST"])
@@ -149,7 +162,8 @@ def privacy():
         profile.updated_at = utcnow()
         refresh_embeddings(profile)
         audit("privacy.decided", target=f"user:{current_user.id}", actor_id=current_user.id,
-              details=f"directory={profile.visible_in_directory} matching={profile.allow_matching}")
+              details=f"directory={profile.visible_in_directory} matching={profile.allow_matching} "
+                      f"links={profile.links_public}")
         db.session.commit()
         flash(_("Your choices are saved."), "success")
         return redirect(url_for("profile.privacy"))
@@ -321,7 +335,11 @@ def view(user_id):
     state = None if is_self else intros.link_state(current_user, user)
     return render_template(
         "modules/profile_view.html", member=user, profile=profile, fields_by_key=FIELD_BY_KEY, is_self=is_self, state=state,
-        contact=intros.visible_contact(current_user, user), content=community.member_content(user),
+        contact=intros.visible_contact(current_user, user),
+        links=social.card_links(profile) if profile and (is_self or state == "accepted" or profile.links_public) else [],
+        links_hidden=bool(profile and not is_self and state != "accepted" and not profile.links_public
+                          and social.card_links(profile)),
+        content=community.member_content(user),
         tags=split_tags(profile.expertise) if profile else [], languages=split_tags(profile.languages) if profile else [],
         open_to=open_to_keys(profile) if profile else [], open_to_labels=OPEN_TO_LABELS,
         can_intro=not is_self and state is None,

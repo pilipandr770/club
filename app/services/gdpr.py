@@ -27,6 +27,13 @@ def export_user(user) -> dict:
         "profil": None if profile is None else {
             "land": profile.country,
             "wohnsitzland": profile.residence_country,
+            "ueberschrift": profile.headline, "firma": profile.company, "branche": profile.industry,
+            "stadt": profile.city, "ueber_mich": profile.bio, "was_ich_mache": profile.q_focus,
+            "aufgabe": profile.q_challenge, "kann_helfen": profile.q_can_help, "suche": profile.q_looking_for,
+            "themen": profile.expertise, "offen_fuer": profile.open_to, "sprachen": profile.languages,
+            "website": profile.website_url, "linkedin": profile.linkedin_url,
+            "soziale_netzwerke": profile.social_links or {}, "links_fuer_alle_sichtbar": profile.links_public,
+            "im_verzeichnis_sichtbar": profile.visible_in_directory, "matching_erlaubt": profile.allow_matching,
         },
         "identitaetspruefung": {
             "status": user.verification_status,
