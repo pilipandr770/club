@@ -691,63 +691,6 @@ progress {
   white-space: nowrap;
 }
 
-.assistant {
-  position: fixed;
-  inset-block-end: 1rem;
-  inset-inline-end: 1rem;
-  z-index: 50;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 0.5rem;
-}
-
-.assistant-panel {
-  display: flex;
-  flex-direction: column;
-  inline-size: min(24rem, calc(100vw - 2rem));
-  max-block-size: min(34rem, calc(100vh - 6rem));
-  padding: 0.75rem;
-  background: var(--color-bg);
-  border: 1px solid var(--color-border);
-  border-radius: 0.75rem;
-  box-shadow: 0 8px 30px rgb(0 0 0 / 20%);
-}
-
-.assistant-panel[hidden] { display: none; }
-
-.assistant-head {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-}
-
-.assistant-head strong { margin-inline-end: auto; }
-.assistant-note { margin-block: 0.25rem 0.5rem; }
-
-.assistant-log {
-  flex: 1;
-  min-block-size: 8rem;
-  overflow-y: auto;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.assistant-msg {
-  margin: 0;
-  padding: 0.5rem 0.75rem;
-  border-radius: 0.6rem;
-  white-space: pre-wrap;
-  overflow-wrap: anywhere;
-}
-
-.assistant-assistant { align-self: flex-start; background: var(--color-card); }
-.assistant-user { align-self: flex-end; background: var(--color-accent); color: var(--color-bg); }
-.assistant-pending { opacity: 0.6; }
-.assistant-context { margin-block: 0.4rem 0; min-block-size: 1.2em; }
-.assistant-form { display: flex; gap: 0.5rem; align-items: flex-end; margin-block-start: 0.4rem; }
-.assistant-form textarea { flex: 1; resize: none; }
 
 /* ==========================================================================
    Дизайн-система v2: оболочка, типографика, карточки, формы, таблицы.
@@ -1105,10 +1048,6 @@ main tr:last-child td { border-block-end: 0; }
 
 hr { border: 0; border-block-start: 1px solid var(--color-border); margin-block: 1.5rem; }
 
-/* ---------- Помощник ---------- */
-.assistant-toggle { box-shadow: var(--shadow-m); border-radius: 999px; }
-.assistant-panel { border-radius: calc(var(--radius) + 2px); box-shadow: var(--shadow-m); background: var(--color-card); }
-.assistant-assistant { background: var(--color-accent-soft); }
 
 /* ---------- Маленькие экраны ---------- */
 @media (max-width: 40rem) {
@@ -1583,11 +1522,151 @@ fieldset.field legend { font-weight: 600; padding: 0; margin-block-end: 0.25rem;
 .link-pill:hover { border-color: var(--color-accent); }
 .mini-links .link-row { margin-block-start: 0.25rem; }
 
-/* ---------- Голосовой ввод Clubi ---------- */
-.assistant-mic { white-space: nowrap; }
-.assistant-mic-on { background: var(--color-danger); color: #fff; border-color: var(--color-danger); animation: assistant-pulse 1.2s ease-in-out infinite; }
-.assistant-voice-consent { margin-block-start: 0.5rem; padding: 0.6rem; border: 1px solid var(--color-border); border-radius: 10px; }
-.assistant-voice-consent p { margin: 0 0 0.5rem; }
-.assistant-voice-status { min-block-size: 1.2em; margin: 0.25rem 0 0; }
-@keyframes assistant-pulse { 50% { opacity: 0.65; } }
-@media (prefers-reduced-motion: reduce) { .assistant-mic-on { animation: none; } }
+/* ---------- Clubi: окно помощника ---------- */
+.assistant {
+  position: fixed;
+  inset-block-end: max(1rem, env(safe-area-inset-bottom, 0px));
+  inset-inline-end: 1rem;
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.6rem;
+}
+.assistant:has(.assistant-panel:not([hidden])) .assistant-toggle { display: none; }
+.assistant-toggle { display: inline-flex; align-items: center; gap: 0.5rem; box-shadow: var(--shadow-m); border-radius: 999px; }
+.assistant-toggle svg { inline-size: 1.15rem; block-size: 1.15rem; }
+
+.assistant-panel {
+  display: flex;
+  flex-direction: column;
+  inline-size: min(26rem, calc(100vw - 2rem));
+  block-size: min(36rem, calc(100dvh - 2rem));
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: 18px;
+  box-shadow: var(--shadow-m);
+  overflow: hidden;
+}
+.assistant-panel[hidden] { display: none; }
+
+.assistant-head {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.8rem 0.9rem;
+  background: linear-gradient(135deg, var(--color-accent-soft), transparent);
+  border-block-end: 1px solid var(--color-border);
+}
+.assistant-badge {
+  flex: none;
+  display: grid;
+  place-items: center;
+  inline-size: 2.2rem;
+  block-size: 2.2rem;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #5b43d6, #9a7bff);
+  color: #fff;
+}
+.assistant-badge svg { inline-size: 1.15rem; block-size: 1.15rem; }
+.assistant-title { flex: 1; min-inline-size: 0; display: grid; line-height: 1.25; }
+.assistant-title strong { font-size: 1rem; }
+.assistant-context { margin: 0; font-size: 0.78rem; color: var(--color-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.assistant-iconbtn {
+  flex: none;
+  display: grid;
+  place-items: center;
+  inline-size: 2.25rem;
+  block-size: 2.25rem;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--color-muted);
+  cursor: pointer;
+}
+.assistant-iconbtn:hover { background: var(--color-accent-soft); color: var(--color-text); }
+.assistant-iconbtn svg { inline-size: 1.15rem; block-size: 1.15rem; }
+
+.assistant-note { margin: 0; padding: 0.5rem 0.9rem; font-size: 0.75rem; line-height: 1.4; color: var(--color-muted); }
+
+.assistant-log {
+  flex: 1;
+  min-block-size: 0;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  padding: 0.25rem 0.9rem 0.75rem;
+}
+.assistant-msg {
+  margin: 0;
+  max-inline-size: 88%;
+  padding: 0.55rem 0.8rem;
+  border-radius: 14px;
+  font-size: 0.95rem;
+  line-height: 1.45;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.assistant-assistant { align-self: flex-start; background: var(--color-accent-soft); border-end-start-radius: 4px; }
+.assistant-user { align-self: flex-end; background: var(--color-accent); color: var(--color-bg); border-end-end-radius: 4px; }
+.assistant-pending { opacity: 0.6; }
+
+.assistant-voice-consent { margin: 0 0.9rem 0.6rem; padding: 0.7rem 0.8rem; border: 1px solid var(--color-border); border-radius: 12px; background: var(--color-accent-soft); }
+.assistant-voice-consent[hidden] { display: none; }
+.assistant-voice-consent p { margin: 0 0 0.6rem; font-size: 0.8rem; line-height: 1.45; }
+
+.assistant-form {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.35rem;
+  margin: 0 0.75rem 0.4rem;
+  padding: 0.35rem 0.35rem 0.35rem 0.8rem;
+  border: 1px solid var(--color-border);
+  border-radius: 22px;
+  background: var(--color-bg);
+}
+.assistant-form:focus-within { border-color: var(--color-accent); box-shadow: 0 0 0 3px var(--color-accent-soft); }
+.assistant-form textarea {
+  flex: 1;
+  min-inline-size: 0;
+  max-block-size: 7rem;
+  padding: 0.5rem 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+  resize: none;
+  line-height: 1.4;
+}
+.assistant-form textarea:focus { outline: none; box-shadow: none; }
+.assistant-round {
+  flex: none;
+  display: grid;
+  place-items: center;
+  inline-size: 2.5rem;
+  block-size: 2.5rem;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+.assistant-round svg { inline-size: 1.2rem; block-size: 1.2rem; }
+.assistant-round[hidden] { display: none; }
+.assistant-round:disabled { opacity: 0.5; cursor: default; }
+.assistant-mic { background: var(--color-accent-soft); color: var(--color-accent); }
+.assistant-mic:hover { background: var(--color-accent); color: var(--color-bg); }
+.assistant-mic-on { background: var(--color-danger); color: #fff; animation: assistant-pulse 1.2s ease-in-out infinite; }
+.assistant-mic-on:hover { background: var(--color-danger); color: #fff; }
+.assistant-send { background: var(--color-accent); color: var(--color-bg); }
+.assistant-send:hover:not(:disabled) { filter: brightness(1.08); }
+.assistant-voice-status { min-block-size: 1.1rem; margin: 0 1rem 0.6rem; font-size: 0.78rem; color: var(--color-muted); }
+@keyframes assistant-pulse { 50% { box-shadow: 0 0 0 6px rgb(180 35 24 / 25%); } }
+
+@media (max-width: 480px) {
+  .assistant { inset-inline: 0.75rem; align-items: stretch; }
+  .assistant-toggle { align-self: flex-end; }
+  .assistant-panel { inline-size: auto; block-size: min(80dvh, 40rem); }
+}
+@media (prefers-reduced-motion: reduce) { .assistant-mic-on { animation: none; } .assistant-round { transition: none; } }

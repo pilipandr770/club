@@ -48,6 +48,11 @@
   root.querySelector(".assistant-clear").addEventListener("click", function () {
     state.messages = []; contextLine.textContent = ""; save(); render();
   });
+  function grow() {
+    input.style.height = "auto";
+    input.style.height = Math.min(input.scrollHeight, 112) + "px";
+  }
+  input.addEventListener("input", grow);
   input.addEventListener("keydown", function (event) {
     if (event.key === "Enter" && !event.shiftKey) { event.preventDefault(); form.requestSubmit(); }
   });
@@ -60,6 +65,7 @@
     state.messages.push({ role: "user", text: text });
     addBubble("user", text);
     input.value = "";
+    grow();
     var pending = addBubble("assistant", root.dataset.thinking);
     pending.classList.add("assistant-pending");
     form.querySelector(".assistant-send").disabled = true;
@@ -108,9 +114,11 @@
     return "";
   }
   function setRecording(on) {
+    var label = on ? root.dataset.micStop : root.dataset.micStart;
     mic.setAttribute("aria-pressed", on ? "true" : "false");
+    mic.setAttribute("aria-label", label);
+    mic.title = label;
     mic.classList.toggle("assistant-mic-on", on);
-    mic.textContent = on ? root.dataset.micStop : root.dataset.micStart;
   }
   function stopTracks() {
     if (stream) { stream.getTracks().forEach(function (t) { t.stop(); }); stream = null; }
@@ -127,6 +135,7 @@
       }).then(function (result) {
         if (result.ok && result.data.text) {
           input.value = (input.value ? input.value.trim() + " " : "") + result.data.text;
+          grow();
           voiceStatus.textContent = "";
           input.focus();
         } else {
