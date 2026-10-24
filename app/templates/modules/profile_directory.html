@@ -1,23 +1,104 @@
 {% extends "base.html" %}
 
-{% block title %}{{ _("Members") }} · {{ _("Club") }}{% endblock %}
+{% block title %}{{ _("Community") }} · {{ _("Club") }}{% endblock %}
 
 {% block content %}
-<h1>{{ _("Members") }}</h1>
-<p class="muted">{{ _("Members who chose to appear in the directory. Only verified members can see this page.") }}</p>
+<header class="community-head">
+  <h1>{{ _("Community") }}</h1>
+  <p class="muted">{{ _("Verified members who chose to be listed. Open a card to see who they are, what they offer and what they look for.") }}</p>
+  <p class="small">{{ ngettext("%(num)d member is listed", "%(num)d members are listed", listed) }} · {{ ngettext("%(num)d verified member in total", "%(num)d verified members in total", verified) }}</p>
+</header>
 
-{% for user in users %}
-<section class="card member-card">
-  {% if user.profile.photo_key %}
-    <img class="avatar" src="{{ url_for('profile.photo', user_id=user.id) }}" alt="" width="64" height="64">
-  {% endif %}
-  <div>
-    <h2><a href="{{ url_for('profile.view', user_id=user.id) }}">{{ user.first_name }}</a></h2>
-    <p>{{ user.profile.headline or _("No headline yet") }}</p>
-    <p class="small">{% if user.profile.city %}{{ user.profile.city }}{% endif %}{% if user.profile.industry %} · {{ user.profile.industry }}{% endif %}</p>
-  </div>
+{% if not in_directory %}
+<section class="card callout">
+  <h2>{{ _("Show your card to the community") }}</h2>
+  <p>{{ _("You are not listed yet, so other members cannot find you. Listing is your choice and you can switch it off at any time.") }}</p>
+  <p><a class="button" href="{{ url_for('profile.privacy') }}">{{ _("Make my choices") }}</a>
+    <a class="button button-secondary" href="{{ url_for('profile.edit') }}#card">{{ _("Design my card") }}</a></p>
 </section>
-{% else %}
-  <p>{{ _("No members in the directory yet.") }}</p>
-{% endfor %}
+{% endif %}
+
+<form method="get" action="{{ url_for('profile.directory') }}" class="community-filters" role="search">
+  <div class="field">
+    <label for="q">{{ _("Search") }}</label>
+    <input id="q" name="q" type="search" value="{{ q }}" maxlength="80" placeholder="{{ _('Name, skill, company, topic') }}">
+  </div>
+  <div class="field">
+    <label for="city">{{ _("City") }}</label>
+    <select id="city" name="city">
+      <option value="">{{ _("All cities") }}</option>
+      {% for value in cities %}<option value="{{ value }}"{% if value|lower == city|lower %} selected{% endif %}>{{ value }}</option>{% endfor %}
+    </select>
+  </div>
+  <div class="field">
+    <label for="industry">{{ _("Industry") }}</label>
+    <select id="industry" name="industry">
+      <option value="">{{ _("All industries") }}</option>
+      {% for value in industries %}<option value="{{ value }}"{% if value|lower == industry|lower %} selected{% endif %}>{{ value }}</option>{% endfor %}
+    </select>
+  </div>
+  <div class="field">
+    <label for="open_to">{{ _("Looking for") }}</label>
+    <select id="open_to" name="open_to">
+      <option value="">{{ _("Anything") }}</option>
+      {% for key, label in open_to_options %}<option value="{{ key }}"{% if key == open_to %} selected{% endif %}>{{ label }}</option>{% endfor %}
+    </select>
+  </div>
+  <div class="community-actions">
+    <button type="submit" class="button">{{ _("Search") }}</button>
+    {% if filtered %}<a class="button button-secondary" href="{{ url_for('profile.directory') }}">{{ _("Reset") }}</a>{% endif %}
+  </div>
+</form>
+
+<p class="small" aria-live="polite">{{ ngettext("%(num)d member found", "%(num)d members found", total) }}</p>
+
+<div class="member-grid">
+  {% for user in members %}
+  {% set p = user.profile %}
+  <article class="member-tile">
+    <div class="cover cover-{{ p.cover_theme or 'violet' }}"></div>
+    <div class="tile-body">
+      {% if p.photo_key %}
+        <img class="avatar avatar-lg" src="{{ url_for('profile.photo', user_id=user.id) }}" alt="" width="72" height="72" loading="lazy">
+      {% else %}
+        <span class="avatar avatar-lg avatar-initial" aria-hidden="true">{{ user.first_name[:1]|upper }}</span>
+      {% endif %}
+      <h2><a class="tile-link" href="{{ url_for('profile.view', user_id=user.id) }}">{{ user.first_name }}</a></h2>
+      <p class="tile-headline">{{ p.headline or _("No headline yet") }}</p>
+      <p class="small muted">{{ [p.company, p.city]|select|join(" · ") }}</p>
+      {% set wants = open_to_keys(p) %}
+      {% if wants %}
+      <ul class="tag-row" aria-label="{{ _('Looking for') }}">
+        {% for key in wants[:3] %}<li class="tag tag-accent">{{ open_to_labels[key] }}</li>{% endfor %}
+      </ul>
+      {% endif %}
+      {% set skills = split_tags(p.expertise) %}
+      {% if skills %}
+      <ul class="tag-row" aria-label="{{ _('Skills and topics') }}">
+        {% for tag in skills[:4] %}<li class="tag">{{ tag }}</li>{% endfor %}
+      </ul>
+      {% endif %}
+    </div>
+  </article>
+  {% else %}
+  <section class="card community-empty">
+    {% if filtered %}
+      <h2>{{ _("Nobody matches this search") }}</h2>
+      <p>{{ _("Try fewer filters or another word.") }}</p>
+    {% else %}
+      <h2>{{ _("The community is just starting") }}</h2>
+      <p>{{ _("Members appear here once they choose to be listed. Be one of the first and publish your card.") }}</p>
+    {% endif %}
+  </section>
+  {% endfor %}
+</div>
+
+{% if total > page_size %}
+<nav class="pager" aria-label="{{ _('Pages') }}">
+  {% if page > 1 %}<a class="button button-secondary" href="{{ url_for('profile.directory', q=q, city=city, industry=industry, open_to=open_to, page=page-1) }}">{{ _("Previous") }}</a>{% endif %}
+  {% if page * page_size < total %}<a class="button button-secondary" href="{{ url_for('profile.directory', q=q, city=city, industry=industry, open_to=open_to, page=page+1) }}">{{ _("Next") }}</a>{% endif %}
+</nav>
+{% endif %}
+
+<p><a href="{{ url_for('profile.matches') }}">{{ _("My matches") }}</a> · <a href="{{ url_for('profile.edit') }}">{{ _("Edit my profile") }}</a></p>
 {% endblock %}

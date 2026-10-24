@@ -190,3 +190,52 @@ def missing_for_matching(profile) -> list[str]:
     if not (_filled(profile, "q_looking_for") or _filled(profile, "q_challenge")):
         missing.append("q_looking_for")
     return missing
+
+
+# --- Карточка-минисайт ----------------------------------------------------------
+# Цвет обложки выбирается из готовых тем: произвольный CSS запрещён (CSP), темы — классы cover-<ключ>.
+COVER_THEMES = (
+    ("violet", _l("Violet")),
+    ("ocean", _l("Ocean")),
+    ("forest", _l("Forest")),
+    ("sunset", _l("Sunset")),
+    ("graphite", _l("Graphite")),
+)
+COVER_KEYS = tuple(key for key, _label in COVER_THEMES)
+DEFAULT_COVER = "violet"
+
+# Чего человек ищет в клубе: короткие метки для фильтра каталога и значков на карточке
+OPEN_TO = (
+    ("clients", _l("Clients and projects")),
+    ("partners", _l("Partners and co-founders")),
+    ("investors", _l("Looking for investors")),
+    ("invest", _l("Investing in projects")),
+    ("hire", _l("Hiring")),
+    ("work", _l("Work and freelance jobs")),
+    ("mentor", _l("Mentoring others")),
+    ("learn", _l("Learning from others")),
+    ("events", _l("Meetings and events")),
+)
+OPEN_TO_LABELS = dict(OPEN_TO)
+
+CARD_HINTS = {
+    "open_to": _l("Tick what you want from the club. Others can filter the community by this."),
+    "languages": _l("Languages you work in, separated by commas."),
+    "website_url": _l("Your website or company page. Shown only to members whose contact request you accepted."),
+    "linkedin_url": _l("Your professional profile. Shown only to members whose contact request you accepted."),
+}
+
+
+def split_tags(value: str) -> list[str]:
+    """Теги через запятую: без пустых и повторов, не больше 12."""
+    seen, result = set(), []
+    for part in (value or "").split(","):
+        tag = part.strip()
+        if tag and tag.lower() not in seen:
+            seen.add(tag.lower())
+            result.append(tag)
+    return result[:12]
+
+
+def open_to_keys(profile) -> list[str]:
+    return [key for key in (profile.open_to or "").split(",") if key in OPEN_TO_LABELS]

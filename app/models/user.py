@@ -114,6 +114,12 @@ class Profile(db.Model):
     q_looking_for: Mapped[str] = mapped_column(Text, default="", server_default="")  # кого или что ищу
     expertise: Mapped[str] = mapped_column(String(500), default="", server_default="")  # теги через запятую
     photo_key: Mapped[str | None] = mapped_column(String(160))  # ключ в хранилище, сервер задаёт сам
+    # Карточка-минисайт: тема обложки, чего ищет, языки, ссылки (ссылки видны только принятым контактам)
+    cover_theme: Mapped[str] = mapped_column(String(12), default="violet", server_default="violet")
+    open_to: Mapped[str] = mapped_column(String(160), default="", server_default="")  # ключи через запятую
+    languages: Mapped[str] = mapped_column(String(160), default="", server_default="")
+    website_url: Mapped[str | None] = mapped_column(String(300))
+    linkedin_url: Mapped[str | None] = mapped_column(String(300))
     # Согласия (append-only в consents). По умолчанию выключены
     visible_in_directory: Mapped[bool] = mapped_column(Boolean, default=False, server_default="false")
     allow_matching: Mapped[bool] = mapped_column(Boolean, default=False, server_default="false")

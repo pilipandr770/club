@@ -17,8 +17,11 @@
         {% if current_user.is_admin %}
           <a href="{{ url_for('admin.dashboard') }}"{% if request.blueprint == 'admin' %} aria-current="page"{% endif %}>{{ _("Admin") }}</a>
         {% endif %}
+        {% if nav_modules|selectattr('key', 'equalto', 'profile')|list %}
+          <a href="{{ url_for('profile.directory') }}"{% if request.endpoint in ('profile.directory', 'profile.view') %} aria-current="page"{% endif %}>{{ _("Community") }}</a>
+        {% endif %}
         {% for module in nav_modules %}
-          <a href="{{ url_for(module.endpoint) }}"{% if request.blueprint == module.key %} aria-current="page"{% endif %}>{{ module.title }}</a>
+          <a href="{{ url_for(module.endpoint) }}"{% if request.blueprint == module.key and request.endpoint not in ('profile.directory', 'profile.view') %} aria-current="page"{% endif %}>{{ module.title }}</a>
         {% endfor %}
         <form method="post" action="{{ url_for('auth.logout') }}" class="inline-form">
           <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">

@@ -47,6 +47,55 @@
   <button type="submit" class="button">{{ _("Save") }}</button>
 </form>
 
+<section class="card" id="card">
+  <h2>{{ _("My card") }}</h2>
+  <p class="small">{{ _("Your card is your mini-site in the community. Pick a look, say what you are open to and add your languages and links.") }}
+    <a href="{{ url_for('profile.view', user_id=current_user.id) }}">{{ _("Preview my card") }}</a></p>
+  <form method="post" action="{{ url_for('profile.save_card') }}" class="form">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+    <fieldset class="field">
+      <legend>{{ _("Look") }}</legend>
+      <div class="theme-picker">
+        {% for key, label in cover_themes %}
+        <label class="theme-option">
+          <input type="radio" name="cover_theme" value="{{ key }}"{% if (profile.cover_theme or 'violet') == key %} checked{% endif %}>
+          <span class="theme-swatch cover cover-{{ key }}"></span>
+          <span class="small">{{ label }}</span>
+        </label>
+        {% endfor %}
+      </div>
+    </fieldset>
+
+    <fieldset class="field">
+      <legend>{{ _("I am open to") }}</legend>
+      <p class="small">{{ card_hints.open_to }}</p>
+      <div class="check-grid">
+        {% for key, label in open_to_options %}
+        <label class="check-option"><input type="checkbox" name="open_to" value="{{ key }}"{% if key in open_to_selected %} checked{% endif %}> {{ label }}</label>
+        {% endfor %}
+      </div>
+    </fieldset>
+
+    <div class="field">
+      <label for="languages">{{ _("Languages") }}</label>
+      <p class="small">{{ card_hints.languages }}</p>
+      <input id="languages" name="languages" type="text" maxlength="160" value="{{ profile.languages or '' }}" placeholder="{{ _('German, English, Russian') }}">
+    </div>
+    <div class="field">
+      <label for="website_url">{{ _("Website") }}</label>
+      <p class="small">{{ card_hints.website_url }}</p>
+      <input id="website_url" name="website_url" type="url" maxlength="300" value="{{ profile.website_url or '' }}" placeholder="https://">
+    </div>
+    <div class="field">
+      <label for="linkedin_url">{{ _("Professional profile") }}</label>
+      <p class="small">{{ card_hints.linkedin_url }}</p>
+      <input id="linkedin_url" name="linkedin_url" type="url" maxlength="300" value="{{ profile.linkedin_url or '' }}" placeholder="https://">
+    </div>
+    <button type="submit" class="button">{{ _("Save my card") }}</button>
+  </form>
+</section>
+
 <section class="card">
   <h2>{{ _("Photo") }}</h2>
   <p class="small">{{ photo_hint }}</p>
@@ -73,5 +122,5 @@
   </form>
 </section>
 
-<p><a href="{{ url_for('profile.directory') }}">{{ _("Open the member directory") }}</a> · <a href="{{ url_for('profile.matches') }}">{{ _("My matches") }}</a> · <a href="{{ url_for('profile.privacy') }}">{{ _("Publication and matching") }}</a></p>
+<p><a href="{{ url_for('profile.directory') }}">{{ _("Open the community") }}</a> · <a href="{{ url_for('profile.matches') }}">{{ _("My matches") }}</a> · <a href="{{ url_for('profile.privacy') }}">{{ _("Publication and matching") }}</a></p>
 {% endblock %}

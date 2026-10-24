@@ -12,7 +12,7 @@ from flask_babel import gettext as _
 
 from ..extensions import db
 from ..models import Event, Lot, MiniClub, Service, Startup, ToolRun, Trip, User
-from ..profile_guide import FIELDS
+from ..profile_guide import FIELDS, OPEN_TO_LABELS, open_to_keys
 from ..event_guide import EVENT_FIELDS
 from ..miniclub_guide import CLUB_FIELDS
 from ..startup_guide import PITCH_FIELDS
@@ -74,6 +74,12 @@ def _profile_lines(profile, with_private=False):
         value = _clean(getattr(profile, field.key, ""))
         if value:
             lines.append(f"{field.key}: {value}")
+    # карточка: чего ищет и языки (ссылки и контакты в контекст не попадают)
+    open_to = ", ".join(str(OPEN_TO_LABELS[key]) for key in open_to_keys(profile))
+    if open_to:
+        lines.append(f"open_to: {open_to}")
+    if _clean(profile.languages):
+        lines.append(f"languages: {_clean(profile.languages)}")
     return lines
 
 

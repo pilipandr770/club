@@ -1,42 +1,129 @@
 {% extends "base.html" %}
 
-{% block title %}{{ member.first_name }} · {{ _("Members") }}{% endblock %}
+{% block title %}{{ member.first_name }} · {{ _("Community") }}{% endblock %}
 
 {% block content %}
-<section class="profile-head">
-  {% if profile and profile.photo_key %}
-    <img class="avatar" src="{{ url_for('profile.photo', user_id=member.id) }}" alt="" width="120" height="120">
-  {% endif %}
-  <div>
-    <h1>{{ member.first_name }}</h1>
-    {% if profile and profile.headline %}<p>{{ profile.headline }}</p>{% endif %}
-    <p class="small">
-      {% if profile and profile.company %}{{ profile.company }} · {% endif %}
-      {% if profile and profile.city %}{{ profile.city }}{% endif %}
-      {% if profile and profile.industry %} · {{ profile.industry }}{% endif %}
-    </p>
-  </div>
-</section>
-
-{% if profile %}
-  {% for field in fields if field.key in ["q_focus", "q_challenge", "q_can_help", "q_looking_for", "bio"] %}
-    {% if profile[field.key] %}
-    <section class="card">
-      <h2>{{ field.label }}</h2>
-      <p>{{ profile[field.key] }}</p>
-    </section>
-    {% endif %}
-  {% endfor %}
-  {% if profile.expertise %}
-  <section class="card">
-    <h2>{{ _("Skills and topics") }}</h2>
-    <p>{{ profile.expertise }}</p>
-  </section>
-  {% endif %}
-{% endif %}
+{% set theme = (profile.cover_theme if profile and profile.cover_theme else 'violet') %}
 
 {% if is_self %}
-  <p><a href="{{ url_for('profile.edit') }}">{{ _("Edit my profile") }}</a></p>
+<section class="card callout">
+  <p><strong>{{ _("This is how other members see your card.") }}</strong>
+    {% if not (profile and profile.visible_in_directory) %}
+      {{ _("It is hidden for now: you have not chosen to be listed in the community.") }}
+    {% endif %}</p>
+  <p><a class="button button-secondary" href="{{ url_for('profile.edit') }}#card">{{ _("Design my card") }}</a>
+    <a class="button button-secondary" href="{{ url_for('profile.edit') }}">{{ _("Edit my profile") }}</a>
+    {% if not (profile and profile.visible_in_directory) %}<a class="button" href="{{ url_for('profile.privacy') }}">{{ _("Make my choices") }}</a>{% endif %}</p>
+</section>
 {% endif %}
-<p><a href="{{ url_for('profile.directory') }}">{{ _("Back to the directory") }}</a></p>
+
+<article class="minisite">
+  <header class="mini-hero cover cover-{{ theme }}">
+    <div class="mini-id">
+      {% if profile and profile.photo_key %}
+        <img class="avatar avatar-xl" src="{{ url_for('profile.photo', user_id=member.id) }}" alt="" width="120" height="120">
+      {% else %}
+        <span class="avatar avatar-xl avatar-initial" aria-hidden="true">{{ member.first_name[:1]|upper }}</span>
+      {% endif %}
+      <div class="mini-name">
+        <h1>{{ member.first_name }}</h1>
+        {% if profile and profile.headline %}<p class="mini-headline">{{ profile.headline }}</p>{% endif %}
+        <p class="small">{{ [profile.company if profile, profile.city if profile, profile.industry if profile]|select|join(" · ") }}</p>
+      </div>
+    </div>
+  </header>
+
+  {% if open_to %}
+  <ul class="tag-row mini-open" aria-label="{{ _('Looking for') }}">
+    {% for key in open_to %}<li class="tag tag-accent">{{ open_to_labels[key] }}</li>{% endfor %}
+  </ul>
+  {% endif %}
+
+  {% if not is_self %}
+  <section class="card mini-contact" id="contact">
+    {% if contact %}
+      <h2>{{ _("Contact") }}</h2>
+      <p>{{ _("Contact:") }} <a href="mailto:{{ contact }}">{{ contact }}</a></p>
+    {% elif state == "accepted" %}
+      <p>{{ _("Accepted.") }}</p>
+    {% elif state == "sent" %}
+      <p>{{ _("Your request is waiting for an answer.") }}</p>
+    {% elif state == "received" %}
+      <p>{{ _("This member has asked to contact you. Answer in your requests.") }}
+        <a href="{{ url_for('profile.intros_inbox') }}">{{ _("Contact requests") }}</a></p>
+    {% elif not viewer_ready %}
+      <p>{{ _("To send a contact request, describe what you can offer and what you look for, and allow matching.") }}</p>
+      <p><a class="button" href="{{ url_for('profile.edit') }}">{{ _("Edit my profile") }}</a>
+        <a class="button button-secondary" href="{{ url_for('profile.privacy') }}">{{ _("Make my choices") }}</a></p>
+    {% elif not target_ready %}
+      <p>{{ _("This member is not taking contact requests at the moment.") }}</p>
+    {% else %}
+      <h2>{{ _("Get in touch") }}</h2>
+      <p class="small">{{ _("Contact details are shared only after this member accepts.") }}</p>
+      <form method="post" action="{{ url_for('profile.request_intro', user_id=member.id) }}" class="form">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+        <input type="hidden" name="back" value="card">
+        <div class="field">
+          <label for="msg">{{ _("Short message (optional)") }}</label>
+          <textarea id="msg" name="message" rows="3" maxlength="500"></textarea>
+        </div>
+        <button type="submit" class="button">{{ _("Request contact") }}</button>
+      </form>
+    {% endif %}
+    {% if contact or state == "accepted" %}
+      {% if profile and (profile.website_url or profile.linkedin_url) %}
+      <ul class="link-row">
+        {% if profile.website_url %}<li><a href="{{ profile.website_url }}" rel="noopener noreferrer nofollow" target="_blank">{{ _("Website") }}</a></li>{% endif %}
+        {% if profile.linkedin_url %}<li><a href="{{ profile.linkedin_url }}" rel="noopener noreferrer nofollow" target="_blank">{{ _("Professional profile") }}</a></li>{% endif %}
+      </ul>
+      {% endif %}
+    {% endif %}
+  </section>
+  {% elif profile and (profile.website_url or profile.linkedin_url) %}
+  <section class="card mini-contact">
+    <p class="small">{{ _("Your links are shown only to members whose contact request you accepted.") }}</p>
+  </section>
+  {% endif %}
+
+  {% if profile %}
+  <div class="mini-sections">
+    {% for key in ["q_focus", "q_can_help", "q_looking_for", "q_challenge", "bio"] %}
+      {% if profile[key] %}
+      <section class="card mini-block">
+        <h2>{{ fields_by_key[key].label if fields_by_key else key }}</h2>
+        <p>{{ profile[key] }}</p>
+      </section>
+      {% endif %}
+    {% endfor %}
+  </div>
+
+  {% if tags or languages %}
+  <section class="card mini-block">
+    {% if tags %}
+      <h2>{{ _("Skills and topics") }}</h2>
+      <ul class="tag-row">{% for tag in tags %}<li class="tag">{{ tag }}</li>{% endfor %}</ul>
+    {% endif %}
+    {% if languages %}
+      <h2>{{ _("Languages") }}</h2>
+      <ul class="tag-row">{% for lang in languages %}<li class="tag">{{ lang }}</li>{% endfor %}</ul>
+    {% endif %}
+  </section>
+  {% endif %}
+  {% endif %}
+
+  {% set has_content = content.startups or content.trips or content.events or content.clubs %}
+  {% if has_content %}
+  <section class="card mini-block">
+    <h2>{{ _("Also in the club") }}</h2>
+    <ul class="mini-works">
+      {% for s in content.startups %}<li><span class="small muted">{{ _("Startup") }}</span> <a href="{{ url_for('startups.detail', startup_id=s.id) }}">{{ s.name }}</a>{% if s.tagline %} · {{ s.tagline }}{% endif %}</li>{% endfor %}
+      {% for t in content.trips %}<li><span class="small muted">{{ _("Trip") }}</span> <a href="{{ url_for('travel.detail', trip_id=t.id) }}">{{ t.title }}</a> · {{ t.destination }}</li>{% endfor %}
+      {% for e in content.events %}<li><span class="small muted">{{ _("Meeting") }}</span> <a href="{{ url_for('events.detail', event_id=e.id) }}">{{ e.title }}</a></li>{% endfor %}
+      {% for c in content.clubs %}<li><span class="small muted">{{ _("Mini-club") }}</span> <a href="{{ url_for('miniclubs.detail', club_id=c.id) }}">{{ c.name }}</a></li>{% endfor %}
+    </ul>
+  </section>
+  {% endif %}
+</article>
+
+<p><a href="{{ url_for('profile.directory') }}">{{ _("Back to the community") }}</a></p>
 {% endblock %}
