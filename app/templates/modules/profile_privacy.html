@@ -29,6 +29,11 @@
     {{ _("Show my website and social network links on my card to all verified members. Off by default: otherwise only members whose contact request you accepted see them.") }}
   </label>
 
+  <label class="check">
+    <input type="checkbox" name="voice_consent" value="1" {% if voice_ok %}checked{% endif %}>
+    {{ _("Allow voice input for Clubi: my recording is sent to a speech service (Mistral in the EU, or OpenAI in the USA as a backup) to be turned into text and is not stored by the club.") }}
+  </label>
+
   <p class="small">{{ _("Contact details are never published. Other members can reach you only after you accept their request.") }}</p>
 
   <button type="submit" class="button">{{ _("Save my choices") }}</button>
@@ -38,7 +43,7 @@
   <h2>{{ _("History of your choices") }}</h2>
   <ul class="module-list">
     {% for row in history %}
-      <li>{{ row.created_at.strftime('%d.%m.%Y %H:%M') }} · {% if row.kind == "directory" %}{{ _("Directory") }}{% elif row.kind == "social_links" %}{{ _("Links") }}{% else %}{{ _("Matching") }}{% endif %}: {{ _("agreed") if row.granted else _("not agreed") }} · {{ row.version }}</li>
+      <li>{{ row.created_at.strftime('%d.%m.%Y %H:%M') }} · {% if row.kind == "directory" %}{{ _("Directory") }}{% elif row.kind == "social_links" %}{{ _("Links") }}{% elif row.kind == "voice" %}{{ _("Voice input") }}{% else %}{{ _("Matching") }}{% endif %}: {{ _("agreed") if row.granted else _("not agreed") }} · {{ row.version }}</li>
     {% else %}
       <li class="muted">{{ _("You have not made a choice yet.") }}</li>
     {% endfor %}

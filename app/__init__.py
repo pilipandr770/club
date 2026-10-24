@@ -93,7 +93,13 @@ def create_app(env=None):
             return {"nav_modules": [], "assistant_on": False}
         specs = [spec for spec in enabled_modules(app.config["ENABLED_MODULES"])
                  if has_feature(current_user, spec.feature)]
-        return {"nav_modules": specs, "assistant_on": has_feature(current_user, "assistant.use")}
+        assistant_on = has_feature(current_user, "assistant.use")
+        voice_ok = False
+        if assistant_on:
+            from .services.consents import latest_consent
+
+            voice_ok = latest_consent(current_user, "voice") is True
+        return {"nav_modules": specs, "assistant_on": assistant_on, "voice_ok": voice_ok}
 
     from . import models  # noqa: F401  (регистрирует модели для миграций)
 
@@ -158,7 +164,7 @@ def create_app(env=None):
         response.headers.setdefault("X-Content-Type-Options", "nosniff")
         response.headers.setdefault("Referrer-Policy", "strict-origin-when-cross-origin")
         response.headers.setdefault("X-Frame-Options", "DENY")
-        response.headers.setdefault("Permissions-Policy", "camera=(), microphone=(), geolocation=(), payment=()")
+        response.headers.setdefault("Permissions-Policy", "camera=(), microphone=(self), geolocation=(), payment=()")
         response.headers.setdefault("Cross-Origin-Opener-Policy", "same-origin")
         # HSTS только в production с https-адресом сайта (локально без TLS он помешал бы работе браузера).
         # Схему берём из BASE_URL: TLS заканчивается на Traefik, внутри приложение видит обычный http.

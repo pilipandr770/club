@@ -18,6 +18,7 @@ CONSENT_KINDS = {
     "identity": "Identitätsprüfung über Stripe Identity (Verarbeitung durch Stripe)",
     "matching": "Profil für KI-gestütztes Matching verwenden",
     "directory": "Profil im Mitgliederverzeichnis sichtbar",
+    "voice": "Sprachaufnahmen für Clubi zur Texterkennung an den Anbieter senden",
     "social_links": "Links zu sozialen Netzwerken auf der Karte für alle Mitglieder sichtbar",
 }
 

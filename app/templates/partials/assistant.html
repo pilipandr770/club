@@ -1,5 +1,8 @@
 <div class="assistant" id="assistant" data-endpoint="{{ url_for('assistant.ask_view') }}" data-csrf="{{ csrf_token() }}"
-     data-user="{{ current_user.id }}"
+     data-user="{{ current_user.id }}" data-transcribe="{{ url_for('assistant.transcribe_view') }}"
+     data-voice-consent-url="{{ url_for('assistant.voice_consent') }}" data-voice-ok="{{ '1' if voice_ok else '' }}"
+     data-mic-start="{{ _('Speak') }}" data-mic-stop="{{ _('Stop') }}" data-mic-working="{{ _('Converting speech to text …') }}"
+     data-mic-denied="{{ _('The microphone is blocked. Allow it in your browser to speak.') }}"
      data-intro="{{ _('Hello! I am Clubi, your personal assistant in the club. I can see your profile and the page you are on. Ask me anything about it.') }}"
      data-thinking="{{ _('Clubi is thinking …') }}" data-failed="{{ _('Something went wrong. Please try again.') }}"
      data-sees="{{ _('Clubi sees: %(page)s', page='%s') }}">
@@ -16,7 +19,13 @@
     <form class="assistant-form">
       <label class="visually-hidden" for="assistant-input">{{ _("Your question") }}</label>
       <textarea id="assistant-input" rows="2" maxlength="1000" required placeholder="{{ _('Your question') }}"></textarea>
-      <button type="submit" class="button">{{ _("Send") }}</button>
+      <button type="button" class="button button-secondary assistant-mic" hidden aria-pressed="false">{{ _("Speak") }}</button>
+      <button type="submit" class="button assistant-send">{{ _("Send") }}</button>
     </form>
+    <div class="assistant-voice-consent small" hidden>
+      <p>{{ _("To turn your voice into text, the recording is sent to a speech service: Mistral in the EU, or OpenAI in the USA as a backup. The club does not store the audio. You can withdraw this at any time under Publication and matching.") }}</p>
+      <button type="button" class="button button-secondary assistant-voice-agree">{{ _("Agree and speak") }}</button>
+    </div>
+    <p class="assistant-voice-status small muted" role="status" aria-live="polite"></p>
   </section>
 </div>

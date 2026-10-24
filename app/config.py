@@ -81,6 +81,10 @@ class Config:
     OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY", "")
     GOOGLE_API_KEY = os.environ.get("GOOGLE_API_KEY", "")
     MISTRAL_API_KEY = os.environ.get("MISTRAL_API_KEY", "")
+    # Голосовой ввод Clubi: порядок провайдеров и модели распознавания речи
+    STT_PROVIDERS = os.environ.get("STT_PROVIDERS", "mistral,openai")
+    STT_MISTRAL_MODEL = os.environ.get("STT_MISTRAL_MODEL", "voxtral-mini-latest")
+    STT_OPENAI_MODEL = os.environ.get("STT_OPENAI_MODEL", "gpt-4o-mini-transcribe")
 
     # Почта: при деплое. Без SMTP_HOST письма только пишутся в лог.
     SMTP_HOST = os.environ.get("SMTP_HOST", "")

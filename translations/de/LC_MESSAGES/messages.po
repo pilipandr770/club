@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Club 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-24 10:44+0000\n"
+"POT-Creation-Date: 2026-10-24 15:30+0000\n"
 "PO-Revision-Date: 2026-10-19 21:00+0000\n"
 "Last-Translator: \n"
 "Language: de\n"
@@ -17,37 +17,37 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.17.0\n"
 
-#: app/__init__.py:52 app/__init__.py:104
+#: app/__init__.py:52 app/__init__.py:110
 msgid "Please log in to access this page."
 msgstr "Bitte melde dich an, um diese Seite zu öffnen."
 
-#: app/__init__.py:103
+#: app/__init__.py:109
 msgid "The request could not be processed. Refresh the page and try again."
 msgstr ""
 "Die Anfrage konnte nicht verarbeitet werden. Lade die Seite neu und "
 "versuche es erneut."
 
-#: app/__init__.py:105
+#: app/__init__.py:111
 msgid "You do not have access to this page."
 msgstr "Du hast keinen Zugriff auf diese Seite."
 
-#: app/__init__.py:106
+#: app/__init__.py:112
 msgid "This page could not be found."
 msgstr "Diese Seite wurde nicht gefunden."
 
-#: app/__init__.py:107
+#: app/__init__.py:113
 msgid "This action is not available for this request."
 msgstr "Diese Aktion ist für diese Anfrage nicht verfügbar."
 
-#: app/__init__.py:108
+#: app/__init__.py:114
 msgid "The uploaded file is too large."
 msgstr "Die hochgeladene Datei ist zu groß."
 
-#: app/__init__.py:109
+#: app/__init__.py:115
 msgid "Too many requests. Please wait a little and try again."
 msgstr "Zu viele Anfragen. Warte kurz und versuche es erneut."
 
-#: app/__init__.py:110
+#: app/__init__.py:116
 msgid "The server could not complete the request. Please try again later."
 msgstr ""
 "Der Server konnte die Anfrage nicht abschließen. Bitte versuche es später "
@@ -1349,12 +1349,12 @@ msgstr "Nutzungsbedingungen"
 msgid "Identity check"
 msgstr "Identitätsprüfung"
 
-#: app/i18n_labels.py:252 app/templates/modules/profile_privacy.html:41
+#: app/i18n_labels.py:252 app/templates/modules/profile_privacy.html:46
 #: app/templates/public/index.html:29
 msgid "Matching"
 msgstr "Matching"
 
-#: app/i18n_labels.py:253 app/templates/modules/profile_privacy.html:41
+#: app/i18n_labels.py:253 app/templates/modules/profile_privacy.html:46
 msgid "Directory"
 msgstr "Verzeichnis"
 
@@ -2555,26 +2555,50 @@ msgstr "Die Leistung ist gespeichert."
 msgid "Unknown status."
 msgstr "Unbekannter Status."
 
-#: app/blueprints/assistant/__init__.py:16
+#: app/blueprints/assistant/__init__.py:20
 msgid "Please write a question."
 msgstr "Bitte schreibe eine Frage."
 
-#: app/blueprints/assistant/__init__.py:17
+#: app/blueprints/assistant/__init__.py:21
 msgid "The assistant is not available right now. Please try again later."
 msgstr ""
 "Die Assistentin ist gerade nicht verfügbar. Bitte versuche es später noch "
 "einmal."
 
-#: app/blueprints/assistant/__init__.py:18
+#: app/blueprints/assistant/__init__.py:22
 msgid "You have reached today's limit of questions. It renews tomorrow."
 msgstr "Du hast das Tageslimit an Fragen erreicht. Es erneuert sich morgen."
 
-#: app/blueprints/assistant/__init__.py:19 app/modules/events/__init__.py:51
-#: app/modules/miniclubs/__init__.py:53 app/modules/profile/__init__.py:238
+#: app/blueprints/assistant/__init__.py:23 app/modules/events/__init__.py:51
+#: app/modules/miniclubs/__init__.py:53 app/modules/profile/__init__.py:240
 #: app/modules/services/__init__.py:18 app/modules/startups/__init__.py:35
-#: app/modules/travel/__init__.py:44 app/templates/partials/assistant.html:4
+#: app/modules/travel/__init__.py:44 app/templates/partials/assistant.html:7
 msgid "Something went wrong. Please try again."
 msgstr "Etwas ist schiefgelaufen. Bitte versuche es erneut."
+
+#: app/blueprints/assistant/__init__.py:57
+msgid "Please agree to voice input first."
+msgstr "Bitte stimme zuerst der Spracheingabe zu."
+
+#: app/blueprints/assistant/__init__.py:61
+msgid "No recording received. Please try again."
+msgstr "Keine Aufnahme erhalten. Bitte versuche es erneut."
+
+#: app/blueprints/assistant/__init__.py:63
+msgid "The recording is too long. Please keep it under a minute."
+msgstr "Die Aufnahme ist zu lang. Bitte fasse dich unter einer Minute."
+
+#: app/blueprints/assistant/__init__.py:67
+msgid "This audio format is not supported."
+msgstr "Dieses Audioformat wird nicht unterstützt."
+
+#: app/blueprints/assistant/__init__.py:68
+msgid "Voice input is not available right now. Please type your question."
+msgstr "Die Spracheingabe ist gerade nicht verfügbar. Bitte tippe deine Frage."
+
+#: app/blueprints/assistant/__init__.py:71
+msgid "I could not hear anything. Please try again."
+msgstr "Ich konnte nichts hören. Bitte versuche es erneut."
 
 #: app/blueprints/auth/__init__.py:27
 msgid "Please confirm your e-mail address"
@@ -2806,7 +2830,7 @@ msgid "Please allow the seller to see your contact details if you win."
 msgstr "Bitte erlaube dem Verkäufer, deine Kontaktdaten zu sehen, falls du gewinnst."
 
 #: app/modules/auction/__init__.py:60 app/modules/events/__init__.py:45
-#: app/modules/miniclubs/__init__.py:44 app/modules/profile/__init__.py:235
+#: app/modules/miniclubs/__init__.py:44 app/modules/profile/__init__.py:237
 #: app/modules/startups/__init__.py:33 app/modules/travel/__init__.py:39
 msgid "This is not available to you."
 msgstr "Das ist für dich nicht verfügbar."
@@ -3029,7 +3053,7 @@ msgstr "Du bist kein Mitglied dieses Mini-Clubs."
 msgid "This mini-club can no longer be edited."
 msgstr "Dieser Mini-Club kann nicht mehr bearbeitet werden."
 
-#: app/modules/miniclubs/__init__.py:46 app/modules/profile/__init__.py:236
+#: app/modules/miniclubs/__init__.py:46 app/modules/profile/__init__.py:238
 msgid "This request has already been answered."
 msgstr "Auf diese Anfrage wurde bereits geantwortet."
 
@@ -3125,11 +3149,11 @@ msgstr ""
 msgid "Your card is saved."
 msgstr "Deine Karte ist gespeichert."
 
-#: app/modules/profile/__init__.py:168
+#: app/modules/profile/__init__.py:169
 msgid "Your choices are saved."
 msgstr "Deine Entscheidungen sind gespeichert."
 
-#: app/modules/profile/__init__.py:192
+#: app/modules/profile/__init__.py:194
 msgid ""
 "Your request is sent. The other member decides whether to share contact "
 "details."
@@ -3137,33 +3161,33 @@ msgstr ""
 "Deine Anfrage ist gesendet. Das andere Mitglied entscheidet, ob es seine "
 "Kontaktdaten teilt."
 
-#: app/modules/profile/__init__.py:231
+#: app/modules/profile/__init__.py:233
 msgid "You cannot send a request to yourself."
 msgstr "Du kannst dir selbst keine Anfrage senden."
 
-#: app/modules/profile/__init__.py:232
+#: app/modules/profile/__init__.py:234
 msgid "This member cannot be contacted right now."
 msgstr "Dieses Mitglied kann gerade nicht kontaktiert werden."
 
-#: app/modules/profile/__init__.py:233
+#: app/modules/profile/__init__.py:235
 msgid "There is already a request between you two."
 msgstr "Zwischen euch beiden gibt es bereits eine Anfrage."
 
-#: app/modules/profile/__init__.py:234
+#: app/modules/profile/__init__.py:236
 msgid "You have reached today's limit of requests. Please try again tomorrow."
 msgstr ""
 "Du hast das heutige Limit an Anfragen erreicht. Bitte versuche es morgen "
 "erneut."
 
-#: app/modules/profile/__init__.py:247
+#: app/modules/profile/__init__.py:249
 msgid "Please choose a photo first."
 msgstr "Bitte wähle zuerst ein Foto aus."
 
-#: app/modules/profile/__init__.py:265
+#: app/modules/profile/__init__.py:267
 msgid "Your photo is saved."
 msgstr "Dein Foto ist gespeichert."
 
-#: app/modules/profile/__init__.py:279
+#: app/modules/profile/__init__.py:281
 msgid "Your photo is removed."
 msgstr "Dein Foto ist entfernt."
 
@@ -5699,7 +5723,7 @@ msgstr "Ergebnis"
 msgid "no buyer"
 msgstr "kein Käufer"
 
-#: app/templates/admin/lots.html:106 app/templates/partials/assistant.html:11
+#: app/templates/admin/lots.html:106 app/templates/partials/assistant.html:14
 msgid "Close"
 msgstr "Schließen"
 
@@ -7133,7 +7157,7 @@ msgid "Your message"
 msgstr "Deine Nachricht"
 
 #: app/templates/modules/miniclubs_detail.html:105
-#: app/templates/partials/assistant.html:19
+#: app/templates/partials/assistant.html:23
 msgid "Send"
 msgstr "Senden"
 
@@ -7500,7 +7524,7 @@ msgstr "Meine Matches"
 #: app/templates/modules/profile_matches.html:8
 #: app/templates/modules/profile_matches.html:22
 #: app/templates/modules/profile_matches.html:23
-#: app/templates/modules/profile_privacy.html:48
+#: app/templates/modules/profile_privacy.html:53
 #: app/templates/modules/profile_view.html:15
 #: app/templates/modules/profile_view.html:56
 msgid "Edit my profile"
@@ -7764,7 +7788,17 @@ msgstr ""
 "verifizierten Mitgliedern zeigen. Standardmäßig aus: Sonst sehen sie nur "
 "Mitglieder, deren Kontaktanfrage ich angenommen habe."
 
-#: app/templates/modules/profile_privacy.html:32
+#: app/templates/modules/profile_privacy.html:34
+msgid ""
+"Allow voice input for Clubi: my recording is sent to a speech service "
+"(Mistral in the EU, or OpenAI in the USA as a backup) to be turned into "
+"text and is not stored by the club."
+msgstr ""
+"Spracheingabe für Clubi erlauben: Meine Aufnahme wird an einen "
+"Spracherkennungsdienst (Mistral in der EU, ersatzweise OpenAI in den USA) "
+"gesendet, in Text umgewandelt und vom Club nicht gespeichert."
+
+#: app/templates/modules/profile_privacy.html:37
 msgid ""
 "Contact details are never published. Other members can reach you only after"
 " you accept their request."
@@ -7772,28 +7806,32 @@ msgstr ""
 "Kontaktdaten werden nie veröffentlicht. Andere Mitglieder können dich erst "
 "erreichen, nachdem du ihre Anfrage angenommen hast."
 
-#: app/templates/modules/profile_privacy.html:34
+#: app/templates/modules/profile_privacy.html:39
 msgid "Save my choices"
 msgstr "Meine Auswahl speichern"
 
-#: app/templates/modules/profile_privacy.html:38
+#: app/templates/modules/profile_privacy.html:43
 msgid "History of your choices"
 msgstr "Verlauf deiner Auswahl"
 
-#: app/templates/modules/profile_privacy.html:41
+#: app/templates/modules/profile_privacy.html:46
 #: app/templates/modules/profile_view.html:78
 msgid "Links"
 msgstr "Links"
 
-#: app/templates/modules/profile_privacy.html:41
+#: app/templates/modules/profile_privacy.html:46
+msgid "Voice input"
+msgstr "Spracheingabe"
+
+#: app/templates/modules/profile_privacy.html:46
 msgid "agreed"
 msgstr "zugestimmt"
 
-#: app/templates/modules/profile_privacy.html:41
+#: app/templates/modules/profile_privacy.html:46
 msgid "not agreed"
 msgstr "nicht zugestimmt"
 
-#: app/templates/modules/profile_privacy.html:43
+#: app/templates/modules/profile_privacy.html:48
 msgid "You have not made a choice yet."
 msgstr "Du hast noch keine Auswahl getroffen."
 
@@ -8416,8 +8454,8 @@ msgid "New search"
 msgstr "Neue Suche"
 
 #: app/templates/modules/tool_report_laws.html:12
-#: app/templates/partials/assistant.html:17
-#: app/templates/partials/assistant.html:18
+#: app/templates/partials/assistant.html:20
+#: app/templates/partials/assistant.html:21
 msgid "Your question"
 msgstr "Deine Frage"
 
@@ -8907,7 +8945,24 @@ msgstr "Meine Buchungen"
 msgid "You have no bookings."
 msgstr "Du hast keine Buchungen."
 
-#: app/templates/partials/assistant.html:3
+#: app/templates/partials/assistant.html:4
+#: app/templates/partials/assistant.html:22
+msgid "Speak"
+msgstr "Sprechen"
+
+#: app/templates/partials/assistant.html:4
+msgid "Stop"
+msgstr "Stopp"
+
+#: app/templates/partials/assistant.html:4
+msgid "Converting speech to text …"
+msgstr "Sprache wird in Text umgewandelt …"
+
+#: app/templates/partials/assistant.html:5
+msgid "The microphone is blocked. Allow it in your browser to speak."
+msgstr "Das Mikrofon ist blockiert. Erlaube es im Browser, um zu sprechen."
+
+#: app/templates/partials/assistant.html:6
 msgid ""
 "Hello! I am Clubi, your personal assistant in the club. I can see your "
 "profile and the page you are on. Ask me anything about it."
@@ -8916,38 +8971,54 @@ msgstr ""
 "Profil und die Seite, auf der du gerade bist. Frag mich dazu, was du "
 "möchtest."
 
-#: app/templates/partials/assistant.html:4
+#: app/templates/partials/assistant.html:7
 msgid "Clubi is thinking …"
 msgstr "Clubi denkt nach …"
 
-#: app/templates/partials/assistant.html:5
+#: app/templates/partials/assistant.html:8
 #, python-format
 msgid "Clubi sees: %(page)s"
 msgstr "Clubi sieht: %(page)s"
 
-#: app/templates/partials/assistant.html:6
+#: app/templates/partials/assistant.html:9
 msgid "Ask Clubi"
 msgstr "Clubi fragen"
 
-#: app/templates/partials/assistant.html:7
+#: app/templates/partials/assistant.html:10
 msgid "Personal assistant Clubi"
 msgstr "Persönliche Assistentin Clubi"
 
-#: app/templates/partials/assistant.html:9
+#: app/templates/partials/assistant.html:12
 msgid "Clubi"
 msgstr "Clubi"
 
-#: app/templates/partials/assistant.html:10
+#: app/templates/partials/assistant.html:13
 msgid "New conversation"
 msgstr "Neues Gespräch"
 
-#: app/templates/partials/assistant.html:13
+#: app/templates/partials/assistant.html:16
 msgid ""
 "Clubi is an AI. It does not give legal or financial advice and never shows "
 "contact details. Conversations are not stored on the server."
 msgstr ""
 "Clubi ist eine KI. Sie gibt keine Rechts- oder Finanzberatung und zeigt nie"
 " Kontaktdaten. Gespräche werden nicht auf dem Server gespeichert."
+
+#: app/templates/partials/assistant.html:26
+msgid ""
+"To turn your voice into text, the recording is sent to a speech service: "
+"Mistral in the EU, or OpenAI in the USA as a backup. The club does not "
+"store the audio. You can withdraw this at any time under Publication and "
+"matching."
+msgstr ""
+"Um deine Stimme in Text umzuwandeln, wird die Aufnahme an einen "
+"Spracherkennungsdienst gesendet: Mistral in der EU, ersatzweise OpenAI in "
+"den USA. Der Club speichert das Audio nicht. Du kannst das jederzeit unter "
+"Veröffentlichung und Matching widerrufen."
+
+#: app/templates/partials/assistant.html:27
+msgid "Agree and speak"
+msgstr "Zustimmen und sprechen"
 
 #: app/templates/public/index.html:3
 msgid "Welcome"
@@ -9521,4 +9592,22 @@ msgstr "Bereit loszulegen?"
 #~ msgstr ""
 #~ "Links müssen mit http:// oder https:// "
 #~ "beginnen. Ungültige wurden nicht gespeichert."
+
+#~ msgid ""
+#~ "Allow voice input for Clubi: my "
+#~ "recording is sent to a speech "
+#~ "service in the EU to be turned "
+#~ "into text and is not stored by "
+#~ "the club."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "To turn your voice into text, the"
+#~ " recording is sent to a speech "
+#~ "service in the EU (Mistral, or "
+#~ "OpenAI as a backup). The club does"
+#~ " not store the audio. You can "
+#~ "withdraw this at any time under "
+#~ "Publication and matching."
+#~ msgstr ""
 

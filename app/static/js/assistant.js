@@ -62,7 +62,7 @@
     input.value = "";
     var pending = addBubble("assistant", root.dataset.thinking);
     pending.classList.add("assistant-pending");
-    form.querySelector("button").disabled = true;
+    form.querySelector(".assistant-send").disabled = true;
 
     fetch(root.dataset.endpoint, {
       method: "POST",
@@ -88,10 +88,86 @@
       state.messages.pop();
       save();
     }).then(function () {
-      form.querySelector("button").disabled = false;
+      form.querySelector(".assistant-send").disabled = false;
       log.scrollTop = log.scrollHeight;
     });
   });
+
+  // --- голосовой ввод: запись в браузере, расшифровка на сервере, текст попадает в поле ввода ---
+  var mic = form.querySelector(".assistant-mic");
+  var consentBox = root.querySelector(".assistant-voice-consent");
+  var voiceStatus = root.querySelector(".assistant-voice-status");
+  var MAX_SECONDS = 60;
+  var recorder = null, chunks = [], stream = null, timer = null, voiceOk = root.dataset.voiceOk === "1";
+
+  function supportedType() {
+    var candidates = ["audio/webm;codecs=opus", "audio/webm", "audio/mp4", "audio/ogg;codecs=opus"];
+    for (var i = 0; i < candidates.length; i++) {
+      if (window.MediaRecorder && MediaRecorder.isTypeSupported && MediaRecorder.isTypeSupported(candidates[i])) { return candidates[i]; }
+    }
+    return "";
+  }
+  function setRecording(on) {
+    mic.setAttribute("aria-pressed", on ? "true" : "false");
+    mic.classList.toggle("assistant-mic-on", on);
+    mic.textContent = on ? root.dataset.micStop : root.dataset.micStart;
+  }
+  function stopTracks() {
+    if (stream) { stream.getTracks().forEach(function (t) { t.stop(); }); stream = null; }
+    if (timer) { clearTimeout(timer); timer = null; }
+  }
+  function upload(blob) {
+    voiceStatus.textContent = root.dataset.micWorking;
+    mic.disabled = true;
+    var body = new FormData();
+    body.append("audio", blob, "clip");
+    fetch(root.dataset.transcribe, { method: "POST", credentials: "same-origin", headers: { "X-CSRFToken": root.dataset.csrf }, body: body })
+      .then(function (response) {
+        return response.json().catch(function () { return {}; }).then(function (data) { return { ok: response.ok, data: data }; });
+      }).then(function (result) {
+        if (result.ok && result.data.text) {
+          input.value = (input.value ? input.value.trim() + " " : "") + result.data.text;
+          voiceStatus.textContent = "";
+          input.focus();
+        } else {
+          voiceStatus.textContent = result.data.error || root.dataset.failed;
+        }
+      }).catch(function () { voiceStatus.textContent = root.dataset.failed; })
+      .then(function () { mic.disabled = false; });
+  }
+  function startRecording() {
+    navigator.mediaDevices.getUserMedia({ audio: true }).then(function (s) {
+      stream = s;
+      var type = supportedType();
+      recorder = type ? new MediaRecorder(stream, { mimeType: type }) : new MediaRecorder(stream);
+      chunks = [];
+      recorder.ondataavailable = function (e) { if (e.data && e.data.size) { chunks.push(e.data); } };
+      recorder.onstop = function () {
+        var blob = new Blob(chunks, { type: (recorder.mimeType || type || "audio/webm").split(";")[0] });
+        stopTracks();
+        setRecording(false);
+        if (blob.size) { upload(blob); }
+      };
+      recorder.start();
+      setRecording(true);
+      voiceStatus.textContent = "";
+      timer = setTimeout(function () { if (recorder && recorder.state === "recording") { recorder.stop(); } }, MAX_SECONDS * 1000);
+    }).catch(function () { voiceStatus.textContent = root.dataset.micDenied; });
+  }
+  if (mic && navigator.mediaDevices && navigator.mediaDevices.getUserMedia && window.MediaRecorder) {
+    mic.hidden = false;
+    mic.addEventListener("click", function () {
+      if (recorder && recorder.state === "recording") { recorder.stop(); return; }
+      if (!voiceOk) { consentBox.hidden = false; return; }
+      startRecording();
+    });
+    root.querySelector(".assistant-voice-agree").addEventListener("click", function () {
+      fetch(root.dataset.voiceConsentUrl, { method: "POST", credentials: "same-origin", headers: { "X-CSRFToken": root.dataset.csrf } })
+        .then(function (response) {
+          if (response.ok) { voiceOk = true; consentBox.hidden = true; startRecording(); }
+        });
+    });
+  }
 
   load();
   render();

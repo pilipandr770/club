@@ -159,6 +159,7 @@ def privacy():
             value = bool(request.form.get(flag))
             record_consent(current_user, kind, value)
             setattr(profile, flag, value)
+        record_consent(current_user, "voice", bool(request.form.get("voice_consent")))
         profile.updated_at = utcnow()
         refresh_embeddings(profile)
         audit("privacy.decided", target=f"user:{current_user.id}", actor_id=current_user.id,
@@ -169,10 +170,11 @@ def privacy():
         return redirect(url_for("profile.privacy"))
 
     history = (Consent.query.filter(Consent.user_id == current_user.id,
-                                    Consent.kind.in_([kind for kind, _flag in PUBLICATION_KINDS]))
+                                    Consent.kind.in_([kind for kind, _flag in PUBLICATION_KINDS] + ["voice"]))
                .order_by(Consent.created_at.desc(), Consent.id.desc()).limit(20).all())
     return render_template("modules/profile_privacy.html", profile=profile, history=history,
-                           decided=latest_consent(current_user, "directory") is not None)
+                           decided=latest_consent(current_user, "directory") is not None,
+                           voice_ok=latest_consent(current_user, "voice") is True)
 
 
 @bp.route("/intro/<int:user_id>", methods=["POST"])
