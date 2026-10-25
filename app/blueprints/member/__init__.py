@@ -28,7 +28,7 @@ def dashboard():
         {"spec": spec, "available": has_feature(current_user, spec.feature)}
         for spec in enabled_modules(current_app.config["ENABLED_MODULES"])
     ]
-    plan = PLANS.get(current_user.plan, PLANS[DEFAULT_PLAN])
+    plan = PLANS.get(current_user.effective_plan, PLANS[DEFAULT_PLAN])
     return render_template(
         "member/dashboard.html",
         reason=reason_message(current_user.verification_reason),

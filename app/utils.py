@@ -61,3 +61,13 @@ def utc_to_local_input(value, tz=BERLIN):
     if value is None:
         return ""
     return value.replace(tzinfo=timezone.utc).astimezone(ZoneInfo(tz)).strftime("%Y-%m-%dT%H:%M")
+
+
+def add_months(moment, months: int):
+    """Сдвиг даты на целое число календарных месяцев; день месяца при необходимости уменьшается."""
+    import calendar
+
+    index = moment.month - 1 + months
+    year, month = moment.year + index // 12, index % 12 + 1
+    day = min(moment.day, calendar.monthrange(year, month)[1])
+    return moment.replace(year=year, month=month, day=day)

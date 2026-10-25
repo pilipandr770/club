@@ -53,6 +53,13 @@ class User(UserMixin, db.Model):
     verification_reason: Mapped[str | None] = mapped_column(String(40))
     verified_at: Mapped[datetime | None] = mapped_column(DateTime)
     stripe_verification_session_id: Mapped[str | None] = mapped_column(String(255))
+    # Как подтверждена личность: stripe или manual (админ знает человека лично). Только факт и кто поручился.
+    verification_method: Mapped[str | None] = mapped_column(String(12))
+    verified_by_id: Mapped[int | None] = mapped_column(ForeignKey("users.id", ondelete="SET NULL"))
+    verification_note: Mapped[str | None] = mapped_column(String(300))
+    # Оплаченный срок тарифа: None — без ограничения срока; после даты действует гостевой тариф
+    paid_until: Mapped[datetime | None] = mapped_column(DateTime)
+    payment_note: Mapped[str | None] = mapped_column(String(300))
 
     created_at: Mapped[datetime] = mapped_column(DateTime, default=utcnow)
     last_login_at: Mapped[datetime | None] = mapped_column(DateTime)
@@ -80,6 +87,13 @@ class User(UserMixin, db.Model):
     @property
     def is_active(self) -> bool:  # Flask-Login
         return self.status == "active"
+
+    @property
+    def effective_plan(self) -> str:
+        """Действующий тариф: после окончания оплаченного срока участник работает на гостевом."""
+        if self.plan and self.plan != "guest" and self.paid_until is not None and self.paid_until < utcnow():
+            return "guest"
+        return self.plan or "guest"
 
     @property
     def is_verified(self) -> bool:

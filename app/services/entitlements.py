@@ -10,7 +10,7 @@ from config.plans import ASSISTANT_DAILY, DEFAULT_PLAN, PLANS, TOOL_LIMITS
 
 
 def plan_features(user) -> frozenset:
-    return PLANS.get(user.plan or DEFAULT_PLAN, PLANS[DEFAULT_PLAN])["features"]
+    return PLANS.get(user.effective_plan or DEFAULT_PLAN, PLANS[DEFAULT_PLAN])["features"]
 
 
 def has_feature(user, feature: str) -> bool:
@@ -22,11 +22,11 @@ def has_feature(user, feature: str) -> bool:
 
 def tool_limit(user, tool: str) -> int:
     """Запусков инструмента в месяц по тарифу; 0 — тариф инструмент не включает."""
-    return TOOL_LIMITS.get(user.plan or DEFAULT_PLAN, {}).get(tool, 0)
+    return TOOL_LIMITS.get(user.effective_plan or DEFAULT_PLAN, {}).get(tool, 0)
 
 
 def assistant_daily_limit(user) -> int:
-    return ASSISTANT_DAILY.get(user.plan or DEFAULT_PLAN, 0)
+    return ASSISTANT_DAILY.get(user.effective_plan or DEFAULT_PLAN, 0)
 
 
 def requires_verified(view):

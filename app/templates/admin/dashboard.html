@@ -25,6 +25,23 @@
 </section>
 
 <section class="card">
+  <h2>{{ _("Needs attention") }}</h2>
+  <ul class="module-list">
+    <li><a href="{{ url_for('admin.users', show='waiting') }}">{{ _("Waiting for identity") }}</a>: {{ waiting_count }}</li>
+    <li><a href="{{ url_for('admin.users', show='expired') }}">{{ _("Plan expired") }}</a>: {{ expired_count }}</li>
+    <li><a href="{{ url_for('admin.users', show='expiring') }}">{{ _("Plan ending soon") }}</a>: {{ expiring|length }}</li>
+  </ul>
+  {% if expiring %}
+  <h3>{{ _("Ending in the next 14 days") }}</h3>
+  <ul class="module-list">
+    {% for member in expiring %}
+      <li><a href="{{ url_for('admin.user_detail', user_id=member.id) }}">{{ member.email }}</a> · {{ plans[member.plan].name if member.plan in plans else member.plan }} · {{ member.paid_until.strftime('%d.%m.%Y') }}</li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+</section>
+
+<section class="card">
   <h2>{{ _("Identity checks") }}</h2>
   <ul class="module-list">
     {% for status, count in by_verification.items() %}

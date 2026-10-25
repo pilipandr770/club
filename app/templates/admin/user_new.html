@@ -45,9 +45,28 @@
   </div>
 
   <label class="check">
-    <input type="checkbox" name="verified" value="1">
+    <input type="checkbox" name="verified" value="1" {% if form.get('verified') %}checked{% endif %}>
     {{ _("Identity is confirmed (no Stripe check)") }}
   </label>
+  <div class="field {% if 'verification_note' in errors %}field-error{% endif %}">
+    <label for="verification_note">{{ _("How do you know this person?") }}</label>
+    <input id="verification_note" name="verification_note" type="text" maxlength="300" value="{{ form.get('verification_note', '') }}">
+    <p class="small">{{ _("Required when the identity is confirmed. It is saved in the log with your name.") }}</p>
+  </div>
+  <div class="field {% if 'months' in errors %}field-error{% endif %}">
+    <label for="months">{{ _("Paid for") }}</label>
+    <select id="months" name="months">
+      <option value="">{{ _("Not paid yet") }}</option>
+      {% for count in month_choices %}
+        <option value="{{ count }}" {% if form.get('months') == count|string %}selected{% endif %}>{{ ngettext("%(num)d month", "%(num)d months", count) }}</option>
+      {% endfor %}
+    </select>
+  </div>
+  <div class="field {% if 'payment_note' in errors %}field-error{% endif %}">
+    <label for="payment_note">{{ _("How the payment arrived") }}</label>
+    <input id="payment_note" name="payment_note" type="text" maxlength="300" value="{{ form.get('payment_note', '') }}">
+    <p class="small">{{ _("Required when a paid period is set.") }}</p>
+  </div>
   <label class="check">
     <input type="checkbox" name="is_admin" value="1">
     {{ _("Administrator (all rights)") }}

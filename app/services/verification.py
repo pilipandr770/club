@@ -77,6 +77,9 @@ def _apply_verified(user: User, result) -> None:
         user.verification_status = "verified"
         user.verification_reason = None
         user.verified_at = utcnow()
+        user.verification_method = "stripe"
+        user.verified_by_id = None
+        user.verification_note = None
 
 
 def _apply_other(user: User, status: str) -> None:

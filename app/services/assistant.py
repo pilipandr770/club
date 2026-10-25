@@ -276,7 +276,7 @@ def page_context(user, path):
 
 def own_profile_text(user):
     profile = user.profile
-    lines = [f"plan: {user.plan}"]
+    lines = [f"plan: {user.effective_plan}"]
     if profile is not None:
         lines += _profile_lines(profile)
         lines.append(f"visible_in_directory: {bool(profile.visible_in_directory)}")

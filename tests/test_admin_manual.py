@@ -14,6 +14,7 @@ def test_admin_creates_participant_without_stripe(app, client):
     response = client.post("/admin/users/new", data={
         "email": "demo@example.com", "first_name": "Demo", "last_name": "Person",
         "residence_country": "DE", "plan": "growth", "password": "demo-password-123", "verified": "1",
+        "verification_note": "Freund, persönlich bekannt",
     })
 
     assert response.status_code == 302
@@ -59,7 +60,7 @@ def test_admin_verifies_identity_manually_and_it_is_audited(app, client):
     _admin(app)
     login(client, "boss@example.com")
 
-    client.post(f"/admin/users/{member_id}/verify-manually")
+    client.post(f"/admin/users/{member_id}/verify-manually", data={"note": "Kollegin, persönlich bekannt"})
 
     with app.app_context():
         user = db.session.get(User, member_id)

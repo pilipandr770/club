@@ -23,6 +23,8 @@ from ...services.auction_engine import (
     reject_lot,
     validate_lot_input,
 )
+from ...services import membership
+from ...services.membership import MONTH_CHOICES, MembershipError
 from ...utils import eur_to_cents, format_eur, local_to_utc, utcnow
 
 bp = Blueprint("admin", __name__, url_prefix="/admin")
@@ -63,6 +65,9 @@ def dashboard():
         lots_open=Lot.query.filter_by(status="open").count(),
         plans=PLANS,
         ai=ai_status(),
+        expiring=membership.expiring(14),
+        expired_count=len(membership.expired()),
+        waiting_count=len(membership.waiting_for_identity()),
     )
 
 
@@ -70,11 +75,22 @@ def dashboard():
 @admin_required
 def users():
     query = request.args.get("q", "").strip().lower()
+    mode = request.args.get("show", "")
     items = User.query
     if query:
         items = items.filter(User.email.ilike(f"%{query}%"))
+    if mode == "waiting":
+        items = items.filter(User.verification_status != "verified", User.status == "active")
+    elif mode == "expiring":
+        ids = [u.id for u in membership.expiring(14)]
+        items = items.filter(User.id.in_(ids or [0]))
+    elif mode == "expired":
+        ids = [u.id for u in membership.expired()]
+        items = items.filter(User.id.in_(ids or [0]))
+    elif mode == "manual":
+        items = items.filter(User.verification_method == "manual")
     items = items.order_by(User.created_at.desc()).limit(200).all()
-    return render_template("admin/users.html", users=items, q=query, plans=PLANS)
+    return render_template("admin/users.html", users=items, q=query, plans=PLANS, mode=mode)
 
 
 def _change_list(user, form):
@@ -85,6 +101,8 @@ def _change_list(user, form):
     if plan in PLANS and plan != user.plan:
         changes.append(f"plan {user.plan}->{plan}")
         user.plan = plan
+        if plan == "guest":
+            user.paid_until = None
 
     role = form.get("role", user.role)
     if role in ROLES and role != user.role:
@@ -103,6 +121,8 @@ def _change_list(user, form):
 
     vstatus = form.get("verification_status", user.verification_status)
     reason = form.get("verification_reason", "")
+    if vstatus == "verified" and user.verification_status != "verified":
+        vstatus = user.verification_status  # подтверждение только через форму с пометкой (verify_manually)
     if vstatus in VERIFICATION_STATUSES and (vstatus != user.verification_status or reason != (user.verification_reason or "")):
         if reason not in VERIFICATION_REASONS:
             reason = ""
@@ -137,7 +157,9 @@ def user_detail(user_id):
     consents = Consent.query.filter_by(user_id=user.id).order_by(Consent.created_at).all()
     return render_template("admin/user_detail.html", user=user, plans=PLANS, roles=ROLES,
                            statuses=STATUSES, verification_statuses=VERIFICATION_STATUSES,
-                           reasons=VERIFICATION_REASONS, history=history, consents=consents)
+                           reasons=VERIFICATION_REASONS, history=history, consents=consents,
+                           month_choices=MONTH_CHOICES,
+                           verified_by=db.session.get(User, user.verified_by_id) if user.verified_by_id else None)
 
 
 @bp.route("/lots", methods=["GET", "POST"])
@@ -388,6 +410,15 @@ def user_new():
             errors.append("residence_country")
         if plan not in PLANS:
             errors.append("plan")
+        note = request.form.get("verification_note", "")
+        if request.form.get("verified") and len(" ".join(note.split())) < membership.NOTE_MIN:
+            errors.append("verification_note")
+        months = request.form.get("months", type=int)
+        if plan != "guest" and months:
+            if months not in MONTH_CHOICES:
+                errors.append("months")
+            elif len(" ".join(request.form.get("payment_note", "").split())) < membership.NOTE_MIN:
+                errors.append("payment_note")
         generated = not password
         if generated:
             password = _secrets.token_urlsafe(10)
@@ -398,14 +429,14 @@ def user_new():
                         plan=plan, is_admin=bool(request.form.get("is_admin")), email_confirmed_at=utcnow())
             user.set_password(password)
             user.profile = Profile(residence_country=residence)
-            if request.form.get("verified"):
-                user.verification_status = "verified"
-                user.verified_at = utcnow()
-                user.verification_reason = "manual_override"
             db.session.add(user)
             db.session.flush()
             audit("admin.user_created", target=f"user:{user.id}",
                   details=f"plan={plan} verified={bool(request.form.get('verified'))} admin={user.is_admin}")
+            if request.form.get("verified"):
+                membership.verify_manually(current_user, user, note)
+            if plan != "guest" and months:
+                membership.grant_plan(current_user, user, plan, months, request.form.get("payment_note", ""))
             db.session.commit()
             if generated:
                 flash(_("Participant created. Temporary password (shown once): %(password)s", password=password), "success")
@@ -415,23 +446,64 @@ def user_new():
         flash(_("Please check these fields: %(fields)s", fields=", ".join(errors)), "error")
 
     return render_template("admin/user_new.html", plans=PLANS, countries=country_choices(), errors=errors,
-                           form=request.form)
+                           form=request.form, month_choices=MONTH_CHOICES)
+
+
+def _membership_error(exc):
+    return {
+        "note_required": _("Please write a short note: how you know this person or how the payment arrived."),
+        "self": _("You cannot do this for your own account. Ask another administrator."),
+        "plan": _("Please choose a paid plan."),
+        "months": _("Please choose the number of months."),
+    }.get(exc.code, _("Something went wrong. Please try again."))
+
+
+def _run_membership(user_id, action, success):
+    user = db.session.get(User, user_id) or abort(404)
+    try:
+        action(user)
+        db.session.commit()
+        flash(success, "success")
+    except MembershipError as exc:
+        db.session.rollback()
+        flash(_membership_error(exc), "error")
+    return redirect(url_for("admin.user_detail", user_id=user_id))
 
 
 @bp.route("/users/<int:user_id>/verify-manually", methods=["POST"])
 @admin_required
 def verify_manually(user_id):
-    """Подтверждение личности вручную, в обход Stripe. Пишется в журнал."""
-    user = db.session.get(User, user_id) or abort(404)
-    if not user.is_verified:
-        user.verification_status = "verified"
-        user.verified_at = utcnow()
-        user.verification_reason = "manual_override"
-        audit("admin.verified_manually", target=f"user:{user.id}")
-        db.session.commit()
-        flash(_("The identity check is marked as verified."), "success")
-    return redirect(url_for("admin.user_detail", user_id=user.id))
+    """Подтверждение личности вручную, в обход Stripe: админ знает человека лично. Пометка обязательна."""
+    note = request.form.get("note", "")
+    return _run_membership(user_id, lambda u: membership.verify_manually(current_user, u, note),
+                           _("The identity check is marked as verified."))
 
+
+@bp.route("/users/<int:user_id>/revoke-verification", methods=["POST"])
+@admin_required
+def revoke_verification(user_id):
+    note = request.form.get("note", "")
+    return _run_membership(user_id, lambda u: membership.revoke_verification(current_user, u, note),
+                           _("The identity confirmation is withdrawn."))
+
+
+@bp.route("/users/<int:user_id>/grant-plan", methods=["POST"])
+@admin_required
+def grant_plan(user_id):
+    """Оплата принята вручную: тариф на выбранное число месяцев."""
+    plan = request.form.get("plan", "")
+    months = request.form.get("months", type=int) or 0
+    note = request.form.get("note", "")
+    return _run_membership(user_id, lambda u: membership.grant_plan(current_user, u, plan, months, note),
+                           _("The plan is activated."))
+
+
+@bp.route("/users/<int:user_id>/end-plan", methods=["POST"])
+@admin_required
+def end_plan(user_id):
+    note = request.form.get("note", "")
+    return _run_membership(user_id, lambda u: membership.end_plan(current_user, u, note),
+                           _("The plan is ended. The member is back on Guest."))
 
 
 SERVICE_FIELDS = ("title", "summary", "description", "benefits", "member_benefit", "price_hint",

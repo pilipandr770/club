@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Club 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-24 15:30+0000\n"
+"POT-Creation-Date: 2026-10-25 11:18+0000\n"
 "PO-Revision-Date: 2026-10-19 21:00+0000\n"
 "Last-Translator: \n"
 "Language: de\n"
@@ -1283,7 +1283,7 @@ msgstr "Nicht begonnen"
 msgid "Pending"
 msgstr "Ausstehend"
 
-#: app/i18n_labels.py:237
+#: app/i18n_labels.py:237 app/templates/admin/user_detail.html:17
 msgid "Verified"
 msgstr "Verifiziert"
 
@@ -1345,7 +1345,7 @@ msgstr "Datenschutz"
 msgid "Terms of use"
 msgstr "Nutzungsbedingungen"
 
-#: app/i18n_labels.py:251 app/templates/admin/user_detail.html:58
+#: app/i18n_labels.py:251 app/templates/admin/user_detail.html:131
 msgid "Identity check"
 msgstr "Identitätsprüfung"
 
@@ -2440,96 +2440,96 @@ msgstr ""
 "MB, 60 Seiten). Mitglieder können es herunterladen. Clubi kann es auch "
 "lesen, um Fragen zur Reise zu beantworten."
 
-#: app/blueprints/admin/__init__.py:130
+#: app/blueprints/admin/__init__.py:150
 msgid "Changes are saved."
 msgstr "Änderungen sind gespeichert."
 
-#: app/blueprints/admin/__init__.py:132 app/blueprints/admin/__init__.py:330
-#: app/blueprints/admin/__init__.py:360
+#: app/blueprints/admin/__init__.py:152 app/blueprints/admin/__init__.py:352
+#: app/blueprints/admin/__init__.py:382
 msgid "Nothing has changed."
 msgstr "Nichts hat sich geändert."
 
-#: app/blueprints/admin/__init__.py:151
+#: app/blueprints/admin/__init__.py:173
 #, python-format
 msgid "Please check the lot fields: %(fields)s"
 msgstr "Bitte prüfe die Felder des Loses: %(fields)s"
 
-#: app/blueprints/admin/__init__.py:155
+#: app/blueprints/admin/__init__.py:177
 msgid "The lot is created."
 msgstr "Das Los ist angelegt."
 
-#: app/blueprints/admin/__init__.py:169
+#: app/blueprints/admin/__init__.py:191
 msgid "The lot is published."
 msgstr "Das Los ist veröffentlicht."
 
-#: app/blueprints/admin/__init__.py:172
+#: app/blueprints/admin/__init__.py:194
 msgid "The lot is rejected."
 msgstr "Das Los ist abgelehnt."
 
-#: app/blueprints/admin/__init__.py:176 app/modules/auction/__init__.py:64
+#: app/blueprints/admin/__init__.py:198 app/modules/auction/__init__.py:64
 msgid "This lot is not waiting for review."
 msgstr "Dieses Los wartet nicht auf Prüfung."
 
-#: app/blueprints/admin/__init__.py:186
+#: app/blueprints/admin/__init__.py:208
 msgid "The lot is closed."
 msgstr "Das Los ist geschlossen."
 
-#: app/blueprints/admin/__init__.py:250
+#: app/blueprints/admin/__init__.py:272
 msgid "The meeting is published."
 msgstr "Das Treffen ist veröffentlicht."
 
-#: app/blueprints/admin/__init__.py:253
+#: app/blueprints/admin/__init__.py:275
 msgid "The meeting is rejected."
 msgstr "Das Treffen ist abgelehnt."
 
-#: app/blueprints/admin/__init__.py:257
+#: app/blueprints/admin/__init__.py:279
 msgid "This meeting is not waiting for review."
 msgstr "Dieses Treffen wartet nicht auf Prüfung."
 
-#: app/blueprints/admin/__init__.py:284
+#: app/blueprints/admin/__init__.py:306
 msgid "The mini-club is published."
 msgstr "Der Mini-Club ist veröffentlicht."
 
-#: app/blueprints/admin/__init__.py:287 app/modules/miniclubs/__init__.py:305
+#: app/blueprints/admin/__init__.py:309 app/modules/miniclubs/__init__.py:305
 msgid "The mini-club is closed."
 msgstr "Der Mini-Club ist geschlossen."
 
-#: app/blueprints/admin/__init__.py:290
+#: app/blueprints/admin/__init__.py:312
 msgid "The mini-club is rejected."
 msgstr "Der Mini-Club ist abgelehnt."
 
-#: app/blueprints/admin/__init__.py:294
+#: app/blueprints/admin/__init__.py:316
 msgid "This mini-club is not waiting for review."
 msgstr "Dieser Mini-Club wartet nicht auf Prüfung."
 
-#: app/blueprints/admin/__init__.py:325
+#: app/blueprints/admin/__init__.py:347
 msgid "The startup is published."
 msgstr "Der Startup ist veröffentlicht."
 
-#: app/blueprints/admin/__init__.py:328
+#: app/blueprints/admin/__init__.py:350
 msgid "The startup is rejected."
 msgstr "Der Startup ist abgelehnt."
 
-#: app/blueprints/admin/__init__.py:355
+#: app/blueprints/admin/__init__.py:377
 msgid "The offer is published."
 msgstr "Das Angebot ist veröffentlicht."
 
-#: app/blueprints/admin/__init__.py:358
+#: app/blueprints/admin/__init__.py:380
 msgid "The offer is rejected."
 msgstr "Das Angebot ist abgelehnt."
 
-#: app/blueprints/admin/__init__.py:411
+#: app/blueprints/admin/__init__.py:442
 #, python-format
 msgid "Participant created. Temporary password (shown once): %(password)s"
 msgstr ""
 "Teilnehmende Person angelegt. Temporäres Passwort (wird nur einmal "
 "gezeigt): %(password)s"
 
-#: app/blueprints/admin/__init__.py:413
+#: app/blueprints/admin/__init__.py:444
 msgid "Participant created."
 msgstr "Teilnehmende Person angelegt."
 
-#: app/blueprints/admin/__init__.py:415 app/modules/auction/__init__.py:227
+#: app/blueprints/admin/__init__.py:446 app/modules/auction/__init__.py:227
 #: app/modules/auction/__init__.py:253 app/modules/events/__init__.py:131
 #: app/modules/events/__init__.py:158 app/modules/miniclubs/__init__.py:135
 #: app/modules/miniclubs/__init__.py:162 app/modules/profile/__init__.py:73
@@ -2539,19 +2539,61 @@ msgstr "Teilnehmende Person angelegt."
 msgid "Please check these fields: %(fields)s"
 msgstr "Bitte prüfe diese Felder: %(fields)s"
 
-#: app/blueprints/admin/__init__.py:432
+#: app/blueprints/admin/__init__.py:454
+msgid ""
+"Please write a short note: how you know this person or how the payment "
+"arrived."
+msgstr ""
+"Bitte schreibe eine kurze Notiz: woher du die Person kennst oder wie die "
+"Zahlung eingegangen ist."
+
+#: app/blueprints/admin/__init__.py:455
+msgid "You cannot do this for your own account. Ask another administrator."
+msgstr ""
+"Das geht für dein eigenes Konto nicht. Bitte eine andere Administratorin "
+"oder einen anderen Administrator."
+
+#: app/blueprints/admin/__init__.py:456
+msgid "Please choose a paid plan."
+msgstr "Bitte wähle einen bezahlten Tarif."
+
+#: app/blueprints/admin/__init__.py:457
+msgid "Please choose the number of months."
+msgstr "Bitte wähle die Anzahl der Monate."
+
+#: app/blueprints/admin/__init__.py:458 app/blueprints/assistant/__init__.py:23
+#: app/modules/events/__init__.py:51 app/modules/miniclubs/__init__.py:53
+#: app/modules/profile/__init__.py:240 app/modules/services/__init__.py:18
+#: app/modules/startups/__init__.py:35 app/modules/travel/__init__.py:44
+#: app/templates/partials/assistant.html:7
+msgid "Something went wrong. Please try again."
+msgstr "Etwas ist schiefgelaufen. Bitte versuche es erneut."
+
+#: app/blueprints/admin/__init__.py:479
 msgid "The identity check is marked as verified."
 msgstr "Die Identitätsprüfung ist als bestätigt markiert."
 
-#: app/blueprints/admin/__init__.py:473
+#: app/blueprints/admin/__init__.py:487
+msgid "The identity confirmation is withdrawn."
+msgstr "Die Identitätsbestätigung ist zurückgenommen."
+
+#: app/blueprints/admin/__init__.py:498
+msgid "The plan is activated."
+msgstr "Der Tarif ist aktiviert."
+
+#: app/blueprints/admin/__init__.py:506
+msgid "The plan is ended. The member is back on Guest."
+msgstr "Der Tarif ist beendet. Das Mitglied ist wieder im Gast-Tarif."
+
+#: app/blueprints/admin/__init__.py:545
 msgid "Please enter a title."
 msgstr "Bitte gib einen Titel ein."
 
-#: app/blueprints/admin/__init__.py:477
+#: app/blueprints/admin/__init__.py:549
 msgid "The service is saved."
 msgstr "Die Leistung ist gespeichert."
 
-#: app/blueprints/admin/__init__.py:504
+#: app/blueprints/admin/__init__.py:576
 msgid "Unknown status."
 msgstr "Unbekannter Status."
 
@@ -2568,13 +2610,6 @@ msgstr ""
 #: app/blueprints/assistant/__init__.py:22
 msgid "You have reached today's limit of questions. It renews tomorrow."
 msgstr "Du hast das Tageslimit an Fragen erreicht. Es erneuert sich morgen."
-
-#: app/blueprints/assistant/__init__.py:23 app/modules/events/__init__.py:51
-#: app/modules/miniclubs/__init__.py:53 app/modules/profile/__init__.py:240
-#: app/modules/services/__init__.py:18 app/modules/startups/__init__.py:35
-#: app/modules/travel/__init__.py:44 app/templates/partials/assistant.html:7
-msgid "Something went wrong. Please try again."
-msgstr "Etwas ist schiefgelaufen. Bitte versuche es erneut."
 
 #: app/blueprints/assistant/__init__.py:57
 msgid "Please agree to voice input first."
@@ -3633,29 +3668,29 @@ msgstr ""
 "annehmen.\n"
 "%(url)s"
 
-#: app/services/verification.py:147
+#: app/services/verification.py:150
 msgid "We do not accept identity documents from this country."
 msgstr "Wir nehmen keine Ausweisdokumente aus diesem Land an."
 
-#: app/services/verification.py:148
+#: app/services/verification.py:151
 msgid "Membership requires that you are at least 18 years old."
 msgstr "Die Mitgliedschaft setzt voraus, dass du mindestens 18 Jahre alt bist."
 
-#: app/services/verification.py:149
+#: app/services/verification.py:152
 msgid "We need to check your verification by hand. We will contact you."
 msgstr "Wir prüfen deine Verifizierung von Hand. Wir melden uns bei dir."
 
-#: app/services/verification.py:150
+#: app/services/verification.py:153
 msgid "Please try again and make sure your document is fully visible."
 msgstr ""
 "Bitte versuche es erneut und achte darauf, dass dein Dokument vollständig "
 "sichtbar ist."
 
-#: app/services/verification.py:151
+#: app/services/verification.py:154
 msgid "The verification was cancelled. You can start it again."
 msgstr "Die Prüfung wurde abgebrochen. Du kannst sie erneut starten."
 
-#: app/services/verification.py:152
+#: app/services/verification.py:155
 msgid "Too many attempts. Please contact support."
 msgstr "Zu viele Versuche. Bitte wende dich an den Support."
 
@@ -5578,34 +5613,54 @@ msgid "Travel offers"
 msgstr "Reiseangebote"
 
 #: app/templates/admin/dashboard.html:28
+msgid "Needs attention"
+msgstr "Braucht Aufmerksamkeit"
+
+#: app/templates/admin/dashboard.html:30 app/templates/admin/users.html:11
+msgid "Waiting for identity"
+msgstr "Wartet auf Identitätsprüfung"
+
+#: app/templates/admin/dashboard.html:31 app/templates/admin/users.html:14
+msgid "Plan expired"
+msgstr "Tarif abgelaufen"
+
+#: app/templates/admin/dashboard.html:32 app/templates/admin/users.html:13
+msgid "Plan ending soon"
+msgstr "Tarif läuft bald ab"
+
+#: app/templates/admin/dashboard.html:35
+msgid "Ending in the next 14 days"
+msgstr "Läuft in den nächsten 14 Tagen ab"
+
+#: app/templates/admin/dashboard.html:45
 msgid "Identity checks"
 msgstr "Identitätsprüfungen"
 
-#: app/templates/admin/dashboard.html:37
+#: app/templates/admin/dashboard.html:54
 msgid "Open auction lots"
 msgstr "Offene Auktionslose"
 
-#: app/templates/admin/dashboard.html:41
+#: app/templates/admin/dashboard.html:58
 msgid "AI models"
 msgstr "KI-Modelle"
 
-#: app/templates/admin/dashboard.html:43
+#: app/templates/admin/dashboard.html:60
 msgid "Language model"
 msgstr "Sprachmodell"
 
-#: app/templates/admin/dashboard.html:43
+#: app/templates/admin/dashboard.html:60
 msgid "on"
 msgstr "an"
 
-#: app/templates/admin/dashboard.html:43
+#: app/templates/admin/dashboard.html:60
 msgid "off"
 msgstr "aus"
 
-#: app/templates/admin/dashboard.html:44
+#: app/templates/admin/dashboard.html:61
 msgid "Embeddings"
 msgstr "Embeddings"
 
-#: app/templates/admin/dashboard.html:46
+#: app/templates/admin/dashboard.html:63
 msgid ""
 "Models are set in the server settings. Changing them does not need a code "
 "change."
@@ -5711,7 +5766,7 @@ msgstr "Los anlegen"
 msgid "All lots"
 msgstr "Alle Lose"
 
-#: app/templates/admin/lots.html:93 app/templates/admin/users.html:23
+#: app/templates/admin/lots.html:93 app/templates/admin/users.html:33
 msgid "Status"
 msgstr "Status"
 
@@ -5723,7 +5778,7 @@ msgstr "Ergebnis"
 msgid "no buyer"
 msgstr "kein Käufer"
 
-#: app/templates/admin/lots.html:106 app/templates/partials/assistant.html:14
+#: app/templates/admin/lots.html:106 app/templates/partials/assistant.html:23
 msgid "Close"
 msgstr "Schließen"
 
@@ -5863,65 +5918,159 @@ msgstr "Name"
 msgid "Residence"
 msgstr "Wohnsitz"
 
-#: app/templates/admin/user_detail.html:17
-msgid "Identity check: not verified. You can confirm it manually without Stripe."
-msgstr ""
-"Identitätsprüfung: nicht bestätigt. Du kannst sie ohne Stripe manuell "
-"bestätigen."
+#: app/templates/admin/user_detail.html:15 app/templates/admin/users.html:32
+msgid "Identity"
+msgstr "Identität"
 
 #: app/templates/admin/user_detail.html:18
+msgid "confirmed by an administrator"
+msgstr "von einem Administrator bestätigt"
+
+#: app/templates/admin/user_detail.html:19
+msgid "checked by Stripe"
+msgstr "von Stripe geprüft"
+
+#: app/templates/admin/user_detail.html:21
+#: app/templates/admin/user_detail.html:58
+#: app/templates/modules/tool_report_findings.html:41
+msgid "Note"
+msgstr "Hinweis"
+
+#: app/templates/admin/user_detail.html:26
+msgid "Reason for withdrawing"
+msgstr "Grund für die Rücknahme"
+
+#: app/templates/admin/user_detail.html:29
+msgid "Withdraw confirmation"
+msgstr "Bestätigung zurücknehmen"
+
+#: app/templates/admin/user_detail.html:33
+msgid "Identity check: not verified."
+msgstr "Identitätsprüfung: nicht bestätigt."
+
+#: app/templates/admin/user_detail.html:35
+msgid "You cannot confirm your own identity. Ask another administrator."
+msgstr ""
+"Du kannst deine eigene Identität nicht bestätigen. Bitte eine andere "
+"Administratorin oder einen anderen Administrator."
+
+#: app/templates/admin/user_detail.html:37
+msgid ""
+"If you know this person personally, you can confirm the identity without "
+"Stripe. Your name and the note are saved in the log."
+msgstr ""
+"Wenn du die Person persönlich kennst, kannst du die Identität ohne Stripe "
+"bestätigen. Dein Name und die Notiz werden im Protokoll gespeichert."
+
+#: app/templates/admin/user_detail.html:41 app/templates/admin/user_new.html:52
+msgid "How do you know this person?"
+msgstr "Woher kennst du die Person?"
+
+#: app/templates/admin/user_detail.html:42
+msgid "For example: colleague for five years, met in person"
+msgstr "Zum Beispiel: Kollege seit fünf Jahren, persönlich getroffen"
+
+#: app/templates/admin/user_detail.html:44
 msgid "Confirm identity manually"
 msgstr "Identität manuell bestätigen"
 
-#: app/templates/admin/user_detail.html:26 app/templates/admin/user_new.html:34
-#: app/templates/admin/users.html:21
+#: app/templates/admin/user_detail.html:51
+msgid "Plan and payment"
+msgstr "Tarif und Zahlung"
+
+#: app/templates/admin/user_detail.html:54
+msgid "paid until"
+msgstr "bezahlt bis"
+
+#: app/templates/admin/user_detail.html:55
+msgid "expired"
+msgstr "abgelaufen"
+
+#: app/templates/admin/user_detail.html:56 app/templates/admin/users.html:41
+msgid "no end date"
+msgstr "ohne Enddatum"
+
+#: app/templates/admin/user_detail.html:62
+#: app/templates/admin/user_detail.html:99 app/templates/admin/user_new.html:34
+#: app/templates/admin/users.html:30
 msgid "Plan"
 msgstr "Tarif"
 
-#: app/templates/admin/user_detail.html:35
+#: app/templates/admin/user_detail.html:70 app/templates/admin/user_new.html:57
+msgid "Paid for"
+msgstr "Bezahlt für"
+
+#: app/templates/admin/user_detail.html:73 app/templates/admin/user_new.html:61
+#, python-format
+msgid "%(num)d month"
+msgid_plural "%(num)d months"
+msgstr[0] "%(num)d Monat"
+msgstr[1] "%(num)d Monate"
+
+#: app/templates/admin/user_detail.html:78 app/templates/admin/user_new.html:66
+msgid "How the payment arrived"
+msgstr "Wie die Zahlung eingegangen ist"
+
+#: app/templates/admin/user_detail.html:79
+msgid "For example: bank transfer 24.10., invoice 12"
+msgstr "Zum Beispiel: Überweisung 24.10., Rechnung 12"
+
+#: app/templates/admin/user_detail.html:81
+msgid "Confirm payment"
+msgstr "Zahlung bestätigen"
+
+#: app/templates/admin/user_detail.html:87
+msgid "Reason for ending the plan now"
+msgstr "Grund für das sofortige Ende des Tarifs"
+
+#: app/templates/admin/user_detail.html:90
+msgid "End plan now"
+msgstr "Tarif jetzt beenden"
+
+#: app/templates/admin/user_detail.html:108
 msgid "Role"
 msgstr "Rolle"
 
-#: app/templates/admin/user_detail.html:44
+#: app/templates/admin/user_detail.html:117
 msgid "Account status"
 msgstr "Kontostatus"
 
-#: app/templates/admin/user_detail.html:54 app/templates/admin/user_new.html:53
+#: app/templates/admin/user_detail.html:127 app/templates/admin/user_new.html:72
 msgid "Administrator (all rights)"
 msgstr "Administrator (alle Rechte)"
 
-#: app/templates/admin/user_detail.html:67
+#: app/templates/admin/user_detail.html:140
 msgid "Reason"
 msgstr "Grund"
 
-#: app/templates/admin/user_detail.html:75
+#: app/templates/admin/user_detail.html:148
 #: app/templates/modules/events_form.html:106
 #: app/templates/modules/miniclubs_form.html:81
 #: app/templates/modules/travel_form.html:91
 msgid "Save changes"
 msgstr "Änderungen speichern"
 
-#: app/templates/admin/user_detail.html:79
+#: app/templates/admin/user_detail.html:152
 msgid "Consents"
 msgstr "Einwilligungen"
 
-#: app/templates/admin/user_detail.html:82
+#: app/templates/admin/user_detail.html:155
 msgid "granted"
 msgstr "erteilt"
 
-#: app/templates/admin/user_detail.html:82
+#: app/templates/admin/user_detail.html:155
 msgid "withdrawn"
 msgstr "widerrufen"
 
-#: app/templates/admin/user_detail.html:84
+#: app/templates/admin/user_detail.html:157
 msgid "No consents recorded."
 msgstr "Keine Einwilligungen erfasst."
 
-#: app/templates/admin/user_detail.html:90
+#: app/templates/admin/user_detail.html:163
 msgid "History"
 msgstr "Verlauf"
 
-#: app/templates/admin/user_detail.html:95
+#: app/templates/admin/user_detail.html:168
 msgid "No entries yet."
 msgstr "Noch keine Einträge."
 
@@ -5938,7 +6087,7 @@ msgstr ""
 "Legt ein Konto ohne Registrierung und ohne Stripe an. Für Demonstrationen "
 "und Einladungen."
 
-#: app/templates/admin/user_new.html:14 app/templates/admin/users.html:20
+#: app/templates/admin/user_new.html:14 app/templates/admin/users.html:29
 #: app/templates/auth/login.html:17 app/templates/auth/register.html:33
 msgid "E-mail"
 msgstr "E-Mail"
@@ -5967,29 +6116,63 @@ msgstr "Bleibt es leer, wird ein temporäres Passwort erzeugt und einmal angezei
 msgid "Identity is confirmed (no Stripe check)"
 msgstr "Identität ist bestätigt (ohne Stripe-Prüfung)"
 
-#: app/templates/admin/user_new.html:56
+#: app/templates/admin/user_new.html:54
+msgid ""
+"Required when the identity is confirmed. It is saved in the log with your "
+"name."
+msgstr ""
+"Pflicht, wenn die Identität bestätigt wird. Sie wird mit deinem Namen im "
+"Protokoll gespeichert."
+
+#: app/templates/admin/user_new.html:59
+msgid "Not paid yet"
+msgstr "Noch nicht bezahlt"
+
+#: app/templates/admin/user_new.html:68
+msgid "Required when a paid period is set."
+msgstr "Pflicht, wenn ein bezahlter Zeitraum gesetzt wird."
+
+#: app/templates/admin/user_new.html:75
 msgid "Create participant"
 msgstr "Teilnehmende Person anlegen"
 
-#: app/templates/admin/users.html:11
+#: app/templates/admin/users.html:9 app/templates/modules/events_list.html:51
+#: app/templates/modules/miniclubs_list.html:37
+#: app/templates/modules/startups_list.html:43
+msgid "Filter"
+msgstr "Filtern"
+
+#: app/templates/admin/users.html:10 app/templates/modules/travel_list.html:27
+msgid "All"
+msgstr "Alle"
+
+#: app/templates/admin/users.html:12
+msgid "Confirmed by an administrator"
+msgstr "Von einem Administrator bestätigt"
+
+#: app/templates/admin/users.html:20
 msgid "Search by e-mail"
 msgstr "Nach E-Mail suchen"
 
-#: app/templates/admin/users.html:14
+#: app/templates/admin/users.html:23
 #: app/templates/modules/profile_directory.html:23
 #: app/templates/modules/profile_directory.html:48
 msgid "Search"
 msgstr "Suchen"
 
-#: app/templates/admin/users.html:22
-msgid "Identity"
-msgstr "Identität"
+#: app/templates/admin/users.html:31
+msgid "Paid until"
+msgstr "Bezahlt bis"
 
-#: app/templates/admin/users.html:32
+#: app/templates/admin/users.html:42
+msgid "by admin"
+msgstr "durch Admin"
+
+#: app/templates/admin/users.html:43
 msgid "admin"
 msgstr "Admin"
 
-#: app/templates/admin/users.html:35
+#: app/templates/admin/users.html:46
 msgid "No members found."
 msgstr "Keine Mitglieder gefunden."
 
@@ -7027,12 +7210,6 @@ msgstr "Vergangene Treffen"
 msgid "All types"
 msgstr "Alle Arten"
 
-#: app/templates/modules/events_list.html:51
-#: app/templates/modules/miniclubs_list.html:37
-#: app/templates/modules/startups_list.html:43
-msgid "Filter"
-msgstr "Filtern"
-
 #: app/templates/modules/events_list.html:70
 #: app/templates/modules/events_mine.html:27
 #: app/templates/modules/events_mine.html:42
@@ -7157,7 +7334,7 @@ msgid "Your message"
 msgstr "Deine Nachricht"
 
 #: app/templates/modules/miniclubs_detail.html:105
-#: app/templates/partials/assistant.html:23
+#: app/templates/partials/assistant.html:39
 msgid "Send"
 msgstr "Senden"
 
@@ -8437,10 +8614,6 @@ msgstr "In Ordnung"
 msgid "Check"
 msgstr "Prüfen"
 
-#: app/templates/modules/tool_report_findings.html:41
-msgid "Note"
-msgstr "Hinweis"
-
 #: app/templates/modules/tool_report_findings.html:47
 msgid ""
 "A snapshot of the checked page, created automatically. Not legal advice and"
@@ -8454,8 +8627,8 @@ msgid "New search"
 msgstr "Neue Suche"
 
 #: app/templates/modules/tool_report_laws.html:12
-#: app/templates/partials/assistant.html:20
-#: app/templates/partials/assistant.html:21
+#: app/templates/partials/assistant.html:34
+#: app/templates/partials/assistant.html:35
 msgid "Your question"
 msgstr "Deine Frage"
 
@@ -8909,10 +9082,6 @@ msgstr "Gemeinsame Reisen"
 msgid "Offers"
 msgstr "Angebote"
 
-#: app/templates/modules/travel_list.html:27
-msgid "All"
-msgstr "Alle"
-
 #: app/templates/modules/travel_list.html:43
 msgid "Open trip card"
 msgstr "Reisekarte öffnen"
@@ -8946,7 +9115,7 @@ msgid "You have no bookings."
 msgstr "Du hast keine Buchungen."
 
 #: app/templates/partials/assistant.html:4
-#: app/templates/partials/assistant.html:22
+#: app/templates/partials/assistant.html:36
 msgid "Speak"
 msgstr "Sprechen"
 
@@ -8980,23 +9149,23 @@ msgstr "Clubi denkt nach …"
 msgid "Clubi sees: %(page)s"
 msgstr "Clubi sieht: %(page)s"
 
-#: app/templates/partials/assistant.html:9
+#: app/templates/partials/assistant.html:11
 msgid "Ask Clubi"
 msgstr "Clubi fragen"
 
-#: app/templates/partials/assistant.html:10
+#: app/templates/partials/assistant.html:13
 msgid "Personal assistant Clubi"
 msgstr "Persönliche Assistentin Clubi"
 
-#: app/templates/partials/assistant.html:12
+#: app/templates/partials/assistant.html:17
 msgid "Clubi"
 msgstr "Clubi"
 
-#: app/templates/partials/assistant.html:13
+#: app/templates/partials/assistant.html:20
 msgid "New conversation"
 msgstr "Neues Gespräch"
 
-#: app/templates/partials/assistant.html:16
+#: app/templates/partials/assistant.html:27
 msgid ""
 "Clubi is an AI. It does not give legal or financial advice and never shows "
 "contact details. Conversations are not stored on the server."
@@ -9004,7 +9173,7 @@ msgstr ""
 "Clubi ist eine KI. Sie gibt keine Rechts- oder Finanzberatung und zeigt nie"
 " Kontaktdaten. Gespräche werden nicht auf dem Server gespeichert."
 
-#: app/templates/partials/assistant.html:26
+#: app/templates/partials/assistant.html:30
 msgid ""
 "To turn your voice into text, the recording is sent to a speech service: "
 "Mistral in the EU, or OpenAI in the USA as a backup. The club does not "
@@ -9016,7 +9185,7 @@ msgstr ""
 "den USA. Der Club speichert das Audio nicht. Du kannst das jederzeit unter "
 "Veröffentlichung und Matching widerrufen."
 
-#: app/templates/partials/assistant.html:27
+#: app/templates/partials/assistant.html:31
 msgid "Agree and speak"
 msgstr "Zustimmen und sprechen"
 
@@ -9610,4 +9779,9 @@ msgstr "Bereit loszulegen?"
 #~ "withdraw this at any time under "
 #~ "Publication and matching."
 #~ msgstr ""
+
+#~ msgid "Identity check: not verified. You can confirm it manually without Stripe."
+#~ msgstr ""
+#~ "Identitätsprüfung: nicht bestätigt. Du kannst"
+#~ " sie ohne Stripe manuell bestätigen."
 

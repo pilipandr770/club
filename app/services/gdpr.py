@@ -20,6 +20,7 @@ def export_user(user) -> dict:
             "nachname": user.last_name,
             "status": user.status,
             "tarif": user.plan,
+            "tarif_bezahlt_bis": _iso(user.paid_until),
             "erstellt": _iso(user.created_at),
             "letzter_login": _iso(user.last_login_at),
             "e_mail_bestaetigt": _iso(user.email_confirmed_at),

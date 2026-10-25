@@ -6,7 +6,16 @@
 <h1>{{ _("Members") }}</h1>
 <p><a href="{{ url_for('admin.dashboard') }}">{{ _("Back to admin") }}</a> · <a href="{{ url_for('admin.user_new') }}">{{ _("Create a participant") }}</a></p>
 
+<nav class="section-nav" aria-label="{{ _('Filter') }}">
+  <a href="{{ url_for('admin.users') }}"{% if not mode %} aria-current="page"{% endif %}>{{ _("All") }}</a>
+  <a href="{{ url_for('admin.users', show='waiting') }}"{% if mode == 'waiting' %} aria-current="page"{% endif %}>{{ _("Waiting for identity") }}</a>
+  <a href="{{ url_for('admin.users', show='manual') }}"{% if mode == 'manual' %} aria-current="page"{% endif %}>{{ _("Confirmed by an administrator") }}</a>
+  <a href="{{ url_for('admin.users', show='expiring') }}"{% if mode == 'expiring' %} aria-current="page"{% endif %}>{{ _("Plan ending soon") }}</a>
+  <a href="{{ url_for('admin.users', show='expired') }}"{% if mode == 'expired' %} aria-current="page"{% endif %}>{{ _("Plan expired") }}</a>
+</nav>
+
 <form method="get" action="{{ url_for('admin.users') }}" class="form">
+  <input type="hidden" name="show" value="{{ mode }}">
   <div class="field">
     <label for="q">{{ _("Search by e-mail") }}</label>
     <input id="q" name="q" type="search" value="{{ q }}">
@@ -19,6 +28,7 @@
     <tr>
       <th>{{ _("E-mail") }}</th>
       <th>{{ _("Plan") }}</th>
+      <th>{{ _("Paid until") }}</th>
       <th>{{ _("Identity") }}</th>
       <th>{{ _("Status") }}</th>
     </tr>
@@ -28,11 +38,12 @@
     <tr>
       <td><a href="{{ url_for('admin.user_detail', user_id=user.id) }}">{{ user.email }}</a></td>
       <td>{{ plans[user.plan].name if user.plan in plans else user.plan }}</td>
-      <td>{{ user.verification_status|label }}</td>
+      <td>{% if user.plan == "guest" %}—{% elif user.paid_until %}{{ user.paid_until.strftime('%d.%m.%Y') }}{% else %}{{ _("no end date") }}{% endif %}</td>
+      <td>{{ user.verification_status|label }}{% if user.verification_method == "manual" %} · {{ _("by admin") }}{% endif %}</td>
       <td>{{ user.status|label }}{% if user.is_admin %} · {{ _("admin") }}{% endif %}</td>
     </tr>
     {% else %}
-    <tr><td colspan="4">{{ _("No members found.") }}</td></tr>
+    <tr><td colspan="5">{{ _("No members found.") }}</td></tr>
     {% endfor %}
   </tbody>
 </table>
