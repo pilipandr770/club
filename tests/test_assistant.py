@@ -151,12 +151,15 @@ def test_unavailable_without_llm(app, client, monkeypatch):
     assert response.status_code == 400 and response.get_json()["code"] == "unavailable"
 
 
-def test_widget_is_rendered_for_members_only(app, client):
-    assert b'id="assistant"' not in client.get("/").data
+def test_personal_widget_is_rendered_for_members_only(app, client):
+    # посетителю лендинга показывается публичный помощник, а не личный
+    assert b'data-user="public"' in client.get("/").data
+    assert b'id="assistant"' not in client.get("/login").data
     make_user(app, email="me@example.com", verified=True, plan="starter")
     login(client, "me@example.com")
 
     assert b'id="assistant"' in client.get("/app/").data
+    assert b'data-user="public"' not in client.get("/app/").data
 
 
 def test_prompt_tells_the_model_to_answer_in_the_language_of_the_question(app, client, prompts):

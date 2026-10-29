@@ -4,13 +4,14 @@ from flask import Blueprint, jsonify, request
 from flask_babel import gettext as _
 from flask_login import current_user
 
-from ...extensions import db, limiter
+from ...extensions import csrf, db, limiter
 from ...services.audit import audit
 from ...services.consents import latest_consent, record_consent
 from ...services.ai.http import AIUnavailable
 from ...services.ai.speech import MAX_BYTES, transcribe
 from ...services.assistant import AssistantError, ask, questions_left
 from ...services.entitlements import requires_feature
+from ...services.public_assistant import PublicAssistantError, ask_public, error_text
 
 bp = Blueprint("assistant", __name__, url_prefix="/assistant")
 
@@ -70,3 +71,30 @@ def transcribe_view():
     if not text:
         return jsonify(error=_("I could not hear anything. Please try again."), code="silence"), 422
     return jsonify(text=text[:1000])
+
+
+def _global_key():
+    return "public-assistant"
+
+
+@bp.route("/public", methods=["POST"])
+@csrf.exempt
+@limiter.limit("8 per minute")
+@limiter.limit("40 per hour")
+@limiter.limit("1500 per day", key_func=_global_key)
+def public_view():
+    """Помощник для посетителей лендинга: без входа, без cookie, без хранения. Знает только публичный текст о клубе."""
+    data = request.get_json(silent=True) or {}
+    history = data.get("history") if isinstance(data.get("history"), list) else []
+    try:
+        answer = ask_public(str(data.get("message", "")), history)
+    except PublicAssistantError as exc:
+        return jsonify(error=error_text(exc.code), code=exc.code), 400 if exc.code == "empty" else 503
+    return jsonify(answer=answer)
+
+
+@bp.errorhandler(429)
+def too_many(_exc):
+    if request.path.endswith("/public"):
+        return jsonify(error=error_text("limit"), code="limit"), 429
+    return jsonify(error=_error_text("limit"), code="limit"), 429

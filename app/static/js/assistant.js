@@ -28,7 +28,9 @@
     log.scrollTop = log.scrollHeight;
     return item;
   }
+  var suggest = root.querySelector(".assistant-suggest");
   function render() {
+    if (suggest) { suggest.hidden = state.messages.length > 0; }
     log.textContent = "";
     if (!state.messages.length) { addBubble("assistant", root.dataset.intro); }
     state.messages.forEach(function (m) { addBubble(m.role, m.text); });
@@ -46,7 +48,7 @@
   toggle.addEventListener("click", function () { setOpen(!state.open); });
   root.querySelector(".assistant-close").addEventListener("click", function () { setOpen(false); });
   root.querySelector(".assistant-clear").addEventListener("click", function () {
-    state.messages = []; contextLine.textContent = ""; save(); render();
+    state.messages = []; if (contextLine) { contextLine.textContent = ""; } save(); render();
   });
   function grow() {
     input.style.height = "auto";
@@ -83,7 +85,7 @@
       pending.classList.remove("assistant-pending");
       if (result.ok) {
         state.messages.push({ role: "assistant", text: reply });
-        contextLine.textContent = result.data.context ? root.dataset.sees.replace("%s", result.data.context) : "";
+        if (contextLine) { contextLine.textContent = result.data.context ? root.dataset.sees.replace("%s", result.data.context) : ""; }
       } else {
         state.messages.pop();
       }
@@ -100,6 +102,15 @@
   });
 
   // --- голосовой ввод: запись в браузере, расшифровка на сервере, текст попадает в поле ввода ---
+  if (suggest) {
+    suggest.addEventListener("click", function (event) {
+      var chip = event.target.closest("[data-q]");
+      if (!chip) { return; }
+      input.value = chip.dataset.q;
+      form.requestSubmit();
+    });
+  }
+
   var mic = form.querySelector(".assistant-mic");
   var consentBox = root.querySelector(".assistant-voice-consent");
   var voiceStatus = root.querySelector(".assistant-voice-status");
@@ -163,7 +174,7 @@
       timer = setTimeout(function () { if (recorder && recorder.state === "recording") { recorder.stop(); } }, MAX_SECONDS * 1000);
     }).catch(function () { voiceStatus.textContent = root.dataset.micDenied; });
   }
-  if (mic && navigator.mediaDevices && navigator.mediaDevices.getUserMedia && window.MediaRecorder) {
+  if (mic && root.dataset.voice !== "0" && navigator.mediaDevices && navigator.mediaDevices.getUserMedia && window.MediaRecorder) {
     mic.hidden = false;
     mic.addEventListener("click", function () {
       if (recorder && recorder.state === "recording") { recorder.stop(); return; }

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-10-25 11:18+0000\n"
+"POT-Creation-Date: 2026-10-29 19:52+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2333,11 +2333,12 @@ msgstr ""
 msgid "Please choose the number of months."
 msgstr ""
 
-#: app/blueprints/admin/__init__.py:458 app/blueprints/assistant/__init__.py:23
+#: app/blueprints/admin/__init__.py:458 app/blueprints/assistant/__init__.py:24
 #: app/modules/events/__init__.py:51 app/modules/miniclubs/__init__.py:53
 #: app/modules/profile/__init__.py:240 app/modules/services/__init__.py:18
 #: app/modules/startups/__init__.py:35 app/modules/travel/__init__.py:44
-#: app/templates/partials/assistant.html:7
+#: app/services/public_assistant.py:68 app/templates/partials/assistant.html:7
+#: app/templates/partials/public_assistant.html:3
 msgid "Something went wrong. Please try again."
 msgstr ""
 
@@ -2369,39 +2370,39 @@ msgstr ""
 msgid "Unknown status."
 msgstr ""
 
-#: app/blueprints/assistant/__init__.py:20
+#: app/blueprints/assistant/__init__.py:21 app/services/public_assistant.py:65
 msgid "Please write a question."
 msgstr ""
 
-#: app/blueprints/assistant/__init__.py:21
+#: app/blueprints/assistant/__init__.py:22
 msgid "The assistant is not available right now. Please try again later."
 msgstr ""
 
-#: app/blueprints/assistant/__init__.py:22
+#: app/blueprints/assistant/__init__.py:23
 msgid "You have reached today's limit of questions. It renews tomorrow."
 msgstr ""
 
-#: app/blueprints/assistant/__init__.py:57
+#: app/blueprints/assistant/__init__.py:58
 msgid "Please agree to voice input first."
 msgstr ""
 
-#: app/blueprints/assistant/__init__.py:61
+#: app/blueprints/assistant/__init__.py:62
 msgid "No recording received. Please try again."
 msgstr ""
 
-#: app/blueprints/assistant/__init__.py:63
+#: app/blueprints/assistant/__init__.py:64
 msgid "The recording is too long. Please keep it under a minute."
 msgstr ""
 
-#: app/blueprints/assistant/__init__.py:67
+#: app/blueprints/assistant/__init__.py:68
 msgid "This audio format is not supported."
 msgstr ""
 
-#: app/blueprints/assistant/__init__.py:68
+#: app/blueprints/assistant/__init__.py:69
 msgid "Voice input is not available right now. Please type your question."
 msgstr ""
 
-#: app/blueprints/assistant/__init__.py:71
+#: app/blueprints/assistant/__init__.py:72
 msgid "I could not hear anything. Please try again."
 msgstr ""
 
@@ -3372,6 +3373,18 @@ msgid ""
 "Unfortunately the organiser of \"%(club)s\" could not accept your request"
 " this time.\n"
 "%(url)s"
+msgstr ""
+
+#: app/services/public_assistant.py:66
+msgid ""
+"That was a lot of questions in a short time. Please try again in a few "
+"minutes."
+msgstr ""
+
+#: app/services/public_assistant.py:67
+msgid ""
+"The assistant is not available right now. You can still look around and "
+"register below."
 msgstr ""
 
 #: app/services/verification.py:150
@@ -5107,7 +5120,8 @@ msgstr ""
 
 #: app/templates/auth/login.html:3 app/templates/auth/login.html:9
 #: app/templates/auth/login.html:31 app/templates/auth/register.html:84
-#: app/templates/base.html:31 app/templates/public/index.html:18
+#: app/templates/base.html:31 app/templates/partials/public_assistant.html:40
+#: app/templates/public/index.html:18
 msgid "Log in"
 msgstr ""
 
@@ -5351,6 +5365,7 @@ msgid "no buyer"
 msgstr ""
 
 #: app/templates/admin/lots.html:106 app/templates/partials/assistant.html:23
+#: app/templates/partials/public_assistant.html:19
 msgid "Close"
 msgstr ""
 
@@ -6839,6 +6854,7 @@ msgstr ""
 
 #: app/templates/modules/miniclubs_detail.html:105
 #: app/templates/partials/assistant.html:39
+#: app/templates/partials/public_assistant.html:34
 msgid "Send"
 msgstr ""
 
@@ -8014,6 +8030,8 @@ msgstr ""
 #: app/templates/modules/tool_report_laws.html:12
 #: app/templates/partials/assistant.html:34
 #: app/templates/partials/assistant.html:35
+#: app/templates/partials/public_assistant.html:32
+#: app/templates/partials/public_assistant.html:33
 msgid "Your question"
 msgstr ""
 
@@ -8488,6 +8506,7 @@ msgid ""
 msgstr ""
 
 #: app/templates/partials/assistant.html:7
+#: app/templates/partials/public_assistant.html:3
 msgid "Clubi is thinking …"
 msgstr ""
 
@@ -8497,18 +8516,22 @@ msgid "Clubi sees: %(page)s"
 msgstr ""
 
 #: app/templates/partials/assistant.html:11
+#: app/templates/partials/public_assistant.html:7
 msgid "Ask Clubi"
 msgstr ""
 
 #: app/templates/partials/assistant.html:13
+#: app/templates/partials/public_assistant.html:9
 msgid "Personal assistant Clubi"
 msgstr ""
 
 #: app/templates/partials/assistant.html:17
+#: app/templates/partials/public_assistant.html:13
 msgid "Clubi"
 msgstr ""
 
 #: app/templates/partials/assistant.html:20
+#: app/templates/partials/public_assistant.html:16
 msgid "New conversation"
 msgstr ""
 
@@ -8528,6 +8551,43 @@ msgstr ""
 
 #: app/templates/partials/assistant.html:31
 msgid "Agree and speak"
+msgstr ""
+
+#: app/templates/partials/public_assistant.html:2
+msgid ""
+"Hello! I am Clubi. I can tell you what the club offers, how it works and "
+"whether it fits you. What would you like to know?"
+msgstr ""
+
+#: app/templates/partials/public_assistant.html:23
+msgid ""
+"Clubi is an AI and can make mistakes. It does not give legal or financial"
+" advice. Your questions are not stored."
+msgstr ""
+
+#: app/templates/partials/public_assistant.html:25
+msgid "Suggested questions"
+msgstr ""
+
+#: app/templates/partials/public_assistant.html:26
+msgid "What does the club offer?"
+msgstr ""
+
+#: app/templates/partials/public_assistant.html:27
+msgid "How does verification work?"
+msgstr ""
+
+#: app/templates/partials/public_assistant.html:28
+msgid "What will it cost?"
+msgstr ""
+
+#: app/templates/partials/public_assistant.html:29
+msgid "Is my data safe?"
+msgstr ""
+
+#: app/templates/partials/public_assistant.html:39
+#: app/templates/public/index.html:17 app/templates/public/index.html:217
+msgid "Become a member"
 msgstr ""
 
 #: app/templates/public/index.html:3
@@ -8550,10 +8610,6 @@ msgstr ""
 msgid ""
 "Verified members share what they offer and what they need. AI matching "
 "suggests who fits. You decide who may contact you."
-msgstr ""
-
-#: app/templates/public/index.html:17 app/templates/public/index.html:217
-msgid "Become a member"
 msgstr ""
 
 #: app/templates/public/index.html:21
