@@ -21,4 +21,14 @@ migrate = Migrate()
 babel = Babel()
 csrf = CSRFProtect()
 login_manager = LoginManager()
-limiter = Limiter(key_func=get_remote_address)
+def client_key():
+    """Ключ лимитов: адрес посетителя. Перед приложением стоят Cloudflare, Traefik и Caddy, поэтому remote_addr
+    и X-Forwarded-For показывают адрес прокси (у всех посетителей один и тот же). Cloudflare передаёт настоящий
+    адрес в CF-Connecting-IP; без него (локальная разработка, тесты) берём обычный адрес соединения."""
+    from flask import request
+
+    forwarded = request.headers.get("CF-Connecting-IP", "").strip()
+    return forwarded[:64] if forwarded else get_remote_address()
+
+
+limiter = Limiter(key_func=client_key)
