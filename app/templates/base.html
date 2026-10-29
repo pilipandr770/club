@@ -54,7 +54,12 @@
   </main>
 
   <footer class="site-footer">
-    <p class="small">{{ _("Club") }}</p>
+    <nav class="footer-links small" aria-label="{{ _('Legal information') }}">
+      <span>{{ _("Club") }}</span>
+      <a href="{{ url_for('public.impressum') }}">{{ _("Legal notice") }}</a>
+      <a href="{{ url_for('public.datenschutz') }}">{{ _("Privacy notice") }}</a>
+      <a href="{{ url_for('public.nutzungsbedingungen') }}">{{ _("Terms of use") }}</a>
+    </nav>
   </footer>
   {% if assistant_on %}{% include "partials/assistant.html" %}{% elif not current_user.is_authenticated and request.endpoint == 'public.index' %}{% include "partials/public_assistant.html" %}{% endif %}
   <script src="{{ url_for('static', filename='js/app.js', v=asset_version) }}" defer></script>

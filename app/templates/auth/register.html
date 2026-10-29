@@ -58,19 +58,21 @@
 
     <label class="check {% if errors.consent_privacy %}field-error{% endif %}">
       <input type="checkbox" name="consent_privacy" value="1" {% if form.get('consent_privacy') %}checked{% endif %}>
-      {{ _("I have read the privacy notice and agree that my data is processed to run my account.") }}
+      {% set privacy_link %}<a href="{{ url_for('public.datenschutz') }}" target="_blank" rel="noopener">{{ _("privacy notice") }}</a>{% endset %}
+      {{ _("I have read the %(link)s. I know how my data is processed to run my account.", link=privacy_link)|safe }}
     </label>
     {% if errors.consent_privacy %}<p class="error">{{ errors.consent_privacy }}</p>{% endif %}
 
     <label class="check {% if errors.consent_terms %}field-error{% endif %}">
       <input type="checkbox" name="consent_terms" value="1" {% if form.get('consent_terms') %}checked{% endif %}>
-      {{ _("I accept the terms of use.") }}
+      {% set terms_link %}<a href="{{ url_for('public.nutzungsbedingungen') }}" target="_blank" rel="noopener">{{ _("terms of use") }}</a>{% endset %}
+      {{ _("I accept the %(link)s.", link=terms_link)|safe }}
     </label>
     {% if errors.consent_terms %}<p class="error">{{ errors.consent_terms }}</p>{% endif %}
 
     <label class="check {% if errors.consent_identity %}field-error{% endif %}">
       <input type="checkbox" name="consent_identity" value="1" {% if form.get('consent_identity') %}checked{% endif %}>
-      {{ _("I agree that Stripe checks my identity document and a selfie. Stripe processes this data, the club only receives the result.") }}
+      {{ _("I expressly agree that Stripe checks my identity document and a selfie, including facial features (biometric data). Stripe processes this data, the club only receives the result. I can withdraw this agreement and ask for the manual check instead.") }}
     </label>
     {% if errors.consent_identity %}<p class="error">{{ errors.consent_identity }}</p>{% endif %}
   </fieldset>

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Club 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-29 20:20+0000\n"
+"POT-Creation-Date: 2026-10-29 21:10+0000\n"
 "PO-Revision-Date: 2026-10-19 21:00+0000\n"
 "Last-Translator: \n"
 "Language: de\n"
@@ -1341,7 +1341,7 @@ msgstr "Reisevermittler"
 msgid "Privacy"
 msgstr "Datenschutz"
 
-#: app/i18n_labels.py:250
+#: app/i18n_labels.py:250 app/templates/base.html:61
 msgid "Terms of use"
 msgstr "Nutzungsbedingungen"
 
@@ -5492,8 +5492,14 @@ msgstr ""
 
 #: app/templates/admin/dashboard.html:3 app/templates/auth/login.html:3
 #: app/templates/auth/register.html:3 app/templates/base.html:6
-#: app/templates/base.html:12 app/templates/base.html:57
-#: app/templates/errors/http.html:2 app/templates/member/dashboard.html:3
+#: app/templates/base.html:12 app/templates/base.html:58
+#: app/templates/errors/http.html:2 app/templates/legal/datenschutz_de.html:3
+#: app/templates/legal/datenschutz_ru.html:3
+#: app/templates/legal/impressum_de.html:3
+#: app/templates/legal/impressum_ru.html:3
+#: app/templates/legal/nutzungsbedingungen_de.html:3
+#: app/templates/legal/nutzungsbedingungen_ru.html:3
+#: app/templates/member/dashboard.html:3
 #: app/templates/modules/auction_list.html:3
 #: app/templates/modules/events_list.html:3
 #: app/templates/modules/miniclubs_list.html:3
@@ -5550,7 +5556,7 @@ msgid "Log out"
 msgstr "Abmelden"
 
 #: app/templates/auth/login.html:3 app/templates/auth/login.html:9
-#: app/templates/auth/login.html:31 app/templates/auth/register.html:84
+#: app/templates/auth/login.html:31 app/templates/auth/register.html:86
 #: app/templates/base.html:31 app/templates/partials/public_assistant.html:40
 #: app/templates/public/index.html:18
 msgid "Log in"
@@ -5570,6 +5576,18 @@ msgstr "Sprache"
 #: app/templates/modules/profile_edit.html:47
 msgid "Save"
 msgstr "Speichern"
+
+#: app/templates/base.html:57
+msgid "Legal information"
+msgstr "Rechtliche Hinweise"
+
+#: app/templates/base.html:59
+msgid "Legal notice"
+msgstr "Impressum"
+
+#: app/templates/base.html:60
+msgid "Privacy notice"
+msgstr "Datenschutz"
 
 #: app/templates/admin/analytics.html:3 app/templates/admin/analytics.html:6
 #: app/templates/admin/dashboard.html:16
@@ -6446,34 +6464,47 @@ msgid "Confirmations"
 msgstr "Bestätigungen"
 
 #: app/templates/auth/register.html:61
-msgid ""
-"I have read the privacy notice and agree that my data is processed to run "
-"my account."
+msgid "privacy notice"
+msgstr "Datenschutzerklärung"
+
+#: app/templates/auth/register.html:62
+#, python-format
+msgid "I have read the %(link)s. I know how my data is processed to run my account."
 msgstr ""
-"Ich habe die Datenschutzhinweise gelesen und stimme zu, dass meine Daten "
-"für mein Konto verarbeitet werden."
+"Ich habe die %(link)s gelesen und weiß, wie meine Daten für den Betrieb "
+"meines Kontos verarbeitet werden."
 
-#: app/templates/auth/register.html:67
-msgid "I accept the terms of use."
-msgstr "Ich akzeptiere die Nutzungsbedingungen."
+#: app/templates/auth/register.html:68
+msgid "terms of use"
+msgstr "Nutzungsbedingungen"
 
-#: app/templates/auth/register.html:73
+#: app/templates/auth/register.html:69
+#, python-format
+msgid "I accept the %(link)s."
+msgstr "Ich akzeptiere die %(link)s."
+
+#: app/templates/auth/register.html:75
 msgid ""
-"I agree that Stripe checks my identity document and a selfie. Stripe "
-"processes this data, the club only receives the result."
+"I expressly agree that Stripe checks my identity document and a selfie, "
+"including facial features (biometric data). Stripe processes this data, the"
+" club only receives the result. I can withdraw this agreement and ask for "
+"the manual check instead."
 msgstr ""
-"Ich stimme zu, dass Stripe mein Ausweisdokument und ein Selfie prüft. "
-"Stripe verarbeitet diese Daten, der Club erhält nur das Ergebnis."
+"Ich willige ausdrücklich ein, dass Stripe mein Ausweisdokument und ein "
+"Selfie einschließlich der Gesichtsmerkmale (biometrische Daten) prüft. "
+"Stripe verarbeitet diese Daten, der Club erhält nur das Ergebnis. Ich kann "
+"diese Einwilligung widerrufen und stattdessen die persönliche Prüfung durch"
+" einen Administrator verlangen."
 
-#: app/templates/auth/register.html:78 app/templates/public/index.html:168
+#: app/templates/auth/register.html:80 app/templates/public/index.html:168
 msgid "Membership is for people aged 18 and over."
 msgstr "Die Mitgliedschaft ist für Menschen ab 18 Jahren."
 
-#: app/templates/auth/register.html:80
+#: app/templates/auth/register.html:82
 msgid "Create account"
 msgstr "Konto anlegen"
 
-#: app/templates/auth/register.html:84
+#: app/templates/auth/register.html:86
 msgid "Already registered?"
 msgstr "Schon registriert?"
 

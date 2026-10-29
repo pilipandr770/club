@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-10-29 20:20+0000\n"
+"POT-Creation-Date: 2026-10-29 21:10+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1279,7 +1279,7 @@ msgstr ""
 msgid "Privacy"
 msgstr ""
 
-#: app/i18n_labels.py:250
+#: app/i18n_labels.py:250 app/templates/base.html:61
 msgid "Terms of use"
 msgstr ""
 
@@ -5061,8 +5061,14 @@ msgstr ""
 
 #: app/templates/admin/dashboard.html:3 app/templates/auth/login.html:3
 #: app/templates/auth/register.html:3 app/templates/base.html:6
-#: app/templates/base.html:12 app/templates/base.html:57
-#: app/templates/errors/http.html:2 app/templates/member/dashboard.html:3
+#: app/templates/base.html:12 app/templates/base.html:58
+#: app/templates/errors/http.html:2 app/templates/legal/datenschutz_de.html:3
+#: app/templates/legal/datenschutz_ru.html:3
+#: app/templates/legal/impressum_de.html:3
+#: app/templates/legal/impressum_ru.html:3
+#: app/templates/legal/nutzungsbedingungen_de.html:3
+#: app/templates/legal/nutzungsbedingungen_ru.html:3
+#: app/templates/member/dashboard.html:3
 #: app/templates/modules/auction_list.html:3
 #: app/templates/modules/events_list.html:3
 #: app/templates/modules/miniclubs_list.html:3
@@ -5119,7 +5125,7 @@ msgid "Log out"
 msgstr ""
 
 #: app/templates/auth/login.html:3 app/templates/auth/login.html:9
-#: app/templates/auth/login.html:31 app/templates/auth/register.html:84
+#: app/templates/auth/login.html:31 app/templates/auth/register.html:86
 #: app/templates/base.html:31 app/templates/partials/public_assistant.html:40
 #: app/templates/public/index.html:18
 msgid "Log in"
@@ -5138,6 +5144,18 @@ msgstr ""
 #: app/templates/modules/profile.html:25
 #: app/templates/modules/profile_edit.html:47
 msgid "Save"
+msgstr ""
+
+#: app/templates/base.html:57
+msgid "Legal information"
+msgstr ""
+
+#: app/templates/base.html:59
+msgid "Legal notice"
+msgstr ""
+
+#: app/templates/base.html:60
+msgid "Privacy notice"
 msgstr ""
 
 #: app/templates/admin/analytics.html:3 app/templates/admin/analytics.html:6
@@ -5990,30 +6008,42 @@ msgid "Confirmations"
 msgstr ""
 
 #: app/templates/auth/register.html:61
+msgid "privacy notice"
+msgstr ""
+
+#: app/templates/auth/register.html:62
+#, python-format
 msgid ""
-"I have read the privacy notice and agree that my data is processed to run"
-" my account."
+"I have read the %(link)s. I know how my data is processed to run my "
+"account."
 msgstr ""
 
-#: app/templates/auth/register.html:67
-msgid "I accept the terms of use."
+#: app/templates/auth/register.html:68
+msgid "terms of use"
 msgstr ""
 
-#: app/templates/auth/register.html:73
+#: app/templates/auth/register.html:69
+#, python-format
+msgid "I accept the %(link)s."
+msgstr ""
+
+#: app/templates/auth/register.html:75
 msgid ""
-"I agree that Stripe checks my identity document and a selfie. Stripe "
-"processes this data, the club only receives the result."
+"I expressly agree that Stripe checks my identity document and a selfie, "
+"including facial features (biometric data). Stripe processes this data, "
+"the club only receives the result. I can withdraw this agreement and ask "
+"for the manual check instead."
 msgstr ""
 
-#: app/templates/auth/register.html:78 app/templates/public/index.html:168
+#: app/templates/auth/register.html:80 app/templates/public/index.html:168
 msgid "Membership is for people aged 18 and over."
 msgstr ""
 
-#: app/templates/auth/register.html:80
+#: app/templates/auth/register.html:82
 msgid "Create account"
 msgstr ""
 
-#: app/templates/auth/register.html:84
+#: app/templates/auth/register.html:86
 msgid "Already registered?"
 msgstr ""
 

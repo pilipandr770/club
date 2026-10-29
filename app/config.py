@@ -54,7 +54,22 @@ class Config:
     ENABLED_MODULES = _csv("ENABLED_MODULES", ("profile", "services", "travel", "events", "miniclubs", "startups", "auction"))
 
     # Версия текстов согласий (записывается в каждое согласие)
-    CONSENT_VERSION = "2026-10-19"
+    # Версия текстов (Datenschutz, Nutzungsbedingungen): пишется в каждое согласие; меняем при изменении текстов
+    CONSENT_VERSION = "2026-10-30"
+    LEGAL_UPDATED = "30.10.2026"
+    # Данные для Impressum и Datenschutz. После создания компании меняются в .env, код трогать не нужно
+    LEGAL_NAME = os.environ.get("LEGAL_NAME", "Andrii Pylypchuk")
+    LEGAL_STREET = os.environ.get("LEGAL_STREET", "Bergmannweg 16")
+    LEGAL_CITY = os.environ.get("LEGAL_CITY", "65934 Frankfurt am Main")
+    LEGAL_COUNTRY = os.environ.get("LEGAL_COUNTRY", "Deutschland")
+    LEGAL_EMAIL = os.environ.get("LEGAL_EMAIL", "info@andrii-it.de")
+    LEGAL_PHONE = os.environ.get("LEGAL_PHONE", "+49 160 95030120")
+    LEGAL_WEB = os.environ.get("LEGAL_WEB", "www.andrii-it.de")
+    LEGAL_VAT_ID = os.environ.get("LEGAL_VAT_ID", "DE456902445")
+    # Заполнить, когда появится юрлицо (UG/GmbH): форма, представитель, регистр
+    LEGAL_FORM = os.environ.get("LEGAL_FORM", "")
+    LEGAL_REPRESENTATIVE = os.environ.get("LEGAL_REPRESENTATIVE", "")
+    LEGAL_REGISTER = os.environ.get("LEGAL_REGISTER", "")
 
     # Проверка личности (ARCHITECTURE.md §10, §11)
     STRIPE_SECRET_KEY = os.environ.get("STRIPE_SECRET_KEY", "")

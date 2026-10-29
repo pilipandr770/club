@@ -1,0 +1,142 @@
+{% extends "base.html" %}
+
+{% block title %}Datenschutzerklärung · {{ _("Club") }}{% endblock %}
+
+{% block content %}
+<article class="legal" lang="de">
+  <h1>Datenschutzerklärung</h1>
+  <p class="small muted">Stand: {{ legal.LEGAL_UPDATED }}</p>
+  <p>Hier erfährst du, welche personenbezogenen Daten wir verarbeiten, wenn du unsere Website besuchst und den Club nutzt, wozu wir sie brauchen, wem wir sie weitergeben und welche Rechte du hast. Wir halten die Datenverarbeitung bewusst klein: Ausweisdokumente, Selfies und Bankdaten speichern wir nicht.</p>
+
+  <h2>1. Verantwortlicher</h2>
+  <address>
+    {{ legal.LEGAL_NAME }}{% if legal.LEGAL_FORM %} ({{ legal.LEGAL_FORM }}){% endif %}<br>
+    {{ legal.LEGAL_STREET }}, {{ legal.LEGAL_CITY }}, {{ legal.LEGAL_COUNTRY }}<br>
+    E-Mail: <a href="mailto:{{ legal.LEGAL_EMAIL }}">{{ legal.LEGAL_EMAIL }}</a> · Telefon: {{ legal.LEGAL_PHONE }}
+  </address>
+  <p>Weitere Angaben findest du im <a href="{{ url_for('public.impressum') }}">Impressum</a>.</p>
+
+  <h2>2. Grundsätze</h2>
+  <ul>
+    <li>Der Club ist nur für verifizierte Erwachsene (ab 18 Jahren) gedacht.</li>
+    <li>Die Aufnahme in das Mitgliederverzeichnis und die Nutzung des KI-Abgleichs sind getrennte, freiwillige Entscheidungen. Beide sind standardmäßig ausgeschaltet. Du kannst sie jederzeit ändern.</li>
+    <li>Deine E-Mail-Adresse und deine Links sehen andere Mitglieder nur, wenn du ihre Kontaktanfrage angenommen hast (Links kannst du zusätzlich für alle verifizierten Mitglieder freigeben).</li>
+    <li>Wir treffen keine Entscheidungen, die allein auf automatisierter Verarbeitung beruhen und dir gegenüber rechtliche Wirkung entfalten (Art. 22 DSGVO). Der KI-Abgleich macht nur Vorschläge.</li>
+  </ul>
+
+  <h2>3. Besuch der Website</h2>
+  <p><strong>Server-Protokolle.</strong> Beim Aufruf der Website verarbeitet unser Server technisch notwendige Daten: IP-Adresse, Datum und Uhrzeit, aufgerufene Seite, übertragene Datenmenge, Browser- und Betriebssystemangaben. Zweck ist der sichere und stabile Betrieb. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse am sicheren Betrieb). Die Protokolle werden nur kurzzeitig vorgehalten und dann gelöscht.</p>
+  <p><strong>Hosting und Schutz vor Angriffen.</strong> Die Website läuft auf einem virtuellen Server der Hostinger International Ltd. mit Standort in der EU. Der Datenverkehr läuft über das Netzwerk von Cloudflare, Inc. (USA), das Anfragen vor Angriffen schützt und beschleunigt. Cloudflare sieht dabei technisch bedingt deine IP-Adresse und die Anfragen. Rechtsgrundlage ist ebenfalls Art. 6 Abs. 1 lit. f DSGVO. Mit den Anbietern bestehen Verträge zur Auftragsverarbeitung.</p>
+
+  <h2>4. Cookies und Speicher im Browser</h2>
+  <p>Wir setzen nur technisch notwendige Cookies ein, die für die Website erforderlich sind und keine Einwilligung brauchen (§ 25 Abs. 2 Nr. 2 TDDDG):</p>
+  <ul>
+    <li><strong>session</strong>: Sitzung und Anmeldung, Schutz vor gefälschten Anfragen (CSRF). Wird beim Schließen des Browsers bzw. beim Abmelden ungültig.</li>
+    <li><strong>remember_token</strong>: nur, wenn du „Angemeldet bleiben“ wählst; hält die Anmeldung auf diesem Gerät.</li>
+    <li><strong>locale</strong>: merkt sich deine Spracheinstellung (bis zu 1 Jahr).</li>
+  </ul>
+  <p>Der Verlauf des Chats mit Clubi wird nur im Arbeitsspeicher deines Browsers (sessionStorage) gehalten und verschwindet, wenn du den Tab schließt. Wir verwenden keine Werbe- oder Tracking-Cookies und keine Dienste zur Reichweitenmessung von Drittanbietern.</p>
+
+  <h2>5. Anonyme Besucherstatistik</h2>
+  <p>Wir zählen Besuche der öffentlichen Seiten (Startseite, Anmeldung, Registrierung), um zu verstehen, ob der Club gefunden wird. Dabei gilt:</p>
+  <ul>
+    <li>Es werden keine Cookies gesetzt und nichts im Browser gespeichert. IP-Adresse und Browserkennung werden <strong>nicht</strong> gespeichert.</li>
+    <li>Ein „eindeutiger Besucher“ wird über einen Fingerabdruck erkannt, der aus IP-Adresse und Browserkennung mit einem Schlüssel berechnet wird, der jeden Tag wechselt. Der Fingerabdruck lässt sich nicht zurückrechnen und nicht mit anderen Tagen verknüpfen. Er wird am Folgetag gelöscht.</li>
+    <li>Dauerhaft gespeichert werden nur Zähler: Tag, Seite, Land, Stadt, Herkunft (Domain der verweisenden Seite oder ein Werbe-Kennzeichen), Gerätetyp (Handy, Tablet, Computer). Land und Stadt liefert Cloudflare.</li>
+    <li>Nicht gezählt werden Roboter, Besucher mit dem Signal „Do Not Track“ oder „Global Privacy Control“ und angemeldete Mitglieder.</li>
+  </ul>
+  <p>Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an einer datensparsamen Erfolgsmessung).</p>
+
+  <h2>6. Registrierung und Konto</h2>
+  <p><strong>Daten:</strong> E-Mail-Adresse, Vorname und Nachname, Land des Wohnsitzes, Passwort (nur als gesicherter Hash), Spracheinstellung, Zeitzone, Tarif, Zeitpunkte von Anmeldung und Registrierung. <strong>Zweck:</strong> Anlegen und Führen deines Kontos, Bestätigung deiner E-Mail-Adresse, Sicherheit. <strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. b DSGVO (Nutzungsvertrag). Das Land des Wohnsitzes benötigen wir, weil wir Teilnehmer aus bestimmten Ländern aus rechtlichen Gründen nicht aufnehmen können (Art. 6 Abs. 1 lit. c und f DSGVO).</p>
+  <p><strong>Einwilligungsnachweise:</strong> Wenn du dich registrierst oder Entscheidungen im Konto triffst, speichern wir Art, Ergebnis (zugestimmt oder nicht), Version der Texte und Zeitpunkt, damit wir deine Entscheidungen nachweisen können (Art. 7 Abs. 1 DSGVO, Art. 6 Abs. 1 lit. c DSGVO).</p>
+  <p><strong>E-Mails:</strong> Bestätigungs- und Hinweis-E-Mails versenden wir über den SMTP-Dienst von Google (Google Ireland Limited). Dabei werden E-Mail-Adresse, Betreff und Inhalt der Nachricht verarbeitet.</p>
+
+  <h2>7. Identitätsprüfung</h2>
+  <p>Jedes Mitglied, auch im kostenlosen Tarif, wird vor der Nutzung geprüft. Die Prüfung führt <strong>Stripe Payments Europe, Ltd.</strong> (Irland) für uns durch („Stripe Identity“). Du fotografierst ein Ausweisdokument und machst ein Selfie. Stripe gleicht dabei Gesichtsmerkmale ab; das sind biometrische Daten im Sinne von Art. 9 DSGVO. Wir verarbeiten sie nicht selbst und erhalten sie nicht.</p>
+  <ul>
+    <li><strong>Rechtsgrundlage:</strong> deine ausdrückliche Einwilligung (Art. 9 Abs. 2 lit. a, Art. 6 Abs. 1 lit. a DSGVO), die du bei der Registrierung gibst und jederzeit widerrufen kannst.</li>
+    <li><strong>Was wir speichern:</strong> nur das Ergebnis (bestätigt, abgelehnt, in Prüfung), den Zeitpunkt und die Kennung der Prüfung bei Stripe. Keine Bilder, keine Ausweisnummer, kein Geburtsdatum.</li>
+    <li><strong>Land des Dokuments:</strong> Wir prüfen anhand des Ergebnisses, ob wir Dokumente dieses Landes annehmen können, und speichern nur einen kurzen Grundcode bei Ablehnung.</li>
+    <li><strong>Löschung bei Stripe:</strong> Auf deine Anfrage und bei Löschung deines Kontos veranlassen wir die Löschung der Prüfdaten bei Stripe.</li>
+    <li><strong>Alternative:</strong> Statt der Prüfung durch Stripe kann ein Administrator des Clubs deine Identität bestätigen, wenn er dich persönlich kennt. Dann speichern wir den Namen der bestätigenden Person und eine kurze Notiz („woher wir uns kennen“). Wenn du die Prüfung durch Stripe nicht möchtest, schreib uns.</li>
+  </ul>
+
+  <h2>8. Profil, Mitgliederverzeichnis und persönliche Karte</h2>
+  <p>In deinem Profil kannst du freiwillig angeben: Überschrift, Unternehmen, Branche, Stadt, Beschreibung deiner Arbeit, deine aktuelle Aufgabe, wie du helfen kannst, was du suchst, Themen und Fähigkeiten, Sprachen, wofür du offen bist (zum Beispiel Kunden, Partner, Investoren), ein Foto, die Farbe deiner Karte sowie Links zu deiner Website und zu sozialen Netzwerken.</p>
+  <ul>
+    <li><strong>Nur für dich sichtbar</strong>, solange du dich nicht in das Verzeichnis aufnehmen lässt.</li>
+    <li><strong>Mitgliederverzeichnis:</strong> Wenn du zustimmst, sehen andere verifizierte Mitglieder deinen Vornamen, dein Foto und die Texte deiner Karte. Nachname und E-Mail-Adresse zeigen wir dort nie. Rechtsgrundlage: Einwilligung (Art. 6 Abs. 1 lit. a DSGVO), jederzeit widerrufbar unter „Veröffentlichung und Matching“.</li>
+    <li><strong>Links</strong> zu Website und sozialen Netzwerken sehen nur Mitglieder, deren Kontaktanfrage du angenommen hast. Zusätzlich kannst du sie für alle verifizierten Mitglieder freigeben (eigene Einwilligung, jederzeit widerrufbar). Wir rufen die verlinkten Seiten nicht ab und werten sie nicht aus.</li>
+    <li>Die Texte deines Profils speichern wir, bis du sie änderst oder dein Konto löschst.</li>
+  </ul>
+
+  <h2>9. KI-Abgleich (Matching) und Vorschläge</h2>
+  <p>Wenn du dem KI-Abgleich zustimmst (Art. 6 Abs. 1 lit. a DSGVO), vergleichen wir, was du suchst, mit dem, was andere Mitglieder anbieten, und umgekehrt, und schlagen dir passende Mitglieder vor. Dafür werden die Texte deines Profils (ohne Namen, E-Mail-Adresse und Kontaktdaten) an <strong>Mistral AI</strong> (Frankreich, EU) gesendet und in Zahlenvektoren („Embeddings“) umgewandelt, die wir speichern. Die kurze Begründung, warum ein Vorschlag passt, erzeugt <strong>Anthropic</strong> (USA) aus den anonymisierten Profiltexten. Die Vorschläge erscheinen nur für Mitglieder, die ebenfalls zugestimmt haben. Wenn du die Zustimmung widerrufst, nehmen wir dich aus dem Abgleich.</p>
+
+  <h2>10. Kontaktanfragen</h2>
+  <p>Wenn du einem Mitglied eine Kontaktanfrage schickst, speichern wir die Anfrage, deine kurze Nachricht (bis 500 Zeichen), Status und Zeitpunkte. Die E-Mail-Adressen werden erst sichtbar, wenn die Anfrage angenommen wird. Du kannst pro Tag höchstens 10 Anfragen senden. Rechtsgrundlage: Art. 6 Abs. 1 lit. b DSGVO (Funktion des Clubs).</p>
+
+  <h2>11. Assistent Clubi</h2>
+  <p><strong>Auf der Startseite</strong> beantwortet Clubi allgemeine Fragen zum Club. Deine Fragen werden zur Beantwortung an <strong>Anthropic</strong> (USA) gesendet und von uns <strong>nicht gespeichert</strong>. Bitte gib dort keine personenbezogenen Daten ein.</p>
+  <p><strong>Für Mitglieder</strong> kennt Clubi dein Profil (ohne Namen und E-Mail-Adresse) und den Inhalt der Seite, auf der du dich gerade befindest, zum Beispiel das Profil eines anderen Mitglieds, ein Projekt, ein Treffen oder eine Reise. Diese Inhalte und deine Frage werden an Anthropic gesendet, um die Antwort zu erzeugen. Der Gesprächsverlauf wird nicht auf unserem Server gespeichert; wir zählen nur, wie viele Fragen du heute gestellt hast. Clubi nennt nie Kontaktdaten anderer Mitglieder. Rechtsgrundlage: Art. 6 Abs. 1 lit. b DSGVO.</p>
+  <p><strong>Spracheingabe (freiwillig):</strong> Wenn du das Mikrofon benutzt, wird die Aufnahme (höchstens eine Minute) an einen Spracherkennungsdienst gesendet und in Text umgewandelt: zuerst <strong>Mistral AI</strong> (EU), ersatzweise <strong>OpenAI</strong> (USA), falls dieser Dienst eingerichtet ist. Wir speichern die Aufnahme nicht. Rechtsgrundlage: deine Einwilligung (Art. 6 Abs. 1 lit. a DSGVO), die du beim ersten Gebrauch gibst und unter „Veröffentlichung und Matching“ widerrufen kannst.</p>
+
+  <h2>12. Werkzeuge und Partnerleistungen</h2>
+  <ul>
+    <li><strong>Website-Prüfung:</strong> Du gibst eine Adresse ein; unser Server ruft öffentlich erreichbare Informationen dieser Seite ab (nur passive Prüfungen, keine Angriffe). Der Bericht wird in deinem Konto gespeichert. Prüfe nur Seiten, zu deren Prüfung du berechtigt bist.</li>
+    <li><strong>Gesetzessuche:</strong> Deine Frage wird mit unserem Bestand an Bundesgesetzen verglichen; die Erklärung erzeugt Anthropic. Das Ergebnis wird in deinem Konto gespeichert.</li>
+    <li><strong>Marktpanel:</strong> Deine Produktbeschreibung und der Preis werden an Anthropic gesendet, um die Reaktionen fiktiver Personen zu erzeugen. Das Ergebnis wird in deinem Konto gespeichert.</li>
+    <li><strong>Partnerleistungen:</strong> Wenn du bei einer Leistung eine Anfrage stellst, erhält der Partner deine Kontaktdaten <strong>nur, wenn du das Kästchen dafür ankreuzt</strong> (Art. 6 Abs. 1 lit. a DSGVO).</li>
+  </ul>
+
+  <h2>13. Startups, Treffen, Mini-Clubs, Reisen und Auktion</h2>
+  <p>Wenn du solche Einträge anlegst, speichern wir deine Angaben, Bilder und Dokumente (zum Beispiel PDF-Präsentationen). Neue Einträge prüfen wir vor der Veröffentlichung; dafür sehen Administratoren sie. Veröffentlichte Einträge sind für verifizierte Mitglieder sichtbar. Wenn du dich für ein Treffen, einen Mini-Club, eine Reise oder ein Gebot anmeldest, bekommt der Organisator deine E-Mail-Adresse nur, wenn du dem beim Anmelden ausdrücklich zustimmst. Der Club wickelt dabei keine Zahlungen zwischen Mitgliedern ab. Rechtsgrundlage: Art. 6 Abs. 1 lit. b und a DSGVO.</p>
+
+  <h2>14. Zahlungen und Tarife</h2>
+  <p>Aktuell bestätigen wir Zahlungen für bezahlte Tarife manuell. Wir speichern Tarif, bezahlten Zeitraum und eine kurze Notiz zur Zahlung (zum Beispiel „Überweisung am …“). Wenn wir Zahlungen über Stripe anbieten, informieren wir hier vorab; Stripe verarbeitet dann Zahlungsdaten als eigener Verantwortlicher bzw. Auftragsverarbeiter. Kartendaten und Bankdaten speichern wir nicht. Aufbewahrungspflichten aus Handels- und Steuerrecht bleiben unberührt (Art. 6 Abs. 1 lit. c DSGVO).</p>
+
+  <h2>15. Empfänger und Auftragsverarbeiter</h2>
+  <table>
+    <thead><tr><th>Dienst</th><th>Zweck</th><th>Daten</th><th>Sitz</th></tr></thead>
+    <tbody>
+      <tr><td>Hostinger International Ltd.</td><td>Server (Hosting)</td><td>alle Daten des Clubs auf dem Server</td><td>Server in der EU</td></tr>
+      <tr><td>Cloudflare, Inc.</td><td>Schutz und Beschleunigung der Website</td><td>IP-Adresse, Anfragen, Land und Stadt</td><td>USA</td></tr>
+      <tr><td>Stripe Payments Europe, Ltd.</td><td>Identitätsprüfung (später ggf. Zahlungen)</td><td>Ausweis, Selfie, Ergebnis; Zahlungsdaten</td><td>Irland</td></tr>
+      <tr><td>Anthropic PBC</td><td>Assistent Clubi, Begründungen, Gesetzeserklärungen, Marktpanel, Berichte</td><td>Texte ohne Namen und E-Mail-Adresse</td><td>USA</td></tr>
+      <tr><td>Mistral AI</td><td>Embeddings für den Abgleich, Spracherkennung</td><td>Profiltexte ohne Namen und E-Mail-Adresse; Aufnahmen</td><td>Frankreich (EU)</td></tr>
+      <tr><td>OpenAI (nur als Ersatz)</td><td>Spracherkennung</td><td>Aufnahmen</td><td>USA</td></tr>
+      <tr><td>Google Ireland Limited</td><td>Versand von E-Mails</td><td>E-Mail-Adresse, Nachrichtentext</td><td>Irland (Konzern: USA)</td></tr>
+    </tbody>
+  </table>
+  <p>Wir geben deine Daten sonst nur weiter, wenn wir dazu gesetzlich verpflichtet sind oder du eingewilligt hast.</p>
+
+  <h2>16. Übermittlung in Drittländer</h2>
+  <p>Einige Anbieter sitzen in den USA oder gehören zu US-Konzernen. Die Übermittlung stützen wir auf den Angemessenheitsbeschluss der EU-Kommission zum EU-US Data Privacy Framework, soweit der Anbieter zertifiziert ist, im Übrigen auf Standardvertragsklauseln der EU-Kommission (Art. 45, 46 DSGVO). Wir haben die Anbieter so ausgewählt und die Daten so gekürzt, dass Namen und E-Mail-Adressen nicht an KI-Anbieter gelangen.</p>
+
+  <h2>17. Speicherdauer</h2>
+  <ul>
+    <li>Kontodaten, Profil und Inhalte: bis zur Löschung deines Kontos.</li>
+    <li>Einwilligungsnachweise: werden mit dem Konto gelöscht.</li>
+    <li>Ergebnisse der Werkzeuge: bis du sie löschst oder dein Konto löschst.</li>
+    <li>Zahlungsnotizen und Rechnungsdaten: so lange gesetzliche Aufbewahrungsfristen laufen (in der Regel 6 bzw. 10 Jahre).</li>
+    <li>Server-Protokolle: kurzzeitig, danach gelöscht.</li>
+    <li>Besucherstatistik: nur Zähler ohne Personenbezug; tägliche Fingerabdrücke werden am Folgetag gelöscht.</li>
+    <li>Protokolle von Verwaltungsaktionen (zum Beispiel Freigaben und Sperren): solange sie zum Nachweis und zur Sicherheit erforderlich sind.</li>
+  </ul>
+
+  <h2>18. Deine Rechte</h2>
+  <p>Du hast das Recht auf Auskunft (Art. 15), Berichtigung (Art. 16), Löschung (Art. 17), Einschränkung der Verarbeitung (Art. 18), Datenübertragbarkeit (Art. 20) und Widerspruch (Art. 21 DSGVO). Eine erteilte Einwilligung kannst du jederzeit mit Wirkung für die Zukunft widerrufen (Art. 7 Abs. 3 DSGVO); die Verarbeitung bis dahin bleibt rechtmäßig.</p>
+  <p><strong>Selbstbedienung:</strong> Im Konto kannst du deine Daten exportieren und dein Konto löschen. Deine Entscheidungen zu Verzeichnis, Matching, Links und Spracheingabe änderst du unter „Veröffentlichung und Matching“. Für alles andere schreib an <a href="mailto:{{ legal.LEGAL_EMAIL }}">{{ legal.LEGAL_EMAIL }}</a>.</p>
+  <p><strong>Beschwerderecht:</strong> Du kannst dich bei einer Datenschutz-Aufsichtsbehörde beschweren, zum Beispiel bei der für uns zuständigen Behörde: Der Hessische Beauftragte für Datenschutz und Informationsfreiheit, Gustav-Stresemann-Ring 1, 65189 Wiesbaden.</p>
+
+  <h2>19. Pflicht zur Bereitstellung</h2>
+  <p>Für Konto und Identitätsprüfung sind E-Mail-Adresse, Name, Wohnsitzland und die Prüfung der Identität erforderlich. Ohne sie können wir dich nicht aufnehmen. Alle anderen Angaben sind freiwillig.</p>
+
+  <h2>20. Sicherheit</h2>
+  <p>Die Verbindung zur Website ist verschlüsselt (TLS). Passwörter speichern wir nur als gesicherten Hash. Der Zugriff auf die Verwaltung ist auf Administratoren beschränkt und wird protokolliert. Die Website setzt strenge Sicherheitsvorgaben im Browser ein (Content Security Policy).</p>
+
+  <h2>21. Änderungen</h2>
+  <p>Wir passen diese Erklärung an, wenn sich der Club oder die Rechtslage ändert. Bei wesentlichen Änderungen informieren wir dich und holen, wo nötig, deine Einwilligung neu ein. Die aktuelle Fassung findest du immer hier.</p>
+</article>
+{% endblock %}

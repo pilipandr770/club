@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Club 0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-10-29 20:20+0000\n"
+"POT-Creation-Date: 2026-10-29 21:10+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: ru\n"
@@ -1338,7 +1338,7 @@ msgstr "Турагент"
 msgid "Privacy"
 msgstr "Конфиденциальность"
 
-#: app/i18n_labels.py:250
+#: app/i18n_labels.py:250 app/templates/base.html:61
 msgid "Terms of use"
 msgstr "Условия использования"
 
@@ -5414,8 +5414,14 @@ msgstr ""
 
 #: app/templates/admin/dashboard.html:3 app/templates/auth/login.html:3
 #: app/templates/auth/register.html:3 app/templates/base.html:6
-#: app/templates/base.html:12 app/templates/base.html:57
-#: app/templates/errors/http.html:2 app/templates/member/dashboard.html:3
+#: app/templates/base.html:12 app/templates/base.html:58
+#: app/templates/errors/http.html:2 app/templates/legal/datenschutz_de.html:3
+#: app/templates/legal/datenschutz_ru.html:3
+#: app/templates/legal/impressum_de.html:3
+#: app/templates/legal/impressum_ru.html:3
+#: app/templates/legal/nutzungsbedingungen_de.html:3
+#: app/templates/legal/nutzungsbedingungen_ru.html:3
+#: app/templates/member/dashboard.html:3
 #: app/templates/modules/auction_list.html:3
 #: app/templates/modules/events_list.html:3
 #: app/templates/modules/miniclubs_list.html:3
@@ -5472,7 +5478,7 @@ msgid "Log out"
 msgstr "Выйти"
 
 #: app/templates/auth/login.html:3 app/templates/auth/login.html:9
-#: app/templates/auth/login.html:31 app/templates/auth/register.html:84
+#: app/templates/auth/login.html:31 app/templates/auth/register.html:86
 #: app/templates/base.html:31 app/templates/partials/public_assistant.html:40
 #: app/templates/public/index.html:18
 msgid "Log in"
@@ -5492,6 +5498,18 @@ msgstr "Язык"
 #: app/templates/modules/profile_edit.html:47
 msgid "Save"
 msgstr "Сохранить"
+
+#: app/templates/base.html:57
+msgid "Legal information"
+msgstr "Правовая информация"
+
+#: app/templates/base.html:59
+msgid "Legal notice"
+msgstr "Impressum"
+
+#: app/templates/base.html:60
+msgid "Privacy notice"
+msgstr "Конфиденциальность"
 
 #: app/templates/admin/analytics.html:3 app/templates/admin/analytics.html:6
 #: app/templates/admin/dashboard.html:16
@@ -6366,34 +6384,46 @@ msgid "Confirmations"
 msgstr "Подтверждения"
 
 #: app/templates/auth/register.html:61
-msgid ""
-"I have read the privacy notice and agree that my data is processed to run "
-"my account."
+msgid "privacy notice"
+msgstr "политику конфиденциальности"
+
+#: app/templates/auth/register.html:62
+#, python-format
+msgid "I have read the %(link)s. I know how my data is processed to run my account."
 msgstr ""
-"Я прочитал(а) уведомление о конфиденциальности и согласен(на) на обработку "
-"данных для работы аккаунта."
+"Я прочитал(а) %(link)s и знаю, как мои данные обрабатываются для ведения "
+"аккаунта."
 
-#: app/templates/auth/register.html:67
-msgid "I accept the terms of use."
-msgstr "Я принимаю условия использования."
+#: app/templates/auth/register.html:68
+msgid "terms of use"
+msgstr "условия использования"
 
-#: app/templates/auth/register.html:73
+#: app/templates/auth/register.html:69
+#, python-format
+msgid "I accept the %(link)s."
+msgstr "Я принимаю %(link)s."
+
+#: app/templates/auth/register.html:75
 msgid ""
-"I agree that Stripe checks my identity document and a selfie. Stripe "
-"processes this data, the club only receives the result."
+"I expressly agree that Stripe checks my identity document and a selfie, "
+"including facial features (biometric data). Stripe processes this data, the"
+" club only receives the result. I can withdraw this agreement and ask for "
+"the manual check instead."
 msgstr ""
-"Я согласен(на) на проверку документа и селфи сервисом Stripe. Stripe "
-"обрабатывает эти данные, клуб получает только результат."
+"Я прямо соглашаюсь, чтобы Stripe проверил мой документ и селфи, включая "
+"черты лица (биометрические данные). Эти данные обрабатывает Stripe, клуб "
+"получает только результат. Я могу отозвать это согласие и вместо этого "
+"попросить ручную проверку администратором."
 
-#: app/templates/auth/register.html:78 app/templates/public/index.html:168
+#: app/templates/auth/register.html:80 app/templates/public/index.html:168
 msgid "Membership is for people aged 18 and over."
 msgstr "Участие в клубе доступно с 18 лет."
 
-#: app/templates/auth/register.html:80
+#: app/templates/auth/register.html:82
 msgid "Create account"
 msgstr "Создать аккаунт"
 
-#: app/templates/auth/register.html:84
+#: app/templates/auth/register.html:86
 msgid "Already registered?"
 msgstr "Уже зарегистрированы?"
 

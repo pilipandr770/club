@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block title %}Nutzungsbedingungen · {{ _("Club") }}{% endblock %}
+
+{% block content %}
+<article class="legal" lang="de">
+  <h1>Nutzungsbedingungen</h1>
+  <p class="small muted">Stand: {{ legal.LEGAL_UPDATED }}</p>
+
+  <h2>1. Geltung und Anbieter</h2>
+  <p>Diese Bedingungen gelten für die Nutzung des Online-Clubs unter dieser Adresse (die „Plattform“). Anbieter ist {{ legal.LEGAL_NAME }}{% if legal.LEGAL_FORM %} ({{ legal.LEGAL_FORM }}){% endif %}, {{ legal.LEGAL_STREET }}, {{ legal.LEGAL_CITY }} (siehe <a href="{{ url_for('public.impressum') }}">Impressum</a>). Mit der Registrierung kommt ein Nutzungsvertrag zwischen dir und dem Anbieter zustande. Abweichende Bedingungen von Mitgliedern gelten nicht.</p>
+
+  <h2>2. Was der Club ist</h2>
+  <p>Der Club ist eine reine Online-Plattform. Er bringt verifizierte Erwachsene zusammen, die Unterstützung, Partner, Kunden, Investoren oder Projekte suchen oder anbieten. Dazu gehören Profile und Mitgliederverzeichnis, ein KI-gestützter Abgleich, der Assistent Clubi, Werkzeuge (Website-Prüfung, Gesetzessuche, Marktpanel), Partnerleistungen, Startup-Projekte, Treffen, Mini-Clubs, Reisen und eine Auktion. Welche Funktionen du nutzen kannst, hängt von deinem Tarif ab. Wir dürfen Funktionen ändern, ergänzen oder einstellen, soweit das für dich zumutbar ist.</p>
+  <p>Der Club stellt <strong>keine Räume</strong> bereit, wickelt <strong>keine Zahlungen zwischen Mitgliedern</strong> ab und ist bei Vereinbarungen zwischen Mitgliedern <strong>nicht Vertragspartei</strong>.</p>
+
+  <h2>3. Mitgliedschaft</h2>
+  <ul>
+    <li>Du musst mindestens 18 Jahre alt sein und handlungsfähig. Pro Person ist ein Konto erlaubt.</li>
+    <li>Du musst deine Identität prüfen lassen (durch Stripe oder durch persönliche Bestätigung eines Administrators). Ohne bestandene Prüfung kannst du keine Funktion des Clubs nutzen. Aus rechtlichen Gründen können wir Ausweisdokumente einiger Länder und Teilnehmer aus bestimmten Ländern nicht aufnehmen.</li>
+    <li>Deine Angaben müssen wahr und aktuell sein. Du darfst keine fremde Identität verwenden und keine Fake-Profile anlegen.</li>
+    <li>Halte deine Zugangsdaten geheim und informiere uns, wenn du Missbrauch vermutest.</li>
+    <li>Wir können eine Aufnahme ablehnen, insbesondere wenn die Prüfung nicht möglich oder nicht bestanden ist.</li>
+  </ul>
+
+  <h2>4. Tarife und Entgelt</h2>
+  <p>Es gibt den kostenlosen Tarif „Guest“ und bezahlte Tarife (derzeit „Starter“, „Growth“ und „Premium“). Welche Funktionen und Grenzen zu welchem Tarif gehören, zeigt der Club in deinem Konto. Preise, Laufzeit, Verlängerung und Kündigungsfrist eines bezahlten Tarifs teilen wir dir <strong>vor Vertragsschluss</strong> mit. Preise gelten einschließlich der gesetzlichen Umsatzsteuer, soweit sie anfällt.</p>
+  <p>Derzeit bestätigen wir Zahlungen manuell für einen vereinbarten Zeitraum (zum Beispiel sechs Monate). Nach Ablauf des bezahlten Zeitraums nutzt du automatisch den Tarif „Guest“; das Konto und deine Inhalte bleiben erhalten. Eine automatische Verlängerung gibt es nur, wenn sie ausdrücklich vereinbart wurde.</p>
+  <p>Verbraucher haben bei entgeltlichen Verträgen, die im Fernabsatz geschlossen werden, grundsätzlich ein 14-tägiges Widerrufsrecht. Die Einzelheiten teilen wir dir vor Vertragsschluss in einer Widerrufsbelehrung mit.</p>
+
+  <h2>5. Regeln für die Nutzung</h2>
+  <p>Du verpflichtest dich:</p>
+  <ul>
+    <li>keine rechtswidrigen, beleidigenden, diskriminierenden, irreführenden oder jugendgefährdenden Inhalte einzustellen und keine Rechte Dritter zu verletzen (Urheberrechte, Marken, Persönlichkeitsrechte);</li>
+    <li>andere Mitglieder nicht zu belästigen, keine Werbung und keinen Spam zu senden und Kontaktdaten, die du über den Club erhältst, nur für den Zweck der Anfrage zu nutzen und nicht weiterzugeben;</li>
+    <li>keine Daten automatisiert abzugreifen (Scraping) und die Plattform nicht zu stören oder zu umgehen;</li>
+    <li>die Werkzeuge nur für Websites einzusetzen, zu deren Prüfung du berechtigt bist;</li>
+    <li>nur Inhalte einzustellen, an denen du die nötigen Rechte hast.</li>
+  </ul>
+  <p>An deinen Inhalten bleiben alle Rechte bei dir. Du räumst uns das einfache, auf die Dauer der Nutzung begrenzte Recht ein, sie im Club so anzuzeigen und zu speichern, wie es für die Funktionen nötig ist (zum Beispiel in deiner Karte, in Vorschlägen und in den Antworten von Clubi).</p>
+
+  <h2>6. Inhalte von Mitgliedern und Moderation</h2>
+  <p>Startups, Treffen, Mini-Clubs, Reisen und Lose prüfen wir vor der Veröffentlichung und können sie ablehnen, ändern lassen oder entfernen, wenn sie gegen diese Bedingungen oder geltendes Recht verstoßen. Eine laufende Kontrolle aller Inhalte findet nicht statt. Mitglieder können Inhalte melden; wir prüfen Hinweise unverzüglich.</p>
+
+  <h2>7. Der Club als Vermittler</h2>
+  <ul>
+    <li><strong>Vereinbarungen zwischen Mitgliedern</strong> (Aufträge, Beteiligungen, Käufe, Reisen, Treffen) schließen die Mitglieder selbst. Der Club prüft sie nicht und haftet nicht für ihre Erfüllung oder für Angaben der Mitglieder.</li>
+    <li><strong>Mini-Clubs und Treffen:</strong> Die Gruppen bestimmen ihre Regeln selbst. Im Club sind <strong>Glücksspiele um Geld</strong> und <strong>erlaubnispflichtige entgeltliche Leistungen</strong> (zum Beispiel gewerbliche Kinderbetreuung) nicht erlaubt; wir vermitteln sie nicht. Wer ein Treffen oder einen Mini-Club organisiert, ist für Ort, Sicherheit, Aufsicht und die Einhaltung des Rechts selbst verantwortlich. Der Club stellt keine Räume bereit und übernimmt keine Aufsicht.</li>
+    <li><strong>Reisen:</strong> Wer eine Reise anbietet, ist für die Einhaltung der Vorschriften des Reiserechts, der Gewerbeordnung und der Haftung selbst verantwortlich.</li>
+    <li><strong>Auktion:</strong> Der Club wickelt keine Zahlungen ab. Übergabe und Zahlung vereinbaren Verkäufer und Käufer direkt. Gebote sind verbindlich, soweit gesetzlich zulässig.</li>
+    <li><strong>Startups und Investitionen:</strong> Projektkarten sind keine Anlageberatung und kein Angebot von Wertpapieren oder Vermögensanlagen. Jede Beteiligung geschieht auf eigene Verantwortung und Prüfung der Beteiligten.</li>
+  </ul>
+
+  <h2>8. KI-Funktionen</h2>
+  <p>Clubi, der KI-Abgleich, die Gesetzessuche, die Website-Prüfung und das Marktpanel verwenden künstliche Intelligenz und können Fehler enthalten. Die Ergebnisse sind eine erste Orientierung und <strong>keine Rechts-, Steuer-, Finanz- oder Sicherheitsberatung</strong>. Prüfe wichtige Aussagen selbst oder lass sie von einer fachkundigen Person prüfen. Die Zahlen des Marktpanels beruhen auf fiktiven Personen und sind keine Prognose.</p>
+
+  <h2>9. Verfügbarkeit</h2>
+  <p>Wir bemühen uns um einen störungsfreien Betrieb, schulden aber keine ununterbrochene Verfügbarkeit. Wartung und technische Störungen können zu Unterbrechungen führen.</p>
+
+  <h2>10. Haftung</h2>
+  <p>Wir haften unbeschränkt bei Vorsatz und grober Fahrlässigkeit, bei Verletzung von Leben, Körper oder Gesundheit sowie nach dem Produkthaftungsgesetz. Bei leicht fahrlässiger Verletzung wesentlicher Vertragspflichten (Pflichten, deren Erfüllung die ordnungsgemäße Durchführung des Vertrags erst ermöglicht und auf die du regelmäßig vertrauen darfst) ist die Haftung auf den vertragstypischen, vorhersehbaren Schaden begrenzt. Im Übrigen ist die Haftung bei leichter Fahrlässigkeit ausgeschlossen. Für kostenlose Leistungen haften wir nur bei Vorsatz und grober Fahrlässigkeit. Zwingende gesetzliche Ansprüche bleiben unberührt.</p>
+
+  <h2>11. Sperrung und Beendigung</h2>
+  <p>Du kannst dein Konto jederzeit in den Einstellungen löschen; bezahlte Tarife laufen nach den bei Vertragsschluss mitgeteilten Bedingungen. Bei einem schwerwiegenden oder wiederholten Verstoß gegen diese Bedingungen können wir Inhalte entfernen, dein Konto sperren oder kündigen. Das Recht zur außerordentlichen Kündigung aus wichtigem Grund bleibt für beide Seiten unberührt.</p>
+
+  <h2>12. Datenschutz</h2>
+  <p>Wie wir mit deinen Daten umgehen, steht in der <a href="{{ url_for('public.datenschutz') }}">Datenschutzerklärung</a>.</p>
+
+  <h2>13. Änderungen der Bedingungen</h2>
+  <p>Wir können diese Bedingungen mit Wirkung für die Zukunft ändern, wenn ein sachlicher Grund besteht (zum Beispiel neue Funktionen, Rechtsänderungen). Wir informieren dich vorab per E-Mail oder im Konto. Die Änderung gilt, wenn du ihr nicht innerhalb von vier Wochen nach Zugang widersprichst und nach unserem Hinweis weiter nutzt. Auf diese Folge weisen wir dich in der Mitteilung hin. Bei Widerspruch können beide Seiten den Vertrag zum Änderungstermin beenden.</p>
+
+  <h2>14. Schlussbestimmungen</h2>
+  <p>Es gilt deutsches Recht unter Ausschluss des UN-Kaufrechts. Zwingende Verbraucherschutzvorschriften des Staates, in dem du deinen gewöhnlichen Aufenthalt hast, bleiben unberührt. Gerichtsstand ist bei Kaufleuten Frankfurt am Main; für Verbraucher gelten die gesetzlichen Gerichtsstände. Sollte eine Bestimmung unwirksam sein, bleibt der Rest wirksam. Maßgeblich ist die deutsche Fassung; Übersetzungen dienen nur dem Verständnis.</p>
+</article>
+{% endblock %}

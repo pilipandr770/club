@@ -16,6 +16,39 @@ def index():
     return render_template("public/index.html")
 
 
+LEGAL_DOCUMENTS = {"impressum": "impressum", "datenschutz": "datenschutz", "nutzungsbedingungen": "nutzungsbedingungen"}
+
+
+def _legal(document: str):
+    """Юридические тексты по праву Германии. Немецкая версия обязательна, русская помогает понять её."""
+    from flask import render_template as render
+    from flask_babel import get_locale
+
+    asked = request.args.get("lang")
+    language = asked if asked in ("de", "ru") else ("ru" if str(get_locale()) == "ru" else "de")
+    return render(f"legal/{document}_{language}.html", legal=current_app.config, language=language)
+
+
+@bp.get("/impressum")
+def impressum():
+    return _legal("impressum")
+
+
+@bp.get("/datenschutz")
+def datenschutz():
+    return _legal("datenschutz")
+
+
+@bp.get("/nutzungsbedingungen")
+def nutzungsbedingungen():
+    return _legal("nutzungsbedingungen")
+
+
+@bp.get("/agb")
+def agb():
+    return redirect(url_for("public.nutzungsbedingungen"), code=301)
+
+
 @bp.post("/language")
 def language():
     locale = request.form.get("locale", "")

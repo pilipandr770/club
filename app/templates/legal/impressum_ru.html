@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block title %}Impressum · {{ _("Club") }}{% endblock %}
+
+{% block content %}
+<article class="legal" lang="ru">
+  <h1>Impressum (выходные данные)</h1>
+  <p class="small muted">Редакция: {{ legal.LEGAL_UPDATED }}</p>
+  <p class="legal-note">Этот текст — перевод для удобства. Юридически значима <a href="{{ url_for('public.impressum', lang='de') }}" lang="de" hreflang="de">немецкая версия</a>, она открывается при выборе немецкого языка.</p>
+
+  <h2>Сведения по § 5 DDG</h2>
+  <address>
+    <strong>{{ legal.LEGAL_NAME }}</strong>{% if legal.LEGAL_FORM %} ({{ legal.LEGAL_FORM }}){% endif %}<br>
+    {{ legal.LEGAL_STREET }}<br>
+    {{ legal.LEGAL_CITY }}<br>
+    {{ legal.LEGAL_COUNTRY }}
+  </address>
+  {% if legal.LEGAL_REPRESENTATIVE %}<p>Представитель: {{ legal.LEGAL_REPRESENTATIVE }}</p>{% endif %}
+  {% if legal.LEGAL_REGISTER %}<p>Регистрационная запись: {{ legal.LEGAL_REGISTER }}</p>{% endif %}
+
+  <h2>Контакты</h2>
+  <p>
+    Почта: <a href="mailto:{{ legal.LEGAL_EMAIL }}">{{ legal.LEGAL_EMAIL }}</a><br>
+    Телефон: {{ legal.LEGAL_PHONE }}<br>
+    Сайт: {{ legal.LEGAL_WEB }}
+  </p>
+
+  {% if legal.LEGAL_VAT_ID %}
+  <h2>Налог с оборота</h2>
+  <p>Идентификационный номер плательщика НДС по § 27a Закона о налоге с оборота: {{ legal.LEGAL_VAT_ID }}</p>
+  {% endif %}
+
+  <h2>Ответственный за содержание по § 18 абз. 2 MStV</h2>
+  <p>{{ legal.LEGAL_NAME }}, адрес указан выше.</p>
+
+  <h2>Внесудебное разрешение споров с потребителями</h2>
+  <p>Мы не готовы и не обязаны участвовать в процедурах разрешения споров перед потребительской арбитражной комиссией (§ 36 VSBG).</p>
+
+  <h2>Материалы участников</h2>
+  <p>Профили, проекты, встречи, мини-клубы, поездки и лоты создают участники. За эти материалы отвечают сами участники. Часть материалов мы проверяем до публикации, постоянного наблюдения за ними нет. Если материал кажется вам незаконным или неуместным, напишите на указанную выше почту. Мы проверим сообщение и без промедления примем меры.</p>
+
+  <h2>О функциях на основе ИИ</h2>
+  <p>Ассистент Clubi, поиск по законам, проверка сайтов и рыночная панель работают с искусственным интеллектом. Их результаты — первая ориентировка. Они не заменяют юридическую, налоговую, финансовую консультацию или консультацию по безопасности.</p>
+
+  <h2>Условия использования и защита данных</h2>
+  <p>
+    <a href="{{ url_for('public.nutzungsbedingungen') }}">Условия использования</a> ·
+    <a href="{{ url_for('public.datenschutz') }}">Политика конфиденциальности</a>
+  </p>
+</article>
+{% endblock %}

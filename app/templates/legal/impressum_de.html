@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block title %}Impressum · {{ _("Club") }}{% endblock %}
+
+{% block content %}
+<article class="legal" lang="de">
+  <h1>Impressum</h1>
+  <p class="small muted">Stand: {{ legal.LEGAL_UPDATED }}</p>
+
+  <h2>Angaben gemäß § 5 DDG</h2>
+  <address>
+    <strong>{{ legal.LEGAL_NAME }}</strong>{% if legal.LEGAL_FORM %} ({{ legal.LEGAL_FORM }}){% endif %}<br>
+    {{ legal.LEGAL_STREET }}<br>
+    {{ legal.LEGAL_CITY }}<br>
+    {{ legal.LEGAL_COUNTRY }}
+  </address>
+  {% if legal.LEGAL_REPRESENTATIVE %}<p>Vertretungsberechtigt: {{ legal.LEGAL_REPRESENTATIVE }}</p>{% endif %}
+  {% if legal.LEGAL_REGISTER %}<p>Registereintrag: {{ legal.LEGAL_REGISTER }}</p>{% endif %}
+
+  <h2>Kontakt</h2>
+  <p>
+    E-Mail: <a href="mailto:{{ legal.LEGAL_EMAIL }}">{{ legal.LEGAL_EMAIL }}</a><br>
+    Telefon: {{ legal.LEGAL_PHONE }}<br>
+    Web: {{ legal.LEGAL_WEB }}
+  </p>
+
+  {% if legal.LEGAL_VAT_ID %}
+  <h2>Umsatzsteuer</h2>
+  <p>Umsatzsteuer-Identifikationsnummer gemäß § 27a Umsatzsteuergesetz: {{ legal.LEGAL_VAT_ID }}</p>
+  {% endif %}
+
+  <h2>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</h2>
+  <p>{{ legal.LEGAL_NAME }}, Anschrift wie oben.</p>
+
+  <h2>Verbraucherstreitbeilegung</h2>
+  <p>Wir sind nicht bereit und nicht verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen (§ 36 VSBG).</p>
+
+  <h2>Inhalte von Mitgliedern</h2>
+  <p>Profile, Projekte, Treffen, Mini-Clubs, Reisen und Lose werden von Mitgliedern erstellt. Für diese Inhalte sind die jeweiligen Mitglieder verantwortlich. Einige Inhalte prüfen wir vor der Veröffentlichung, eine laufende Überwachung findet nicht statt. Wenn dir ein Inhalt rechtswidrig oder unpassend erscheint, schreib uns an die oben genannte E-Mail-Adresse. Wir prüfen den Hinweis und handeln unverzüglich.</p>
+
+  <h2>Hinweis zu KI-Funktionen</h2>
+  <p>Der Assistent Clubi, die Gesetzessuche, die Website-Prüfungen und das Marktpanel arbeiten mit künstlicher Intelligenz. Ihre Ergebnisse sind eine erste Orientierung. Sie ersetzen keine Rechts-, Steuer-, Finanz- oder Sicherheitsberatung.</p>
+
+  <h2>Nutzungsbedingungen und Datenschutz</h2>
+  <p>
+    <a href="{{ url_for('public.nutzungsbedingungen') }}">Nutzungsbedingungen</a> ·
+    <a href="{{ url_for('public.datenschutz') }}">Datenschutzerklärung</a>
+  </p>
+</article>
+{% endblock %}
