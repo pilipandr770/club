@@ -1591,6 +1591,8 @@ fieldset.field legend { font-weight: 600; padding: 0; margin-block-end: 0.25rem;
 .assistant-note { margin: 0; padding: 0.5rem 0.9rem; font-size: 0.75rem; line-height: 1.4; color: var(--color-muted); }
 
 .assistant-log {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-border) transparent;
   flex: 1;
   min-block-size: 0;
   overflow-y: auto;

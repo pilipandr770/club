@@ -65,6 +65,7 @@
     if (!text) { return; }
     var history = state.messages.slice(-8);
     state.messages.push({ role: "user", text: text });
+    if (suggest) { suggest.hidden = true; }
     addBubble("user", text);
     input.value = "";
     grow();
