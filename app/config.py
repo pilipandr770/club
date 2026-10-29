@@ -82,6 +82,8 @@ class Config:
     GOOGLE_API_KEY = os.environ.get("GOOGLE_API_KEY", "")
     MISTRAL_API_KEY = os.environ.get("MISTRAL_API_KEY", "")
     # Голосовой ввод Clubi: порядок провайдеров и модели распознавания речи
+    # Анонимная статистика посещений публичных страниц (без cookie и без хранения IP)
+    ANALYTICS_ENABLED = os.environ.get("ANALYTICS_ENABLED", "1") == "1"
     STT_PROVIDERS = os.environ.get("STT_PROVIDERS", "mistral,openai")
     STT_MISTRAL_MODEL = os.environ.get("STT_MISTRAL_MODEL", "voxtral-mini-latest")
     STT_OPENAI_MODEL = os.environ.get("STT_OPENAI_MODEL", "gpt-4o-mini-transcribe")

@@ -74,6 +74,9 @@ def register():
             record_consent(user, "identity", True)
             audit("user.registered", target=f"user:{user.id}", actor_id=None)
             db.session.commit()
+            from ...services import analytics
+
+            analytics.track_signup(request)
             send_confirmation(user)
             login_user(user)
             flash(_("Welcome. Please confirm your e-mail address to continue."), "success")

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Club 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-29 19:52+0000\n"
+"POT-Creation-Date: 2026-10-29 20:20+0000\n"
 "PO-Revision-Date: 2026-10-19 21:00+0000\n"
 "Last-Translator: \n"
 "Language: de\n"
@@ -2440,96 +2440,96 @@ msgstr ""
 "MB, 60 Seiten). Mitglieder können es herunterladen. Clubi kann es auch "
 "lesen, um Fragen zur Reise zu beantworten."
 
-#: app/blueprints/admin/__init__.py:150
+#: app/blueprints/admin/__init__.py:187
 msgid "Changes are saved."
 msgstr "Änderungen sind gespeichert."
 
-#: app/blueprints/admin/__init__.py:152 app/blueprints/admin/__init__.py:352
-#: app/blueprints/admin/__init__.py:382
+#: app/blueprints/admin/__init__.py:189 app/blueprints/admin/__init__.py:389
+#: app/blueprints/admin/__init__.py:419
 msgid "Nothing has changed."
 msgstr "Nichts hat sich geändert."
 
-#: app/blueprints/admin/__init__.py:173
+#: app/blueprints/admin/__init__.py:210
 #, python-format
 msgid "Please check the lot fields: %(fields)s"
 msgstr "Bitte prüfe die Felder des Loses: %(fields)s"
 
-#: app/blueprints/admin/__init__.py:177
+#: app/blueprints/admin/__init__.py:214
 msgid "The lot is created."
 msgstr "Das Los ist angelegt."
 
-#: app/blueprints/admin/__init__.py:191
+#: app/blueprints/admin/__init__.py:228
 msgid "The lot is published."
 msgstr "Das Los ist veröffentlicht."
 
-#: app/blueprints/admin/__init__.py:194
+#: app/blueprints/admin/__init__.py:231
 msgid "The lot is rejected."
 msgstr "Das Los ist abgelehnt."
 
-#: app/blueprints/admin/__init__.py:198 app/modules/auction/__init__.py:64
+#: app/blueprints/admin/__init__.py:235 app/modules/auction/__init__.py:64
 msgid "This lot is not waiting for review."
 msgstr "Dieses Los wartet nicht auf Prüfung."
 
-#: app/blueprints/admin/__init__.py:208
+#: app/blueprints/admin/__init__.py:245
 msgid "The lot is closed."
 msgstr "Das Los ist geschlossen."
 
-#: app/blueprints/admin/__init__.py:272
+#: app/blueprints/admin/__init__.py:309
 msgid "The meeting is published."
 msgstr "Das Treffen ist veröffentlicht."
 
-#: app/blueprints/admin/__init__.py:275
+#: app/blueprints/admin/__init__.py:312
 msgid "The meeting is rejected."
 msgstr "Das Treffen ist abgelehnt."
 
-#: app/blueprints/admin/__init__.py:279
+#: app/blueprints/admin/__init__.py:316
 msgid "This meeting is not waiting for review."
 msgstr "Dieses Treffen wartet nicht auf Prüfung."
 
-#: app/blueprints/admin/__init__.py:306
+#: app/blueprints/admin/__init__.py:343
 msgid "The mini-club is published."
 msgstr "Der Mini-Club ist veröffentlicht."
 
-#: app/blueprints/admin/__init__.py:309 app/modules/miniclubs/__init__.py:305
+#: app/blueprints/admin/__init__.py:346 app/modules/miniclubs/__init__.py:305
 msgid "The mini-club is closed."
 msgstr "Der Mini-Club ist geschlossen."
 
-#: app/blueprints/admin/__init__.py:312
+#: app/blueprints/admin/__init__.py:349
 msgid "The mini-club is rejected."
 msgstr "Der Mini-Club ist abgelehnt."
 
-#: app/blueprints/admin/__init__.py:316
+#: app/blueprints/admin/__init__.py:353
 msgid "This mini-club is not waiting for review."
 msgstr "Dieser Mini-Club wartet nicht auf Prüfung."
 
-#: app/blueprints/admin/__init__.py:347
+#: app/blueprints/admin/__init__.py:384
 msgid "The startup is published."
 msgstr "Der Startup ist veröffentlicht."
 
-#: app/blueprints/admin/__init__.py:350
+#: app/blueprints/admin/__init__.py:387
 msgid "The startup is rejected."
 msgstr "Der Startup ist abgelehnt."
 
-#: app/blueprints/admin/__init__.py:377
+#: app/blueprints/admin/__init__.py:414
 msgid "The offer is published."
 msgstr "Das Angebot ist veröffentlicht."
 
-#: app/blueprints/admin/__init__.py:380
+#: app/blueprints/admin/__init__.py:417
 msgid "The offer is rejected."
 msgstr "Das Angebot ist abgelehnt."
 
-#: app/blueprints/admin/__init__.py:442
+#: app/blueprints/admin/__init__.py:479
 #, python-format
 msgid "Participant created. Temporary password (shown once): %(password)s"
 msgstr ""
 "Teilnehmende Person angelegt. Temporäres Passwort (wird nur einmal "
 "gezeigt): %(password)s"
 
-#: app/blueprints/admin/__init__.py:444
+#: app/blueprints/admin/__init__.py:481
 msgid "Participant created."
 msgstr "Teilnehmende Person angelegt."
 
-#: app/blueprints/admin/__init__.py:446 app/modules/auction/__init__.py:227
+#: app/blueprints/admin/__init__.py:483 app/modules/auction/__init__.py:227
 #: app/modules/auction/__init__.py:253 app/modules/events/__init__.py:131
 #: app/modules/events/__init__.py:158 app/modules/miniclubs/__init__.py:135
 #: app/modules/miniclubs/__init__.py:162 app/modules/profile/__init__.py:73
@@ -2539,7 +2539,7 @@ msgstr "Teilnehmende Person angelegt."
 msgid "Please check these fields: %(fields)s"
 msgstr "Bitte prüfe diese Felder: %(fields)s"
 
-#: app/blueprints/admin/__init__.py:454
+#: app/blueprints/admin/__init__.py:491
 msgid ""
 "Please write a short note: how you know this person or how the payment "
 "arrived."
@@ -2547,21 +2547,21 @@ msgstr ""
 "Bitte schreibe eine kurze Notiz: woher du die Person kennst oder wie die "
 "Zahlung eingegangen ist."
 
-#: app/blueprints/admin/__init__.py:455
+#: app/blueprints/admin/__init__.py:492
 msgid "You cannot do this for your own account. Ask another administrator."
 msgstr ""
 "Das geht für dein eigenes Konto nicht. Bitte eine andere Administratorin "
 "oder einen anderen Administrator."
 
-#: app/blueprints/admin/__init__.py:456
+#: app/blueprints/admin/__init__.py:493
 msgid "Please choose a paid plan."
 msgstr "Bitte wähle einen bezahlten Tarif."
 
-#: app/blueprints/admin/__init__.py:457
+#: app/blueprints/admin/__init__.py:494
 msgid "Please choose the number of months."
 msgstr "Bitte wähle die Anzahl der Monate."
 
-#: app/blueprints/admin/__init__.py:458 app/blueprints/assistant/__init__.py:24
+#: app/blueprints/admin/__init__.py:495 app/blueprints/assistant/__init__.py:24
 #: app/modules/events/__init__.py:51 app/modules/miniclubs/__init__.py:53
 #: app/modules/profile/__init__.py:240 app/modules/services/__init__.py:18
 #: app/modules/startups/__init__.py:35 app/modules/travel/__init__.py:44
@@ -2570,31 +2570,31 @@ msgstr "Bitte wähle die Anzahl der Monate."
 msgid "Something went wrong. Please try again."
 msgstr "Etwas ist schiefgelaufen. Bitte versuche es erneut."
 
-#: app/blueprints/admin/__init__.py:479
+#: app/blueprints/admin/__init__.py:516
 msgid "The identity check is marked as verified."
 msgstr "Die Identitätsprüfung ist als bestätigt markiert."
 
-#: app/blueprints/admin/__init__.py:487
+#: app/blueprints/admin/__init__.py:524
 msgid "The identity confirmation is withdrawn."
 msgstr "Die Identitätsbestätigung ist zurückgenommen."
 
-#: app/blueprints/admin/__init__.py:498
+#: app/blueprints/admin/__init__.py:535
 msgid "The plan is activated."
 msgstr "Der Tarif ist aktiviert."
 
-#: app/blueprints/admin/__init__.py:506
+#: app/blueprints/admin/__init__.py:543
 msgid "The plan is ended. The member is back on Guest."
 msgstr "Der Tarif ist beendet. Das Mitglied ist wieder im Gast-Tarif."
 
-#: app/blueprints/admin/__init__.py:545
+#: app/blueprints/admin/__init__.py:582
 msgid "Please enter a title."
 msgstr "Bitte gib einen Titel ein."
 
-#: app/blueprints/admin/__init__.py:549
+#: app/blueprints/admin/__init__.py:586
 msgid "The service is saved."
 msgstr "Die Leistung ist gespeichert."
 
-#: app/blueprints/admin/__init__.py:576
+#: app/blueprints/admin/__init__.py:613
 msgid "Unknown status."
 msgstr "Unbekannter Status."
 
@@ -2672,27 +2672,27 @@ msgstr "Für Menschen mit Wohnsitz in diesem Land können wir kein Konto eröffn
 msgid "This confirmation is required to create an account."
 msgstr "Diese Bestätigung brauchen wir, um ein Konto anzulegen."
 
-#: app/blueprints/auth/__init__.py:79
+#: app/blueprints/auth/__init__.py:82
 msgid "Welcome. Please confirm your e-mail address to continue."
 msgstr "Willkommen. Bitte bestätige deine E-Mail-Adresse, um weiterzumachen."
 
-#: app/blueprints/auth/__init__.py:97
+#: app/blueprints/auth/__init__.py:100
 msgid "E-mail or password is not correct."
 msgstr "E-Mail oder Passwort sind nicht korrekt."
 
-#: app/blueprints/auth/__init__.py:99
+#: app/blueprints/auth/__init__.py:102
 msgid "This account is blocked. Please contact support."
 msgstr "Dieses Konto ist gesperrt. Bitte wende dich an den Support."
 
-#: app/blueprints/auth/__init__.py:112
+#: app/blueprints/auth/__init__.py:115
 msgid "You have been logged out."
 msgstr "Du bist abgemeldet."
 
-#: app/blueprints/auth/__init__.py:120 app/blueprints/auth/__init__.py:125
+#: app/blueprints/auth/__init__.py:123 app/blueprints/auth/__init__.py:128
 msgid "The link is invalid or has expired. Please request a new one."
 msgstr "Der Link ist ungültig oder abgelaufen. Bitte fordere einen neuen an."
 
-#: app/blueprints/auth/__init__.py:132
+#: app/blueprints/auth/__init__.py:135
 msgid "Your e-mail address is confirmed."
 msgstr "Deine E-Mail-Adresse ist bestätigt."
 
@@ -5527,10 +5527,10 @@ msgstr "Hauptnavigation"
 msgid "My account"
 msgstr "Mein Konto"
 
-#: app/templates/admin/audit.html:3 app/templates/admin/dashboard.html:3
-#: app/templates/admin/dashboard.html:6 app/templates/admin/events.html:3
-#: app/templates/admin/lots.html:3 app/templates/admin/miniclubs.html:3
-#: app/templates/admin/service_form.html:3
+#: app/templates/admin/analytics.html:3 app/templates/admin/audit.html:3
+#: app/templates/admin/dashboard.html:3 app/templates/admin/dashboard.html:6
+#: app/templates/admin/events.html:3 app/templates/admin/lots.html:3
+#: app/templates/admin/miniclubs.html:3 app/templates/admin/service_form.html:3
 #: app/templates/admin/service_inquiries.html:3
 #: app/templates/admin/services.html:3 app/templates/admin/startups.html:3
 #: app/templates/admin/travel.html:3 app/templates/admin/user_detail.html:3
@@ -5571,17 +5571,214 @@ msgstr "Sprache"
 msgid "Save"
 msgstr "Speichern"
 
+#: app/templates/admin/analytics.html:3 app/templates/admin/analytics.html:6
+#: app/templates/admin/dashboard.html:16
+msgid "Visitor statistics"
+msgstr "Besucherstatistik"
+
+#: app/templates/admin/analytics.html:7
+msgid ""
+"Anonymous counts of visits to the public pages. No cookies, no IP addresses"
+" and no personal data are stored. Only the landing, login and registration "
+"pages are counted; logged-in members and robots are not."
+msgstr ""
+"Anonyme Zählung der Besuche auf den öffentlichen Seiten. Es werden keine "
+"Cookies, keine IP-Adressen und keine personenbezogenen Daten gespeichert. "
+"Gezählt werden nur Startseite, Anmeldung und Registrierung; angemeldete "
+"Mitglieder und Roboter nicht."
+
+#: app/templates/admin/analytics.html:8 app/templates/admin/audit.html:7
+#: app/templates/admin/events.html:7 app/templates/admin/lots.html:7
+#: app/templates/admin/miniclubs.html:7 app/templates/admin/services.html:7
+#: app/templates/admin/startups.html:7 app/templates/admin/travel.html:7
+#: app/templates/admin/users.html:7
+msgid "Back to admin"
+msgstr "Zurück zur Verwaltung"
+
+#: app/templates/admin/analytics.html:10
+msgid "Period"
+msgstr "Zeitraum"
+
+#: app/templates/admin/analytics.html:12
+#: app/templates/modules/auction_form.html:95
+#, python-format
+msgid "%(num)d day"
+msgid_plural "%(num)d days"
+msgstr[0] "%(num)d Tag"
+msgstr[1] "%(num)d Tage"
+
+#: app/templates/admin/analytics.html:17 app/templates/admin/analytics.html:27
+msgid "Unique visitors"
+msgstr "Eindeutige Besucher"
+
+#: app/templates/admin/analytics.html:18
+msgid "Page views"
+msgstr "Seitenaufrufe"
+
+#: app/templates/admin/analytics.html:19
+msgid "Visitors who asked Clubi"
+msgstr "Besucher, die Clubi gefragt haben"
+
+#: app/templates/admin/analytics.html:20 app/templates/admin/analytics.html:29
+msgid "Opened the registration"
+msgstr "Registrierung geöffnet"
+
+#: app/templates/admin/analytics.html:21 app/templates/admin/analytics.html:30
+msgid "Registered"
+msgstr "Registriert"
+
+#: app/templates/admin/analytics.html:25
+msgid "From visit to registration"
+msgstr "Vom Besuch zur Registrierung"
+
+#: app/templates/admin/analytics.html:28
+msgid "Asked Clubi a question"
+msgstr "Haben Clubi eine Frage gestellt"
+
+#: app/templates/admin/analytics.html:32
+msgid ""
+"A visitor is counted once per day. The same person on another day counts "
+"again, because visits are deliberately not linked across days."
+msgstr ""
+"Ein Besucher wird pro Tag einmal gezählt. Dieselbe Person an einem anderen "
+"Tag zählt erneut, weil Besuche bewusst nicht über Tage hinweg verknüpft "
+"werden."
+
+#: app/templates/admin/analytics.html:36 app/templates/admin/analytics.html:37
+msgid "Visitors per day"
+msgstr "Besucher pro Tag"
+
+#: app/templates/admin/analytics.html:44
+msgid "highest day"
+msgstr "stärkster Tag"
+
+#: app/templates/admin/analytics.html:49
+msgid "Countries"
+msgstr "Länder"
+
+#: app/templates/admin/analytics.html:53 app/templates/admin/analytics.html:93
+msgid "Unknown"
+msgstr "Unbekannt"
+
+#: app/templates/admin/analytics.html:55 app/templates/admin/analytics.html:81
+msgid "No data yet."
+msgstr "Noch keine Daten."
+
+#: app/templates/admin/analytics.html:62
+msgid "Cities"
+msgstr "Städte"
+
+#: app/templates/admin/analytics.html:68
+msgid "No city data. See the setup check below."
+msgstr "Keine Städtedaten. Siehe die Einrichtungsprüfung unten."
+
+#: app/templates/admin/analytics.html:75
+msgid "Where visitors come from"
+msgstr "Woher die Besucher kommen"
+
+#: app/templates/admin/analytics.html:79
+msgid "Direct or unknown"
+msgstr "Direkt oder unbekannt"
+
+#: app/templates/admin/analytics.html:85
+msgid ""
+"For advertising, add ?utm_source=name to your links, for example "
+"?utm_source=instagram."
+msgstr ""
+"Für Werbung hänge ?utm_source=name an deine Links, zum Beispiel "
+"?utm_source=instagram."
+
+#: app/templates/admin/analytics.html:89
+msgid "Devices and pages"
+msgstr "Geräte und Seiten"
+
+#: app/templates/admin/analytics.html:93
+msgid "Phone"
+msgstr "Handy"
+
+#: app/templates/admin/analytics.html:93
+msgid "Tablet"
+msgstr "Tablet"
+
+#: app/templates/admin/analytics.html:93
+msgid "Computer"
+msgstr "Computer"
+
+#: app/templates/admin/analytics.html:96
+msgid "Landing page"
+msgstr "Startseite"
+
+#: app/templates/admin/analytics.html:96
+msgid "Login page"
+msgstr "Anmeldeseite"
+
+#: app/templates/admin/analytics.html:96
+msgid "Registration page"
+msgstr "Registrierungsseite"
+
+#: app/templates/admin/analytics.html:96
+msgid "views"
+msgstr "Aufrufe"
+
+#: app/templates/admin/analytics.html:104
+msgid "Setup check"
+msgstr "Einrichtungsprüfung"
+
+#: app/templates/admin/analytics.html:105
+msgid ""
+"Country and city come from Cloudflare. This is what reaches the server with"
+" your own request right now:"
+msgstr ""
+"Land und Stadt kommen von Cloudflare. Das erreicht den Server gerade mit "
+"deiner eigenen Anfrage:"
+
+#: app/templates/admin/analytics.html:107
+msgid "Country header"
+msgstr "Länder-Header"
+
+#: app/templates/admin/analytics.html:107 app/templates/admin/analytics.html:108
+#: app/templates/admin/analytics.html:109
+msgid "missing"
+msgstr "fehlt"
+
+#: app/templates/admin/analytics.html:108
+msgid "City header"
+msgstr "Städte-Header"
+
+#: app/templates/admin/analytics.html:109
+msgid "Visitor address header"
+msgstr "Besucheradresse-Header"
+
+#: app/templates/admin/analytics.html:109
+msgid "present"
+msgstr "vorhanden"
+
+#: app/templates/admin/analytics.html:112
+msgid ""
+"The country header is missing: the requests do not pass through Cloudflare,"
+" or the proxy removes it."
+msgstr ""
+"Der Länder-Header fehlt: Die Anfragen laufen nicht über Cloudflare, oder "
+"ein Proxy entfernt ihn."
+
+#: app/templates/admin/analytics.html:114
+msgid ""
+"The country arrives, but not the city. In Cloudflare open Rules, Transform "
+"Rules, Managed Transforms and switch on “Add visitor location headers”. It "
+"is free."
+msgstr ""
+"Das Land kommt an, die Stadt nicht. Öffne in Cloudflare Rules, Transform "
+"Rules, Managed Transforms und aktiviere „Add visitor location headers“. Das"
+" ist kostenlos."
+
+#: app/templates/admin/analytics.html:116
+msgid "Share of visitors with a known country:"
+msgstr "Anteil der Besucher mit bekanntem Land:"
+
 #: app/templates/admin/audit.html:3 app/templates/admin/audit.html:6
 #: app/templates/admin/dashboard.html:15
 msgid "Audit log"
 msgstr "Protokoll"
-
-#: app/templates/admin/audit.html:7 app/templates/admin/events.html:7
-#: app/templates/admin/lots.html:7 app/templates/admin/miniclubs.html:7
-#: app/templates/admin/services.html:7 app/templates/admin/startups.html:7
-#: app/templates/admin/travel.html:7 app/templates/admin/users.html:7
-msgid "Back to admin"
-msgstr "Zurück zur Verwaltung"
 
 #: app/templates/admin/audit.html:11
 msgid "Time"
@@ -5607,7 +5804,7 @@ msgstr "Details"
 msgid "The log is empty."
 msgstr "Das Protokoll ist leer."
 
-#: app/templates/admin/dashboard.html:8 app/templates/admin/dashboard.html:19
+#: app/templates/admin/dashboard.html:8 app/templates/admin/dashboard.html:20
 #: app/templates/admin/users.html:3 app/templates/admin/users.html:6
 #: app/templates/modules/events_detail.html:138
 #: app/templates/modules/miniclubs_detail.html:59
@@ -5630,55 +5827,55 @@ msgstr "Startups"
 msgid "Travel offers"
 msgstr "Reiseangebote"
 
-#: app/templates/admin/dashboard.html:28
+#: app/templates/admin/dashboard.html:29
 msgid "Needs attention"
 msgstr "Braucht Aufmerksamkeit"
 
-#: app/templates/admin/dashboard.html:30 app/templates/admin/users.html:11
+#: app/templates/admin/dashboard.html:31 app/templates/admin/users.html:11
 msgid "Waiting for identity"
 msgstr "Wartet auf Identitätsprüfung"
 
-#: app/templates/admin/dashboard.html:31 app/templates/admin/users.html:14
+#: app/templates/admin/dashboard.html:32 app/templates/admin/users.html:14
 msgid "Plan expired"
 msgstr "Tarif abgelaufen"
 
-#: app/templates/admin/dashboard.html:32 app/templates/admin/users.html:13
+#: app/templates/admin/dashboard.html:33 app/templates/admin/users.html:13
 msgid "Plan ending soon"
 msgstr "Tarif läuft bald ab"
 
-#: app/templates/admin/dashboard.html:35
+#: app/templates/admin/dashboard.html:36
 msgid "Ending in the next 14 days"
 msgstr "Läuft in den nächsten 14 Tagen ab"
 
-#: app/templates/admin/dashboard.html:45
+#: app/templates/admin/dashboard.html:46
 msgid "Identity checks"
 msgstr "Identitätsprüfungen"
 
-#: app/templates/admin/dashboard.html:54
+#: app/templates/admin/dashboard.html:55
 msgid "Open auction lots"
 msgstr "Offene Auktionslose"
 
-#: app/templates/admin/dashboard.html:58
+#: app/templates/admin/dashboard.html:59
 msgid "AI models"
 msgstr "KI-Modelle"
 
-#: app/templates/admin/dashboard.html:60
+#: app/templates/admin/dashboard.html:61
 msgid "Language model"
 msgstr "Sprachmodell"
 
-#: app/templates/admin/dashboard.html:60
+#: app/templates/admin/dashboard.html:61
 msgid "on"
 msgstr "an"
 
-#: app/templates/admin/dashboard.html:60
+#: app/templates/admin/dashboard.html:61
 msgid "off"
 msgstr "aus"
 
-#: app/templates/admin/dashboard.html:61
+#: app/templates/admin/dashboard.html:62
 msgid "Embeddings"
 msgstr "Embeddings"
 
-#: app/templates/admin/dashboard.html:63
+#: app/templates/admin/dashboard.html:64
 msgid ""
 "Models are set in the server settings. Changing them does not need a code "
 "change."
@@ -6758,13 +6955,6 @@ msgstr "Dauer"
 #: app/templates/modules/auction_form.html:92
 msgid "The countdown starts when our team publishes the lot."
 msgstr "Der Countdown startet, sobald unser Team das Los veröffentlicht."
-
-#: app/templates/modules/auction_form.html:95
-#, python-format
-msgid "%(num)d day"
-msgid_plural "%(num)d days"
-msgstr[0] "%(num)d Tag"
-msgstr[1] "%(num)d Tage"
 
 #: app/templates/modules/auction_form.html:104
 msgid ""

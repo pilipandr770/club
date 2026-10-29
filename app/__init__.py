@@ -159,6 +159,17 @@ def create_app(env=None):
                                  inquiry_status_label=inquiry_status_label)
 
     @app.after_request
+    def count_public_visit(response):
+        from flask import request
+
+        if (request.method == "GET" and response.status_code == 200 and response.mimetype == "text/html"
+                and not current_user.is_authenticated):
+            from .services import analytics
+
+            analytics.track_page(request, request.endpoint or "")
+        return response
+
+    @app.after_request
     def security_headers(response):
         response.headers.setdefault("Content-Security-Policy", CONTENT_SECURITY_POLICY)
         response.headers.setdefault("X-Content-Type-Options", "nosniff")

@@ -1,0 +1,118 @@
+{% extends "base.html" %}
+
+{% block title %}{{ _("Visitor statistics") }} · {{ _("Admin") }}{% endblock %}
+
+{% block content %}
+<h1>{{ _("Visitor statistics") }}</h1>
+<p class="muted">{{ _("Anonymous counts of visits to the public pages. No cookies, no IP addresses and no personal data are stored. Only the landing, login and registration pages are counted; logged-in members and robots are not.") }}</p>
+<p><a href="{{ url_for('admin.dashboard') }}">{{ _("Back to admin") }}</a></p>
+
+<nav class="section-nav" aria-label="{{ _('Period') }}">
+  {% for period in periods %}
+    <a href="{{ url_for('admin.analytics_view', days=period) }}"{% if period == days %} aria-current="page"{% endif %}>{{ ngettext("%(num)d day", "%(num)d days", period) }}</a>
+  {% endfor %}
+</nav>
+
+<section class="stat-tiles">
+  <div class="stat-tile"><b>{{ totals.visitors }}</b><span>{{ _("Unique visitors") }}</span></div>
+  <div class="stat-tile"><b>{{ totals.views }}</b><span>{{ _("Page views") }}</span></div>
+  <div class="stat-tile"><b>{{ totals.chat_users }}</b><span>{{ _("Visitors who asked Clubi") }}</span></div>
+  <div class="stat-tile"><b>{{ totals.register_views }}</b><span>{{ _("Opened the registration") }}</span></div>
+  <div class="stat-tile"><b>{{ totals.signups }}</b><span>{{ _("Registered") }}</span></div>
+</section>
+
+<section class="card">
+  <h2>{{ _("From visit to registration") }}</h2>
+  <ul class="module-list">
+    <li>{{ _("Unique visitors") }}: {{ totals.visitors }}</li>
+    <li>{{ _("Asked Clubi a question") }}: {{ totals.chat_users }} ({{ rate(totals.chat_users) }} %)</li>
+    <li>{{ _("Opened the registration") }}: {{ totals.register_views }} ({{ rate(totals.register_views) }} %)</li>
+    <li>{{ _("Registered") }}: {{ totals.signups }} ({{ rate(totals.signups) }} %)</li>
+  </ul>
+  <p class="small muted">{{ _("A visitor is counted once per day. The same person on another day counts again, because visits are deliberately not linked across days.") }}</p>
+</section>
+
+<section class="card">
+  <h2>{{ _("Visitors per day") }}</h2>
+  <svg class="chart" viewBox="0 0 {{ series|length * 12 }} 120" role="img" aria-label="{{ _('Visitors per day') }}" preserveAspectRatio="none">
+    {% for day, count in series %}
+      <rect class="chart-bar" x="{{ loop.index0 * 12 + 1 }}" y="{{ 110 - (count * 100 // peak) }}" width="10" height="{{ count * 100 // peak if count else 1 }}">
+        <title>{{ day.strftime('%d.%m.%Y') }}: {{ count }}</title>
+      </rect>
+    {% endfor %}
+  </svg>
+  <p class="small muted">{{ series[0][0].strftime('%d.%m.%Y') }} – {{ series[-1][0].strftime('%d.%m.%Y') }} · {{ _("highest day") }}: {{ peak_real }}</p>
+</section>
+
+<div class="stat-grid">
+  <section class="card">
+    <h2>{{ _("Countries") }}</h2>
+    <table class="table">
+      <tbody>
+        {% for code, name, count in countries %}
+          <tr><td>{{ name or _("Unknown") }}</td><td class="num">{{ count }}</td></tr>
+        {% else %}
+          <tr><td colspan="2" class="muted">{{ _("No data yet.") }}</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </section>
+
+  <section class="card">
+    <h2>{{ _("Cities") }}</h2>
+    <table class="table">
+      <tbody>
+        {% for city, code, count in cities %}
+          <tr><td>{{ city }}{% if code %} <span class="muted">· {{ names.get(code, code) }}</span>{% endif %}</td><td class="num">{{ count }}</td></tr>
+        {% else %}
+          <tr><td colspan="2" class="muted">{{ _("No city data. See the setup check below.") }}</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </section>
+
+  <section class="card">
+    <h2>{{ _("Where visitors come from") }}</h2>
+    <table class="table">
+      <tbody>
+        {% for source, count in sources %}
+          <tr><td>{{ source or _("Direct or unknown") }}</td><td class="num">{{ count }}</td></tr>
+        {% else %}
+          <tr><td colspan="2" class="muted">{{ _("No data yet.") }}</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <p class="small muted">{{ _("For advertising, add ?utm_source=name to your links, for example ?utm_source=instagram.") }}</p>
+  </section>
+
+  <section class="card">
+    <h2>{{ _("Devices and pages") }}</h2>
+    <table class="table">
+      <tbody>
+        {% for device, count in devices %}
+          <tr><td>{{ {'mobile': _('Phone'), 'tablet': _('Tablet'), 'desktop': _('Computer')}.get(device, device or _('Unknown')) }}</td><td class="num">{{ count }}</td></tr>
+        {% endfor %}
+        {% for page, count in pages %}
+          <tr><td>{{ {'home': _('Landing page'), 'login': _('Login page'), 'register': _('Registration page')}.get(page, page) }} <span class="muted">· {{ _("views") }}</span></td><td class="num">{{ count }}</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </section>
+</div>
+
+<section class="card">
+  <h2>{{ _("Setup check") }}</h2>
+  <p class="small">{{ _("Country and city come from Cloudflare. This is what reaches the server with your own request right now:") }}</p>
+  <ul class="module-list">
+    <li>{{ _("Country header") }}: {{ header_check.country or _("missing") }}</li>
+    <li>{{ _("City header") }}: {{ header_check.city or _("missing") }}</li>
+    <li>{{ _("Visitor address header") }}: {{ _("present") if header_check.cf_ip else _("missing") }}</li>
+  </ul>
+  {% if not header_check.country %}
+    <p class="small">{{ _("The country header is missing: the requests do not pass through Cloudflare, or the proxy removes it.") }}</p>
+  {% elif not header_check.city %}
+    <p class="small">{{ _("The country arrives, but not the city. In Cloudflare open Rules, Transform Rules, Managed Transforms and switch on “Add visitor location headers”. It is free.") }}</p>
+  {% endif %}
+  <p class="small muted">{{ _("Share of visitors with a known country:") }} {{ located_share }} %</p>
+</section>
+{% endblock %}

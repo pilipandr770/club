@@ -71,6 +71,43 @@ def dashboard():
     )
 
 
+ANALYTICS_PERIODS = (7, 30, 90)
+
+
+@bp.route("/analytics")
+@admin_required
+def analytics_view():
+    """Анонимная статистика посещений публичных страниц: посетители, страны, города, источники, воронка."""
+    from ...countries import country_choices
+    from ...services import analytics as stats
+
+    days = request.args.get("days", 30, type=int)
+    if days not in ANALYTICS_PERIODS:
+        days = 30
+    names = dict(country_choices())
+    totals = stats.totals(days)
+    series = stats.daily(days)
+    peak_real = max([count for _day, count in series] + [0])
+    peak = max(peak_real, 1)
+    visitors = totals["visitors"]
+    cities = stats.city_rows(days)
+    countries = [(code, names.get(code, code) if code else "", count) for code, count in stats.top("country", days)]
+    located = sum(count for code, _name, count in countries if code)
+    return render_template(
+        "admin/analytics.html", days=days, periods=ANALYTICS_PERIODS, totals=totals, series=series, peak=peak, peak_real=peak_real,
+        countries=countries, cities=cities, names=names, sources=stats.top("source", days),
+        devices=stats.top("device", days), pages=stats.top("page", days, metric="views"),
+        located_share=round(100 * located / visitors) if visitors else 0,
+        rate=lambda part: round(100 * part / visitors, 1) if visitors else 0,
+        header_check={
+            "country": request.headers.get("CF-IPCountry", ""),
+            "city": request.headers.get("CF-IPCity", ""),
+            "cf_ip": bool(request.headers.get("CF-Connecting-IP")),
+            "forwarded": request.headers.get("X-Forwarded-For", ""),
+            "remote": request.remote_addr or "",
+        })
+
+
 @bp.route("/users")
 @admin_required
 def users():

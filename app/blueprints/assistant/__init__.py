@@ -90,6 +90,9 @@ def public_view():
         answer = ask_public(str(data.get("message", "")), history)
     except PublicAssistantError as exc:
         return jsonify(error=error_text(exc.code), code=exc.code), 400 if exc.code == "empty" else 503
+    from ...services import analytics
+
+    analytics.track_chat_question(request)
     return jsonify(answer=answer)
 
 

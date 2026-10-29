@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Club 0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-10-29 19:52+0000\n"
+"POT-Creation-Date: 2026-10-29 20:20+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: ru\n"
@@ -2418,94 +2418,94 @@ msgstr ""
 "страниц). Участники смогут скачать её. Clubi также сможет прочитать её, "
 "чтобы отвечать на вопросы о поездке."
 
-#: app/blueprints/admin/__init__.py:150
+#: app/blueprints/admin/__init__.py:187
 msgid "Changes are saved."
 msgstr "Изменения сохранены."
 
-#: app/blueprints/admin/__init__.py:152 app/blueprints/admin/__init__.py:352
-#: app/blueprints/admin/__init__.py:382
+#: app/blueprints/admin/__init__.py:189 app/blueprints/admin/__init__.py:389
+#: app/blueprints/admin/__init__.py:419
 msgid "Nothing has changed."
 msgstr "Ничего не изменилось."
 
-#: app/blueprints/admin/__init__.py:173
+#: app/blueprints/admin/__init__.py:210
 #, python-format
 msgid "Please check the lot fields: %(fields)s"
 msgstr "Проверьте поля лота: %(fields)s"
 
-#: app/blueprints/admin/__init__.py:177
+#: app/blueprints/admin/__init__.py:214
 msgid "The lot is created."
 msgstr "Лот создан."
 
-#: app/blueprints/admin/__init__.py:191
+#: app/blueprints/admin/__init__.py:228
 msgid "The lot is published."
 msgstr "Лот опубликован."
 
-#: app/blueprints/admin/__init__.py:194
+#: app/blueprints/admin/__init__.py:231
 msgid "The lot is rejected."
 msgstr "Лот отклонён."
 
-#: app/blueprints/admin/__init__.py:198 app/modules/auction/__init__.py:64
+#: app/blueprints/admin/__init__.py:235 app/modules/auction/__init__.py:64
 msgid "This lot is not waiting for review."
 msgstr "Этот лот не ожидает проверки."
 
-#: app/blueprints/admin/__init__.py:208
+#: app/blueprints/admin/__init__.py:245
 msgid "The lot is closed."
 msgstr "Лот закрыт."
 
-#: app/blueprints/admin/__init__.py:272
+#: app/blueprints/admin/__init__.py:309
 msgid "The meeting is published."
 msgstr "Встреча опубликована."
 
-#: app/blueprints/admin/__init__.py:275
+#: app/blueprints/admin/__init__.py:312
 msgid "The meeting is rejected."
 msgstr "Встреча отклонена."
 
-#: app/blueprints/admin/__init__.py:279
+#: app/blueprints/admin/__init__.py:316
 msgid "This meeting is not waiting for review."
 msgstr "Эта встреча не ожидает проверки."
 
-#: app/blueprints/admin/__init__.py:306
+#: app/blueprints/admin/__init__.py:343
 msgid "The mini-club is published."
 msgstr "Мини-клуб опубликован."
 
-#: app/blueprints/admin/__init__.py:309 app/modules/miniclubs/__init__.py:305
+#: app/blueprints/admin/__init__.py:346 app/modules/miniclubs/__init__.py:305
 msgid "The mini-club is closed."
 msgstr "Мини-клуб закрыт."
 
-#: app/blueprints/admin/__init__.py:312
+#: app/blueprints/admin/__init__.py:349
 msgid "The mini-club is rejected."
 msgstr "Мини-клуб отклонён."
 
-#: app/blueprints/admin/__init__.py:316
+#: app/blueprints/admin/__init__.py:353
 msgid "This mini-club is not waiting for review."
 msgstr "Этот мини-клуб не ожидает проверки."
 
-#: app/blueprints/admin/__init__.py:347
+#: app/blueprints/admin/__init__.py:384
 msgid "The startup is published."
 msgstr "Стартап опубликован."
 
-#: app/blueprints/admin/__init__.py:350
+#: app/blueprints/admin/__init__.py:387
 msgid "The startup is rejected."
 msgstr "Стартап отклонён."
 
-#: app/blueprints/admin/__init__.py:377
+#: app/blueprints/admin/__init__.py:414
 msgid "The offer is published."
 msgstr "Предложение опубликовано."
 
-#: app/blueprints/admin/__init__.py:380
+#: app/blueprints/admin/__init__.py:417
 msgid "The offer is rejected."
 msgstr "Предложение отклонено."
 
-#: app/blueprints/admin/__init__.py:442
+#: app/blueprints/admin/__init__.py:479
 #, python-format
 msgid "Participant created. Temporary password (shown once): %(password)s"
 msgstr "Участник создан. Временный пароль (показывается один раз): %(password)s"
 
-#: app/blueprints/admin/__init__.py:444
+#: app/blueprints/admin/__init__.py:481
 msgid "Participant created."
 msgstr "Участник создан."
 
-#: app/blueprints/admin/__init__.py:446 app/modules/auction/__init__.py:227
+#: app/blueprints/admin/__init__.py:483 app/modules/auction/__init__.py:227
 #: app/modules/auction/__init__.py:253 app/modules/events/__init__.py:131
 #: app/modules/events/__init__.py:158 app/modules/miniclubs/__init__.py:135
 #: app/modules/miniclubs/__init__.py:162 app/modules/profile/__init__.py:73
@@ -2515,25 +2515,25 @@ msgstr "Участник создан."
 msgid "Please check these fields: %(fields)s"
 msgstr "Проверьте поля: %(fields)s"
 
-#: app/blueprints/admin/__init__.py:454
+#: app/blueprints/admin/__init__.py:491
 msgid ""
 "Please write a short note: how you know this person or how the payment "
 "arrived."
 msgstr "Напишите короткую пометку: откуда вы знаете человека или как пришла оплата."
 
-#: app/blueprints/admin/__init__.py:455
+#: app/blueprints/admin/__init__.py:492
 msgid "You cannot do this for your own account. Ask another administrator."
 msgstr "Для своего аккаунта это сделать нельзя. Попросите другого администратора."
 
-#: app/blueprints/admin/__init__.py:456
+#: app/blueprints/admin/__init__.py:493
 msgid "Please choose a paid plan."
 msgstr "Выберите платный тариф."
 
-#: app/blueprints/admin/__init__.py:457
+#: app/blueprints/admin/__init__.py:494
 msgid "Please choose the number of months."
 msgstr "Выберите число месяцев."
 
-#: app/blueprints/admin/__init__.py:458 app/blueprints/assistant/__init__.py:24
+#: app/blueprints/admin/__init__.py:495 app/blueprints/assistant/__init__.py:24
 #: app/modules/events/__init__.py:51 app/modules/miniclubs/__init__.py:53
 #: app/modules/profile/__init__.py:240 app/modules/services/__init__.py:18
 #: app/modules/startups/__init__.py:35 app/modules/travel/__init__.py:44
@@ -2542,31 +2542,31 @@ msgstr "Выберите число месяцев."
 msgid "Something went wrong. Please try again."
 msgstr "Что-то пошло не так. Попробуйте ещё раз."
 
-#: app/blueprints/admin/__init__.py:479
+#: app/blueprints/admin/__init__.py:516
 msgid "The identity check is marked as verified."
 msgstr "Проверка личности отмечена как успешная."
 
-#: app/blueprints/admin/__init__.py:487
+#: app/blueprints/admin/__init__.py:524
 msgid "The identity confirmation is withdrawn."
 msgstr "Подтверждение личности снято."
 
-#: app/blueprints/admin/__init__.py:498
+#: app/blueprints/admin/__init__.py:535
 msgid "The plan is activated."
 msgstr "Тариф включён."
 
-#: app/blueprints/admin/__init__.py:506
+#: app/blueprints/admin/__init__.py:543
 msgid "The plan is ended. The member is back on Guest."
 msgstr "Тариф закончен. Участник снова на гостевом."
 
-#: app/blueprints/admin/__init__.py:545
+#: app/blueprints/admin/__init__.py:582
 msgid "Please enter a title."
 msgstr "Введите название."
 
-#: app/blueprints/admin/__init__.py:549
+#: app/blueprints/admin/__init__.py:586
 msgid "The service is saved."
 msgstr "Услуга сохранена."
 
-#: app/blueprints/admin/__init__.py:576
+#: app/blueprints/admin/__init__.py:613
 msgid "Unknown status."
 msgstr "Неизвестный статус."
 
@@ -2642,27 +2642,27 @@ msgstr "Мы не можем открыть аккаунт для жителей
 msgid "This confirmation is required to create an account."
 msgstr "Это подтверждение обязательно для создания аккаунта."
 
-#: app/blueprints/auth/__init__.py:79
+#: app/blueprints/auth/__init__.py:82
 msgid "Welcome. Please confirm your e-mail address to continue."
 msgstr "Добро пожаловать. Подтвердите адрес электронной почты, чтобы продолжить."
 
-#: app/blueprints/auth/__init__.py:97
+#: app/blueprints/auth/__init__.py:100
 msgid "E-mail or password is not correct."
 msgstr "Неверный адрес электронной почты или пароль."
 
-#: app/blueprints/auth/__init__.py:99
+#: app/blueprints/auth/__init__.py:102
 msgid "This account is blocked. Please contact support."
 msgstr "Аккаунт заблокирован. Обратитесь в поддержку."
 
-#: app/blueprints/auth/__init__.py:112
+#: app/blueprints/auth/__init__.py:115
 msgid "You have been logged out."
 msgstr "Вы вышли из аккаунта."
 
-#: app/blueprints/auth/__init__.py:120 app/blueprints/auth/__init__.py:125
+#: app/blueprints/auth/__init__.py:123 app/blueprints/auth/__init__.py:128
 msgid "The link is invalid or has expired. Please request a new one."
 msgstr "Ссылка недействительна или срок её действия истёк. Запросите новую."
 
-#: app/blueprints/auth/__init__.py:132
+#: app/blueprints/auth/__init__.py:135
 msgid "Your e-mail address is confirmed."
 msgstr "Адрес электронной почты подтверждён."
 
@@ -5449,10 +5449,10 @@ msgstr "Основная навигация"
 msgid "My account"
 msgstr "Мой кабинет"
 
-#: app/templates/admin/audit.html:3 app/templates/admin/dashboard.html:3
-#: app/templates/admin/dashboard.html:6 app/templates/admin/events.html:3
-#: app/templates/admin/lots.html:3 app/templates/admin/miniclubs.html:3
-#: app/templates/admin/service_form.html:3
+#: app/templates/admin/analytics.html:3 app/templates/admin/audit.html:3
+#: app/templates/admin/dashboard.html:3 app/templates/admin/dashboard.html:6
+#: app/templates/admin/events.html:3 app/templates/admin/lots.html:3
+#: app/templates/admin/miniclubs.html:3 app/templates/admin/service_form.html:3
 #: app/templates/admin/service_inquiries.html:3
 #: app/templates/admin/services.html:3 app/templates/admin/startups.html:3
 #: app/templates/admin/travel.html:3 app/templates/admin/user_detail.html:3
@@ -5493,17 +5493,213 @@ msgstr "Язык"
 msgid "Save"
 msgstr "Сохранить"
 
+#: app/templates/admin/analytics.html:3 app/templates/admin/analytics.html:6
+#: app/templates/admin/dashboard.html:16
+msgid "Visitor statistics"
+msgstr "Статистика посетителей"
+
+#: app/templates/admin/analytics.html:7
+msgid ""
+"Anonymous counts of visits to the public pages. No cookies, no IP addresses"
+" and no personal data are stored. Only the landing, login and registration "
+"pages are counted; logged-in members and robots are not."
+msgstr ""
+"Анонимный подсчёт посещений публичных страниц. Cookie, IP-адреса и "
+"персональные данные не сохраняются. Считаются только главная, вход и "
+"регистрация; вошедшие участники и роботы не считаются."
+
+#: app/templates/admin/analytics.html:8 app/templates/admin/audit.html:7
+#: app/templates/admin/events.html:7 app/templates/admin/lots.html:7
+#: app/templates/admin/miniclubs.html:7 app/templates/admin/services.html:7
+#: app/templates/admin/startups.html:7 app/templates/admin/travel.html:7
+#: app/templates/admin/users.html:7
+msgid "Back to admin"
+msgstr "Назад в админку"
+
+#: app/templates/admin/analytics.html:10
+msgid "Period"
+msgstr "Период"
+
+#: app/templates/admin/analytics.html:12
+#: app/templates/modules/auction_form.html:95
+#, python-format
+msgid "%(num)d day"
+msgid_plural "%(num)d days"
+msgstr[0] "%(num)d день"
+msgstr[1] "%(num)d дня"
+msgstr[2] "%(num)d дней"
+
+#: app/templates/admin/analytics.html:17 app/templates/admin/analytics.html:27
+msgid "Unique visitors"
+msgstr "Уникальные посетители"
+
+#: app/templates/admin/analytics.html:18
+msgid "Page views"
+msgstr "Просмотры страниц"
+
+#: app/templates/admin/analytics.html:19
+msgid "Visitors who asked Clubi"
+msgstr "Посетители, задавшие вопрос Clubi"
+
+#: app/templates/admin/analytics.html:20 app/templates/admin/analytics.html:29
+msgid "Opened the registration"
+msgstr "Открыли регистрацию"
+
+#: app/templates/admin/analytics.html:21 app/templates/admin/analytics.html:30
+msgid "Registered"
+msgstr "Зарегистрировались"
+
+#: app/templates/admin/analytics.html:25
+msgid "From visit to registration"
+msgstr "От посещения до регистрации"
+
+#: app/templates/admin/analytics.html:28
+msgid "Asked Clubi a question"
+msgstr "Задали вопрос Clubi"
+
+#: app/templates/admin/analytics.html:32
+msgid ""
+"A visitor is counted once per day. The same person on another day counts "
+"again, because visits are deliberately not linked across days."
+msgstr ""
+"Посетитель считается один раз в день. Тот же человек в другой день "
+"считается снова, потому что визиты намеренно не связываются между днями."
+
+#: app/templates/admin/analytics.html:36 app/templates/admin/analytics.html:37
+msgid "Visitors per day"
+msgstr "Посетители по дням"
+
+#: app/templates/admin/analytics.html:44
+msgid "highest day"
+msgstr "самый посещаемый день"
+
+#: app/templates/admin/analytics.html:49
+msgid "Countries"
+msgstr "Страны"
+
+#: app/templates/admin/analytics.html:53 app/templates/admin/analytics.html:93
+msgid "Unknown"
+msgstr "Неизвестно"
+
+#: app/templates/admin/analytics.html:55 app/templates/admin/analytics.html:81
+msgid "No data yet."
+msgstr "Данных пока нет."
+
+#: app/templates/admin/analytics.html:62
+msgid "Cities"
+msgstr "Города"
+
+#: app/templates/admin/analytics.html:68
+msgid "No city data. See the setup check below."
+msgstr "Данных по городам нет. Смотрите проверку настройки ниже."
+
+#: app/templates/admin/analytics.html:75
+msgid "Where visitors come from"
+msgstr "Откуда приходят посетители"
+
+#: app/templates/admin/analytics.html:79
+msgid "Direct or unknown"
+msgstr "Напрямую или неизвестно"
+
+#: app/templates/admin/analytics.html:85
+msgid ""
+"For advertising, add ?utm_source=name to your links, for example "
+"?utm_source=instagram."
+msgstr ""
+"Для рекламы добавляйте к ссылкам ?utm_source=название, например "
+"?utm_source=instagram."
+
+#: app/templates/admin/analytics.html:89
+msgid "Devices and pages"
+msgstr "Устройства и страницы"
+
+#: app/templates/admin/analytics.html:93
+msgid "Phone"
+msgstr "Телефон"
+
+#: app/templates/admin/analytics.html:93
+msgid "Tablet"
+msgstr "Планшет"
+
+#: app/templates/admin/analytics.html:93
+msgid "Computer"
+msgstr "Компьютер"
+
+#: app/templates/admin/analytics.html:96
+msgid "Landing page"
+msgstr "Главная страница"
+
+#: app/templates/admin/analytics.html:96
+msgid "Login page"
+msgstr "Страница входа"
+
+#: app/templates/admin/analytics.html:96
+msgid "Registration page"
+msgstr "Страница регистрации"
+
+#: app/templates/admin/analytics.html:96
+msgid "views"
+msgstr "просмотры"
+
+#: app/templates/admin/analytics.html:104
+msgid "Setup check"
+msgstr "Проверка настройки"
+
+#: app/templates/admin/analytics.html:105
+msgid ""
+"Country and city come from Cloudflare. This is what reaches the server with"
+" your own request right now:"
+msgstr ""
+"Страна и город берутся из Cloudflare. Вот что сейчас доходит до сервера с "
+"вашим собственным запросом:"
+
+#: app/templates/admin/analytics.html:107
+msgid "Country header"
+msgstr "Заголовок страны"
+
+#: app/templates/admin/analytics.html:107 app/templates/admin/analytics.html:108
+#: app/templates/admin/analytics.html:109
+msgid "missing"
+msgstr "нет"
+
+#: app/templates/admin/analytics.html:108
+msgid "City header"
+msgstr "Заголовок города"
+
+#: app/templates/admin/analytics.html:109
+msgid "Visitor address header"
+msgstr "Заголовок адреса посетителя"
+
+#: app/templates/admin/analytics.html:109
+msgid "present"
+msgstr "есть"
+
+#: app/templates/admin/analytics.html:112
+msgid ""
+"The country header is missing: the requests do not pass through Cloudflare,"
+" or the proxy removes it."
+msgstr ""
+"Заголовка страны нет: запросы идут не через Cloudflare или прокси его "
+"удаляет."
+
+#: app/templates/admin/analytics.html:114
+msgid ""
+"The country arrives, but not the city. In Cloudflare open Rules, Transform "
+"Rules, Managed Transforms and switch on “Add visitor location headers”. It "
+"is free."
+msgstr ""
+"Страна приходит, а город нет. В Cloudflare откройте Rules, Transform Rules,"
+" Managed Transforms и включите «Add visitor location headers». Это "
+"бесплатно."
+
+#: app/templates/admin/analytics.html:116
+msgid "Share of visitors with a known country:"
+msgstr "Доля посетителей с известной страной:"
+
 #: app/templates/admin/audit.html:3 app/templates/admin/audit.html:6
 #: app/templates/admin/dashboard.html:15
 msgid "Audit log"
 msgstr "Журнал действий"
-
-#: app/templates/admin/audit.html:7 app/templates/admin/events.html:7
-#: app/templates/admin/lots.html:7 app/templates/admin/miniclubs.html:7
-#: app/templates/admin/services.html:7 app/templates/admin/startups.html:7
-#: app/templates/admin/travel.html:7 app/templates/admin/users.html:7
-msgid "Back to admin"
-msgstr "Назад в админку"
 
 #: app/templates/admin/audit.html:11
 msgid "Time"
@@ -5529,7 +5725,7 @@ msgstr "Подробности"
 msgid "The log is empty."
 msgstr "Журнал пуст."
 
-#: app/templates/admin/dashboard.html:8 app/templates/admin/dashboard.html:19
+#: app/templates/admin/dashboard.html:8 app/templates/admin/dashboard.html:20
 #: app/templates/admin/users.html:3 app/templates/admin/users.html:6
 #: app/templates/modules/events_detail.html:138
 #: app/templates/modules/miniclubs_detail.html:59
@@ -5552,55 +5748,55 @@ msgstr "Стартапы"
 msgid "Travel offers"
 msgstr "Предложения поездок"
 
-#: app/templates/admin/dashboard.html:28
+#: app/templates/admin/dashboard.html:29
 msgid "Needs attention"
 msgstr "Требует внимания"
 
-#: app/templates/admin/dashboard.html:30 app/templates/admin/users.html:11
+#: app/templates/admin/dashboard.html:31 app/templates/admin/users.html:11
 msgid "Waiting for identity"
 msgstr "Ждут подтверждения личности"
 
-#: app/templates/admin/dashboard.html:31 app/templates/admin/users.html:14
+#: app/templates/admin/dashboard.html:32 app/templates/admin/users.html:14
 msgid "Plan expired"
 msgstr "Тариф истёк"
 
-#: app/templates/admin/dashboard.html:32 app/templates/admin/users.html:13
+#: app/templates/admin/dashboard.html:33 app/templates/admin/users.html:13
 msgid "Plan ending soon"
 msgstr "Тариф скоро закончится"
 
-#: app/templates/admin/dashboard.html:35
+#: app/templates/admin/dashboard.html:36
 msgid "Ending in the next 14 days"
 msgstr "Заканчивается в ближайшие 14 дней"
 
-#: app/templates/admin/dashboard.html:45
+#: app/templates/admin/dashboard.html:46
 msgid "Identity checks"
 msgstr "Проверки личности"
 
-#: app/templates/admin/dashboard.html:54
+#: app/templates/admin/dashboard.html:55
 msgid "Open auction lots"
 msgstr "Открытые лоты аукциона"
 
-#: app/templates/admin/dashboard.html:58
+#: app/templates/admin/dashboard.html:59
 msgid "AI models"
 msgstr "Модели ИИ"
 
-#: app/templates/admin/dashboard.html:60
+#: app/templates/admin/dashboard.html:61
 msgid "Language model"
 msgstr "Языковая модель"
 
-#: app/templates/admin/dashboard.html:60
+#: app/templates/admin/dashboard.html:61
 msgid "on"
 msgstr "включено"
 
-#: app/templates/admin/dashboard.html:60
+#: app/templates/admin/dashboard.html:61
 msgid "off"
 msgstr "выключено"
 
-#: app/templates/admin/dashboard.html:61
+#: app/templates/admin/dashboard.html:62
 msgid "Embeddings"
 msgstr "Эмбеддинги"
 
-#: app/templates/admin/dashboard.html:63
+#: app/templates/admin/dashboard.html:64
 msgid ""
 "Models are set in the server settings. Changing them does not need a code "
 "change."
@@ -6670,14 +6866,6 @@ msgstr "Продолжительность"
 #: app/templates/modules/auction_form.html:92
 msgid "The countdown starts when our team publishes the lot."
 msgstr "Отсчёт начнётся, когда команда опубликует лот."
-
-#: app/templates/modules/auction_form.html:95
-#, python-format
-msgid "%(num)d day"
-msgid_plural "%(num)d days"
-msgstr[0] "%(num)d день"
-msgstr[1] "%(num)d дня"
-msgstr[2] "%(num)d дней"
 
 #: app/templates/modules/auction_form.html:104
 msgid ""
