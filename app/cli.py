@@ -232,7 +232,7 @@ def stripe_setup_command(apply_):
     """Идемпотентно создаёт продукты, цены, вебхук и настройки портала в текущем аккаунте Stripe (тестовом или боевом)."""
     import stripe
 
-    from config.plans import INTERVALS, PAID_PLANS, PLANS, price_cents
+    from config.plans import INTERVALS, PAID_PLANS, price_cents
 
     from .services.billing import PRODUCT_APP, lookup_key
 
@@ -252,7 +252,7 @@ def stripe_setup_command(apply_):
             products[meta["plan"]] = product
     price_ids = {}
     for plan in PAID_PLANS:
-        name = str(PLANS[plan]["name"])
+        name = plan.capitalize()  # язык интерфейса не должен попадать в каталог Stripe
         product = products.get(plan)
         if product is None:
             click.echo(f"+ продукт Club {name}")
