@@ -148,6 +148,21 @@
   <button type="submit" class="button">{{ _("Save changes") }}</button>
 </form>
 
+{% if user.has_two_factor and user.id != current_user.id %}
+<section class="card">
+  <h2>{{ _("Two-factor login") }}</h2>
+  <p class="small">{{ _("Use this only if the member has lost the phone and the recovery codes and you are sure who you are talking to.") }}</p>
+  <form method="post" action="{{ url_for('admin.reset_two_factor', user_id=user.id) }}" class="form">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+    <div class="field">
+      <label for="reset-note">{{ _("How did you make sure it is this person?") }}</label>
+      <input id="reset-note" name="note" type="text" maxlength="300" required>
+    </div>
+    <button type="submit" class="button button-danger">{{ _("Reset two-factor login") }}</button>
+  </form>
+</section>
+{% endif %}
+
 <section class="card">
   <h2>{{ _("Consents") }}</h2>
   <ul class="module-list">

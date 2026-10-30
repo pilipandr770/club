@@ -95,6 +95,7 @@
 
 <section class="card">
   <h2>{{ _("Your data") }}</h2>
+  <p><a href="{{ url_for('member.security') }}">{{ _("Account security") }}</a>{% if current_user.has_two_factor %} · <span class="pill pill-ok">{{ _("Two-factor login") }}</span>{% endif %}</p>
   <p><a href="{{ url_for('member.export') }}">{{ _("Download my data (JSON)") }}</a></p>
 
   <details>

@@ -114,3 +114,100 @@ def delete_account():
     logout_user()
     flash(_("Your account and your data have been deleted."), "info")
     return redirect(url_for("public.index"))
+
+
+# --------------------------------------------------------------------------- безопасность аккаунта: второй фактор
+def _two_factor_error(code):
+    return {
+        "bad_code": _("The code is not correct. Please try again."),
+        "bad_password": _("The password is not correct."),
+        "admin_required": _("Two-factor login is required for administrators and cannot be switched off."),
+    }.get(code, _("Something went wrong. Please try again."))
+
+
+def _security_page(codes=None):
+    from flask import session
+
+    from ...services import twofactor
+
+    secret = session.get("totp_setup") if not current_user.has_two_factor else None
+    qr = twofactor.qr_svg(twofactor.provisioning_uri(current_user, secret)) if secret else None
+    return render_template(
+        "member/security.html", codes=codes, qr=qr, setup_secret=secret,
+        codes_left=twofactor.recovery_codes_left(current_user) if current_user.has_two_factor else 0,
+        required=current_user.is_admin and current_app.config.get("ADMIN_2FA_REQUIRED", True))
+
+
+@bp.route("/security")
+@login_required
+def security():
+    return _security_page()
+
+
+@bp.route("/security/setup", methods=["POST"])
+@login_required
+@limiter.limit("10 per hour")
+def security_setup():
+    from flask import session
+
+    from ...services import twofactor
+
+    if not current_user.has_two_factor:
+        session["totp_setup"] = twofactor.new_secret()
+    return redirect(url_for("member.security"))
+
+
+@bp.route("/security/confirm", methods=["POST"])
+@login_required
+@limiter.limit("10 per hour")
+def security_confirm():
+    from flask import session
+
+    from ...services import twofactor
+
+    secret = session.get("totp_setup")
+    if not secret or current_user.has_two_factor:
+        return redirect(url_for("member.security"))
+    try:
+        codes = twofactor.enable(current_user, secret, request.form.get("code", ""))
+        db.session.commit()
+    except twofactor.TwoFactorError as exc:
+        db.session.rollback()
+        flash(_two_factor_error(exc.code), "error")
+        return _security_page()
+    session.pop("totp_setup", None)
+    flash(_("Two-factor login is on."), "success")
+    return _security_page(codes=codes)
+
+
+@bp.route("/security/disable", methods=["POST"])
+@login_required
+@limiter.limit("10 per hour")
+def security_disable():
+    from ...services import twofactor
+
+    try:
+        twofactor.disable(current_user, request.form.get("password", ""), request.form.get("code", ""))
+        db.session.commit()
+    except twofactor.TwoFactorError as exc:
+        db.session.rollback()
+        flash(_two_factor_error(exc.code), "error")
+    else:
+        flash(_("Two-factor login is off."), "success")
+    return redirect(url_for("member.security"))
+
+
+@bp.route("/security/codes", methods=["POST"])
+@login_required
+@limiter.limit("10 per hour")
+def security_codes():
+    from ...services import twofactor
+
+    try:
+        codes = twofactor.regenerate_codes(current_user, request.form.get("password", ""), request.form.get("code", ""))
+        db.session.commit()
+    except twofactor.TwoFactorError as exc:
+        db.session.rollback()
+        flash(_two_factor_error(exc.code), "error")
+        return redirect(url_for("member.security"))
+    return _security_page(codes=codes)

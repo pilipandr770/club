@@ -64,6 +64,10 @@ class User(UserMixin, db.Model):
     invite_id: Mapped[int | None] = mapped_column(
         ForeignKey("invites.id", ondelete="SET NULL", use_alter=True, name="fk_users_invite_id_invites"))
     onboarding_nudged_at: Mapped[datetime | None] = mapped_column(DateTime)
+    # Двухфакторный вход (TOTP): секрет хранится зашифрованным, номер последнего принятого шага защищает от повтора кода
+    totp_secret_enc: Mapped[str | None] = mapped_column(String(200))
+    totp_enabled_at: Mapped[datetime | None] = mapped_column(DateTime)
+    totp_last_step: Mapped[int | None] = mapped_column(Integer)
 
     created_at: Mapped[datetime] = mapped_column(DateTime, default=utcnow)
     last_login_at: Mapped[datetime | None] = mapped_column(DateTime)
@@ -103,6 +107,10 @@ class User(UserMixin, db.Model):
     def is_verified(self) -> bool:
         """Личность подтверждена и почта подтверждена: иначе по чужой ссылке-приглашению можно войти под чужим адресом."""
         return self.verification_status == "verified" and self.email_confirmed_at is not None
+
+    @property
+    def has_two_factor(self) -> bool:
+        return self.totp_enabled_at is not None and bool(self.totp_secret_enc)
 
     @property
     def full_name(self) -> str:

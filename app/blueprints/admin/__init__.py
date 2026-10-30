@@ -46,6 +46,9 @@ def admin_required(view):
     def wrapper(*args, **kwargs):
         if not current_user.is_admin:
             abort(404)
+        if current_app.config.get("ADMIN_2FA_REQUIRED", True) and not current_user.has_two_factor:
+            flash(_("Administrators need two-factor login. Please set it up first."), "info")
+            return redirect(url_for("member.security"))
         return view(*args, **kwargs)
 
     return wrapper
@@ -552,6 +555,26 @@ def grant_plan(user_id):
     note = request.form.get("note", "")
     return _run_membership(user_id, lambda u: membership.grant_plan(current_user, u, plan, months, note),
                            _("The plan is activated."))
+
+
+@bp.route("/users/<int:user_id>/reset-2fa", methods=["POST"])
+@admin_required
+def reset_two_factor(user_id):
+    """Сброс второго фактора у человека, потерявшего телефон и резервные коды. Нужна пометка, себя сбросить нельзя."""
+    from ...services import twofactor
+
+    user = db.session.get(User, user_id) or abort(404)
+    try:
+        twofactor.admin_reset(current_user, user, request.form.get("note", ""))
+        db.session.commit()
+        flash(_("Two-factor login is reset. The member sets it up again."), "success")
+    except twofactor.TwoFactorError as exc:
+        db.session.rollback()
+        messages = {"self": _("You cannot reset your own two-factor login."),
+                    "note_required": _("Please add a short note (at least 5 characters)."),
+                    "not_enabled": _("Two-factor login is not on for this member.")}
+        flash(messages.get(exc.code, _("Something went wrong. Please try again.")), "error")
+    return redirect(url_for("admin.user_detail", user_id=user_id))
 
 
 @bp.route("/users/<int:user_id>/end-plan", methods=["POST"])

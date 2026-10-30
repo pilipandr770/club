@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}{{ _("Second step") }} · {{ _("Club") }}{% endblock %}
+
+{% block main_class %}auth{% endblock %}
+
+{% block content %}
+<div class="card auth-card">
+<h1>{{ _("Second step") }}</h1>
+<p class="muted">{{ _("Enter the 6-digit code from your authenticator app. If you have lost your phone, enter one of your recovery codes instead.") }}</p>
+{% if error %}<p class="error" role="alert">{{ error }}</p>{% endif %}
+<form method="post" action="{{ url_for('auth.two_factor') }}" class="form">
+  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+  <div class="field">
+    <label for="code">{{ _("Code") }}</label>
+    <input id="code" name="code" type="text" inputmode="numeric" autocomplete="one-time-code" autocapitalize="off" spellcheck="false" maxlength="16" required autofocus>
+  </div>
+  <button type="submit" class="button">{{ _("Log in") }}</button>
+</form>
+</div>
+<p class="auth-alt"><a href="{{ url_for('auth.login') }}">{{ _("Back to login") }}</a></p>
+{% endblock %}

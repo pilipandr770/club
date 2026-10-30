@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+
+{% block title %}{{ _("Account security") }} · {{ _("Club") }}{% endblock %}
+
+{% block content %}
+<h1>{{ _("Account security") }}</h1>
+<p><a href="{{ url_for('member.dashboard') }}">{{ _("Back to my account") }}</a></p>
+
+{% if codes %}
+<section class="card" aria-labelledby="codes-title">
+  <h2 id="codes-title">{{ _("Your recovery codes") }}</h2>
+  <p>{{ _("Save these codes in a safe place, for example in a password manager. Each code works once if you lose your phone. They are shown only now.") }}</p>
+  <ul class="module-list recovery-codes">
+    {% for code in codes %}<li><code>{{ code }}</code></li>{% endfor %}
+  </ul>
+</section>
+{% endif %}
+
+<section class="card">
+  <h2>{{ _("Two-factor login") }}</h2>
+  {% if current_user.has_two_factor %}
+    <p><span class="pill pill-ok">{{ _("On") }}</span> {{ _("At login you enter a code from your authenticator app after your password.") }}</p>
+    <p class="small muted">{{ ngettext("%(num)d recovery code left.", "%(num)d recovery codes left.", codes_left) }}</p>
+
+    <details>
+      <summary>{{ _("Get new recovery codes") }}</summary>
+      <form method="post" action="{{ url_for('member.security_codes') }}" class="form">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+        <div class="field">
+          <label for="codes-password">{{ _("Password") }}</label>
+          <input id="codes-password" name="password" type="password" autocomplete="current-password" required>
+        </div>
+        <div class="field">
+          <label for="codes-code">{{ _("Code from your app") }}</label>
+          <input id="codes-code" name="code" type="text" inputmode="numeric" autocomplete="one-time-code" maxlength="8" required>
+        </div>
+        <button type="submit" class="button button-secondary">{{ _("Create new codes") }}</button>
+        <p class="small">{{ _("The old codes stop working.") }}</p>
+      </form>
+    </details>
+
+    {% if required %}
+      <p class="small muted">{{ _("Two-factor login is required for administrators and cannot be switched off.") }}</p>
+    {% else %}
+    <details>
+      <summary>{{ _("Switch off two-factor login") }}</summary>
+      <form method="post" action="{{ url_for('member.security_disable') }}" class="form">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+        <div class="field">
+          <label for="off-password">{{ _("Password") }}</label>
+          <input id="off-password" name="password" type="password" autocomplete="current-password" required>
+        </div>
+        <div class="field">
+          <label for="off-code">{{ _("Code from your app or a recovery code") }}</label>
+          <input id="off-code" name="code" type="text" autocomplete="one-time-code" maxlength="16" required>
+        </div>
+        <button type="submit" class="button button-danger">{{ _("Switch off") }}</button>
+      </form>
+    </details>
+    {% endif %}
+
+  {% elif setup_secret %}
+    <p>{{ _("1. Open an authenticator app (for example Google Authenticator, Microsoft Authenticator or a password manager) and scan this code.") }}</p>
+    <div class="qr" role="img" aria-label="{{ _('QR code for the authenticator app') }}">{{ qr }}</div>
+    <p class="small">{{ _("Cannot scan it? Enter this key in the app instead:") }} <code>{{ setup_secret }}</code></p>
+    <form method="post" action="{{ url_for('member.security_confirm') }}" class="form">
+      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+      <div class="field">
+        <label for="setup-code">{{ _("2. Enter the 6-digit code the app shows") }}</label>
+        <input id="setup-code" name="code" type="text" inputmode="numeric" autocomplete="one-time-code" maxlength="8" required>
+      </div>
+      <button type="submit" class="button">{{ _("Switch on") }}</button>
+    </form>
+
+  {% else %}
+    <p>{{ _("Protect your account with a second step: after your password you enter a short code from an app on your phone. Even if someone learns your password, they cannot log in.") }}</p>
+    {% if required %}<p><strong>{{ _("Two-factor login is required for administrators. Please set it up now.") }}</strong></p>{% endif %}
+    <form method="post" action="{{ url_for('member.security_setup') }}">
+      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+      <button type="submit" class="button">{{ _("Set up two-factor login") }}</button>
+    </form>
+  {% endif %}
+</section>
+{% endblock %}

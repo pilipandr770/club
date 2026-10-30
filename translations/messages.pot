@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-10-30 10:00+0000\n"
+"POT-Creation-Date: 2026-10-30 11:34+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2218,94 +2218,98 @@ msgid ""
 "questions about the trip."
 msgstr ""
 
-#: app/blueprints/admin/__init__.py:206
+#: app/blueprints/admin/__init__.py:50
+msgid "Administrators need two-factor login. Please set it up first."
+msgstr ""
+
+#: app/blueprints/admin/__init__.py:209
 msgid "Changes are saved."
 msgstr ""
 
-#: app/blueprints/admin/__init__.py:208 app/blueprints/admin/__init__.py:408
-#: app/blueprints/admin/__init__.py:438
+#: app/blueprints/admin/__init__.py:211 app/blueprints/admin/__init__.py:411
+#: app/blueprints/admin/__init__.py:441
 msgid "Nothing has changed."
 msgstr ""
 
-#: app/blueprints/admin/__init__.py:229
+#: app/blueprints/admin/__init__.py:232
 #, python-format
 msgid "Please check the lot fields: %(fields)s"
 msgstr ""
 
-#: app/blueprints/admin/__init__.py:233
+#: app/blueprints/admin/__init__.py:236
 msgid "The lot is created."
 msgstr ""
 
-#: app/blueprints/admin/__init__.py:247
+#: app/blueprints/admin/__init__.py:250
 msgid "The lot is published."
 msgstr ""
 
-#: app/blueprints/admin/__init__.py:250
+#: app/blueprints/admin/__init__.py:253
 msgid "The lot is rejected."
 msgstr ""
 
-#: app/blueprints/admin/__init__.py:254 app/modules/auction/__init__.py:64
+#: app/blueprints/admin/__init__.py:257 app/modules/auction/__init__.py:64
 msgid "This lot is not waiting for review."
 msgstr ""
 
-#: app/blueprints/admin/__init__.py:264
+#: app/blueprints/admin/__init__.py:267
 msgid "The lot is closed."
 msgstr ""
 
-#: app/blueprints/admin/__init__.py:328
+#: app/blueprints/admin/__init__.py:331
 msgid "The meeting is published."
 msgstr ""
 
-#: app/blueprints/admin/__init__.py:331
+#: app/blueprints/admin/__init__.py:334
 msgid "The meeting is rejected."
 msgstr ""
 
-#: app/blueprints/admin/__init__.py:335
+#: app/blueprints/admin/__init__.py:338
 msgid "This meeting is not waiting for review."
 msgstr ""
 
-#: app/blueprints/admin/__init__.py:362
+#: app/blueprints/admin/__init__.py:365
 msgid "The mini-club is published."
 msgstr ""
 
-#: app/blueprints/admin/__init__.py:365 app/modules/miniclubs/__init__.py:305
+#: app/blueprints/admin/__init__.py:368 app/modules/miniclubs/__init__.py:305
 msgid "The mini-club is closed."
 msgstr ""
 
-#: app/blueprints/admin/__init__.py:368
+#: app/blueprints/admin/__init__.py:371
 msgid "The mini-club is rejected."
 msgstr ""
 
-#: app/blueprints/admin/__init__.py:372
+#: app/blueprints/admin/__init__.py:375
 msgid "This mini-club is not waiting for review."
 msgstr ""
 
-#: app/blueprints/admin/__init__.py:403
+#: app/blueprints/admin/__init__.py:406
 msgid "The startup is published."
 msgstr ""
 
-#: app/blueprints/admin/__init__.py:406
+#: app/blueprints/admin/__init__.py:409
 msgid "The startup is rejected."
 msgstr ""
 
-#: app/blueprints/admin/__init__.py:433
+#: app/blueprints/admin/__init__.py:436
 msgid "The offer is published."
 msgstr ""
 
-#: app/blueprints/admin/__init__.py:436
+#: app/blueprints/admin/__init__.py:439
 msgid "The offer is rejected."
 msgstr ""
 
-#: app/blueprints/admin/__init__.py:498
+#: app/blueprints/admin/__init__.py:501
 #, python-format
 msgid "Participant created. Temporary password (shown once): %(password)s"
 msgstr ""
 
-#: app/blueprints/admin/__init__.py:500
+#: app/blueprints/admin/__init__.py:503
 msgid "Participant created."
 msgstr ""
 
-#: app/blueprints/admin/__init__.py:502 app/modules/auction/__init__.py:227
+#: app/blueprints/admin/__init__.py:505 app/modules/auction/__init__.py:227
 #: app/modules/auction/__init__.py:253 app/modules/events/__init__.py:131
 #: app/modules/events/__init__.py:158 app/modules/miniclubs/__init__.py:135
 #: app/modules/miniclubs/__init__.py:162 app/modules/profile/__init__.py:73
@@ -2315,88 +2319,106 @@ msgstr ""
 msgid "Please check these fields: %(fields)s"
 msgstr ""
 
-#: app/blueprints/admin/__init__.py:510
+#: app/blueprints/admin/__init__.py:513
 msgid ""
 "Please write a short note: how you know this person or how the payment "
 "arrived."
 msgstr ""
 
-#: app/blueprints/admin/__init__.py:511
+#: app/blueprints/admin/__init__.py:514
 msgid "You cannot do this for your own account. Ask another administrator."
 msgstr ""
 
-#: app/blueprints/admin/__init__.py:512
+#: app/blueprints/admin/__init__.py:515
 msgid "Please choose a paid plan."
 msgstr ""
 
-#: app/blueprints/admin/__init__.py:513
+#: app/blueprints/admin/__init__.py:516
 msgid "Please choose the number of months."
 msgstr ""
 
-#: app/blueprints/admin/__init__.py:514 app/blueprints/assistant/__init__.py:24
-#: app/modules/events/__init__.py:51 app/modules/miniclubs/__init__.py:53
-#: app/modules/profile/__init__.py:240 app/modules/services/__init__.py:18
-#: app/modules/startups/__init__.py:35 app/modules/travel/__init__.py:44
-#: app/services/public_assistant.py:69 app/templates/partials/assistant.html:7
+#: app/blueprints/admin/__init__.py:517 app/blueprints/admin/__init__.py:576
+#: app/blueprints/assistant/__init__.py:24
+#: app/blueprints/member/__init__.py:125 app/modules/events/__init__.py:51
+#: app/modules/miniclubs/__init__.py:53 app/modules/profile/__init__.py:240
+#: app/modules/services/__init__.py:18 app/modules/startups/__init__.py:35
+#: app/modules/travel/__init__.py:44 app/services/public_assistant.py:69
+#: app/templates/partials/assistant.html:7
 #: app/templates/partials/public_assistant.html:3
 msgid "Something went wrong. Please try again."
 msgstr ""
 
-#: app/blueprints/admin/__init__.py:535
+#: app/blueprints/admin/__init__.py:538
 msgid "The identity check is marked as verified."
 msgstr ""
 
-#: app/blueprints/admin/__init__.py:543
+#: app/blueprints/admin/__init__.py:546
 msgid "The identity confirmation is withdrawn."
 msgstr ""
 
-#: app/blueprints/admin/__init__.py:554
+#: app/blueprints/admin/__init__.py:557
 msgid "The plan is activated."
 msgstr ""
 
-#: app/blueprints/admin/__init__.py:562
+#: app/blueprints/admin/__init__.py:570
+msgid "Two-factor login is reset. The member sets it up again."
+msgstr ""
+
+#: app/blueprints/admin/__init__.py:573
+msgid "You cannot reset your own two-factor login."
+msgstr ""
+
+#: app/blueprints/admin/__init__.py:574
+msgid "Please add a short note (at least 5 characters)."
+msgstr ""
+
+#: app/blueprints/admin/__init__.py:575
+msgid "Two-factor login is not on for this member."
+msgstr ""
+
+#: app/blueprints/admin/__init__.py:585
 msgid "The plan is ended. The member is back on Guest."
 msgstr ""
 
-#: app/blueprints/admin/__init__.py:566
+#: app/blueprints/admin/__init__.py:589
 msgid ""
 "Please write who this person is and how you know them (at least 5 "
 "characters)."
 msgstr ""
 
-#: app/blueprints/admin/__init__.py:567
+#: app/blueprints/admin/__init__.py:590
 msgid "Please enter a valid e-mail address or leave the field empty."
 msgstr ""
 
-#: app/blueprints/admin/__init__.py:568
+#: app/blueprints/admin/__init__.py:591
 msgid "Please choose a plan together with the paid period."
 msgstr ""
 
-#: app/blueprints/admin/__init__.py:569
+#: app/blueprints/admin/__init__.py:592
 msgid "Please choose the number of uses and the validity from the lists."
 msgstr ""
 
-#: app/blueprints/admin/__init__.py:587
+#: app/blueprints/admin/__init__.py:610
 msgid "The invitation could not be created."
 msgstr ""
 
-#: app/blueprints/admin/__init__.py:590
+#: app/blueprints/admin/__init__.py:613
 msgid "The invitation is ready. Copy the link below and send it to the person."
 msgstr ""
 
-#: app/blueprints/admin/__init__.py:612
+#: app/blueprints/admin/__init__.py:635
 msgid "The invitation is revoked. Its link no longer works."
 msgstr ""
 
-#: app/blueprints/admin/__init__.py:652
+#: app/blueprints/admin/__init__.py:675
 msgid "Please enter a title."
 msgstr ""
 
-#: app/blueprints/admin/__init__.py:656
+#: app/blueprints/admin/__init__.py:679
 msgid "The service is saved."
 msgstr ""
 
-#: app/blueprints/admin/__init__.py:683
+#: app/blueprints/admin/__init__.py:706
 msgid "Unknown status."
 msgstr ""
 
@@ -2436,71 +2458,83 @@ msgstr ""
 msgid "I could not hear anything. Please try again."
 msgstr ""
 
-#: app/blueprints/auth/__init__.py:28
+#: app/blueprints/auth/__init__.py:29
 msgid "Please confirm your e-mail address"
 msgstr ""
 
-#: app/blueprints/auth/__init__.py:29
+#: app/blueprints/auth/__init__.py:30
 msgid "Please open this link to confirm your e-mail address:"
 msgstr ""
 
-#: app/blueprints/auth/__init__.py:50 app/blueprints/auth/__init__.py:109
+#: app/blueprints/auth/__init__.py:51 app/blueprints/auth/__init__.py:110
 msgid "This invitation is no longer valid. You can still register without it."
 msgstr ""
 
-#: app/blueprints/auth/__init__.py:58
+#: app/blueprints/auth/__init__.py:59
 msgid "Please enter your first name."
 msgstr ""
 
-#: app/blueprints/auth/__init__.py:60
+#: app/blueprints/auth/__init__.py:61
 msgid "Please enter a valid e-mail address."
 msgstr ""
 
-#: app/blueprints/auth/__init__.py:62
+#: app/blueprints/auth/__init__.py:63
 msgid "An account with this e-mail address already exists."
 msgstr ""
 
-#: app/blueprints/auth/__init__.py:64
+#: app/blueprints/auth/__init__.py:65
 msgid "This invitation was issued for a different e-mail address."
 msgstr ""
 
-#: app/blueprints/auth/__init__.py:66
+#: app/blueprints/auth/__init__.py:67
 msgid "The password must be at least 10 characters long."
 msgstr ""
 
-#: app/blueprints/auth/__init__.py:68
+#: app/blueprints/auth/__init__.py:69
 msgid "Please choose your country of residence."
 msgstr ""
 
-#: app/blueprints/auth/__init__.py:70
+#: app/blueprints/auth/__init__.py:71
 msgid "We cannot open an account for residents of this country."
 msgstr ""
 
-#: app/blueprints/auth/__init__.py:74
+#: app/blueprints/auth/__init__.py:75
 msgid "This confirmation is required to create an account."
 msgstr ""
 
-#: app/blueprints/auth/__init__.py:95
+#: app/blueprints/auth/__init__.py:96
 msgid "Welcome. Please confirm your e-mail address to continue."
 msgstr ""
 
-#: app/blueprints/auth/__init__.py:126
+#: app/blueprints/auth/__init__.py:132
 msgid "E-mail or password is not correct."
 msgstr ""
 
-#: app/blueprints/auth/__init__.py:128
+#: app/blueprints/auth/__init__.py:134
 msgid "This account is blocked. Please contact support."
 msgstr ""
 
-#: app/blueprints/auth/__init__.py:141
+#: app/blueprints/auth/__init__.py:168
+msgid "Please log in again."
+msgstr ""
+
+#: app/blueprints/auth/__init__.py:186
+msgid "Too many wrong codes. Please log in again."
+msgstr ""
+
+#: app/blueprints/auth/__init__.py:189 app/blueprints/member/__init__.py:122
+msgid "The code is not correct. Please try again."
+msgstr ""
+
+#: app/blueprints/auth/__init__.py:198
 msgid "You have been logged out."
 msgstr ""
 
-#: app/blueprints/auth/__init__.py:149 app/blueprints/auth/__init__.py:154
+#: app/blueprints/auth/__init__.py:206 app/blueprints/auth/__init__.py:211
 msgid "The link is invalid or has expired. Please request a new one."
 msgstr ""
 
-#: app/blueprints/auth/__init__.py:161
+#: app/blueprints/auth/__init__.py:218
 msgid "Your e-mail address is confirmed."
 msgstr ""
 
@@ -2528,6 +2562,24 @@ msgstr ""
 
 #: app/blueprints/member/__init__.py:115
 msgid "Your account and your data have been deleted."
+msgstr ""
+
+#: app/blueprints/member/__init__.py:123
+msgid "The password is not correct."
+msgstr ""
+
+#: app/blueprints/member/__init__.py:124 app/templates/member/security.html:43
+msgid ""
+"Two-factor login is required for administrators and cannot be switched "
+"off."
+msgstr ""
+
+#: app/blueprints/member/__init__.py:179
+msgid "Two-factor login is on."
+msgstr ""
+
+#: app/blueprints/member/__init__.py:196
+msgid "Two-factor login is off."
 msgstr ""
 
 #: app/jurisdictions/de/pack.py:6
@@ -3359,7 +3411,7 @@ msgstr ""
 msgid "Little overlap"
 msgstr ""
 
-#: app/services/matching.py:154
+#: app/services/matching.py:155
 #, python-format
 msgid "Need: %(need)s — offer: %(offer)s."
 msgstr ""
@@ -5121,15 +5173,16 @@ msgid ""
 msgstr ""
 
 #: app/templates/admin/dashboard.html:3 app/templates/auth/login.html:3
-#: app/templates/auth/register.html:3 app/templates/base.html:6
-#: app/templates/base.html:12 app/templates/base.html:58
-#: app/templates/errors/http.html:2 app/templates/legal/datenschutz_de.html:3
+#: app/templates/auth/register.html:3 app/templates/auth/two_factor.html:3
+#: app/templates/base.html:6 app/templates/base.html:12
+#: app/templates/base.html:58 app/templates/errors/http.html:2
+#: app/templates/legal/datenschutz_de.html:3
 #: app/templates/legal/datenschutz_ru.html:3
 #: app/templates/legal/impressum_de.html:3
 #: app/templates/legal/impressum_ru.html:3
 #: app/templates/legal/nutzungsbedingungen_de.html:3
 #: app/templates/legal/nutzungsbedingungen_ru.html:3
-#: app/templates/member/dashboard.html:3
+#: app/templates/member/dashboard.html:3 app/templates/member/security.html:3
 #: app/templates/modules/auction_list.html:3
 #: app/templates/modules/events_list.html:3
 #: app/templates/modules/miniclubs_list.html:3
@@ -5188,7 +5241,8 @@ msgstr ""
 
 #: app/templates/auth/login.html:3 app/templates/auth/login.html:9
 #: app/templates/auth/login.html:31 app/templates/auth/register.html:94
-#: app/templates/base.html:31 app/templates/partials/public_assistant.html:40
+#: app/templates/auth/two_factor.html:18 app/templates/base.html:31
+#: app/templates/partials/public_assistant.html:40
 #: app/templates/public/index.html:18
 msgid "Log in"
 msgstr ""
@@ -6089,27 +6143,46 @@ msgstr ""
 msgid "Save changes"
 msgstr ""
 
-#: app/templates/admin/user_detail.html:152
+#: app/templates/admin/user_detail.html:153
+#: app/templates/member/dashboard.html:98 app/templates/member/security.html:20
+msgid "Two-factor login"
+msgstr ""
+
+#: app/templates/admin/user_detail.html:154
+msgid ""
+"Use this only if the member has lost the phone and the recovery codes and"
+" you are sure who you are talking to."
+msgstr ""
+
+#: app/templates/admin/user_detail.html:158
+msgid "How did you make sure it is this person?"
+msgstr ""
+
+#: app/templates/admin/user_detail.html:161
+msgid "Reset two-factor login"
+msgstr ""
+
+#: app/templates/admin/user_detail.html:167
 msgid "Consents"
 msgstr ""
 
-#: app/templates/admin/user_detail.html:155
+#: app/templates/admin/user_detail.html:170
 msgid "granted"
 msgstr ""
 
-#: app/templates/admin/user_detail.html:155
+#: app/templates/admin/user_detail.html:170
 msgid "withdrawn"
 msgstr ""
 
-#: app/templates/admin/user_detail.html:157
+#: app/templates/admin/user_detail.html:172
 msgid "No consents recorded."
 msgstr ""
 
-#: app/templates/admin/user_detail.html:163
+#: app/templates/admin/user_detail.html:178
 msgid "History"
 msgstr ""
 
-#: app/templates/admin/user_detail.html:168
+#: app/templates/admin/user_detail.html:183
 msgid "No entries yet."
 msgstr ""
 
@@ -6212,6 +6285,7 @@ msgid "No members found."
 msgstr ""
 
 #: app/templates/auth/login.html:22 app/templates/auth/register.html:45
+#: app/templates/member/security.html:30 app/templates/member/security.html:50
 msgid "Password"
 msgstr ""
 
@@ -6306,6 +6380,24 @@ msgstr ""
 
 #: app/templates/auth/register.html:94
 msgid "Already registered?"
+msgstr ""
+
+#: app/templates/auth/two_factor.html:3 app/templates/auth/two_factor.html:9
+msgid "Second step"
+msgstr ""
+
+#: app/templates/auth/two_factor.html:10
+msgid ""
+"Enter the 6-digit code from your authenticator app. If you have lost your"
+" phone, enter one of your recovery codes instead."
+msgstr ""
+
+#: app/templates/auth/two_factor.html:15
+msgid "Code"
+msgstr ""
+
+#: app/templates/auth/two_factor.html:21
+msgid "Back to login"
 msgstr ""
 
 #: app/templates/errors/http.html:7
@@ -6454,26 +6546,125 @@ msgstr ""
 msgid "Your data"
 msgstr ""
 
-#: app/templates/member/dashboard.html:98
+#: app/templates/member/dashboard.html:98 app/templates/member/security.html:3
+#: app/templates/member/security.html:6
+msgid "Account security"
+msgstr ""
+
+#: app/templates/member/dashboard.html:99
 msgid "Download my data (JSON)"
 msgstr ""
 
-#: app/templates/member/dashboard.html:101
+#: app/templates/member/dashboard.html:102
 msgid "Delete my account"
 msgstr ""
 
-#: app/templates/member/dashboard.html:102
+#: app/templates/member/dashboard.html:103
 msgid ""
 "This deletes your account, your consent history and your identity check "
 "data at Stripe. This cannot be undone."
 msgstr ""
 
-#: app/templates/member/dashboard.html:106
+#: app/templates/member/dashboard.html:107
 msgid "Confirm with your password"
 msgstr ""
 
-#: app/templates/member/dashboard.html:109
+#: app/templates/member/dashboard.html:110
 msgid "Delete account permanently"
+msgstr ""
+
+#: app/templates/member/security.html:7
+msgid "Back to my account"
+msgstr ""
+
+#: app/templates/member/security.html:11
+msgid "Your recovery codes"
+msgstr ""
+
+#: app/templates/member/security.html:12
+msgid ""
+"Save these codes in a safe place, for example in a password manager. Each"
+" code works once if you lose your phone. They are shown only now."
+msgstr ""
+
+#: app/templates/member/security.html:22
+msgid "On"
+msgstr ""
+
+#: app/templates/member/security.html:22
+msgid "At login you enter a code from your authenticator app after your password."
+msgstr ""
+
+#: app/templates/member/security.html:23
+#, python-format
+msgid "%(num)d recovery code left."
+msgid_plural "%(num)d recovery codes left."
+msgstr[0] ""
+msgstr[1] ""
+
+#: app/templates/member/security.html:26
+msgid "Get new recovery codes"
+msgstr ""
+
+#: app/templates/member/security.html:34
+msgid "Code from your app"
+msgstr ""
+
+#: app/templates/member/security.html:37
+msgid "Create new codes"
+msgstr ""
+
+#: app/templates/member/security.html:38
+msgid "The old codes stop working."
+msgstr ""
+
+#: app/templates/member/security.html:46
+msgid "Switch off two-factor login"
+msgstr ""
+
+#: app/templates/member/security.html:54
+msgid "Code from your app or a recovery code"
+msgstr ""
+
+#: app/templates/member/security.html:57
+msgid "Switch off"
+msgstr ""
+
+#: app/templates/member/security.html:63
+msgid ""
+"1. Open an authenticator app (for example Google Authenticator, Microsoft"
+" Authenticator or a password manager) and scan this code."
+msgstr ""
+
+#: app/templates/member/security.html:64
+msgid "QR code for the authenticator app"
+msgstr ""
+
+#: app/templates/member/security.html:65
+msgid "Cannot scan it? Enter this key in the app instead:"
+msgstr ""
+
+#: app/templates/member/security.html:69
+msgid "2. Enter the 6-digit code the app shows"
+msgstr ""
+
+#: app/templates/member/security.html:72
+msgid "Switch on"
+msgstr ""
+
+#: app/templates/member/security.html:76
+msgid ""
+"Protect your account with a second step: after your password you enter a "
+"short code from an app on your phone. Even if someone learns your "
+"password, they cannot log in."
+msgstr ""
+
+#: app/templates/member/security.html:77
+msgid "Two-factor login is required for administrators. Please set it up now."
+msgstr ""
+
+#: app/templates/member/security.html:80
+msgid "Set up two-factor login"
 msgstr ""
 
 #: app/templates/modules/auction_detail.html:6

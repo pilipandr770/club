@@ -24,6 +24,7 @@ def export_user(user) -> dict:
             "erstellt": _iso(user.created_at),
             "letzter_login": _iso(user.last_login_at),
             "e_mail_bestaetigt": _iso(user.email_confirmed_at),
+            "zwei_faktor_aktiv": user.has_two_factor,
         },
         "profil": None if profile is None else {
             "land": profile.country,

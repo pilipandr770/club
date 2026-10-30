@@ -55,7 +55,7 @@ class Config:
 
     # Версия текстов согласий (записывается в каждое согласие)
     # Версия текстов (Datenschutz, Nutzungsbedingungen): пишется в каждое согласие; меняем при изменении текстов
-    CONSENT_VERSION = "2026-10-30.2"
+    CONSENT_VERSION = "2026-10-30.3"
     LEGAL_UPDATED = "30.10.2026"
     # Данные для Impressum и Datenschutz. После создания компании меняются в .env, код трогать не нужно
     LEGAL_NAME = os.environ.get("LEGAL_NAME", "Andrii Pylypchuk")
@@ -104,6 +104,9 @@ class Config:
     AI_PRICE_IN_PER_M_USD = float(os.environ.get("AI_PRICE_IN_PER_M_USD", "0.10"))
     AI_PRICE_OUT_PER_M_USD = float(os.environ.get("AI_PRICE_OUT_PER_M_USD", "0.50"))
     # Голосовой ввод Clubi: порядок провайдеров и модели распознавания речи
+    # Двухфакторный вход: для админов обязателен (без него админ-зона ведёт на настройку), для участников по желанию
+    ADMIN_2FA_REQUIRED = os.environ.get("ADMIN_2FA_REQUIRED", "1") == "1"
+    TOTP_ISSUER = os.environ.get("TOTP_ISSUER", "Club")
     # Анонимная статистика посещений публичных страниц (без cookie и без хранения IP)
     ANALYTICS_ENABLED = os.environ.get("ANALYTICS_ENABLED", "1") == "1"
     STT_PROVIDERS = os.environ.get("STT_PROVIDERS", "mistral,openai")
@@ -140,6 +143,7 @@ class ProductionConfig(Config):
 
 class TestConfig(Config):
     TESTING = True
+    ADMIN_2FA_REQUIRED = False
     WTF_CSRF_ENABLED = False
     SESSION_COOKIE_SECURE = False
     REMEMBER_COOKIE_SECURE = False
