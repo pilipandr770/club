@@ -315,7 +315,7 @@ def stripe_setup_command(apply_):
         for item in portal["features"]["subscription_update"]["products"]:
             if item["product"] is None:  # продукт создан только что: берём из цены
                 item["product"] = stripe.Price.retrieve(item["prices"][0], api_key=key)["product"]
-        current = next((c for c in stripe.billing_portal.Configuration.list(api_key=key, is_active=True, limit=100)
+        current = next((c for c in stripe.billing_portal.Configuration.list(api_key=key, active=True, limit=100)
                         .auto_paging_iter() if (c.get("metadata") or {}).get("app") == PRODUCT_APP), None)
         if current is None:
             current = stripe.billing_portal.Configuration.create(api_key=key, **portal)
