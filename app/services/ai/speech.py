@@ -10,6 +10,7 @@ import uuid
 
 from flask import current_app
 
+from . import usage
 from .http import AIUnavailable
 
 URLS = {
@@ -61,7 +62,11 @@ def transcribe(data: bytes, mime: str) -> str:
         if provider not in URLS or not keys.get(provider):
             continue
         try:
-            return _post(provider, keys[provider], models[provider], data, mime)
+            text = _post(provider, keys[provider], models[provider], data, mime)
         except AIUnavailable as exc:
+            usage.record_failure("voice", models[provider], exc)
             last = exc
+            continue
+        usage.record("voice", models[provider])
+        return text
     raise last

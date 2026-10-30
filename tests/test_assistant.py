@@ -12,7 +12,7 @@ def prompts(monkeypatch):
     """Подменяет модель: запоминает, что ей отправили."""
     seen = []
 
-    def fake_complete(system, user, max_tokens=900, timeout=30):
+    def fake_complete(system, user, max_tokens=900, timeout=30, feature=""):
         seen.append(user)
         return "Antwort von Clubi"
 

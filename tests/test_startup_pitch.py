@@ -171,7 +171,7 @@ def test_removing_the_deck_deletes_it(app, client):
 def test_clubi_sees_full_card_and_pdf_text(app, client, monkeypatch):
     seen = []
 
-    def fake_complete(system, user, max_tokens=900, timeout=30):
+    def fake_complete(system, user, max_tokens=900, timeout=30, feature=""):
         seen.append(user)
         return "Antwort"
 

@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block title %}{{ _("AI usage") }} · {{ _("Admin") }}{% endblock %}
+
+{% block content %}
+<h1>{{ _("AI usage") }}</h1>
+<p class="muted">{{ _("Counts of calls and tokens per feature. No texts and no member data are stored here. The limits below pause the AI answers when they are used up; the features then fall back to their plain templates.") }}</p>
+<p><a href="{{ url_for('admin.dashboard') }}">{{ _("Back to admin") }}</a></p>
+
+{% if summary.blocked %}
+<p class="flash flash-error" role="alert">{{ _("A token limit is used up. AI answers are paused until the limit renews (daily limits at midnight UTC, the monthly limit on the first of the month).") }}</p>
+{% endif %}
+
+<section class="stat-grid">
+  {% for key, title in (("today", _("Today")), ("month", _("This month"))) %}
+  {% set part = summary[key] %}
+  <section class="card">
+    <h2>{{ title }}</h2>
+    <p><b>{{ "{:,}".format(part.tokens) }}</b> {{ _("tokens") }}{% if part.limit %} {{ _("of") }} {{ "{:,}".format(part.limit) }}{% endif %}</p>
+    {% if part.limit %}<progress max="100" value="{{ part.share }}">{{ part.share }} %</progress>{% endif %}
+    <p class="small muted">{{ _("Estimated cost of the language model") }}: ≈ {{ "%.2f"|format(part.cost) }} USD</p>
+  </section>
+  {% endfor %}
+</section>
+
+<nav class="section-nav" aria-label="{{ _('Period') }}">
+  {% for period in periods %}
+    <a href="{{ url_for('admin.ai_usage_view', days=period) }}"{% if period == days %} aria-current="page"{% endif %}>{{ ngettext("%(num)d day", "%(num)d days", period) }}</a>
+  {% endfor %}
+</nav>
+
+<section class="card">
+  <h2>{{ _("Tokens per day") }}</h2>
+  <svg class="chart" viewBox="0 0 {{ series|length * 12 }} 120" role="img" aria-label="{{ _('Tokens per day') }}" preserveAspectRatio="none">
+    {% for day, tokens in series %}
+      <rect class="chart-bar" x="{{ loop.index0 * 12 + 1 }}" y="{{ 110 - (tokens * 100 // peak) }}" width="10" height="{{ tokens * 100 // peak if tokens else 1 }}">
+        <title>{{ day.strftime('%d.%m.%Y') }}: {{ "{:,}".format(tokens) }}</title>
+      </rect>
+    {% endfor %}
+  </svg>
+  <p class="small muted">{{ series[0][0].strftime('%d.%m.%Y') }} – {{ series[-1][0].strftime('%d.%m.%Y') }} · {{ _("highest day") }}: {{ "{:,}".format(peak_real) }}</p>
+</section>
+
+<section class="card">
+  <h2>{{ _("By feature") }}</h2>
+  <table class="table">
+    <thead>
+      <tr><th>{{ _("Feature") }}</th><th class="num">{{ _("Calls") }}</th><th class="num">{{ _("Failed") }}</th><th class="num">{{ _("Tokens in") }}</th><th class="num">{{ _("Tokens out") }}</th><th class="num">{{ _("Cost (USD)") }}</th></tr>
+    </thead>
+    <tbody>
+      {% for row in rows %}
+        <tr>
+          <td>{{ row.feature }}</td>
+          <td class="num">{{ row.calls }}</td>
+          <td class="num">{{ row.failures }}</td>
+          <td class="num">{{ "{:,}".format(row.tokens_in) }}</td>
+          <td class="num">{{ "{:,}".format(row.tokens_out) }}</td>
+          <td class="num">{% if row.cost is none %}–{% else %}≈ {{ "%.2f"|format(row.cost) }}{% endif %}</td>
+        </tr>
+      {% else %}
+        <tr><td colspan="6" class="muted">{{ _("No data yet.") }}</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <p class="small muted">{{ _("Model") }}: {{ ai.llm_provider }} · {{ ai.llm_model }}. {{ _("Costs are estimated from the prices in the server settings and cover language models only. Embeddings and speech recognition are counted by calls.") }}</p>
+</section>
+{% endblock %}

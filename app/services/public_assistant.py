@@ -51,7 +51,8 @@ def ask_public(message: str, history=None) -> str:
     if not llm_enabled():
         raise PublicAssistantError("unavailable")
     try:
-        answer = llm.complete(SYSTEM, build_prompt(message, history), max_tokens=MAX_TOKENS, timeout=30).strip()
+        answer = llm.complete(SYSTEM, build_prompt(message, history), max_tokens=MAX_TOKENS, timeout=30,
+                              feature="public_chat").strip()
     except AIUnavailable as exc:
         log.warning("Öffentlicher Assistent nicht verfügbar: %s", exc)
         raise PublicAssistantError("unavailable") from None

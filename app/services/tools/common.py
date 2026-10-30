@@ -96,7 +96,7 @@ def json_from_llm(system, payload, max_tokens=4500, purpose=""):
             raw = llm.complete(
                 system + (" Deine letzte Antwort war kein gültiges JSON (vermutlich zu lang). Antworte kompakter "
                           "und achte streng auf die Syntax." if attempt == 2 else ""),
-                json.dumps(payload, ensure_ascii=False), max_tokens=max_tokens, timeout=60)
+                json.dumps(payload, ensure_ascii=False), max_tokens=max_tokens, timeout=60, feature="tools")
             start, end = raw.find("{"), raw.rfind("}")
             if start < 0 or end <= start:
                 raise ValueError(f"kein JSON, Anfang: {raw[:80]!r}")

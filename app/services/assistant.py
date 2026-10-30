@@ -322,7 +322,7 @@ def ask(user, message, path, history):
         raise AssistantError("limit")
     label, prompt = build_prompt(user, message, path, history)
     try:
-        answer = llm.complete(SYSTEM, prompt, max_tokens=700, timeout=45).strip()
+        answer = llm.complete(SYSTEM, prompt, max_tokens=700, timeout=45, feature="assistant").strip()
     except AIUnavailable:
         raise AssistantError("unavailable") from None
     if not answer:

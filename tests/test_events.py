@@ -307,7 +307,7 @@ def test_calendar_file_has_no_online_link_and_correct_times(app, client):
 
 def test_clubi_knows_the_meeting_but_no_emails(app, client, monkeypatch):
     seen = []
-    monkeypatch.setattr(llm, "complete", lambda system, user, max_tokens=900, timeout=30: seen.append(user) or "ok")
+    monkeypatch.setattr(llm, "complete", lambda system, user, max_tokens=900, timeout=30, feature="": seen.append(user) or "ok")
     monkeypatch.setattr(assistant, "llm_enabled", lambda: True)
     event_id = _make_open(app, agenda="19:00 two short talks", audience="Founders", venue="Cafe Main")
     _member(app, "asker@example.com")

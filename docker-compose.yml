@@ -77,6 +77,29 @@ services:
       - uploads:/app/uploads
     restart: unless-stopped
 
+  # Ночной дамп базы (03:00 UTC) в ./backups, по воскресеньям с проверкой восстановления. Порты не публикует.
+  # Работает от root внутри контейнера: bind-каталог на сервере принадлежит root; доступ к db только по внутренней сети.
+  # Копию на другой компьютер забирает deploy/backup/pull-backups.sh.
+  backup:
+    image: pgvector/pgvector:pg16
+    entrypoint: ["sh", "/backup/run.sh"]
+    environment:
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      BACKUP_KEEP_DAYS: ${BACKUP_KEEP_DAYS:-14}
+    volumes:
+      - ./deploy/backup:/backup:ro
+      - ./backups:/backups
+    depends_on:
+      db:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "find /backups/.last_ok -mmin -1800 | grep -q ."]
+      interval: 1h
+      timeout: 10s
+      retries: 1
+      start_period: 10m
+    restart: unless-stopped
+
   caddy:
     image: caddy:2.8.4-alpine
     restart: unless-stopped

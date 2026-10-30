@@ -335,7 +335,7 @@ def test_report_reaches_admin_who_can_close_the_club(app, client):
 
 def test_clubi_knows_the_group_and_the_boundaries(app, client, monkeypatch):
     seen = []
-    monkeypatch.setattr(llm, "complete", lambda system, user, max_tokens=900, timeout=30: seen.append(user) or "ok")
+    monkeypatch.setattr(llm, "complete", lambda system, user, max_tokens=900, timeout=30, feature="": seen.append(user) or "ok")
     monkeypatch.setattr(assistant, "llm_enabled", lambda: True)
     club_id = _open_club(app, rules="Pünktlich sein", schedule="Dienstags 19 Uhr")
     _member(app, "asker@example.com")

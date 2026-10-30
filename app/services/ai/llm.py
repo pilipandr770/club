@@ -7,6 +7,7 @@ Ollama, llama.cpp, vLLM и любой сервер с API в стиле OpenAI �
 
 from flask import current_app
 
+from . import usage
 from .http import AIUnavailable, post_json
 
 ANTHROPIC_URL = "https://api.anthropic.com/v1/messages"
@@ -29,10 +30,23 @@ def _key(cfg, name: str) -> str:
     return cfg.get(f"{name.upper()}_API_KEY", "") or ""
 
 
-def complete(system: str, user: str, max_tokens: int = 900, timeout: int = 30) -> str:
+def complete(system: str, user: str, max_tokens: int = 900, timeout: int = 30, feature: str = "other") -> str:
+    """Ответ модели. feature — для учёта расхода и лимитов (services/ai/usage.py)."""
     provider, model, cfg = _settings()
     if provider == "none":
         raise AIUnavailable("disabled")
+    usage.check_budget(feature)
+    try:
+        text, tokens_in, tokens_out = _call(provider, model, cfg, system, user, max_tokens, timeout)
+    except AIUnavailable as exc:
+        usage.record_failure(feature, model, exc)
+        raise
+    usage.record(feature, model, tokens_in, tokens_out)
+    return text
+
+
+def _call(provider, model, cfg, system, user, max_tokens, timeout):
+    """(текст, токенов на входе, токенов на выходе)."""
 
     if provider == "anthropic":
         key = _key(cfg, "anthropic")
@@ -49,7 +63,9 @@ def complete(system: str, user: str, max_tokens: int = 900, timeout: int = 30) -
             if str(exc) != "http_400":  # модель не знает параметр thinking: повторяем без него
                 raise
             data = post_json(ANTHROPIC_URL, headers, body, timeout)
-        return "".join(block.get("text", "") for block in data.get("content", []) if block.get("type") == "text")
+        used = data.get("usage") or {}
+        return ("".join(block.get("text", "") for block in data.get("content", []) if block.get("type") == "text"),
+                used.get("input_tokens", 0), used.get("output_tokens", 0))
 
     if provider == "google":
         key = _key(cfg, "google")
@@ -62,7 +78,9 @@ def complete(system: str, user: str, max_tokens: int = 900, timeout: int = 30) -
         }, timeout)
         candidates = data.get("candidates") or []
         parts = (candidates[0].get("content") or {}).get("parts", []) if candidates else []
-        return "".join(part.get("text", "") for part in parts)
+        used = data.get("usageMetadata") or {}
+        return ("".join(part.get("text", "") for part in parts),
+                used.get("promptTokenCount", 0), used.get("candidatesTokenCount", 0))
 
     # openai, mistral и openai_compatible говорят одним форматом chat/completions
     base, key = _openai_style_base(provider, cfg)
@@ -74,7 +92,9 @@ def complete(system: str, user: str, max_tokens: int = 900, timeout: int = 30) -
         token_field: max_tokens,
     }, timeout)
     choices = data.get("choices") or []
-    return ((choices[0].get("message") or {}).get("content") or "") if choices else ""
+    used = data.get("usage") or {}
+    return (((choices[0].get("message") or {}).get("content") or "") if choices else "",
+            used.get("prompt_tokens", 0), used.get("completion_tokens", 0))
 
 
 def _openai_style_base(provider: str, cfg):

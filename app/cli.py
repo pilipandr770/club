@@ -120,7 +120,7 @@ def ai_check_command():
     for key, value in status().items():
         click.echo(f"{key:<20} {value}")
     try:
-        answer = ask("Reply with one word.", "Say ok.", max_tokens=16)
+        answer = ask("Reply with one word.", "Say ok.", max_tokens=16, feature="check")
         click.echo(f"LLM-Antwort: {answer.strip()[:40] or '(leer)'}")
     except AIUnavailable as exc:
         click.echo(f"LLM: nicht verfügbar ({exc})")

@@ -13,7 +13,8 @@
   <a href="{{ url_for('admin.miniclubs') }}">{{ _("Mini-Clubs") }}</a> ·
   <a href="{{ url_for('admin.services_admin') }}">{{ _("Services") }}</a> ·
   <a href="{{ url_for('admin.audit_log') }}">{{ _("Audit log") }}</a>
-  <a href="{{ url_for('admin.analytics_view') }}">{{ _("Visitor statistics") }}</a>
+  <a href="{{ url_for('admin.analytics_view') }}">{{ _("Visitor statistics") }}</a> ·
+  <a href="{{ url_for('admin.ai_usage_view') }}">{{ _("AI usage") }}</a>
 </nav>
 
 <section class="card">
@@ -60,6 +61,7 @@
   <ul class="module-list">
     <li>{{ _("Language model") }}: {{ ai.llm_provider }} · {{ ai.llm_model }} · {% if ai.llm_enabled %}{{ _("on") }}{% else %}{{ _("off") }}{% endif %}</li>
     <li>{{ _("Embeddings") }}: {{ ai.embedding_name }}</li>
+    <li><a href="{{ url_for('admin.ai_usage_view') }}">{{ _("AI usage") }}</a>: {{ _("today") }} {{ "{:,}".format(ai_summary.today.tokens) }} · {{ _("this month") }} {{ "{:,}".format(ai_summary.month.tokens) }}{% if ai_summary.blocked %} · <strong>{{ _("limit reached, AI answers are paused") }}</strong>{% endif %}</li>
   </ul>
   <p class="small">{{ _("Models are set in the server settings. Changing them does not need a code change.") }}</p>
 </section>

@@ -96,6 +96,13 @@ class Config:
     OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY", "")
     GOOGLE_API_KEY = os.environ.get("GOOGLE_API_KEY", "")
     MISTRAL_API_KEY = os.environ.get("MISTRAL_API_KEY", "")
+    # Предохранитель расходов на ИИ: токены языковых моделей (вход + выход) в сутки и в месяц, 0 = без лимита.
+    # При исчерпании ИИ-функции отвечают запасным шаблоном, а в админке виден красный блок. Цены в USD за 1 млн токенов.
+    AI_DAILY_TOKEN_BUDGET = int(os.environ.get("AI_DAILY_TOKEN_BUDGET", "3000000"))
+    AI_MONTHLY_TOKEN_BUDGET = int(os.environ.get("AI_MONTHLY_TOKEN_BUDGET", "40000000"))
+    AI_PUBLIC_DAILY_TOKENS = int(os.environ.get("AI_PUBLIC_DAILY_TOKENS", "1500000"))  # публичный чат на лендинге
+    AI_PRICE_IN_PER_M_USD = float(os.environ.get("AI_PRICE_IN_PER_M_USD", "0.10"))
+    AI_PRICE_OUT_PER_M_USD = float(os.environ.get("AI_PRICE_OUT_PER_M_USD", "0.50"))
     # Голосовой ввод Clubi: порядок провайдеров и модели распознавания речи
     # Анонимная статистика посещений публичных страниц (без cookie и без хранения IP)
     ANALYTICS_ENABLED = os.environ.get("ANALYTICS_ENABLED", "1") == "1"

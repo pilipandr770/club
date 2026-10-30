@@ -8,3 +8,4 @@ uploads/*
 .DS_Store
 stripe_listen.log
 .local/
+backups/

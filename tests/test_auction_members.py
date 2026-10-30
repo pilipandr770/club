@@ -382,7 +382,7 @@ def test_seller_can_withdraw_only_without_bids(app, client):
 
 def test_clubi_knows_the_lot_but_not_the_reserve_amount(app, client, monkeypatch):
     seen = []
-    monkeypatch.setattr(llm, "complete", lambda system, user, max_tokens=900, timeout=30: seen.append(user) or "ok")
+    monkeypatch.setattr(llm, "complete", lambda system, user, max_tokens=900, timeout=30, feature="": seen.append(user) or "ok")
     monkeypatch.setattr(assistant, "llm_enabled", lambda: True)
     seller_id = _premium(app, "seller@example.com")
     _premium(app, "asker@example.com")

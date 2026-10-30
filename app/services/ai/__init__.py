@@ -13,8 +13,8 @@ from .http import AIUnavailable
 __all__ = ["AIUnavailable", "ask", "embed_provider", "get_embedder", "llm_enabled", "status"]
 
 
-def ask(system: str, user: str, max_tokens: int = 900) -> str:
-    return llm.complete(system, user, max_tokens=max_tokens)
+def ask(system: str, user: str, max_tokens: int = 900, feature: str = "matching") -> str:
+    return llm.complete(system, user, max_tokens=max_tokens, feature=feature)
 
 
 def get_embedder():

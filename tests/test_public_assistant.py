@@ -10,7 +10,7 @@ from tests.conftest import login, make_user
 def fake_llm(monkeypatch):
     calls = []
 
-    def fake_complete(system, user, max_tokens=900, timeout=30):
+    def fake_complete(system, user, max_tokens=900, timeout=30, feature=""):
         calls.append({"system": system, "user": user, "max_tokens": max_tokens})
         return "Der Club verbindet verifizierte Mitglieder. Werde Mitglied!"
     monkeypatch.setattr(public_assistant.llm, "complete", fake_complete)

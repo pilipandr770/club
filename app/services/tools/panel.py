@@ -92,7 +92,7 @@ def ask_persona(persona: pp.Persona, run: dict, price: float | None) -> dict | N
             '"1 Satz: was müsste sich ändern, damit du kaufst"}\nIn Textwerten keine doppelten Anführungszeichen.')
     for _ in (1, 2):
         try:
-            raw = llm.complete(SYSTEM + (" Write all free-text answers in Russian; keep JSON keys and enum codes unchanged." if str(get_locale()) == "ru" else ""), user, max_tokens=500, timeout=45)
+            raw = llm.complete(SYSTEM + (" Write all free-text answers in Russian; keep JSON keys and enum codes unchanged." if str(get_locale()) == "ru" else ""), user, max_tokens=500, timeout=45, feature="panel")
         except AIUnavailable:
             return None
         ans = parse_answers(raw)

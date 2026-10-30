@@ -14,6 +14,7 @@ from ...services import events as event_service
 from ...services import miniclubs as miniclub_service
 from ...services import travel as travel_service
 from ...services.ai import status as ai_status
+from ...services.ai import usage as ai_usage
 from ...services import startups as startup_service
 from ...services.auction_engine import (
     AuctionError,
@@ -65,6 +66,7 @@ def dashboard():
         lots_open=Lot.query.filter_by(status="open").count(),
         plans=PLANS,
         ai=ai_status(),
+        ai_summary=ai_usage.summary(),
         expiring=membership.expiring(14),
         expired_count=len(membership.expired()),
         waiting_count=len(membership.waiting_for_identity()),
@@ -72,6 +74,22 @@ def dashboard():
 
 
 ANALYTICS_PERIODS = (7, 30, 90)
+
+
+@bp.route("/ai")
+@admin_required
+def ai_usage_view():
+    """Расход ИИ: токены сегодня и за месяц против лимитов, разбивка по функциям, график по дням."""
+    from ...services.ai import usage
+
+    days = request.args.get("days", 30, type=int)
+    if days not in ANALYTICS_PERIODS:
+        days = 30
+    series = usage.daily(days)
+    peak_real = max([tokens for _day, tokens in series] + [0])
+    return render_template("admin/ai_usage.html", days=days, periods=ANALYTICS_PERIODS, summary=usage.summary(),
+                           rows=usage.by_feature(days), series=series, peak=max(peak_real, 1), peak_real=peak_real,
+                           ai=ai_status())
 
 
 @bp.route("/analytics")

@@ -12,6 +12,7 @@ import re
 
 from flask import current_app
 
+from . import usage
 from .http import AIUnavailable, post_json
 
 OPENAI_URL = "https://api.openai.com/v1"
@@ -68,6 +69,7 @@ class RemoteEmbedder:
         vectors = [item.get("embedding") for item in items]
         if len(vectors) != len(texts) or not all(vectors):
             raise AIUnavailable("bad_embedding_response")
+        usage.record("embeddings", self.name, (data.get("usage") or {}).get("prompt_tokens", 0))
         return vectors
 
     def _google(self, texts):

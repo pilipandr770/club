@@ -154,7 +154,7 @@ def test_other_member_cannot_edit_trip(app, client):
 
 def test_clubi_sees_whole_trip_card_but_no_emails(app, client, monkeypatch):
     seen = []
-    monkeypatch.setattr(llm, "complete", lambda system, user, max_tokens=900, timeout=30: seen.append(user) or "ok")
+    monkeypatch.setattr(llm, "complete", lambda system, user, max_tokens=900, timeout=30, feature="": seen.append(user) or "ok")
     monkeypatch.setattr(assistant, "llm_enabled", lambda: True)
     make_user(app, email="org@example.com", verified=True, plan="starter")
     login(client, "org@example.com")
