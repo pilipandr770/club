@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+
+{% block title %}{{ _("Invitations") }} · {{ _("Admin") }}{% endblock %}
+
+{% block content %}
+<h1>{{ _("Invitations") }}</h1>
+<p class="muted">{{ _("With an invitation you vouch for a person you know. They register without the identity check with Stripe, and you can add a paid plan. Every invitation is written to the audit log.") }}</p>
+<p><a href="{{ url_for('admin.dashboard') }}">{{ _("Back to admin") }}</a></p>
+
+<form method="post" action="{{ url_for('admin.invites_view') }}" class="form card">
+  <h2>{{ _("New invitation") }}</h2>
+  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+  <div class="field">
+    <label for="inv-note">{{ _("Who is this person and how do you know them?") }}</label>
+    <input id="inv-note" name="note" type="text" maxlength="300" required placeholder="{{ _('For example: Max, business partner since 2019') }}">
+    <p class="small">{{ _("This note is saved as the reason for the identity confirmation.") }}</p>
+  </div>
+  <div class="field">
+    <label for="inv-email">{{ _("E-mail (optional)") }}</label>
+    <input id="inv-email" name="email" type="email" maxlength="255">
+    <p class="small">{{ _("If you enter it, only this address can use the invitation.") }}</p>
+  </div>
+  <div class="field">
+    <label for="inv-plan">{{ _("Plan") }}</label>
+    <select id="inv-plan" name="plan">
+      <option value="guest">{{ _("No paid plan") }}</option>
+      {% for key, plan in plans.items() if key != "guest" %}
+        <option value="{{ key }}">{{ plan.name }}</option>
+      {% endfor %}
+    </select>
+  </div>
+  <div class="field">
+    <label for="inv-months">{{ _("Paid for") }}</label>
+    <select id="inv-months" name="months">
+      {% for count in month_choices %}
+        <option value="{{ count }}" {% if count == 6 %}selected{% endif %}>{{ ngettext("%(num)d month", "%(num)d months", count) }}</option>
+      {% endfor %}
+    </select>
+    <p class="small">{{ _("Used only if you choose a plan above.") }}</p>
+  </div>
+  <div class="field">
+    <label for="inv-uses">{{ _("How many people can use it") }}</label>
+    <input id="inv-uses" name="max_uses" type="number" min="1" max="{{ max_uses }}" value="1">
+  </div>
+  <div class="field">
+    <label for="inv-days">{{ _("Valid for") }}</label>
+    <select id="inv-days" name="days">
+      {% for count in valid_days %}
+        <option value="{{ count }}" {% if count == 30 %}selected{% endif %}>{{ ngettext("%(num)d day", "%(num)d days", count) }}</option>
+      {% endfor %}
+    </select>
+  </div>
+  <button type="submit" class="button">{{ _("Create invitation") }}</button>
+</form>
+
+<section class="card">
+  <h2>{{ _("Your invitations") }}</h2>
+  <table class="table">
+    <thead>
+      <tr><th>{{ _("Person") }}</th><th>{{ _("Status") }}</th><th>{{ _("Link") }}</th><th>{{ _("Registered") }}</th><th></th></tr>
+    </thead>
+    <tbody>
+      {% for invite, link in rows %}
+        {% set current = state(invite) %}
+        <tr>
+          <td>{{ invite.note }}{% if invite.email %}<br><span class="small muted">{{ invite.email }}</span>{% endif %}
+            {% if invite.plan != "guest" %}<br><span class="small muted">{{ plans[invite.plan].name if invite.plan in plans else invite.plan }} · {{ ngettext("%(num)d month", "%(num)d months", invite.months) }}</span>{% endif %}</td>
+          <td>
+            {% if current == "active" %}{{ _("open") }} ({{ invite.uses }}/{{ invite.max_uses }}){% elif current == "used" %}{{ _("used") }}{% elif current == "expired" %}{{ _("expired") }}{% else %}{{ _("revoked") }}{% endif %}
+            <br><span class="small muted">{{ _("until") }} {{ invite.expires_at.strftime('%d.%m.%Y') }}</span>
+          </td>
+          <td>{% if current == "active" %}<input type="text" readonly value="{{ link }}" aria-label="{{ _('Invitation link') }}" size="28">{% else %}–{% endif %}</td>
+          <td>{% for member in joined.get(invite.id, []) %}<a href="{{ url_for('admin.user_detail', user_id=member.id) }}">{{ member.email }}</a>{% if not loop.last %}<br>{% endif %}{% else %}–{% endfor %}</td>
+          <td>
+            {% if current == "active" %}
+            <form method="post" action="{{ url_for('admin.revoke_invite', invite_id=invite.id) }}">
+              <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+              <button type="submit" class="button button-secondary">{{ _("Revoke") }}</button>
+            </form>
+            {% endif %}
+          </td>
+        </tr>
+      {% else %}
+        <tr><td colspan="5" class="muted">{{ _("No invitations yet.") }}</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</section>
+{% endblock %}

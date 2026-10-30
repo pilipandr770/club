@@ -55,7 +55,7 @@ class Config:
 
     # Версия текстов согласий (записывается в каждое согласие)
     # Версия текстов (Datenschutz, Nutzungsbedingungen): пишется в каждое согласие; меняем при изменении текстов
-    CONSENT_VERSION = "2026-10-30"
+    CONSENT_VERSION = "2026-10-30.2"
     LEGAL_UPDATED = "30.10.2026"
     # Данные для Impressum и Datenschutz. После создания компании меняются в .env, код трогать не нужно
     LEGAL_NAME = os.environ.get("LEGAL_NAME", "Andrii Pylypchuk")

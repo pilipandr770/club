@@ -1,7 +1,8 @@
 from functools import wraps
 
-from flask import Blueprint, abort, flash, redirect, render_template, request, url_for
+from flask import Blueprint, abort, current_app, flash, redirect, render_template, request, url_for
 from flask_babel import gettext as _
+from flask_babel import lazy_gettext as _l
 from flask_login import current_user, login_required
 
 from config.plans import PLANS
@@ -559,6 +560,57 @@ def end_plan(user_id):
     note = request.form.get("note", "")
     return _run_membership(user_id, lambda u: membership.end_plan(current_user, u, note),
                            _("The plan is ended. The member is back on Guest."))
+
+
+INVITE_ERRORS = {
+    "note_required": _l("Please write who this person is and how you know them (at least 5 characters)."),
+    "email": _l("Please enter a valid e-mail address or leave the field empty."),
+    "plan": _l("Please choose a plan together with the paid period."),
+    "limits": _l("Please choose the number of uses and the validity from the lists."),
+}
+
+
+@bp.route("/invites", methods=["GET", "POST"])
+@admin_required
+def invites_view():
+    """Приглашения: создать ссылку, ручаясь за человека, и видеть, кто по ней пришёл."""
+    from ...models import Invite
+    from ...services import invites as invite_service
+
+    if request.method == "POST":
+        try:
+            invite_service.create(
+                current_user, request.form.get("note", ""), request.form.get("email", ""),
+                request.form.get("plan", "guest"), request.form.get("months", 0, type=int),
+                request.form.get("max_uses", 1, type=int), request.form.get("days", 30, type=int))
+        except invite_service.InviteError as exc:
+            flash(str(INVITE_ERRORS.get(exc.code, _l("The invitation could not be created."))), "error")
+        else:
+            db.session.commit()
+            flash(_("The invitation is ready. Copy the link below and send it to the person."), "success")
+        return redirect(url_for("admin.invites_view"))
+    rows = Invite.query.order_by(Invite.created_at.desc()).limit(100).all()
+    joined = {}
+    for member in User.query.filter(User.invite_id.in_([row.id for row in rows] or [0])).all():
+        joined.setdefault(member.invite_id, []).append(member)
+    base = current_app.config["BASE_URL"].rstrip("/")
+    return render_template(
+        "admin/invites.html", plans=PLANS, month_choices=MONTH_CHOICES, valid_days=invite_service.VALID_DAYS,
+        max_uses=invite_service.MAX_USES, state=invite_service.state, joined=joined,
+        rows=[(row, f"{base}{url_for('auth.join', code=row.code)}") for row in rows])
+
+
+@bp.route("/invites/<int:invite_id>/revoke", methods=["POST"])
+@admin_required
+def revoke_invite(invite_id):
+    from ...models import Invite
+    from ...services import invites as invite_service
+
+    invite = db.get_or_404(Invite, invite_id)
+    invite_service.revoke(current_user, invite)
+    db.session.commit()
+    flash(_("The invitation is revoked. Its link no longer works."), "success")
+    return redirect(url_for("admin.invites_view"))
 
 
 SERVICE_FIELDS = ("title", "summary", "description", "benefits", "member_benefit", "price_hint",

@@ -7,16 +7,22 @@
 {% block content %}
 <div class="card auth-card">
 <h1>{{ _("Create an account") }}</h1>
+{% if invite %}
+<p class="flash flash-success">{{ _("You are invited by a club member who vouches for you. You do not need the identity check with Stripe.") }}</p>
+{% else %}
 <p class="muted">{{ _("Every account needs an identity check before you can use the club. The check is done by Stripe, we do not store your documents.") }}</p>
+{% endif %}
+{% if errors.invite %}<p class="error">{{ errors.invite }}</p>{% endif %}
 <ol class="registration-steps" aria-label="{{ _('How the club works') }}">
   <li aria-current="step">{{ _("Create an account") }}</li>
   <li>{{ _("Confirm your e-mail") }}</li>
-  <li>{{ _("Confirm your identity") }}</li>
+  {% if not invite %}<li>{{ _("Confirm your identity") }}</li>{% endif %}
   <li>{{ _("Find matches") }}</li>
 </ol>
 
 <form method="post" action="{{ url_for('auth.register') }}" class="form">
   <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+  {% if invite %}<input type="hidden" name="invite" value="{{ form.get('invite', '') }}">{% endif %}
 
   <div class="field {% if errors.first_name %}field-error{% endif %}">
     <label for="first_name">{{ _("First name") }}</label>
@@ -70,11 +76,13 @@
     </label>
     {% if errors.consent_terms %}<p class="error">{{ errors.consent_terms }}</p>{% endif %}
 
+    {% if not invite %}
     <label class="check {% if errors.consent_identity %}field-error{% endif %}">
       <input type="checkbox" name="consent_identity" value="1" {% if form.get('consent_identity') %}checked{% endif %}>
       {{ _("I expressly agree that Stripe checks my identity document and a selfie, including facial features (biometric data). Stripe processes this data, the club only receives the result. I can withdraw this agreement and ask for the manual check instead.") }}
     </label>
     {% if errors.consent_identity %}<p class="error">{{ errors.consent_identity }}</p>{% endif %}
+    {% endif %}
   </fieldset>
 
   <p class="small">{{ _("Membership is for people aged 18 and over.") }}</p>

@@ -64,6 +64,8 @@
 <section class="journey card" aria-labelledby="journey-title">
   <p class="eyebrow">{{ _("Your next connection starts here") }}</p>
   <h2 id="journey-title">{{ _("From your profile to a useful conversation") }}</h2>
+  <p class="small"><label for="profile-progress">{{ _("Profile completeness") }}: {{ profile_percent }} %</label>
+    <progress id="profile-progress" max="100" value="{{ profile_percent }}">{{ profile_percent }} %</progress></p>
   <ol class="journey-steps">
     <li><a href="{{ url_for('profile.edit') }}">{{ _("Describe your offer and your goal") }}</a><p>{{ _("One concrete need and one way you can help are enough to start.") }}</p></li>
     <li><a href="{{ url_for('profile.privacy') }}">{{ _("Choose your visibility") }}</a><p>{{ _("Directory visibility and matching are separate, optional choices.") }}</p></li>

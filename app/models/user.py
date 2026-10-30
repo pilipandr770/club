@@ -60,6 +60,10 @@ class User(UserMixin, db.Model):
     # Оплаченный срок тарифа: None — без ограничения срока; после даты действует гостевой тариф
     paid_until: Mapped[datetime | None] = mapped_column(DateTime)
     payment_note: Mapped[str | None] = mapped_column(String(300))
+    # Приглашение, по которому пришёл участник, и время единственного напоминания о заполнении профиля
+    invite_id: Mapped[int | None] = mapped_column(
+        ForeignKey("invites.id", ondelete="SET NULL", use_alter=True, name="fk_users_invite_id_invites"))
+    onboarding_nudged_at: Mapped[datetime | None] = mapped_column(DateTime)
 
     created_at: Mapped[datetime] = mapped_column(DateTime, default=utcnow)
     last_login_at: Mapped[datetime | None] = mapped_column(DateTime)

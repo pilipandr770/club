@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-10-30 09:05+0000\n"
+"POT-Creation-Date: 2026-10-30 10:00+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2218,94 +2218,94 @@ msgid ""
 "questions about the trip."
 msgstr ""
 
-#: app/blueprints/admin/__init__.py:205
+#: app/blueprints/admin/__init__.py:206
 msgid "Changes are saved."
 msgstr ""
 
-#: app/blueprints/admin/__init__.py:207 app/blueprints/admin/__init__.py:407
-#: app/blueprints/admin/__init__.py:437
+#: app/blueprints/admin/__init__.py:208 app/blueprints/admin/__init__.py:408
+#: app/blueprints/admin/__init__.py:438
 msgid "Nothing has changed."
 msgstr ""
 
-#: app/blueprints/admin/__init__.py:228
+#: app/blueprints/admin/__init__.py:229
 #, python-format
 msgid "Please check the lot fields: %(fields)s"
 msgstr ""
 
-#: app/blueprints/admin/__init__.py:232
+#: app/blueprints/admin/__init__.py:233
 msgid "The lot is created."
 msgstr ""
 
-#: app/blueprints/admin/__init__.py:246
+#: app/blueprints/admin/__init__.py:247
 msgid "The lot is published."
 msgstr ""
 
-#: app/blueprints/admin/__init__.py:249
+#: app/blueprints/admin/__init__.py:250
 msgid "The lot is rejected."
 msgstr ""
 
-#: app/blueprints/admin/__init__.py:253 app/modules/auction/__init__.py:64
+#: app/blueprints/admin/__init__.py:254 app/modules/auction/__init__.py:64
 msgid "This lot is not waiting for review."
 msgstr ""
 
-#: app/blueprints/admin/__init__.py:263
+#: app/blueprints/admin/__init__.py:264
 msgid "The lot is closed."
 msgstr ""
 
-#: app/blueprints/admin/__init__.py:327
+#: app/blueprints/admin/__init__.py:328
 msgid "The meeting is published."
 msgstr ""
 
-#: app/blueprints/admin/__init__.py:330
+#: app/blueprints/admin/__init__.py:331
 msgid "The meeting is rejected."
 msgstr ""
 
-#: app/blueprints/admin/__init__.py:334
+#: app/blueprints/admin/__init__.py:335
 msgid "This meeting is not waiting for review."
 msgstr ""
 
-#: app/blueprints/admin/__init__.py:361
+#: app/blueprints/admin/__init__.py:362
 msgid "The mini-club is published."
 msgstr ""
 
-#: app/blueprints/admin/__init__.py:364 app/modules/miniclubs/__init__.py:305
+#: app/blueprints/admin/__init__.py:365 app/modules/miniclubs/__init__.py:305
 msgid "The mini-club is closed."
 msgstr ""
 
-#: app/blueprints/admin/__init__.py:367
+#: app/blueprints/admin/__init__.py:368
 msgid "The mini-club is rejected."
 msgstr ""
 
-#: app/blueprints/admin/__init__.py:371
+#: app/blueprints/admin/__init__.py:372
 msgid "This mini-club is not waiting for review."
 msgstr ""
 
-#: app/blueprints/admin/__init__.py:402
+#: app/blueprints/admin/__init__.py:403
 msgid "The startup is published."
 msgstr ""
 
-#: app/blueprints/admin/__init__.py:405
+#: app/blueprints/admin/__init__.py:406
 msgid "The startup is rejected."
 msgstr ""
 
-#: app/blueprints/admin/__init__.py:432
+#: app/blueprints/admin/__init__.py:433
 msgid "The offer is published."
 msgstr ""
 
-#: app/blueprints/admin/__init__.py:435
+#: app/blueprints/admin/__init__.py:436
 msgid "The offer is rejected."
 msgstr ""
 
-#: app/blueprints/admin/__init__.py:497
+#: app/blueprints/admin/__init__.py:498
 #, python-format
 msgid "Participant created. Temporary password (shown once): %(password)s"
 msgstr ""
 
-#: app/blueprints/admin/__init__.py:499
+#: app/blueprints/admin/__init__.py:500
 msgid "Participant created."
 msgstr ""
 
-#: app/blueprints/admin/__init__.py:501 app/modules/auction/__init__.py:227
+#: app/blueprints/admin/__init__.py:502 app/modules/auction/__init__.py:227
 #: app/modules/auction/__init__.py:253 app/modules/events/__init__.py:131
 #: app/modules/events/__init__.py:158 app/modules/miniclubs/__init__.py:135
 #: app/modules/miniclubs/__init__.py:162 app/modules/profile/__init__.py:73
@@ -2315,25 +2315,25 @@ msgstr ""
 msgid "Please check these fields: %(fields)s"
 msgstr ""
 
-#: app/blueprints/admin/__init__.py:509
+#: app/blueprints/admin/__init__.py:510
 msgid ""
 "Please write a short note: how you know this person or how the payment "
 "arrived."
 msgstr ""
 
-#: app/blueprints/admin/__init__.py:510
+#: app/blueprints/admin/__init__.py:511
 msgid "You cannot do this for your own account. Ask another administrator."
 msgstr ""
 
-#: app/blueprints/admin/__init__.py:511
+#: app/blueprints/admin/__init__.py:512
 msgid "Please choose a paid plan."
 msgstr ""
 
-#: app/blueprints/admin/__init__.py:512
+#: app/blueprints/admin/__init__.py:513
 msgid "Please choose the number of months."
 msgstr ""
 
-#: app/blueprints/admin/__init__.py:513 app/blueprints/assistant/__init__.py:24
+#: app/blueprints/admin/__init__.py:514 app/blueprints/assistant/__init__.py:24
 #: app/modules/events/__init__.py:51 app/modules/miniclubs/__init__.py:53
 #: app/modules/profile/__init__.py:240 app/modules/services/__init__.py:18
 #: app/modules/startups/__init__.py:35 app/modules/travel/__init__.py:44
@@ -2342,31 +2342,61 @@ msgstr ""
 msgid "Something went wrong. Please try again."
 msgstr ""
 
-#: app/blueprints/admin/__init__.py:534
+#: app/blueprints/admin/__init__.py:535
 msgid "The identity check is marked as verified."
 msgstr ""
 
-#: app/blueprints/admin/__init__.py:542
+#: app/blueprints/admin/__init__.py:543
 msgid "The identity confirmation is withdrawn."
 msgstr ""
 
-#: app/blueprints/admin/__init__.py:553
+#: app/blueprints/admin/__init__.py:554
 msgid "The plan is activated."
 msgstr ""
 
-#: app/blueprints/admin/__init__.py:561
+#: app/blueprints/admin/__init__.py:562
 msgid "The plan is ended. The member is back on Guest."
 msgstr ""
 
-#: app/blueprints/admin/__init__.py:600
+#: app/blueprints/admin/__init__.py:566
+msgid ""
+"Please write who this person is and how you know them (at least 5 "
+"characters)."
+msgstr ""
+
+#: app/blueprints/admin/__init__.py:567
+msgid "Please enter a valid e-mail address or leave the field empty."
+msgstr ""
+
+#: app/blueprints/admin/__init__.py:568
+msgid "Please choose a plan together with the paid period."
+msgstr ""
+
+#: app/blueprints/admin/__init__.py:569
+msgid "Please choose the number of uses and the validity from the lists."
+msgstr ""
+
+#: app/blueprints/admin/__init__.py:587
+msgid "The invitation could not be created."
+msgstr ""
+
+#: app/blueprints/admin/__init__.py:590
+msgid "The invitation is ready. Copy the link below and send it to the person."
+msgstr ""
+
+#: app/blueprints/admin/__init__.py:612
+msgid "The invitation is revoked. Its link no longer works."
+msgstr ""
+
+#: app/blueprints/admin/__init__.py:652
 msgid "Please enter a title."
 msgstr ""
 
-#: app/blueprints/admin/__init__.py:604
+#: app/blueprints/admin/__init__.py:656
 msgid "The service is saved."
 msgstr ""
 
-#: app/blueprints/admin/__init__.py:631
+#: app/blueprints/admin/__init__.py:683
 msgid "Unknown status."
 msgstr ""
 
@@ -2406,89 +2436,97 @@ msgstr ""
 msgid "I could not hear anything. Please try again."
 msgstr ""
 
-#: app/blueprints/auth/__init__.py:27
+#: app/blueprints/auth/__init__.py:28
 msgid "Please confirm your e-mail address"
 msgstr ""
 
-#: app/blueprints/auth/__init__.py:28
+#: app/blueprints/auth/__init__.py:29
 msgid "Please open this link to confirm your e-mail address:"
 msgstr ""
 
-#: app/blueprints/auth/__init__.py:52
-msgid "Please enter your first name."
-msgstr ""
-
-#: app/blueprints/auth/__init__.py:54
-msgid "Please enter a valid e-mail address."
-msgstr ""
-
-#: app/blueprints/auth/__init__.py:56
-msgid "An account with this e-mail address already exists."
+#: app/blueprints/auth/__init__.py:50 app/blueprints/auth/__init__.py:109
+msgid "This invitation is no longer valid. You can still register without it."
 msgstr ""
 
 #: app/blueprints/auth/__init__.py:58
-msgid "The password must be at least 10 characters long."
+msgid "Please enter your first name."
 msgstr ""
 
 #: app/blueprints/auth/__init__.py:60
-msgid "Please choose your country of residence."
+msgid "Please enter a valid e-mail address."
 msgstr ""
 
 #: app/blueprints/auth/__init__.py:62
+msgid "An account with this e-mail address already exists."
+msgstr ""
+
+#: app/blueprints/auth/__init__.py:64
+msgid "This invitation was issued for a different e-mail address."
+msgstr ""
+
+#: app/blueprints/auth/__init__.py:66
+msgid "The password must be at least 10 characters long."
+msgstr ""
+
+#: app/blueprints/auth/__init__.py:68
+msgid "Please choose your country of residence."
+msgstr ""
+
+#: app/blueprints/auth/__init__.py:70
 msgid "We cannot open an account for residents of this country."
 msgstr ""
 
-#: app/blueprints/auth/__init__.py:65
+#: app/blueprints/auth/__init__.py:74
 msgid "This confirmation is required to create an account."
 msgstr ""
 
-#: app/blueprints/auth/__init__.py:82
+#: app/blueprints/auth/__init__.py:95
 msgid "Welcome. Please confirm your e-mail address to continue."
 msgstr ""
 
-#: app/blueprints/auth/__init__.py:100
+#: app/blueprints/auth/__init__.py:126
 msgid "E-mail or password is not correct."
 msgstr ""
 
-#: app/blueprints/auth/__init__.py:102
+#: app/blueprints/auth/__init__.py:128
 msgid "This account is blocked. Please contact support."
 msgstr ""
 
-#: app/blueprints/auth/__init__.py:115
+#: app/blueprints/auth/__init__.py:141
 msgid "You have been logged out."
 msgstr ""
 
-#: app/blueprints/auth/__init__.py:123 app/blueprints/auth/__init__.py:128
+#: app/blueprints/auth/__init__.py:149 app/blueprints/auth/__init__.py:154
 msgid "The link is invalid or has expired. Please request a new one."
 msgstr ""
 
-#: app/blueprints/auth/__init__.py:135
+#: app/blueprints/auth/__init__.py:161
 msgid "Your e-mail address is confirmed."
 msgstr ""
 
-#: app/blueprints/member/__init__.py:50 app/blueprints/member/__init__.py:56
+#: app/blueprints/member/__init__.py:51 app/blueprints/member/__init__.py:57
 msgid "Verification cannot be started right now."
 msgstr ""
 
-#: app/blueprints/member/__init__.py:67
+#: app/blueprints/member/__init__.py:68
 msgid ""
 "We are checking your details. This can take a few minutes. The result "
 "appears here and we will not send it by e-mail."
 msgstr ""
 
-#: app/blueprints/member/__init__.py:80
+#: app/blueprints/member/__init__.py:81
 msgid "If your address is not yet confirmed, we have sent a new link."
 msgstr ""
 
-#: app/blueprints/member/__init__.py:102
+#: app/blueprints/member/__init__.py:103
 msgid "The password is not correct. Your account was not deleted."
 msgstr ""
 
-#: app/blueprints/member/__init__.py:110
+#: app/blueprints/member/__init__.py:111
 msgid "Your account could not be deleted right now. Please try again later."
 msgstr ""
 
-#: app/blueprints/member/__init__.py:114
+#: app/blueprints/member/__init__.py:115
 msgid "Your account and your data have been deleted."
 msgstr ""
 
@@ -3373,6 +3411,29 @@ msgid ""
 "Unfortunately the organiser of \"%(club)s\" could not accept your request"
 " this time.\n"
 "%(url)s"
+msgstr ""
+
+#: app/services/onboarding.py:35
+#, python-format
+msgid "Hello %(name)s,"
+msgstr ""
+
+#: app/services/onboarding.py:36
+msgid ""
+"Welcome to the club. Your profile is the base for good matches: one "
+"concrete need and one way you can help are enough to start."
+msgstr ""
+
+#: app/services/onboarding.py:37
+msgid "Please complete your profile here:"
+msgstr ""
+
+#: app/services/onboarding.py:38
+msgid "Matching and the member directory stay off until you choose them yourself."
+msgstr ""
+
+#: app/services/onboarding.py:39
+msgid "Two minutes for your profile"
 msgstr ""
 
 #: app/services/public_assistant.py:67
@@ -5105,8 +5166,8 @@ msgstr ""
 #: app/templates/admin/ai_usage.html:3 app/templates/admin/analytics.html:3
 #: app/templates/admin/audit.html:3 app/templates/admin/dashboard.html:3
 #: app/templates/admin/dashboard.html:6 app/templates/admin/events.html:3
-#: app/templates/admin/lots.html:3 app/templates/admin/miniclubs.html:3
-#: app/templates/admin/service_form.html:3
+#: app/templates/admin/invites.html:3 app/templates/admin/lots.html:3
+#: app/templates/admin/miniclubs.html:3 app/templates/admin/service_form.html:3
 #: app/templates/admin/service_inquiries.html:3
 #: app/templates/admin/services.html:3 app/templates/admin/startups.html:3
 #: app/templates/admin/travel.html:3 app/templates/admin/user_detail.html:3
@@ -5126,7 +5187,7 @@ msgid "Log out"
 msgstr ""
 
 #: app/templates/auth/login.html:3 app/templates/auth/login.html:9
-#: app/templates/auth/login.html:31 app/templates/auth/register.html:86
+#: app/templates/auth/login.html:31 app/templates/auth/register.html:94
 #: app/templates/base.html:31 app/templates/partials/public_assistant.html:40
 #: app/templates/public/index.html:18
 msgid "Log in"
@@ -5160,7 +5221,7 @@ msgid "Privacy notice"
 msgstr ""
 
 #: app/templates/admin/ai_usage.html:3 app/templates/admin/ai_usage.html:6
-#: app/templates/admin/dashboard.html:17 app/templates/admin/dashboard.html:64
+#: app/templates/admin/dashboard.html:17 app/templates/admin/dashboard.html:65
 msgid "AI usage"
 msgstr ""
 
@@ -5173,9 +5234,10 @@ msgstr ""
 
 #: app/templates/admin/ai_usage.html:8 app/templates/admin/analytics.html:8
 #: app/templates/admin/audit.html:7 app/templates/admin/events.html:7
-#: app/templates/admin/lots.html:7 app/templates/admin/miniclubs.html:7
-#: app/templates/admin/services.html:7 app/templates/admin/startups.html:7
-#: app/templates/admin/travel.html:7 app/templates/admin/users.html:7
+#: app/templates/admin/invites.html:8 app/templates/admin/lots.html:7
+#: app/templates/admin/miniclubs.html:7 app/templates/admin/services.html:7
+#: app/templates/admin/startups.html:7 app/templates/admin/travel.html:7
+#: app/templates/admin/users.html:7
 msgid "Back to admin"
 msgstr ""
 
@@ -5211,6 +5273,7 @@ msgid "Period"
 msgstr ""
 
 #: app/templates/admin/ai_usage.html:28 app/templates/admin/analytics.html:12
+#: app/templates/admin/invites.html:49
 #: app/templates/modules/auction_form.html:95
 #, python-format
 msgid "%(num)d day"
@@ -5295,6 +5358,7 @@ msgid "Opened the registration"
 msgstr ""
 
 #: app/templates/admin/analytics.html:21 app/templates/admin/analytics.html:30
+#: app/templates/admin/invites.html:60
 msgid "Registered"
 msgstr ""
 
@@ -5456,7 +5520,7 @@ msgstr ""
 msgid "The log is empty."
 msgstr ""
 
-#: app/templates/admin/dashboard.html:8 app/templates/admin/dashboard.html:21
+#: app/templates/admin/dashboard.html:8 app/templates/admin/dashboard.html:22
 #: app/templates/admin/users.html:3 app/templates/admin/users.html:6
 #: app/templates/modules/events_detail.html:138
 #: app/templates/modules/miniclubs_detail.html:59
@@ -5479,67 +5543,72 @@ msgstr ""
 msgid "Travel offers"
 msgstr ""
 
-#: app/templates/admin/dashboard.html:30
+#: app/templates/admin/dashboard.html:18 app/templates/admin/invites.html:3
+#: app/templates/admin/invites.html:6
+msgid "Invitations"
+msgstr ""
+
+#: app/templates/admin/dashboard.html:31
 msgid "Needs attention"
 msgstr ""
 
-#: app/templates/admin/dashboard.html:32 app/templates/admin/users.html:11
+#: app/templates/admin/dashboard.html:33 app/templates/admin/users.html:11
 msgid "Waiting for identity"
 msgstr ""
 
-#: app/templates/admin/dashboard.html:33 app/templates/admin/users.html:14
+#: app/templates/admin/dashboard.html:34 app/templates/admin/users.html:14
 msgid "Plan expired"
 msgstr ""
 
-#: app/templates/admin/dashboard.html:34 app/templates/admin/users.html:13
+#: app/templates/admin/dashboard.html:35 app/templates/admin/users.html:13
 msgid "Plan ending soon"
 msgstr ""
 
-#: app/templates/admin/dashboard.html:37
+#: app/templates/admin/dashboard.html:38
 msgid "Ending in the next 14 days"
 msgstr ""
 
-#: app/templates/admin/dashboard.html:47
+#: app/templates/admin/dashboard.html:48
 msgid "Identity checks"
 msgstr ""
 
-#: app/templates/admin/dashboard.html:56
+#: app/templates/admin/dashboard.html:57
 msgid "Open auction lots"
 msgstr ""
 
-#: app/templates/admin/dashboard.html:60
+#: app/templates/admin/dashboard.html:61
 msgid "AI models"
 msgstr ""
 
-#: app/templates/admin/dashboard.html:62
+#: app/templates/admin/dashboard.html:63
 msgid "Language model"
 msgstr ""
 
-#: app/templates/admin/dashboard.html:62
+#: app/templates/admin/dashboard.html:63
 msgid "on"
 msgstr ""
 
-#: app/templates/admin/dashboard.html:62
+#: app/templates/admin/dashboard.html:63
 msgid "off"
 msgstr ""
 
-#: app/templates/admin/dashboard.html:63
+#: app/templates/admin/dashboard.html:64
 msgid "Embeddings"
 msgstr ""
 
-#: app/templates/admin/dashboard.html:64
+#: app/templates/admin/dashboard.html:65
 msgid "today"
 msgstr ""
 
-#: app/templates/admin/dashboard.html:64
+#: app/templates/admin/dashboard.html:65
 msgid "this month"
 msgstr ""
 
-#: app/templates/admin/dashboard.html:64
+#: app/templates/admin/dashboard.html:65
 msgid "limit reached, AI answers are paused"
 msgstr ""
 
-#: app/templates/admin/dashboard.html:66
+#: app/templates/admin/dashboard.html:67
 msgid ""
 "Models are set in the server settings. Changing them does not need a code"
 " change."
@@ -5571,6 +5640,125 @@ msgstr ""
 #: app/templates/admin/events.html:37 app/templates/admin/miniclubs.html:69
 #: app/templates/admin/startups.html:35 app/templates/admin/travel.html:33
 msgid "Nothing here."
+msgstr ""
+
+#: app/templates/admin/invites.html:7
+msgid ""
+"With an invitation you vouch for a person you know. They register without"
+" the identity check with Stripe, and you can add a paid plan. Every "
+"invitation is written to the audit log."
+msgstr ""
+
+#: app/templates/admin/invites.html:11
+msgid "New invitation"
+msgstr ""
+
+#: app/templates/admin/invites.html:14
+msgid "Who is this person and how do you know them?"
+msgstr ""
+
+#: app/templates/admin/invites.html:15
+msgid "For example: Max, business partner since 2019"
+msgstr ""
+
+#: app/templates/admin/invites.html:16
+msgid "This note is saved as the reason for the identity confirmation."
+msgstr ""
+
+#: app/templates/admin/invites.html:19
+msgid "E-mail (optional)"
+msgstr ""
+
+#: app/templates/admin/invites.html:21
+msgid "If you enter it, only this address can use the invitation."
+msgstr ""
+
+#: app/templates/admin/invites.html:24 app/templates/admin/user_detail.html:62
+#: app/templates/admin/user_detail.html:99 app/templates/admin/user_new.html:34
+#: app/templates/admin/users.html:30
+msgid "Plan"
+msgstr ""
+
+#: app/templates/admin/invites.html:26
+msgid "No paid plan"
+msgstr ""
+
+#: app/templates/admin/invites.html:33 app/templates/admin/user_detail.html:70
+#: app/templates/admin/user_new.html:57
+msgid "Paid for"
+msgstr ""
+
+#: app/templates/admin/invites.html:36 app/templates/admin/invites.html:67
+#: app/templates/admin/user_detail.html:73 app/templates/admin/user_new.html:61
+#, python-format
+msgid "%(num)d month"
+msgid_plural "%(num)d months"
+msgstr[0] ""
+msgstr[1] ""
+
+#: app/templates/admin/invites.html:39
+msgid "Used only if you choose a plan above."
+msgstr ""
+
+#: app/templates/admin/invites.html:42
+msgid "How many people can use it"
+msgstr ""
+
+#: app/templates/admin/invites.html:46
+msgid "Valid for"
+msgstr ""
+
+#: app/templates/admin/invites.html:53
+msgid "Create invitation"
+msgstr ""
+
+#: app/templates/admin/invites.html:57
+msgid "Your invitations"
+msgstr ""
+
+#: app/templates/admin/invites.html:60
+msgid "Person"
+msgstr ""
+
+#: app/templates/admin/invites.html:60 app/templates/admin/lots.html:93
+#: app/templates/admin/users.html:33
+msgid "Status"
+msgstr ""
+
+#: app/templates/admin/invites.html:60
+msgid "Link"
+msgstr ""
+
+#: app/templates/admin/invites.html:69
+msgid "open"
+msgstr ""
+
+#: app/templates/admin/invites.html:69
+msgid "used"
+msgstr ""
+
+#: app/templates/admin/invites.html:69 app/templates/admin/user_detail.html:55
+msgid "expired"
+msgstr ""
+
+#: app/templates/admin/invites.html:69
+msgid "revoked"
+msgstr ""
+
+#: app/templates/admin/invites.html:70
+msgid "until"
+msgstr ""
+
+#: app/templates/admin/invites.html:72
+msgid "Invitation link"
+msgstr ""
+
+#: app/templates/admin/invites.html:78
+msgid "Revoke"
+msgstr ""
+
+#: app/templates/admin/invites.html:84
+msgid "No invitations yet."
 msgstr ""
 
 #: app/templates/admin/lots.html:12
@@ -5642,10 +5830,6 @@ msgstr ""
 
 #: app/templates/admin/lots.html:90 app/templates/modules/auction_mine.html:9
 msgid "All lots"
-msgstr ""
-
-#: app/templates/admin/lots.html:93 app/templates/admin/users.html:33
-msgid "Status"
 msgstr ""
 
 #: app/templates/admin/lots.html:93
@@ -5857,30 +6041,9 @@ msgstr ""
 msgid "paid until"
 msgstr ""
 
-#: app/templates/admin/user_detail.html:55
-msgid "expired"
-msgstr ""
-
 #: app/templates/admin/user_detail.html:56 app/templates/admin/users.html:41
 msgid "no end date"
 msgstr ""
-
-#: app/templates/admin/user_detail.html:62
-#: app/templates/admin/user_detail.html:99 app/templates/admin/user_new.html:34
-#: app/templates/admin/users.html:30
-msgid "Plan"
-msgstr ""
-
-#: app/templates/admin/user_detail.html:70 app/templates/admin/user_new.html:57
-msgid "Paid for"
-msgstr ""
-
-#: app/templates/admin/user_detail.html:73 app/templates/admin/user_new.html:61
-#, python-format
-msgid "%(num)d month"
-msgid_plural "%(num)d months"
-msgstr[0] ""
-msgstr[1] ""
 
 #: app/templates/admin/user_detail.html:78 app/templates/admin/user_new.html:66
 msgid "How the payment arrived"
@@ -5962,19 +6125,19 @@ msgid ""
 msgstr ""
 
 #: app/templates/admin/user_new.html:14 app/templates/admin/users.html:29
-#: app/templates/auth/login.html:17 app/templates/auth/register.html:33
+#: app/templates/auth/login.html:17 app/templates/auth/register.html:39
 msgid "E-mail"
 msgstr ""
 
-#: app/templates/admin/user_new.html:18 app/templates/auth/register.html:22
+#: app/templates/admin/user_new.html:18 app/templates/auth/register.html:28
 msgid "First name"
 msgstr ""
 
-#: app/templates/admin/user_new.html:22 app/templates/auth/register.html:28
+#: app/templates/admin/user_new.html:22 app/templates/auth/register.html:34
 msgid "Last name"
 msgstr ""
 
-#: app/templates/admin/user_new.html:26 app/templates/auth/register.html:46
+#: app/templates/admin/user_new.html:26 app/templates/auth/register.html:52
 msgid "Country of residence"
 msgstr ""
 
@@ -6048,7 +6211,7 @@ msgstr ""
 msgid "No members found."
 msgstr ""
 
-#: app/templates/auth/login.html:22 app/templates/auth/register.html:39
+#: app/templates/auth/login.html:22 app/templates/auth/register.html:45
 msgid "Password"
 msgstr ""
 
@@ -6060,66 +6223,72 @@ msgstr ""
 msgid "No account yet?"
 msgstr ""
 
-#: app/templates/auth/register.html:9 app/templates/auth/register.html:12
+#: app/templates/auth/register.html:9 app/templates/auth/register.html:17
 msgid "Create an account"
 msgstr ""
 
-#: app/templates/auth/register.html:10
+#: app/templates/auth/register.html:11
+msgid ""
+"You are invited by a club member who vouches for you. You do not need the"
+" identity check with Stripe."
+msgstr ""
+
+#: app/templates/auth/register.html:13
 msgid ""
 "Every account needs an identity check before you can use the club. The "
 "check is done by Stripe, we do not store your documents."
 msgstr ""
 
-#: app/templates/auth/register.html:11 app/templates/public/index.html:44
+#: app/templates/auth/register.html:16 app/templates/public/index.html:44
 #: app/templates/public/index.html:49
 msgid "How the club works"
 msgstr ""
 
-#: app/templates/auth/register.html:13
+#: app/templates/auth/register.html:18
 msgid "Confirm your e-mail"
 msgstr ""
 
-#: app/templates/auth/register.html:14 app/templates/public/index.html:53
+#: app/templates/auth/register.html:19 app/templates/public/index.html:53
 msgid "Confirm your identity"
 msgstr ""
 
-#: app/templates/auth/register.html:15 app/templates/public/index.html:63
+#: app/templates/auth/register.html:20 app/templates/public/index.html:63
 msgid "Find matches"
 msgstr ""
 
-#: app/templates/auth/register.html:41
+#: app/templates/auth/register.html:47
 msgid "At least 10 characters."
 msgstr ""
 
-#: app/templates/auth/register.html:48
+#: app/templates/auth/register.html:54
 msgid "Please choose"
 msgstr ""
 
-#: app/templates/auth/register.html:57
+#: app/templates/auth/register.html:63
 msgid "Confirmations"
 msgstr ""
 
-#: app/templates/auth/register.html:61
+#: app/templates/auth/register.html:67
 msgid "privacy notice"
 msgstr ""
 
-#: app/templates/auth/register.html:62
+#: app/templates/auth/register.html:68
 #, python-format
 msgid ""
 "I have read the %(link)s. I know how my data is processed to run my "
 "account."
 msgstr ""
 
-#: app/templates/auth/register.html:68
+#: app/templates/auth/register.html:74
 msgid "terms of use"
 msgstr ""
 
-#: app/templates/auth/register.html:69
+#: app/templates/auth/register.html:75
 #, python-format
 msgid "I accept the %(link)s."
 msgstr ""
 
-#: app/templates/auth/register.html:75
+#: app/templates/auth/register.html:82
 msgid ""
 "I expressly agree that Stripe checks my identity document and a selfie, "
 "including facial features (biometric data). Stripe processes this data, "
@@ -6127,15 +6296,15 @@ msgid ""
 "for the manual check instead."
 msgstr ""
 
-#: app/templates/auth/register.html:80 app/templates/public/index.html:168
+#: app/templates/auth/register.html:88 app/templates/public/index.html:168
 msgid "Membership is for people aged 18 and over."
 msgstr ""
 
-#: app/templates/auth/register.html:82
+#: app/templates/auth/register.html:90
 msgid "Create account"
 msgstr ""
 
-#: app/templates/auth/register.html:86
+#: app/templates/auth/register.html:94
 msgid "Already registered?"
 msgstr ""
 
@@ -6231,34 +6400,39 @@ msgstr ""
 msgid "From your profile to a useful conversation"
 msgstr ""
 
-#: app/templates/member/dashboard.html:68
-#: app/templates/member/dashboard.html:77
+#: app/templates/member/dashboard.html:67
+#: app/templates/modules/profile_edit.html:10
+msgid "Profile completeness"
+msgstr ""
+
+#: app/templates/member/dashboard.html:70
+#: app/templates/member/dashboard.html:79
 msgid "Describe your offer and your goal"
 msgstr ""
 
-#: app/templates/member/dashboard.html:68
+#: app/templates/member/dashboard.html:70
 msgid "One concrete need and one way you can help are enough to start."
 msgstr ""
 
-#: app/templates/member/dashboard.html:69
-#: app/templates/member/dashboard.html:75
+#: app/templates/member/dashboard.html:71
+#: app/templates/member/dashboard.html:77
 msgid "Choose your visibility"
 msgstr ""
 
-#: app/templates/member/dashboard.html:69
+#: app/templates/member/dashboard.html:71
 msgid "Directory visibility and matching are separate, optional choices."
 msgstr ""
 
-#: app/templates/member/dashboard.html:70
-#: app/templates/member/dashboard.html:73
+#: app/templates/member/dashboard.html:72
+#: app/templates/member/dashboard.html:75
 msgid "Explore your matches"
 msgstr ""
 
-#: app/templates/member/dashboard.html:70
+#: app/templates/member/dashboard.html:72
 msgid "Read why someone fits, then request an introduction."
 msgstr ""
 
-#: app/templates/member/dashboard.html:79
+#: app/templates/member/dashboard.html:81
 #: app/templates/modules/profile_intros.html:3
 #: app/templates/modules/profile_intros.html:6
 #: app/templates/modules/profile_matches.html:10
@@ -6268,37 +6442,37 @@ msgstr ""
 msgid "Contact requests"
 msgstr ""
 
-#: app/templates/member/dashboard.html:83
+#: app/templates/member/dashboard.html:85
 msgid "Your areas"
 msgstr ""
 
-#: app/templates/member/dashboard.html:89
+#: app/templates/member/dashboard.html:91
 msgid "not included in your plan"
 msgstr ""
 
-#: app/templates/member/dashboard.html:95
+#: app/templates/member/dashboard.html:97
 msgid "Your data"
 msgstr ""
 
-#: app/templates/member/dashboard.html:96
+#: app/templates/member/dashboard.html:98
 msgid "Download my data (JSON)"
 msgstr ""
 
-#: app/templates/member/dashboard.html:99
+#: app/templates/member/dashboard.html:101
 msgid "Delete my account"
 msgstr ""
 
-#: app/templates/member/dashboard.html:100
+#: app/templates/member/dashboard.html:102
 msgid ""
 "This deletes your account, your consent history and your identity check "
 "data at Stripe. This cannot be undone."
 msgstr ""
 
-#: app/templates/member/dashboard.html:104
+#: app/templates/member/dashboard.html:106
 msgid "Confirm with your password"
 msgstr ""
 
-#: app/templates/member/dashboard.html:107
+#: app/templates/member/dashboard.html:109
 msgid "Delete account permanently"
 msgstr ""
 
@@ -7499,10 +7673,6 @@ msgstr ""
 msgid ""
 "The fuller your profile, the better our matching can suggest people who "
 "fit you. Each field has a short hint and examples."
-msgstr ""
-
-#: app/templates/modules/profile_edit.html:10
-msgid "Profile completeness"
 msgstr ""
 
 #: app/templates/modules/profile_edit.html:13

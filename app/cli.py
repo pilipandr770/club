@@ -4,6 +4,7 @@ import os
 
 import click
 from babel.messages.frontend import CommandLineInterface
+from flask import current_app
 from flask.cli import AppGroup
 
 i18n_cli = AppGroup("i18n", help="Переводы (Babel)")
@@ -95,6 +96,15 @@ def close_auctions_command():
     for lot in closed:  # письма с итогами после commit: сбой почты не откатывает закрытие
         notify_closed(lot)
     click.echo(f"Закрыто лотов: {len(closed)}")
+
+
+@click.command("send-onboarding-nudges")
+def send_onboarding_nudges_command():
+    """Одно письмо участникам, которые не заполнили профиль. Запускается планировщиком раз в час."""
+    from .services import onboarding
+
+    with current_app.test_request_context():
+        click.echo(f"Напоминаний отправлено: {onboarding.run()}")
 
 
 @click.command("reembed")
@@ -230,3 +240,4 @@ def register(app):
     app.cli.add_command(create_admin)
     app.cli.add_command(seed_test_users_command)
     app.cli.add_command(close_auctions_command)
+    app.cli.add_command(send_onboarding_nudges_command)

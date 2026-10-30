@@ -9,6 +9,7 @@ from ...countries import country_choices, is_known_country
 from ...extensions import db, limiter
 from ...models import Profile, User
 from ...services.audit import audit
+from ...services import invites
 from ...services.consents import record_consent
 from ...services.mailer import send_mail
 from ...services.tokens import make_email_token, read_email_token
@@ -41,7 +42,12 @@ def register():
 
     errors: dict[str, str] = {}
     form = request.form
+    invite = None
     if request.method == "POST":
+        invite_code = form.get("invite", "").strip()
+        invite = invites.find(invite_code, lock=True) if invite_code else None
+        if invite_code and invite is None:
+            errors["invite"] = _("This invitation is no longer valid. You can still register without it.")
         email = form.get("email", "").strip().lower()
         first_name = form.get("first_name", "").strip()
         last_name = form.get("last_name", "").strip()
@@ -54,13 +60,16 @@ def register():
             errors["email"] = _("Please enter a valid e-mail address.")
         elif User.query.filter_by(email=email).first():
             errors["email"] = _("An account with this e-mail address already exists.")
+        elif invite is not None and invite.email and invite.email != email:
+            errors["email"] = _("This invitation was issued for a different e-mail address.")
         if len(password) < MIN_PASSWORD_LENGTH:
             errors["password"] = _("The password must be at least 10 characters long.")
         if not is_known_country(residence):
             errors["residence_country"] = _("Please choose your country of residence.")
         elif _blocked_residence(residence):
             errors["residence_country"] = _("We cannot open an account for residents of this country.")
-        for consent in ("privacy", "terms", "identity"):
+        # По приглашению личность подтверждает поручитель, Stripe не нужен, поэтому и согласие на биометрию не требуется
+        for consent in ("privacy", "terms") if invite is not None else ("privacy", "terms", "identity"):
             if not form.get(f"consent_{consent}"):
                 errors[f"consent_{consent}"] = _("This confirmation is required to create an account.")
 
@@ -71,8 +80,12 @@ def register():
             db.session.add(user)
             record_consent(user, "privacy", True)
             record_consent(user, "terms", True)
-            record_consent(user, "identity", True)
+            if invite is None:
+                record_consent(user, "identity", True)
+            db.session.flush()
             audit("user.registered", target=f"user:{user.id}", actor_id=None)
+            if invite is not None:
+                invites.redeem(invite, user)
             db.session.commit()
             from ...services import analytics
 
@@ -82,8 +95,21 @@ def register():
             flash(_("Welcome. Please confirm your e-mail address to continue."), "success")
             return redirect(url_for("member.dashboard"))
 
-    return render_template("auth/register.html", errors=errors, form=form,
+    return render_template("auth/register.html", errors=errors, form=form, invite=invite,
                            countries=country_choices())
+
+
+@bp.route("/join/<code>")
+def join(code):
+    """Ссылка-приглашение: та же регистрация, но личность уже подтверждена поручителем."""
+    if current_user.is_authenticated:
+        return redirect(url_for("member.dashboard"))
+    invite = invites.find(code)
+    if invite is None:
+        flash(_("This invitation is no longer valid. You can still register without it."), "info")
+        return redirect(url_for("auth.register"))
+    return render_template("auth/register.html", errors={}, invite=invite, countries=country_choices(),
+                           form={"invite": code, "email": invite.email or ""})
 
 
 @bp.route("/login", methods=["GET", "POST"])
