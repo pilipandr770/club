@@ -238,7 +238,7 @@ def invitable_members(event: Event):
     taken.add(event.organizer_id)
     query = (User.query.join(Profile, Profile.user_id == User.id)
              .filter(Profile.visible_in_directory.is_(True), User.status == "active",
-                     User.verification_status == "verified")
+                     User.verification_status == "verified", User.email_confirmed_at.isnot(None))
              .order_by(User.first_name).limit(300))
     return [user for user in query.all() if user.id not in taken]
 

@@ -6,10 +6,10 @@
 <h1>{{ _("Hello, %(name)s", name=current_user.first_name) }}</h1>
 <p class="status-line">
   <span class="pill">{{ _("Your plan") }}: {{ plan_name }}</span>
-  {% if current_user.verification_status == "verified" %}<span class="pill pill-ok">{{ _("Identity verified") }}</span>{% endif %}
+  {% if current_user.is_verified %}<span class="pill pill-ok">{{ _("Identity verified") }}</span>{% endif %}
 </p>
 
-{% if current_user.verification_status != "verified" %}
+{% if not current_user.is_verified %}
 <section class="card">
   <h2>{{ _("Your access") }}</h2>
 

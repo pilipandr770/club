@@ -125,6 +125,7 @@ def candidates(user):
             .filter(User.id != user.id,
                     User.status == "active",
                     User.verification_status == "verified",
+                    User.email_confirmed_at.isnot(None),
                     Profile.allow_matching.is_(True),
                     Profile.embed_need.isnot(None),
                     Profile.embed_provider == name)

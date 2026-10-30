@@ -37,7 +37,9 @@ def test_invited_person_is_verified_by_the_voucher_without_stripe(app, client):
     assert _register(client, code).status_code == 302
     with app.app_context():
         user = User.query.filter_by(email="max@example.com").one()
-        assert user.is_verified and user.verification_method == "manual" and user.verified_by_id == admin_id
+        # личность подтверждена поручителем, но пока не подтверждена почта: доступа к клубу ещё нет
+        assert user.verification_status == "verified" and not user.is_verified
+        assert user.verification_method == "manual" and user.verified_by_id == admin_id
         assert "Geschäftspartner" in user.verification_note and user.invite_id == invite_id
         assert user.plan == "guest"
         assert {c.kind for c in Consent.query.filter_by(user_id=user.id)} == {"privacy", "terms"}

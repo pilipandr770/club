@@ -112,8 +112,13 @@ def join(code):
                            form={"invite": code, "email": invite.email or ""})
 
 
+def _login_email_key():
+    return "login:" + request.form.get("email", "").strip().lower()[:254]
+
+
 @bp.route("/login", methods=["GET", "POST"])
 @limiter.limit("8 per minute; 40 per hour", methods=["POST"])
+@limiter.limit("10 per hour", methods=["POST"], key_func=_login_email_key)
 def login():
     if current_user.is_authenticated:
         return redirect(url_for("member.dashboard"))

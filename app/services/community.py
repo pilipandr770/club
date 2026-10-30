@@ -14,7 +14,7 @@ def visible_query():
     """Проверенные активные участники, которые сами решили быть в каталоге."""
     return (User.query.join(Profile, Profile.user_id == User.id)
             .filter(Profile.visible_in_directory.is_(True), User.status == "active",
-                    User.verification_status == "verified"))
+                    User.verification_status == "verified", User.email_confirmed_at.isnot(None)))
 
 
 def search(q: str = "", city: str = "", industry: str = "", open_to: str = "", page: int = 1):

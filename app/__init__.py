@@ -177,6 +177,9 @@ def create_app(env=None):
         response.headers.setdefault("X-Frame-Options", "DENY")
         response.headers.setdefault("Permissions-Policy", "camera=(), microphone=(self), geolocation=(), payment=()")
         response.headers.setdefault("Cross-Origin-Opener-Policy", "same-origin")
+        # Страницы вошедшего участника не должны оставаться в кеше общего компьютера и открываться кнопкой «назад» после выхода
+        if response.mimetype == "text/html" and current_user.is_authenticated:
+            response.headers.setdefault("Cache-Control", "private, no-store")
         # HSTS только в production с https-адресом сайта (локально без TLS он помешал бы работе браузера).
         # Схему берём из BASE_URL: TLS заканчивается на Traefik, внутри приложение видит обычный http.
         if app.config.get("APP_ENV") == "production" and app.config["BASE_URL"].startswith("https://"):

@@ -42,7 +42,7 @@ class LexicalEmbedder:
         for token in re.findall(r"\w+", text.lower()):
             if len(token) < 3:
                 continue
-            digest = hashlib.md5(token.encode("utf-8")).digest()
+            digest = hashlib.md5(token.encode("utf-8"), usedforsecurity=False).digest()
             index = int.from_bytes(digest[:4], "big") % DIM
             sign = 1.0 if digest[4] & 1 else -1.0
             vector[index] += sign

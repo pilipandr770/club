@@ -101,7 +101,8 @@ class User(UserMixin, db.Model):
 
     @property
     def is_verified(self) -> bool:
-        return self.verification_status == "verified"
+        """Личность подтверждена и почта подтверждена: иначе по чужой ссылке-приглашению можно войти под чужим адресом."""
+        return self.verification_status == "verified" and self.email_confirmed_at is not None
 
     @property
     def full_name(self) -> str:
