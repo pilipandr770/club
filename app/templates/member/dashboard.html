@@ -6,6 +6,7 @@
 <h1>{{ _("Hello, %(name)s", name=current_user.first_name) }}</h1>
 <p class="status-line">
   <span class="pill">{{ _("Your plan") }}: {{ plan_name }}</span>
+  {% if current_user.is_verified %}<a href="{{ url_for('member.plan') }}">{{ _("Plan and payment") }}</a>{% endif %}
   {% if current_user.is_verified %}<span class="pill pill-ok">{{ _("Identity verified") }}</span>{% endif %}
 </p>
 

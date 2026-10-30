@@ -13,7 +13,9 @@ bp = Blueprint("public", __name__)
 
 @bp.get("/")
 def index():
-    return render_template("public/index.html")
+    from config.plans import PLANS
+
+    return render_template("public/index.html", plans=PLANS)
 
 
 LEGAL_DOCUMENTS = {"impressum": "impressum", "datenschutz": "datenschutz", "nutzungsbedingungen": "nutzungsbedingungen"}

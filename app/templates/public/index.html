@@ -171,7 +171,7 @@
 
 <section class="block">
   <h2 id="plans">{{ _("Plans") }}</h2>
-  <p class="muted">{{ _("Prices will be published soon. Access depends on the plan.") }}</p>
+  <p class="muted">{{ _("Access depends on the plan. Prices are in euros, including VAT where it applies. You can cancel at any time.") }}</p>
   <div class="plans">
     <article class="plan tilt-card" data-tilt>
       <h3>{{ _("Guest") }}</h3>
@@ -179,14 +179,17 @@
     </article>
     <article class="plan tilt-card" data-tilt>
       <h3>{{ _("Starter") }}</h3>
+      <p class="plan-price">{{ plans["starter"].price_eur_cents|eur }} <span class="muted">{{ _("per month") }}</span></p>
       <p>{{ _("Everything in Guest, plus partner services and website tools, law search and market panel, booking and creating trips, creating and joining meetings, and mini-clubs.") }}</p>
     </article>
     <article class="plan tilt-card" data-tilt>
       <h3>{{ _("Growth") }}</h3>
+      <p class="plan-price">{{ plans["growth"].price_eur_cents|eur }} <span class="muted">{{ _("per month") }}</span></p>
       <p>{{ _("Everything in Starter, plus publishing your startup for investors and offers for operators and agents.") }}</p>
     </article>
     <article class="plan tilt-card" data-tilt>
       <h3>{{ _("Premium") }}</h3>
+      <p class="plan-price">{{ plans["premium"].price_eur_cents|eur }} <span class="muted">{{ _("per month") }}</span></p>
       <p>{{ _("Everything in Growth, plus the auction.") }}</p>
     </article>
   </div>

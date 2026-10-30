@@ -55,7 +55,7 @@ class Config:
 
     # Версия текстов согласий (записывается в каждое согласие)
     # Версия текстов (Datenschutz, Nutzungsbedingungen): пишется в каждое согласие; меняем при изменении текстов
-    CONSENT_VERSION = "2026-10-30.3"
+    CONSENT_VERSION = "2026-10-30.4"
     LEGAL_UPDATED = "30.10.2026"
     # Данные для Impressum и Datenschutz. После создания компании меняются в .env, код трогать не нужно
     LEGAL_NAME = os.environ.get("LEGAL_NAME", "Andrii Pylypchuk")
@@ -74,6 +74,8 @@ class Config:
     # Проверка личности (ARCHITECTURE.md §10, §11)
     STRIPE_SECRET_KEY = os.environ.get("STRIPE_SECRET_KEY", "")
     STRIPE_WEBHOOK_SECRET = os.environ.get("STRIPE_WEBHOOK_SECRET", "")
+    # Настройки Customer Portal, созданные `flask stripe-setup`; пусто — портал по умолчанию из кабинета Stripe
+    STRIPE_PORTAL_CONFIG = os.environ.get("STRIPE_PORTAL_CONFIG", "")
     IDENTITY_MAX_ATTEMPTS = 3
     BLOCKED_DOCUMENT_COUNTRIES = _csv("BLOCKED_DOCUMENT_COUNTRIES", DEFAULT_BLOCKED_COUNTRIES)
     BLOCKED_RESIDENCE_COUNTRIES = _csv("BLOCKED_RESIDENCE_COUNTRIES", DEFAULT_BLOCKED_COUNTRIES)

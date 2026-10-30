@@ -25,6 +25,8 @@ def export_user(user) -> dict:
             "letzter_login": _iso(user.last_login_at),
             "e_mail_bestaetigt": _iso(user.email_confirmed_at),
             "zwei_faktor_aktiv": user.has_two_factor,
+            "abo_status": user.subscription_status,
+            "abo_intervall": user.subscription_interval,
         },
         "profil": None if profile is None else {
             "land": profile.country,
@@ -52,6 +54,9 @@ def export_user(user) -> dict:
 
 def delete_user(user, provider) -> None:
     """Сначала удаляем данные у провайдера, потом у нас. Если провайдер недоступен, ничего не удаляем."""
+    from .billing import cancel_for_deletion
+
+    cancel_for_deletion(user)  # платная подписка завершается сразу, иначе Stripe продолжил бы списания
     if user.stripe_verification_session_id:
         provider.redact(user.stripe_verification_session_id)
     from flask import current_app

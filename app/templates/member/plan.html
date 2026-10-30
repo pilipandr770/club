@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block title %}{{ _("Plan and payment") }} · {{ _("Club") }}{% endblock %}
+
+{% block content %}
+<h1>{{ _("Plan and payment") }}</h1>
+<p><a href="{{ url_for('member.dashboard') }}">{{ _("Back to my account") }}</a></p>
+
+<section class="card">
+  <h2>{{ _("Your plan") }}</h2>
+  {% if state.source == "subscription" %}
+    <p><span class="pill pill-ok">{{ plan_names[state.plan] }}</span>
+      {% if state.interval == "year" %}{{ _("billed yearly") }}{% else %}{{ _("billed monthly") }}{% endif %}</p>
+    {% if state.past_due %}
+      <p><span class="pill pill-warn">{{ _("Payment failed") }}</span> {{ _("Please update your payment method under Manage subscription. Your plan stays active for a few days.") }}</p>
+    {% elif state.cancels and state.until %}
+      <p>{{ _("Your subscription ends and is not renewed. Your plan stays active until %(date)s.", date=state.until.strftime("%d.%m.%Y")) }}</p>
+    {% elif state.until %}
+      <p class="muted">{{ _("Renews automatically. Paid until %(date)s.", date=state.until.strftime("%d.%m.%Y")) }}</p>
+    {% endif %}
+    <form method="post" action="{{ url_for('member.plan_portal') }}">
+      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+      <button type="submit" class="button">{{ _("Manage subscription") }}</button>
+    </form>
+    <p class="small">{{ _("Change your plan, update your card, download invoices or cancel on the secure Stripe page.") }}</p>
+  {% elif state.source == "manual" %}
+    <p><span class="pill pill-ok">{{ plan_names[state.plan] }}</span></p>
+    {% if state.until %}
+      <p>{{ _("Your plan was set up by the club and is active until %(date)s.", date=state.until.strftime("%d.%m.%Y")) }}</p>
+    {% else %}
+      <p>{{ _("Your plan was set up by the club and has no end date.") }}</p>
+    {% endif %}
+    <p class="small">{{ _("To keep it afterwards, you can subscribe below at any time. Nothing is charged until you confirm on the Stripe page.") }}</p>
+  {% else %}
+    <p><span class="pill">{{ plan_names[state.plan] }}</span> {{ _("Free. You can upgrade at any time and cancel at any time.") }}</p>
+  {% endif %}
+  {% if has_customer and not has_subscription %}
+    <form method="post" action="{{ url_for('member.plan_portal') }}">
+      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+      <button type="submit" class="button button-secondary">{{ _("Invoices and payment methods") }}</button>
+    </form>
+  {% endif %}
+</section>
+
+{% if not can_subscribe %}
+  <p class="muted">{{ _("Plans are available after your identity is verified.") }}</p>
+{% elif not has_subscription %}
+<section class="block" aria-labelledby="choose-title">
+  <h2 id="choose-title">{{ _("Choose a plan") }}</h2>
+  <p class="muted">{{ _("Prices are in euros, including VAT where it applies. Payment and card details are handled by Stripe; the club never sees your card. Cancel at any time.") }}</p>
+  <div class="plans plans-three">
+    {% for card in cards %}
+    <article class="plan card">
+      <h3>{{ card.name }}</h3>
+      <p class="plan-price">{{ card.month|eur }} <span class="muted">{{ _("per month") }}</span></p>
+      <p>{{ card.description }}</p>
+      <ul class="promises">
+        <li>{{ _("%(count)d questions to Clubi per day", count=card.assistant) }}</li>
+        <li>{{ _("Law search: %(count)d runs per month", count=card.laws) }}</li>
+      </ul>
+      <form method="post" action="{{ url_for('member.plan_checkout') }}" class="plan-actions">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+        <input type="hidden" name="plan" value="{{ card.key }}">
+        <button type="submit" name="interval" value="month" class="button">{{ _("Subscribe monthly") }}</button>
+        <button type="submit" name="interval" value="year" class="button button-secondary">{{ _("Subscribe yearly: %(price)s", price=card.year|eur) }}</button>
+      </form>
+      <p class="small">{{ _("Yearly saves %(amount)s compared with monthly.", amount=card.year_saving|eur) }}</p>
+    </article>
+    {% endfor %}
+  </div>
+</section>
+{% endif %}
+{% endblock %}

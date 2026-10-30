@@ -7,6 +7,7 @@ from flask_login import current_user, login_required, logout_user
 
 from ...extensions import db, limiter
 from ...modules import enabled_modules
+from ...services import billing
 from ...services.audit import audit
 from ...services.consents import latest_consent
 from ...services.gdpr import delete_user, export_user
@@ -114,6 +115,94 @@ def delete_account():
     logout_user()
     flash(_("Your account and your data have been deleted."), "info")
     return redirect(url_for("public.index"))
+
+
+# --------------------------------------------------------------------------- тариф и оплата
+def _plan_cards():
+    """Тарифы для страницы: описание, цены и то, что добавляют лимиты. Строки целиком, без склейки."""
+    from config.plans import ASSISTANT_DAILY, PAID_PLANS, PLANS, TOOL_LIMITS
+
+    descriptions = {
+        "starter": _("Everything in Guest, plus partner services and website tools, law search and market panel, "
+                     "booking and creating trips, creating and joining meetings, and mini-clubs."),
+        "growth": _("Everything in Starter, plus publishing your startup for investors and offers for operators and agents."),
+        "premium": _("Everything in Growth, plus the auction."),
+    }
+    cards = []
+    for key in PAID_PLANS:
+        data = PLANS[key]
+        cards.append({
+            "key": key, "name": data["name"], "description": descriptions[key],
+            "month": data["price_eur_cents"], "year": data["price_year_eur_cents"],
+            "year_saving": data["price_eur_cents"] * 12 - data["price_year_eur_cents"],
+            "assistant": ASSISTANT_DAILY[key], "laws": TOOL_LIMITS[key]["laws"],
+        })
+    return cards
+
+
+def _billing_error(code):
+    return {
+        "bad_choice": _("Please choose a plan and a billing period."),
+        "not_verified": _("Plans are available after your identity is verified."),
+        "already_subscribed": _("You already have a subscription. You can change or cancel it under Manage subscription."),
+        "no_customer": _("There is no subscription to manage yet."),
+        "not_configured": _("Payment is not available right now. Please try again later."),
+    }.get(code, _("Payment is not available right now. Please try again later."))
+
+
+@bp.route("/plan")
+@login_required
+def plan():
+    from config.plans import PLANS
+
+    return render_template("member/plan.html", cards=_plan_cards(), plan_names={k: v["name"] for k, v in PLANS.items()},
+                           state=billing.plan_state(current_user),
+                           can_subscribe=billing.can_subscribe(current_user),
+                           has_subscription=billing.has_subscription(current_user),
+                           has_customer=bool(current_user.stripe_customer_id))
+
+
+@bp.route("/plan/checkout", methods=["POST"])
+@login_required
+@limiter.limit("10 per hour")
+def plan_checkout():
+    try:
+        url = billing.start_checkout(current_user, request.form.get("plan", ""), request.form.get("interval", ""))
+    except billing.BillingError as exc:
+        db.session.rollback()
+        flash(_billing_error(exc.code), "error")
+        return redirect(url_for("member.plan"))
+    except Exception:
+        db.session.rollback()
+        log.exception("Checkout konnte nicht gestartet werden")
+        flash(_billing_error("not_configured"), "error")
+        return redirect(url_for("member.plan"))
+    db.session.commit()
+    return redirect(url, code=303)
+
+
+@bp.route("/plan/portal", methods=["POST"])
+@login_required
+@limiter.limit("20 per hour")
+def plan_portal():
+    try:
+        url = billing.portal_url(current_user)
+    except billing.BillingError as exc:
+        flash(_billing_error(exc.code), "error")
+        return redirect(url_for("member.plan"))
+    except Exception:
+        log.exception("Kundenportal konnte nicht geöffnet werden")
+        flash(_billing_error("not_configured"), "error")
+        return redirect(url_for("member.plan"))
+    return redirect(url, code=303)
+
+
+@bp.route("/plan/return")
+@login_required
+def plan_return():
+    if request.args.get("status") == "ok":
+        flash(_("Thank you. Your payment is being confirmed. Your plan appears here within a minute."), "success")
+    return redirect(url_for("member.plan"))
 
 
 # --------------------------------------------------------------------------- безопасность аккаунта: второй фактор

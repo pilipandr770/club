@@ -226,6 +226,106 @@ def laws_status_command():
     click.echo(f"Последняя синхронизация: {state.last_run_at if state else 'ещё не было'}")
 
 
+@click.command("stripe-setup")
+@click.option("--apply", "apply_", is_flag=True, help="Создать недостающее. Без флага только показывает, что будет сделано.")
+def stripe_setup_command(apply_):
+    """Идемпотентно создаёт продукты, цены, вебхук и настройки портала в текущем аккаунте Stripe (тестовом или боевом)."""
+    import stripe
+
+    from config.plans import INTERVALS, PAID_PLANS, PLANS, price_cents
+
+    from .services.billing import PRODUCT_APP, lookup_key
+
+    key = current_app.config["STRIPE_SECRET_KEY"]
+    if not key:
+        raise click.ClickException("STRIPE_SECRET_KEY не задан в .env")
+    live = key.startswith(("sk_live", "rk_live"))
+    base = current_app.config["BASE_URL"].rstrip("/")
+    click.echo(f"Режим Stripe: {'БОЕВОЙ' if live else 'тестовый'}; адрес клуба: {base}; "
+               f"{'создаём' if apply_ else 'проверка без изменений (добавьте --apply)'}")
+
+    products = {}
+    existing = stripe.Product.list(api_key=key, active=True, limit=100)
+    for product in existing.auto_paging_iter():
+        meta = product.get("metadata") or {}
+        if meta.get("app") == PRODUCT_APP and meta.get("plan") in PAID_PLANS:
+            products[meta["plan"]] = product
+    price_ids = {}
+    for plan in PAID_PLANS:
+        name = str(PLANS[plan]["name"])
+        product = products.get(plan)
+        if product is None:
+            click.echo(f"+ продукт Club {name}")
+            if not apply_:
+                continue
+            product = stripe.Product.create(api_key=key, name=f"Club {name}", metadata={"app": PRODUCT_APP, "plan": plan})
+        for interval in INTERVALS:
+            lookup = lookup_key(plan, interval)
+            amount = price_cents(plan, interval)
+            found = stripe.Price.list(api_key=key, lookup_keys=[lookup], active=True, limit=1)["data"]
+            if found and found[0]["unit_amount"] == amount and found[0]["product"] == product["id"]:
+                price_ids[(plan, interval)] = found[0]["id"]
+                continue
+            click.echo(f"+ цена {lookup}: {amount / 100:.2f} EUR" + (" (заменяет старую)" if found else ""))
+            if not apply_:
+                continue
+            created = stripe.Price.create(
+                api_key=key, product=product["id"], currency="eur", unit_amount=amount, tax_behavior="inclusive",
+                recurring={"interval": interval}, lookup_key=lookup, transfer_lookup_key=True,
+                metadata={"app": PRODUCT_APP, "plan": plan},
+            )
+            price_ids[(plan, interval)] = created["id"]
+            if found:
+                stripe.Price.modify(found[0]["id"], api_key=key, active=False)
+
+    wanted_events = ["identity.verification_session.verified", "identity.verification_session.requires_input",
+                     "identity.verification_session.processing", "identity.verification_session.canceled",
+                     "customer.subscription.created", "customer.subscription.updated", "customer.subscription.deleted"]
+    url = f"{base}/webhooks/stripe"
+    endpoint = next((e for e in stripe.WebhookEndpoint.list(api_key=key, limit=100).auto_paging_iter() if e["url"] == url), None)
+    if endpoint is None:
+        click.echo(f"+ вебхук {url}")
+        if apply_:
+            created = stripe.WebhookEndpoint.create(api_key=key, url=url, enabled_events=wanted_events,
+                                                    description="Club")
+            click.echo(f"STRIPE_WEBHOOK_SECRET={created['secret']}  <- запишите в .env (показывается один раз)")
+    elif set(wanted_events) - set(endpoint["enabled_events"]) and "*" not in endpoint["enabled_events"]:
+        click.echo("+ события вебхука")
+        if apply_:
+            merged = sorted(set(endpoint["enabled_events"]) | set(wanted_events))
+            stripe.WebhookEndpoint.modify(endpoint["id"], api_key=key, enabled_events=merged)
+
+    if apply_ and len(price_ids) == len(PAID_PLANS) * len(INTERVALS):
+        portal = dict(
+            business_profile={"headline": "Club", "privacy_policy_url": f"{base}/datenschutz",
+                              "terms_of_service_url": f"{base}/nutzungsbedingungen"},
+            features={
+                "customer_update": {"enabled": True, "allowed_updates": ["name", "address", "tax_id"]},
+                "invoice_history": {"enabled": True},
+                "payment_method_update": {"enabled": True},
+                "subscription_cancel": {"enabled": True, "mode": "at_period_end"},
+                "subscription_update": {
+                    "enabled": True, "default_allowed_updates": ["price"], "proration_behavior": "create_prorations",
+                    "products": [{"product": products[plan]["id"] if plan in products else None,
+                                  "prices": [price_ids[(plan, i)] for i in INTERVALS]} for plan in PAID_PLANS],
+                },
+            },
+            metadata={"app": PRODUCT_APP},
+        )
+        for item in portal["features"]["subscription_update"]["products"]:
+            if item["product"] is None:  # продукт создан только что: берём из цены
+                item["product"] = stripe.Price.retrieve(item["prices"][0], api_key=key)["product"]
+        current = next((c for c in stripe.billing_portal.Configuration.list(api_key=key, is_active=True, limit=100)
+                        .auto_paging_iter() if (c.get("metadata") or {}).get("app") == PRODUCT_APP), None)
+        if current is None:
+            current = stripe.billing_portal.Configuration.create(api_key=key, **portal)
+            click.echo("+ настройки портала")
+        else:
+            stripe.billing_portal.Configuration.modify(current["id"], api_key=key, **portal)
+        click.echo(f"STRIPE_PORTAL_CONFIG={current['id']}  <- запишите в .env")
+    click.echo("Готово." if apply_ else "Проверка завершена, ничего не изменено.")
+
+
 def register(app):
     app.cli.add_command(laws_import_command)
     app.cli.add_command(laws_index_command)
@@ -240,4 +340,5 @@ def register(app):
     app.cli.add_command(create_admin)
     app.cli.add_command(seed_test_users_command)
     app.cli.add_command(close_auctions_command)
+    app.cli.add_command(stripe_setup_command)
     app.cli.add_command(send_onboarding_nudges_command)

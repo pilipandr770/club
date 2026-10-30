@@ -65,6 +65,10 @@ def create_app(env=None):
         app.config["STRIPE_SECRET_KEY"], app.config["STRIPE_WEBHOOK_SECRET"]
     )
 
+    from .services.billing import StripeBilling
+
+    app.extensions["billing"] = StripeBilling(app.config["STRIPE_SECRET_KEY"])
+
     from .blueprints.admin import bp as admin_bp
     from .blueprints.assistant import bp as assistant_bp
     from .blueprints.auth import bp as auth_bp

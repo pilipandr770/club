@@ -60,6 +60,12 @@ class User(UserMixin, db.Model):
     # Оплаченный срок тарифа: None — без ограничения срока; после даты действует гостевой тариф
     paid_until: Mapped[datetime | None] = mapped_column(DateTime)
     payment_note: Mapped[str | None] = mapped_column(String(300))
+    # Подписка через Stripe Billing: тариф и paid_until ведёт вебхук, здесь только ссылки и состояние
+    stripe_customer_id: Mapped[str | None] = mapped_column(String(64), index=True)
+    stripe_subscription_id: Mapped[str | None] = mapped_column(String(64), index=True)
+    subscription_status: Mapped[str | None] = mapped_column(String(20))
+    subscription_interval: Mapped[str | None] = mapped_column(String(8))
+    subscription_cancels: Mapped[bool] = mapped_column(Boolean, default=False, server_default="false")
     # Приглашение, по которому пришёл участник, и время единственного напоминания о заполнении профиля
     invite_id: Mapped[int | None] = mapped_column(
         ForeignKey("invites.id", ondelete="SET NULL", use_alter=True, name="fk_users_invite_id_invites"))

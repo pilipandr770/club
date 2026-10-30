@@ -1,6 +1,7 @@
 """Матрица тарифов: какие функции доступны на каком тарифе.
 
-Названия тарифов и состав окончательно не утверждены: владельцы обсудят цены позже.
+Цены утверждены владельцами (30.10.2026): помесячно и за год (год = 10 месяцев).
+Названия и состав тарифов могут меняться; stripe-setup создаёт новую цену в Stripe, если сумма изменилась.
 Каждый тариф наследует функции предыдущего (см. _inherit ниже), поэтому тарифы растут только вверх.
 Доступ проверяет services/entitlements.py, а не условия в шаблонах.
 """
@@ -20,12 +21,22 @@ PREMIUM_FEATURES = _inherit(GROWTH_FEATURES, "auction.access")
 
 PLANS = {
     "guest": {"name": _l("Guest"), "price_eur_cents": 0, "features": GUEST_FEATURES},
-    "starter": {"name": _l("Starter"), "price_eur_cents": None, "features": STARTER_FEATURES},
-    "growth": {"name": _l("Growth"), "price_eur_cents": None, "features": GROWTH_FEATURES},
-    "premium": {"name": _l("Premium"), "price_eur_cents": None, "features": PREMIUM_FEATURES},
+    "starter": {"name": _l("Starter"), "price_eur_cents": 1900, "price_year_eur_cents": 19000, "features": STARTER_FEATURES},
+    "growth": {"name": _l("Growth"), "price_eur_cents": 4900, "price_year_eur_cents": 49000, "features": GROWTH_FEATURES},
+    "premium": {"name": _l("Premium"), "price_eur_cents": 9900, "price_year_eur_cents": 99000, "features": PREMIUM_FEATURES},
 }
 
 DEFAULT_PLAN = "guest"
+
+# Платные тарифы по возрастанию и периоды оплаты (интервалы Stripe)
+PAID_PLANS = ("starter", "growth", "premium")
+INTERVALS = ("month", "year")
+
+
+def price_cents(plan: str, interval: str) -> int:
+    """Цена тарифа в центах за период оплаты."""
+    data = PLANS[plan]
+    return data["price_year_eur_cents"] if interval == "year" else data["price_eur_cents"]
 
 # Запусков встроенных инструментов в календарный месяц. Ключи — как в app/services/tools/__init__.py.
 # Лимиты растут вместе с тарифом; цифры предварительные, владельцы утвердят вместе с ценами.

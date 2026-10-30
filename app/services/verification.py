@@ -112,7 +112,11 @@ def handle_event(event) -> str:
         return "duplicate"
 
     outcome = "ignored"
-    if event_type.startswith(EVENT_PREFIX):
+    if event_type.startswith("customer.subscription."):
+        from . import billing
+
+        outcome = billing.handle_subscription_event(event)
+    elif event_type.startswith(EVENT_PREFIX):
         status = event_type[len(EVENT_PREFIX):]
         obj = event["data"]["object"]
         session_id = obj["id"]

@@ -55,6 +55,7 @@
         {% if user.effective_plan == "guest" %}<span class="pill pill-warn">{{ _("expired") }}</span>{% endif %}
       {% else %}· {{ _("no end date") }}{% endif %}
     {% endif %}</p>
+  {% if user.subscription_status %}<p class="small">Stripe: <code>{{ user.subscription_status }}</code>{% if user.subscription_interval %} · <code>{{ user.subscription_interval }}</code>{% endif %}{% if user.subscription_cancels %} · <code>cancel_at_period_end</code>{% endif %}</p>{% endif %}
   {% if user.payment_note %}<p class="small">{{ _("Note") }}: {{ user.payment_note }}</p>{% endif %}
   <form method="post" action="{{ url_for('admin.grant_plan', user_id=user.id) }}" class="form">
     <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
