@@ -236,3 +236,13 @@ def test_prices_are_consistent():
     for plan in PAID_PLANS:
         assert price_cents(plan, "year") < price_cents(plan, "month") * 12
         assert PLANS[plan]["price_eur_cents"] > 0
+
+
+def test_checkout_text_names_the_club_and_links_the_terms(app, client, fake_billing):
+    make_user(app, verified=True)
+    login(client)
+    client.post("/app/plan/checkout", data={"plan": "growth", "interval": "month"})
+
+    text = fake_billing.checkouts[0][3]
+
+    assert "club" in text.lower() and "/nutzungsbedingungen" in text and "://" not in text.split(":", 1)[0]

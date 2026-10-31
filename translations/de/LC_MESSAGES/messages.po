@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Club 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-31 14:14+0000\n"
+"POT-Creation-Date: 2026-10-31 16:36+0000\n"
 "PO-Revision-Date: 2026-10-19 21:00+0000\n"
 "Last-Translator: \n"
 "Language: de\n"
@@ -3737,11 +3737,11 @@ msgstr ""
 "der Mindestpreis wurde nicht erreicht).\n"
 "%(url)s"
 
-#: app/services/billing.py:162
+#: app/services/billing.py:163
 #, python-format
-msgid "By subscribing you accept the terms of use: %(url)s"
+msgid "Club (%(site)s): by subscribing you accept the terms of use: %(url)s"
 msgstr ""
-"Mit dem Abschluss des Abonnements akzeptierst du die Nutzungsbedingungen: "
+"Club (%(site)s): Mit dem Abschluss akzeptierst du die Nutzungsbedingungen: "
 "%(url)s"
 
 #: app/services/catalog.py:71

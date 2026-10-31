@@ -159,7 +159,9 @@ def start_checkout(user: User, plan: str, interval: str) -> str:
         user.stripe_customer_id = billing.create_customer(user)
         db.session.commit()  # клиент уже создан у Stripe: не теряем связь, даже если дальше что-то сорвётся
     base = current_app.config["BASE_URL"]
-    terms = _("By subscribing you accept the terms of use: %(url)s", url=f"{base}/nutzungsbedingungen")
+    site = base.split("://", 1)[-1].rstrip("/")  # название клуба на странице оплаты: шапка Stripe общая для аккаунта
+    terms = _("Club (%(site)s): by subscribing you accept the terms of use: %(url)s", site=site,
+              url=f"{base}/nutzungsbedingungen")
     url = billing.checkout_url(
         user.stripe_customer_id, user, billing.price_id(plan, interval),
         success_url=f"{base}/app/plan/return?status=ok", cancel_url=f"{base}/app/plan?status=cancel",
