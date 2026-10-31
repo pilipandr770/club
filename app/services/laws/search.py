@@ -108,13 +108,17 @@ def _direct_hits_il(query: str, category: str) -> list[dict]:
 def _vector_rows(vector: list[float], category: str, limit: int, jurisdiction: str) -> list[dict]:
     literal = "[" + ",".join(f"{x:.7g}" for x in vector) + "]"
     code = get_pack(jurisdiction).code  # проверенный код из реестра: подставляем литералом, чтобы сработал частичный индекс
+    # Для DE (97% корпуса) условие по стране не ставим: при устаревшей статистике планировщик вместо HNSW-индекса читал
+    # все 125 тысяч векторов и запрос упирался в таймаут. Лишние израильские куски отсеиваем ниже. Для IL условие
+    # нужно (частичный индекс), и корпус маленький.
+    only = f"AND c.jurisdiction = '{code}'" if code != "DE" else ""
     db.session.execute(text("SELECT set_config('hnsw.ef_search', '100', true)"))
     rows = db.session.execute(text(f"""
-        SELECT c.slug, c.enbez, c.titel, c.text, 1 - (c.embedding <=> CAST(:q AS vector)) AS score
+        SELECT c.slug, c.jurisdiction, c.enbez, c.titel, c.text, 1 - (c.embedding <=> CAST(:q AS vector)) AS score
         FROM law_chunks c JOIN law_docs d ON d.slug = c.slug
-        WHERE c.embedding IS NOT NULL AND c.jurisdiction = '{code}' AND (:cat = '' OR d.category = :cat)
+        WHERE c.embedding IS NOT NULL {only} AND (:cat = '' OR d.category = :cat)
         ORDER BY c.embedding <=> CAST(:q AS vector) LIMIT :n"""), {"q": literal, "cat": category, "n": limit}).mappings().all()
-    return [dict(row) for row in rows]
+    return [dict(row) for row in rows if row["jurisdiction"] == code]
 
 
 def _text_rows(query: str, category: str, limit: int, jurisdiction: str) -> list[dict]:

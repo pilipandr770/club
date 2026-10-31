@@ -82,3 +82,6 @@ def build_il_index() -> None:
                             "USING hnsw (embedding vector_cosine_ops) WITH (m = 16, ef_construction = 64) "
                             "WHERE jurisdiction = 'IL'"))
     db.session.commit()
+    db.session.execute(text("ANALYZE law_chunks"))  # без свежей статистики планировщик выбирает полный перебор векторов
+    db.session.execute(text("ANALYZE law_docs"))
+    db.session.commit()
