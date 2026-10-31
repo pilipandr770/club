@@ -5,10 +5,12 @@ from flask_babel import gettext as _
 from flask_login import current_user
 
 from ...extensions import db
+from ...jurisdictions import get_pack
 from ...models import ToolRun
 from ...services.entitlements import requires_feature
 from ...services.tools import (TOOLS, LimitReached, ToolError, run_laws, run_panel, run_site_tool, spec_of,
                                tool_state)
+from ...services.laws import search as laws_corpus
 from ...services.tools import laws as laws_tool
 from ...services.tools import panel as panel_tool
 from . import bp
@@ -48,6 +50,13 @@ def _panel_form(form):
     return data, errors
 
 
+def _laws_context():
+    """Länder mit geladenem Korpus, ihre Kategorien und der Korpus-Überblick (Gesetze samt Quelle und Revision)."""
+    codes = laws_tool.available_jurisdictions()
+    packs = [get_pack(code) for code in codes]
+    return {"packs": packs, "corpus": {code: laws_corpus.corpus_laws(code) for code in codes}}
+
+
 def _limit_message():
     return _("You have used all runs of this tool for this month. They renew at the start of next month.")
 
@@ -74,7 +83,10 @@ def tool_page(key):
             if spec.kind in ("site", "domain"):
                 run = run_site_tool(current_user, key, request.form.get("target", ""), request.form.get("keywords", ""))
             elif spec.kind == "laws":
-                run = run_laws(current_user, request.form.get("query", ""), request.form.get("category", ""))
+                jurisdiction = request.form.get("jurisdiction", "DE")
+                if jurisdiction not in laws_tool.available_jurisdictions():
+                    raise ToolError(_("There is no law collection for this country."))
+                run = run_laws(current_user, request.form.get("query", ""), request.form.get("category", ""), jurisdiction)
             else:
                 data, errors = _panel_form(request.form)
                 if errors:
@@ -89,7 +101,8 @@ def tool_page(key):
             db.session.rollback()
             flash(str(exc), "error")
     return render_template("modules/tool_form.html", spec=spec, state=state, form=form, errors=errors,
-                           categories=laws_tool.CATEGORIES, units=panel_tool.UNITS, sizes=PANEL_SIZES)
+                           categories=laws_tool.CATEGORIES, units=panel_tool.UNITS, sizes=PANEL_SIZES,
+                           laws=_laws_context() if spec.kind == "laws" else None)
 
 
 @bp.route("/tools/run/<int:run_id>")
@@ -101,9 +114,11 @@ def tool_run(run_id):
     spec = spec_of(run.tool) or abort(404)
     if run.tool == "panel":
         panel_tool.refresh_status(run)
+    result = run.result or {}
+    pack = get_pack(result.get("jurisdiction", "DE")) if run.tool == "laws" else None
     return render_template(f"modules/tool_report_{_report_kind(run.tool)}.html", run=run, spec=spec,
-                           result=run.result or {}, report=run.report or {}, units=panel_tool.UNITS,
-                           intent_label=panel_tool.INTENT_LABEL)
+                           result=result, report=run.report or {}, units=panel_tool.UNITS,
+                           intent_label=panel_tool.INTENT_LABEL, pack=pack)
 
 
 def _report_kind(tool):

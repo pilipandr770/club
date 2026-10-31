@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Club 0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-10-30 13:12+0000\n"
+"POT-Creation-Date: 2026-10-31 10:03+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: ru\n"
@@ -1204,101 +1204,121 @@ msgid "Steuerverfahrensrecht"
 msgstr "Налогово-процессуальное право"
 
 #: app/i18n_labels.py:216
+msgid "Arbeitsrecht"
+msgstr "Трудовое право"
+
+#: app/i18n_labels.py:217
+msgid "Verbraucherrecht"
+msgstr "Право защиты потребителей"
+
+#: app/i18n_labels.py:218
+msgid "Erbrecht"
+msgstr "Наследственное право"
+
+#: app/i18n_labels.py:219
+msgid "Immobilienrecht"
+msgstr "Право недвижимости"
+
+#: app/i18n_labels.py:220
+msgid "Telekommunikationsrecht"
+msgstr "Право связи"
+
+#: app/i18n_labels.py:221
 msgid "Allgemeine Geschäftsbedingungen (AGB)"
 msgstr "Общие условия договора (AGB)"
 
-#: app/i18n_labels.py:217
+#: app/i18n_labels.py:222
 msgid "AGB bereitstellen und im Bestellprozess einbeziehen."
 msgstr "Подготовить общие условия договора и включить их в оформление заказа."
 
-#: app/i18n_labels.py:218
+#: app/i18n_labels.py:223
 msgid "Widerrufsbelehrung"
 msgstr "Информация о праве отказа от договора"
 
-#: app/i18n_labels.py:219
+#: app/i18n_labels.py:224
 msgid ""
 "Widerrufsbelehrung und Muster-Widerrufsformular für Verbraucher "
 "bereitstellen."
 msgstr "Предоставить потребителям информацию о праве отказа и образец заявления."
 
-#: app/i18n_labels.py:220
+#: app/i18n_labels.py:225
 msgid "Großstadt"
 msgstr "Крупный город"
 
-#: app/i18n_labels.py:221
+#: app/i18n_labels.py:226
 msgid "Kleinstadt"
 msgstr "Небольшой город"
 
-#: app/i18n_labels.py:222
+#: app/i18n_labels.py:227
 msgid "ländlich"
 msgstr "Сельская местность"
 
-#: app/i18n_labels.py:226
+#: app/i18n_labels.py:231
 msgid "Confirmed manually"
 msgstr "Подтверждено вручную"
 
-#: app/i18n_labels.py:227
+#: app/i18n_labels.py:232
 msgid "Review required"
 msgstr "Требуется проверка"
 
-#: app/i18n_labels.py:228
+#: app/i18n_labels.py:233
 msgid "Country not supported"
 msgstr "Страна не поддерживается"
 
-#: app/i18n_labels.py:229
+#: app/i18n_labels.py:234
 msgid "Under 18"
 msgstr "Младше 18 лет"
 
-#: app/i18n_labels.py:230
+#: app/i18n_labels.py:235
 msgid "More information required"
 msgstr "Нужны дополнительные сведения"
 
-#: app/i18n_labels.py:231 app/i18n_labels.py:244
+#: app/i18n_labels.py:236 app/i18n_labels.py:249
 #: app/templates/admin/events.html:13 app/templates/modules/events_mine.html:23
 #: app/templates/modules/events_mine.html:41
 #: app/templates/modules/travel_mine.html:26
 msgid "Cancelled"
 msgstr "Отменено"
 
-#: app/i18n_labels.py:232
+#: app/i18n_labels.py:237
 msgid "Attempt limit reached"
 msgstr "Достигнут лимит попыток"
 
-#: app/i18n_labels.py:233
+#: app/i18n_labels.py:238
 msgid "Active"
 msgstr "Активен"
 
-#: app/i18n_labels.py:234
+#: app/i18n_labels.py:239
 msgid "Blocked"
 msgstr "Заблокирован"
 
-#: app/i18n_labels.py:235
+#: app/i18n_labels.py:240
 msgid "Not started"
 msgstr "Не начато"
 
-#: app/i18n_labels.py:236
+#: app/i18n_labels.py:241
 msgid "Pending"
 msgstr "Ожидает"
 
-#: app/i18n_labels.py:237 app/templates/admin/user_detail.html:17
+#: app/i18n_labels.py:242 app/templates/admin/user_detail.html:17
 msgid "Verified"
 msgstr "Подтверждено"
 
-#: app/i18n_labels.py:238 app/templates/admin/ai_usage.html:48
+#: app/i18n_labels.py:243 app/templates/admin/ai_usage.html:48
 msgid "Failed"
 msgstr "Ошибка"
 
-#: app/i18n_labels.py:239
+#: app/i18n_labels.py:244
 msgid "Manual review"
 msgstr "Ручная проверка"
 
-#: app/i18n_labels.py:240 app/templates/modules/auction_mine.html:21
+#: app/i18n_labels.py:245 app/templates/modules/auction_mine.html:21
 #: app/templates/modules/tools_index.html:19
 #: app/templates/modules/travel_mine.html:24
 msgid "Open"
 msgstr "Открыто"
 
-#: app/i18n_labels.py:241 app/templates/admin/events.html:11
+#: app/i18n_labels.py:246 app/templates/admin/events.html:11
 #: app/templates/admin/miniclubs.html:35 app/templates/admin/startups.html:11
 #: app/templates/admin/travel.html:11 app/templates/modules/events_mine.html:21
 #: app/templates/modules/miniclubs_mine.html:20
@@ -1306,88 +1326,88 @@ msgstr "Открыто"
 msgid "Published"
 msgstr "Опубликовано"
 
-#: app/i18n_labels.py:242 app/templates/admin/events.html:12
+#: app/i18n_labels.py:247 app/templates/admin/events.html:12
 #: app/templates/admin/miniclubs.html:36 app/templates/admin/startups.html:12
 #: app/templates/admin/travel.html:12
 msgid "Rejected"
 msgstr "Отклонено"
 
-#: app/i18n_labels.py:243 app/services/catalog.py:96
+#: app/i18n_labels.py:248 app/services/catalog.py:96
 #: app/templates/admin/miniclubs.html:37
 #: app/templates/modules/miniclubs_mine.html:22
 msgid "Closed"
 msgstr "Закрыто"
 
-#: app/i18n_labels.py:245
+#: app/i18n_labels.py:250
 msgid "Draft"
 msgstr "Черновик"
 
-#: app/i18n_labels.py:246 app/templates/modules/miniclubs_mine.html:38
+#: app/i18n_labels.py:251 app/templates/modules/miniclubs_mine.html:38
 msgid "Member"
 msgstr "Участник"
 
-#: app/i18n_labels.py:247
+#: app/i18n_labels.py:252
 msgid "Travel operator"
 msgstr "Туроператор"
 
-#: app/i18n_labels.py:248
+#: app/i18n_labels.py:253
 msgid "Travel agent"
 msgstr "Турагент"
 
-#: app/i18n_labels.py:249 app/templates/public/index.html:101
+#: app/i18n_labels.py:254 app/templates/public/index.html:101
 msgid "Privacy"
 msgstr "Конфиденциальность"
 
-#: app/i18n_labels.py:250 app/templates/base.html:61
+#: app/i18n_labels.py:255 app/templates/base.html:61
 msgid "Terms of use"
 msgstr "Условия использования"
 
-#: app/i18n_labels.py:251 app/templates/admin/user_detail.html:131
+#: app/i18n_labels.py:256 app/templates/admin/user_detail.html:132
 msgid "Identity check"
 msgstr "Проверка личности"
 
-#: app/i18n_labels.py:252 app/templates/modules/profile_privacy.html:46
+#: app/i18n_labels.py:257 app/templates/modules/profile_privacy.html:46
 #: app/templates/public/index.html:29
 msgid "Matching"
 msgstr "Подбор контактов"
 
-#: app/i18n_labels.py:253 app/templates/modules/profile_privacy.html:46
+#: app/i18n_labels.py:258 app/templates/modules/profile_privacy.html:46
 msgid "Directory"
 msgstr "Каталог"
 
-#: app/i18n_labels.py:254
+#: app/i18n_labels.py:259
 msgid "Won"
 msgstr "Выиграно"
 
-#: app/i18n_labels.py:255
+#: app/i18n_labels.py:260
 msgid "Lost"
 msgstr "Проиграно"
 
-#: app/i18n_labels.py:256
+#: app/i18n_labels.py:261
 msgid "Rising price"
 msgstr "Повышение цены"
 
-#: app/i18n_labels.py:257
+#: app/i18n_labels.py:262
 msgid "Falling price"
 msgstr "Понижение цены"
 
-#: app/i18n_labels.py:258
+#: app/i18n_labels.py:263
 msgid "English"
 msgstr "Английский"
 
-#: app/i18n_labels.py:259
+#: app/i18n_labels.py:264
 msgid "German"
 msgstr "Немецкий"
 
-#: app/i18n_labels.py:260 app/i18n_labels.py:263
+#: app/i18n_labels.py:265 app/i18n_labels.py:268
 msgid "Low"
 msgstr "Низкий"
 
-#: app/i18n_labels.py:261
+#: app/i18n_labels.py:266
 msgid "Medium"
 msgstr "Средний"
 
-#: app/i18n_labels.py:262
+#: app/i18n_labels.py:267
 msgid "High"
 msgstr "Высокий"
 
@@ -2835,15 +2855,55 @@ msgstr "Двухфакторный вход включён."
 msgid "Two-factor login is off."
 msgstr "Двухфакторный вход выключен."
 
-#: app/jurisdictions/de/pack.py:6
+#: app/jurisdictions/de/pack.py:13
 msgid "Germany"
 msgstr "Германия"
 
-#: app/jurisdictions/de/pack.py:10
+#: app/jurisdictions/de/pack.py:17
 msgid "General information, not legal advice. Applies to German law only."
 msgstr ""
 "Общая информация, а не юридическая консультация. Применяется только к "
 "законодательству Германии."
+
+#: app/jurisdictions/de/pack.py:22
+msgid ""
+"German federal law from gesetze-im-internet.de, the official publication of"
+" the Federal Ministry of Justice."
+msgstr ""
+"Федеральное право Германии с gesetze-im-internet.de, официальной публикации"
+" Федерального министерства юстиции."
+
+#: app/jurisdictions/de/pack.py:23
+msgid "Official source"
+msgstr "Официальный источник"
+
+#: app/jurisdictions/il/pack.py:8
+msgid "Israel"
+msgstr "Израиль"
+
+#: app/jurisdictions/il/pack.py:12
+msgid ""
+"General information, not legal advice. Applies to Israeli law only. Only "
+"the Hebrew text is authoritative."
+msgstr ""
+"Общая информация, не юридическая консультация. Относится только к праву "
+"Израиля. Обязателен только текст на иврите."
+
+#: app/jurisdictions/il/pack.py:19
+msgid ""
+"A selection of the main Israeli statutes in Hebrew, from the Open Law Book "
+"(Hebrew Wikisource). It is an unofficial consolidated text maintained by "
+"volunteers. Check the binding wording in the official publication (Sefer "
+"HaChukim) before relying on it."
+msgstr ""
+"Подборка основных законов Израиля на иврите из Open Law Book (ивритский "
+"Викитека). Это неофициальный сводный текст, который ведут волонтёры. Прежде"
+" чем на него полагаться, сверьте обязательную редакцию с официальной "
+"публикацией (Sefer HaChukim)."
+
+#: app/jurisdictions/il/pack.py:23
+msgid "Open Law Book (unofficial consolidated text)"
+msgstr "Open Law Book (неофициальный сводный текст)"
 
 #: app/modules/__init__.py:24
 msgid ""
@@ -3333,29 +3393,34 @@ msgstr "Напишите короткое сообщение поставщик�
 msgid "Your request is sent to the provider."
 msgstr "Запрос отправлен поставщику услуги."
 
-#: app/modules/services/tools.py:27
+#: app/modules/services/tools.py:29
 msgid "Please name your product."
 msgstr "Укажите название продукта."
 
-#: app/modules/services/tools.py:29
+#: app/modules/services/tools.py:31
 msgid "Please describe the product in at least 40 characters."
 msgstr "Опишите продукт: не менее 40 символов."
 
-#: app/modules/services/tools.py:35
+#: app/modules/services/tools.py:37
 msgid "Please enter a price in euros, for example 29,90."
 msgstr "Введите цену в евро, например 29,90."
 
-#: app/modules/services/tools.py:38
+#: app/modules/services/tools.py:40
 msgid "Price B needs price A."
 msgstr "Для цены B нужно указать цену A."
 
-#: app/modules/services/tools.py:52
+#: app/modules/services/tools.py:61
 msgid ""
 "You have used all runs of this tool for this month. They renew at the start"
 " of next month."
 msgstr ""
 "Вы использовали все запуски этого инструмента за месяц. Лимит обновится в "
 "начале следующего месяца."
+
+#: app/modules/services/tools.py:88 app/services/tools/laws.py:62
+#: app/services/tools/laws.py:67
+msgid "There is no law collection for this country."
+msgstr "Для этой страны нет собрания законов."
 
 #: app/modules/startups/__init__.py:29
 msgid "This startup is not open for interest right now."
@@ -3866,11 +3931,11 @@ msgstr "Поиск законов"
 
 #: app/services/tools/__init__.py:37
 msgid ""
-"Finds German federal law provisions, quotes them verbatim and explains what"
-" they say."
+"Finds provisions of German federal law and of the main Israeli statutes, "
+"quotes them verbatim and explains what they say."
 msgstr ""
-"Поиск норм федерального права Германии, дословные цитаты и объяснения их "
-"содержания."
+"Находит нормы федерального права Германии и основных законов Израиля, "
+"цитирует их дословно и поясняет, что в них сказано."
 
 #: app/services/tools/__init__.py:38 app/templates/public/index.html:125
 msgid "Market panel"
@@ -4339,25 +4404,25 @@ msgstr ""
 "Для рассылок принято и юридически необходимо двойное подтверждение (Double "
 "Opt-in) с журналом."
 
-#: app/services/tools/laws.py:53
+#: app/services/tools/laws.py:65
 msgid "Die Gesetzes-Suche ist auf dieser Installation nicht eingerichtet."
 msgstr "Поиск законов не настроен в этой установке."
 
-#: app/services/tools/laws.py:56
+#: app/services/tools/laws.py:70
 msgid "Bitte gib eine Frage oder ein Stichwort ein."
 msgstr "Введите вопрос или ключевое слово."
 
-#: app/services/tools/laws.py:68
+#: app/services/tools/laws.py:82
 msgid ""
 "Die Gesetzes-Suche ist gerade nicht erreichbar. Bitte versuch es in ein "
 "paar Minuten erneut."
 msgstr "Поиск законов сейчас недоступен. Попробуйте через несколько минут."
 
-#: app/services/tools/laws.py:70 app/services/tools/laws.py:72
+#: app/services/tools/laws.py:84 app/services/tools/laws.py:86
 msgid "Die Gesetzes-Suche hat eine unerwartete Antwort geliefert."
 msgstr "Сервис поиска законов вернул неожиданный ответ."
 
-#: app/services/tools/laws.py:117
+#: app/services/tools/laws.py:147
 msgid ""
 "Automatic search results without AI explanations (no AI connection "
 "configured). Read the quoted texts directly."
@@ -4365,7 +4430,7 @@ msgstr ""
 "Автоматические результаты поиска без объяснений ИИ (подключение к ИИ не "
 "настроено). Прочитайте цитируемые тексты самостоятельно."
 
-#: app/services/tools/laws.py:124
+#: app/services/tools/laws.py:154
 msgid "No matching legal provisions were found for this question."
 msgstr "По этому вопросу не найдены подходящие правовые нормы."
 
@@ -6164,8 +6229,8 @@ msgstr "Почта (по желанию)"
 msgid "If you enter it, only this address can use the invitation."
 msgstr "Если указать, приглашением сможет воспользоваться только этот адрес."
 
-#: app/templates/admin/invites.html:24 app/templates/admin/user_detail.html:62
-#: app/templates/admin/user_detail.html:99 app/templates/admin/user_new.html:34
+#: app/templates/admin/invites.html:24 app/templates/admin/user_detail.html:63
+#: app/templates/admin/user_detail.html:100 app/templates/admin/user_new.html:34
 #: app/templates/admin/users.html:30
 msgid "Plan"
 msgstr "Тариф"
@@ -6174,13 +6239,13 @@ msgstr "Тариф"
 msgid "No paid plan"
 msgstr "Без платного тарифа"
 
-#: app/templates/admin/invites.html:33 app/templates/admin/user_detail.html:70
+#: app/templates/admin/invites.html:33 app/templates/admin/user_detail.html:71
 #: app/templates/admin/user_new.html:57
 msgid "Paid for"
 msgstr "Оплачено за"
 
 #: app/templates/admin/invites.html:36 app/templates/admin/invites.html:67
-#: app/templates/admin/user_detail.html:73 app/templates/admin/user_new.html:61
+#: app/templates/admin/user_detail.html:74 app/templates/admin/user_new.html:61
 #, python-format
 msgid "%(num)d month"
 msgid_plural "%(num)d months"
@@ -6272,7 +6337,7 @@ msgstr "Название"
 #: app/templates/admin/lots.html:43 app/templates/admin/service_form.html:16
 #: app/templates/modules/auction_detail.html:59
 #: app/templates/modules/auction_form.html:21
-#: app/templates/modules/tool_form.html:73
+#: app/templates/modules/tool_form.html:103
 msgid "Description"
 msgstr "Описание"
 
@@ -6485,7 +6550,7 @@ msgid "checked by Stripe"
 msgstr "проверено через Stripe"
 
 #: app/templates/admin/user_detail.html:21
-#: app/templates/admin/user_detail.html:58
+#: app/templates/admin/user_detail.html:59
 #: app/templates/modules/tool_report_findings.html:41
 msgid "Note"
 msgstr "Примечание"
@@ -6539,55 +6604,55 @@ msgstr "оплачено до"
 msgid "no end date"
 msgstr "без срока"
 
-#: app/templates/admin/user_detail.html:78 app/templates/admin/user_new.html:66
+#: app/templates/admin/user_detail.html:79 app/templates/admin/user_new.html:66
 msgid "How the payment arrived"
 msgstr "Как пришла оплата"
 
-#: app/templates/admin/user_detail.html:79
+#: app/templates/admin/user_detail.html:80
 msgid "For example: bank transfer 24.10., invoice 12"
 msgstr "Например: перевод 24.10., счёт 12"
 
-#: app/templates/admin/user_detail.html:81
+#: app/templates/admin/user_detail.html:82
 msgid "Confirm payment"
 msgstr "Подтвердить оплату"
 
-#: app/templates/admin/user_detail.html:87
+#: app/templates/admin/user_detail.html:88
 msgid "Reason for ending the plan now"
 msgstr "Причина завершения тарифа сейчас"
 
-#: app/templates/admin/user_detail.html:90
+#: app/templates/admin/user_detail.html:91
 msgid "End plan now"
 msgstr "Завершить тариф сейчас"
 
-#: app/templates/admin/user_detail.html:108
+#: app/templates/admin/user_detail.html:109
 msgid "Role"
 msgstr "Роль"
 
-#: app/templates/admin/user_detail.html:117
+#: app/templates/admin/user_detail.html:118
 msgid "Account status"
 msgstr "Статус аккаунта"
 
-#: app/templates/admin/user_detail.html:127 app/templates/admin/user_new.html:72
+#: app/templates/admin/user_detail.html:128 app/templates/admin/user_new.html:72
 msgid "Administrator (all rights)"
 msgstr "Администратор (все права)"
 
-#: app/templates/admin/user_detail.html:140
+#: app/templates/admin/user_detail.html:141
 msgid "Reason"
 msgstr "Причина"
 
-#: app/templates/admin/user_detail.html:148
+#: app/templates/admin/user_detail.html:149
 #: app/templates/modules/events_form.html:106
 #: app/templates/modules/miniclubs_form.html:81
 #: app/templates/modules/travel_form.html:91
 msgid "Save changes"
 msgstr "Сохранить изменения"
 
-#: app/templates/admin/user_detail.html:153
+#: app/templates/admin/user_detail.html:154
 #: app/templates/member/dashboard.html:99 app/templates/member/security.html:20
 msgid "Two-factor login"
 msgstr "Двухфакторный вход"
 
-#: app/templates/admin/user_detail.html:154
+#: app/templates/admin/user_detail.html:155
 msgid ""
 "Use this only if the member has lost the phone and the recovery codes and "
 "you are sure who you are talking to."
@@ -6595,35 +6660,35 @@ msgstr ""
 "Используйте это, только если участник потерял телефон и резервные коды и вы"
 " уверены, с кем говорите."
 
-#: app/templates/admin/user_detail.html:158
+#: app/templates/admin/user_detail.html:159
 msgid "How did you make sure it is this person?"
 msgstr "Как вы убедились, что это он?"
 
-#: app/templates/admin/user_detail.html:161
+#: app/templates/admin/user_detail.html:162
 msgid "Reset two-factor login"
 msgstr "Сбросить двухфакторный вход"
 
-#: app/templates/admin/user_detail.html:167
+#: app/templates/admin/user_detail.html:168
 msgid "Consents"
 msgstr "Согласия"
 
-#: app/templates/admin/user_detail.html:170
+#: app/templates/admin/user_detail.html:171
 msgid "granted"
 msgstr "дано"
 
-#: app/templates/admin/user_detail.html:170
+#: app/templates/admin/user_detail.html:171
 msgid "withdrawn"
 msgstr "отозвано"
 
-#: app/templates/admin/user_detail.html:172
+#: app/templates/admin/user_detail.html:173
 msgid "No consents recorded."
 msgstr "Согласий пока нет."
 
-#: app/templates/admin/user_detail.html:178
+#: app/templates/admin/user_detail.html:179
 msgid "History"
 msgstr "История"
 
-#: app/templates/admin/user_detail.html:183
+#: app/templates/admin/user_detail.html:184
 msgid "No entries yet."
 msgstr "Записей пока нет."
 
@@ -7124,7 +7189,7 @@ msgstr ""
 "Цены в евро, с НДС там, где он применяется. Оплату и данные карты "
 "обрабатывает Stripe; клуб карту не видит. Отменить можно в любой момент."
 
-#: app/templates/member/plan.html:55 app/templates/modules/tool_form.html:92
+#: app/templates/member/plan.html:55 app/templates/modules/tool_form.html:122
 #: app/templates/public/index.html:182 app/templates/public/index.html:187
 #: app/templates/public/index.html:192
 msgid "per month"
@@ -9163,13 +9228,15 @@ msgstr ""
 
 #: app/templates/modules/tool_form.html:17
 msgid ""
-"This is not legal advice. The tool quotes the text of federal laws and "
-"explains what the text says. It never assesses your individual case. "
-"Replies are written by an AI. For a binding opinion ask a lawyer."
+"This is not legal advice. The tool quotes the text of the laws of the "
+"country you choose and explains what the text says. It never assesses your "
+"individual case. Replies are written by an AI. For a binding opinion ask a "
+"lawyer."
 msgstr ""
-"Это не юридическая консультация. Инструмент цитирует федеральные законы и "
-"объясняет их содержание. Он не оценивает вашу конкретную ситуацию. Ответы "
-"пишет ИИ. За юридическим заключением обратитесь к адвокату."
+"Это не юридическая консультация. Инструмент цитирует текст законов "
+"выбранной страны и поясняет, что в нём сказано. Он никогда не оценивает ваш"
+" частный случай. Ответы пишет ИИ. За обязательным заключением обращайтесь к"
+" юристу."
 
 #: app/templates/modules/tool_form.html:19
 msgid ""
@@ -9266,22 +9333,47 @@ msgid "Search terms (optional, up to five, separated by commas)"
 msgstr "Поисковые слова (необязательно, до пяти, через запятую)"
 
 #: app/templates/modules/tool_form.html:55
+msgid "Country whose law you want to search"
+msgstr "Страна, право которой вы хотите искать"
+
+#: app/templates/modules/tool_form.html:62
 msgid "Your question or keyword"
 msgstr "Ваш вопрос или ключевое слово"
 
-#: app/templates/modules/tool_form.html:59
+#: app/templates/modules/tool_form.html:66
 msgid "Area of law (optional)"
 msgstr "Область права (необязательно)"
 
-#: app/templates/modules/tool_form.html:61
+#: app/templates/modules/tool_form.html:68
 msgid "All areas"
 msgstr "Все области"
 
-#: app/templates/modules/tool_form.html:68
+#: app/templates/modules/tool_form.html:75
+msgid "The area of law is applied only if it belongs to the chosen country."
+msgstr "Область права учитывается, только если она относится к выбранной стране."
+
+#: app/templates/modules/tool_form.html:79
+#, python-format
+msgid "Which laws are included for %(country)s?"
+msgstr "Какие законы включены для страны: %(country)s?"
+
+#: app/templates/modules/tool_form.html:82
+msgid "Law"
+msgstr "Закон"
+
+#: app/templates/modules/tool_form.html:82
+msgid "Area of law"
+msgstr "Область права"
+
+#: app/templates/modules/tool_form.html:82
+msgid "Source version"
+msgstr "Версия источника"
+
+#: app/templates/modules/tool_form.html:98
 msgid "Product name"
 msgstr "Название продукта"
 
-#: app/templates/modules/tool_form.html:75
+#: app/templates/modules/tool_form.html:105
 msgid ""
 "What is it, for whom, what can it do, what is special? The more concrete, "
 "the better (at least 40 characters)."
@@ -9289,59 +9381,59 @@ msgstr ""
 "Что это, для кого, какие возможности и особенности? Чем конкретнее, тем "
 "лучше (не менее 40 символов)."
 
-#: app/templates/modules/tool_form.html:79
+#: app/templates/modules/tool_form.html:109
 msgid "Price A in euros (optional)"
 msgstr "Цена A в евро (необязательно)"
 
-#: app/templates/modules/tool_form.html:84
+#: app/templates/modules/tool_form.html:114
 msgid "Price B in euros (optional, for an A/B comparison)"
 msgstr "Цена B в евро (необязательно, для A/B-сравнения)"
 
-#: app/templates/modules/tool_form.html:89
+#: app/templates/modules/tool_form.html:119
 msgid "Billing"
 msgstr "Оплата"
 
-#: app/templates/modules/tool_form.html:91
+#: app/templates/modules/tool_form.html:121
 msgid "one-off"
 msgstr "разово"
 
-#: app/templates/modules/tool_form.html:93
+#: app/templates/modules/tool_form.html:123
 msgid "per year"
 msgstr "в год"
 
-#: app/templates/modules/tool_form.html:97
+#: app/templates/modules/tool_form.html:127
 msgid "Target group"
 msgstr "Целевая группа"
 
-#: app/templates/modules/tool_form.html:99
+#: app/templates/modules/tool_form.html:129
 msgid "Private persons and business decision makers"
 msgstr "Частные лица и лица, принимающие решения в бизнесе"
 
-#: app/templates/modules/tool_form.html:100
+#: app/templates/modules/tool_form.html:130
 msgid "Private persons only"
 msgstr "Только частные лица"
 
-#: app/templates/modules/tool_form.html:101
+#: app/templates/modules/tool_form.html:131
 msgid "Business decision makers only"
 msgstr "Только лица, принимающие решения в бизнесе"
 
-#: app/templates/modules/tool_form.html:105
+#: app/templates/modules/tool_form.html:135
 msgid "Region"
 msgstr "Регион"
 
-#: app/templates/modules/tool_form.html:107
+#: app/templates/modules/tool_form.html:137
 msgid "All of Germany"
 msgstr "Вся Германия"
 
-#: app/templates/modules/tool_form.html:108
+#: app/templates/modules/tool_form.html:138
 msgid "Rhine-Main area"
 msgstr "Регион Рейн-Майн"
 
-#: app/templates/modules/tool_form.html:112
+#: app/templates/modules/tool_form.html:142
 msgid "Number of personas"
 msgstr "Количество персонажей"
 
-#: app/templates/modules/tool_form.html:119
+#: app/templates/modules/tool_form.html:149
 msgid "Run"
 msgstr "Запустить"
 
@@ -9408,7 +9500,7 @@ msgstr "Новый поиск"
 msgid "Your question"
 msgstr "Ваш вопрос"
 
-#: app/templates/modules/tool_report_laws.html:14
+#: app/templates/modules/tool_report_laws.html:16
 msgid ""
 "This is not legal advice. The explanations were written by an AI and only "
 "describe what the quoted text says. They do not assess your case."
@@ -9416,15 +9508,11 @@ msgstr ""
 "Это не юридическая консультация. Объяснения написаны ИИ и только описывают "
 "содержание цитат. Они не оценивают вашу ситуацию."
 
-#: app/templates/modules/tool_report_laws.html:27
-msgid "Official source"
-msgstr "Официальный источник"
-
-#: app/templates/modules/tool_report_laws.html:29
+#: app/templates/modules/tool_report_laws.html:34
 msgid "What the text says"
 msgstr "Что говорит текст"
 
-#: app/templates/modules/tool_report_laws.html:36
+#: app/templates/modules/tool_report_laws.html:41
 msgid ""
 "Further results were found but do not match your question closely and are "
 "hidden."

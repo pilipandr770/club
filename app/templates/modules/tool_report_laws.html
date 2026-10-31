@@ -11,7 +11,10 @@
 <section class="card">
   <h2>{{ _("Your question") }}</h2>
   <p>{{ run.subject }}</p>
+  <p><span class="pill">{{ pack.code }} · {{ pack.name }}</span></p>
+  <p class="notice">{{ pack.disclaimer }}</p>
   <p class="notice">{{ _("This is not legal advice. The explanations were written by an AI and only describe what the quoted text says. They do not assess your case.") }}</p>
+  {% if pack.rtl %}<p class="small muted">{{ pack.corpus_note }}</p>{% endif %}
   {% if report.hinweis %}<p>{{ report.hinweis }}</p>{% endif %}
 </section>
 
@@ -21,10 +24,12 @@
 {% for hit in result.hits %}
   {% if not report.ai or hit.id not in report.nicht_passend %}
   <section class="card">
-    <h2>{{ hit.law_abbreviation or hit.slug }} {{ hit.enbez }}{% if hit.titel %} · {{ hit.titel }}{% endif %}</h2>
-    <p class="small muted">{{ hit.law_title }}{% if hit.category %} · {{ hit.category|label }}{% endif %}</p>
-    <blockquote class="quote">{{ hit.text }}</blockquote>
-    {% if hit.source_url %}<p class="small"><a href="{{ hit.source_url }}" rel="noopener noreferrer" target="_blank">{{ _("Official source") }}</a></p>{% endif %}
+    <h2 lang="{{ pack.language }}"{% if pack.rtl %} dir="rtl"{% endif %}>{{ hit.law_abbreviation or hit.slug }} {{ hit.enbez }}{% if hit.titel %} · {{ hit.titel }}{% endif %}</h2>
+    <p class="small muted"><span lang="{{ pack.language }}"{% if pack.rtl %} dir="rtl"{% endif %}>{{ hit.law_title }}</span>{% if hit.category %} · {{ hit.category|label }}{% endif %}</p>
+    <blockquote class="quote{% if pack.rtl %} quote-law{% endif %}" lang="{{ pack.language }}"{% if pack.rtl %} dir="rtl"{% endif %}>{{ hit.text }}</blockquote>
+    {% if hit.source_url %}<p class="small"><a href="{{ hit.source_url }}" rel="noopener noreferrer" target="_blank">{{ pack.source_label }}</a>
+      {% if pack.rtl and hit.source_version %}<span class="muted"> · {{ hit.source_version }}</span>{% endif %}</p>{% endif %}
+    {% if pack.rtl and hit.stand %}<p class="small muted" lang="{{ pack.language }}" dir="rtl">{{ hit.stand|join(' · ') }}</p>{% endif %}
     {% if explained.get(hit.id) %}
       <p><strong>{{ _("What the text says") }}:</strong> {{ explained[hit.id] }}</p>
     {% endif %}

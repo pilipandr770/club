@@ -216,8 +216,8 @@ def test_laws_tool_shows_quotes_and_explanation(app, client, monkeypatch):
     hits = [{"id": 1, "slug": "bgb", "law_abbreviation": "BGB", "law_title": "Bürgerliches Gesetzbuch",
              "category": "Zivilrecht", "enbez": "§ 433", "titel": "Kaufvertrag", "text": "Durch den Kaufvertrag ...",
              "stand": [], "source_url": "javascript:alert(1)", "score": 0.9}]
-    monkeypatch.setattr(laws, "search", lambda q, c="", k=6: hits)
-    monkeypatch.setattr(laws, "explain", lambda q, h: {"erlaeuterungen": [{"id": 1, "text": "Regelt den Kauf."}],
+    monkeypatch.setattr(laws, "search", lambda q, c="", k=6, jurisdiction="DE": hits)
+    monkeypatch.setattr(laws, "explain", lambda q, h, j="DE": {"erlaeuterungen": [{"id": 1, "text": "Regelt den Kauf."}],
                                                        "nicht_passend": [], "hinweis": "", "ai": True})
     try:
         make_user(app, email="starter@example.com", verified=True, plan="starter")

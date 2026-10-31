@@ -14,6 +14,7 @@ import urllib.request
 
 from flask import current_app
 
+from ...jurisdictions import UnknownJurisdiction, get_pack
 from ..laws import search as local_search
 from .common import ToolError, json_from_llm
 
@@ -21,12 +22,11 @@ log = logging.getLogger(__name__)
 
 TIMEOUT = 12
 MAX_HITS = 8
-CATEGORIES = (
-    "Verfassungsrecht", "Zivilrecht", "Handelsrecht", "Gesellschaftsrecht", "Insolvenzrecht", "Verfahrensrecht",
-    "Anwaltsrecht", "Wettbewerbsrecht", "Notarrecht", "Strafrecht", "Strafverfahrensrecht", "Wirtschaftsstrafrecht",
-    "IT-/Digitalrecht", "Datenschutzrecht", "IT-Sicherheitsrecht", "Urheberrecht", "Wirtschaftsrecht",
-    "Finanzaufsichtsrecht", "Steuerrecht", "Steuerverfahrensrecht",
-)
+CATEGORIES = get_pack("DE").categories  # Kategorien des deutschen Korpus (Standardland)
+
+
+def categories_of(jurisdiction: str) -> tuple:
+    return get_pack(jurisdiction).categories
 
 
 def _source() -> str:
@@ -35,7 +35,7 @@ def _source() -> str:
     LAWS_SOURCE=auto (по умолчанию): локальный корпус, если он загружен, иначе внешний сервис, если задан адрес."""
     mode = current_app.config.get("LAWS_SOURCE", "auto")
     has_remote = bool(current_app.config.get("LAWS_API_URL"))
-    if mode in ("auto", "local") and local_search.corpus_ready():
+    if mode in ("auto", "local") and local_search.ready_jurisdictions():
         return "local"
     if mode in ("auto", "remote") and has_remote:
         return "remote"
@@ -46,16 +46,30 @@ def enabled() -> bool:
     return bool(_source())
 
 
-def search(query: str, category: str = "", k: int = 6) -> list[dict]:
-    """Treffer der internen Suche; jeder trägt den Original-Gesetzestext."""
+def available_jurisdictions() -> list[str]:
+    """Länder, für die jetzt gesucht werden kann. Der externe Dienst kennt nur Deutschland."""
+    source = _source()
+    if source == "local":
+        return local_search.ready_jurisdictions()
+    return ["DE"] if source else []
+
+
+def search(query: str, category: str = "", k: int = 6, jurisdiction: str = "DE") -> list[dict]:
+    """Treffer der internen Suche; jeder trägt den Original-Gesetzestext. Das Land wird ausdrücklich angegeben."""
+    try:
+        pack = get_pack(jurisdiction)
+    except UnknownJurisdiction:
+        raise ToolError(gettext("There is no law collection for this country.")) from None
     source = _source()
     if not source:
         raise ToolError(gettext('Die Gesetzes-Suche ist auf dieser Installation nicht eingerichtet.'))
+    if jurisdiction not in available_jurisdictions():
+        raise ToolError(gettext("There is no law collection for this country."))
     query = query.strip()[:800]
     if not query:
         raise ToolError(gettext('Bitte gib eine Frage oder ein Stichwort ein.'))
     if source == "local":
-        return local_search.search(query, category if category in CATEGORIES else "", k)
+        return local_search.search(query, category if category in pack.categories else "", k, jurisdiction)
     base = current_app.config.get("LAWS_API_URL")
     params = {"q": query, "k": max(1, min(MAX_HITS, k))}
     if category in CATEGORIES:
@@ -94,12 +108,12 @@ def _official_url(value) -> str:
 
 
 SYSTEM = (
-    "Du hilfst bei der ERSTEN ORIENTIERUNG im deutschen Bundesrecht, indem du ausschließlich vorhandene Gesetzestexte "
+    "Du hilfst bei der ERSTEN ORIENTIERUNG {scope}, indem du ausschließlich vorhandene Gesetzestexte "
     "einordnest. Das ist KEINE Rechtsberatung und du gibst KEINE Handlungsempfehlung — auch nicht indirekt oder "
     "vorsichtig formuliert (kein 'du solltest', 'ich empfehle', 'am besten machst du', 'das bedeutet für dich'). Du "
     "bewertest nie, ob jemand im Recht ist, und wendest den Text nie auf eine persönliche Situation an — du erklärst "
     "ausschließlich, was im zitierten Gesetzestext wörtlich geregelt ist.\n"
-    "Unten stehen nummerierte Fundstellen aus einer semantischen Suche über den kompletten deutschen Bundesgesetzkorpus. "
+    "Unten stehen nummerierte Fundstellen aus einer semantischen Suche über {corpus}. "
     "Der Wortlaut wird der Person bereits unverändert angezeigt, du musst ihn nicht wiederholen.\n"
     "Für jede Fundstelle, die WIRKLICH zur Frage passt: schreibe 1–2 sachliche Sätze, was der Text bedeutet — rein "
     "sprachliche Erläuterung, keine Einzelfall-Einschätzung. Fundstellen, die nicht wirklich passen (nur oberflächlich "
@@ -112,12 +126,28 @@ SYSTEM = (
 )
 
 
+SCOPES = {
+    "DE": ("im deutschen Bundesrecht", "den kompletten deutschen Bundesgesetzkorpus", ""),
+    "IL": ("im israelischen Recht (Auswahl der wichtigsten Gesetze)", "eine Auswahl der wichtigsten israelischen Gesetze",
+           " Die Fundstellen sind hebräische Originaltexte aus einer inoffiziellen Sammelfassung. Verbindlich ist nur der "
+           "hebräische Wortlaut; deine Sätze sind eine maschinelle sinngemäße Wiedergabe und keine Übersetzung. Zitiere "
+           "hebräischen Text nie in eigener Übersetzung als Wortlaut. Das israelische Recht wird stark von der "
+           "Rechtsprechung geprägt, die hier NICHT enthalten ist; weise darauf in 'hinweis' hin, wenn die Frage davon "
+           "abhängen kann. Nutze keine Kenntnisse außerhalb der Fundstellen."),
+}
+
+
+def _system(jurisdiction: str) -> str:
+    scope, corpus, extra = SCOPES.get(jurisdiction, SCOPES["DE"])
+    return SYSTEM.replace("{scope}", scope).replace("{corpus}", corpus) + extra  # format() würde das JSON-Beispiel zerlegen
+
+
 def _fallback(hits: list[dict]) -> dict:
     return {"erlaeuterungen": [], "nicht_passend": [h["id"] for h in hits],
             "hinweis": gettext("Automatic search results without AI explanations (no AI connection configured). Read the quoted texts directly."), "ai": False}
 
 
-def explain(query: str, hits: list[dict]) -> dict:
+def explain(query: str, hits: list[dict], jurisdiction: str = "DE") -> dict:
     """{erlaeuterungen: [{id, text}], nicht_passend: [id], hinweis, ai}. Erklärt nur, empfiehlt nichts."""
     if not hits:
         return {"erlaeuterungen": [], "nicht_passend": [],
@@ -125,7 +155,7 @@ def explain(query: str, hits: list[dict]) -> dict:
     payload = {"frage": query, "fundstellen": [
         {"id": h["id"], "gesetz": h["law_abbreviation"] or h["slug"], "paragraph": h["enbez"], "titel": h["titel"],
          "kategorie": h["category"], "text": h["text"][:1200]} for h in hits]}
-    data = json_from_llm(SYSTEM, payload, max_tokens=1400, purpose="law_search")
+    data = json_from_llm(_system(jurisdiction), payload, max_tokens=1400, purpose="law_search")
     if data is None:
         return _fallback(hits)
     valid_ids = {h["id"] for h in hits}

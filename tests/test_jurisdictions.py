@@ -20,8 +20,8 @@ def test_default_jurisdiction_is_de():
 def test_unknown_jurisdiction_is_refused():
     """Нет пакета — ошибка, а не тихий откат на немецкое право (ARCHITECTURE.md §4)."""
     with pytest.raises(UnknownJurisdiction):
-        get_pack("IL")
+        get_pack("FR")
 
 
-def test_enabled_packs_lists_de():
-    assert [pack.code for pack in enabled_packs()] == ["DE"]
+def test_enabled_packs_lists_de_and_il():
+    assert [pack.code for pack in enabled_packs()] == ["DE", "IL"]

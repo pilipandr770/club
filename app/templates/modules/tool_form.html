@@ -14,7 +14,7 @@
 {% if spec.kind == 'panel' %}
   <p class="notice">{{ _("The market panel is synthetic. The personas are fictional people invented by an AI. The answers give hints and hypotheses for price, message and target group. They do not replace asking real customers and do not predict sales.") }}</p>
 {% elif spec.kind == 'laws' %}
-  <p class="notice">{{ _("This is not legal advice. The tool quotes the text of federal laws and explains what the text says. It never assesses your individual case. Replies are written by an AI. For a binding opinion ask a lawyer.") }}</p>
+  <p class="notice">{{ _("This is not legal advice. The tool quotes the text of the laws of the country you choose and explains what the text says. It never assesses your individual case. Replies are written by an AI. For a binding opinion ask a lawyer.") }}</p>
 {% elif spec.kind == 'domain' %}
   <p class="notice">{{ _("Passive check only: the tool looks at what any visitor or mail server can see. No port scan and no attacks. This is not a penetration test.") }}</p>
   <details class="examples">
@@ -52,6 +52,13 @@
 
   {% elif spec.kind == 'laws' %}
     <div class="field">
+      <label for="jurisdiction">{{ _("Country whose law you want to search") }}</label>
+      <select id="jurisdiction" name="jurisdiction">
+        {% for pack in laws.packs %}<option value="{{ pack.code }}"{% if form.get('jurisdiction') == pack.code %} selected{% endif %}>{{ pack.name }}</option>{% endfor %}
+      </select>
+      {% for pack in laws.packs %}<p class="small muted">{{ pack.name }}: {{ pack.corpus_note }}</p>{% endfor %}
+    </div>
+    <div class="field">
       <label for="query">{{ _("Your question or keyword") }}</label>
       <textarea id="query" name="query" rows="3" maxlength="800" required>{{ form.get('query', '') }}</textarea>
     </div>
@@ -59,9 +66,32 @@
       <label for="category">{{ _("Area of law (optional)") }}</label>
       <select id="category" name="category">
         <option value="">{{ _("All areas") }}</option>
-        {% for c in categories %}<option value="{{ c }}"{% if form.get('category') == c %} selected{% endif %}>{{ c|label }}</option>{% endfor %}
+        {% for pack in laws.packs %}
+        <optgroup label="{{ pack.name }}">
+          {% for c in pack.categories %}<option value="{{ c }}"{% if form.get('category') == c %} selected{% endif %}>{{ c|label }}</option>{% endfor %}
+        </optgroup>
+        {% endfor %}
       </select>
+      <p class="small muted">{{ _("The area of law is applied only if it belongs to the chosen country.") }}</p>
     </div>
+    {% for pack in laws.packs if pack.code != 'DE' %}
+    <details class="examples">
+      <summary>{{ _("Which laws are included for %(country)s?", country=pack.name) }}</summary>
+      <p class="small muted">{{ pack.disclaimer }}</p>
+      <table class="table">
+        <thead><tr><th>{{ _("Law") }}</th><th>{{ _("Area of law") }}</th><th>{{ _("Source version") }}</th></tr></thead>
+        <tbody>
+        {% for law in laws.corpus[pack.code] %}
+          <tr>
+            <td lang="{{ pack.language }}"{% if pack.rtl %} dir="rtl"{% endif %}>{{ law.title or law.abbreviation }}</td>
+            <td>{{ law.category|label }}</td>
+            <td>{% if law.source_url.startswith('https://') %}<a href="{{ law.source_url }}" rel="noopener noreferrer" target="_blank">{{ (law.stand or [''])[0] }}</a>{% endif %}</td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </details>
+    {% endfor %}
 
   {% else %}
     <div class="field">

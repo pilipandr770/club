@@ -1,6 +1,8 @@
-"""Корпус федерального права (gesetze-im-internet.de) внутри клуба: тексты, куски для поиска, векторы.
+"""Корпус законов внутри клуба: тексты, куски для поиска, векторы. Страны разделены колонкой `jurisdiction`:
+DE — федеральное право (gesetze-im-internet.de), IL — основные законы Израиля (Open Law Book).
 
-Данные публичные (amtliche Werke, § 5 UrhG) и целиком восстанавливаются командой `flask laws-sync`,
+Данные публичные (amtliche Werke, § 5 UrhG; законы Израиля авторским правом не защищены) и целиком восстанавливаются
+командами `flask laws-sync` и `flask laws-il-sync`,
 поэтому таблицы law_* не входят в бэкапы (pg_dump -T 'law_*'). Векторы — pgvector, поиск по косинусу;
 для запасного полнотекстового поиска у кусков есть сгенерированный tsvector (немецкая морфология).
 """
@@ -50,6 +52,8 @@ class Law(db.Model):
     __tablename__ = "law_docs"
 
     slug: Mapped[str] = mapped_column(String(120), primary_key=True)
+    jurisdiction: Mapped[str] = mapped_column(String(2), default="DE", server_default="DE", index=True)
+    revision: Mapped[str] = mapped_column(String(40), default="", server_default="")  # ревизия источника (IL: Wikisource)
     abbreviation: Mapped[str] = mapped_column(String(120), default="")
     title: Mapped[str] = mapped_column(String(400), default="")
     category: Mapped[str] = mapped_column(String(80), default="Unclassified", index=True)
@@ -82,6 +86,8 @@ class LawChunk(db.Model):
 
     id: Mapped[str] = mapped_column(String(64), primary_key=True)
     slug: Mapped[str] = mapped_column(ForeignKey("law_docs.slug", ondelete="CASCADE"), index=True)
+    # Дублирует Law.jurisdiction: так поиск по вектору фильтрует страну в самой выборке (частичный HNSW-индекс на страну)
+    jurisdiction: Mapped[str] = mapped_column(String(2), default="DE", server_default="DE", index=True)
     enbez: Mapped[str] = mapped_column(String(80), default="")
     titel: Mapped[str] = mapped_column(String(400), default="")
     part: Mapped[str] = mapped_column(String(20), default="")

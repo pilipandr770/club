@@ -12,7 +12,8 @@ import xml.etree.ElementTree as ET
 from .catalog import category_for
 
 MAX_CHARS = 4000  # лимит модели эмбеддингов (таблицы токенизируются почти 1:1)
-GONE = re.compile(r"^[\s(\[]*(weggefallen|aufgehoben|entfällt|-)[\s)\].]*$", re.I)
+MAX_CHARS_HE = 2500  # иврит токенизируется плотнее: запас до лимита модели
+GONE = re.compile(r"^[\s(\[]*(weggefallen|aufgehoben|entfällt|בוטל|בוטלו|נמחק|נמחקה|נמחקו|-)[\s)\].]*$", re.I)
 
 
 def slugify(url: str) -> str:
@@ -119,13 +120,19 @@ def split_long_text(text: str, max_chars: int = MAX_CHARS) -> list[str]:
 
 
 def chunks_of(law: dict):
-    """Все актуальные куски закона: (id, enbez, titel, part, text, sha256)."""
+    """Все актуальные куски закона: (id, enbez, titel, part, text, sha256).
+
+    Если у статьи есть `context` (IL: «закон · глава · статья – заголовок»), он ставится перед текстом куска: в статье
+    часто не названо, о чём закон, и вектор без этого теряет смысл."""
+    limit = MAX_CHARS_HE if law.get("jurisdiction") == "IL" else MAX_CHARS
     for idx, section in enumerate(law["sections"]):
         text = (section.get("text") or "").strip()
         if is_gone(text):
             continue
-        pieces = split_long_text(text)
+        context = (section.get("context") or "").strip()
+        pieces = split_long_text(text, limit - len(context) - 1 if context else limit)
         for part, piece in enumerate(pieces):
             label = f"{part + 1}/{len(pieces)}" if len(pieces) > 1 else ""
+            body = f"{context}\n{piece}" if context else piece
             yield (chunk_id(law["slug"], section["enbez"], idx, part), section["enbez"], section["titel"], label,
-                   piece, hashlib.sha256(piece.encode("utf-8")).hexdigest())
+                   body, hashlib.sha256(body.encode("utf-8")).hexdigest())

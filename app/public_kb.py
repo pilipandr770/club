@@ -51,8 +51,8 @@ It is an AI, gives no legal or financial advice and never shows contact details.
 rules for AI in a company. A request takes two clicks; contact details go to the partner only if the member agrees.
 - Website checks: enter an address and get a report with the most important steps first: SEO, legal notice and cookies, encryption, \
 e-mail protection and publicly visible weak spots. Passive checks only, no attacks.
-- Law search: German federal law (about 6,000 laws) searched by question or section number, with the original text, official source \
-and a plain-language explanation. A first orientation, not legal advice.
+- Law search: German federal law (about 6,000 laws) and a selection of the main Israeli statutes (in Hebrew), searched by question \
+or section number, with the original text, source and a plain-language explanation. A first orientation, not legal advice.
 - Market panel: describe a product and a price; 100 fictional AI personas react with purchase intent, price curve and concerns. \
 A hint for hypotheses, not a forecast.
 - Startups: members can publish a project card with pitch, picture and presentation after a check by the club; investors can show interest; \

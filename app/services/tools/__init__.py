@@ -34,7 +34,7 @@ TOOLS = (
     ToolSpec("security", _l("Security check"),
              _l("Passive check of encryption, security headers, cookies and e-mail protection of your domain."), "domain"),
     ToolSpec("laws", _l("Law search"),
-             _l("Finds German federal law provisions, quotes them verbatim and explains what they say."), "laws"),
+             _l("Finds provisions of German federal law and of the main Israeli statutes, quotes them verbatim and explains what they say."), "laws"),
     ToolSpec("panel", _l("Market panel"),
              _l("Up to 100 fictional personas rate your product idea before you launch."), "panel"),
 )
@@ -96,11 +96,11 @@ def run_site_tool(user, key: str, raw: str, keywords_raw: str = "") -> ToolRun:
     return _save(user, key, subject, result, report)
 
 
-def run_laws(user, query: str, category: str) -> ToolRun:
+def run_laws(user, query: str, category: str, jurisdiction: str = "DE") -> ToolRun:
     _check_limit(user, "laws")
-    hits = laws.search(query, category)
-    explanation = laws.explain(query, hits)
-    return _save(user, "laws", query, {"hits": hits, "category": category}, explanation)
+    hits = laws.search(query, category, jurisdiction=jurisdiction)
+    explanation = laws.explain(query, hits, jurisdiction)
+    return _save(user, "laws", query, {"hits": hits, "category": category, "jurisdiction": jurisdiction}, explanation)
 
 
 def run_panel(user, form: dict) -> ToolRun:

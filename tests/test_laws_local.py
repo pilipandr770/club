@@ -231,7 +231,7 @@ def test_import_from_old_service(app, tmp_path, monkeypatch):
 # --------------------------------------------------------------------------- Инструмент
 def test_tool_uses_local_corpus_without_external_service(app, client, monkeypatch):
     monkeypatch.setattr(embed, "available", lambda: False)
-    monkeypatch.setattr(laws_tool, "explain", lambda q, hits: {"erlaeuterungen": [{"id": 1, "text": "Regelt den Kauf."}],
+    monkeypatch.setattr(laws_tool, "explain", lambda q, hits, j="DE": {"erlaeuterungen": [{"id": 1, "text": "Regelt den Kauf."}],
                                                                "nicht_passend": [], "hinweis": "", "ai": True})
     with app.app_context():
         load_bgb(with_vectors=False)

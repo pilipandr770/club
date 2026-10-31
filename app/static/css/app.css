@@ -676,6 +676,10 @@ a:focus-visible {
   white-space: pre-line;
 }
 
+.quote-law {
+  white-space: pre-wrap;
+}
+
 progress {
   inline-size: 100%;
   accent-color: var(--color-accent);

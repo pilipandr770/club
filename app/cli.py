@@ -211,19 +211,42 @@ def laws_sync_if_due_command():
     if sync_due():
         summary = sync()
         click.echo(f"laws-sync: новых {summary['new']}, обновлено {summary['updated']}, ошибок {len(summary['errors'])}")
+    from .services.laws import il_sync
+
+    if il_sync.sync_due():
+        summary = il_sync.sync()
+        click.echo(f"laws-il-sync: новых {summary['new']}, обновлено {summary['updated']}, ошибок {len(summary['errors'])}")
+
+
+@click.command("laws-il-sync")
+@click.option("--only", multiple=True, help="Только эти slug (например il-privacy; можно несколько раз).")
+@click.option("--no-embed", is_flag=True, help="Не считать векторы (поиск будет по тексту).")
+def laws_il_sync_command(only, no_embed):
+    """Основные законы Израиля с Hebrew Wikisource (Open Law Book): скачивает и векторизует только изменившееся."""
+    from .services.laws.il_sync import build_il_index, sync
+
+    summary = sync(only=list(only) or None, embed_new=not no_embed, progress=click.echo)
+    build_il_index()
+    click.echo(f"Новых: {summary['new']}, обновлено: {summary['updated']}, без изменений: {summary['unchanged']}, "
+               f"ошибок: {len(summary['errors'])}, секунд: {summary['seconds']}")
+    for error in summary["errors"]:
+        click.echo(f"  ! {error}")
 
 
 @click.command("laws-status")
 def laws_status_command():
-    """Состояние корпуса законов."""
+    """Состояние корпуса законов по странам."""
     from .extensions import db
+    from .jurisdictions import enabled_packs
     from .models import LawSyncState
+    from .services.laws.il_sync import STATE_ID
     from .services.laws.search import corpus_stats
 
-    stats = corpus_stats()
-    state = db.session.get(LawSyncState, 1)
-    click.echo(f"Законов: {stats['laws']}, кусков: {stats['chunks']}, с векторами: {stats['vectors']}")
-    click.echo(f"Последняя синхронизация: {state.last_run_at if state else 'ещё не было'}")
+    for pack in enabled_packs():
+        stats = corpus_stats(pack.code)
+        state = db.session.get(LawSyncState, STATE_ID if pack.code == "IL" else 1)
+        click.echo(f"{pack.code}: законов {stats['laws']}, кусков {stats['chunks']}, с векторами {stats['vectors']}; "
+                   f"последняя синхронизация: {state.last_run_at if state else 'ещё не было'}")
 
 
 @click.command("stripe-setup")
@@ -330,6 +353,7 @@ def register(app):
     app.cli.add_command(laws_import_command)
     app.cli.add_command(laws_index_command)
     app.cli.add_command(laws_sync_command)
+    app.cli.add_command(laws_il_sync_command)
     app.cli.add_command(laws_sync_if_due_command)
     app.cli.add_command(laws_status_command)
     app.cli.add_command(seed_services_command)

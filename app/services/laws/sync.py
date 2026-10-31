@@ -62,6 +62,8 @@ def store_law(law: dict, sha256: str, embed_new: bool = True) -> str:
     existing = db.session.get(Law, slug)
     status = "updated" if existing else "new"
     row = existing or Law(slug=slug)
+    jurisdiction = law.get("jurisdiction", "DE")
+    row.jurisdiction, row.revision = jurisdiction, str(law.get("revision", ""))[:40]
     row.abbreviation, row.title = law["law_abbreviation"][:120], law["law_title"][:400]
     row.category, row.source_url = law["category"], law["source_url"][:300]
     row.stand, row.sha256, row.fetched_at = law["stand"], sha256, utcnow()
@@ -83,8 +85,8 @@ def store_law(law: dict, sha256: str, embed_new: bool = True) -> str:
         LawChunk.query.filter(LawChunk.id.in_([c[0] for c in changed])).delete(synchronize_session=False)
         vectors = embed.embed_texts([c[4] for c in changed]) if embed_new else [None] * len(changed)
         db.session.bulk_insert_mappings(LawChunk, [
-            {"id": cid, "slug": slug, "enbez": enbez[:80], "titel": titel[:400], "part": part, "text": text,
-             "text_hash": digest, "embedding": vector}
+            {"id": cid, "slug": slug, "jurisdiction": jurisdiction, "enbez": enbez[:80], "titel": titel[:400],
+             "part": part, "text": text, "text_hash": digest, "embedding": vector}
             for (cid, enbez, titel, part, text, digest), vector in zip(changed, vectors)])
     db.session.commit()
     return status
@@ -99,7 +101,7 @@ def sync(only: list[str] | None = None, limit: int | None = None, workers: int =
         items = [i for i in items if slugify(i[1]) in set(only)]
     if limit:
         items = items[:limit]
-    known = {slug: sha for slug, sha in db.session.query(Law.slug, Law.sha256)}
+    known = {slug: sha for slug, sha in db.session.query(Law.slug, Law.sha256).filter(Law.jurisdiction == "DE")}
     summary = {"new": 0, "updated": 0, "unchanged": 0, "errors": [], "total": len(items)}
 
     def work(item):
@@ -151,4 +153,4 @@ def sync_due(now=None) -> bool:
     state = db.session.get(LawSyncState, 1)
     if state and state.last_run_at and now - state.last_run_at < timedelta(hours=20):
         return False
-    return db.session.query(Law.slug).limit(1).first() is not None
+    return db.session.query(Law.slug).filter(Law.jurisdiction == "DE").limit(1).first() is not None
