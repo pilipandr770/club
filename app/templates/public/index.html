@@ -40,11 +40,85 @@
   </div>
 </section>
 
+<ul class="stats" aria-label="{{ _('The club in numbers') }}">
+  {% if law_counts.get("DE") %}
+  <li class="stat"><span class="stat-number">{{ "{:,}".format((law_counts["DE"] // 500) * 500) }}+</span>{{ _("German federal laws, searchable by question") }}</li>
+  {% endif %}
+  {% if law_counts.get("IL") %}
+  <li class="stat"><span class="stat-number">{{ law_counts["IL"] }}</span>{{ _("main Israeli statutes in the Hebrew original") }}</li>
+  {% endif %}
+  <li class="stat"><span class="stat-number">{{ tool_count }}</span>{{ _("built-in tools, included in every paid plan") }}</li>
+  <li class="stat"><span class="stat-number">{{ plans["starter"].price_eur_cents|eur }}</span>{{ _("per month for the Starter plan, cancel at any time") }}</li>
+</ul>
+
 <nav class="section-nav" aria-label="{{ _('Explore the club') }}">
+  <a href="#benefits">{{ _("Your benefits") }}</a>
   <a href="#how-it-works">{{ _("How the club works") }}</a>
+  <a href="#law-search">{{ _("Know the law before you meet a lawyer") }}</a>
   <a href="#features">{{ _("Everything the club offers") }}</a>
   <a href="#plans">{{ _("Plans") }}</a>
 </nav>
+
+<section class="block" id="benefits">
+  <h2>{{ _("What you get as a member") }}</h2>
+  <p class="muted">{{ _("The club saves you time, saves you money and leaves you in control. This is what that means in practice.") }}</p>
+  <div class="pillars">
+    <article class="tilt-card" data-tilt>
+      <span class="chip">{{ _("Save time") }}</span>
+      <h3>{{ _("Minutes instead of hours") }}</h3>
+      <ul class="promises">
+        <li>{{ _("AI matching finds people whose offers fit your needs, and says why. No scrolling through long lists.") }}</li>
+        <li>{{ _("A website check, a law lookup or a market test is ready in about a minute.") }}</li>
+        <li>{{ _("Clubi summarises any page, answers in your language and drafts the first message to a contact.") }}</li>
+      </ul>
+    </article>
+    <article class="tilt-card" data-tilt>
+      <span class="chip">{{ _("Save money") }}</span>
+      <h3>{{ _("Research and checks are part of your plan") }}</h3>
+      <ul class="promises">
+        <li>{{ _("Website checks, law search and the market panel come with your plan. There is a monthly allowance and no fee per report.") }}</li>
+        <li>{{ _("Partners of the club offer member conditions, for example a free first conversation.") }}</li>
+        <li>{{ _("Go to the lawyer prepared: you know the relevant provisions and your questions, so the appointment can be shorter and more focused.") }}</li>
+      </ul>
+    </article>
+    <article class="tilt-card" data-tilt>
+      <span class="chip">{{ _("Stay in control") }}</span>
+      <h3>{{ _("Real people, your decisions") }}</h3>
+      <ul class="promises">
+        <li>{{ _("Every member is a verified adult. You meet real people, not fake accounts.") }}</li>
+        <li>{{ _("Your contact details are shared only after both sides agree. No cold messages from strangers.") }}</li>
+        <li>{{ _("Export or delete all your data yourself, at any time.") }}</li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+<section class="block" id="audience">
+  <h2>{{ _("Who the club is for") }}</h2>
+  <div class="features">
+    <article class="tilt-card" data-tilt>
+      <h3>{{ _("Founders") }}</h3>
+      <p>{{ _("Find investors, partners and first customers. Publish your project card, test your idea on AI personas before you spend money, and check your website.") }}</p>
+    </article>
+    <article class="tilt-card" data-tilt>
+      <h3>{{ _("Investors") }}</h3>
+      <p>{{ _("See projects of verified founders, ask Clubi about the whole pitch and show interest. Contact details are shared only if the founder accepts.") }}</p>
+    </article>
+    <article class="tilt-card" data-tilt>
+      <h3>{{ _("Freelancers and small businesses") }}</h3>
+      <p>{{ _("Check SEO, legal notice and security of your site, look up what the law says and find partners and service providers with member conditions.") }}</p>
+    </article>
+    <article class="tilt-card" data-tilt>
+      <h3>{{ _("People who work across borders") }}</h3>
+      <p>{{ _("Ask about German or Israeli law in your own language, read the original text and prepare your questions before a meeting with a lawyer.") }}</p>
+    </article>
+    <article class="tilt-card" data-tilt>
+      <h3>{{ _("Community and travel lovers") }}</h3>
+      <p>{{ _("Organise meetings, start a mini-club around your interest, join shared trips and meet people near you.") }}</p>
+    </article>
+  </div>
+</section>
+
 <section class="block" id="how-it-works">
   <h2>{{ _("How the club works") }}</h2>
   <div class="steps">
@@ -69,6 +143,34 @@
       <p>{{ _("You send a request. Contact details are shared only after both sides agree.") }}</p>
     </article>
   </div>
+</section>
+
+<section class="block" id="law-search">
+  <h2>{{ _("Know the law before you meet a lawyer") }}</h2>
+  <p class="muted">{{ _("Ask in your own language, for example Russian, German or English. The club finds the relevant provisions, quotes them word for word with a link to the source and explains in plain words what the text says. Then ask Clubi follow-up questions and prepare what you want to ask the lawyer.") }}</p>
+  <div class="features">
+    <article class="tilt-card" data-tilt>
+      <span class="chip">{{ _("Germany") }}</span>
+      <h3>{{ _("German federal law") }}</h3>
+      <p>{{ _("About 6,000 federal laws from the official publication of the Federal Ministry of Justice, searched by meaning or by section, for example § 433 BGB.") }}</p>
+    </article>
+    <article class="tilt-card" data-tilt>
+      <span class="chip">{{ _("Israel") }}</span>
+      <h3>{{ _("The main Israeli statutes") }}</h3>
+      <p>{{ _("Contract, company, privacy, consumer, labour, tax and other core laws in the Hebrew original, with a link to the exact source version. It is an unofficial consolidated text and does not include case law.") }}</p>
+    </article>
+    <article class="tilt-card" data-tilt>
+      <span class="chip">{{ _("Clubi") }}</span>
+      <h3>{{ _("Ask follow-up questions") }}</h3>
+      <p>{{ _("Clubi sees the provisions that were found. Ask it to explain them simply, to list conditions and exceptions, or to suggest questions for your lawyer.") }}</p>
+    </article>
+  </div>
+  <ul class="question-chips" aria-label="{{ _('Example questions') }}">
+    <li>{{ _("How can I terminate a contract after a breach?") }}</li>
+    <li>{{ _("What does the privacy law say about a customer database?") }}</li>
+    <li>{{ _("Which provisions apply to a director's duty of care?") }}</li>
+  </ul>
+  <p class="small muted">{{ _("A first orientation, not legal advice. The tool never assesses your individual case. For a binding opinion ask a lawyer.") }}</p>
 </section>
 
 <section class="block" id="features">
@@ -118,8 +220,8 @@
     </article>
     <article class="tilt-card" data-tilt>
       <span class="chip">{{ _("Law search") }}</span>
-      <h3>{{ _("German federal law, quoted and explained") }}</h3>
-      <p>{{ _("Ask a question or enter a section such as § 433 BGB. You get the original text with the official source and a plain explanation of what it says. A first orientation, not legal advice.") }}</p>
+      <h3>{{ _("German and Israeli law, quoted and explained") }}</h3>
+      <p>{{ _("Ask a question or enter a section such as § 433 BGB. You get the original text with its source and a plain explanation of what it says, and you can ask Clubi follow-up questions. A first orientation, not legal advice.") }}</p>
     </article>
     <article class="tilt-card" data-tilt>
       <span class="chip">{{ _("Market panel") }}</span>
@@ -180,18 +282,84 @@
     <article class="plan tilt-card" data-tilt>
       <h3>{{ _("Starter") }}</h3>
       <p class="plan-price">{{ plans["starter"].price_eur_cents|eur }} <span class="muted">{{ _("per month") }}</span></p>
+      <p class="small muted">{{ _("or %(price)s per year, two months free", price=plans["starter"].price_year_eur_cents|eur) }}</p>
       <p>{{ _("Everything in Guest, plus partner services and website tools, law search and market panel, booking and creating trips, creating and joining meetings, and mini-clubs.") }}</p>
     </article>
     <article class="plan tilt-card" data-tilt>
       <h3>{{ _("Growth") }}</h3>
       <p class="plan-price">{{ plans["growth"].price_eur_cents|eur }} <span class="muted">{{ _("per month") }}</span></p>
+      <p class="small muted">{{ _("or %(price)s per year, two months free", price=plans["growth"].price_year_eur_cents|eur) }}</p>
       <p>{{ _("Everything in Starter, plus publishing your startup for investors and offers for operators and agents.") }}</p>
     </article>
     <article class="plan tilt-card" data-tilt>
       <h3>{{ _("Premium") }}</h3>
       <p class="plan-price">{{ plans["premium"].price_eur_cents|eur }} <span class="muted">{{ _("per month") }}</span></p>
+      <p class="small muted">{{ _("or %(price)s per year, two months free", price=plans["premium"].price_year_eur_cents|eur) }}</p>
       <p>{{ _("Everything in Growth, plus the auction.") }}</p>
     </article>
+  </div>
+
+  <h3 class="feature-group">{{ _("What is included in each plan") }}</h3>
+  <div class="compare-wrap">
+    <table class="compare">
+      <thead>
+        <tr>
+          <th scope="col"><span class="visually-hidden">{{ _("Feature") }}</span></th>
+          <th scope="col">{{ _("Guest") }}</th>
+          <th scope="col">{{ _("Starter") }}</th>
+          <th scope="col">{{ _("Growth") }}</th>
+          <th scope="col">{{ _("Premium") }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">{{ _("Profile, member directory, suggested matches, browsing startups, trips and meetings") }}</th>
+          {% for plan in compare_plans %}<td class="yes" aria-label="{{ _('Included') }}">✓</td>{% endfor %}
+        </tr>
+        <tr>
+          <th scope="row">{{ _("Questions to Clubi per day") }}</th>
+          {% for plan in compare_plans %}<td>{{ assistant_daily[plan] }}</td>{% endfor %}
+        </tr>
+        <tr>
+          <th scope="row">{{ _("Law search, runs per month (Germany and Israel)") }}</th>
+          <td class="no" aria-label="{{ _('Not included') }}">–</td>
+          {% for plan in compare_plans[1:] %}<td>{{ tool_limits[plan]["laws"] }}</td>{% endfor %}
+        </tr>
+        <tr>
+          <th scope="row">{{ _("Website checks (SEO, legal notice, security), runs per month for each check") }}</th>
+          <td class="no" aria-label="{{ _('Not included') }}">–</td>
+          {% for plan in compare_plans[1:] %}<td>{{ tool_limits[plan]["seo"] }}</td>{% endfor %}
+        </tr>
+        <tr>
+          <th scope="row">{{ _("Market panel with AI personas, runs per month") }}</th>
+          <td class="no" aria-label="{{ _('Not included') }}">–</td>
+          {% for plan in compare_plans[1:] %}<td>{{ tool_limits[plan]["panel"] }}</td>{% endfor %}
+        </tr>
+        <tr>
+          <th scope="row">{{ _("Partner services with member conditions") }}</th>
+          <td class="no" aria-label="{{ _('Not included') }}">–</td>
+          {% for plan in compare_plans[1:] %}<td class="yes" aria-label="{{ _('Included') }}">✓</td>{% endfor %}
+        </tr>
+        <tr>
+          <th scope="row">{{ _("Create and join meetings and mini-clubs, book trips") }}</th>
+          <td class="no" aria-label="{{ _('Not included') }}">–</td>
+          {% for plan in compare_plans[1:] %}<td class="yes" aria-label="{{ _('Included') }}">✓</td>{% endfor %}
+        </tr>
+        <tr>
+          <th scope="row">{{ _("Publish your startup for investors, offer trips") }}</th>
+          <td class="no" aria-label="{{ _('Not included') }}">–</td>
+          <td class="no" aria-label="{{ _('Not included') }}">–</td>
+          {% for plan in compare_plans[2:] %}<td class="yes" aria-label="{{ _('Included') }}">✓</td>{% endfor %}
+        </tr>
+        <tr>
+          <th scope="row">{{ _("Auction") }}</th>
+          <td class="no" aria-label="{{ _('Not included') }}">–</td>
+          <td class="no" aria-label="{{ _('Not included') }}">–</td>
+          <td class="no" aria-label="{{ _('Not included') }}">–</td>
+          <td class="yes" aria-label="{{ _('Included') }}">✓</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </section>
 
@@ -210,13 +378,30 @@
     <p>{{ _("It compares what you need with what others offer. The suggestions are hints, not guarantees. Your texts go to AI services only if you agreed to matching.") }}</p>
   </details>
   <details class="faq">
+    <summary>{{ _("What does membership cost, and can I cancel?") }}</summary>
+    <p>{{ _("The Guest plan is free after your identity check. Paid plans start at %(month)s per month or %(year)s per year, which is two months free. You can cancel at any time; your plan stays active until the end of the paid period.", month=plans["starter"].price_eur_cents|eur, year=plans["starter"].price_year_eur_cents|eur) }}</p>
+  </details>
+  <details class="faq">
+    <summary>{{ _("Can I try the club before I pay?") }}</summary>
+    <p>{{ _("Yes. With the free Guest plan you can write your profile, read the member directory, see suggested matches, browse projects, trips and meetings and ask Clubi. You can upgrade at any time.") }}</p>
+  </details>
+  <details class="faq">
+    <summary>{{ _("Which languages does the club speak?") }}</summary>
+    <p>{{ _("The site is available in German and Russian. Clubi answers in the language of your question. Law texts are shown in their original language, German or Hebrew, with an explanation in your language.") }}</p>
+  </details>
+  <details class="faq">
+    <summary>{{ _("Is the law search legal advice?") }}</summary>
+    <p>{{ _("No. It finds provisions, quotes them and explains what the text says. It never assesses your individual case and does not include case law. Use it to prepare for a meeting with a lawyer, who gives you a binding opinion.") }}</p>
+  </details>
+  <details class="faq">
     <summary>{{ _("Does the club handle payments?") }}</summary>
-    <p>{{ _("At the moment the club does not take money. Payments between members are arranged directly.") }}</p>
+    <p>{{ _("Plan fees are paid to the club by card through Stripe; the club never sees your card details. The club does not hold money between members: payments between members are arranged directly.") }}</p>
   </details>
 </section>
 
 <section class="block final">
   <h2>{{ _("Ready to start?") }}</h2>
+  <p>{{ _("Confirm your identity, write your profile and see your first matches. The Guest plan is free.") }}</p>
   <a class="button" href="{{ url_for('auth.register') }}">{{ _("Become a member") }}</a>
 </section>
 {% endblock %}

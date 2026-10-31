@@ -1727,3 +1727,87 @@ fieldset.field legend { font-weight: 600; padding: 0; margin-block-end: 0.25rem;
 @media (min-width: 760px) {
   .plans-three { grid-template-columns: repeat(3, 1fr); }
 }
+
+
+/* ---------- Лендинг: цифры, плюсы, вопросы, сравнение тарифов ---------- */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 12rem), 1fr));
+  gap: 1rem;
+  list-style: none;
+  margin-block: 0 1rem;
+  padding: 0;
+}
+
+.stat {
+  padding: 1rem 1.1rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--color-card);
+  color: var(--color-muted);
+  font-size: 0.95rem;
+}
+
+.stat-number {
+  display: block;
+  font-size: clamp(1.8rem, 4vw, 2.4rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--color-accent);
+}
+
+.pillars {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+  gap: 1rem;
+  margin-block-start: 1.25rem;
+}
+
+.pillars .tilt-card h3 { margin-block: 0.5rem 0.6rem; }
+.pillars .promises { margin: 0; }
+.pillars .promises li { color: var(--color-muted); font-size: 0.95rem; }
+
+.question-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  list-style: none;
+  margin-block: 1.25rem 0.75rem;
+  padding: 0;
+}
+
+.question-chips li {
+  padding: 0.35rem 0.9rem;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  background: var(--color-accent-soft);
+  font-size: 0.92rem;
+}
+
+.compare-wrap {
+  overflow-x: auto;
+  margin-block-start: 0.75rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--color-card);
+}
+
+.compare {
+  inline-size: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.compare th,
+.compare td {
+  padding: 0.6rem 0.8rem;
+  border-block-end: 1px solid var(--color-border);
+  text-align: center;
+}
+
+.compare thead th { color: var(--color-accent); }
+.compare tbody th { text-align: start; font-weight: 500; min-inline-size: 14rem; }
+.compare tbody tr:last-child th,
+.compare tbody tr:last-child td { border-block-end: 0; }
+.compare .yes { color: var(--color-ok); font-weight: 700; }
+.compare .no { color: var(--color-muted); }

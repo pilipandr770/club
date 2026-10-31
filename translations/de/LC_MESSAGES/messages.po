@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Club 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-31 13:11+0000\n"
+"POT-Creation-Date: 2026-10-31 14:14+0000\n"
 "PO-Revision-Date: 2026-10-19 21:00+0000\n"
 "Last-Translator: \n"
 "Language: de\n"
@@ -1358,7 +1358,7 @@ msgstr "Reiseveranstalter"
 msgid "Travel agent"
 msgstr "Reisevermittler"
 
-#: app/i18n_labels.py:254 app/templates/public/index.html:101
+#: app/i18n_labels.py:254 app/templates/public/index.html:203
 msgid "Privacy"
 msgstr "Datenschutz"
 
@@ -2828,7 +2828,7 @@ msgstr ""
 msgid "Your account and your data have been deleted."
 msgstr "Dein Konto und deine Daten wurden gelöscht."
 
-#: app/blueprints/member/__init__.py:126 app/templates/public/index.html:183
+#: app/blueprints/member/__init__.py:126 app/templates/public/index.html:286
 msgid ""
 "Everything in Guest, plus partner services and website tools, law search "
 "and market panel, booking and creating trips, creating and joining "
@@ -2838,7 +2838,7 @@ msgstr ""
 "Suche und Markt-Panel, Buchen und Erstellen von Reisen, Erstellen von und "
 "Teilnahme an Treffen sowie Mini-Clubs."
 
-#: app/blueprints/member/__init__.py:128 app/templates/public/index.html:188
+#: app/blueprints/member/__init__.py:128 app/templates/public/index.html:292
 msgid ""
 "Everything in Starter, plus publishing your startup for investors and "
 "offers for operators and agents."
@@ -2846,7 +2846,7 @@ msgstr ""
 "Alles aus Starter, dazu Startups für Investoren veröffentlichen und "
 "Angebote für Veranstalter und Agenturen einstellen."
 
-#: app/blueprints/member/__init__.py:129 app/templates/public/index.html:193
+#: app/blueprints/member/__init__.py:129 app/templates/public/index.html:298
 msgid "Everything in Growth, plus the auction."
 msgstr "Alles aus Wachstum, dazu die Auktion."
 
@@ -2902,7 +2902,7 @@ msgstr "Die Zwei-Faktor-Anmeldung ist eingeschaltet."
 msgid "Two-factor login is off."
 msgstr "Die Zwei-Faktor-Anmeldung ist ausgeschaltet."
 
-#: app/jurisdictions/de/pack.py:13
+#: app/jurisdictions/de/pack.py:13 app/templates/public/index.html:153
 msgid "Germany"
 msgstr "Deutschland"
 
@@ -2924,7 +2924,7 @@ msgstr ""
 msgid "Official source"
 msgstr "Amtliche Quelle"
 
-#: app/jurisdictions/il/pack.py:8
+#: app/jurisdictions/il/pack.py:8 app/templates/public/index.html:158
 msgid "Israel"
 msgstr "Israel"
 
@@ -2966,7 +2966,7 @@ msgstr ""
 #: app/templates/modules/service_detail.html:3
 #: app/templates/modules/services_list.html:3
 #: app/templates/modules/services_mine.html:3
-#: app/templates/modules/tools_index.html:3 app/templates/public/index.html:110
+#: app/templates/modules/tools_index.html:3 app/templates/public/index.html:212
 msgid "Services"
 msgstr "Dienstleistungen"
 
@@ -2983,7 +2983,7 @@ msgstr ""
 #: app/templates/modules/travel_list.html:3
 #: app/templates/modules/travel_list.html:6
 #: app/templates/modules/travel_mine.html:3 app/templates/public/index.html:37
-#: app/templates/public/index.html:149
+#: app/templates/public/index.html:251
 msgid "Travel"
 msgstr "Reisen"
 
@@ -2999,7 +2999,7 @@ msgstr ""
 #: app/templates/modules/events_form.html:3
 #: app/templates/modules/events_list.html:3
 #: app/templates/modules/events_list.html:6
-#: app/templates/modules/events_mine.html:3 app/templates/public/index.html:139
+#: app/templates/modules/events_mine.html:3 app/templates/public/index.html:241
 msgid "Events"
 msgstr "Treffen"
 
@@ -3044,7 +3044,8 @@ msgstr "Stelle dein Startup Investoren vor oder entdecke junge Unternehmen."
 #: app/templates/modules/auction_form.html:3
 #: app/templates/modules/auction_list.html:3
 #: app/templates/modules/auction_list.html:6
-#: app/templates/modules/auction_mine.html:3 app/templates/public/index.html:154
+#: app/templates/modules/auction_mine.html:3 app/templates/public/index.html:256
+#: app/templates/public/index.html:355
 msgid "Auction"
 msgstr "Auktion"
 
@@ -3559,8 +3560,8 @@ msgstr "Prototyp"
 msgid "First revenue"
 msgstr "Erste Umsätze"
 
-#: app/modules/startups/labels.py:19 app/templates/public/index.html:186
-#: config/plans.py:25
+#: app/modules/startups/labels.py:19 app/templates/public/index.html:289
+#: app/templates/public/index.html:310 config/plans.py:25
 msgid "Growth"
 msgstr "Wachstum"
 
@@ -4002,7 +4003,7 @@ msgstr ""
 "Passive Prüfung von Verschlüsselung, Sicherheits-Headern, Cookies und E"
 "-Mail-Schutz deiner Domain."
 
-#: app/services/tools/__init__.py:36 app/templates/public/index.html:120
+#: app/services/tools/__init__.py:36 app/templates/public/index.html:222
 msgid "Law search"
 msgstr "Gesetzes-Suche"
 
@@ -4014,7 +4015,7 @@ msgstr ""
 "Findet Vorschriften des deutschen Bundesrechts und der wichtigsten "
 "israelischen Gesetze, zitiert sie wörtlich und erklärt, was sie sagen."
 
-#: app/services/tools/__init__.py:38 app/templates/public/index.html:125
+#: app/services/tools/__init__.py:38 app/templates/public/index.html:227
 msgid "Market panel"
 msgstr "Markt-Panel"
 
@@ -5928,7 +5929,7 @@ msgstr "stärkster Tag"
 msgid "By feature"
 msgstr "Nach Funktion"
 
-#: app/templates/admin/ai_usage.html:48
+#: app/templates/admin/ai_usage.html:48 app/templates/public/index.html:307
 msgid "Feature"
 msgstr "Funktion"
 
@@ -6187,7 +6188,7 @@ msgstr "Auktionslose"
 
 #: app/templates/admin/dashboard.html:10 app/templates/admin/startups.html:3
 #: app/templates/admin/startups.html:6 app/templates/public/index.html:33
-#: app/templates/public/index.html:130
+#: app/templates/public/index.html:232
 msgid "Startups"
 msgstr "Startups"
 
@@ -6931,8 +6932,8 @@ msgstr ""
 "Jedes Konto braucht eine Identitätsprüfung, bevor du den Club nutzen "
 "kannst. Die Prüfung macht Stripe, Dokumente speichern wir nicht."
 
-#: app/templates/auth/register.html:16 app/templates/public/index.html:44
-#: app/templates/public/index.html:49
+#: app/templates/auth/register.html:16 app/templates/public/index.html:56
+#: app/templates/public/index.html:123
 msgid "How the club works"
 msgstr "So funktioniert der Club"
 
@@ -6940,11 +6941,11 @@ msgstr "So funktioniert der Club"
 msgid "Confirm your e-mail"
 msgstr "Bestätige deine E-Mail-Adresse"
 
-#: app/templates/auth/register.html:19 app/templates/public/index.html:53
+#: app/templates/auth/register.html:19 app/templates/public/index.html:127
 msgid "Confirm your identity"
 msgstr "Identität bestätigen"
 
-#: app/templates/auth/register.html:20 app/templates/public/index.html:63
+#: app/templates/auth/register.html:20 app/templates/public/index.html:137
 msgid "Find matches"
 msgstr "Passende Menschen finden"
 
@@ -6993,7 +6994,7 @@ msgstr ""
 "diese Einwilligung widerrufen und stattdessen die persönliche Prüfung durch"
 " einen Administrator verlangen."
 
-#: app/templates/auth/register.html:88 app/templates/public/index.html:168
+#: app/templates/auth/register.html:88 app/templates/public/index.html:270
 msgid "Membership is for people aged 18 and over."
 msgstr "Die Mitgliedschaft ist für Menschen ab 18 Jahren."
 
@@ -7301,8 +7302,8 @@ msgstr ""
 "kündbar."
 
 #: app/templates/member/plan.html:55 app/templates/modules/tool_form.html:122
-#: app/templates/public/index.html:182 app/templates/public/index.html:187
-#: app/templates/public/index.html:192
+#: app/templates/public/index.html:284 app/templates/public/index.html:290
+#: app/templates/public/index.html:296
 msgid "per month"
 msgstr "pro Monat"
 
@@ -9024,7 +9025,7 @@ msgstr ""
 msgid "This member is not taking contact requests at the moment."
 msgstr "Dieses Mitglied nimmt gerade keine Kontaktanfragen an."
 
-#: app/templates/modules/profile_view.html:61 app/templates/public/index.html:68
+#: app/templates/modules/profile_view.html:61 app/templates/public/index.html:142
 msgid "Get in touch"
 msgstr "In Kontakt kommen"
 
@@ -10255,6 +10256,7 @@ msgstr "Persönliche Assistentin Clubi"
 
 #: app/templates/partials/assistant.html:17
 #: app/templates/partials/public_assistant.html:13
+#: app/templates/public/index.html:163
 msgid "Clubi"
 msgstr "Clubi"
 
@@ -10324,7 +10326,7 @@ msgid "Is my data safe?"
 msgstr "Sind meine Daten sicher?"
 
 #: app/templates/partials/public_assistant.html:39
-#: app/templates/public/index.html:17 app/templates/public/index.html:220
+#: app/templates/public/index.html:17 app/templates/public/index.html:405
 msgid "Become a member"
 msgstr "Mitglied werden"
 
@@ -10378,18 +10380,215 @@ msgid "Shared trips and offers from operators and agents."
 msgstr "Gemeinsame Reisen und Angebote von Veranstaltern und Agenturen."
 
 #: app/templates/public/index.html:43
+msgid "The club in numbers"
+msgstr "Der Club in Zahlen"
+
+#: app/templates/public/index.html:45
+msgid "German federal laws, searchable by question"
+msgstr "deutsche Bundesgesetze, durchsuchbar per Frage"
+
+#: app/templates/public/index.html:48
+msgid "main Israeli statutes in the Hebrew original"
+msgstr "wichtige israelische Gesetze im hebräischen Original"
+
+#: app/templates/public/index.html:50
+msgid "built-in tools, included in every paid plan"
+msgstr "eingebaute Werkzeuge, in jedem bezahlten Tarif enthalten"
+
+#: app/templates/public/index.html:51
+msgid "per month for the Starter plan, cancel at any time"
+msgstr "pro Monat für den Tarif Starter, jederzeit kündbar"
+
+#: app/templates/public/index.html:54
 msgid "Explore the club"
 msgstr "Entdecke den Club"
 
-#: app/templates/public/index.html:45 app/templates/public/index.html:75
+#: app/templates/public/index.html:55
+msgid "Your benefits"
+msgstr "Deine Vorteile"
+
+#: app/templates/public/index.html:57 app/templates/public/index.html:149
+msgid "Know the law before you meet a lawyer"
+msgstr "Das Recht kennen, bevor du zur Anwältin oder zum Anwalt gehst"
+
+#: app/templates/public/index.html:58 app/templates/public/index.html:177
 msgid "Everything the club offers"
 msgstr "Alles, was der Club bietet"
 
-#: app/templates/public/index.html:46 app/templates/public/index.html:173
+#: app/templates/public/index.html:59 app/templates/public/index.html:275
 msgid "Plans"
 msgstr "Tarife"
 
-#: app/templates/public/index.html:54
+#: app/templates/public/index.html:63
+msgid "What you get as a member"
+msgstr "Was du als Mitglied bekommst"
+
+#: app/templates/public/index.html:64
+msgid ""
+"The club saves you time, saves you money and leaves you in control. This is"
+" what that means in practice."
+msgstr ""
+"Der Club spart dir Zeit, spart dir Geld und lässt dir die Kontrolle. So "
+"sieht das in der Praxis aus."
+
+#: app/templates/public/index.html:67
+msgid "Save time"
+msgstr "Zeit sparen"
+
+#: app/templates/public/index.html:68
+msgid "Minutes instead of hours"
+msgstr "Minuten statt Stunden"
+
+#: app/templates/public/index.html:70
+msgid ""
+"AI matching finds people whose offers fit your needs, and says why. No "
+"scrolling through long lists."
+msgstr ""
+"Das KI-Matching findet Menschen, deren Angebote zu deinem Bedarf passen, "
+"und sagt warum. Kein Blättern durch lange Listen."
+
+#: app/templates/public/index.html:71
+msgid "A website check, a law lookup or a market test is ready in about a minute."
+msgstr ""
+"Eine Website-Prüfung, eine Gesetzes-Recherche oder ein Markttest ist in "
+"etwa einer Minute fertig."
+
+#: app/templates/public/index.html:72
+msgid ""
+"Clubi summarises any page, answers in your language and drafts the first "
+"message to a contact."
+msgstr ""
+"Clubi fasst jede Seite zusammen, antwortet in deiner Sprache und entwirft "
+"die erste Nachricht an einen Kontakt."
+
+#: app/templates/public/index.html:76
+msgid "Save money"
+msgstr "Geld sparen"
+
+#: app/templates/public/index.html:77
+msgid "Research and checks are part of your plan"
+msgstr "Recherchen und Prüfungen gehören zu deinem Tarif"
+
+#: app/templates/public/index.html:79
+msgid ""
+"Website checks, law search and the market panel come with your plan. There "
+"is a monthly allowance and no fee per report."
+msgstr ""
+"Website-Prüfungen, Gesetzes-Suche und Marktpanel gehören zu deinem Tarif. "
+"Es gibt ein monatliches Kontingent und keine Gebühr pro Bericht."
+
+#: app/templates/public/index.html:80
+msgid ""
+"Partners of the club offer member conditions, for example a free first "
+"conversation."
+msgstr ""
+"Partner des Clubs bieten Konditionen für Mitglieder, zum Beispiel ein "
+"kostenloses Erstgespräch."
+
+#: app/templates/public/index.html:81
+msgid ""
+"Go to the lawyer prepared: you know the relevant provisions and your "
+"questions, so the appointment can be shorter and more focused."
+msgstr ""
+"Gut vorbereitet zur Anwältin oder zum Anwalt: Du kennst die einschlägigen "
+"Vorschriften und deine Fragen, so kann der Termin kürzer und gezielter "
+"sein."
+
+#: app/templates/public/index.html:85
+msgid "Stay in control"
+msgstr "Die Kontrolle behalten"
+
+#: app/templates/public/index.html:86
+msgid "Real people, your decisions"
+msgstr "Echte Menschen, deine Entscheidungen"
+
+#: app/templates/public/index.html:88
+msgid "Every member is a verified adult. You meet real people, not fake accounts."
+msgstr ""
+"Jedes Mitglied ist ein verifizierter Erwachsener. Du triffst echte "
+"Menschen, keine Fake-Konten."
+
+#: app/templates/public/index.html:89
+msgid ""
+"Your contact details are shared only after both sides agree. No cold "
+"messages from strangers."
+msgstr ""
+"Deine Kontaktdaten werden erst weitergegeben, wenn beide Seiten zustimmen. "
+"Keine Kaltnachrichten von Fremden."
+
+#: app/templates/public/index.html:90
+msgid "Export or delete all your data yourself, at any time."
+msgstr "Exportiere oder lösche alle deine Daten selbst, jederzeit."
+
+#: app/templates/public/index.html:97
+msgid "Who the club is for"
+msgstr "Für wen der Club ist"
+
+#: app/templates/public/index.html:100
+msgid "Founders"
+msgstr "Gründerinnen und Gründer"
+
+#: app/templates/public/index.html:101
+msgid ""
+"Find investors, partners and first customers. Publish your project card, "
+"test your idea on AI personas before you spend money, and check your "
+"website."
+msgstr ""
+"Finde Investoren, Partner und erste Kunden. Veröffentliche deine "
+"Projektkarte, teste deine Idee an KI-Personas, bevor du Geld ausgibst, und "
+"prüfe deine Website."
+
+#: app/templates/public/index.html:104
+msgid "Investors"
+msgstr "Investoren"
+
+#: app/templates/public/index.html:105
+msgid ""
+"See projects of verified founders, ask Clubi about the whole pitch and show"
+" interest. Contact details are shared only if the founder accepts."
+msgstr ""
+"Sieh Projekte verifizierter Gründer, frag Clubi zum gesamten Pitch und "
+"zeige Interesse. Kontaktdaten werden nur weitergegeben, wenn die Gründerin "
+"oder der Gründer zustimmt."
+
+#: app/templates/public/index.html:108
+msgid "Freelancers and small businesses"
+msgstr "Selbstständige und kleine Unternehmen"
+
+#: app/templates/public/index.html:109
+msgid ""
+"Check SEO, legal notice and security of your site, look up what the law "
+"says and find partners and service providers with member conditions."
+msgstr ""
+"Prüfe SEO, Impressum und Sicherheit deiner Seite, schlage nach, was das "
+"Gesetz sagt, und finde Partner und Dienstleister mit Mitgliedskonditionen."
+
+#: app/templates/public/index.html:112
+msgid "People who work across borders"
+msgstr "Menschen, die grenzüberschreitend arbeiten"
+
+#: app/templates/public/index.html:113
+msgid ""
+"Ask about German or Israeli law in your own language, read the original "
+"text and prepare your questions before a meeting with a lawyer."
+msgstr ""
+"Frag in deiner eigenen Sprache nach deutschem oder israelischem Recht, lies"
+" den Originaltext und bereite deine Fragen vor einem Termin mit einer "
+"Anwältin oder einem Anwalt vor."
+
+#: app/templates/public/index.html:116
+msgid "Community and travel lovers"
+msgstr "Menschen, die Gemeinschaft und Reisen lieben"
+
+#: app/templates/public/index.html:117
+msgid ""
+"Organise meetings, start a mini-club around your interest, join shared "
+"trips and meet people near you."
+msgstr ""
+"Organisiere Treffen, gründe einen Mini-Club rund um dein Interesse, nimm an"
+" gemeinsamen Reisen teil und lerne Menschen in deiner Nähe kennen."
+
+#: app/templates/public/index.html:128
 msgid ""
 "You confirm your identity with Stripe. Your ID and selfie stay with Stripe."
 " The club only receives the result."
@@ -10397,11 +10596,11 @@ msgstr ""
 "Du bestätigst deine Identität bei Stripe. Ausweis und Selfie bleiben bei "
 "Stripe. Der Club erhält nur das Ergebnis."
 
-#: app/templates/public/index.html:58
+#: app/templates/public/index.html:132
 msgid "Describe yourself"
 msgstr "Beschreibe dich"
 
-#: app/templates/public/index.html:59
+#: app/templates/public/index.html:133
 msgid ""
 "Write what you do, what you need and how you can help others. Each field "
 "has examples."
@@ -10409,7 +10608,7 @@ msgstr ""
 "Schreibe, was du tust, was du brauchst und wobei du helfen kannst. Zu jedem"
 " Feld gibt es Beispiele."
 
-#: app/templates/public/index.html:64
+#: app/templates/public/index.html:138
 msgid ""
 "Matching compares what you need with what others offer. It works only for "
 "members who agreed to it."
@@ -10417,13 +10616,93 @@ msgstr ""
 "Das Matching vergleicht, was du brauchst, mit dem, was andere anbieten. Es "
 "läuft nur für Mitglieder, die zugestimmt haben."
 
-#: app/templates/public/index.html:69
+#: app/templates/public/index.html:143
 msgid "You send a request. Contact details are shared only after both sides agree."
 msgstr ""
 "Du schickst eine Anfrage. Kontaktdaten werden erst geteilt, wenn beide "
 "zustimmen."
 
-#: app/templates/public/index.html:76
+#: app/templates/public/index.html:150
+msgid ""
+"Ask in your own language, for example Russian, German or English. The club "
+"finds the relevant provisions, quotes them word for word with a link to the"
+" source and explains in plain words what the text says. Then ask Clubi "
+"follow-up questions and prepare what you want to ask the lawyer."
+msgstr ""
+"Frag in deiner eigenen Sprache, zum Beispiel Russisch, Deutsch oder "
+"Englisch. Der Club findet die einschlägigen Vorschriften, zitiert sie "
+"wörtlich mit Link zur Quelle und erklärt in einfachen Worten, was der Text "
+"sagt. Stell dann Clubi Nachfragen und bereite vor, was du die Anwältin oder"
+" den Anwalt fragen willst."
+
+#: app/templates/public/index.html:154
+msgid "German federal law"
+msgstr "Deutsches Bundesrecht"
+
+#: app/templates/public/index.html:155
+msgid ""
+"About 6,000 federal laws from the official publication of the Federal "
+"Ministry of Justice, searched by meaning or by section, for example § 433 "
+"BGB."
+msgstr ""
+"Rund 6.000 Bundesgesetze aus der amtlichen Veröffentlichung des "
+"Bundesministeriums der Justiz, durchsucht nach Bedeutung oder nach "
+"Paragraph, zum Beispiel § 433 BGB."
+
+#: app/templates/public/index.html:159
+msgid "The main Israeli statutes"
+msgstr "Die wichtigsten israelischen Gesetze"
+
+#: app/templates/public/index.html:160
+msgid ""
+"Contract, company, privacy, consumer, labour, tax and other core laws in "
+"the Hebrew original, with a link to the exact source version. It is an "
+"unofficial consolidated text and does not include case law."
+msgstr ""
+"Vertrags-, Gesellschafts-, Datenschutz-, Verbraucher-, Arbeits-, "
+"Steuerrecht und weitere Kerngesetze im hebräischen Original, mit Link zur "
+"genauen Quellversion. Es ist eine inoffizielle Sammelfassung ohne "
+"Rechtsprechung."
+
+#: app/templates/public/index.html:164
+msgid "Ask follow-up questions"
+msgstr "Nachfragen stellen"
+
+#: app/templates/public/index.html:165
+msgid ""
+"Clubi sees the provisions that were found. Ask it to explain them simply, "
+"to list conditions and exceptions, or to suggest questions for your lawyer."
+msgstr ""
+"Clubi sieht die gefundenen Vorschriften. Bitte es, sie einfach zu erklären,"
+" Voraussetzungen und Ausnahmen aufzulisten oder Fragen für deine Anwältin "
+"oder deinen Anwalt vorzuschlagen."
+
+#: app/templates/public/index.html:168
+msgid "Example questions"
+msgstr "Beispielfragen"
+
+#: app/templates/public/index.html:169
+msgid "How can I terminate a contract after a breach?"
+msgstr "Wie kann ich einen Vertrag nach einer Pflichtverletzung beenden?"
+
+#: app/templates/public/index.html:170
+msgid "What does the privacy law say about a customer database?"
+msgstr "Was sagt das Datenschutzgesetz zu einer Kundendatenbank?"
+
+#: app/templates/public/index.html:171
+msgid "Which provisions apply to a director's duty of care?"
+msgstr "Welche Vorschriften gelten für die Sorgfaltspflicht eines Geschäftsführers?"
+
+#: app/templates/public/index.html:173
+msgid ""
+"A first orientation, not legal advice. The tool never assesses your "
+"individual case. For a binding opinion ask a lawyer."
+msgstr ""
+"Eine erste Orientierung, keine Rechtsberatung. Das Tool beurteilt nie "
+"deinen Einzelfall. Für eine verbindliche Auskunft frage eine Anwältin oder "
+"einen Anwalt."
+
+#: app/templates/public/index.html:178
 msgid ""
 "One place for people, projects and everyday help. Every feature has a clear"
 " benefit for you, and you stay in control of your data."
@@ -10431,19 +10710,19 @@ msgstr ""
 "Ein Ort für Menschen, Projekte und Hilfe im Alltag. Jede Funktion hat einen"
 " klaren Nutzen für dich, und deine Daten behältst du unter Kontrolle."
 
-#: app/templates/public/index.html:78
+#: app/templates/public/index.html:180
 msgid "Find the right people"
 msgstr "Die richtigen Menschen finden"
 
-#: app/templates/public/index.html:81
+#: app/templates/public/index.html:183
 msgid "AI matching"
 msgstr "KI-Matching"
 
-#: app/templates/public/index.html:82
+#: app/templates/public/index.html:184
 msgid "Needs meet offers"
 msgstr "Bedarf trifft Angebot"
 
-#: app/templates/public/index.html:83
+#: app/templates/public/index.html:185
 msgid ""
 "The club compares what you need with what others can offer and explains why"
 " a person fits. You find helpful contacts in minutes instead of scrolling "
@@ -10454,15 +10733,15 @@ msgstr ""
 "statt durch Listen zu blättern. Es funktioniert nur für Mitglieder, die "
 "zugestimmt haben."
 
-#: app/templates/public/index.html:86
+#: app/templates/public/index.html:188
 msgid "Your assistant"
 msgstr "Deine Assistentin"
 
-#: app/templates/public/index.html:87
+#: app/templates/public/index.html:189
 msgid "Clubi sees what you see"
 msgstr "Clubi sieht, was du siehst"
 
-#: app/templates/public/index.html:88
+#: app/templates/public/index.html:190
 msgid ""
 "Your personal AI assistant knows your profile and the page you are on: a "
 "member, a project, a trip, a lot or a meeting. Ask for advice, a summary or"
@@ -10474,15 +10753,15 @@ msgstr ""
 "Treffen. Frag nach Rat, einer Zusammenfassung oder der ersten Nachricht an "
 "einen Kontakt. Clubi antwortet in der Sprache deiner Frage."
 
-#: app/templates/public/index.html:91
+#: app/templates/public/index.html:193
 msgid "Profile"
 msgstr "Profil"
 
-#: app/templates/public/index.html:92
+#: app/templates/public/index.html:194
 msgid "A profile that helps you"
 msgstr "Ein Profil, das dir hilft"
 
-#: app/templates/public/index.html:93
+#: app/templates/public/index.html:195
 msgid ""
 "Every field has a hint and examples, so you know what to write. The fuller "
 "your profile, the better your matches. You can add a photo and decide "
@@ -10493,15 +10772,15 @@ msgstr ""
 "Vorschläge. Du kannst ein Foto hinzufügen und getrennt über das Verzeichnis"
 " und das Matching entscheiden."
 
-#: app/templates/public/index.html:96
+#: app/templates/public/index.html:198
 msgid "Trust"
 msgstr "Vertrauen"
 
-#: app/templates/public/index.html:97
+#: app/templates/public/index.html:199
 msgid "Verified, adult members only"
 msgstr "Nur verifizierte, volljährige Mitglieder"
 
-#: app/templates/public/index.html:98
+#: app/templates/public/index.html:200
 msgid ""
 "Every member confirms their identity with Stripe. Documents and selfies "
 "stay with Stripe, the club only receives the result. You meet real people, "
@@ -10511,11 +10790,11 @@ msgstr ""
 "bleiben bei Stripe, der Club erhält nur das Ergebnis. Du triffst echte "
 "Menschen, keine Fake-Konten."
 
-#: app/templates/public/index.html:102
+#: app/templates/public/index.html:204
 msgid "Contact only with your consent"
 msgstr "Kontakt nur mit deiner Zustimmung"
 
-#: app/templates/public/index.html:103
+#: app/templates/public/index.html:205
 msgid ""
 "Your e-mail address is shown only to members whose request you accepted, "
 "and only when you agreed. No spam, no cold messages from strangers. You can"
@@ -10525,15 +10804,15 @@ msgstr ""
 "hast, und nur mit deiner Zustimmung. Kein Spam, keine Kaltakquise von "
 "Fremden. Du kannst alle deine Daten selbst exportieren oder löschen."
 
-#: app/templates/public/index.html:107
+#: app/templates/public/index.html:209
 msgid "Get things done"
 msgstr "Dinge erledigen"
 
-#: app/templates/public/index.html:111
+#: app/templates/public/index.html:213
 msgid "Checked partners with member conditions"
 msgstr "Geprüfte Partner mit Konditionen für Mitglieder"
 
-#: app/templates/public/index.html:112
+#: app/templates/public/index.html:214
 msgid ""
 "Chatbots, security checks, NIS2 and data protection, AI rules for your "
 "company: send a request in two clicks. Your contact details go to the "
@@ -10543,15 +10822,15 @@ msgstr ""
 "Unternehmen: Sende eine Anfrage in zwei Klicks. Deine Kontaktdaten gehen "
 "nur an den Partner, wenn du das Kästchen ankreuzt."
 
-#: app/templates/public/index.html:115
+#: app/templates/public/index.html:217
 msgid "Website checks"
 msgstr "Website-Checks"
 
-#: app/templates/public/index.html:116
+#: app/templates/public/index.html:218
 msgid "SEO, compliance and security in a minute"
 msgstr "SEO, Compliance und Sicherheit in einer Minute"
 
-#: app/templates/public/index.html:117
+#: app/templates/public/index.html:219
 msgid ""
 "Enter your address and get a clear report with the most important steps "
 "first: SEO, legal notice and cookies, encryption, e-mail protection and "
@@ -10562,25 +10841,26 @@ msgstr ""
 "Schutz und öffentlich sichtbare Schwachstellen. Passive Prüfungen, keine "
 "Angriffe, zum Nachlesen gespeichert."
 
-#: app/templates/public/index.html:121
-msgid "German federal law, quoted and explained"
-msgstr "Deutsches Bundesrecht, zitiert und erklärt"
+#: app/templates/public/index.html:223
+msgid "German and Israeli law, quoted and explained"
+msgstr "Deutsches und israelisches Recht, zitiert und erklärt"
 
-#: app/templates/public/index.html:122
+#: app/templates/public/index.html:224
 msgid ""
 "Ask a question or enter a section such as § 433 BGB. You get the original "
-"text with the official source and a plain explanation of what it says. A "
-"first orientation, not legal advice."
+"text with its source and a plain explanation of what it says, and you can "
+"ask Clubi follow-up questions. A first orientation, not legal advice."
 msgstr ""
-"Stelle eine Frage oder gib einen Paragraphen wie § 433 BGB ein. Du erhältst"
-" den Originaltext mit amtlicher Quelle und eine verständliche Erklärung, "
-"was er sagt. Eine erste Orientierung, keine Rechtsberatung."
+"Stell eine Frage oder gib einen Paragraphen wie § 433 BGB ein. Du bekommst "
+"den Originaltext mit Quelle und eine verständliche Erläuterung, was er "
+"sagt, und kannst Clubi Nachfragen stellen. Eine erste Orientierung, keine "
+"Rechtsberatung."
 
-#: app/templates/public/index.html:126
+#: app/templates/public/index.html:228
 msgid "Test your idea on 100 AI personas"
 msgstr "Teste deine Idee an 100 KI-Personas"
 
-#: app/templates/public/index.html:127
+#: app/templates/public/index.html:229
 msgid ""
 "Describe your product and price. Fictional personas of different ages, "
 "incomes and professions react: purchase intent, price curve, concerns and "
@@ -10592,11 +10872,11 @@ msgstr ""
 "und Empfehlungen vor dem Start. Ein Hinweis für deine Hypothesen, keine "
 "Prognose."
 
-#: app/templates/public/index.html:131
+#: app/templates/public/index.html:233
 msgid "Find investors, or find the next project"
 msgstr "Investoren finden oder das nächste Projekt entdecken"
 
-#: app/templates/public/index.html:132
+#: app/templates/public/index.html:234
 msgid ""
 "Create a project card with pitch, picture and presentation. After our "
 "review all members see it, and Clubi can answer questions about the whole "
@@ -10607,15 +10887,15 @@ msgstr ""
 " beantworten. Investoren zeigen Interesse, Kontakte werden nur geteilt, "
 "wenn du zustimmst."
 
-#: app/templates/public/index.html:136
+#: app/templates/public/index.html:238
 msgid "Meet and do things together"
 msgstr "Treffen und gemeinsam etwas unternehmen"
 
-#: app/templates/public/index.html:140
+#: app/templates/public/index.html:242
 msgid "Create meetings, invite people"
 msgstr "Treffen erstellen, Leute einladen"
 
-#: app/templates/public/index.html:141
+#: app/templates/public/index.html:243
 msgid ""
 "Describe what, where, when and for whom, add a photo and invite members "
 "personally. Guests sign up with one click, and everyone can add the meeting"
@@ -10625,15 +10905,15 @@ msgstr ""
 "Mitglieder persönlich ein. Gäste melden sich mit einem Klick an, und alle "
 "können das Treffen in ihren Kalender übernehmen."
 
-#: app/templates/public/index.html:144
+#: app/templates/public/index.html:246
 msgid "Mini-clubs"
 msgstr "Mini-Clubs"
 
-#: app/templates/public/index.html:145
+#: app/templates/public/index.html:247
 msgid "Small groups around your interest"
 msgstr "Kleine Gruppen rund um dein Interesse"
 
-#: app/templates/public/index.html:146
+#: app/templates/public/index.html:248
 msgid ""
 "Chess, a fishing trip, a walk, neighbourly help or a parents' group: start "
 "a mini-club, set your own rules and gather members. The club only brings "
@@ -10644,11 +10924,11 @@ msgstr ""
 "sammle Mitglieder. Der Club bringt nur Menschen zusammen: keine Räume, "
 "keine Zahlungen, keine Spiele um Geld."
 
-#: app/templates/public/index.html:150
+#: app/templates/public/index.html:252
 msgid "Shared trips and offers"
 msgstr "Gemeinsame Reisen und Angebote"
 
-#: app/templates/public/index.html:151
+#: app/templates/public/index.html:253
 msgid ""
 "Plan a trip with programme and photos and let others join, or book places "
 "on trips of members and offers from operators and agents. The organiser "
@@ -10658,11 +10938,11 @@ msgstr ""
 "buche Plätze auf Reisen von Mitgliedern und Angeboten von Veranstaltern und"
 " Agenturen. Der Organisator sieht deinen Kontakt nur, wenn du es erlaubst."
 
-#: app/templates/public/index.html:155
+#: app/templates/public/index.html:257
 msgid "Offer and win lots"
 msgstr "Lose anbieten und gewinnen"
 
-#: app/templates/public/index.html:156
+#: app/templates/public/index.html:258
 msgid ""
 "Put your item up for rising or falling price, with a hidden reserve and "
 "protection against last-second bids. Bidders see a fair, anonymous bid "
@@ -10673,11 +10953,11 @@ msgstr ""
 "einen fairen, anonymen Gebotsverlauf. Übergabe und Zahlung vereinbaren "
 "beide Seiten direkt."
 
-#: app/templates/public/index.html:162
+#: app/templates/public/index.html:264
 msgid "What we promise"
 msgstr "Was wir versprechen"
 
-#: app/templates/public/index.html:164
+#: app/templates/public/index.html:266
 msgid ""
 "Nothing is published without your choice. The directory and matching are "
 "separate decisions, and both are off until you make them."
@@ -10685,7 +10965,7 @@ msgstr ""
 "Nichts wird ohne deine Wahl veröffentlicht. Verzeichnis und Matching sind "
 "getrennte Entscheidungen, und beide sind aus, bis du dich entscheidest."
 
-#: app/templates/public/index.html:165
+#: app/templates/public/index.html:267
 msgid ""
 "We do not store identity documents or dates of birth. The check runs with "
 "Stripe."
@@ -10693,11 +10973,11 @@ msgstr ""
 "Wir speichern keine Ausweisdokumente und keine Geburtsdaten. Die Prüfung "
 "läuft bei Stripe."
 
-#: app/templates/public/index.html:166
+#: app/templates/public/index.html:268
 msgid "Your e-mail address is shown only to members whose request you accepted."
 msgstr "Deine E-Mail-Adresse sehen nur Mitglieder, deren Anfrage du angenommen hast."
 
-#: app/templates/public/index.html:167
+#: app/templates/public/index.html:269
 msgid ""
 "You can change your decisions at any time and delete your account with all "
 "your data."
@@ -10705,7 +10985,7 @@ msgstr ""
 "Du kannst deine Entscheidungen jederzeit ändern und dein Konto mit allen "
 "Daten löschen."
 
-#: app/templates/public/index.html:174
+#: app/templates/public/index.html:276
 msgid ""
 "Access depends on the plan. Prices are in euros, including VAT where it "
 "applies. You can cancel at any time."
@@ -10713,11 +10993,12 @@ msgstr ""
 "Der Zugang hängt vom Tarif ab. Preise in Euro, inklusive Mehrwertsteuer, "
 "soweit sie anfällt. Jederzeit kündbar."
 
-#: app/templates/public/index.html:177 config/plans.py:23
+#: app/templates/public/index.html:279 app/templates/public/index.html:308
+#: config/plans.py:23
 msgid "Guest"
 msgstr "Gast"
 
-#: app/templates/public/index.html:178
+#: app/templates/public/index.html:280
 msgid ""
 "Free. Write your profile, read the member directory, see suggested matches,"
 " browse startups, trips, meetings and mini-clubs, ask Clubi and ask for "
@@ -10727,23 +11008,87 @@ msgstr ""
 "Vorschläge an, stöbere in Startups, Reisen, Treffen und Mini-Clubs, frag "
 "Clubi und bitte um Kontakt."
 
-#: app/templates/public/index.html:181 config/plans.py:24
+#: app/templates/public/index.html:283 app/templates/public/index.html:309
+#: config/plans.py:24
 msgid "Starter"
 msgstr "Starter"
 
-#: app/templates/public/index.html:191 config/plans.py:26
+#: app/templates/public/index.html:285 app/templates/public/index.html:291
+#: app/templates/public/index.html:297
+#, python-format
+msgid "or %(price)s per year, two months free"
+msgstr "oder %(price)s pro Jahr, zwei Monate geschenkt"
+
+#: app/templates/public/index.html:295 app/templates/public/index.html:311
+#: config/plans.py:26
 msgid "Premium"
 msgstr "Premium"
 
-#: app/templates/public/index.html:199
+#: app/templates/public/index.html:302
+msgid "What is included in each plan"
+msgstr "Was in jedem Tarif enthalten ist"
+
+#: app/templates/public/index.html:316
+msgid ""
+"Profile, member directory, suggested matches, browsing startups, trips and "
+"meetings"
+msgstr ""
+"Profil, Mitgliederverzeichnis, vorgeschlagene Kontakte, Startups, Reisen "
+"und Treffen ansehen"
+
+#: app/templates/public/index.html:317 app/templates/public/index.html:341
+#: app/templates/public/index.html:346 app/templates/public/index.html:352
+#: app/templates/public/index.html:359
+msgid "Included"
+msgstr "Enthalten"
+
+#: app/templates/public/index.html:320
+msgid "Questions to Clubi per day"
+msgstr "Fragen an Clubi pro Tag"
+
+#: app/templates/public/index.html:324
+msgid "Law search, runs per month (Germany and Israel)"
+msgstr "Gesetzes-Suche, Durchläufe pro Monat (Deutschland und Israel)"
+
+#: app/templates/public/index.html:325 app/templates/public/index.html:330
+#: app/templates/public/index.html:335 app/templates/public/index.html:340
+#: app/templates/public/index.html:345 app/templates/public/index.html:350
+#: app/templates/public/index.html:351 app/templates/public/index.html:356
+#: app/templates/public/index.html:357 app/templates/public/index.html:358
+msgid "Not included"
+msgstr "Nicht enthalten"
+
+#: app/templates/public/index.html:329
+msgid "Website checks (SEO, legal notice, security), runs per month for each check"
+msgstr ""
+"Website-Prüfungen (SEO, Impressum, Sicherheit), Durchläufe pro Monat je "
+"Prüfung"
+
+#: app/templates/public/index.html:334
+msgid "Market panel with AI personas, runs per month"
+msgstr "Marktpanel mit KI-Personas, Durchläufe pro Monat"
+
+#: app/templates/public/index.html:339
+msgid "Partner services with member conditions"
+msgstr "Partner-Dienstleistungen mit Mitgliedskonditionen"
+
+#: app/templates/public/index.html:344
+msgid "Create and join meetings and mini-clubs, book trips"
+msgstr "Treffen und Mini-Clubs erstellen und beitreten, Reisen buchen"
+
+#: app/templates/public/index.html:349
+msgid "Publish your startup for investors, offer trips"
+msgstr "Dein Startup für Investoren veröffentlichen, Reisen anbieten"
+
+#: app/templates/public/index.html:367
 msgid "Questions"
 msgstr "Fragen"
 
-#: app/templates/public/index.html:201
+#: app/templates/public/index.html:369
 msgid "Why do I need an identity check?"
 msgstr "Warum brauche ich eine Identitätsprüfung?"
 
-#: app/templates/public/index.html:202
+#: app/templates/public/index.html:370
 msgid ""
 "So that only real people aged 18 and over are in the club. Stripe runs the "
 "check. We only receive the result."
@@ -10751,11 +11096,11 @@ msgstr ""
 "Damit im Club nur echte Menschen ab 18 Jahren sind. Die Prüfung macht "
 "Stripe. Wir erhalten nur das Ergebnis."
 
-#: app/templates/public/index.html:205
+#: app/templates/public/index.html:373
 msgid "Who can see my profile?"
 msgstr "Wer sieht mein Profil?"
 
-#: app/templates/public/index.html:206
+#: app/templates/public/index.html:374
 msgid ""
 "Only verified members, and only if you agreed that your profile appears in "
 "the directory."
@@ -10763,11 +11108,11 @@ msgstr ""
 "Nur verifizierte Mitglieder, und nur wenn du zugestimmt hast, dass dein "
 "Profil im Verzeichnis erscheint."
 
-#: app/templates/public/index.html:209
+#: app/templates/public/index.html:377
 msgid "How does the AI matching work?"
 msgstr "Wie funktioniert das KI-Matching?"
 
-#: app/templates/public/index.html:210
+#: app/templates/public/index.html:378
 msgid ""
 "It compares what you need with what others offer. The suggestions are "
 "hints, not guarantees. Your texts go to AI services only if you agreed to "
@@ -10777,21 +11122,91 @@ msgstr ""
 "Vorschläge sind Hinweise, keine Garantien. Deine Texte gehen nur an KI-"
 "Dienste, wenn du dem Matching zugestimmt hast."
 
-#: app/templates/public/index.html:213
+#: app/templates/public/index.html:381
+msgid "What does membership cost, and can I cancel?"
+msgstr "Was kostet die Mitgliedschaft, und kann ich kündigen?"
+
+#: app/templates/public/index.html:382
+#, python-format
+msgid ""
+"The Guest plan is free after your identity check. Paid plans start at "
+"%(month)s per month or %(year)s per year, which is two months free. You can"
+" cancel at any time; your plan stays active until the end of the paid "
+"period."
+msgstr ""
+"Der Tarif Guest ist nach deiner Identitätsprüfung kostenlos. Bezahlte "
+"Tarife beginnen bei %(month)s pro Monat oder %(year)s pro Jahr, das sind "
+"zwei Monate geschenkt. Du kannst jederzeit kündigen; dein Tarif bleibt bis "
+"zum Ende des bezahlten Zeitraums aktiv."
+
+#: app/templates/public/index.html:385
+msgid "Can I try the club before I pay?"
+msgstr "Kann ich den Club ausprobieren, bevor ich zahle?"
+
+#: app/templates/public/index.html:386
+msgid ""
+"Yes. With the free Guest plan you can write your profile, read the member "
+"directory, see suggested matches, browse projects, trips and meetings and "
+"ask Clubi. You can upgrade at any time."
+msgstr ""
+"Ja. Mit dem kostenlosen Tarif Guest kannst du dein Profil schreiben, das "
+"Mitgliederverzeichnis lesen, vorgeschlagene Kontakte sehen, Projekte, "
+"Reisen und Treffen ansehen und Clubi fragen. Du kannst jederzeit upgraden."
+
+#: app/templates/public/index.html:389
+msgid "Which languages does the club speak?"
+msgstr "Welche Sprachen spricht der Club?"
+
+#: app/templates/public/index.html:390
+msgid ""
+"The site is available in German and Russian. Clubi answers in the language "
+"of your question. Law texts are shown in their original language, German or"
+" Hebrew, with an explanation in your language."
+msgstr ""
+"Die Seite gibt es auf Deutsch und Russisch. Clubi antwortet in der Sprache "
+"deiner Frage. Gesetzestexte erscheinen in ihrer Originalsprache, Deutsch "
+"oder Hebräisch, mit einer Erläuterung in deiner Sprache."
+
+#: app/templates/public/index.html:393
+msgid "Is the law search legal advice?"
+msgstr "Ist die Gesetzes-Suche Rechtsberatung?"
+
+#: app/templates/public/index.html:394
+msgid ""
+"No. It finds provisions, quotes them and explains what the text says. It "
+"never assesses your individual case and does not include case law. Use it "
+"to prepare for a meeting with a lawyer, who gives you a binding opinion."
+msgstr ""
+"Nein. Sie findet Vorschriften, zitiert sie und erklärt, was der Text sagt. "
+"Sie beurteilt nie deinen Einzelfall und enthält keine Rechtsprechung. Nutze"
+" sie zur Vorbereitung auf einen Termin mit einer Anwältin oder einem "
+"Anwalt, die oder der dir eine verbindliche Auskunft gibt."
+
+#: app/templates/public/index.html:397
 msgid "Does the club handle payments?"
 msgstr "Wickelt der Club Zahlungen ab?"
 
-#: app/templates/public/index.html:214
+#: app/templates/public/index.html:398
 msgid ""
-"At the moment the club does not take money. Payments between members are "
-"arranged directly."
+"Plan fees are paid to the club by card through Stripe; the club never sees "
+"your card details. The club does not hold money between members: payments "
+"between members are arranged directly."
 msgstr ""
-"Derzeit nimmt der Club kein Geld entgegen. Zahlungen zwischen Mitgliedern "
-"werden direkt vereinbart."
+"Tarifgebühren zahlst du per Karte über Stripe an den Club; der Club sieht "
+"deine Kartendaten nie. Der Club verwahrt kein Geld zwischen Mitgliedern: "
+"Zahlungen zwischen Mitgliedern werden direkt vereinbart."
 
-#: app/templates/public/index.html:219
+#: app/templates/public/index.html:403
 msgid "Ready to start?"
 msgstr "Bereit loszulegen?"
+
+#: app/templates/public/index.html:404
+msgid ""
+"Confirm your identity, write your profile and see your first matches. The "
+"Guest plan is free."
+msgstr ""
+"Bestätige deine Identität, schreibe dein Profil und sieh deine ersten "
+"Kontakte. Der Tarif Guest ist kostenlos."
 
 #~ msgid "Please keep the headline under 160 characters."
 #~ msgstr "Bitte halte die Überschrift unter 160 Zeichen."

@@ -13,9 +13,25 @@ bp = Blueprint("public", __name__)
 
 @bp.get("/")
 def index():
-    from config.plans import PLANS
+    from config.plans import ASSISTANT_DAILY, PLANS, TOOL_LIMITS
+    from ...services.tools import TOOLS
 
-    return render_template("public/index.html", plans=PLANS)
+    return render_template("public/index.html", plans=PLANS, tool_limits=TOOL_LIMITS, assistant_daily=ASSISTANT_DAILY,
+                           compare_plans=("guest", "starter", "growth", "premium"), tool_count=len(TOOLS),
+                           law_counts=_law_counts())
+
+
+def _law_counts():
+    """Сколько законов в корпусе по странам (для цифр на лендинге). Без базы или без корпуса — пусто."""
+    from sqlalchemy import func
+
+    from ...models import Law
+
+    try:
+        return dict(db.session.query(Law.jurisdiction, func.count(Law.slug)).group_by(Law.jurisdiction).all())
+    except Exception:  # noqa: BLE001 - лендинг должен открываться, даже если таблицы законов недоступны
+        db.session.rollback()
+        return {}
 
 
 LEGAL_DOCUMENTS = {"impressum": "impressum", "datenschutz": "datenschutz", "nutzungsbedingungen": "nutzungsbedingungen"}

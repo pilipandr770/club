@@ -33,3 +33,29 @@ def test_landing_keeps_the_strict_content_security_policy(client):
     csp = response.headers["Content-Security-Policy"]
     assert "script-src 'self'" in csp
     assert "'unsafe-inline'" not in csp
+
+
+def test_landing_shows_benefits_law_search_and_plan_comparison_from_the_config(app, client):
+    from config.plans import ASSISTANT_DAILY, TOOL_LIMITS
+
+    page = client.get("/").get_data(as_text=True)
+
+    assert 'id="benefits"' in page and 'id="audience"' in page and 'id="law-search"' in page
+    assert 'class="compare"' in page and "style=" not in page
+    for plan, limit in ASSISTANT_DAILY.items():
+        assert f"<td>{limit}</td>" in page
+    assert f"<td>{TOOL_LIMITS['premium']['laws']}</td>" in page
+
+
+def test_landing_counts_laws_only_when_the_corpus_is_loaded(app, client):
+    from app.extensions import db
+    from app.models import Law
+
+    assert 'class="stat-number">6,000+' not in client.get("/").get_data(as_text=True)
+    with app.app_context():
+        db.session.add_all([Law(slug=f"de-{i}", jurisdiction="DE") for i in range(1000)] + [Law(slug="il-privacy", jurisdiction="IL")])
+        db.session.commit()
+
+    page = client.get("/").get_data(as_text=True)
+
+    assert 'class="stat-number">1,000+' in page and 'class="stat-number">1</span>wichtige israelische Gesetze' in page
