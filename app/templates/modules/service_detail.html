@@ -18,6 +18,14 @@
   {% if service.provider_name %}<p class="small muted">{{ _("Provider") }}: {{ service.provider_name }}</p>{% endif %}
 </section>
 
+{% if tool_jurisdiction %}
+<section class="card">
+  <h2>{{ _("Try it now") }}</h2>
+  <p class="small muted">{{ _("This search is built into the club. It is not legal advice; it helps you to prepare for a meeting with a lawyer.") }}</p>
+  <a class="button" href="{{ url_for('services.tool_page', key='laws', jurisdiction=tool_jurisdiction) }}">{{ _("Open the law search") }}</a>
+</section>
+{% endif %}
+
 <section class="card">
   <h2>{{ _("Send a request") }}</h2>
   <p class="small muted">{{ _("The provider receives your message. Your contact details are sent only if you tick the box below.") }}</p>

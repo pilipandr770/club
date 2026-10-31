@@ -320,3 +320,37 @@ def test_tool_refuses_a_country_without_corpus_and_defaults_to_germany(app, clie
     assert "DE · " in client.get(location).get_data(as_text=True)
     with app.app_context(), pytest.raises(ToolError):
         laws_tool.search("x", jurisdiction="FR")
+
+
+# --------------------------------------------------------------------------- Каталог услуг
+def test_catalog_offers_both_law_searches_and_links_to_the_tool_with_the_country(app, client, no_vectors):
+    from app.services.catalog_defaults import seed_default_services
+
+    with app.app_context():
+        seed_default_services()
+        load_il(with_vectors=False)
+        load_bgb(with_vectors=False)
+    make_user(app, email="member@example.com", verified=True, plan="starter")
+    login(client, "member@example.com")
+
+    listing = client.get("/services/").get_data(as_text=True)
+    israel = client.get("/services/gesetze-schnellsuche-il").get_data(as_text=True)
+    germany = client.get("/services/gesetze-schnellsuche-de").get_data(as_text=True)
+    tool = client.get("/services/tools/laws?jurisdiction=IL").get_data(as_text=True)
+
+    assert "KI-Schnellsuche im deutschen Recht" in listing and "KI-Schnellsuche im israelischen Recht" in listing
+    assert "/services/tools/laws?jurisdiction=IL" in israel and "/services/tools/laws?jurisdiction=DE" in germany
+    assert '<option value="IL" selected>' in tool
+
+
+def test_law_service_has_no_tool_button_while_the_corpus_is_missing(app, client):
+    from app.services.catalog_defaults import seed_default_services
+
+    with app.app_context():
+        seed_default_services()
+    make_user(app, email="member@example.com", verified=True, plan="starter")
+    login(client, "member@example.com")
+
+    page = client.get("/services/gesetze-schnellsuche-il").get_data(as_text=True)
+
+    assert "KI-Schnellsuche im israelischen Recht" in page and "/services/tools/laws" not in page

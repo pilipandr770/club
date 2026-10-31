@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-10-31 10:03+0000\n"
+"POT-Creation-Date: 2026-10-31 12:13+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3163,7 +3163,7 @@ msgstr ""
 msgid "Please write a short message to the provider."
 msgstr ""
 
-#: app/modules/services/__init__.py:51
+#: app/modules/services/__init__.py:60
 msgid "Your request is sent to the provider."
 msgstr ""
 
@@ -3189,7 +3189,7 @@ msgid ""
 "start of next month."
 msgstr ""
 
-#: app/modules/services/tools.py:88 app/services/tools/laws.py:62
+#: app/modules/services/tools.py:90 app/services/tools/laws.py:62
 #: app/services/tools/laws.py:67
 msgid "There is no law collection for this country."
 msgstr ""
@@ -6042,7 +6042,7 @@ msgstr ""
 
 #: app/templates/admin/service_form.html:7
 #: app/templates/admin/service_inquiries.html:7
-#: app/templates/modules/service_detail.html:38
+#: app/templates/modules/service_detail.html:46
 #: app/templates/modules/services_mine.html:7
 #: app/templates/modules/tools_index.html:8
 msgid "Back to services"
@@ -7724,7 +7724,7 @@ msgid ""
 msgstr ""
 
 #: app/templates/modules/miniclubs_detail.html:102
-#: app/templates/modules/service_detail.html:27
+#: app/templates/modules/service_detail.html:35
 msgid "Your message"
 msgstr ""
 
@@ -7784,7 +7784,7 @@ msgid "Join"
 msgstr ""
 
 #: app/templates/modules/miniclubs_detail.html:145
-#: app/templates/modules/service_detail.html:34
+#: app/templates/modules/service_detail.html:42
 msgid "Send request"
 msgstr ""
 
@@ -8390,17 +8390,31 @@ msgstr ""
 msgid "Provider"
 msgstr ""
 
-#: app/templates/modules/service_detail.html:22
+#: app/templates/modules/service_detail.html:23
+msgid "Try it now"
+msgstr ""
+
+#: app/templates/modules/service_detail.html:24
+msgid ""
+"This search is built into the club. It is not legal advice; it helps you "
+"to prepare for a meeting with a lawyer."
+msgstr ""
+
+#: app/templates/modules/service_detail.html:25
+msgid "Open the law search"
+msgstr ""
+
+#: app/templates/modules/service_detail.html:30
 msgid "Send a request"
 msgstr ""
 
-#: app/templates/modules/service_detail.html:23
+#: app/templates/modules/service_detail.html:31
 msgid ""
 "The provider receives your message. Your contact details are sent only if"
 " you tick the box below."
 msgstr ""
 
-#: app/templates/modules/service_detail.html:32
+#: app/templates/modules/service_detail.html:40
 msgid "Pass my e-mail address to the provider so they can reply to me."
 msgstr ""
 

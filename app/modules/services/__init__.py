@@ -18,6 +18,15 @@ def _error_message(code):
     return messages.get(code, _("Something went wrong. Please try again."))
 
 
+def _law_tool_country(service):
+    """Код страны, если это услуга-поиск по законам и корпус для неё загружен; иначе None."""
+    from ...services.catalog_defaults import LAW_SERVICES
+    from ...services.tools import laws as laws_tool
+
+    code = LAW_SERVICES.get(service.slug)
+    return code if code and code in laws_tool.available_jurisdictions() else None
+
+
 @bp.route("/")
 @requires_feature("services.use")
 def index():
@@ -50,7 +59,7 @@ def detail(slug):
             return redirect(url_for("services.detail", slug=slug))
         flash(_("Your request is sent to the provider."), "success")
         return redirect(url_for("services.mine"))
-    return render_template("modules/service_detail.html", service=service)
+    return render_template("modules/service_detail.html", service=service, tool_jurisdiction=_law_tool_country(service))
 
 
 from . import tools  # noqa: E402,F401  (маршруты инструментов)

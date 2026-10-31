@@ -78,6 +78,8 @@ def tool_page(key):
         abort(404)
     state = tool_state(current_user, key)
     form, errors = request.form if request.method == "POST" else {}, {}
+    if request.method == "GET" and spec.kind == "laws":
+        form = {"jurisdiction": request.args.get("jurisdiction", "")}  # ссылка из каталога услуг предвыбирает страну
     if request.method == "POST":
         try:
             if spec.kind in ("site", "domain"):

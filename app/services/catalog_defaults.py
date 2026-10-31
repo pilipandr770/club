@@ -7,7 +7,39 @@ PROVIDER = "Andrii-IT · Partner des Clubs"
 EMAIL = "info@andrii-it.de"
 BENEFIT = "Kostenloses Erstgespräch für Club-Mitglieder"
 
+# Встроенные ИИ-поиски по законам: услуга в каталоге открывает инструмент с предвыбранной страной (slug → код страны)
+LAW_SERVICES = {"gesetze-schnellsuche-de": "DE", "gesetze-schnellsuche-il": "IL"}
+
 DEFAULT_SERVICES = (
+    dict(slug="gesetze-schnellsuche-de", sort=-2, title="KI-Schnellsuche im deutschen Recht",
+         summary="Stell deine Frage in eigenen Worten und bekomme die passenden Vorschriften aus dem deutschen "
+                 "Bundesrecht im Wortlaut, mit einer verständlichen Erläuterung. Spart Zeit bei der Vorbereitung "
+                 "auf einen Termin mit einer Anwältin oder einem Anwalt.",
+         description="Das Tool durchsucht rund 6.000 Bundesgesetze nach Bedeutung (nicht nur nach Stichworten) und "
+                     "zitiert den Gesetzestext unverändert mit Quelle. Eine KI erklärt in einfachen Worten, was im "
+                     "Text steht. Sie bewertet nie deinen Einzelfall und gibt keine Handlungsempfehlung — das ist "
+                     "keine Rechtsberatung. Nutze es, um mit klaren Fragen und den richtigen Paragraphen in das "
+                     "Gespräch mit einer Fachperson zu gehen. Für eine verbindliche Einschätzung schreib uns über "
+                     "das Formular unten: Wir stellen den Kontakt zu einer Fachperson her.",
+         benefits="Passende Paragraphen in Minuten statt Stunden\nGesetzestext im Wortlaut mit Quelle\n"
+                  "Gut vorbereitet in den Termin mit einer Anwältin oder einem Anwalt\n"
+                  "Keine Einzelfallbewertung, keine Rechtsberatung",
+         price_hint="im Mitgliedsbeitrag enthalten (Kontingent je Tarif)"),
+    dict(slug="gesetze-schnellsuche-il", sort=-1, title="KI-Schnellsuche im israelischen Recht",
+         summary="Finde die passenden Vorschriften aus den wichtigsten israelischen Gesetzen (hebräischer Originaltext) "
+                 "und lass dir erklären, was sie regeln — auf Deutsch oder Russisch. Zur Vorbereitung auf einen "
+                 "Termin mit einer Anwältin oder einem Anwalt.",
+         description="Das Tool durchsucht eine Auswahl der wichtigsten israelischen Gesetze (Grundgesetze, Vertrags-, "
+                     "Gesellschafts-, Datenschutz-, Verbraucher-, Arbeits- und Steuerrecht u. a.). Du kannst deine "
+                     "Frage auf Deutsch, Russisch, Englisch oder Hebräisch stellen. Der Gesetzestext erscheint im "
+                     "hebräischen Original mit Link zur Quelle; die Erläuterung ist eine maschinelle Wiedergabe. "
+                     "Wichtig: Die Sammlung ist eine inoffizielle Fassung (Open Law Book), verbindlich ist nur der "
+                     "amtliche hebräische Wortlaut, und die Rechtsprechung ist nicht enthalten. Das ist keine "
+                     "Rechtsberatung. Für eine verbindliche Einschätzung schreib uns über das Formular unten.",
+         benefits="Fragen auf Deutsch, Russisch, Englisch oder Hebräisch\nHebräischer Gesetzestext mit Link zur Quelle\n"
+                  "Gut vorbereitet in den Termin mit einer Anwältin oder einem Anwalt\n"
+                  "Offen gelegt: inoffizielle Sammelfassung, ohne Rechtsprechung",
+         price_hint="im Mitgliedsbeitrag enthalten (Kontingent je Tarif)"),
     dict(slug="ki-chatbots", sort=1, title="KI-Chatbots & digitale Assistenten",
          summary="Ein Assistent für deine Website, WhatsApp oder Telegram, der Anfragen beantwortet, Termine "
                  "vorbereitet und Leads qualifiziert — DSGVO-konform mit Hosting in der EU.",

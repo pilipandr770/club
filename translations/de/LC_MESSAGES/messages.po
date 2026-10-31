@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Club 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-31 10:03+0000\n"
+"POT-Creation-Date: 2026-10-31 12:13+0000\n"
 "PO-Revision-Date: 2026-10-19 21:00+0000\n"
 "Last-Translator: \n"
 "Language: de\n"
@@ -3449,7 +3449,7 @@ msgstr "Diese Leistung ist gerade nicht verfügbar."
 msgid "Please write a short message to the provider."
 msgstr "Bitte schreibe dem Anbieter eine kurze Nachricht."
 
-#: app/modules/services/__init__.py:51
+#: app/modules/services/__init__.py:60
 msgid "Your request is sent to the provider."
 msgstr "Deine Anfrage ist an den Anbieter gesendet."
 
@@ -3477,7 +3477,7 @@ msgstr ""
 "Du hast alle Durchläufe dieses Werkzeugs für diesen Monat genutzt. Sie "
 "erneuern sich zu Beginn des nächsten Monats."
 
-#: app/modules/services/tools.py:88 app/services/tools/laws.py:62
+#: app/modules/services/tools.py:90 app/services/tools/laws.py:62
 #: app/services/tools/laws.py:67
 msgid "There is no law collection for this country."
 msgstr "Für dieses Land gibt es keine Gesetzessammlung."
@@ -6533,7 +6533,7 @@ msgstr "Neue Leistung"
 
 #: app/templates/admin/service_form.html:7
 #: app/templates/admin/service_inquiries.html:7
-#: app/templates/modules/service_detail.html:38
+#: app/templates/modules/service_detail.html:46
 #: app/templates/modules/services_mine.html:7
 #: app/templates/modules/tools_index.html:8
 msgid "Back to services"
@@ -8314,7 +8314,7 @@ msgstr ""
 "Nachricht kommt von dir, nicht vom Club."
 
 #: app/templates/modules/miniclubs_detail.html:102
-#: app/templates/modules/service_detail.html:27
+#: app/templates/modules/service_detail.html:35
 msgid "Your message"
 msgstr "Deine Nachricht"
 
@@ -8378,7 +8378,7 @@ msgid "Join"
 msgstr "Beitreten"
 
 #: app/templates/modules/miniclubs_detail.html:145
-#: app/templates/modules/service_detail.html:34
+#: app/templates/modules/service_detail.html:42
 msgid "Send request"
 msgstr "Anfrage senden"
 
@@ -9043,11 +9043,28 @@ msgstr "Zurück zur Community"
 msgid "Provider"
 msgstr "Anbieter"
 
-#: app/templates/modules/service_detail.html:22
+#: app/templates/modules/service_detail.html:23
+msgid "Try it now"
+msgstr "Jetzt ausprobieren"
+
+#: app/templates/modules/service_detail.html:24
+msgid ""
+"This search is built into the club. It is not legal advice; it helps you to"
+" prepare for a meeting with a lawyer."
+msgstr ""
+"Diese Suche ist im Club eingebaut. Sie ist keine Rechtsberatung; sie hilft "
+"dir, dich auf einen Termin mit einer Anwältin oder einem Anwalt "
+"vorzubereiten."
+
+#: app/templates/modules/service_detail.html:25
+msgid "Open the law search"
+msgstr "Gesetzes-Suche öffnen"
+
+#: app/templates/modules/service_detail.html:30
 msgid "Send a request"
 msgstr "Anfrage senden"
 
-#: app/templates/modules/service_detail.html:23
+#: app/templates/modules/service_detail.html:31
 msgid ""
 "The provider receives your message. Your contact details are sent only if "
 "you tick the box below."
@@ -9055,7 +9072,7 @@ msgstr ""
 "Der Anbieter erhält deine Nachricht. Deine Kontaktdaten werden nur "
 "gesendet, wenn du das Kästchen unten ankreuzt."
 
-#: app/templates/modules/service_detail.html:32
+#: app/templates/modules/service_detail.html:40
 msgid "Pass my e-mail address to the provider so they can reply to me."
 msgstr ""
 "Meine E-Mail-Adresse an den Anbieter weitergeben, damit er mir antworten "
