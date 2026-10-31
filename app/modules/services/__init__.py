@@ -30,8 +30,16 @@ def _law_tool_country(service):
 @bp.route("/")
 @requires_feature("services.use")
 def index():
+    from ...jurisdictions import get_pack
+    from ...services.tools import TOOLS, tool_state
+    from ...services.tools import laws as laws_tool
+
     items = Service.query.filter_by(active=True).order_by(Service.sort, Service.title).all()
-    return render_template("modules/services_list.html", items=items)
+    law_countries = [get_pack(code) for code in laws_tool.available_jurisdictions()]
+    tools = [tool for tool in TOOLS if tool.key != "laws" or law_countries]
+    states = {tool.key: tool_state(current_user, tool.key) for tool in tools}
+    return render_template("modules/services_list.html", items=items, tools=tools, states=states,
+                           law_countries=law_countries)
 
 
 @bp.route("/mine")

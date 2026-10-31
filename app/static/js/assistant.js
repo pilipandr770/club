@@ -112,6 +112,16 @@
     });
   }
 
+  // Подсказки на самой странице (например, под результатом поиска по закону): открывают чат и отправляют вопрос
+  document.addEventListener("click", function (event) {
+    var chip = event.target.closest("[data-assistant-ask]");
+    if (!chip || form.querySelector(".assistant-send").disabled) { return; }
+    event.preventDefault();
+    setOpen(true);
+    input.value = chip.dataset.assistantAsk;
+    form.requestSubmit();
+  });
+
   var mic = form.querySelector(".assistant-mic");
   var consentBox = root.querySelector(".assistant-voice-consent");
   var voiceStatus = root.querySelector(".assistant-voice-status");

@@ -354,3 +354,48 @@ def test_law_service_has_no_tool_button_while_the_corpus_is_missing(app, client)
     page = client.get("/services/gesetze-schnellsuche-il").get_data(as_text=True)
 
     assert "KI-Schnellsuche im israelischen Recht" in page and "/services/tools/laws" not in page
+
+
+# --------------------------------------------------------------------------- Вопросы к Clubi по найденным нормам
+def test_clubi_sees_the_found_provisions_and_the_report_offers_questions(app, client, no_vectors, monkeypatch):
+    from app.models import ToolRun
+    from app.services import assistant
+    from app.services.ai import llm
+
+    seen = []
+    monkeypatch.setattr(llm, "complete", lambda system, user, **kw: seen.append((system, user)) or "Antwort von Clubi")
+    monkeypatch.setattr(assistant, "llm_enabled", lambda: True)
+    uid = make_user(app, email="member@example.com", verified=True, plan="starter")
+    hit = {"id": 1, "slug": "il-privacy", "jurisdiction": "IL", "law_abbreviation": "חוק הגנת הפרטיות", "enbez": "סעיף 1",
+           "titel": "איסור הפגיעה בפרטיות", "text": "לא יפגע אדם בפרטיות של זולתו ללא הסכמתו."}
+    with app.app_context():
+        run = ToolRun(user_id=uid, tool="laws", subject="Privatsphäre", status="done",
+                      result={"hits": [hit], "jurisdiction": "IL"},
+                      report={"erlaeuterungen": [{"id": 1, "text": "Verbietet Eingriffe ohne Einwilligung."}],
+                              "nicht_passend": [], "hinweis": "", "ai": True})
+        db.session.add(run)
+        db.session.commit()
+        run_id = run.id
+    login(client, "member@example.com")
+
+    page = client.get(f"/services/tools/run/{run_id}").get_data(as_text=True)
+    answer = client.post("/assistant/ask", json={"message": "Erkläre das", "path": f"/services/tools/run/{run_id}", "history": []})
+
+    assert page.count("data-assistant-ask=") == 4
+    assert answer.status_code == 200 and answer.get_json()["context"]
+    system, prompt = seen[0]
+    assert "לא יפגע אדם בפרטיות" in prompt and "Verbietet Eingriffe" in prompt and "jurisdiction: IL" in prompt
+    assert "Gesetzesfundstellen" in system
+
+
+def test_services_page_shows_the_included_tools_with_a_button_per_country(app, client, no_vectors):
+    with app.app_context():
+        load_il(with_vectors=False)
+        load_bgb(with_vectors=False)
+    make_user(app, email="member@example.com", verified=True, plan="starter")
+    login(client, "member@example.com")
+
+    page = client.get("/services/").get_data(as_text=True)
+
+    assert 'id="tools-title"' in page and "/services/tools/seo" in page
+    assert "/services/tools/laws?jurisdiction=DE" in page and "/services/tools/laws?jurisdiction=IL" in page

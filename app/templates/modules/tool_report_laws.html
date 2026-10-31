@@ -37,6 +37,19 @@
   {% endif %}
 {% endfor %}
 
+{% if assistant_on and result.hits %}
+<section class="card" id="law-chat">
+  <h2>{{ _("Ask Clubi about these provisions") }}</h2>
+  <p class="small muted">{{ _("Clubi sees the provisions above. You can ask in your own language. Clubi explains what the text says and helps you prepare questions for a lawyer. It does not assess your individual case.") }}</p>
+  <p class="chips">
+    <button type="button" class="button button-secondary" data-assistant-ask="{{ _('Explain these provisions in simple words.') }}">{{ _("Explain in simple words") }}</button>
+    <button type="button" class="button button-secondary" data-assistant-ask="{{ _('What are the conditions and exceptions in these provisions?') }}">{{ _("Conditions and exceptions") }}</button>
+    <button type="button" class="button button-secondary" data-assistant-ask="{{ _('Which questions should I ask a lawyer about this?') }}">{{ _("Questions for a lawyer") }}</button>
+    <button type="button" class="button button-secondary" data-assistant-ask="{{ _('Summarize the key points of these provisions in a short list.') }}">{{ _("Key points") }}</button>
+  </p>
+</section>
+{% endif %}
+
 {% if report.ai and report.nicht_passend %}
 <p class="small muted">{{ _("Further results were found but do not match your question closely and are hidden.") }}</p>
 {% endif %}

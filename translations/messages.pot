@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-10-31 12:13+0000\n"
+"POT-Creation-Date: 2026-10-31 13:11+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1254,6 +1254,7 @@ msgid "Manual review"
 msgstr ""
 
 #: app/i18n_labels.py:245 app/templates/modules/auction_mine.html:21
+#: app/templates/modules/services_list.html:27
 #: app/templates/modules/tools_index.html:19
 #: app/templates/modules/travel_mine.html:24
 msgid "Open"
@@ -3163,7 +3164,7 @@ msgstr ""
 msgid "Please write a short message to the provider."
 msgstr ""
 
-#: app/modules/services/__init__.py:60
+#: app/modules/services/__init__.py:68
 msgid "Your request is sent to the provider."
 msgstr ""
 
@@ -3335,43 +3336,47 @@ msgstr ""
 msgid "The trip is cancelled."
 msgstr ""
 
-#: app/services/assistant.py:112
+#: app/services/assistant.py:120
 msgid "Your own public profile"
 msgstr ""
 
-#: app/services/assistant.py:113
+#: app/services/assistant.py:121
 msgid "Profile of another member"
 msgstr ""
 
-#: app/services/assistant.py:123 app/templates/admin/service_form.html:3
+#: app/services/assistant.py:131 app/templates/admin/service_form.html:3
 msgid "Service"
 msgstr ""
 
-#: app/services/assistant.py:141 app/templates/modules/profile_view.html:122
+#: app/services/assistant.py:149 app/templates/modules/profile_view.html:122
 msgid "Trip"
 msgstr ""
 
-#: app/services/assistant.py:159 app/templates/modules/profile_view.html:123
+#: app/services/assistant.py:167 app/templates/modules/profile_view.html:123
 msgid "Meeting"
 msgstr ""
 
-#: app/services/assistant.py:177 app/templates/modules/profile_view.html:124
+#: app/services/assistant.py:185 app/templates/modules/profile_view.html:124
 msgid "Mini-club"
 msgstr ""
 
-#: app/services/assistant.py:194 app/templates/modules/profile_view.html:121
+#: app/services/assistant.py:202 app/templates/modules/profile_view.html:121
 msgid "Startup"
 msgstr ""
 
-#: app/services/assistant.py:220
+#: app/services/assistant.py:228
 msgid "Auction lot"
 msgstr ""
 
-#: app/services/assistant.py:233
+#: app/services/assistant.py:241
 msgid "Your matches"
 msgstr ""
 
-#: app/services/assistant.py:245
+#: app/services/assistant.py:268
+msgid "Your law search"
+msgstr ""
+
+#: app/services/assistant.py:273
 msgid "Your report"
 msgstr ""
 
@@ -8423,25 +8428,52 @@ msgid "Services from the club network"
 msgstr ""
 
 #: app/templates/modules/services_list.html:7
-msgid "Checked partners of the community, with conditions for members."
-msgstr ""
-
-#: app/templates/modules/services_list.html:8
 #: app/templates/modules/tools_index.html:6
 msgid "Built-in tools"
 msgstr ""
 
-#: app/templates/modules/services_list.html:8
+#: app/templates/modules/services_list.html:7
 #: app/templates/modules/services_mine.html:3
 #: app/templates/modules/services_mine.html:6
 msgid "My requests"
 msgstr ""
 
-#: app/templates/modules/services_list.html:17
+#: app/templates/modules/services_list.html:10
+msgid "Included in your plan: built-in tools"
+msgstr ""
+
+#: app/templates/modules/services_list.html:11
+msgid ""
+"Quick checks and research that save you time and money. They are part of "
+"your plan, with a monthly allowance. The results are hints, not legal or "
+"professional advice."
+msgstr ""
+
+#: app/templates/modules/services_list.html:19
+#: app/templates/modules/tool_form.html:11
+#: app/templates/modules/tools_index.html:18
+#, python-format
+msgid "%(left)s of %(limit)s runs left this month"
+msgstr ""
+
+#: app/templates/modules/services_list.html:30
+#: app/templates/modules/tools_index.html:21
+msgid "Not included in your plan."
+msgstr ""
+
+#: app/templates/modules/services_list.html:37
+msgid "Partner services"
+msgstr ""
+
+#: app/templates/modules/services_list.html:38
+msgid "Checked partners of the community, with conditions for members."
+msgstr ""
+
+#: app/templates/modules/services_list.html:47
 msgid "Details and request"
 msgstr ""
 
-#: app/templates/modules/services_list.html:20
+#: app/templates/modules/services_list.html:50
 msgid "No services are published yet."
 msgstr ""
 
@@ -8681,12 +8713,6 @@ msgstr ""
 #: app/templates/modules/tool_report_laws.html:8
 #: app/templates/modules/tool_report_panel.html:9
 msgid "All tools"
-msgstr ""
-
-#: app/templates/modules/tool_form.html:11
-#: app/templates/modules/tools_index.html:18
-#, python-format
-msgid "%(left)s of %(limit)s runs left this month"
 msgstr ""
 
 #: app/templates/modules/tool_form.html:15
@@ -8953,7 +8979,50 @@ msgstr ""
 msgid "What the text says"
 msgstr ""
 
-#: app/templates/modules/tool_report_laws.html:41
+#: app/templates/modules/tool_report_laws.html:42
+msgid "Ask Clubi about these provisions"
+msgstr ""
+
+#: app/templates/modules/tool_report_laws.html:43
+msgid ""
+"Clubi sees the provisions above. You can ask in your own language. Clubi "
+"explains what the text says and helps you prepare questions for a lawyer."
+" It does not assess your individual case."
+msgstr ""
+
+#: app/templates/modules/tool_report_laws.html:45
+msgid "Explain these provisions in simple words."
+msgstr ""
+
+#: app/templates/modules/tool_report_laws.html:45
+msgid "Explain in simple words"
+msgstr ""
+
+#: app/templates/modules/tool_report_laws.html:46
+msgid "What are the conditions and exceptions in these provisions?"
+msgstr ""
+
+#: app/templates/modules/tool_report_laws.html:46
+msgid "Conditions and exceptions"
+msgstr ""
+
+#: app/templates/modules/tool_report_laws.html:47
+msgid "Which questions should I ask a lawyer about this?"
+msgstr ""
+
+#: app/templates/modules/tool_report_laws.html:47
+msgid "Questions for a lawyer"
+msgstr ""
+
+#: app/templates/modules/tool_report_laws.html:48
+msgid "Summarize the key points of these provisions in a short list."
+msgstr ""
+
+#: app/templates/modules/tool_report_laws.html:48
+msgid "Key points"
+msgstr ""
+
+#: app/templates/modules/tool_report_laws.html:54
 msgid ""
 "Further results were found but do not match your question closely and are"
 " hidden."
@@ -9103,10 +9172,6 @@ msgstr ""
 msgid ""
 "Quick checks and research tools that run on the platform. The results are"
 " hints, not legal or professional advice."
-msgstr ""
-
-#: app/templates/modules/tools_index.html:21
-msgid "Not included in your plan."
 msgstr ""
 
 #: app/templates/modules/tools_index.html:30

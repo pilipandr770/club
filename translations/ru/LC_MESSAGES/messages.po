@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Club 0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-10-31 12:13+0000\n"
+"POT-Creation-Date: 2026-10-31 13:11+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: ru\n"
@@ -1313,6 +1313,7 @@ msgid "Manual review"
 msgstr "Ручная проверка"
 
 #: app/i18n_labels.py:245 app/templates/modules/auction_mine.html:21
+#: app/templates/modules/services_list.html:27
 #: app/templates/modules/tools_index.html:19
 #: app/templates/modules/travel_mine.html:24
 msgid "Open"
@@ -3389,7 +3390,7 @@ msgstr "Эта услуга сейчас недоступна."
 msgid "Please write a short message to the provider."
 msgstr "Напишите короткое сообщение поставщику услуги."
 
-#: app/modules/services/__init__.py:60
+#: app/modules/services/__init__.py:68
 msgid "Your request is sent to the provider."
 msgstr "Запрос отправлен поставщику услуги."
 
@@ -3559,43 +3560,47 @@ msgstr "Ваша поездка открыта для других участн�
 msgid "The trip is cancelled."
 msgstr "Поездка отменена."
 
-#: app/services/assistant.py:112
+#: app/services/assistant.py:120
 msgid "Your own public profile"
 msgstr "Ваш публичный профиль"
 
-#: app/services/assistant.py:113
+#: app/services/assistant.py:121
 msgid "Profile of another member"
 msgstr "Профиль другого участника"
 
-#: app/services/assistant.py:123 app/templates/admin/service_form.html:3
+#: app/services/assistant.py:131 app/templates/admin/service_form.html:3
 msgid "Service"
 msgstr "Услуга"
 
-#: app/services/assistant.py:141 app/templates/modules/profile_view.html:122
+#: app/services/assistant.py:149 app/templates/modules/profile_view.html:122
 msgid "Trip"
 msgstr "Поездка"
 
-#: app/services/assistant.py:159 app/templates/modules/profile_view.html:123
+#: app/services/assistant.py:167 app/templates/modules/profile_view.html:123
 msgid "Meeting"
 msgstr "Встреча"
 
-#: app/services/assistant.py:177 app/templates/modules/profile_view.html:124
+#: app/services/assistant.py:185 app/templates/modules/profile_view.html:124
 msgid "Mini-club"
 msgstr "Мини-клуб"
 
-#: app/services/assistant.py:194 app/templates/modules/profile_view.html:121
+#: app/services/assistant.py:202 app/templates/modules/profile_view.html:121
 msgid "Startup"
 msgstr "Стартап"
 
-#: app/services/assistant.py:220
+#: app/services/assistant.py:228
 msgid "Auction lot"
 msgstr "Лот аукциона"
 
-#: app/services/assistant.py:233
+#: app/services/assistant.py:241
 msgid "Your matches"
 msgstr "Ваши совпадения"
 
-#: app/services/assistant.py:245
+#: app/services/assistant.py:268
+msgid "Your law search"
+msgstr "Ваш поиск по закону"
+
+#: app/services/assistant.py:273
 msgid "Your report"
 msgstr "Ваш отчёт"
 
@@ -8955,25 +8960,55 @@ msgid "Services from the club network"
 msgstr "Услуги партнёров клуба"
 
 #: app/templates/modules/services_list.html:7
-msgid "Checked partners of the community, with conditions for members."
-msgstr "Проверенные партнёры сообщества с условиями для участников."
-
-#: app/templates/modules/services_list.html:8
 #: app/templates/modules/tools_index.html:6
 msgid "Built-in tools"
 msgstr "Встроенные инструменты"
 
-#: app/templates/modules/services_list.html:8
+#: app/templates/modules/services_list.html:7
 #: app/templates/modules/services_mine.html:3
 #: app/templates/modules/services_mine.html:6
 msgid "My requests"
 msgstr "Мои запросы"
 
-#: app/templates/modules/services_list.html:17
+#: app/templates/modules/services_list.html:10
+msgid "Included in your plan: built-in tools"
+msgstr "Входят в ваш тариф: встроенные инструменты"
+
+#: app/templates/modules/services_list.html:11
+msgid ""
+"Quick checks and research that save you time and money. They are part of "
+"your plan, with a monthly allowance. The results are hints, not legal or "
+"professional advice."
+msgstr ""
+"Быстрые проверки и исследования, которые экономят время и деньги. Они "
+"входят в ваш тариф с ежемесячным лимитом. Результаты — подсказки, а не "
+"юридическая или профессиональная консультация."
+
+#: app/templates/modules/services_list.html:19
+#: app/templates/modules/tool_form.html:11
+#: app/templates/modules/tools_index.html:18
+#, python-format
+msgid "%(left)s of %(limit)s runs left this month"
+msgstr "Осталось запусков в этом месяце: %(left)s из %(limit)s"
+
+#: app/templates/modules/services_list.html:30
+#: app/templates/modules/tools_index.html:21
+msgid "Not included in your plan."
+msgstr "Не входит в ваш тариф."
+
+#: app/templates/modules/services_list.html:37
+msgid "Partner services"
+msgstr "Услуги партнёров"
+
+#: app/templates/modules/services_list.html:38
+msgid "Checked partners of the community, with conditions for members."
+msgstr "Проверенные партнёры сообщества с условиями для участников."
+
+#: app/templates/modules/services_list.html:47
 msgid "Details and request"
 msgstr "Подробности и запрос"
 
-#: app/templates/modules/services_list.html:20
+#: app/templates/modules/services_list.html:50
 msgid "No services are published yet."
 msgstr "Услуги пока не опубликованы."
 
@@ -9224,12 +9259,6 @@ msgstr "Инструменты"
 #: app/templates/modules/tool_report_panel.html:9
 msgid "All tools"
 msgstr "Все инструменты"
-
-#: app/templates/modules/tool_form.html:11
-#: app/templates/modules/tools_index.html:18
-#, python-format
-msgid "%(left)s of %(limit)s runs left this month"
-msgstr "Осталось запусков в этом месяце: %(left)s из %(limit)s"
 
 #: app/templates/modules/tool_form.html:15
 msgid ""
@@ -9528,7 +9557,53 @@ msgstr ""
 msgid "What the text says"
 msgstr "Что говорит текст"
 
-#: app/templates/modules/tool_report_laws.html:41
+#: app/templates/modules/tool_report_laws.html:42
+msgid "Ask Clubi about these provisions"
+msgstr "Спросите Clubi об этих нормах"
+
+#: app/templates/modules/tool_report_laws.html:43
+msgid ""
+"Clubi sees the provisions above. You can ask in your own language. Clubi "
+"explains what the text says and helps you prepare questions for a lawyer. "
+"It does not assess your individual case."
+msgstr ""
+"Clubi видит нормы выше. Спрашивать можно на своём языке. Clubi объяснит, "
+"что сказано в тексте, и поможет подготовить вопросы юристу. Ваш частный "
+"случай Clubi не оценивает."
+
+#: app/templates/modules/tool_report_laws.html:45
+msgid "Explain these provisions in simple words."
+msgstr "Объясни эти нормы простыми словами."
+
+#: app/templates/modules/tool_report_laws.html:45
+msgid "Explain in simple words"
+msgstr "Объяснить простыми словами"
+
+#: app/templates/modules/tool_report_laws.html:46
+msgid "What are the conditions and exceptions in these provisions?"
+msgstr "Какие условия и исключения есть в этих нормах?"
+
+#: app/templates/modules/tool_report_laws.html:46
+msgid "Conditions and exceptions"
+msgstr "Условия и исключения"
+
+#: app/templates/modules/tool_report_laws.html:47
+msgid "Which questions should I ask a lawyer about this?"
+msgstr "Какие вопросы мне задать об этом юристу?"
+
+#: app/templates/modules/tool_report_laws.html:47
+msgid "Questions for a lawyer"
+msgstr "Вопросы юристу"
+
+#: app/templates/modules/tool_report_laws.html:48
+msgid "Summarize the key points of these provisions in a short list."
+msgstr "Кратко перечисли главные пункты этих норм списком."
+
+#: app/templates/modules/tool_report_laws.html:48
+msgid "Key points"
+msgstr "Главное"
+
+#: app/templates/modules/tool_report_laws.html:54
 msgid ""
 "Further results were found but do not match your question closely and are "
 "hidden."
@@ -9690,10 +9765,6 @@ msgid ""
 msgstr ""
 "Быстрые проверки и исследовательские инструменты платформы. Результаты "
 "служат ориентирами, а не юридической или профессиональной консультацией."
-
-#: app/templates/modules/tools_index.html:21
-msgid "Not included in your plan."
-msgstr "Не входит в ваш тариф."
 
 #: app/templates/modules/tools_index.html:30
 msgid "My recent runs"

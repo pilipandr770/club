@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Club 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-31 12:13+0000\n"
+"POT-Creation-Date: 2026-10-31 13:11+0000\n"
 "PO-Revision-Date: 2026-10-19 21:00+0000\n"
 "Last-Translator: \n"
 "Language: de\n"
@@ -1316,6 +1316,7 @@ msgid "Manual review"
 msgstr "Manuelle Prüfung"
 
 #: app/i18n_labels.py:245 app/templates/modules/auction_mine.html:21
+#: app/templates/modules/services_list.html:27
 #: app/templates/modules/tools_index.html:19
 #: app/templates/modules/travel_mine.html:24
 msgid "Open"
@@ -3449,7 +3450,7 @@ msgstr "Diese Leistung ist gerade nicht verfügbar."
 msgid "Please write a short message to the provider."
 msgstr "Bitte schreibe dem Anbieter eine kurze Nachricht."
 
-#: app/modules/services/__init__.py:60
+#: app/modules/services/__init__.py:68
 msgid "Your request is sent to the provider."
 msgstr "Deine Anfrage ist an den Anbieter gesendet."
 
@@ -3627,43 +3628,47 @@ msgstr "Deine Reise ist offen, damit andere mitfahren können."
 msgid "The trip is cancelled."
 msgstr "Die Reise ist storniert."
 
-#: app/services/assistant.py:112
+#: app/services/assistant.py:120
 msgid "Your own public profile"
 msgstr "Dein eigenes öffentliches Profil"
 
-#: app/services/assistant.py:113
+#: app/services/assistant.py:121
 msgid "Profile of another member"
 msgstr "Profil eines anderen Mitglieds"
 
-#: app/services/assistant.py:123 app/templates/admin/service_form.html:3
+#: app/services/assistant.py:131 app/templates/admin/service_form.html:3
 msgid "Service"
 msgstr "Leistung"
 
-#: app/services/assistant.py:141 app/templates/modules/profile_view.html:122
+#: app/services/assistant.py:149 app/templates/modules/profile_view.html:122
 msgid "Trip"
 msgstr "Reise"
 
-#: app/services/assistant.py:159 app/templates/modules/profile_view.html:123
+#: app/services/assistant.py:167 app/templates/modules/profile_view.html:123
 msgid "Meeting"
 msgstr "Treffen"
 
-#: app/services/assistant.py:177 app/templates/modules/profile_view.html:124
+#: app/services/assistant.py:185 app/templates/modules/profile_view.html:124
 msgid "Mini-club"
 msgstr "Mini-Club"
 
-#: app/services/assistant.py:194 app/templates/modules/profile_view.html:121
+#: app/services/assistant.py:202 app/templates/modules/profile_view.html:121
 msgid "Startup"
 msgstr "Startup"
 
-#: app/services/assistant.py:220
+#: app/services/assistant.py:228
 msgid "Auction lot"
 msgstr "Auktionslos"
 
-#: app/services/assistant.py:233
+#: app/services/assistant.py:241
 msgid "Your matches"
 msgstr "Deine Vorschläge"
 
-#: app/services/assistant.py:245
+#: app/services/assistant.py:268
+msgid "Your law search"
+msgstr "Deine Gesetzes-Suche"
+
+#: app/services/assistant.py:273
 msgid "Your report"
 msgstr "Dein Bericht"
 
@@ -9083,25 +9088,55 @@ msgid "Services from the club network"
 msgstr "Leistungen aus dem Club-Netzwerk"
 
 #: app/templates/modules/services_list.html:7
-msgid "Checked partners of the community, with conditions for members."
-msgstr "Geprüfte Partner der Gemeinschaft, mit Konditionen für Mitglieder."
-
-#: app/templates/modules/services_list.html:8
 #: app/templates/modules/tools_index.html:6
 msgid "Built-in tools"
 msgstr "Eingebaute Werkzeuge"
 
-#: app/templates/modules/services_list.html:8
+#: app/templates/modules/services_list.html:7
 #: app/templates/modules/services_mine.html:3
 #: app/templates/modules/services_mine.html:6
 msgid "My requests"
 msgstr "Meine Anfragen"
 
-#: app/templates/modules/services_list.html:17
+#: app/templates/modules/services_list.html:10
+msgid "Included in your plan: built-in tools"
+msgstr "In deinem Tarif enthalten: eingebaute Werkzeuge"
+
+#: app/templates/modules/services_list.html:11
+msgid ""
+"Quick checks and research that save you time and money. They are part of "
+"your plan, with a monthly allowance. The results are hints, not legal or "
+"professional advice."
+msgstr ""
+"Schnelle Prüfungen und Recherchen, die dir Zeit und Geld sparen. Sie "
+"gehören zu deinem Tarif, mit einem monatlichen Kontingent. Die Ergebnisse "
+"sind Hinweise, keine Rechts- oder Fachberatung."
+
+#: app/templates/modules/services_list.html:19
+#: app/templates/modules/tool_form.html:11
+#: app/templates/modules/tools_index.html:18
+#, python-format
+msgid "%(left)s of %(limit)s runs left this month"
+msgstr "Noch %(left)s von %(limit)s Durchläufen in diesem Monat"
+
+#: app/templates/modules/services_list.html:30
+#: app/templates/modules/tools_index.html:21
+msgid "Not included in your plan."
+msgstr "In deinem Tarif nicht enthalten."
+
+#: app/templates/modules/services_list.html:37
+msgid "Partner services"
+msgstr "Partner-Dienstleistungen"
+
+#: app/templates/modules/services_list.html:38
+msgid "Checked partners of the community, with conditions for members."
+msgstr "Geprüfte Partner der Gemeinschaft, mit Konditionen für Mitglieder."
+
+#: app/templates/modules/services_list.html:47
 msgid "Details and request"
 msgstr "Details und Anfrage"
 
-#: app/templates/modules/services_list.html:20
+#: app/templates/modules/services_list.html:50
 msgid "No services are published yet."
 msgstr "Noch keine Leistungen veröffentlicht."
 
@@ -9362,12 +9397,6 @@ msgstr "Werkzeuge"
 #: app/templates/modules/tool_report_panel.html:9
 msgid "All tools"
 msgstr "Alle Werkzeuge"
-
-#: app/templates/modules/tool_form.html:11
-#: app/templates/modules/tools_index.html:18
-#, python-format
-msgid "%(left)s of %(limit)s runs left this month"
-msgstr "Noch %(left)s von %(limit)s Durchläufen in diesem Monat"
 
 #: app/templates/modules/tool_form.html:15
 msgid ""
@@ -9668,7 +9697,56 @@ msgstr ""
 msgid "What the text says"
 msgstr "Was der Text sagt"
 
-#: app/templates/modules/tool_report_laws.html:41
+#: app/templates/modules/tool_report_laws.html:42
+msgid "Ask Clubi about these provisions"
+msgstr "Frag Clubi zu diesen Vorschriften"
+
+#: app/templates/modules/tool_report_laws.html:43
+msgid ""
+"Clubi sees the provisions above. You can ask in your own language. Clubi "
+"explains what the text says and helps you prepare questions for a lawyer. "
+"It does not assess your individual case."
+msgstr ""
+"Clubi sieht die Vorschriften oben. Du kannst in deiner eigenen Sprache "
+"fragen. Clubi erklärt, was der Text sagt, und hilft dir, Fragen für eine "
+"Anwältin oder einen Anwalt vorzubereiten. Deinen Einzelfall beurteilt Clubi"
+" nicht."
+
+#: app/templates/modules/tool_report_laws.html:45
+msgid "Explain these provisions in simple words."
+msgstr "Erkläre diese Vorschriften in einfachen Worten."
+
+#: app/templates/modules/tool_report_laws.html:45
+msgid "Explain in simple words"
+msgstr "In einfachen Worten erklären"
+
+#: app/templates/modules/tool_report_laws.html:46
+msgid "What are the conditions and exceptions in these provisions?"
+msgstr "Welche Voraussetzungen und Ausnahmen gibt es in diesen Vorschriften?"
+
+#: app/templates/modules/tool_report_laws.html:46
+msgid "Conditions and exceptions"
+msgstr "Voraussetzungen und Ausnahmen"
+
+#: app/templates/modules/tool_report_laws.html:47
+msgid "Which questions should I ask a lawyer about this?"
+msgstr "Welche Fragen sollte ich dazu einer Anwältin oder einem Anwalt stellen?"
+
+#: app/templates/modules/tool_report_laws.html:47
+msgid "Questions for a lawyer"
+msgstr "Fragen für die Anwältin oder den Anwalt"
+
+#: app/templates/modules/tool_report_laws.html:48
+msgid "Summarize the key points of these provisions in a short list."
+msgstr ""
+"Fasse die wichtigsten Punkte dieser Vorschriften in einer kurzen Liste "
+"zusammen."
+
+#: app/templates/modules/tool_report_laws.html:48
+msgid "Key points"
+msgstr "Wichtigste Punkte"
+
+#: app/templates/modules/tool_report_laws.html:54
 msgid ""
 "Further results were found but do not match your question closely and are "
 "hidden."
@@ -9832,10 +9910,6 @@ msgid ""
 msgstr ""
 "Schnelle Prüfungen und Recherche-Werkzeuge direkt auf der Plattform. Die "
 "Ergebnisse sind Hinweise, keine Rechts- oder Fachberatung."
-
-#: app/templates/modules/tools_index.html:21
-msgid "Not included in your plan."
-msgstr "In deinem Tarif nicht enthalten."
 
 #: app/templates/modules/tools_index.html:30
 msgid "My recent runs"

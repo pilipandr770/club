@@ -4,8 +4,38 @@
 
 {% block content %}
 <h1>{{ _("Services from the club network") }}</h1>
-<p class="muted">{{ _("Checked partners of the community, with conditions for members.") }}</p>
 <p><a href="{{ url_for('services.tools_index') }}">{{ _("Built-in tools") }}</a> · <a href="{{ url_for('services.mine') }}">{{ _("My requests") }}</a></p>
+
+<section class="block" aria-labelledby="tools-title">
+  <h2 id="tools-title">{{ _("Included in your plan: built-in tools") }}</h2>
+  <p class="muted">{{ _("Quick checks and research that save you time and money. They are part of your plan, with a monthly allowance. The results are hints, not legal or professional advice.") }}</p>
+  <div class="grid-cards">
+  {% for tool in tools %}
+    {% set state = states[tool.key] %}
+    <article class="card">
+      <h3>{{ tool.title }}</h3>
+      <p>{{ tool.summary }}</p>
+      {% if state.limit %}
+        <p class="small muted">{{ _("%(left)s of %(limit)s runs left this month", left=state.left, limit=state.limit) }}</p>
+        {% if tool.key == 'laws' %}
+          <p class="plan-actions">
+          {% for pack in law_countries %}
+            <a class="button{% if not loop.first %} button-secondary{% endif %}" href="{{ url_for('services.tool_page', key='laws', jurisdiction=pack.code) }}">{{ pack.name }}</a>
+          {% endfor %}
+          </p>
+        {% else %}
+          <a class="button" href="{{ url_for('services.tool_page', key=tool.key) }}">{{ _("Open") }}</a>
+        {% endif %}
+      {% else %}
+        <p class="small muted">{{ _("Not included in your plan.") }}</p>
+      {% endif %}
+    </article>
+  {% endfor %}
+  </div>
+</section>
+
+<h2>{{ _("Partner services") }}</h2>
+<p class="muted">{{ _("Checked partners of the community, with conditions for members.") }}</p>
 
 <div class="grid-cards">
 {% for service in items %}
