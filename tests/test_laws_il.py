@@ -155,6 +155,37 @@ def test_vector_search_stays_inside_the_chosen_country(app, fake_embeddings):
         assert israeli[0]["source_url"].startswith("https://he.wikisource.org/") and "revision 1001" in israeli[0]["source_version"]
 
 
+def test_foreign_language_question_is_searched_by_its_hebrew_wording(app, fake_embeddings, monkeypatch):
+    asked = []
+    monkeypatch.setattr(law_search.llm, "complete", lambda system, user, **kw: asked.append((user, kw["feature"])) or "פגיעה בפרטיות")
+    with app.app_context():
+        load_il()
+
+        hits = law_search.search("Wann verletzt jemand meine Privatsphäre?", jurisdiction="IL")
+
+        assert asked == [("Wann verletzt jemand meine Privatsphäre?", "law_translate")]
+        assert hits[0]["slug"] == "il-privacy"
+        assert law_search.search("פגיעה בפרטיות", jurisdiction="IL") and len(asked) == 1  # ивритский вопрос не переводим
+
+
+def test_translation_failure_falls_back_to_the_original_question(app, fake_embeddings, monkeypatch):
+    def down(system, user, **kw):
+        raise law_search.AIUnavailable("disabled")
+
+    monkeypatch.setattr(law_search.llm, "complete", down)
+    with app.app_context():
+        assert law_search.hebrew_query("privacy") == "privacy"
+
+
+def test_list_items_are_part_of_their_section_not_separate_sections():
+    law = parse_law("{{ח:כותרת|חוק, תש״ף–2020}}\n{{ח:סעיף|5|מטרות}}\n{{ח:ת}} המטרות הן:\n{{ח:סעיף*|(1)|}} צדקה;\n"
+                    "{{ח:סעיף*|(2)|}} סעד.\n{{ח:סוף}}",
+                    "il-x", "חוק", 1, "2026-01-01T00:00:00Z", "Zivilrecht")
+
+    assert [s["enbez"] for s in law["sections"]] == ["סעיף 5"]
+    assert law["sections"][0]["text"].splitlines() == ["המטרות הן:", "(1) צדקה;", "(2) סעד."]
+
+
 def test_unknown_country_is_refused_instead_of_falling_back_to_german_law(app):
     with app.app_context():
         with pytest.raises(UnknownJurisdiction):

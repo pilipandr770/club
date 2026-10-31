@@ -12,6 +12,8 @@ from ...extensions import db
 from ...jurisdictions import get_pack
 from ...jurisdictions.il.catalog import BY_SLUG as IL_LAWS
 from ...models import Law, LawChunk, LawSection
+from ..ai import llm
+from ..ai.http import AIUnavailable
 from . import embed
 
 MAX_HITS = 8
@@ -153,6 +155,21 @@ def _hebrew_rows(query: str, category: str, limit: int) -> list[dict]:
     return [dict(row) for row in rows]
 
 
+_TO_HEBREW = ("Translate the user's legal question or keywords into Hebrew, using the terms that appear in Israeli statutes. "
+              "Output only the Hebrew text, at most 40 words, no explanation.")
+
+
+def hebrew_query(query: str) -> str:
+    """Вопрос на немецком/русском/английском → иврит для векторного поиска. Без ИИ или при сбое — исходный текст."""
+    if _HE_WORD.search(query):
+        return query
+    try:
+        translated = llm.complete(_TO_HEBREW, query, max_tokens=150, timeout=20, feature="law_translate").strip()
+    except AIUnavailable:
+        return query
+    return translated[:400] if _HE_WORD.search(translated) else query
+
+
 def search(query: str, category: str = "", k: int = 6, jurisdiction: str = "DE") -> list[dict]:
     """Treffer mit vollem Paragraphentext. Reihenfolge: direkte Fundstelle, dann Vektorsuche (sonst Volltext).
 
@@ -161,10 +178,11 @@ def search(query: str, category: str = "", k: int = 6, jurisdiction: str = "DE")
     query = query.strip()[:800]
     k = max(1, min(MAX_HITS, k))
     raw = _direct_hits_il(query, category) if jurisdiction == "IL" else _direct_hits(query, category)
-    vector = embed.embed_query(query) if embed.available() else None
+    topic = hebrew_query(query) if jurisdiction == "IL" else query  # корпус на иврите: ищем по ивритской формулировке
+    vector = embed.embed_query(topic) if embed.available() else None
     found = _vector_rows(vector, category, k * 5, jurisdiction) if vector else []
     if not found:
-        found = _text_rows(query, category, k * 5, jurisdiction)
+        found = _text_rows(topic, category, k * 5, jurisdiction)
     laws = {law.slug: law for law in Law.query.filter(Law.slug.in_({r["slug"] for r in raw + found})).all()} if raw or found else {}
     out, seen = [], set()
     for row in raw + found:

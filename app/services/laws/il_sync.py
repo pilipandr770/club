@@ -24,8 +24,9 @@ log = logging.getLogger(__name__)
 STATE_ID = 2
 
 
-def sync(only: list[str] | None = None, embed_new: bool = True, delay: float = 0.3, progress=None) -> dict:
-    """Возвращает сводку: new/updated/unchanged/errors."""
+def sync(only: list[str] | None = None, embed_new: bool = True, delay: float = 0.3, progress=None,
+         force: bool = False) -> dict:
+    """Возвращает сводку: new/updated/unchanged/errors. force: перечитать и пересобрать, даже если ревизия та же (после правки разбора)."""
     started = time.monotonic()
     laws = [law for law in CATALOG if not only or law.slug in only]
     summary = {"new": 0, "updated": 0, "unchanged": 0, "errors": [], "total": len(laws)}
@@ -36,7 +37,7 @@ def sync(only: list[str] | None = None, embed_new: bool = True, delay: float = 0
             if law.page not in revisions:
                 summary["errors"].append(f"{law.slug}: Seite nicht gefunden")
                 continue
-            if known.get(law.slug) == str(revisions[law.page][0]):
+            if not force and known.get(law.slug) == str(revisions[law.page][0]):
                 summary["unchanged"] += 1
                 continue
             parsed = source.fetch_law(law, delay)

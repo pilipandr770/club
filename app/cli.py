@@ -221,11 +221,12 @@ def laws_sync_if_due_command():
 @click.command("laws-il-sync")
 @click.option("--only", multiple=True, help="Только эти slug (например il-privacy; можно несколько раз).")
 @click.option("--no-embed", is_flag=True, help="Не считать векторы (поиск будет по тексту).")
-def laws_il_sync_command(only, no_embed):
+@click.option("--force", is_flag=True, help="Пересобрать, даже если ревизия не изменилась (после правки разбора).")
+def laws_il_sync_command(only, no_embed, force):
     """Основные законы Израиля с Hebrew Wikisource (Open Law Book): скачивает и векторизует только изменившееся."""
     from .services.laws.il_sync import build_il_index, sync
 
-    summary = sync(only=list(only) or None, embed_new=not no_embed, progress=click.echo)
+    summary = sync(only=list(only) or None, embed_new=not no_embed, progress=click.echo, force=force)
     build_il_index()
     click.echo(f"Новых: {summary['new']}, обновлено: {summary['updated']}, без изменений: {summary['unchanged']}, "
                f"ошибок: {len(summary['errors'])}, секунд: {summary['seconds']}")

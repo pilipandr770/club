@@ -211,8 +211,13 @@ def parse_law(wikitext: str, slug: str, page: str, revid: int, timestamp: str, c
             number = _arg(args, 0)
             start_section(f"סעיף {number}" if number else "", _arg(args, 1), _arg(args, 2), segment)
         elif name == "ח:סעיף*":
-            label = _arg(args, 0)
-            start_section(f"{annex} {label}".strip(), _arg(args, 1), "", segment)
+            # Пункт списка (перечень в статье или в приложении), а не отдельная статья: дописываем к текущему блоку
+            label, heading = _arg(args, 0), _arg(args, 1)
+            item = f"\n{label} {heading} {segment}".replace("  ", " ")
+            if current is not None:
+                current["raw"].append(item)
+            elif annex:
+                start_section(annex, "", "", item)
         elif name == "ח:מבוא":
             start_section("מבוא", "", "", segment)
         elif name == "ח:חתימות":
